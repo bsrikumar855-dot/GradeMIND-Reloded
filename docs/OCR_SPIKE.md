@@ -142,6 +142,41 @@ sheet_002 page_02.jpg: 42.3s tokens=889 regions=19 peak_alloc=4361MiB flags=['CO
 - **Implication:** "retry once in base mode" is not a recovery strategy on these sheets. A degenerate page should route straight to
   review, or to Engine B-only text with `OCR_DEGENERATE` set.
 
+### A7. vLLM FP8 serving (official `unlimited-ocr` image): fast, but fragile on the shared GPU (run `20261008T081908Z_vllm_fp8`)
+
+Image `vllm/vllm-openai@sha256:542961a42d9183813819a23ef3a8b50bfb4f5ef7b0fb4f8e4f56edd8445efb18` (27.7 GB; vLLM 0.23.1rc1.dev541,
+torch 2.11.0+cu130). Local pinned weights mounted read-only with `HF_HUB_OFFLINE=1`; the port is bound to 127.0.0.1. Client: `spike/engine_a/run_engine_a_vllm.py`.
+
+| Attempt | Flags | Outcome |
+|---|---|---|
+| 1 | `--quantization fp8 --gpu-memory-utilization 0.58 --max-model-len 8192` | Start failed: `0.47 GiB KV cache is needed ... available KV cache memory (0.17 GiB)` |
+| 2 | `fp8, util 0.60, max-model-len 6144, max-num-seqs 1` | **Healthy**: FP8 weights 3.57 GiB, KV 0.41 GiB (7,232 tokens). 16 pages done, then **`EngineDeadError`** on sheet_002 p5: `OutOfMemoryError ... Tried to allocate 1.72 GiB` in SAM attention |
+| 3 | same + `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` | Same OOM on sheet_002 p5 (`1.72 GiB` needed, `1.67 GiB` free) |
+| 4 | same, inputs padded to a 2:3 aspect | Start failed: other processes had grown by about 0.36 GiB, so `Free memory on device (6.75/11.49 GiB) ... less than desired (0.6, 6.89 GiB)` |
+| 5 | `util 0.56, max-model-len 4608`, `--limit-mm-per-prompt` 2560×3840 | Start failed: OOM **during profiling**. The image profiles the 32-crop worst case (`_UNLIMITED_OCR_MAX_CROPS = 32`, hard-coded) and ignores the size hint |
+
+**Root cause: the gundam crop count is driven by aspect ratio.** Using the model's own `find_closest_aspect_ratio`, owner pages get
+**12–30 crops** depending only on how the phone photo was framed (sheet_001: mostly 4×6=24; sheet_002: 12–30, with p5 and p9 = 5×6=30).
+Vision memory and image tokens scale with the crop count, so per-page memory is not bounded by anything we control unless preprocessing
+fixes the aspect ratio. `spike/pad_aspect.py` (pad to 2:3 with white) maps every sheet_002 page to a constant 4×6 grid, but vLLM still
+profiles for 32 crops.
+
+**Results on the 16 pages it completed (sheet_001 p1–12, sheet_002 p1–4), compared with int8 (A4):**
+
+- Agreement on whether each page is degenerate: **16 of 16 pages**, the same pages in both. The shapes differ slightly (e.g. sheet_001 p6: empty-cell spam vs
+  word loop). The CJK date hallucination on sheet_002 p2 reproduces under vLLM.
+- **Median latency on non-degenerate pages is 1.98 s**, against roughly 7–17 s for int8 (bitsandbytes), about 3–8× faster.
+- Token logprobs come back from the server (`logprobs: true, top_logprobs: 2`), so the confidence component is available in production.
+
+**Implications:**
+1. vLLM FP8 is the right *production* serving path for speed, but on this shared GPU it needs either
+   (a) a few more GiB of guaranteed headroom, or (b) `_UNLIMITED_OCR_MAX_CROPS` lowered to 24, with pages padded to a fixed aspect so
+   24 really is the maximum. (b) means patching vendor code in the serving image (a DECISION for the owner).
+2. Fixed-aspect padding belongs in preprocessing (spec §6) regardless. It bounds memory and tokens, and makes the crop grid and
+   therefore the output reproducible across re-scans of the same page (I12).
+3. The OCR service must survive engine death. Here one page killed the engine and every later request failed. The job system needs a
+   health-check-and-restart path, with the page that caused the failure isolated (`OCR_A_FAILED`, then fall back to Engine B text plus review).
+
 ## Engine B: PaddleOCR 3.7.0 (paddlepaddle-gpu 3.4.0 cu129), PP-OCRv5, CPU
 
 ### B1. Two CPU-path failures fixed
@@ -192,4 +227,4 @@ maxrss=14520424kB wall=44.78s
 4. Engine A's literal fidelity on handwriting is weak. It omits words, normalises misspellings, and substitutes real words. On these
    sheets it is not trustworthy as the *primary* reader for grading evidence without Engine B agreement.
 5. Throughput on this host: Engine A int8 takes about 3–23 s per normal page on the GPU, and Engine B about 21–24 s per page on CPU (14.5 GB RSS).
-   A 12-page booklet takes about 5 min for Engine B and 1–3 min for Engine A, if run sequentially. vLLM/FP8 throughput has not been measured yet (the image pull is in progress).
+   A 12-page booklet takes about 5 min for Engine B and 1–3 min for Engine A, if run sequentially. vLLM FP8 takes about 2 s per normal page (A7), but it is not stable on the shared GPU without a crop cap.

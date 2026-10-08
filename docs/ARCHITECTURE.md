@@ -69,12 +69,16 @@ No option can be approved on numbers yet, because **every CER/WER so far is agai
 
 ### DECISION 2: Engine A serving mode
 
+Options: (i) int8 transformers (works within budget, 3–8× slower); (ii) vLLM FP8 with the image's `_UNLIMITED_OCR_MAX_CROPS`
+patched from 32 to 24 plus fixed-aspect padding (a vendor-code patch, but it bounds memory); (iii) vLLM FP8 unpatched, which needs guaranteed GPU
+headroom (e.g. interviewbot moved off this GPU). This choice only matters if DECISION 1 keeps Engine A.
+
 | Mode | Peak GPU | Speed (normal page) | Fidelity vs bf16 | Status |
 |---|---|---|---|---|
 | bf16, transformers | OOM on shared GPU | n/a | reference | fails |
 | bf16 + expert CPU offload | ~3.9 GiB | ~20× slower than int8 | exact | reference only |
 | int8 (bitsandbytes), transformers | 6648 MiB gundam / 4361 MiB base | 3–23 s/page | same degeneration on p2 as bf16 | works |
-| FP8, vLLM `unlimited-ocr` image | not yet measured | not yet measured | not yet measured | image pull in progress |
+| FP8, vLLM `unlimited-ocr` image | weights 3.57 GiB, needs ≈6.9 GiB free at start | **~2 s/page** | same degenerate pages as int8 (16/16) | **unstable on shared GPU**: OOM on 30-crop page, start fails when free memory dips (OCR_SPIKE A7) |
 
 ## 4. LLM grading (local Qwen, owner decision)
 
