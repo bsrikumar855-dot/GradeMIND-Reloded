@@ -31,6 +31,10 @@ from resolved import require_equal, sha256_file  # noqa: E402
 PAD = 6
 GATE_KEEP_RATIO = 0.45
 GATE_MIN_INK_PX = 60
+# v2 gate: FRACTION of front-ink pixels in the crop. Threshold chosen by inspecting ONE page (sheet_001 page_03, a GT page):
+# warped-crop fractions there: show-through 0.008/0.020/0.034; lowest real line 0.048 (a stray margin mark); threshold in the gap. Gate ablation on sheet_001 is therefore in-sample; sheet_002 is the
+# out-of-sample check.
+GATE_MIN_INK_FRAC = 0.04
 NO_TEXT = "NO_TEXT"
 
 
@@ -104,9 +108,10 @@ def main() -> int:
         for ln in b["lines"]:
             crop = warp_crop(img, ln["poly"])
             ink = int((darkness(np.asarray(crop.convert("L"))) >= GATE_KEEP_RATIO * p99).sum())
+            frac = ink / max(1, crop.width * crop.height)
             crops.append(crop)
-            gated.append((not args.no_gate) and ink < GATE_MIN_INK_PX)
-            ln["_ink_px"] = ink
+            gated.append((not args.no_gate) and (ink < GATE_MIN_INK_PX or frac < GATE_MIN_INK_FRAC))
+            ln["_ink_px"], ln["_ink_frac"] = ink, round(frac, 4)
         crop_s = time.perf_counter() - t
         t = time.perf_counter()
         texts: dict[int, tuple[str, str, float, float, bool]] = {}
@@ -130,7 +135,7 @@ def main() -> int:
         rec_s = time.perf_counter() - t
         out_lines = []
         for i, ln in enumerate(b["lines"]):
-            base = {"box": ln["box"], "poly": ln["poly"], "b_text": ln["text"], "b_score": ln["score"], "ink_px": ln["_ink_px"]}
+            base = {"box": ln["box"], "poly": ln["poly"], "b_text": ln["text"], "b_score": ln["score"], "ink_px": ln["_ink_px"], "ink_frac": ln["_ink_frac"]}
             if gated[i]:
                 out_lines.append({"text": "", "text_raw": "", "score": 0.0, "min_token_prob": 0.0, "flags": [NO_TEXT], **base})
             else:
@@ -141,7 +146,8 @@ def main() -> int:
             "engine": "trocr-line", "model_revision": args.revision, "resolved": resolved,
             "detector": b.get("resolved", {}).get("det", {}).get("name", "engine_b (see b_dir)"),
             "postprocess": "undo_iam_spacing (format only)", "crop": "perspective warp of detector quad + pad",
-            "gate": None if args.no_gate else {"keep_ratio": GATE_KEEP_RATIO, "min_ink_px": GATE_MIN_INK_PX},
+            "gate": None if args.no_gate else {"keep_ratio": GATE_KEEP_RATIO, "min_ink_px": GATE_MIN_INK_PX, "min_ink_frac": GATE_MIN_INK_FRAC,
+                                                "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"},
             "decoding": {"num_beams": 1, "do_sample": False, "max_new_tokens": args.max_new_tokens, "dtype": "fp32"},
             "crop_pad_px": PAD, "page": Path(page).name, "latency_s": round(crop_s + rec_s, 3),
             "crop_s": round(crop_s, 3), "recognition_s": round(rec_s, 3), "model_load_s": round(load_s, 2),
