@@ -20,13 +20,20 @@ def main() -> int:
     ap.add_argument("--out", required=True)
     ap.add_argument("--device", default="cpu", help="cpu (default: shared-GPU plan) or gpu:0 for comparison")
     ap.add_argument("--rec-model", default=None, help="override text_recognition_model_name")
+    ap.add_argument("--det-max-side", type=int, default=1920,
+                    help="downscale so the long side <= this for detection (default limit_type=min never "
+                         "downscales; a 2520x3560 page needed a 46.5 GB CPU alloc)")
     args = ap.parse_args()
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     kw = dict(ocr_version="PP-OCRv5", lang="en", device=args.device,
-              use_doc_orientation_classify=False, use_doc_unwarping=False, use_textline_orientation=False)
+              use_doc_orientation_classify=False, use_doc_unwarping=False, use_textline_orientation=False,
+              text_det_limit_type="max", text_det_limit_side_len=args.det_max_side)
+    if args.device == "cpu":
+        # Paddle 3.4 oneDNN backend fails under the PIR executor (ConvertPirAttribute2RuntimeAttribute).
+        kw["enable_mkldnn"] = False
     if args.rec_model:
         kw["text_recognition_model_name"] = args.rec_model
     t0 = time.perf_counter()
