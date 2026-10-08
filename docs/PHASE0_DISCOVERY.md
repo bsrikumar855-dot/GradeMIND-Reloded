@@ -9,11 +9,11 @@ Spec: [MASTER_PROMPT.md](MASTER_PROMPT.md), Sections 0, 21 and 23.
 |---|---|---|
 | GPU available | NVIDIA GeForce RTX 5070, 12227 MiB VRAM, compute capability 12.0 (Blackwell), driver 595.84 | detected: `nvidia-smi` |
 | OS / runtime | Ubuntu 24.04.4 LTS, kernel 7.0.0-34, 24 CPU threads, 31 GiB RAM, ~354 GB free disk | detected |
-| Sample answer sheets | **missing** | owner |
-| Sample marking schemes | **missing** | owner |
-| Primary subjects (P0) | **missing** | owner |
-| Evaluation LLM (default) | **missing** (`~/models/Qwen3-8B` exists locally, which is a candidate the owner must confirm) | owner |
-| Old GradeMIND repo | none found under `/home/Shreekumar` (depth 4) | needs owner confirmation |
+| Sample answer sheets | 1 booklet, 12 pages (cover + 11 handwritten), at `data/samples/sheet_001/` (gitignored) | owner, 2026-10-08 |
+| Sample marking schemes | **missing**; there is also **no question paper** for sheet_001 | owner |
+| Primary subjects (P0) | Not stated. sheet_001 is a university CIA in Environmental Science and Sustainability (B.Tech, Anna University-affiliated), **not CBSE** | inferred from the sheet; owner to confirm |
+| Evaluation LLM (default) | **Local Qwen** (`~/models/Qwen3-8B`) | owner, 2026-10-08 |
+| Old GradeMIND repo | none; use the new repo `bsrikumar855-dot/GradeMIND-Reloded` | owner, 2026-10-08 |
 
 Detection commands (run 2026-10-08):
 
@@ -32,7 +32,7 @@ $ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
 | Python | 3.12.3 | 3.12 | ok |
 | uv | 0.12.3 | yes | ok |
 | git / gh | 2.43.0 / 2.67.0 (logged in as `bsrikumar855-dot`) | yes | ok |
-| Docker | 29.8.0, nvidia-ctk installed | yes, with GPU | **user is not in the `docker` group**: `permission denied ... /var/run/docker.sock` |
+| Docker | 29.8.0, nvidia-ctk installed | yes, with GPU | **user is still not in the `docker` group** (`getent group docker` → `docker:x:983:`, no members); owner must run `sudo usermod -aG docker $USER` and log in again |
 | Node | 18.19.1 | current stable Next.js | Node 20+ is needed for current Next.js (Phase 1 gap, not Phase 0) |
 | pnpm | missing | yes | Phase 1 gap |
 
@@ -49,6 +49,25 @@ $ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
 
 **vLLM:** the PyPI latest is 0.31.0.
 
+## 3b. Sample sheet_001 characteristics (observed, not measured)
+
+- Source: Adobe Scan (Android) PDF. Pages are embedded JPEGs at 2400–2560 × 3150–3680 px (~290–335 ppi), extracted losslessly with `pdfimages -j`.
+- The **cover page** has printed form fields plus handwritten register number, name, course code and date (PII), and an empty marks grid.
+- Handwritten pages use ruled lines and a left margin. **Heavy phone shadow** falls across the right half of most pages.
+- **Bleed-through:** mirrored writing from the reverse side is visible on most pages, and an engine may read it as content.
+- A faint printed watermark (institution crest and slogan) sits mid-page.
+- Answer labelling is irregular: `11.] a.]`, `13.]`, `19.] A.]`, parts headed "Part-A … Part D", and stray margin marks (`1'`). Part A answers include MCQ option letters (`c] plants`, `a) circular`): these are critical tokens.
+- Numerals are rare: question numbers and two percentages (`90.%`, `9?.%`). This sheet barely exercises numeral, sign and unit accuracy, so a numerical-subject sheet is needed for that.
+
+## 3c. Security finding: Unlimited-OCR remote code `eval()`s model output
+
+`modeling_unlimitedocr.py` (rev `07dea832e22aefee32ad281d4b80551282e1c168`) calls Python `eval()` on
+generated text: on box strings in `extract_coordinates_and_label` and on line data when `save_results=True`.
+Generated text is derived from student handwriting, so this is a code-execution path controlled by the input.
+**Mitigation in the spike:** always `eval_mode=True, save_results=False`, and boxes are parsed with `json.loads`
+(`spike/engine_a/run_engine_a.py`). In production the vLLM path does not run this file's post-processing, and
+our parser must never use `eval`. I'll add a regression test in Phase 2.
+
 ## 4. Early risks (to be measured, not assumed)
 
 1. **VRAM budget, 12 GB.** OCR weights alone take ~6.7 GB, leaving ~4–5 GB for KV cache and activations at `gpu_memory_utilization≈0.9`. The local LLM cannot be co-resident: Qwen3-8B in bf16 needs ~16 GB. Options are sequential GPU stages (unload OCR, then load the LLM), a 4-bit quantized LLM, or a cloud LLM (opt-in, with redaction). This is an owner decision.
@@ -57,7 +76,7 @@ $ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
 
 ## 5. Spike plan, once the inputs arrive
 
-1. `sudo usermod -aG docker $USER` (owner action), then pull `vllm/vllm-openai:unlimited-ocr` and serve it with `temperature=0` and logprobs on.
+1. Engine A via the **transformers path** first (no Docker needed; spike only). Later, once Docker access works, use the `vllm/vllm-openai:unlimited-ocr` image to confirm vLLM parity and throughput.
 2. PaddleOCR 3.x in an isolated uv venv under `spike/` (GPU if a Blackwell wheel exists, otherwise CPU).
 3. Run both engines on 10–20 owner-supplied pages. Record raw outputs, latency, and peak VRAM (`nvidia-smi --query-gpu=memory.used` sampling).
 4. Score CER/WER and numeral, sign, and unit accuracy against **owner-provided** transcriptions of 5 pages. Log autocorrection incidents.
@@ -65,4 +84,8 @@ $ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
 
 ## 6. Open questions for the owner
 
-See the chat or session log dated 2026-10-08. This section will be updated with the answers.
+1. Verify the 5 draft transcriptions in `data/transcriptions/sheet_001/` (status `DRAFT_UNVERIFIED`; see `docs/TRANSCRIPTION_GUIDE.md`).
+2. More sheets: different writers, plus at least one numerical subject (Maths or Physics). One writer is too narrow a sample to approve an OCR strategy.
+3. The question paper and marking scheme for sheet_001. Not needed for the OCR spike; needed from Phase 2 on.
+4. Target market: the spec says CBSE, but the sample is university CIA. Which comes first?
+5. Docker group membership (see §2).
