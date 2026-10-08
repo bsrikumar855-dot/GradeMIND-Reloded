@@ -74,6 +74,9 @@ Re-running a stored evaluation from the same inputs and versions must produce id
 6. **Dependencies need a reason.** Every new dependency gets one line of justification in `docs/DEPENDENCIES.md`. Pin versions.
 7. **Ask instead of assuming** when a decision is the owner's: hardware, data, provider choice, or policy defaults that affect students' marks.
 8. **Keep `STATUS.md` current.** It has three sections: Implemented and tested, Implemented but untested, and Not implemented. It must match the repo. Never mark a feature complete because it compiles.
+9. **Never edit a script while a run using it is in progress.** Copy it to `runs/<run_id>/` and execute the copy. *(Added by owner, Phase 0 review, 2026-10-08.)*
+10. **The degenerate-output detector is a backstop, not a gate. Cross-engine disagreement is the gate.** Every new detector rule needs a regression fixture from a real page plus a clean-page false-positive check. *(Owner, 2026-10-08.)*
+11. **Draft transcriptions produced by the agent are NOT ground truth, even after edits, until `status = OWNER_VERIFIED`.** *(Owner, 2026-10-08.)*
 
 ---
 
