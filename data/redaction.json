@@ -1,0 +1,9 @@
+{
+  "method": "Filled black box (RGB 0,0,0) over the whole page for cover pages; OCR/transcription text of redacted pages replaced with [REDACTED] and token ids/logprobs dropped. Tool: spike/redact.py.",
+  "approved_by_owner": "2026-10-08 (decision D6, docs/DECISIONS.md)",
+  "sheets": {
+    "sheet_001": {"full_pages": ["page_01"], "boxes": {}},
+    "sheet_002": {"full_pages": ["page_01"], "boxes": {}}
+  },
+  "notes": "Identifier search (names, register numbers, superintendent names/signatures) over all OCR outputs found hits only on page_01 of each sheet. Pattern list is kept local (it contains the identifiers)."
+}
