@@ -1,0 +1,665 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_06.jpg",
+ "latency_s": 10.276,
+ "model_load_s": 0.42,
+ "n_lines": 22,
+ "lines": [
+  {
+   "text": "Endargered species are those",
+   "score": 0.969,
+   "poly": [
+    [
+     275,
+     288
+    ],
+    [
+     2101,
+     288
+    ],
+    [
+     2101,
+     427
+    ],
+    [
+     275,
+     427
+    ]
+   ],
+   "box": [
+    275,
+    288,
+    2101,
+    427
+   ]
+  },
+  {
+   "text": "pecesTH",
+   "score": 0.8746,
+   "poly": [
+    [
+     311,
+     423
+    ],
+    [
+     976,
+     417
+    ],
+    [
+     977,
+     546
+    ],
+    [
+     312,
+     553
+    ]
+   ],
+   "box": [
+    311,
+    417,
+    977,
+    553
+   ]
+  },
+  {
+   "text": "rear to extinction",
+   "score": 0.9479,
+   "poly": [
+    [
+     1164,
+     432
+    ],
+    [
+     2317,
+     432
+    ],
+    [
+     2317,
+     566
+    ],
+    [
+     1164,
+     566
+    ]
+   ],
+   "box": [
+    1164,
+    432,
+    2317,
+    566
+   ]
+  },
+  {
+   "text": "over the world",
+   "score": 0.9324,
+   "poly": [
+    [
+     217,
+     543
+    ],
+    [
+     1296,
+     551
+    ],
+    [
+     1294,
+     694
+    ],
+    [
+     216,
+     686
+    ]
+   ],
+   "box": [
+    216,
+    543,
+    1296,
+    694
+   ]
+  },
+  {
+   "text": " we can prasewe this  spectes",
+   "score": 0.8739,
+   "poly": [
+    [
+     160,
+     785
+    ],
+    [
+     2261,
+     791
+    ],
+    [
+     2260,
+     951
+    ],
+    [
+     159,
+     945
+    ]
+   ],
+   "box": [
+    159,
+    785,
+    2261,
+    951
+   ]
+  },
+  {
+   "text": "by give it suttalele environment",
+   "score": 0.94,
+   "poly": [
+    [
+     235,
+     936
+    ],
+    [
+     2290,
+     928
+    ],
+    [
+     2291,
+     1067
+    ],
+    [
+     236,
+     1075
+    ]
+   ],
+   "box": [
+    235,
+    928,
+    2291,
+    1075
+   ]
+  },
+  {
+   "text": "and Make them breed, wo need",
+   "score": 0.9342,
+   "poly": [
+    [
+     243,
+     1050
+    ],
+    [
+     2126,
+     1060
+    ],
+    [
+     2125,
+     1195
+    ],
+    [
+     243,
+     1186
+    ]
+   ],
+   "box": [
+    243,
+    1050,
+    2126,
+    1195
+   ]
+  },
+  {
+   "text": "gind cause of endangerod",
+   "score": 0.9685,
+   "poly": [
+    [
+     233,
+     1165
+    ],
+    [
+     1849,
+     1165
+    ],
+    [
+     1849,
+     1389
+    ],
+    [
+     233,
+     1389
+    ]
+   ],
+   "box": [
+    233,
+    1165,
+    1849,
+    1389
+   ]
+  },
+  {
+   "text": "+ Because some spocies' ondangored due",
+   "score": 0.9095,
+   "poly": [
+    [
+     173,
+     1432
+    ],
+    [
+     2217,
+     1432
+    ],
+    [
+     2217,
+     1578
+    ],
+    [
+     173,
+     1578
+    ]
+   ],
+   "box": [
+    173,
+    1432,
+    2217,
+    1578
+   ]
+  },
+  {
+   "text": "to climate change and pollation",
+   "score": 0.9527,
+   "poly": [
+    [
+     274,
+     1559
+    ],
+    [
+     2079,
+     1573
+    ],
+    [
+     2078,
+     1712
+    ],
+    [
+     273,
+     1698
+    ]
+   ],
+   "box": [
+    273,
+    1559,
+    2079,
+    1712
+   ]
+  },
+  {
+   "text": "And More",
+   "score": 0.9733,
+   "poly": [
+    [
+     245,
+     1701
+    ],
+    [
+     740,
+     1701
+    ],
+    [
+     740,
+     1832
+    ],
+    [
+     245,
+     1832
+    ]
+   ],
+   "box": [
+    245,
+    1701,
+    740,
+    1832
+   ]
+  },
+  {
+   "text": "To presove it",
+   "score": 0.9458,
+   "poly": [
+    [
+     197,
+     1951
+    ],
+    [
+     1100,
+     1951
+    ],
+    [
+     1100,
+     2065
+    ],
+    [
+     197,
+     2065
+    ]
+   ],
+   "box": [
+    197,
+    1951,
+    1100,
+    2065
+   ]
+  },
+  {
+   "text": "we can",
+   "score": 0.9622,
+   "poly": [
+    [
+     1403,
+     1958
+    ],
+    [
+     1976,
+     1958
+    ],
+    [
+     1976,
+     2090
+    ],
+    [
+     1403,
+     2090
+    ]
+   ],
+   "box": [
+    1403,
+    1958,
+    1976,
+    2090
+   ]
+  },
+  {
+   "text": "create biodiverse ared Make",
+   "score": 0.9733,
+   "poly": [
+    [
+     270,
+     2069
+    ],
+    [
+     2043,
+     2079
+    ],
+    [
+     2042,
+     2210
+    ],
+    [
+     269,
+     2200
+    ]
+   ],
+   "box": [
+    269,
+    2069,
+    2043,
+    2210
+   ]
+  },
+  {
+   "text": "them live there",
+   "score": 0.9559,
+   "poly": [
+    [
+     286,
+     2196
+    ],
+    [
+     1212,
+     2208
+    ],
+    [
+     1211,
+     2325
+    ],
+    [
+     284,
+     2313
+    ]
+   ],
+   "box": [
+    284,
+    2196,
+    1212,
+    2325
+   ]
+  },
+  {
+   "text": "is cause and consequeme of ground untor",
+   "score": 0.9447,
+   "poly": [
+    [
+     99,
+     2439
+    ],
+    [
+     2134,
+     2449
+    ],
+    [
+     2133,
+     2609
+    ],
+    [
+     98,
+     2599
+    ]
+   ],
+   "box": [
+    98,
+    2439,
+    2134,
+    2609
+   ]
+  },
+  {
+   "text": "depletion :",
+   "score": 0.9686,
+   "poly": [
+    [
+     271,
+     2586
+    ],
+    [
+     812,
+     2586
+    ],
+    [
+     812,
+     2712
+    ],
+    [
+     271,
+     2712
+    ]
+   ],
+   "box": [
+    271,
+    2586,
+    812,
+    2712
+   ]
+  },
+  {
+   "text": "roason for ground",
+   "score": 0.9895,
+   "poly": [
+    [
+     833,
+     2815
+    ],
+    [
+     1946,
+     2819
+    ],
+    [
+     1945,
+     2965
+    ],
+    [
+     832,
+     2961
+    ]
+   ],
+   "box": [
+    832,
+    2815,
+    1946,
+    2965
+   ]
+  },
+  {
+   "text": "Marn",
+   "score": 0.9857,
+   "poly": [
+    [
+     204,
+     2836
+    ],
+    [
+     590,
+     2829
+    ],
+    [
+     592,
+     2942
+    ],
+    [
+     206,
+     2949
+    ]
+   ],
+   "box": [
+    204,
+    2829,
+    592,
+    2949
+   ]
+  },
+  {
+   "text": "water depletion 15",
+   "score": 0.9682,
+   "poly": [
+    [
+     280,
+     2942
+    ],
+    [
+     1445,
+     2955
+    ],
+    [
+     1444,
+     3101
+    ],
+    [
+     278,
+     3089
+    ]
+   ],
+   "box": [
+    278,
+    2942,
+    1445,
+    3101
+   ]
+  },
+  {
+   "text": "environmental",
+   "score": 0.9518,
+   "poly": [
+    [
+     1615,
+     2960
+    ],
+    [
+     2194,
+     2950
+    ],
+    [
+     2197,
+     3079
+    ],
+    [
+     1617,
+     3090
+    ]
+   ],
+   "box": [
+    1615,
+    2950,
+    2197,
+    3090
+   ]
+  },
+  {
+   "text": "change.",
+   "score": 0.9924,
+   "poly": [
+    [
+     287,
+     3074
+    ],
+    [
+     712,
+     3079
+    ],
+    [
+     710,
+     3218
+    ],
+    [
+     286,
+     3213
+    ]
+   ],
+   "box": [
+    286,
+    3074,
+    712,
+    3218
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3026
+}

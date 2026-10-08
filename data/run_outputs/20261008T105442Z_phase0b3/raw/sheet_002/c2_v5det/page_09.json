@@ -1,0 +1,1063 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "engine_b (see b_dir)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_09.jpg",
+ "latency_s": 1.76,
+ "crop_s": 0.131,
+ "recognition_s": 1.629,
+ "model_load_s": 0.8,
+ "n_lines": 29,
+ "n_no_text": 2,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "and let an effort the human and the",
+   "text_raw": "and let an effort the human and the",
+   "score": 0.7704,
+   "min_token_prob": 0.481,
+   "flags": [],
+   "box": [
+    404,
+    302,
+    2299,
+    509
+   ],
+   "poly": [
+    [
+     404,
+     373
+    ],
+    [
+     2294,
+     302
+    ],
+    [
+     2299,
+     438
+    ],
+    [
+     409,
+     509
+    ]
+   ],
+   "b_text": "and iff an affet sthe human and the",
+   "b_score": 0.7555,
+   "ink_px": 20380,
+   "ink_frac": 0.0724
+  },
+  {
+   "text": "coff animals \" can attack the humans.",
+   "text_raw": "coff animals \" can attack the humans .",
+   "score": 0.7198,
+   "min_token_prob": 0.2093,
+   "flags": [],
+   "box": [
+    435,
+    420,
+    2219,
+    609
+   ],
+   "poly": [
+    [
+     435,
+     476
+    ],
+    [
+     2215,
+     420
+    ],
+    [
+     2219,
+     553
+    ],
+    [
+     439,
+     609
+    ]
+   ],
+   "b_text": "afd animals can ettack the hoass.",
+   "b_score": 0.7694,
+   "ink_px": 17596,
+   "ink_frac": 0.0677
+  },
+  {
+   "text": "Deforestation will steals etc no",
+   "text_raw": "Deforestation will steals etc no",
+   "score": 0.7391,
+   "min_token_prob": 0.2296,
+   "flags": [],
+   "box": [
+    744,
+    648,
+    2153,
+    825
+   ],
+   "poly": [
+    [
+     744,
+     706
+    ],
+    [
+     2148,
+     648
+    ],
+    [
+     2153,
+     768
+    ],
+    [
+     749,
+     825
+    ]
+   ],
+   "b_text": "Defosestadfon ef deads et no",
+   "b_score": 0.6467,
+   "ink_px": 13467,
+   "ink_frac": 0.072
+  },
+  {
+   "text": "malsfall.",
+   "text_raw": "malsfall .",
+   "score": 0.8773,
+   "min_token_prob": 0.6231,
+   "flags": [],
+   "box": [
+    420,
+    830,
+    777,
+    932
+   ],
+   "poly": [
+    [
+     420,
+     830
+    ],
+    [
+     777,
+     830
+    ],
+    [
+     777,
+     932
+    ],
+    [
+     420,
+     932
+    ]
+   ],
+   "b_text": "mainfall",
+   "b_score": 0.6757,
+   "ink_px": 4539,
+   "ink_frac": 0.1079
+  },
+  {
+   "text": "\" and affect the agriculture and",
+   "text_raw": "\" and affect the agriculture and",
+   "score": 0.9355,
+   "min_token_prob": 0.8378,
+   "flags": [],
+   "box": [
+    753,
+    768,
+    2289,
+    933
+   ],
+   "poly": [
+    [
+     753,
+     825
+    ],
+    [
+     2285,
+     768
+    ],
+    [
+     2289,
+     876
+    ],
+    [
+     757,
+     933
+    ]
+   ],
+   "b_text": "ond afect th ap fouttwe ard",
+   "b_score": 0.7531,
+   "ink_px": 13192,
+   "ink_frac": 0.0712
+  },
+  {
+   "text": "many of other \" engineers are disturbed.",
+   "text_raw": "many of other \" engineers are disturbed .",
+   "score": 0.8524,
+   "min_token_prob": 0.4294,
+   "flags": [],
+   "box": [
+    434,
+    873,
+    2245,
+    1058
+   ],
+   "poly": [
+    [
+     434,
+     932
+    ],
+    [
+     2241,
+     873
+    ],
+    [
+     2245,
+     999
+    ],
+    [
+     438,
+     1058
+    ]
+   ],
+   "b_text": "mang of ethe onghems au dicturbed",
+   "b_score": 0.6907,
+   "ink_px": 17764,
+   "ink_frac": 0.0708
+  },
+  {
+   "text": "Binds are get disturbed do",
+   "text_raw": "Binds are get disturbed do",
+   "score": 0.6149,
+   "min_token_prob": 0.1087,
+   "flags": [],
+   "box": [
+    775,
+    1098,
+    2235,
+    1251
+   ],
+   "poly": [
+    [
+     775,
+     1125
+    ],
+    [
+     2232,
+     1098
+    ],
+    [
+     2235,
+     1224
+    ],
+    [
+     777,
+     1251
+    ]
+   ],
+   "b_text": "Bads are get desturbed do",
+   "b_score": 0.7415,
+   "ink_px": 16175,
+   "ink_frac": 0.0797
+  },
+  {
+   "text": "the cutting of sizes. We lose this",
+   "text_raw": "the cutting of sizes . We lose this",
+   "score": 0.765,
+   "min_token_prob": 0.2399,
+   "flags": [],
+   "box": [
+    401,
+    1203,
+    2305,
+    1379
+   ],
+   "poly": [
+    [
+     401,
+     1243
+    ],
+    [
+     2302,
+     1203
+    ],
+    [
+     2305,
+     1339
+    ],
+    [
+     404,
+     1379
+    ]
+   ],
+   "b_text": "the outting of striees. cne loe tho",
+   "b_score": 0.728,
+   "ink_px": 21336,
+   "ink_frac": 0.0754
+  },
+  {
+   "text": "occusing",
+   "text_raw": "occusing",
+   "score": 0.6366,
+   "min_token_prob": 0.3983,
+   "flags": [],
+   "box": [
+    956,
+    1360,
+    1308,
+    1462
+   ],
+   "poly": [
+    [
+     956,
+     1360
+    ],
+    [
+     1308,
+     1360
+    ],
+    [
+     1308,
+     1462
+    ],
+    [
+     956,
+     1462
+    ]
+   ],
+   "b_text": "occweng",
+   "b_score": 0.5924,
+   "ink_px": 6648,
+   "ink_frac": 0.1602
+  },
+  {
+   "text": "products like",
+   "text_raw": "products like",
+   "score": 0.8491,
+   "min_token_prob": 0.584,
+   "flags": [],
+   "box": [
+    1417,
+    1329,
+    2110,
+    1458
+   ],
+   "poly": [
+    [
+     1417,
+     1352
+    ],
+    [
+     2107,
+     1329
+    ],
+    [
+     2110,
+     1435
+    ],
+    [
+     1421,
+     1458
+    ]
+   ],
+   "b_text": "praduets ceke",
+   "b_score": 0.7197,
+   "ink_px": 7127,
+   "ink_frac": 0.086
+  },
+  {
+   "text": "unactually",
+   "text_raw": "unactually",
+   "score": 0.4746,
+   "min_token_prob": 0.16,
+   "flags": [],
+   "box": [
+    415,
+    1364,
+    834,
+    1472
+   ],
+   "poly": [
+    [
+     415,
+     1364
+    ],
+    [
+     834,
+     1364
+    ],
+    [
+     834,
+     1472
+    ],
+    [
+     415,
+     1472
+    ]
+   ],
+   "b_text": "hadurally",
+   "b_score": 0.8021,
+   "ink_px": 8568,
+   "ink_frac": 0.1657
+  },
+  {
+   "text": "fracets \" honey.",
+   "text_raw": "fracets \" honey .",
+   "score": 0.6313,
+   "min_token_prob": 0.177,
+   "flags": [],
+   "box": [
+    444,
+    1454,
+    1130,
+    1585
+   ],
+   "poly": [
+    [
+     444,
+     1463
+    ],
+    [
+     1128,
+     1454
+    ],
+    [
+     1130,
+     1576
+    ],
+    [
+     446,
+     1585
+    ]
+   ],
+   "b_text": "fruts honay",
+   "b_score": 0.6432,
+   "ink_px": 11277,
+   "ink_frac": 0.1209
+  },
+  {
+   "text": "etc #",
+   "text_raw": "etc #",
+   "score": 0.66,
+   "min_token_prob": 0.1667,
+   "flags": [],
+   "box": [
+    1231,
+    1470,
+    1472,
+    1546
+   ],
+   "poly": [
+    [
+     1231,
+     1470
+    ],
+    [
+     1472,
+     1470
+    ],
+    [
+     1472,
+     1546
+    ],
+    [
+     1231,
+     1546
+    ]
+   ],
+   "b_text": "atc",
+   "b_score": 0.7889,
+   "ink_px": 3633,
+   "ink_frac": 0.1632
+  },
+  {
+   "text": "Deforestationness, other main reason",
+   "text_raw": "Deforestationness , other main reason",
+   "score": 0.6743,
+   "min_token_prob": 0.1224,
+   "flags": [],
+   "box": [
+    801,
+    1649,
+    2300,
+    1789
+   ],
+   "poly": [
+    [
+     801,
+     1684
+    ],
+    [
+     2297,
+     1649
+    ],
+    [
+     2300,
+     1754
+    ],
+    [
+     803,
+     1789
+    ]
+   ],
+   "b_text": "Deforestatpaneees ctha. Marn scason",
+   "b_score": 0.6695,
+   "ink_px": 26043,
+   "ink_frac": 0.1475
+  },
+  {
+   "text": "# NEW NATIONAL.",
+   "text_raw": "# NEW NATIONAL .",
+   "score": 0.3806,
+   "min_token_prob": 0.1044,
+   "flags": [],
+   "box": [
+    1016,
+    1758,
+    1538,
+    1805
+   ],
+   "poly": [
+    [
+     1016,
+     1761
+    ],
+    [
+     1538,
+     1758
+    ],
+    [
+     1538,
+     1801
+    ],
+    [
+     1016,
+     1805
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 3906,
+   "ink_frac": 0.1306
+  },
+  {
+   "text": "for the soil season, and, flood...' Sudden",
+   "text_raw": "for the soil season , and , flood ... ' Sudden",
+   "score": 0.772,
+   "min_token_prob": 0.3685,
+   "flags": [],
+   "box": [
+    421,
+    1770,
+    2273,
+    1900
+   ],
+   "poly": [
+    [
+     421,
+     1795
+    ],
+    [
+     2272,
+     1770
+    ],
+    [
+     2273,
+     1875
+    ],
+    [
+     423,
+     1900
+    ]
+   ],
+   "b_text": "for cthe soel erosfoh. and fload. Sutler",
+   "b_score": 0.7087,
+   "ink_px": 27669,
+   "ink_frac": 0.1269
+  },
+  {
+   "text": "create charges have happened in Ohio",
+   "text_raw": "create charges have happened in Ohio",
+   "score": 0.7482,
+   "min_token_prob": 0.4128,
+   "flags": [],
+   "box": [
+    419,
+    1869,
+    2142,
+    2023
+   ],
+   "poly": [
+    [
+     419,
+     1902
+    ],
+    [
+     2140,
+     1869
+    ],
+    [
+     2142,
+     1990
+    ],
+    [
+     422,
+     2023
+    ]
+   ],
+   "b_text": "clemate changes chave chappond n tho",
+   "b_score": 0.8105,
+   "ink_px": 28644,
+   "ink_frac": 0.1243
+  },
+  {
+   "text": "face-goers.",
+   "text_raw": "face-goers .",
+   "score": 0.5395,
+   "min_token_prob": 0.1683,
+   "flags": [],
+   "box": [
+    440,
+    2023,
+    853,
+    2120
+   ],
+   "poly": [
+    [
+     440,
+     2023
+    ],
+    [
+     853,
+     2023
+    ],
+    [
+     853,
+     2120
+    ],
+    [
+     440,
+     2120
+    ]
+   ],
+   "b_text": "feco gas",
+   "b_score": 0.6067,
+   "ink_px": 8319,
+   "ink_frac": 0.1796
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    995,
+    2028,
+    1024,
+    2057
+   ],
+   "poly": [
+    [
+     1007,
+     2028
+    ],
+    [
+     1024,
+     2045
+    ],
+    [
+     1012,
+     2057
+    ],
+    [
+     995,
+     2041
+    ]
+   ],
+   "b_text": "声",
+   "b_score": 0.1493,
+   "ink_px": 53,
+   "ink_frac": 0.0315
+  },
+  {
+   "text": "1940s,",
+   "text_raw": "1940s ,",
+   "score": 0.2881,
+   "min_token_prob": 0.0839,
+   "flags": [],
+   "box": [
+    1213,
+    2166,
+    1376,
+    2193
+   ],
+   "poly": [
+    [
+     1213,
+     2170
+    ],
+    [
+     1376,
+     2166
+    ],
+    [
+     1376,
+     2189
+    ],
+    [
+     1214,
+     2193
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 272,
+   "ink_frac": 0.0444
+  },
+  {
+   "text": "Bunning of wood will are (case",
+   "text_raw": "Bunning of wood will are (case",
+   "score": 0.771,
+   "min_token_prob": 0.2223,
+   "flags": [],
+   "box": [
+    815,
+    2196,
+    2274,
+    2342
+   ],
+   "poly": [
+    [
+     815,
+     2232
+    ],
+    [
+     2271,
+     2196
+    ],
+    [
+     2274,
+     2306
+    ],
+    [
+     818,
+     2342
+    ]
+   ],
+   "b_text": "Bwurlngof cood wl oelease",
+   "b_score": 0.6665,
+   "ink_px": 22254,
+   "ink_frac": 0.1243
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5502,
+   "min_token_prob": 0.1035,
+   "flags": [],
+   "box": [
+    347,
+    2267,
+    363,
+    2281
+   ],
+   "poly": [
+    [
+     347,
+     2267
+    ],
+    [
+     363,
+     2267
+    ],
+    [
+     363,
+     2281
+    ],
+    [
+     347,
+     2281
+    ]
+   ],
+   "b_text": "批",
+   "b_score": 0.1854,
+   "ink_px": 70,
+   "ink_frac": 0.0962
+  },
+  {
+   "text": "the carbon monoxide gas and effect",
+   "text_raw": "the carbon monoxide gas and effect",
+   "score": 0.8768,
+   "min_token_prob": 0.5308,
+   "flags": [],
+   "box": [
+    389,
+    2298,
+    2126,
+    2456
+   ],
+   "poly": [
+    [
+     389,
+     2332
+    ],
+    [
+     2124,
+     2298
+    ],
+    [
+     2126,
+     2423
+    ],
+    [
+     391,
+     2456
+    ]
+   ],
+   "b_text": "than carbonmonoxele gas and afedt",
+   "b_score": 0.6922,
+   "ink_px": 32342,
+   "ink_frac": 0.1351
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    273,
+    2375,
+    286,
+    2391
+   ],
+   "poly": [
+    [
+     273,
+     2375
+    ],
+    [
+     286,
+     2375
+    ],
+    [
+     286,
+     2391
+    ],
+    [
+     273,
+     2391
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.1686,
+   "ink_px": 0,
+   "ink_frac": 0.0
+  },
+  {
+   "text": "the environment. But we will affect the",
+   "text_raw": "the environment . But we will affect the",
+   "score": 0.7385,
+   "min_token_prob": 0.4451,
+   "flags": [],
+   "box": [
+    392,
+    2423,
+    2110,
+    2558
+   ],
+   "poly": [
+    [
+     392,
+     2448
+    ],
+    [
+     2108,
+     2423
+    ],
+    [
+     2110,
+     2533
+    ],
+    [
+     394,
+     2558
+    ]
+   ],
+   "b_text": "the enf omontt cell affect cthe",
+   "b_score": 0.6888,
+   "ink_px": 31148,
+   "ink_frac": 0.1477
+  },
+  {
+   "text": "they",
+   "text_raw": "they",
+   "score": 0.8776,
+   "min_token_prob": 0.7854,
+   "flags": [],
+   "box": [
+    2043,
+    2524,
+    2287,
+    2662
+   ],
+   "poly": [
+    [
+     2047,
+     2524
+    ],
+    [
+     2287,
+     2531
+    ],
+    [
+     2283,
+     2662
+    ],
+    [
+     2043,
+     2655
+    ]
+   ],
+   "b_text": "they",
+   "b_score": 0.9725,
+   "ink_px": 3534,
+   "ink_frac": 0.0981
+  },
+  {
+   "text": "production oxygen use cause",
+   "text_raw": "production oxygen use cause",
+   "score": 0.8024,
+   "min_token_prob": 0.3609,
+   "flags": [],
+   "box": [
+    426,
+    2534,
+    1959,
+    2684
+   ],
+   "poly": [
+    [
+     426,
+     2563
+    ],
+    [
+     1957,
+     2534
+    ],
+    [
+     1959,
+     2655
+    ],
+    [
+     428,
+     2684
+    ]
+   ],
+   "b_text": "prochuctPon oxygon because",
+   "b_score": 0.7901,
+   "ink_px": 28917,
+   "ink_frac": 0.1409
+  },
+  {
+   "text": "weather of reason. for the",
+   "text_raw": "weather of reason . for the",
+   "score": 0.8268,
+   "min_token_prob": 0.4652,
+   "flags": [],
+   "box": [
+    410,
+    2639,
+    2129,
+    2796
+   ],
+   "poly": [
+    [
+     410,
+     2678
+    ],
+    [
+     2127,
+     2639
+    ],
+    [
+     2129,
+     2757
+    ],
+    [
+     412,
+     2796
+    ]
+   ],
+   "b_text": "are eth she af aeasoh for the",
+   "b_score": 0.6849,
+   "ink_px": 33158,
+   "ink_frac": 0.1475
+  },
+  {
+   "text": "Lorygen product for",
+   "text_raw": "Lorygen product for",
+   "score": 0.637,
+   "min_token_prob": 0.2153,
+   "flags": [],
+   "box": [
+    360,
+    2764,
+    1920,
+    2923
+   ],
+   "poly": [
+    [
+     360,
+     2786
+    ],
+    [
+     1918,
+     2764
+    ],
+    [
+     1920,
+     2901
+    ],
+    [
+     362,
+     2923
+    ]
+   ],
+   "b_text": "Loxygen produetfob",
+   "b_score": 0.7186,
+   "ink_px": 27963,
+   "ink_frac": 0.1195
+  }
+ ],
+ "peak_torch_alloc_mib": 2688,
+ "peak_rss_mib_process": 2966
+}

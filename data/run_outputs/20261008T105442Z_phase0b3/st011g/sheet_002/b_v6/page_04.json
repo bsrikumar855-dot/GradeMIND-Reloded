@@ -1,0 +1,525 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_04.jpg",
+ "latency_s": 11.793,
+ "model_load_s": 0.41,
+ "n_lines": 17,
+ "lines": [
+  {
+   "text": "PART-C",
+   "score": 0.9454,
+   "poly": [
+    [
+     1276,
+     334
+    ],
+    [
+     1614,
+     341
+    ],
+    [
+     1612,
+     441
+    ],
+    [
+     1274,
+     434
+    ]
+   ],
+   "box": [
+    1274,
+    334,
+    1614,
+    441
+   ]
+  },
+  {
+   "text": "Ansuoon cthe follocoing",
+   "score": 0.7985,
+   "poly": [
+    [
+     354,
+     472
+    ],
+    [
+     1400,
+     482
+    ],
+    [
+     1399,
+     571
+    ],
+    [
+     353,
+     561
+    ]
+   ],
+   "box": [
+    353,
+    472,
+    1400,
+    571
+   ]
+  },
+  {
+   "text": "10 The effect of domerrse waster",
+   "score": 0.9116,
+   "poly": [
+    [
+     148,
+     707
+    ],
+    [
+     1925,
+     723
+    ],
+    [
+     1924,
+     844
+    ],
+    [
+     147,
+     828
+    ]
+   ],
+   "box": [
+    147,
+    707,
+    1925,
+    844
+   ]
+  },
+  {
+   "text": "Domestic waste:",
+   "score": 0.9154,
+   "poly": [
+    [
+     451,
+     979
+    ],
+    [
+     1275,
+     985
+    ],
+    [
+     1274,
+     1088
+    ],
+    [
+     450,
+     1082
+    ]
+   ],
+   "box": [
+    450,
+    979,
+    1275,
+    1088
+   ]
+  },
+  {
+   "text": "* Domestpc waste",
+   "score": 0.9438,
+   "poly": [
+    [
+     857,
+     1242
+    ],
+    [
+     1899,
+     1246
+    ],
+    [
+     1898,
+     1350
+    ],
+    [
+     856,
+     1346
+    ]
+   ],
+   "box": [
+    856,
+    1242,
+    1899,
+    1350
+   ]
+  },
+  {
+   "text": "is a kend of",
+   "score": 0.9718,
+   "poly": [
+    [
+     1877,
+     1238
+    ],
+    [
+     2608,
+     1250
+    ],
+    [
+     2606,
+     1361
+    ],
+    [
+     1875,
+     1349
+    ]
+   ],
+   "box": [
+    1875,
+    1238,
+    2608,
+    1361
+   ]
+  },
+  {
+   "text": "waste shat s made eby The homans. in",
+   "score": 0.8939,
+   "poly": [
+    [
+     309,
+     1361
+    ],
+    [
+     2487,
+     1380
+    ],
+    [
+     2486,
+     1508
+    ],
+    [
+     308,
+     1489
+    ]
+   ],
+   "box": [
+    308,
+    1361,
+    2487,
+    1508
+   ]
+  },
+  {
+   "text": "the hone",
+   "score": 0.8799,
+   "poly": [
+    [
+     310,
+     1504
+    ],
+    [
+     1057,
+     1504
+    ],
+    [
+     1057,
+     1613
+    ],
+    [
+     310,
+     1613
+    ]
+   ],
+   "box": [
+    310,
+    1504,
+    1057,
+    1613
+   ]
+  },
+  {
+   "text": "Exi",
+   "score": 0.8617,
+   "poly": [
+    [
+     346,
+     1641
+    ],
+    [
+     524,
+     1641
+    ],
+    [
+     524,
+     1751
+    ],
+    [
+     346,
+     1751
+    ]
+   ],
+   "box": [
+    346,
+    1641,
+    524,
+    1751
+   ]
+  },
+  {
+   "text": "Vegetable oaste fiuit coaste,",
+   "score": 0.8631,
+   "poly": [
+    [
+     604,
+     1777
+    ],
+    [
+     2307,
+     1796
+    ],
+    [
+     2306,
+     1903
+    ],
+    [
+     603,
+     1884
+    ]
+   ],
+   "box": [
+    603,
+    1777,
+    2307,
+    1903
+   ]
+  },
+  {
+   "text": "glass etc..",
+   "score": 0.891,
+   "poly": [
+    [
+     583,
+     1906
+    ],
+    [
+     1446,
+     1885
+    ],
+    [
+     1450,
+     2026
+    ],
+    [
+     587,
+     2047
+    ]
+   ],
+   "box": [
+    583,
+    1885,
+    1450,
+    2047
+   ]
+  },
+  {
+   "text": "Effects of domestic coaste on freshcoater",
+   "score": 0.9542,
+   "poly": [
+    [
+     429,
+     2176
+    ],
+    [
+     2661,
+     2182
+    ],
+    [
+     2660,
+     2302
+    ],
+    [
+     429,
+     2296
+    ]
+   ],
+   "box": [
+    429,
+    2176,
+    2661,
+    2302
+   ]
+  },
+  {
+   "text": "ecosystem:",
+   "score": 0.9213,
+   "poly": [
+    [
+     320,
+     2324
+    ],
+    [
+     817,
+     2331
+    ],
+    [
+     816,
+     2429
+    ],
+    [
+     319,
+     2422
+    ]
+   ],
+   "box": [
+    319,
+    2324,
+    817,
+    2429
+   ]
+  },
+  {
+   "text": "Fresh coater ecosyster:",
+   "score": 0.9576,
+   "poly": [
+    [
+     466,
+     2594
+    ],
+    [
+     1579,
+     2600
+    ],
+    [
+     1579,
+     2703
+    ],
+    [
+     465,
+     2697
+    ]
+   ],
+   "box": [
+    465,
+    2594,
+    1579,
+    2703
+   ]
+  },
+  {
+   "text": "Tit as a kind of ecosyston tohere",
+   "score": 0.8976,
+   "poly": [
+    [
+     912,
+     2855
+    ],
+    [
+     2687,
+     2871
+    ],
+    [
+     2686,
+     3005
+    ],
+    [
+     911,
+     2989
+    ]
+   ],
+   "box": [
+    911,
+    2855,
+    2687,
+    3005
+   ]
+  },
+  {
+   "text": "alos is ino umore eatt contents In the",
+   "score": 0.8671,
+   "poly": [
+    [
+     328,
+     2998
+    ],
+    [
+     2633,
+     3025
+    ],
+    [
+     2631,
+     3146
+    ],
+    [
+     327,
+     3119
+    ]
+   ],
+   "box": [
+    327,
+    2998,
+    2633,
+    3146
+   ]
+  },
+  {
+   "text": "pond,坐 river",
+   "score": 0.8601,
+   "poly": [
+    [
+     655,
+     3448
+    ],
+    [
+     1364,
+     3452
+    ],
+    [
+     1363,
+     3561
+    ],
+    [
+     654,
+     3557
+    ]
+   ],
+   "box": [
+    654,
+    3448,
+    1364,
+    3561
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3239
+}

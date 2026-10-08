@@ -1,0 +1,807 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_06.jpg",
+ "latency_s": 22.078,
+ "model_load_s": 0.42,
+ "n_lines": 27,
+ "lines": [
+  {
+   "text": "The ooganisms cn googoaphecal regpon",
+   "score": 0.7693,
+   "poly": [
+    [
+     537,
+     394
+    ],
+    [
+     2351,
+     452
+    ],
+    [
+     2347,
+     568
+    ],
+    [
+     534,
+     510
+    ]
+   ],
+   "box": [
+    534,
+    394,
+    2351,
+    568
+   ]
+  },
+  {
+   "text": "chadcto cbe desfurbed A ispeceoe an",
+   "score": 0.7386,
+   "poly": [
+    [
+     295,
+     522
+    ],
+    [
+     2157,
+     571
+    ],
+    [
+     2155,
+     656
+    ],
+    [
+     293,
+     607
+    ]
+   ],
+   "box": [
+    293,
+    522,
+    2157,
+    656
+   ]
+  },
+  {
+   "text": "the frosh coater @co sysedom",
+   "score": 0.7874,
+   "poly": [
+    [
+     306,
+     633
+    ],
+    [
+     1590,
+     672
+    ],
+    [
+     1587,
+     771
+    ],
+    [
+     303,
+     731
+    ]
+   ],
+   "box": [
+    303,
+    633,
+    1590,
+    771
+   ]
+  },
+  {
+   "text": "dleke fPsh. poaon",
+   "score": 0.7085,
+   "poly": [
+    [
+     1611,
+     672
+    ],
+    [
+     2321,
+     692
+    ],
+    [
+     2319,
+     779
+    ],
+    [
+     1609,
+     759
+    ]
+   ],
+   "box": [
+    1609,
+    672,
+    2321,
+    779
+   ]
+  },
+  {
+   "text": "are dred due to oater pollod pon. If coe",
+   "score": 0.7306,
+   "poly": [
+    [
+     297,
+     747
+    ],
+    [
+     2162,
+     796
+    ],
+    [
+     2159,
+     893
+    ],
+    [
+     295,
+     844
+    ]
+   ],
+   "box": [
+    295,
+    747,
+    2162,
+    893
+   ]
+  },
+  {
+   "text": "pollute the frogh coarter",
+   "score": 0.8042,
+   "poly": [
+    [
+     294,
+     866
+    ],
+    [
+     1400,
+     897
+    ],
+    [
+     1397,
+     987
+    ],
+    [
+     291,
+     956
+    ]
+   ],
+   "box": [
+    291,
+    866,
+    1400,
+    987
+   ]
+  },
+  {
+   "text": "many sppeces",
+   "score": 0.849,
+   "poly": [
+    [
+     1544,
+     906
+    ],
+    [
+     2158,
+     913
+    ],
+    [
+     2157,
+     1007
+    ],
+    [
+     1543,
+     999
+    ]
+   ],
+   "box": [
+    1543,
+    906,
+    2158,
+    1007
+   ]
+  },
+  {
+   "text": "age got desturbed.",
+   "score": 0.7984,
+   "poly": [
+    [
+     312,
+     976
+    ],
+    [
+     1154,
+     1013
+    ],
+    [
+     1150,
+     1107
+    ],
+    [
+     308,
+     1070
+    ]
+   ],
+   "box": [
+    308,
+    976,
+    1154,
+    1107
+   ]
+  },
+  {
+   "text": "we can use cthe 3rprinciple",
+   "score": 0.7984,
+   "poly": [
+    [
+     671,
+     1215
+    ],
+    [
+     2269,
+     1263
+    ],
+    [
+     2266,
+     1362
+    ],
+    [
+     668,
+     1314
+    ]
+   ],
+   "box": [
+    668,
+    1215,
+    2269,
+    1362
+   ]
+  },
+  {
+   "text": "hore cto reduce the caastos that",
+   "score": 0.7121,
+   "poly": [
+    [
+     285,
+     1326
+    ],
+    [
+     2172,
+     1382
+    ],
+    [
+     2170,
+     1472
+    ],
+    [
+     283,
+     1416
+    ]
+   ],
+   "box": [
+    283,
+    1326,
+    2172,
+    1472
+   ]
+  },
+  {
+   "text": "ane conaide gn hoise. Farsitly uoo hawe",
+   "score": 0.7162,
+   "poly": [
+    [
+     283,
+     1450
+    ],
+    [
+     2248,
+     1494
+    ],
+    [
+     2246,
+     1581
+    ],
+    [
+     281,
+     1537
+    ]
+   ],
+   "box": [
+    281,
+    1450,
+    2248,
+    1581
+   ]
+  },
+  {
+   "text": "t0",
+   "score": 0.6724,
+   "poly": [
+    [
+     291,
+     1541
+    ],
+    [
+     435,
+     1546
+    ],
+    [
+     432,
+     1639
+    ],
+    [
+     288,
+     1634
+    ]
+   ],
+   "box": [
+    288,
+    1541,
+    435,
+    1639
+   ]
+  },
+  {
+   "text": "Sperate",
+   "score": 0.8538,
+   "poly": [
+    [
+     505,
+     1572
+    ],
+    [
+     934,
+     1579
+    ],
+    [
+     933,
+     1666
+    ],
+    [
+     504,
+     1658
+    ]
+   ],
+   "box": [
+    504,
+    1572,
+    934,
+    1666
+   ]
+  },
+  {
+   "text": "the caste",
+   "score": 0.7894,
+   "poly": [
+    [
+     987,
+     1585
+    ],
+    [
+     1577,
+     1593
+    ],
+    [
+     1576,
+     1673
+    ],
+    [
+     986,
+     1665
+    ]
+   ],
+   "box": [
+    986,
+    1585,
+    1577,
+    1673
+   ]
+  },
+  {
+   "text": "ibased on",
+   "score": 0.8753,
+   "poly": [
+    [
+     1678,
+     1583
+    ],
+    [
+     2155,
+     1600
+    ],
+    [
+     2152,
+     1689
+    ],
+    [
+     1675,
+     1672
+    ]
+   ],
+   "box": [
+    1675,
+    1583,
+    2155,
+    1689
+   ]
+  },
+  {
+   "text": "tho degoadable cuerety.",
+   "score": 0.7156,
+   "poly": [
+    [
+     285,
+     1649
+    ],
+    [
+     1530,
+     1696
+    ],
+    [
+     1525,
+     1824
+    ],
+    [
+     280,
+     1777
+    ]
+   ],
+   "box": [
+    280,
+    1649,
+    1530,
+    1824
+   ]
+  },
+  {
+   "text": "ce can tse the composting mothad",
+   "score": 0.8327,
+   "poly": [
+    [
+     649,
+     1891
+    ],
+    [
+     2393,
+     1944
+    ],
+    [
+     2390,
+     2058
+    ],
+    [
+     646,
+     2005
+    ]
+   ],
+   "box": [
+    646,
+    1891,
+    2393,
+    2058
+   ]
+  },
+  {
+   "text": "粮",
+   "score": 0.0958,
+   "poly": [
+    [
+     1323,
+     1902
+    ],
+    [
+     1348,
+     1902
+    ],
+    [
+     1348,
+     1923
+    ],
+    [
+     1323,
+     1923
+    ]
+   ],
+   "box": [
+    1323,
+    1902,
+    1348,
+    1923
+   ]
+  },
+  {
+   "text": "do cmange cthe slomostic uoaste.loe",
+   "score": 0.7452,
+   "poly": [
+    [
+     306,
+     1997
+    ],
+    [
+     2293,
+     2057
+    ],
+    [
+     2289,
+     2173
+    ],
+    [
+     303,
+     2113
+    ]
+   ],
+   "box": [
+    303,
+    1997,
+    2293,
+    2173
+   ]
+  },
+  {
+   "text": "Can use cthe",
+   "score": 0.8567,
+   "poly": [
+    [
+     303,
+     2125
+    ],
+    [
+     1118,
+     2140
+    ],
+    [
+     1116,
+     2226
+    ],
+    [
+     302,
+     2212
+    ]
+   ],
+   "box": [
+    302,
+    2125,
+    1118,
+    2226
+   ]
+  },
+  {
+   "text": "de gradablo coatosto",
+   "score": 0.7176,
+   "poly": [
+    [
+     1087,
+     2137
+    ],
+    [
+     2243,
+     2165
+    ],
+    [
+     2241,
+     2264
+    ],
+    [
+     1084,
+     2235
+    ]
+   ],
+   "box": [
+    1084,
+    2137,
+    2243,
+    2264
+   ]
+  },
+  {
+   "text": "foed cthe anemals, birds poulltry)",
+   "score": 0.7924,
+   "poly": [
+    [
+     305,
+     2213
+    ],
+    [
+     2346,
+     2277
+    ],
+    [
+     2342,
+     2403
+    ],
+    [
+     301,
+     2339
+    ]
+   ],
+   "box": [
+    301,
+    2213,
+    2346,
+    2403
+   ]
+  },
+  {
+   "text": "Olc.",
+   "score": 0.5578,
+   "poly": [
+    [
+     314,
+     2350
+    ],
+    [
+     594,
+     2371
+    ],
+    [
+     588,
+     2449
+    ],
+    [
+     308,
+     2429
+    ]
+   ],
+   "box": [
+    308,
+    2350,
+    594,
+    2449
+   ]
+  },
+  {
+   "text": "It copll cholp to sreduce the",
+   "score": 0.7575,
+   "poly": [
+    [
+     699,
+     2460
+    ],
+    [
+     2255,
+     2496
+    ],
+    [
+     2253,
+     2600
+    ],
+    [
+     697,
+     2564
+    ]
+   ],
+   "box": [
+    697,
+    2460,
+    2255,
+    2600
+   ]
+  },
+  {
+   "text": "coasto",
+   "score": 0.5532,
+   "poly": [
+    [
+     327,
+     2580
+    ],
+    [
+     625,
+     2588
+    ],
+    [
+     623,
+     2666
+    ],
+    [
+     325,
+     2658
+    ]
+   ],
+   "box": [
+    325,
+    2580,
+    625,
+    2666
+   ]
+  },
+  {
+   "text": "In othe onuronmont and doenot",
+   "score": 0.8586,
+   "poly": [
+    [
+     655,
+     2571
+    ],
+    [
+     2364,
+     2612
+    ],
+    [
+     2361,
+     2721
+    ],
+    [
+     653,
+     2680
+    ]
+   ],
+   "box": [
+    653,
+    2571,
+    2364,
+    2721
+   ]
+  },
+  {
+   "text": "affoct the ernystom.",
+   "score": 0.8248,
+   "poly": [
+    [
+     320,
+     2684
+    ],
+    [
+     1416,
+     2689
+    ],
+    [
+     1415,
+     2807
+    ],
+    [
+     319,
+     2801
+    ]
+   ],
+   "box": [
+    319,
+    2684,
+    1416,
+    2807
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17112
+}

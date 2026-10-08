@@ -1,0 +1,499 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_15.jpg",
+ "latency_s": 19.383,
+ "model_load_s": 0.42,
+ "n_lines": 16,
+ "lines": [
+  {
+   "text": "a",
+   "score": 0.4259,
+   "poly": [
+    [
+     2002,
+     539
+    ],
+    [
+     2212,
+     553
+    ],
+    [
+     2202,
+     710
+    ],
+    [
+     1992,
+     695
+    ]
+   ],
+   "box": [
+    1992,
+    539,
+    2212,
+    710
+   ]
+  },
+  {
+   "text": "ma",
+   "score": 0.8239,
+   "poly": [
+    [
+     2194,
+     557
+    ],
+    [
+     2456,
+     587
+    ],
+    [
+     2441,
+     725
+    ],
+    [
+     2178,
+     696
+    ]
+   ],
+   "box": [
+    2178,
+    557,
+    2456,
+    725
+   ]
+  },
+  {
+   "text": "Com postirg cIs a method",
+   "score": 0.8128,
+   "poly": [
+    [
+     468,
+     656
+    ],
+    [
+     1969,
+     505
+    ],
+    [
+     1990,
+     713
+    ],
+    [
+     489,
+     864
+    ]
+   ],
+   "box": [
+    468,
+    505,
+    1990,
+    864
+   ]
+  },
+  {
+   "text": "&s sory usefa from polluting the C",
+   "score": 0.7018,
+   "poly": [
+    [
+     56,
+     948
+    ],
+    [
+     2466,
+     826
+    ],
+    [
+     2470,
+     1063
+    ],
+    [
+     68,
+     1185
+    ]
+   ],
+   "box": [
+    56,
+    826,
+    2470,
+    1185
+   ]
+  },
+  {
+   "text": "Now dayss sthe main cource a",
+   "score": 0.8022,
+   "poly": [
+    [
+     104,
+     1080
+    ],
+    [
+     2379,
+     1007
+    ],
+    [
+     2386,
+     1232
+    ],
+    [
+     112,
+     1305
+    ]
+   ],
+   "box": [
+    104,
+    1007,
+    2386,
+    1305
+   ]
+  },
+  {
+   "text": "wabtage are plastics.",
+   "score": 0.8016,
+   "poly": [
+    [
+     111,
+     1283
+    ],
+    [
+     1514,
+     1234
+    ],
+    [
+     1520,
+     1405
+    ],
+    [
+     117,
+     1453
+    ]
+   ],
+   "box": [
+    111,
+    1234,
+    1520,
+    1453
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     2237,
+     1313
+    ],
+    [
+     2258,
+     1313
+    ],
+    [
+     2258,
+     1329
+    ],
+    [
+     2237,
+     1329
+    ]
+   ],
+   "box": [
+    2237,
+    1313,
+    2258,
+    1329
+   ]
+  },
+  {
+   "text": "城",
+   "score": 0.0304,
+   "poly": [
+    [
+     1456,
+     1414
+    ],
+    [
+     1472,
+     1414
+    ],
+    [
+     1472,
+     1428
+    ],
+    [
+     1456,
+     1428
+    ]
+   ],
+   "box": [
+    1456,
+    1414,
+    1472,
+    1428
+   ]
+  },
+  {
+   "text": "ethase ids od aate",
+   "score": 0.7304,
+   "poly": [
+    [
+     1025,
+     1510
+    ],
+    [
+     2406,
+     1526
+    ],
+    [
+     2404,
+     1717
+    ],
+    [
+     1023,
+     1701
+    ]
+   ],
+   "box": [
+    1023,
+    1510,
+    2406,
+    1717
+   ]
+  },
+  {
+   "text": "Gronerating",
+   "score": 0.776,
+   "poly": [
+    [
+     428,
+     1571
+    ],
+    [
+     1028,
+     1559
+    ],
+    [
+     1031,
+     1703
+    ],
+    [
+     431,
+     1715
+    ]
+   ],
+   "box": [
+    428,
+    1559,
+    1031,
+    1715
+   ]
+  },
+  {
+   "text": "may always cesuts ien thi adsrme",
+   "score": 0.7278,
+   "poly": [
+    [
+     70,
+     1708
+    ],
+    [
+     2455,
+     1685
+    ],
+    [
+     2456,
+     1843
+    ],
+    [
+     71,
+     1866
+    ]
+   ],
+   "box": [
+    70,
+    1685,
+    2456,
+    1866
+   ]
+  },
+  {
+   "text": "problems. Impropon disposal gesults de",
+   "score": 0.8168,
+   "poly": [
+    [
+     77,
+     1860
+    ],
+    [
+     2461,
+     1856
+    ],
+    [
+     2461,
+     2020
+    ],
+    [
+     77,
+     2024
+    ]
+   ],
+   "box": [
+    77,
+    1856,
+    2461,
+    2024
+   ]
+  },
+  {
+   "text": "athe coastage produdfan and",
+   "score": 0.8535,
+   "poly": [
+    [
+     110,
+     1994
+    ],
+    [
+     1918,
+     2034
+    ],
+    [
+     1914,
+     2210
+    ],
+    [
+     107,
+     2170
+    ]
+   ],
+   "box": [
+    107,
+    1994,
+    1918,
+    2210
+   ]
+  },
+  {
+   "text": "pollide",
+   "score": 0.6465,
+   "poly": [
+    [
+     2001,
+     2056
+    ],
+    [
+     2450,
+     2007
+    ],
+    [
+     2470,
+     2193
+    ],
+    [
+     2021,
+     2242
+    ]
+   ],
+   "box": [
+    2001,
+    2007,
+    2470,
+    2242
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1242,
+     2197
+    ],
+    [
+     1264,
+     2197
+    ],
+    [
+     1264,
+     2243
+    ],
+    [
+     1242,
+     2243
+    ]
+   ],
+   "box": [
+    1242,
+    2197,
+    1264,
+    2243
+   ]
+  },
+  {
+   "text": "部",
+   "score": 0.0421,
+   "poly": [
+    [
+     1833,
+     2913
+    ],
+    [
+     1860,
+     2913
+    ],
+    [
+     1860,
+     2931
+    ],
+    [
+     1833,
+     2931
+    ]
+   ],
+   "box": [
+    1833,
+    2913,
+    1860,
+    2931
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17131
+}

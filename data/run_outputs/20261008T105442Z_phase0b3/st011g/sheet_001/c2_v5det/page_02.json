@@ -1,0 +1,464 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_02.jpg",
+ "latency_s": 0.679,
+ "crop_s": 0.037,
+ "recognition_s": 0.641,
+ "model_load_s": 0.78,
+ "n_lines": 12,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "part - A",
+   "text_raw": "part - A",
+   "score": 0.8168,
+   "min_token_prob": 0.4218,
+   "flags": [],
+   "box": [
+    701,
+    276,
+    1088,
+    388
+   ],
+   "poly": [
+    [
+     701,
+     276
+    ],
+    [
+     1088,
+     276
+    ],
+    [
+     1088,
+     388
+    ],
+    [
+     701,
+     388
+    ]
+   ],
+   "b_text": "Part-A",
+   "b_score": 0.8264,
+   "ink_px": 5285,
+   "ink_frac": 0.1068
+  },
+  {
+   "text": "a\" non-biotic components.",
+   "text_raw": "a\" non-biotic components .",
+   "score": 0.8561,
+   "min_token_prob": 0.6005,
+   "flags": [],
+   "box": [
+    67,
+    763,
+    1208,
+    890
+   ],
+   "poly": [
+    [
+     68,
+     763
+    ],
+    [
+     1208,
+     777
+    ],
+    [
+     1207,
+     890
+    ],
+    [
+     67,
+     877
+    ]
+   ],
+   "b_text": "2. hon-botic compononts",
+   "b_score": 0.7867,
+   "ink_px": 20530,
+   "ink_frac": 0.1414
+  },
+  {
+   "text": "3-cc3 plants.",
+   "text_raw": "3-cc3 plants .",
+   "score": 0.6623,
+   "min_token_prob": 0.2753,
+   "flags": [],
+   "box": [
+    81,
+    1004,
+    603,
+    1134
+   ],
+   "poly": [
+    [
+     81,
+     1019
+    ],
+    [
+     599,
+     1004
+    ],
+    [
+     603,
+     1119
+    ],
+    [
+     85,
+     1134
+    ]
+   ],
+   "b_text": "3. cJplant",
+   "b_score": 0.8684,
+   "ink_px": 8879,
+   "ink_frac": 0.1319
+  },
+  {
+   "text": "4. water.",
+   "text_raw": "4 . water .",
+   "score": 0.815,
+   "min_token_prob": 0.3697,
+   "flags": [],
+   "box": [
+    64,
+    1235,
+    491,
+    1386
+   ],
+   "poly": [
+    [
+     64,
+     1249
+    ],
+    [
+     486,
+     1235
+    ],
+    [
+     491,
+     1373
+    ],
+    [
+     69,
+     1386
+    ]
+   ],
+   "b_text": "4. wator",
+   "b_score": 0.8956,
+   "ink_px": 7227,
+   "ink_frac": 0.111
+  },
+  {
+   "text": "s (a) circular",
+   "text_raw": "s ( a ) circular",
+   "score": 0.763,
+   "min_token_prob": 0.426,
+   "flags": [],
+   "box": [
+    69,
+    1503,
+    715,
+    1625
+   ],
+   "poly": [
+    [
+     70,
+     1503
+    ],
+    [
+     715,
+     1510
+    ],
+    [
+     714,
+     1625
+    ],
+    [
+     69,
+     1618
+    ]
+   ],
+   "b_text": "s. aciradar",
+   "b_score": 0.8909,
+   "ink_px": 10907,
+   "ink_frac": 0.1307
+  },
+  {
+   "text": "6. True.",
+   "text_raw": "6 . True .",
+   "score": 0.8792,
+   "min_token_prob": 0.5805,
+   "flags": [],
+   "box": [
+    55,
+    1751,
+    464,
+    1877
+   ],
+   "poly": [
+    [
+     58,
+     1751
+    ],
+    [
+     464,
+     1760
+    ],
+    [
+     461,
+     1877
+    ],
+    [
+     55,
+     1868
+    ]
+   ],
+   "b_text": "C. True",
+   "b_score": 0.9597,
+   "ink_px": 5344,
+   "ink_frac": 0.0991
+  },
+  {
+   "text": "7 Environmental change",
+   "text_raw": "7 Environmental change",
+   "score": 0.6084,
+   "min_token_prob": 0.4272,
+   "flags": [],
+   "box": [
+    69,
+    2000,
+    1045,
+    2131
+   ],
+   "poly": [
+    [
+     70,
+     2000
+    ],
+    [
+     1045,
+     2010
+    ],
+    [
+     1043,
+     2131
+    ],
+    [
+     69,
+     2121
+    ]
+   ],
+   "b_text": "+ .anuirorental chage",
+   "b_score": 0.7058,
+   "ink_px": 19279,
+   "ink_frac": 0.1469
+  },
+  {
+   "text": "8rd",
+   "text_raw": "8rd",
+   "score": 0.6928,
+   "min_token_prob": 0.5448,
+   "flags": [],
+   "box": [
+    73,
+    2271,
+    180,
+    2357
+   ],
+   "poly": [
+    [
+     73,
+     2271
+    ],
+    [
+     180,
+     2271
+    ],
+    [
+     180,
+     2357
+    ],
+    [
+     73,
+     2357
+    ]
+   ],
+   "b_text": "8.",
+   "b_score": 0.7414,
+   "ink_px": 1851,
+   "ink_frac": 0.1587
+  },
+  {
+   "text": "True",
+   "text_raw": "True",
+   "score": 0.8698,
+   "min_token_prob": 0.7406,
+   "flags": [],
+   "box": [
+    198,
+    2262,
+    471,
+    2383
+   ],
+   "poly": [
+    [
+     200,
+     2262
+    ],
+    [
+     471,
+     2266
+    ],
+    [
+     469,
+     2383
+    ],
+    [
+     198,
+     2378
+    ]
+   ],
+   "b_text": "True",
+   "b_score": 0.9588,
+   "ink_px": 3924,
+   "ink_frac": 0.1075
+  },
+  {
+   "text": "9. G carbon monoxide",
+   "text_raw": "9. G carbon monoxide",
+   "score": 0.6111,
+   "min_token_prob": 0.1914,
+   "flags": [],
+   "box": [
+    73,
+    2514,
+    943,
+    2641
+   ],
+   "poly": [
+    [
+     74,
+     2514
+    ],
+    [
+     943,
+     2518
+    ],
+    [
+     943,
+     2641
+    ],
+    [
+     73,
+     2636
+    ]
+   ],
+   "b_text": "9.carbon Monocide",
+   "b_score": 0.8478,
+   "ink_px": 16050,
+   "ink_frac": 0.1348
+  },
+  {
+   "text": "1/ deferestation \"",
+   "text_raw": "1/ deferestation \"",
+   "score": 0.7003,
+   "min_token_prob": 0.1686,
+   "flags": [],
+   "box": [
+    17,
+    2742,
+    795,
+    2930
+   ],
+   "poly": [
+    [
+     17,
+     2742
+    ],
+    [
+     795,
+     2742
+    ],
+    [
+     795,
+     2930
+    ],
+    [
+     17,
+     2930
+    ]
+   ],
+   "b_text": "1o deforestater",
+   "b_score": 0.806,
+   "ink_px": 18441,
+   "ink_frac": 0.1167
+  },
+  {
+   "text": "11) commercials.",
+   "text_raw": "11 ) commercials .",
+   "score": 0.6008,
+   "min_token_prob": 0.3069,
+   "flags": [],
+   "box": [
+    7,
+    2992,
+    736,
+    3153
+   ],
+   "poly": [
+    [
+     9,
+     2992
+    ],
+    [
+     736,
+     3003
+    ],
+    [
+     733,
+     3153
+    ],
+    [
+     7,
+     3142
+    ]
+   ],
+   "b_text": "11.a3Meral8",
+   "b_score": 0.6205,
+   "ink_px": 16829,
+   "ink_frac": 0.1406
+  }
+ ],
+ "peak_torch_alloc_mib": 2595,
+ "peak_rss_mib_process": 2968
+}

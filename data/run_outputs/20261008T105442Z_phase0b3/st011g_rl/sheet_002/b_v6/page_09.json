@@ -1,0 +1,777 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_09.jpg",
+ "latency_s": 11.446,
+ "model_load_s": 0.41,
+ "n_lines": 26,
+ "lines": [
+  {
+   "text": "ant oft can sfofect cthe shuman and the",
+   "score": 0.8794,
+   "poly": [
+    [
+     402,
+     368
+    ],
+    [
+     2294,
+     301
+    ],
+    [
+     2299,
+     448
+    ],
+    [
+     407,
+     515
+    ]
+   ],
+   "box": [
+    402,
+    301,
+    2299,
+    515
+   ]
+  },
+  {
+   "text": "xttack the huomrs.",
+   "score": 0.7982,
+   "poly": [
+    [
+     1342,
+     457
+    ],
+    [
+     2212,
+     424
+    ],
+    [
+     2216,
+     535
+    ],
+    [
+     1346,
+     568
+    ]
+   ],
+   "box": [
+    1342,
+    424,
+    2216,
+    568
+   ]
+  },
+  {
+   "text": "cord anemals car",
+   "score": 0.7716,
+   "poly": [
+    [
+     441,
+     483
+    ],
+    [
+     1278,
+     480
+    ],
+    [
+     1279,
+     586
+    ],
+    [
+     442,
+     590
+    ]
+   ],
+   "box": [
+    441,
+    480,
+    1279,
+    590
+   ]
+  },
+  {
+   "text": "Deforostation cufl cleats eto no",
+   "score": 0.8465,
+   "poly": [
+    [
+     743,
+     701
+    ],
+    [
+     2137,
+     648
+    ],
+    [
+     2142,
+     769
+    ],
+    [
+     748,
+     822
+    ]
+   ],
+   "box": [
+    743,
+    648,
+    2142,
+    822
+   ]
+  },
+  {
+   "text": "mesfale and affect the agrfruttcre and",
+   "score": 0.8658,
+   "poly": [
+    [
+     413,
+     820
+    ],
+    [
+     2288,
+     763
+    ],
+    [
+     2292,
+     884
+    ],
+    [
+     416,
+     941
+    ]
+   ],
+   "box": [
+    413,
+    763,
+    2292,
+    941
+   ]
+  },
+  {
+   "text": "mary of ethe orgthesms ane des tuabod.",
+   "score": 0.8646,
+   "poly": [
+    [
+     433,
+     934
+    ],
+    [
+     2243,
+     868
+    ],
+    [
+     2247,
+     987
+    ],
+    [
+     438,
+     1053
+    ]
+   ],
+   "box": [
+    433,
+    868,
+    2247,
+    1053
+   ]
+  },
+  {
+   "text": "Brods are get desturbed to",
+   "score": 0.9073,
+   "poly": [
+    [
+     780,
+     1124
+    ],
+    [
+     2234,
+     1095
+    ],
+    [
+     2236,
+     1221
+    ],
+    [
+     782,
+     1250
+    ]
+   ],
+   "box": [
+    780,
+    1095,
+    2236,
+    1250
+   ]
+  },
+  {
+   "text": "the cutting of strces. cooe lose ctho",
+   "score": 0.9216,
+   "poly": [
+    [
+     407,
+     1238
+    ],
+    [
+     2297,
+     1205
+    ],
+    [
+     2300,
+     1334
+    ],
+    [
+     409,
+     1368
+    ]
+   ],
+   "box": [
+    407,
+    1205,
+    2300,
+    1368
+   ]
+  },
+  {
+   "text": "cnaturally",
+   "score": 0.9109,
+   "poly": [
+    [
+     413,
+     1357
+    ],
+    [
+     845,
+     1354
+    ],
+    [
+     846,
+     1460
+    ],
+    [
+     414,
+     1464
+    ]
+   ],
+   "box": [
+    413,
+    1354,
+    846,
+    1464
+   ]
+  },
+  {
+   "text": "occuring pratuct: cleke",
+   "score": 0.8975,
+   "poly": [
+    [
+     939,
+     1348
+    ],
+    [
+     2107,
+     1324
+    ],
+    [
+     2110,
+     1440
+    ],
+    [
+     941,
+     1464
+    ]
+   ],
+   "box": [
+    939,
+    1324,
+    2110,
+    1464
+   ]
+  },
+  {
+   "text": "frests, bonoy Stc...",
+   "score": 0.7893,
+   "poly": [
+    [
+     438,
+     1458
+    ],
+    [
+     1482,
+     1444
+    ],
+    [
+     1483,
+     1571
+    ],
+    [
+     439,
+     1585
+    ]
+   ],
+   "box": [
+    438,
+    1444,
+    1483,
+    1585
+   ]
+  },
+  {
+   "text": "Deforesdadsonor ets cthe mafr reason",
+   "score": 0.8143,
+   "poly": [
+    [
+     801,
+     1679
+    ],
+    [
+     2298,
+     1657
+    ],
+    [
+     2299,
+     1761
+    ],
+    [
+     803,
+     1782
+    ]
+   ],
+   "box": [
+    801,
+    1657,
+    2299,
+    1782
+   ]
+  },
+  {
+   "text": "精紫海",
+   "score": 0.392,
+   "poly": [
+    [
+     1254,
+     1764
+    ],
+    [
+     1416,
+     1763
+    ],
+    [
+     1417,
+     1798
+    ],
+    [
+     1254,
+     1800
+    ]
+   ],
+   "box": [
+    1254,
+    1763,
+    1417,
+    1800
+   ]
+  },
+  {
+   "text": "for the sofl erosfon. and. flond. Sutlen",
+   "score": 0.9031,
+   "poly": [
+    [
+     425,
+     1789
+    ],
+    [
+     2277,
+     1759
+    ],
+    [
+     2278,
+     1869
+    ],
+    [
+     426,
+     1899
+    ]
+   ],
+   "box": [
+    425,
+    1759,
+    2278,
+    1899
+   ]
+  },
+  {
+   "text": "dlemate changes chave happend in ithe",
+   "score": 0.8971,
+   "poly": [
+    [
+     415,
+     1896
+    ],
+    [
+     2145,
+     1864
+    ],
+    [
+     2147,
+     1988
+    ],
+    [
+     417,
+     2020
+    ]
+   ],
+   "box": [
+    415,
+    1864,
+    2147,
+    2020
+   ]
+  },
+  {
+   "text": "fece goars.",
+   "score": 0.8503,
+   "poly": [
+    [
+     433,
+     2016
+    ],
+    [
+     863,
+     2016
+    ],
+    [
+     863,
+     2123
+    ],
+    [
+     433,
+     2123
+    ]
+   ],
+   "box": [
+    433,
+    2016,
+    863,
+    2123
+   ]
+  },
+  {
+   "text": "coood willl release",
+   "score": 0.8869,
+   "poly": [
+    [
+     1471,
+     2212
+    ],
+    [
+     2267,
+     2202
+    ],
+    [
+     2269,
+     2300
+    ],
+    [
+     1472,
+     2311
+    ]
+   ],
+   "box": [
+    1471,
+    2202,
+    2269,
+    2311
+   ]
+  },
+  {
+   "text": "Burning of",
+   "score": 0.9117,
+   "poly": [
+    [
+     812,
+     2232
+    ],
+    [
+     1416,
+     2214
+    ],
+    [
+     1419,
+     2326
+    ],
+    [
+     815,
+     2344
+    ]
+   ],
+   "box": [
+    812,
+    2214,
+    1419,
+    2344
+   ]
+  },
+  {
+   "text": "the cashon monaxide gas and aftect",
+   "score": 0.9051,
+   "poly": [
+    [
+     386,
+     2337
+    ],
+    [
+     2119,
+     2310
+    ],
+    [
+     2121,
+     2420
+    ],
+    [
+     387,
+     2447
+    ]
+   ],
+   "box": [
+    386,
+    2310,
+    2121,
+    2447
+   ]
+  },
+  {
+   "text": "the omfrnment. t ofll affect the",
+   "score": 0.8658,
+   "poly": [
+    [
+     386,
+     2440
+    ],
+    [
+     2111,
+     2416
+    ],
+    [
+     2113,
+     2538
+    ],
+    [
+     387,
+     2561
+    ]
+   ],
+   "box": [
+    386,
+    2416,
+    2113,
+    2561
+   ]
+  },
+  {
+   "text": "because they",
+   "score": 0.9937,
+   "poly": [
+    [
+     1480,
+     2525
+    ],
+    [
+     2291,
+     2525
+    ],
+    [
+     2291,
+     2653
+    ],
+    [
+     1480,
+     2653
+    ]
+   ],
+   "box": [
+    1480,
+    2525,
+    2291,
+    2653
+   ]
+  },
+  {
+   "text": "banductpon axygen",
+   "score": 0.8378,
+   "poly": [
+    [
+     425,
+     2558
+    ],
+    [
+     1385,
+     2553
+    ],
+    [
+     1386,
+     2656
+    ],
+    [
+     425,
+     2661
+    ]
+   ],
+   "box": [
+    425,
+    2553,
+    1386,
+    2661
+   ]
+  },
+  {
+   "text": "du",
+   "score": 0.5651,
+   "poly": [
+    [
+     1136,
+     2621
+    ],
+    [
+     1262,
+     2621
+    ],
+    [
+     1262,
+     2682
+    ],
+    [
+     1136,
+     2682
+    ]
+   ],
+   "box": [
+    1136,
+    2621,
+    1262,
+    2682
+   ]
+  },
+  {
+   "text": "eason for the",
+   "score": 0.932,
+   "poly": [
+    [
+     1359,
+     2649
+    ],
+    [
+     2126,
+     2638
+    ],
+    [
+     2128,
+     2759
+    ],
+    [
+     1361,
+     2770
+    ]
+   ],
+   "box": [
+    1359,
+    2638,
+    2128,
+    2770
+   ]
+  },
+  {
+   "text": "arethe the ro",
+   "score": 0.736,
+   "poly": [
+    [
+     409,
+     2669
+    ],
+    [
+     1270,
+     2661
+    ],
+    [
+     1271,
+     2754
+    ],
+    [
+     410,
+     2763
+    ]
+   ],
+   "box": [
+    409,
+    2661,
+    1271,
+    2763
+   ]
+  },
+  {
+   "text": "Lovygen prodiction.",
+   "score": 0.8939,
+   "poly": [
+    [
+     341,
+     2768
+    ],
+    [
+     1405,
+     2729
+    ],
+    [
+     1412,
+     2908
+    ],
+    [
+     348,
+     2947
+    ]
+   ],
+   "box": [
+    341,
+    2729,
+    1412,
+    2947
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3295
+}

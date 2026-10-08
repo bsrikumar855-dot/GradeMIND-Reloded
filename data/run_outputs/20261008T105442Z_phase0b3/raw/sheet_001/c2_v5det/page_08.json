@@ -1,0 +1,1612 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "engine_b (see b_dir)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_08.jpg",
+ "latency_s": 1.806,
+ "crop_s": 0.164,
+ "recognition_s": 1.642,
+ "model_load_s": 0.85,
+ "n_lines": 44,
+ "n_no_text": 14,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "somely unreeded to human conference.",
+   "text_raw": "somely unreeded to human conference .",
+   "score": 0.4998,
+   "min_token_prob": 0.1615,
+   "flags": [],
+   "box": [
+    194,
+    256,
+    1976,
+    436
+   ],
+   "poly": [
+    [
+     195,
+     256
+    ],
+    [
+     1976,
+     275
+    ],
+    [
+     1974,
+     436
+    ],
+    [
+     194,
+     417
+    ]
+   ],
+   "b_text": "→weroed  to Bcone",
+   "b_score": 0.6153,
+   "ink_px": 21433,
+   "ink_frac": 0.0691
+  },
+  {
+   "text": "water life, said his own",
+   "text_raw": "water life , said his own",
+   "score": 0.7598,
+   "min_token_prob": 0.3274,
+   "flags": [],
+   "box": [
+    217,
+    396,
+    2023,
+    581
+   ],
+   "poly": [
+    [
+     218,
+     396
+    ],
+    [
+     2023,
+     413
+    ],
+    [
+     2022,
+     581
+    ],
+    [
+     217,
+     565
+    ]
+   ],
+   "b_text": "aator like8o no o ",
+   "b_score": 0.6858,
+   "ink_px": 16665,
+   "ink_frac": 0.0507
+  },
+  {
+   "text": "evaporation # condemnation # storing",
+   "text_raw": "evaporation # condemnation # storing",
+   "score": 0.6728,
+   "min_token_prob": 0.1705,
+   "flags": [],
+   "box": [
+    570,
+    532,
+    2315,
+    739
+   ],
+   "poly": [
+    [
+     574,
+     532
+    ],
+    [
+     2315,
+     572
+    ],
+    [
+     2312,
+     739
+    ],
+    [
+     570,
+     698
+    ]
+   ],
+   "b_text": "evaporatir→condantin→storng",
+   "b_score": 0.8196,
+   "ink_px": 36781,
+   "ink_frac": 0.1171
+  },
+  {
+   "text": "This",
+   "text_raw": "This",
+   "score": 0.977,
+   "min_token_prob": 0.971,
+   "flags": [],
+   "box": [
+    267,
+    692,
+    507,
+    816
+   ],
+   "poly": [
+    [
+     267,
+     692
+    ],
+    [
+     507,
+     692
+    ],
+    [
+     507,
+     816
+    ],
+    [
+     267,
+     816
+    ]
+   ],
+   "b_text": "Tu's",
+   "b_score": 0.8278,
+   "ink_px": 3192,
+   "ink_frac": 0.0931
+  },
+  {
+   "text": "cycle its pressure to",
+   "text_raw": "cycle its pressure to",
+   "score": 0.7017,
+   "min_token_prob": 0.2214,
+   "flags": [],
+   "box": [
+    678,
+    690,
+    1924,
+    828
+   ],
+   "poly": [
+    [
+     678,
+     690
+    ],
+    [
+     1924,
+     690
+    ],
+    [
+     1924,
+     828
+    ],
+    [
+     678,
+     828
+    ]
+   ],
+   "b_text": "cycle 1s paoieto",
+   "b_score": 0.6661,
+   "ink_px": 21927,
+   "ink_frac": 0.1162
+  },
+  {
+   "text": "control: #",
+   "text_raw": "control : #",
+   "score": 0.4952,
+   "min_token_prob": 0.2884,
+   "flags": [],
+   "box": [
+    268,
+    773,
+    2043,
+    971
+   ],
+   "poly": [
+    [
+     268,
+     808
+    ],
+    [
+     2040,
+     773
+    ],
+    [
+     2043,
+     936
+    ],
+    [
+     271,
+     971
+    ]
+   ],
+   "b_text": "control t si d",
+   "b_score": 0.5087,
+   "ink_px": 28321,
+   "ink_frac": 0.0907
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1619,
+    945,
+    2055,
+    1060
+   ],
+   "poly": [
+    [
+     1619,
+     945
+    ],
+    [
+     2055,
+     945
+    ],
+    [
+     2055,
+     1060
+    ],
+    [
+     1619,
+     1060
+    ]
+   ],
+   "b_text": "Niobe",
+   "b_score": 0.6239,
+   "ink_px": 86,
+   "ink_frac": 0.0015
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    969,
+    952,
+    1587,
+    1049
+   ],
+   "poly": [
+    [
+     969,
+     957
+    ],
+    [
+     1586,
+     952
+    ],
+    [
+     1587,
+     1044
+    ],
+    [
+     970,
+     1049
+    ]
+   ],
+   "b_text": "oMo28d",
+   "b_score": 0.353,
+   "ink_px": 263,
+   "ink_frac": 0.004
+  },
+  {
+   "text": "# NME: need change \" non-reusable",
+   "text_raw": "# NME : need change \" non-reusable",
+   "score": 0.7024,
+   "min_token_prob": 0.3131,
+   "flags": [],
+   "box": [
+    181,
+    1052,
+    2090,
+    1216
+   ],
+   "poly": [
+    [
+     182,
+     1052
+    ],
+    [
+     2090,
+     1068
+    ],
+    [
+     2089,
+     1216
+    ],
+    [
+     181,
+     1199
+    ]
+   ],
+   "b_text": "→ Me:reed i changehon-reewa",
+   "b_score": 0.717,
+   "ink_px": 47525,
+   "ink_frac": 0.1547
+  },
+  {
+   "text": "rereversible energy.",
+   "text_raw": "rereversible energy .",
+   "score": 0.7693,
+   "min_token_prob": 0.4702,
+   "flags": [],
+   "box": [
+    961,
+    1197,
+    1812,
+    1354
+   ],
+   "poly": [
+    [
+     964,
+     1197
+    ],
+    [
+     1812,
+     1216
+    ],
+    [
+     1809,
+     1354
+    ],
+    [
+     961,
+     1335
+    ]
+   ],
+   "b_text": "sonewable oergy",
+   "b_score": 0.7261,
+   "ink_px": 17939,
+   "ink_frac": 0.1391
+  },
+  {
+   "text": "that",
+   "text_raw": "that",
+   "score": 0.8684,
+   "min_token_prob": 0.7391,
+   "flags": [],
+   "box": [
+    1935,
+    1190,
+    2200,
+    1345
+   ],
+   "poly": [
+    [
+     1935,
+     1190
+    ],
+    [
+     2200,
+     1190
+    ],
+    [
+     2200,
+     1345
+    ],
+    [
+     1935,
+     1345
+    ]
+   ],
+   "b_text": "that",
+   "b_score": 0.9697,
+   "ink_px": 4863,
+   "ink_frac": 0.1051
+  },
+  {
+   "text": "energy.",
+   "text_raw": "energy .",
+   "score": 0.9924,
+   "min_token_prob": 0.9804,
+   "flags": [],
+   "box": [
+    256,
+    1206,
+    604,
+    1345
+   ],
+   "poly": [
+    [
+     261,
+     1206
+    ],
+    [
+     604,
+     1220
+    ],
+    [
+     599,
+     1345
+    ],
+    [
+     256,
+     1331
+    ]
+   ],
+   "b_text": "enorgy",
+   "b_score": 0.8975,
+   "ink_px": 7253,
+   "ink_frac": 0.1491
+  },
+  {
+   "text": "to 9",
+   "text_raw": "to 9",
+   "score": 0.892,
+   "min_token_prob": 0.8029,
+   "flags": [],
+   "box": [
+    611,
+    1201,
+    1023,
+    1321
+   ],
+   "poly": [
+    [
+     612,
+     1201
+    ],
+    [
+     1023,
+     1206
+    ],
+    [
+     1022,
+     1321
+    ],
+    [
+     611,
+     1316
+    ]
+   ],
+   "b_text": "to",
+   "b_score": 0.9956,
+   "ink_px": 3079,
+   "ink_frac": 0.0573
+  },
+  {
+   "text": "about",
+   "text_raw": "about",
+   "score": 0.3846,
+   "min_token_prob": 0.2463,
+   "flags": [],
+   "box": [
+    294,
+    1317,
+    688,
+    1468
+   ],
+   "poly": [
+    [
+     294,
+     1338
+    ],
+    [
+     681,
+     1317
+    ],
+    [
+     688,
+     1447
+    ],
+    [
+     301,
+     1468
+    ]
+   ],
+   "b_text": "aoesht",
+   "b_score": 0.6583,
+   "ink_px": 8888,
+   "ink_frac": 0.1569
+  },
+  {
+   "text": "could",
+   "text_raw": "could",
+   "score": 0.5721,
+   "min_token_prob": 0.3008,
+   "flags": [],
+   "box": [
+    897,
+    1349,
+    1141,
+    1447
+   ],
+   "poly": [
+    [
+     897,
+     1349
+    ],
+    [
+     1141,
+     1349
+    ],
+    [
+     1141,
+     1447
+    ],
+    [
+     897,
+     1447
+    ]
+   ],
+   "b_text": "calde",
+   "b_score": 0.6786,
+   "ink_px": 4694,
+   "ink_frac": 0.1667
+  },
+  {
+   "text": "pollution.",
+   "text_raw": "pollution .",
+   "score": 0.9709,
+   "min_token_prob": 0.9142,
+   "flags": [],
+   "box": [
+    1334,
+    1343,
+    1774,
+    1471
+   ],
+   "poly": [
+    [
+     1337,
+     1343
+    ],
+    [
+     1774,
+     1354
+    ],
+    [
+     1771,
+     1471
+    ],
+    [
+     1334,
+     1460
+    ]
+   ],
+   "b_text": "pollution",
+   "b_score": 0.9697,
+   "ink_px": 7263,
+   "ink_frac": 0.1254
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1301,
+    1453,
+    1634,
+    1574
+   ],
+   "poly": [
+    [
+     1301,
+     1453
+    ],
+    [
+     1634,
+     1453
+    ],
+    [
+     1634,
+     1574
+    ],
+    [
+     1301,
+     1574
+    ]
+   ],
+   "b_text": "SAOMUd",
+   "b_score": 0.5347,
+   "ink_px": 1457,
+   "ink_frac": 0.0318
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    931,
+    1485,
+    1083,
+    1551
+   ],
+   "poly": [
+    [
+     933,
+     1485
+    ],
+    [
+     1083,
+     1490
+    ],
+    [
+     1080,
+     1551
+    ],
+    [
+     931,
+     1546
+    ]
+   ],
+   "b_text": "2Ld",
+   "b_score": 0.2142,
+   "ink_px": 104,
+   "ink_frac": 0.0088
+  },
+  {
+   "text": "- The world",
+   "text_raw": " - The world",
+   "score": 0.7852,
+   "min_token_prob": 0.3478,
+   "flags": [],
+   "box": [
+    201,
+    1546,
+    1084,
+    1722
+   ],
+   "poly": [
+    [
+     203,
+     1546
+    ],
+    [
+     1084,
+     1555
+    ],
+    [
+     1083,
+     1722
+    ],
+    [
+     201,
+     1713
+    ]
+   ],
+   "b_text": "→The world",
+   "b_score": 0.9242,
+   "ink_px": 16416,
+   "ink_frac": 0.1026
+  },
+  {
+   "text": "includes into to breathe",
+   "text_raw": "includes into to breathe",
+   "score": 0.3525,
+   "min_token_prob": 0.0729,
+   "flags": [],
+   "box": [
+    1320,
+    1569,
+    2271,
+    1727
+   ],
+   "poly": [
+    [
+     1320,
+     1576
+    ],
+    [
+     2270,
+     1569
+    ],
+    [
+     2271,
+     1721
+    ],
+    [
+     1321,
+     1727
+    ]
+   ],
+   "b_text": "hoods tojike",
+   "b_score": 0.6352,
+   "ink_px": 13521,
+   "ink_frac": 0.0857
+  },
+  {
+   "text": "good quality.",
+   "text_raw": "good quality .",
+   "score": 0.757,
+   "min_token_prob": 0.3643,
+   "flags": [],
+   "box": [
+    268,
+    1692,
+    1065,
+    1856
+   ],
+   "poly": [
+    [
+     269,
+     1692
+    ],
+    [
+     1065,
+     1697
+    ],
+    [
+     1064,
+     1856
+    ],
+    [
+     268,
+     1851
+    ]
+   ],
+   "b_text": "good quality",
+   "b_score": 0.9108,
+   "ink_px": 16897,
+   "ink_frac": 0.1223
+  },
+  {
+   "text": "After Jennifer",
+   "text_raw": "After Jennifer",
+   "score": 0.6206,
+   "min_token_prob": 0.4411,
+   "flags": [],
+   "box": [
+    1219,
+    1692,
+    2199,
+    1860
+   ],
+   "poly": [
+    [
+     1220,
+     1692
+    ],
+    [
+     2199,
+     1703
+    ],
+    [
+     2197,
+     1860
+    ],
+    [
+     1219,
+     1849
+    ]
+   ],
+   "b_text": "for  life for",
+   "b_score": 0.6028,
+   "ink_px": 19237,
+   "ink_frac": 0.1149
+  },
+  {
+   "text": "is essential.",
+   "text_raw": "is essential .",
+   "score": 0.955,
+   "min_token_prob": 0.8792,
+   "flags": [],
+   "box": [
+    1658,
+    1818,
+    2350,
+    1987
+   ],
+   "poly": [
+    [
+     1661,
+     1818
+    ],
+    [
+     2350,
+     1833
+    ],
+    [
+     2346,
+     1987
+    ],
+    [
+     1658,
+     1971
+    ]
+   ],
+   "b_text": "Is ertral",
+   "b_score": 0.673,
+   "ink_px": 16970,
+   "ink_frac": 0.1458
+  },
+  {
+   "text": "all organism.",
+   "text_raw": "all organism .",
+   "score": 0.8383,
+   "min_token_prob": 0.6463,
+   "flags": [],
+   "box": [
+    265,
+    1836,
+    1021,
+    1976
+   ],
+   "poly": [
+    [
+     265,
+     1836
+    ],
+    [
+     1021,
+     1836
+    ],
+    [
+     1021,
+     1976
+    ],
+    [
+     265,
+     1976
+    ]
+   ],
+   "b_text": "al organidm",
+   "b_score": 0.8003,
+   "ink_px": 16235,
+   "ink_frac": 0.1391
+  },
+  {
+   "text": "water.",
+   "text_raw": "water .",
+   "score": 0.9371,
+   "min_token_prob": 0.8139,
+   "flags": [],
+   "box": [
+    1177,
+    1830,
+    1463,
+    1965
+   ],
+   "poly": [
+    [
+     1177,
+     1830
+    ],
+    [
+     1463,
+     1830
+    ],
+    [
+     1463,
+     1965
+    ],
+    [
+     1177,
+     1965
+    ]
+   ],
+   "b_text": "water",
+   "b_score": 0.9314,
+   "ink_px": 6859,
+   "ink_frac": 0.1566
+  },
+  {
+   "text": "foregiving.",
+   "text_raw": "foregiving .",
+   "score": 0.5386,
+   "min_token_prob": 0.1203,
+   "flags": [],
+   "box": [
+    304,
+    1917,
+    1014,
+    2163
+   ],
+   "poly": [
+    [
+     304,
+     1946
+    ],
+    [
+     1005,
+     1917
+    ],
+    [
+     1014,
+     2133
+    ],
+    [
+     313,
+     2163
+    ]
+   ],
+   "b_text": "for living",
+   "b_score": 0.9166,
+   "ink_px": 18687,
+   "ink_frac": 0.1144
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1402,
+    1955,
+    1710,
+    2064
+   ],
+   "poly": [
+    [
+     1402,
+     1955
+    ],
+    [
+     1710,
+     1955
+    ],
+    [
+     1710,
+     2064
+    ],
+    [
+     1402,
+     2064
+    ]
+   ],
+   "b_text": "Daod",
+   "b_score": 0.418,
+   "ink_px": 458,
+   "ink_frac": 0.0118
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1659,
+    1972,
+    1989,
+    2065
+   ],
+   "poly": [
+    [
+     1660,
+     1972
+    ],
+    [
+     1989,
+     1976
+    ],
+    [
+     1988,
+     2065
+    ],
+    [
+     1659,
+     2060
+    ]
+   ],
+   "b_text": "(",
+   "b_score": 0.3692,
+   "ink_px": 146,
+   "ink_frac": 0.0042
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1267,
+    2082,
+    1448,
+    2135
+   ],
+   "poly": [
+    [
+     1267,
+     2082
+    ],
+    [
+     1448,
+     2082
+    ],
+    [
+     1448,
+     2135
+    ],
+    [
+     1267,
+     2135
+    ]
+   ],
+   "b_text": "NATION",
+   "b_score": 0.9429,
+   "ink_px": 84,
+   "ink_frac": 0.0067
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1550,
+    2077,
+    2058,
+    2205
+   ],
+   "poly": [
+    [
+     1552,
+     2077
+    ],
+    [
+     2058,
+     2084
+    ],
+    [
+     2056,
+     2205
+    ],
+    [
+     1550,
+     2198
+    ]
+   ],
+   "b_text": "stadiifais",
+   "b_score": 0.5639,
+   "ink_px": 1963,
+   "ink_frac": 0.0285
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1202,
+    2091,
+    1272,
+    2128
+   ],
+   "poly": [
+    [
+     1202,
+     2091
+    ],
+    [
+     1272,
+     2091
+    ],
+    [
+     1272,
+     2128
+    ],
+    [
+     1202,
+     2128
+    ]
+   ],
+   "b_text": "CHE",
+   "b_score": 0.5489,
+   "ink_px": 0,
+   "ink_frac": 0.0
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    764,
+    2183,
+    775,
+    2193
+   ],
+   "poly": [
+    [
+     764,
+     2183
+    ],
+    [
+     775,
+     2183
+    ],
+    [
+     775,
+     2193
+    ],
+    [
+     764,
+     2193
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 44,
+   "ink_frac": 0.087
+  },
+  {
+   "text": "part D.",
+   "text_raw": "part D.",
+   "score": 0.8144,
+   "min_token_prob": 0.4342,
+   "flags": [],
+   "box": [
+    725,
+    2228,
+    1072,
+    2343
+   ],
+   "poly": [
+    [
+     725,
+     2242
+    ],
+    [
+     1068,
+     2228
+    ],
+    [
+     1072,
+     2330
+    ],
+    [
+     729,
+     2343
+    ]
+   ],
+   "b_text": "PartD-",
+   "b_score": 0.8747,
+   "ink_px": 4593,
+   "ink_frac": 0.1135
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1437,
+    2306,
+    2112,
+    2468
+   ],
+   "poly": [
+    [
+     1441,
+     2306
+    ],
+    [
+     2112,
+     2330
+    ],
+    [
+     2107,
+     2468
+    ],
+    [
+     1437,
+     2444
+    ]
+   ],
+   "b_text": "8n0188008",
+   "b_score": 0.4967,
+   "ink_px": 1605,
+   "ink_frac": 0.0157
+  },
+  {
+   "text": "INIA) forest region.",
+   "text_raw": "INIA ) forest region .",
+   "score": 0.5923,
+   "min_token_prob": 0.2297,
+   "flags": [],
+   "box": [
+    72,
+    2445,
+    1187,
+    2649
+   ],
+   "poly": [
+    [
+     73,
+     2445
+    ],
+    [
+     1187,
+     2452
+    ],
+    [
+     1186,
+     2649
+    ],
+    [
+     72,
+     2643
+    ]
+   ],
+   "b_text": "( A] forast region",
+   "b_score": 0.7319,
+   "ink_px": 22253,
+   "ink_frac": 0.0941
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1165,
+    2554,
+    1693,
+    2704
+   ],
+   "poly": [
+    [
+     1169,
+     2554
+    ],
+    [
+     1693,
+     2569
+    ],
+    [
+     1689,
+     2704
+    ],
+    [
+     1165,
+     2688
+    ]
+   ],
+   "b_text": "80n18801",
+   "b_score": 0.4399,
+   "ink_px": 1582,
+   "ink_frac": 0.0201
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1803,
+    2587,
+    2138,
+    2692
+   ],
+   "poly": [
+    [
+     1806,
+     2587
+    ],
+    [
+     2138,
+     2596
+    ],
+    [
+     2135,
+     2692
+    ],
+    [
+     1803,
+     2683
+    ]
+   ],
+   "b_text": "Ix",
+   "b_score": 0.3181,
+   "ink_px": 60,
+   "ink_frac": 0.0016
+  },
+  {
+   "text": "to forest its a world for",
+   "text_raw": "to forest its a world for",
+   "score": 0.7298,
+   "min_token_prob": 0.1216,
+   "flags": [],
+   "box": [
+    171,
+    2687,
+    2166,
+    2879
+   ],
+   "poly": [
+    [
+     172,
+     2687
+    ],
+    [
+     2166,
+     2697
+    ],
+    [
+     2165,
+     2879
+    ],
+    [
+     171,
+     2869
+    ]
+   ],
+   "b_text": "→forest;is a world foc",
+   "b_score": 0.7284,
+   "ink_px": 29948,
+   "ink_frac": 0.077
+  },
+  {
+   "text": "bio diversity.",
+   "text_raw": "bio diversity .",
+   "score": 0.7785,
+   "min_token_prob": 0.3957,
+   "flags": [],
+   "box": [
+    268,
+    2826,
+    961,
+    3029
+   ],
+   "poly": [
+    [
+     271,
+     2826
+    ],
+    [
+     961,
+     2840
+    ],
+    [
+     957,
+     3029
+    ],
+    [
+     268,
+     3016
+    ]
+   ],
+   "b_text": "Bio divearty",
+   "b_score": 0.8486,
+   "ink_px": 17871,
+   "ink_frac": 0.126
+  },
+  {
+   "text": "# forest contain vast species.",
+   "text_raw": "# forest contain vast species .",
+   "score": 0.7943,
+   "min_token_prob": 0.1599,
+   "flags": [],
+   "box": [
+    160,
+    3063,
+    2223,
+    3310
+   ],
+   "poly": [
+    [
+     160,
+     3069
+    ],
+    [
+     2222,
+     3063
+    ],
+    [
+     2223,
+     3304
+    ],
+    [
+     160,
+     3310
+    ]
+   ],
+   "b_text": "→forest contarn vast spiie8",
+   "b_score": 0.7308,
+   "ink_px": 39137,
+   "ink_frac": 0.0746
+  },
+  {
+   "text": "entore.",
+   "text_raw": "entore .",
+   "score": 0.9405,
+   "min_token_prob": 0.8606,
+   "flags": [],
+   "box": [
+    508,
+    3259,
+    824,
+    3407
+   ],
+   "poly": [
+    [
+     511,
+     3259
+    ],
+    [
+     824,
+     3267
+    ],
+    [
+     820,
+     3407
+    ],
+    [
+     508,
+     3399
+    ]
+   ],
+   "b_text": "ontore",
+   "b_score": 0.9108,
+   "ink_px": 7553,
+   "ink_frac": 0.1529
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    2026,
+    3250,
+    2222,
+    3378
+   ],
+   "poly": [
+    [
+     2026,
+     3255
+    ],
+    [
+     2218,
+     3250
+    ],
+    [
+     2222,
+     3372
+    ],
+    [
+     2029,
+     3378
+    ]
+   ],
+   "b_text": "010",
+   "b_score": 0.7731,
+   "ink_px": 1100,
+   "ink_frac": 0.0397
+  },
+  {
+   "text": "exosystem.",
+   "text_raw": "exosystem .",
+   "score": 0.7027,
+   "min_token_prob": 0.4602,
+   "flags": [],
+   "box": [
+    998,
+    3245,
+    1786,
+    3450
+   ],
+   "poly": [
+    [
+     998,
+     3267
+    ],
+    [
+     1781,
+     3245
+    ],
+    [
+     1786,
+     3427
+    ],
+    [
+     1003,
+     3450
+    ]
+   ],
+   "b_text": "ecosyston.",
+   "b_score": 0.7355,
+   "ink_px": 15996,
+   "ink_frac": 0.1032
+  },
+  {
+   "text": "in",
+   "text_raw": "in",
+   "score": 0.7719,
+   "min_token_prob": 0.6725,
+   "flags": [],
+   "box": [
+    278,
+    3287,
+    436,
+    3392
+   ],
+   "poly": [
+    [
+     278,
+     3287
+    ],
+    [
+     436,
+     3287
+    ],
+    [
+     436,
+     3392
+    ],
+    [
+     278,
+     3392
+    ]
+   ],
+   "b_text": "in",
+   "b_score": 0.7299,
+   "ink_px": 2162,
+   "ink_frac": 0.1087
+  }
+ ],
+ "peak_torch_alloc_mib": 2678,
+ "peak_rss_mib_process": 2968
+}

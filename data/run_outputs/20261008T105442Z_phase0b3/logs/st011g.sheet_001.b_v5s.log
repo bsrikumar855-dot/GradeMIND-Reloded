@@ -1,0 +1,19 @@
+/home/Shreekumar/GradeMIND-v2/spike/runs/20261008T105442Z_phase0b3/code/engine_b/run_engine_b.py:58: UserWarning: `lang` and `ocr_version` will be ignored when model names or model directories are not `None`.
+  ocr = PaddleOCR(**kw)
+[32mCreating model: ('PP-OCRv5_server_det', None, None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det`.[0m
+[32mCreating model: ('PP-OCRv5_server_rec', None, None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec`.[0m
+RESOLVED {"det": {"name": "PP-OCRv5_server_det", "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det"}, "rec": {"name": "PP-OCRv5_server_rec", "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec"}}
+page_01.jpg: 25.56s lines=108
+page_02.jpg: 18.83s lines=12
+page_03.jpg: 19.79s lines=33
+page_04.jpg: 19.53s lines=30
+page_05.jpg: 21.41s lines=52
+page_06.jpg: 20.30s lines=52
+page_07.jpg: 19.23s lines=50
+page_08.jpg: 20.92s lines=53
+page_09.jpg: 18.86s lines=39
+page_10.jpg: 19.25s lines=48
+page_11.jpg: 20.18s lines=40
+page_12.jpg: 20.09s lines=9

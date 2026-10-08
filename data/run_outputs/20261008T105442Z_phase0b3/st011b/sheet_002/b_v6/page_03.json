@@ -1,0 +1,581 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_03.jpg",
+ "latency_s": 12.024,
+ "model_load_s": 0.4,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "Sesl essn",
+   "score": 0.8383,
+   "poly": [
+    [
+     460,
+     484
+    ],
+    [
+     1106,
+     516
+    ],
+    [
+     1101,
+     618
+    ],
+    [
+     455,
+     585
+    ]
+   ],
+   "box": [
+    455,
+    484,
+    1106,
+    618
+   ]
+  },
+  {
+   "text": "It a a denl ob soodusal diy",
+   "score": 0.7173,
+   "poly": [
+    [
+     893,
+     599
+    ],
+    [
+     2801,
+     611
+    ],
+    [
+     2800,
+     761
+    ],
+    [
+     893,
+     749
+    ]
+   ],
+   "box": [
+    893,
+    599,
+    2801,
+    761
+   ]
+  },
+  {
+   "text": "-e sred tops9d.",
+   "score": 0.5843,
+   "poly": [
+    [
+     338,
+     881
+    ],
+    [
+     1425,
+     912
+    ],
+    [
+     1421,
+     1020
+    ],
+    [
+     335,
+     988
+    ]
+   ],
+   "box": [
+    335,
+    881,
+    1425,
+    1020
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     2652,
+     887
+    ],
+    [
+     2848,
+     892
+    ],
+    [
+     2846,
+     979
+    ],
+    [
+     2650,
+     974
+    ]
+   ],
+   "box": [
+    2650,
+    887,
+    2848,
+    979
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     2468,
+     1228
+    ],
+    [
+     2851,
+     1285
+    ],
+    [
+     2837,
+     1386
+    ],
+    [
+     2453,
+     1330
+    ]
+   ],
+   "box": [
+    2453,
+    1228,
+    2851,
+    1386
+   ]
+  },
+  {
+   "text": "HEood:",
+   "score": 0.775,
+   "poly": [
+    [
+     272,
+     1276
+    ],
+    [
+     839,
+     1302
+    ],
+    [
+     834,
+     1400
+    ],
+    [
+     268,
+     1373
+    ]
+   ],
+   "box": [
+    268,
+    1276,
+    839,
+    1400
+   ]
+  },
+  {
+   "text": "Fis d&s dapt due do ",
+   "score": 0.637,
+   "poly": [
+    [
+     835,
+     1412
+    ],
+    [
+     2821,
+     1504
+    ],
+    [
+     2816,
+     1622
+    ],
+    [
+     830,
+     1530
+    ]
+   ],
+   "box": [
+    830,
+    1412,
+    2821,
+    1622
+   ]
+  },
+  {
+   "text": "coinyul. It 8s a cksnd af toteoal",
+   "score": 0.7053,
+   "poly": [
+    [
+     302,
+     1538
+    ],
+    [
+     2743,
+     1629
+    ],
+    [
+     2738,
+     1749
+    ],
+    [
+     297,
+     1658
+    ]
+   ],
+   "box": [
+    297,
+    1538,
+    2743,
+    1749
+   ]
+  },
+  {
+   "text": "atsata",
+   "score": 0.4245,
+   "poly": [
+    [
+     114,
+     1661
+    ],
+    [
+     829,
+     1692
+    ],
+    [
+     825,
+     1791
+    ],
+    [
+     110,
+     1761
+    ]
+   ],
+   "box": [
+    110,
+    1661,
+    829,
+    1791
+   ]
+  },
+  {
+   "text": "D-aou",
+   "score": 0.5204,
+   "poly": [
+    [
+     157,
+     1803
+    ],
+    [
+     861,
+     1837
+    ],
+    [
+     856,
+     1928
+    ],
+    [
+     153,
+     1894
+    ]
+   ],
+   "box": [
+    153,
+    1803,
+    861,
+    1928
+   ]
+  },
+  {
+   "text": "Dorght  dappond due dto to",
+   "score": 0.7592,
+   "poly": [
+    [
+     841,
+     1948
+    ],
+    [
+     2834,
+     2071
+    ],
+    [
+     2827,
+     2185
+    ],
+    [
+     834,
+     2063
+    ]
+   ],
+   "box": [
+    834,
+    1948,
+    2834,
+    2185
+   ]
+  },
+  {
+   "text": "rfrad fr sthe pdicules esen",
+   "score": 0.5754,
+   "poly": [
+    [
+     320,
+     2053
+    ],
+    [
+     2777,
+     2207
+    ],
+    [
+     2770,
+     2325
+    ],
+    [
+     312,
+     2171
+    ]
+   ],
+   "box": [
+    312,
+    2053,
+    2777,
+    2325
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1202,
+     2202
+    ],
+    [
+     1661,
+     2236
+    ],
+    [
+     1657,
+     2288
+    ],
+    [
+     1198,
+     2254
+    ]
+   ],
+   "box": [
+    1198,
+    2202,
+    1661,
+    2288
+   ]
+  },
+  {
+   "text": "is tiae et coill stappend.",
+   "score": 0.8544,
+   "poly": [
+    [
+     339,
+     2297
+    ],
+    [
+     1805,
+     2420
+    ],
+    [
+     1796,
+     2527
+    ],
+    [
+     330,
+     2404
+    ]
+   ],
+   "box": [
+    330,
+    2297,
+    1805,
+    2527
+   ]
+  },
+  {
+   "text": "3 Traerks af Rodpuerssy",
+   "score": 0.768,
+   "poly": [
+    [
+     235,
+     2551
+    ],
+    [
+     1515,
+     2656
+    ],
+    [
+     1506,
+     2763
+    ],
+    [
+     226,
+     2658
+    ]
+   ],
+   "box": [
+    226,
+    2551,
+    1515,
+    2763
+   ]
+  },
+  {
+   "text": "T s alet  d ah",
+   "score": 0.6332,
+   "poly": [
+    [
+     580,
+     2827
+    ],
+    [
+     2437,
+     3002
+    ],
+    [
+     2426,
+     3120
+    ],
+    [
+     568,
+     2946
+    ]
+   ],
+   "box": [
+    568,
+    2827,
+    2437,
+    3120
+   ]
+  },
+  {
+   "text": "Td is aed dia eccsustem",
+   "score": 0.6908,
+   "poly": [
+    [
+     572,
+     2932
+    ],
+    [
+     2390,
+     3132
+    ],
+    [
+     2375,
+     3261
+    ],
+    [
+     558,
+     3061
+    ]
+   ],
+   "box": [
+    558,
+    2932,
+    2390,
+    3261
+   ]
+  },
+  {
+   "text": " It is fends do oxtsasicn of",
+   "score": 0.7692,
+   "poly": [
+    [
+     588,
+     3047
+    ],
+    [
+     2456,
+     3264
+    ],
+    [
+     2437,
+     3419
+    ],
+    [
+     570,
+     3202
+    ]
+   ],
+   "box": [
+    570,
+    3047,
+    2456,
+    3419
+   ]
+  },
+  {
+   "text": "tomme Secias.",
+   "score": 0.6413,
+   "poly": [
+    [
+     346,
+     3196
+    ],
+    [
+     1222,
+     3252
+    ],
+    [
+     1214,
+     3366
+    ],
+    [
+     338,
+     3310
+    ]
+   ],
+   "box": [
+    338,
+    3196,
+    1222,
+    3366
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3234
+}

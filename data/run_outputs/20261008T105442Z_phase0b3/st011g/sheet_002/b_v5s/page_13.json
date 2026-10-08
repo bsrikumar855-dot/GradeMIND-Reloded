@@ -1,0 +1,807 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_13.jpg",
+ "latency_s": 23.266,
+ "model_load_s": 0.42,
+ "n_lines": 27,
+ "lines": [
+  {
+   "text": "hae can colled all kends ouf",
+   "score": 0.7908,
+   "poly": [
+    [
+     792,
+     431
+    ],
+    [
+     2484,
+     349
+    ],
+    [
+     2490,
+     477
+    ],
+    [
+     798,
+     559
+    ]
+   ],
+   "box": [
+    792,
+    349,
+    2490,
+    559
+   ]
+  },
+  {
+   "text": "catse and seprate cthem cbased on",
+   "score": 0.8762,
+   "poly": [
+    [
+     451,
+     561
+    ],
+    [
+     2487,
+     468
+    ],
+    [
+     2494,
+     617
+    ],
+    [
+     458,
+     710
+    ]
+   ],
+   "box": [
+    451,
+    468,
+    2494,
+    710
+   ]
+  },
+  {
+   "text": "r",
+   "score": 0.0791,
+   "poly": [
+    [
+     2298,
+     630
+    ],
+    [
+     2324,
+     630
+    ],
+    [
+     2324,
+     653
+    ],
+    [
+     2298,
+     653
+    ]
+   ],
+   "box": [
+    2298,
+    630,
+    2324,
+    653
+   ]
+  },
+  {
+   "text": "the degsadable abeiety.",
+   "score": 0.7837,
+   "poly": [
+    [
+     447,
+     671
+    ],
+    [
+     1956,
+     621
+    ],
+    [
+     1961,
+     783
+    ],
+    [
+     452,
+     832
+    ]
+   ],
+   "box": [
+    447,
+    621,
+    1961,
+    832
+   ]
+  },
+  {
+   "text": "Degradablo coastos cheke, paper,",
+   "score": 0.8549,
+   "poly": [
+    [
+     785,
+     898
+    ],
+    [
+     2554,
+     855
+    ],
+    [
+     2558,
+     1001
+    ],
+    [
+     788,
+     1044
+    ]
+   ],
+   "box": [
+    785,
+    855,
+    2558,
+    1044
+   ]
+  },
+  {
+   "text": "food casto are seprated and coe san",
+   "score": 0.8153,
+   "poly": [
+    [
+     451,
+     1031
+    ],
+    [
+     2436,
+     977
+    ],
+    [
+     2440,
+     1122
+    ],
+    [
+     455,
+     1175
+    ]
+   ],
+   "box": [
+    451,
+    977,
+    2440,
+    1175
+   ]
+  },
+  {
+   "text": "uso dthem as a fertepeier. and cthen",
+   "score": 0.7111,
+   "poly": [
+    [
+     508,
+     1169
+    ],
+    [
+     2444,
+     1096
+    ],
+    [
+     2449,
+     1221
+    ],
+    [
+     513,
+     1293
+    ]
+   ],
+   "box": [
+    508,
+    1096,
+    2449,
+    1293
+   ]
+  },
+  {
+   "text": "seprafong cthe plastic coastes ilele",
+   "score": 0.7179,
+   "poly": [
+    [
+     496,
+     1284
+    ],
+    [
+     2378,
+     1228
+    ],
+    [
+     2382,
+     1360
+    ],
+    [
+     500,
+     1416
+    ]
+   ],
+   "box": [
+    496,
+    1228,
+    2382,
+    1416
+   ]
+  },
+  {
+   "text": "plastpc boes; platac ploctieos otc.",
+   "score": 0.667,
+   "poly": [
+    [
+     497,
+     1407
+    ],
+    [
+     2372,
+     1340
+    ],
+    [
+     2377,
+     1474
+    ],
+    [
+     502,
+     1540
+    ]
+   ],
+   "box": [
+    497,
+    1340,
+    2377,
+    1540
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1942,
+     1502
+    ],
+    [
+     2016,
+     1497
+    ],
+    [
+     2020,
+     1551
+    ],
+    [
+     1946,
+     1556
+    ]
+   ],
+   "box": [
+    1942,
+    1497,
+    2020,
+    1556
+   ]
+  },
+  {
+   "text": "Proper despotalof thase end",
+   "score": 0.7109,
+   "poly": [
+    [
+     810,
+     1616
+    ],
+    [
+     2420,
+     1577
+    ],
+    [
+     2423,
+     1716
+    ],
+    [
+     813,
+     1755
+    ]
+   ],
+   "box": [
+    810,
+    1577,
+    2423,
+    1755
+   ]
+  },
+  {
+   "text": "浙",
+   "score": 0.1459,
+   "poly": [
+    [
+     2673,
+     1694
+    ],
+    [
+     2693,
+     1694
+    ],
+    [
+     2693,
+     1710
+    ],
+    [
+     2673,
+     1710
+    ]
+   ],
+   "box": [
+    2673,
+    1694,
+    2693,
+    1710
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1638,
+     1729
+    ],
+    [
+     1665,
+     1729
+    ],
+    [
+     1665,
+     1751
+    ],
+    [
+     1638,
+     1751
+    ]
+   ],
+   "box": [
+    1638,
+    1729,
+    1665,
+    1751
+   ]
+  },
+  {
+   "text": "of coale copll cedice tthe hoastonge",
+   "score": 0.7314,
+   "poly": [
+    [
+     502,
+     1762
+    ],
+    [
+     2415,
+     1727
+    ],
+    [
+     2418,
+     1841
+    ],
+    [
+     504,
+     1876
+    ]
+   ],
+   "box": [
+    502,
+    1727,
+    2418,
+    1876
+   ]
+  },
+  {
+   "text": "procduction hargefi oodde casto coas",
+   "score": 0.6845,
+   "poly": [
+    [
+     503,
+     1865
+    ],
+    [
+     2390,
+     1832
+    ],
+    [
+     2392,
+     1965
+    ],
+    [
+     506,
+     1999
+    ]
+   ],
+   "box": [
+    503,
+    1832,
+    2392,
+    1999
+   ]
+  },
+  {
+   "text": "fstly",
+   "score": 0.5875,
+   "poly": [
+    [
+     520,
+     1989
+    ],
+    [
+     820,
+     1989
+    ],
+    [
+     820,
+     2114
+    ],
+    [
+     520,
+     2114
+    ]
+   ],
+   "box": [
+    520,
+    1989,
+    820,
+    2114
+   ]
+  },
+  {
+   "text": "seprated arad chave cto produce",
+   "score": 0.8901,
+   "poly": [
+    [
+     927,
+     1988
+    ],
+    [
+     2534,
+     1964
+    ],
+    [
+     2536,
+     2085
+    ],
+    [
+     929,
+     2109
+    ]
+   ],
+   "box": [
+    927,
+    1964,
+    2536,
+    2109
+   ]
+  },
+  {
+   "text": "chatural ferteixers iby the",
+   "score": 0.7033,
+   "poly": [
+    [
+     813,
+     2101
+    ],
+    [
+     2339,
+     2094
+    ],
+    [
+     2340,
+     2215
+    ],
+    [
+     813,
+     2222
+    ]
+   ],
+   "box": [
+    813,
+    2094,
+    2340,
+    2222
+   ]
+  },
+  {
+   "text": "the",
+   "score": 0.9599,
+   "poly": [
+    [
+     519,
+     2116
+    ],
+    [
+     733,
+     2109
+    ],
+    [
+     737,
+     2218
+    ],
+    [
+     523,
+     2225
+    ]
+   ],
+   "box": [
+    519,
+    2109,
+    737,
+    2225
+   ]
+  },
+  {
+   "text": "earthcosms. and coe can rse that",
+   "score": 0.7629,
+   "poly": [
+    [
+     520,
+     2231
+    ],
+    [
+     2393,
+     2213
+    ],
+    [
+     2394,
+     2316
+    ],
+    [
+     521,
+     2335
+    ]
+   ],
+   "box": [
+    520,
+    2213,
+    2394,
+    2335
+   ]
+  },
+  {
+   "text": "noctural ferdfors efor fries and small",
+   "score": 0.641,
+   "poly": [
+    [
+     513,
+     2329
+    ],
+    [
+     2501,
+     2318
+    ],
+    [
+     2501,
+     2451
+    ],
+    [
+     514,
+     2463
+    ]
+   ],
+   "box": [
+    513,
+    2318,
+    2501,
+    2463
+   ]
+  },
+  {
+   "text": "plaits cen cthe colloge.",
+   "score": 0.8144,
+   "poly": [
+    [
+     522,
+     2465
+    ],
+    [
+     1738,
+     2451
+    ],
+    [
+     1739,
+     2585
+    ],
+    [
+     523,
+     2598
+    ]
+   ],
+   "box": [
+    522,
+    2451,
+    1739,
+    2598
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     2560,
+     2546
+    ],
+    [
+     2578,
+     2546
+    ],
+    [
+     2578,
+     2644
+    ],
+    [
+     2560,
+     2644
+    ]
+   ],
+   "box": [
+    2560,
+    2546,
+    2578,
+    2644
+   ]
+  },
+  {
+   "text": "By the propos woayfo eeusing",
+   "score": 0.7594,
+   "poly": [
+    [
+     931,
+     2688
+    ],
+    [
+     2557,
+     2692
+    ],
+    [
+     2557,
+     2818
+    ],
+    [
+     931,
+     2815
+    ]
+   ],
+   "box": [
+    931,
+    2688,
+    2557,
+    2818
+   ]
+  },
+  {
+   "text": "t",
+   "score": 0.0541,
+   "poly": [
+    [
+     2019,
+     2695
+    ],
+    [
+     2035,
+     2695
+    ],
+    [
+     2035,
+     2713
+    ],
+    [
+     2019,
+     2713
+    ]
+   ],
+   "box": [
+    2019,
+    2695,
+    2035,
+    2713
+   ]
+  },
+  {
+   "text": "them wopll chelp the eooufron ment to",
+   "score": 0.7385,
+   "poly": [
+    [
+     503,
+     2793
+    ],
+    [
+     2485,
+     2808
+    ],
+    [
+     2484,
+     2939
+    ],
+    [
+     502,
+     2925
+    ]
+   ],
+   "box": [
+    502,
+    2793,
+    2485,
+    2939
+   ]
+  },
+  {
+   "text": "reduce the pollutfon.",
+   "score": 0.8638,
+   "poly": [
+    [
+     497,
+     2943
+    ],
+    [
+     1472,
+     2932
+    ],
+    [
+     1474,
+     3047
+    ],
+    [
+     498,
+     3059
+    ]
+   ],
+   "box": [
+    497,
+    2932,
+    1474,
+    3059
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17131
+}

@@ -1,0 +1,181 @@
+{
+ "version": "0.1.2",
+ "params": {
+  "bg_blur": 61,
+  "thr_block": 41,
+  "thr_c": 12,
+  "keep_ratio": 0.45,
+  "min_area": 12,
+  "dilate": 1,
+  "rl_h_frac": 0.08,
+  "rl_v_frac": 0.1,
+  "rl_close": 9
+ },
+ "pages": {
+  "page_01": {
+   "width": 2148,
+   "height": 2784,
+   "megapixels": 5.98,
+   "extreme_pixel_share": 0.8795,
+   "grey_levels_used": 62,
+   "show_through_est": 0.2545,
+   "ruled_lines": 30,
+   "ruled_spacing_px": 66.0,
+   "jpeg_blockiness": 1.039
+  },
+  "page_02": {
+   "width": 2259,
+   "height": 2973,
+   "megapixels": 6.72,
+   "extreme_pixel_share": 0.9238,
+   "grey_levels_used": 27,
+   "show_through_est": 0.2606,
+   "ruled_lines": 21,
+   "ruled_spacing_px": 104.5,
+   "jpeg_blockiness": 1.104
+  },
+  "page_03": {
+   "width": 2851,
+   "height": 3543,
+   "megapixels": 10.1,
+   "extreme_pixel_share": 0.9155,
+   "grey_levels_used": 43,
+   "show_through_est": 0.1688,
+   "ruled_lines": 21,
+   "ruled_spacing_px": 137.5,
+   "jpeg_blockiness": 1.129
+  },
+  "page_04": {
+   "width": 2844,
+   "height": 3614,
+   "megapixels": 10.28,
+   "extreme_pixel_share": 0.8908,
+   "grey_levels_used": 60,
+   "show_through_est": 0.3417,
+   "ruled_lines": 26,
+   "ruled_spacing_px": 136.5,
+   "jpeg_blockiness": 1.056
+  },
+  "page_05": {
+   "width": 2472,
+   "height": 2891,
+   "megapixels": 7.15,
+   "extreme_pixel_share": 0.9114,
+   "grey_levels_used": 30,
+   "show_through_est": 0.1392,
+   "ruled_lines": 18,
+   "ruled_spacing_px": 103.5,
+   "jpeg_blockiness": 1.06
+  },
+  "page_06": {
+   "width": 2499,
+   "height": 3270,
+   "megapixels": 8.17,
+   "extreme_pixel_share": 0.9212,
+   "grey_levels_used": 35,
+   "show_through_est": 0.0963,
+   "ruled_lines": 26,
+   "ruled_spacing_px": 114.0,
+   "jpeg_blockiness": 1.061
+  },
+  "page_07": {
+   "width": 2752,
+   "height": 3520,
+   "megapixels": 9.69,
+   "extreme_pixel_share": 0.9241,
+   "grey_levels_used": 22,
+   "show_through_est": 0.1708,
+   "ruled_lines": 25,
+   "ruled_spacing_px": 118.75,
+   "jpeg_blockiness": 1.122
+  },
+  "page_08": {
+   "width": 2721,
+   "height": 3500,
+   "megapixels": 9.52,
+   "extreme_pixel_share": 0.9177,
+   "grey_levels_used": 21,
+   "show_through_est": 0.1475,
+   "ruled_lines": 25,
+   "ruled_spacing_px": 121.5,
+   "jpeg_blockiness": 1.082
+  },
+  "page_09": {
+   "width": 2544,
+   "height": 3102,
+   "megapixels": 7.89,
+   "extreme_pixel_share": 0.9178,
+   "grey_levels_used": 30,
+   "show_through_est": 0.2333,
+   "ruled_lines": 13,
+   "ruled_spacing_px": 110.5,
+   "jpeg_blockiness": 1.069
+  },
+  "page_10": {
+   "width": 2541,
+   "height": 3315,
+   "megapixels": 8.42,
+   "extreme_pixel_share": 0.9048,
+   "grey_levels_used": 21,
+   "show_through_est": 0.1707,
+   "ruled_lines": 25,
+   "ruled_spacing_px": 116.0,
+   "jpeg_blockiness": 1.084
+  },
+  "page_11": {
+   "width": 2727,
+   "height": 3512,
+   "megapixels": 9.58,
+   "extreme_pixel_share": 0.9117,
+   "grey_levels_used": 22,
+   "show_through_est": 0.1986,
+   "ruled_lines": 25,
+   "ruled_spacing_px": 142.0,
+   "jpeg_blockiness": 1.088
+  },
+  "page_12": {
+   "width": 2748,
+   "height": 3546,
+   "megapixels": 9.74,
+   "extreme_pixel_share": 0.9101,
+   "grey_levels_used": 46,
+   "show_through_est": 0.3469,
+   "ruled_lines": 21,
+   "ruled_spacing_px": 123.25,
+   "jpeg_blockiness": 1.091
+  },
+  "page_13": {
+   "width": 2756,
+   "height": 3416,
+   "megapixels": 9.41,
+   "extreme_pixel_share": 0.9143,
+   "grey_levels_used": 21,
+   "show_through_est": 0.1839,
+   "ruled_lines": 25,
+   "ruled_spacing_px": 119.5,
+   "jpeg_blockiness": 1.067
+  },
+  "page_14": {
+   "width": 2942,
+   "height": 3860,
+   "megapixels": 11.36,
+   "extreme_pixel_share": 0.9128,
+   "grey_levels_used": 20,
+   "show_through_est": 0.0957,
+   "ruled_lines": 26,
+   "ruled_spacing_px": 137.5,
+   "jpeg_blockiness": 1.069
+  },
+  "page_15": {
+   "width": 2470,
+   "height": 3454,
+   "megapixels": 8.53,
+   "extreme_pixel_share": 0.9168,
+   "grey_levels_used": 21,
+   "show_through_est": 0.172,
+   "ruled_lines": 19,
+   "ruled_spacing_px": 148.0,
+   "jpeg_blockiness": 1.106
+  }
+ }
+}

@@ -1,0 +1,863 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_06.jpg",
+ "latency_s": 23.23,
+ "model_load_s": 0.42,
+ "n_lines": 29,
+ "lines": [
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     14,
+     41
+    ],
+    [
+     37,
+     41
+    ],
+    [
+     37,
+     146
+    ],
+    [
+     14,
+     146
+    ]
+   ],
+   "box": [
+    14,
+    41,
+    37,
+    146
+   ]
+  },
+  {
+   "text": "The ooganisms er googoaheael regpon",
+   "score": 0.716,
+   "poly": [
+    [
+     544,
+     403
+    ],
+    [
+     2357,
+     457
+    ],
+    [
+     2354,
+     561
+    ],
+    [
+     541,
+     507
+    ]
+   ],
+   "box": [
+    541,
+    403,
+    2357,
+    561
+   ]
+  },
+  {
+   "text": "chadto cbo deslubecd  A ispecees an",
+   "score": 0.6324,
+   "poly": [
+    [
+     292,
+     526
+    ],
+    [
+     2163,
+     571
+    ],
+    [
+     2162,
+     651
+    ],
+    [
+     290,
+     606
+    ]
+   ],
+   "box": [
+    290,
+    526,
+    2163,
+    651
+   ]
+  },
+  {
+   "text": "athe frosh ceater Oco sysedem cleke fPsh, poraon",
+   "score": 0.6424,
+   "poly": [
+    [
+     270,
+     635
+    ],
+    [
+     2332,
+     685
+    ],
+    [
+     2329,
+     782
+    ],
+    [
+     268,
+     732
+    ]
+   ],
+   "box": [
+    268,
+    635,
+    2332,
+    782
+   ]
+  },
+  {
+   "text": "ase deed due to uoater polldpon. Ie coe",
+   "score": 0.6554,
+   "poly": [
+    [
+     299,
+     750
+    ],
+    [
+     2164,
+     799
+    ],
+    [
+     2161,
+     886
+    ],
+    [
+     296,
+     837
+    ]
+   ],
+   "box": [
+    296,
+    750,
+    2164,
+    886
+   ]
+  },
+  {
+   "text": "pollute the fregh csater",
+   "score": 0.7416,
+   "poly": [
+    [
+     294,
+     868
+    ],
+    [
+     1400,
+     898
+    ],
+    [
+     1397,
+     985
+    ],
+    [
+     291,
+     955
+    ]
+   ],
+   "box": [
+    291,
+    868,
+    1400,
+    985
+   ]
+  },
+  {
+   "text": "cmang spp eces",
+   "score": 0.7187,
+   "poly": [
+    [
+     1542,
+     909
+    ],
+    [
+     2160,
+     917
+    ],
+    [
+     2159,
+     1000
+    ],
+    [
+     1541,
+     993
+    ]
+   ],
+   "box": [
+    1541,
+    909,
+    2160,
+    1000
+   ]
+  },
+  {
+   "text": "age got desturbed.",
+   "score": 0.723,
+   "poly": [
+    [
+     312,
+     978
+    ],
+    [
+     1159,
+     1011
+    ],
+    [
+     1155,
+     1105
+    ],
+    [
+     308,
+     1072
+    ]
+   ],
+   "box": [
+    308,
+    978,
+    1159,
+    1105
+   ]
+  },
+  {
+   "text": "A",
+   "score": 0.7887,
+   "poly": [
+    [
+     1810,
+     1141
+    ],
+    [
+     1825,
+     1132
+    ],
+    [
+     1839,
+     1156
+    ],
+    [
+     1824,
+     1165
+    ]
+   ],
+   "box": [
+    1810,
+    1132,
+    1839,
+    1165
+   ]
+  },
+  {
+   "text": "we Canuse the3rprinciple",
+   "score": 0.7436,
+   "poly": [
+    [
+     671,
+     1219
+    ],
+    [
+     2269,
+     1265
+    ],
+    [
+     2266,
+     1358
+    ],
+    [
+     668,
+     1312
+    ]
+   ],
+   "box": [
+    668,
+    1219,
+    2269,
+    1358
+   ]
+  },
+  {
+   "text": "Aore to reduce the coastosthat",
+   "score": 0.6129,
+   "poly": [
+    [
+     285,
+     1326
+    ],
+    [
+     2172,
+     1384
+    ],
+    [
+     2170,
+     1471
+    ],
+    [
+     283,
+     1413
+    ]
+   ],
+   "box": [
+    283,
+    1326,
+    2172,
+    1471
+   ]
+  },
+  {
+   "text": "anemaidegnhouseFarsitly uoehawe",
+   "score": 0.6794,
+   "poly": [
+    [
+     285,
+     1451
+    ],
+    [
+     2248,
+     1496
+    ],
+    [
+     2246,
+     1578
+    ],
+    [
+     283,
+     1532
+    ]
+   ],
+   "box": [
+    283,
+    1451,
+    2248,
+    1578
+   ]
+  },
+  {
+   "text": "to sperateithe casto",
+   "score": 0.6922,
+   "poly": [
+    [
+     287,
+     1533
+    ],
+    [
+     1584,
+     1589
+    ],
+    [
+     1579,
+     1698
+    ],
+    [
+     282,
+     1642
+    ]
+   ],
+   "box": [
+    282,
+    1533,
+    1584,
+    1698
+   ]
+  },
+  {
+   "text": "ibased on",
+   "score": 0.6499,
+   "poly": [
+    [
+     1678,
+     1583
+    ],
+    [
+     2159,
+     1602
+    ],
+    [
+     2155,
+     1689
+    ],
+    [
+     1675,
+     1670
+    ]
+   ],
+   "box": [
+    1675,
+    1583,
+    2159,
+    1689
+   ]
+  },
+  {
+   "text": "4",
+   "score": 0.2836,
+   "poly": [
+    [
+     1601,
+     1596
+    ],
+    [
+     1630,
+     1596
+    ],
+    [
+     1630,
+     1615
+    ],
+    [
+     1601,
+     1615
+    ]
+   ],
+   "box": [
+    1601,
+    1596,
+    1630,
+    1615
+   ]
+  },
+  {
+   "text": "tho degoadable ceiaty.",
+   "score": 0.6788,
+   "poly": [
+    [
+     286,
+     1652
+    ],
+    [
+     1524,
+     1698
+    ],
+    [
+     1520,
+     1813
+    ],
+    [
+     282,
+     1768
+    ]
+   ],
+   "box": [
+    282,
+    1652,
+    1524,
+    1813
+   ]
+  },
+  {
+   "text": "1",
+   "score": 0.5277,
+   "poly": [
+    [
+     1811,
+     1737
+    ],
+    [
+     1835,
+     1737
+    ],
+    [
+     1835,
+     1766
+    ],
+    [
+     1811,
+     1766
+    ]
+   ],
+   "box": [
+    1811,
+    1737,
+    1835,
+    1766
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1127,
+     1853
+    ],
+    [
+     1402,
+     1853
+    ],
+    [
+     1402,
+     1882
+    ],
+    [
+     1127,
+     1882
+    ]
+   ],
+   "box": [
+    1127,
+    1853,
+    1402,
+    1882
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1292,
+     1897
+    ],
+    [
+     1355,
+     1897
+    ],
+    [
+     1355,
+     1930
+    ],
+    [
+     1292,
+     1930
+    ]
+   ],
+   "box": [
+    1292,
+    1897,
+    1355,
+    1930
+   ]
+  },
+  {
+   "text": "woe can tsedlhe",
+   "score": 0.6569,
+   "poly": [
+    [
+     615,
+     1911
+    ],
+    [
+     1474,
+     1918
+    ],
+    [
+     1473,
+     2005
+    ],
+    [
+     614,
+     1998
+    ]
+   ],
+   "box": [
+    614,
+    1911,
+    1474,
+    2005
+   ]
+  },
+  {
+   "text": "composoing mothod",
+   "score": 0.8134,
+   "poly": [
+    [
+     1508,
+     1924
+    ],
+    [
+     2388,
+     1951
+    ],
+    [
+     2385,
+     2050
+    ],
+    [
+     1505,
+     2022
+    ]
+   ],
+   "box": [
+    1505,
+    1924,
+    2388,
+    2050
+   ]
+  },
+  {
+   "text": "do cmange cthe lomostee uoaste. we",
+   "score": 0.6601,
+   "poly": [
+    [
+     308,
+     1998
+    ],
+    [
+     2293,
+     2058
+    ],
+    [
+     2290,
+     2169
+    ],
+    [
+     305,
+     2109
+    ]
+   ],
+   "box": [
+    305,
+    1998,
+    2293,
+    2169
+   ]
+  },
+  {
+   "text": "Can cse cthe de pradable catosto",
+   "score": 0.6724,
+   "poly": [
+    [
+     302,
+     2125
+    ],
+    [
+     2247,
+     2164
+    ],
+    [
+     2245,
+     2255
+    ],
+    [
+     300,
+     2217
+    ]
+   ],
+   "box": [
+    300,
+    2125,
+    2247,
+    2255
+   ]
+  },
+  {
+   "text": "foed cthe anemals, eberds Cpoulltry)",
+   "score": 0.68,
+   "poly": [
+    [
+     308,
+     2218
+    ],
+    [
+     2351,
+     2283
+    ],
+    [
+     2347,
+     2399
+    ],
+    [
+     304,
+     2334
+    ]
+   ],
+   "box": [
+    304,
+    2218,
+    2351,
+    2399
+   ]
+  },
+  {
+   "text": "Odc.",
+   "score": 0.5635,
+   "poly": [
+    [
+     314,
+     2351
+    ],
+    [
+     597,
+     2367
+    ],
+    [
+     593,
+     2444
+    ],
+    [
+     309,
+     2427
+    ]
+   ],
+   "box": [
+    309,
+    2351,
+    597,
+    2444
+   ]
+  },
+  {
+   "text": "It opll chol do geduce the",
+   "score": 0.6375,
+   "poly": [
+    [
+     703,
+     2465
+    ],
+    [
+     2254,
+     2504
+    ],
+    [
+     2251,
+     2596
+    ],
+    [
+     700,
+     2557
+    ]
+   ],
+   "box": [
+    700,
+    2465,
+    2254,
+    2596
+   ]
+  },
+  {
+   "text": "coasto en  the onuironmont and doenot",
+   "score": 0.7471,
+   "poly": [
+    [
+     321,
+     2564
+    ],
+    [
+     2366,
+     2613
+    ],
+    [
+     2363,
+     2716
+    ],
+    [
+     318,
+     2666
+    ]
+   ],
+   "box": [
+    318,
+    2564,
+    2366,
+    2716
+   ]
+  },
+  {
+   "text": "affoct the ecosysatem.",
+   "score": 0.7379,
+   "poly": [
+    [
+     325,
+     2684
+    ],
+    [
+     1416,
+     2693
+    ],
+    [
+     1415,
+     2804
+    ],
+    [
+     324,
+     2795
+    ]
+   ],
+   "box": [
+    324,
+    2684,
+    1416,
+    2804
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1071,
+     3256
+    ],
+    [
+     1175,
+     3256
+    ],
+    [
+     1175,
+     3268
+    ],
+    [
+     1071,
+     3268
+    ]
+   ],
+   "box": [
+    1071,
+    3256,
+    1175,
+    3268
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17111
+}

@@ -1,0 +1,1479 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_11.jpg",
+ "latency_s": 2.372,
+ "crop_s": 0.127,
+ "recognition_s": 2.246,
+ "model_load_s": 0.79,
+ "n_lines": 41,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "AHIOCrestadRON COPH produce close",
+   "text_raw": "AHIOCrestadRON COPH produce close",
+   "score": 0.534,
+   "min_token_prob": 0.0764,
+   "flags": [],
+   "box": [
+    773,
+    179,
+    2581,
+    456
+   ],
+   "poly": [
+    [
+     780,
+     179
+    ],
+    [
+     2581,
+     244
+    ],
+    [
+     2573,
+     456
+    ],
+    [
+     773,
+     391
+    ]
+   ],
+   "b_text": "AHooestaton c de do",
+   "b_score": 0.6196,
+   "ink_px": 33422,
+   "ink_frac": 0.0823
+  },
+  {
+   "text": "environmental, affects.",
+   "text_raw": "environmental , affects .",
+   "score": 0.6878,
+   "min_token_prob": 0.333,
+   "flags": [],
+   "box": [
+    347,
+    352,
+    1577,
+    532
+   ],
+   "poly": [
+    [
+     351,
+     352
+    ],
+    [
+     1577,
+     389
+    ],
+    [
+     1573,
+     532
+    ],
+    [
+     347,
+     494
+    ]
+   ],
+   "b_text": "enuronmental affeds.",
+   "b_score": 0.8156,
+   "ink_px": 20930,
+   "ink_frac": 0.1091
+  },
+  {
+   "text": "1940s.",
+   "text_raw": "1940s.",
+   "score": 0.3557,
+   "min_token_prob": 0.0824,
+   "flags": [],
+   "box": [
+    2386,
+    492,
+    2484,
+    534
+   ],
+   "poly": [
+    [
+     2391,
+     492
+    ],
+    [
+     2484,
+     515
+    ],
+    [
+     2479,
+     534
+    ],
+    [
+     2386,
+     511
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 255,
+   "ink_frac": 0.122
+  },
+  {
+   "text": "planting",
+   "text_raw": "planting",
+   "score": 0.7164,
+   "min_token_prob": 0.515,
+   "flags": [],
+   "box": [
+    1971,
+    506,
+    2521,
+    710
+   ],
+   "poly": [
+    [
+     1984,
+     506
+    ],
+    [
+     2521,
+     555
+    ],
+    [
+     2507,
+     710
+    ],
+    [
+     1971,
+     662
+    ]
+   ],
+   "b_text": "plantong",
+   "b_score": 0.9144,
+   "ink_px": 11717,
+   "ink_frac": 0.1266
+  },
+  {
+   "text": "Affederation # means",
+   "text_raw": "Affederation # means",
+   "score": 0.552,
+   "min_token_prob": 0.1962,
+   "flags": [],
+   "box": [
+    778,
+    527,
+    1906,
+    650
+   ],
+   "poly": [
+    [
+     778,
+     527
+    ],
+    [
+     1906,
+     532
+    ],
+    [
+     1905,
+     650
+    ],
+    [
+     778,
+     644
+    ]
+   ],
+   "b_text": "Affooesdatfon umeanl",
+   "b_score": 0.7106,
+   "ink_px": 20016,
+   "ink_frac": 0.1351
+  },
+  {
+   "text": "frees.",
+   "text_raw": "frees .",
+   "score": 0.9347,
+   "min_token_prob": 0.7617,
+   "flags": [],
+   "box": [
+    347,
+    620,
+    655,
+    749
+   ],
+   "poly": [
+    [
+     356,
+     620
+    ],
+    [
+     655,
+     645
+    ],
+    [
+     647,
+     749
+    ],
+    [
+     347,
+     724
+    ]
+   ],
+   "b_text": "froes",
+   "b_score": 0.7964,
+   "ink_px": 4098,
+   "ink_frac": 0.1129
+  },
+  {
+   "text": "on the",
+   "text_raw": "on the",
+   "score": 0.8806,
+   "min_token_prob": 0.648,
+   "flags": [],
+   "box": [
+    714,
+    647,
+    1153,
+    787
+   ],
+   "poly": [
+    [
+     722,
+     647
+    ],
+    [
+     1153,
+     677
+    ],
+    [
+     1146,
+     787
+    ],
+    [
+     714,
+     757
+    ]
+   ],
+   "b_text": "cen Whe",
+   "b_score": 0.7663,
+   "ink_px": 5594,
+   "ink_frac": 0.103
+  },
+  {
+   "text": "trought.",
+   "text_raw": "trought .",
+   "score": 0.7995,
+   "min_token_prob": 0.4677,
+   "flags": [],
+   "box": [
+    1988,
+    657,
+    2415,
+    830
+   ],
+   "poly": [
+    [
+     1999,
+     657
+    ],
+    [
+     2415,
+     693
+    ],
+    [
+     2403,
+     830
+    ],
+    [
+     1988,
+     794
+    ]
+   ],
+   "b_text": "srought",
+   "b_score": 0.8009,
+   "ink_px": 11834,
+   "ink_frac": 0.1851
+  },
+  {
+   "text": "do sort.",
+   "text_raw": "do sort .",
+   "score": 0.6023,
+   "min_token_prob": 0.1734,
+   "flags": [],
+   "box": [
+    1269,
+    677,
+    1606,
+    774
+   ],
+   "poly": [
+    [
+     1269,
+     677
+    ],
+    [
+     1606,
+     677
+    ],
+    [
+     1606,
+     774
+    ],
+    [
+     1269,
+     774
+    ]
+   ],
+   "b_text": "doont",
+   "b_score": 0.7567,
+   "ink_px": 6713,
+   "ink_frac": 0.1765
+  },
+  {
+   "text": "and",
+   "text_raw": "and",
+   "score": 0.8587,
+   "min_token_prob": 0.7176,
+   "flags": [],
+   "box": [
+    1714,
+    663,
+    1945,
+    773
+   ],
+   "poly": [
+    [
+     1714,
+     672
+    ],
+    [
+     1941,
+     663
+    ],
+    [
+     1945,
+     763
+    ],
+    [
+     1718,
+     773
+    ]
+   ],
+   "b_text": "ard",
+   "b_score": 0.9316,
+   "ink_px": 4705,
+   "ink_frac": 0.1742
+  },
+  {
+   "text": "areab.",
+   "text_raw": "areab .",
+   "score": 0.8976,
+   "min_token_prob": 0.6789,
+   "flags": [],
+   "box": [
+    346,
+    763,
+    653,
+    882
+   ],
+   "poly": [
+    [
+     353,
+     763
+    ],
+    [
+     653,
+     785
+    ],
+    [
+     646,
+     882
+    ],
+    [
+     346,
+     859
+    ]
+   ],
+   "b_text": "aseas",
+   "b_score": 0.782,
+   "ink_px": 5088,
+   "ink_frac": 0.1496
+  },
+  {
+   "text": "troops.",
+   "text_raw": "troops .",
+   "score": 0.6371,
+   "min_token_prob": 0.317,
+   "flags": [],
+   "box": [
+    1786,
+    735,
+    2057,
+    836
+   ],
+   "poly": [
+    [
+     1786,
+     765
+    ],
+    [
+     2048,
+     735
+    ],
+    [
+     2057,
+     806
+    ],
+    [
+     1794,
+     836
+    ]
+   ],
+   "b_text": "trooph",
+   "b_score": 0.7371,
+   "ink_px": 5334,
+   "ink_frac": 0.2328
+  },
+  {
+   "text": "up.",
+   "text_raw": "up .",
+   "score": 0.6161,
+   "min_token_prob": 0.2601,
+   "flags": [],
+   "box": [
+    809,
+    801,
+    1010,
+    913
+   ],
+   "poly": [
+    [
+     816,
+     801
+    ],
+    [
+     1010,
+     816
+    ],
+    [
+     1003,
+     913
+    ],
+    [
+     809,
+     898
+    ]
+   ],
+   "b_text": "coe",
+   "b_score": 0.6176,
+   "ink_px": 3162,
+   "ink_frac": 0.1408
+  },
+  {
+   "text": "plant in the",
+   "text_raw": "plant in the",
+   "score": 0.8353,
+   "min_token_prob": 0.5792,
+   "flags": [],
+   "box": [
+    1445,
+    810,
+    2103,
+    937
+   ],
+   "poly": [
+    [
+     1445,
+     810
+    ],
+    [
+     2103,
+     810
+    ],
+    [
+     2103,
+     937
+    ],
+    [
+     1445,
+     937
+    ]
+   ],
+   "b_text": "plant i etho",
+   "b_score": 0.8274,
+   "ink_px": 12451,
+   "ink_frac": 0.1337
+  },
+  {
+   "text": "can",
+   "text_raw": "can",
+   "score": 0.501,
+   "min_token_prob": 0.3117,
+   "flags": [],
+   "box": [
+    1162,
+    821,
+    1342,
+    911
+   ],
+   "poly": [
+    [
+     1162,
+     821
+    ],
+    [
+     1342,
+     821
+    ],
+    [
+     1342,
+     911
+    ],
+    [
+     1162,
+     911
+    ]
+   ],
+   "b_text": "can",
+   "b_score": 0.8212,
+   "ink_px": 2953,
+   "ink_frac": 0.1508
+  },
+  {
+   "text": "drought.",
+   "text_raw": "drought .",
+   "score": 0.8657,
+   "min_token_prob": 0.6911,
+   "flags": [],
+   "box": [
+    2160,
+    813,
+    2578,
+    1002
+   ],
+   "poly": [
+    [
+     2177,
+     813
+    ],
+    [
+     2578,
+     863
+    ],
+    [
+     2561,
+     1002
+    ],
+    [
+     2160,
+     952
+    ]
+   ],
+   "b_text": "droogh",
+   "b_score": 0.7766,
+   "ink_px": 10482,
+   "ink_frac": 0.1669
+  },
+  {
+   "text": "areas.",
+   "text_raw": "areas .",
+   "score": 0.893,
+   "min_token_prob": 0.7996,
+   "flags": [],
+   "box": [
+    378,
+    910,
+    730,
+    1016
+   ],
+   "poly": [
+    [
+     382,
+     910
+    ],
+    [
+     730,
+     927
+    ],
+    [
+     726,
+     1016
+    ],
+    [
+     378,
+     999
+    ]
+   ],
+   "b_text": "areas.",
+   "b_score": 0.6997,
+   "ink_px": 5297,
+   "ink_frac": 0.1457
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6314,
+   "min_token_prob": 0.2673,
+   "flags": [],
+   "box": [
+    1683,
+    957,
+    1703,
+    975
+   ],
+   "poly": [
+    [
+     1683,
+     957
+    ],
+    [
+     1703,
+     957
+    ],
+    [
+     1703,
+     975
+    ],
+    [
+     1683,
+     975
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.2389,
+   "ink_px": 181,
+   "ink_frac": 0.1885
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6224,
+   "min_token_prob": 0.366,
+   "flags": [],
+   "box": [
+    1887,
+    954,
+    1917,
+    1012
+   ],
+   "poly": [
+    [
+     1892,
+     954
+    ],
+    [
+     1917,
+     956
+    ],
+    [
+     1912,
+     1012
+    ],
+    [
+     1887,
+     1010
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 231,
+   "ink_frac": 0.0918
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5592,
+   "min_token_prob": 0.1209,
+   "flags": [],
+   "box": [
+    1948,
+    971,
+    1979,
+    993
+   ],
+   "poly": [
+    [
+     1951,
+     971
+    ],
+    [
+     1979,
+     978
+    ],
+    [
+     1976,
+     993
+    ],
+    [
+     1948,
+     986
+    ]
+   ],
+   "b_text": "新",
+   "b_score": 0.1752,
+   "ink_px": 106,
+   "ink_frac": 0.0981
+  },
+  {
+   "text": "Mainly.",
+   "text_raw": "Mainly .",
+   "score": 0.9256,
+   "min_token_prob": 0.7576,
+   "flags": [],
+   "box": [
+    792,
+    1029,
+    1185,
+    1223
+   ],
+   "poly": [
+    [
+     808,
+     1029
+    ],
+    [
+     1185,
+     1069
+    ],
+    [
+     1169,
+     1223
+    ],
+    [
+     792,
+     1183
+    ]
+   ],
+   "b_text": "Maenly",
+   "b_score": 0.9517,
+   "ink_px": 8667,
+   "ink_frac": 0.1335
+  },
+  {
+   "text": "afefochondism foods to",
+   "text_raw": "afefochondism foods to",
+   "score": 0.6755,
+   "min_token_prob": 0.0609,
+   "flags": [],
+   "box": [
+    1261,
+    1065,
+    2541,
+    1258
+   ],
+   "poly": [
+    [
+     1264,
+     1065
+    ],
+    [
+     2541,
+     1089
+    ],
+    [
+     2538,
+     1258
+    ],
+    [
+     1261,
+     1234
+    ]
+   ],
+   "b_text": "affochestadfon loads t0",
+   "b_score": 0.6407,
+   "ink_px": 31653,
+   "ink_frac": 0.1357
+  },
+  {
+   "text": "craftant and",
+   "text_raw": "craftant and",
+   "score": 0.5851,
+   "min_token_prob": 0.2851,
+   "flags": [],
+   "box": [
+    308,
+    1167,
+    1084,
+    1328
+   ],
+   "poly": [
+    [
+     314,
+     1167
+    ],
+    [
+     1084,
+     1202
+    ],
+    [
+     1079,
+     1328
+    ],
+    [
+     308,
+     1293
+    ]
+   ],
+   "b_text": "Gaanfail and",
+   "b_score": 0.7786,
+   "ink_px": 15149,
+   "ink_frac": 0.1402
+  },
+  {
+   "text": "profeds the eniprome.",
+   "text_raw": "profeds the eniprome .",
+   "score": 0.7483,
+   "min_token_prob": 0.5049,
+   "flags": [],
+   "box": [
+    1229,
+    1202,
+    2603,
+    1408
+   ],
+   "poly": [
+    [
+     1235,
+     1202
+    ],
+    [
+     2603,
+     1258
+    ],
+    [
+     2596,
+     1408
+    ],
+    [
+     1229,
+     1352
+    ]
+   ],
+   "b_text": "proteds the ohuprorme",
+   "b_score": 0.8484,
+   "ink_px": 35044,
+   "ink_frac": 0.1566
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.4433,
+   "min_token_prob": 0.284,
+   "flags": [],
+   "box": [
+    2248,
+    1225,
+    2286,
+    1263
+   ],
+   "poly": [
+    [
+     2264,
+     1225
+    ],
+    [
+     2286,
+     1247
+    ],
+    [
+     2271,
+     1263
+    ],
+    [
+     2248,
+     1240
+    ]
+   ],
+   "b_text": "新",
+   "b_score": 0.0344,
+   "ink_px": 155,
+   "ink_frac": 0.1
+  },
+  {
+   "text": "from the",
+   "text_raw": "from the",
+   "score": 0.7981,
+   "min_token_prob": 0.397,
+   "flags": [],
+   "box": [
+    306,
+    1287,
+    1119,
+    1509
+   ],
+   "poly": [
+    [
+     313,
+     1287
+    ],
+    [
+     1119,
+     1319
+    ],
+    [
+     1112,
+     1509
+    ],
+    [
+     306,
+     1478
+    ]
+   ],
+   "b_text": "from sthe",
+   "b_score": 0.8367,
+   "ink_px": 14661,
+   "ink_frac": 0.0883
+  },
+  {
+   "text": "climate changes.",
+   "text_raw": "climate changes .",
+   "score": 0.8051,
+   "min_token_prob": 0.4078,
+   "flags": [],
+   "box": [
+    1106,
+    1331,
+    2149,
+    1537
+   ],
+   "poly": [
+    [
+     1113,
+     1331
+    ],
+    [
+     2149,
+     1379
+    ],
+    [
+     2142,
+     1537
+    ],
+    [
+     1106,
+     1489
+    ]
+   ],
+   "b_text": "clemato Changes",
+   "b_score": 0.7423,
+   "ink_px": 26510,
+   "ink_frac": 0.1487
+  },
+  {
+   "text": "A species found on a",
+   "text_raw": "A species found on a",
+   "score": 0.8765,
+   "min_token_prob": 0.2716,
+   "flags": [],
+   "box": [
+    869,
+    1585,
+    2364,
+    1834
+   ],
+   "poly": [
+    [
+     879,
+     1585
+    ],
+    [
+     2364,
+     1671
+    ],
+    [
+     2354,
+     1834
+    ],
+    [
+     869,
+     1748
+    ]
+   ],
+   "b_text": "A. spectes found cen a",
+   "b_score": 0.8008,
+   "ink_px": 31683,
+   "ink_frac": 0.1208
+  },
+  {
+   "text": "particular ecosystems can help the entire",
+   "text_raw": "particular ecosystems can help the entire",
+   "score": 0.9301,
+   "min_token_prob": 0.6099,
+   "flags": [],
+   "box": [
+    286,
+    1702,
+    2610,
+    1993
+   ],
+   "poly": [
+    [
+     295,
+     1702
+    ],
+    [
+     2610,
+     1826
+    ],
+    [
+     2601,
+     1993
+    ],
+    [
+     286,
+     1869
+    ]
+   ],
+   "b_text": "particular ecosyste can help tthe enror",
+   "b_score": 0.7182,
+   "ink_px": 57191,
+   "ink_frac": 0.1371
+  },
+  {
+   "text": "from the draugh by' ylarding them.",
+   "text_raw": "from the draugh by ' ylarding them .",
+   "score": 0.754,
+   "min_token_prob": 0.2154,
+   "flags": [],
+   "box": [
+    240,
+    1823,
+    2545,
+    2186
+   ],
+   "poly": [
+    [
+     254,
+     1823
+    ],
+    [
+     2545,
+     1982
+    ],
+    [
+     2531,
+     2186
+    ],
+    [
+     240,
+     2028
+    ]
+   ],
+   "b_text": "from sthe dtroughby splaiting thom.",
+   "b_score": 0.7572,
+   "ink_px": 56119,
+   "ink_frac": 0.1121
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6097,
+   "min_token_prob": 0.3793,
+   "flags": [],
+   "box": [
+    522,
+    2453,
+    537,
+    2480
+   ],
+   "poly": [
+    [
+     522,
+     2453
+    ],
+    [
+     537,
+     2453
+    ],
+    [
+     537,
+     2480
+    ],
+    [
+     522,
+     2480
+    ]
+   ],
+   "b_text": "酒",
+   "b_score": 0.04,
+   "ink_px": 154,
+   "ink_frac": 0.1462
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5001,
+   "min_token_prob": 0.2369,
+   "flags": [],
+   "box": [
+    1880,
+    2585,
+    1893,
+    2605
+   ],
+   "poly": [
+    [
+     1880,
+     2585
+    ],
+    [
+     1893,
+     2585
+    ],
+    [
+     1893,
+     2605
+    ],
+    [
+     1880,
+     2605
+    ]
+   ],
+   "b_text": "章",
+   "b_score": 0.1049,
+   "ink_px": 91,
+   "ink_frac": 0.1138
+  },
+  {
+   "text": "i",
+   "text_raw": "i",
+   "score": 0.2716,
+   "min_token_prob": 0.2036,
+   "flags": [],
+   "box": [
+    1942,
+    2585,
+    1956,
+    2619
+   ],
+   "poly": [
+    [
+     1942,
+     2585
+    ],
+    [
+     1956,
+     2585
+    ],
+    [
+     1956,
+     2619
+    ],
+    [
+     1942,
+     2619
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 262,
+   "ink_frac": 0.2191
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8031,
+   "min_token_prob": 0.6141,
+   "flags": [],
+   "box": [
+    1612,
+    2696,
+    1632,
+    2733
+   ],
+   "poly": [
+    [
+     1612,
+     2696
+    ],
+    [
+     1632,
+     2696
+    ],
+    [
+     1632,
+     2733
+    ],
+    [
+     1612,
+     2733
+    ]
+   ],
+   "b_text": "4",
+   "b_score": 0.0534,
+   "ink_px": 273,
+   "ink_frac": 0.1741
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7783,
+   "min_token_prob": 0.5641,
+   "flags": [],
+   "box": [
+    1858,
+    2751,
+    1880,
+    2782
+   ],
+   "poly": [
+    [
+     1858,
+     2751
+    ],
+    [
+     1880,
+     2751
+    ],
+    [
+     1880,
+     2782
+    ],
+    [
+     1858,
+     2782
+    ]
+   ],
+   "b_text": "金",
+   "b_score": 0.0499,
+   "ink_px": 272,
+   "ink_frac": 0.186
+  },
+  {
+   "text": "it",
+   "text_raw": "it",
+   "score": 0.5206,
+   "min_token_prob": 0.2761,
+   "flags": [],
+   "box": [
+    2201,
+    2791,
+    2210,
+    2802
+   ],
+   "poly": [
+    [
+     2201,
+     2791
+    ],
+    [
+     2210,
+     2791
+    ],
+    [
+     2210,
+     2802
+    ],
+    [
+     2201,
+     2802
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.2137,
+   "ink_px": 68,
+   "ink_frac": 0.1408
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5368,
+   "min_token_prob": 0.4094,
+   "flags": [],
+   "box": [
+    1891,
+    3164,
+    1913,
+    3179
+   ],
+   "poly": [
+    [
+     1891,
+     3164
+    ],
+    [
+     1913,
+     3164
+    ],
+    [
+     1913,
+     3179
+    ],
+    [
+     1891,
+     3179
+    ]
+   ],
+   "b_text": "国",
+   "b_score": 0.0723,
+   "ink_px": 68,
+   "ink_frac": 0.0741
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.9095,
+   "min_token_prob": 0.831,
+   "flags": [],
+   "box": [
+    1902,
+    3188,
+    1918,
+    3207
+   ],
+   "poly": [
+    [
+     1902,
+     3188
+    ],
+    [
+     1918,
+     3188
+    ],
+    [
+     1918,
+     3207
+    ],
+    [
+     1902,
+     3207
+    ]
+   ],
+   "b_text": "特",
+   "b_score": 0.0487,
+   "ink_px": 102,
+   "ink_frac": 0.1175
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7738,
+   "min_token_prob": 0.5503,
+   "flags": [],
+   "box": [
+    1518,
+    3249,
+    1536,
+    3265
+   ],
+   "poly": [
+    [
+     1518,
+     3249
+    ],
+    [
+     1536,
+     3249
+    ],
+    [
+     1536,
+     3265
+    ],
+    [
+     1518,
+     3265
+    ]
+   ],
+   "b_text": "电",
+   "b_score": 0.1696,
+   "ink_px": 112,
+   "ink_frac": 0.1333
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6741,
+   "min_token_prob": 0.3504,
+   "flags": [],
+   "box": [
+    2441,
+    3241,
+    2460,
+    3258
+   ],
+   "poly": [
+    [
+     2441,
+     3241
+    ],
+    [
+     2460,
+     3241
+    ],
+    [
+     2460,
+     3258
+    ],
+    [
+     2441,
+     3258
+    ]
+   ],
+   "b_text": "*",
+   "b_score": 0.5089,
+   "ink_px": 90,
+   "ink_frac": 0.1001
+  },
+  {
+   "text": "is",
+   "text_raw": "is",
+   "score": 0.4606,
+   "min_token_prob": 0.2368,
+   "flags": [],
+   "box": [
+    2119,
+    3374,
+    2153,
+    3404
+   ],
+   "poly": [
+    [
+     2119,
+     3378
+    ],
+    [
+     2150,
+     3374
+    ],
+    [
+     2153,
+     3400
+    ],
+    [
+     2122,
+     3404
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 155,
+   "ink_frac": 0.0949
+  }
+ ],
+ "peak_torch_alloc_mib": 2719,
+ "peak_rss_mib_process": 2968
+}

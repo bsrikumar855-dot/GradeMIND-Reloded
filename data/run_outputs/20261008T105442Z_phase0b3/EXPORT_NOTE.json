@@ -1,0 +1,15 @@
+{
+ "source_run": "20261008T105442Z_phase0b3",
+ "redaction": "data/redaction.json via spike/redact.py",
+ "logs_collapsed": [
+  "logs/st011g_rl.sheet_001.a_base_int8.log",
+  "logs/st011b.sheet_001.a_base_int8.log",
+  "logs/raw.sheet_001.a_base_int8.log",
+  "logs/st011g.sheet_001.a_base_int8.log",
+  "logs/st011g_rl.sheet_002.a_base_int8.log",
+  "logs/st011g.sheet_002.a_base_int8.log",
+  "logs/st011b.sheet_002.a_base_int8.log",
+  "logs/raw.sheet_002.a_base_int8.log"
+ ],
+ "collapse_rule": "logs > 1 MB: runs of identical consecutive lines collapsed to one line + '[previous line repeated N times]'; raw logs kept local"
+}

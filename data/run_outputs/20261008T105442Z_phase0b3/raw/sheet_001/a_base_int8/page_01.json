@@ -1,0 +1,142 @@
+{
+ "engine": "unlimited-ocr",
+ "model_revision": "07dea832e22aefee32ad281d4b80551282e1c168",
+ "path": "transformers",
+ "mode": "base",
+ "mode_params": {
+  "base_size": 1024,
+  "image_size": 1024,
+  "crop_mode": false
+ },
+ "prompt": "<image>document parsing.",
+ "quant": "int8",
+ "resolved": {
+  "weights_file": "model-00001-of-000001.safetensors",
+  "weights_sha256": "2bc48a7a110061ea58fff65d3169367eebe3aee371ca6968dc2219c1b2855fc6",
+  "linear8bit_modules": 2196,
+  "param_devices": [
+   "cuda:0"
+  ],
+  "class": "UnlimitedOCRForCausalLM"
+ },
+ "offload_layers": null,
+ "decoding": {
+  "temperature": 0.0,
+  "max_length": 4096,
+  "no_repeat_ngram_size": 35,
+  "ngram_window": 128
+ },
+ "page": "page_01.jpg",
+ "latency_s": 55.709,
+ "model_load_s": 4.76,
+ "generated_tokens": 1223,
+ "tokens_per_s": 22.0,
+ "peak_torch_alloc_mib": 4361,
+ "peak_torch_reserved_mib": 4432,
+ "nvidia_smi_used_mib_after": 9043,
+ "token_prob": {
+  "mean": 0.9534,
+  "min": 0.014,
+  "share_below_0.5": 0.0417
+ },
+ "token_ids": [],
+ "token_logprobs": [],
+ "token_margins": [],
+ "degenerate_flags": [
+  "EMPTY_CELL_SPAM_x191"
+ ],
+ "regions": [
+  {
+   "category": "header",
+   "bbox_raw": [
+    [
+     820,
+     14,
+     886,
+     40
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "title",
+   "bbox_raw": [
+    [
+     349,
+     53,
+     600,
+     78
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     255,
+     80,
+     697,
+     95
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     375,
+     97,
+     580,
+     110
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     282,
+     111,
+     667,
+     127
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "title",
+   "bbox_raw": [
+    [
+     258,
+     133,
+     699,
+     153
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "table",
+   "bbox_raw": [
+    [
+     101,
+     154,
+     895,
+     830
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  }
+ ],
+ "raw": "[REDACTED]"
+}

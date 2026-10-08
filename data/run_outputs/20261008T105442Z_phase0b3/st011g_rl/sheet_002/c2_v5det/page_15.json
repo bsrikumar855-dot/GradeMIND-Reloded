@@ -1,0 +1,884 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_15.jpg",
+ "latency_s": 1.241,
+ "crop_s": 0.09,
+ "recognition_s": 1.151,
+ "model_load_s": 0.79,
+ "n_lines": 24,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.9316,
+   "min_token_prob": 0.91,
+   "flags": [],
+   "box": [
+    1998,
+    542,
+    2206,
+    708
+   ],
+   "poly": [
+    [
+     2011,
+     542
+    ],
+    [
+     2206,
+     559
+    ],
+    [
+     2193,
+     708
+    ],
+    [
+     1998,
+     691
+    ]
+   ],
+   "b_text": "ab",
+   "b_score": 0.4004,
+   "ink_px": 4748,
+   "ink_frac": 0.1425
+  },
+  {
+   "text": "Mauves.",
+   "text_raw": "Mauves .",
+   "score": 0.5243,
+   "min_token_prob": 0.1154,
+   "flags": [],
+   "box": [
+    2206,
+    564,
+    2452,
+    724
+   ],
+   "poly": [
+    [
+     2221,
+     564
+    ],
+    [
+     2452,
+     590
+    ],
+    [
+     2437,
+     724
+    ],
+    [
+     2206,
+     698
+    ]
+   ],
+   "b_text": "ma",
+   "b_score": 0.6462,
+   "ink_px": 4545,
+   "ink_frac": 0.1276
+  },
+  {
+   "text": "Composting as a method",
+   "text_raw": "Composting as a method",
+   "score": 0.7834,
+   "min_token_prob": 0.531,
+   "flags": [],
+   "box": [
+    468,
+    507,
+    1986,
+    857
+   ],
+   "poly": [
+    [
+     468,
+     655
+    ],
+    [
+     1966,
+     507
+    ],
+    [
+     1986,
+     708
+    ],
+    [
+     488,
+     857
+    ]
+   ],
+   "b_text": "Composatirg ces a metlod",
+   "b_score": 0.7996,
+   "ink_px": 28466,
+   "ink_frac": 0.0877
+  },
+  {
+   "text": "was",
+   "text_raw": "was",
+   "score": 0.5306,
+   "min_token_prob": 0.1975,
+   "flags": [],
+   "box": [
+    2242,
+    729,
+    2470,
+    890
+   ],
+   "poly": [
+    [
+     2261,
+     729
+    ],
+    [
+     2470,
+     762
+    ],
+    [
+     2457,
+     890
+    ],
+    [
+     2242,
+     857
+    ]
+   ],
+   "b_text": "w",
+   "b_score": 0.5342,
+   "ink_px": 3803,
+   "ink_frac": 0.1178
+  },
+  {
+   "text": "the \" Gavin.",
+   "text_raw": "the \" Gavin .",
+   "score": 0.789,
+   "min_token_prob": 0.1552,
+   "flags": [],
+   "box": [
+    1859,
+    865,
+    2449,
+    1047
+   ],
+   "poly": [
+    [
+     1865,
+     865
+    ],
+    [
+     2449,
+     889
+    ],
+    [
+     2443,
+     1047
+    ],
+    [
+     1859,
+     1024
+    ]
+   ],
+   "b_text": "the crn",
+   "b_score": 0.7693,
+   "ink_px": 13177,
+   "ink_frac": 0.1293
+  },
+  {
+   "text": "as very useful from polluting.",
+   "text_raw": "as very useful from polluting .",
+   "score": 0.8233,
+   "min_token_prob": 0.4972,
+   "flags": [],
+   "box": [
+    61,
+    860,
+    1926,
+    1182
+   ],
+   "poly": [
+    [
+     61,
+     966
+    ],
+    [
+     1914,
+     860
+    ],
+    [
+     1926,
+     1076
+    ],
+    [
+     73,
+     1182
+    ]
+   ],
+   "b_text": "s iery cusefel from polluting",
+   "b_score": 0.7541,
+   "ink_px": 43335,
+   "ink_frac": 0.1017
+  },
+  {
+   "text": "wartage are plastics.",
+   "text_raw": "wartage are plastics .",
+   "score": 0.8125,
+   "min_token_prob": 0.3429,
+   "flags": [],
+   "box": [
+    107,
+    1231,
+    1522,
+    1457
+   ],
+   "poly": [
+    [
+     107,
+     1277
+    ],
+    [
+     1516,
+     1231
+    ],
+    [
+     1522,
+     1410
+    ],
+    [
+     113,
+     1457
+    ]
+   ],
+   "b_text": "wabctage aro plastics.",
+   "b_score": 0.8316,
+   "ink_px": 26250,
+   "ink_frac": 0.0962
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6798,
+   "min_token_prob": 0.3684,
+   "flags": [],
+   "box": [
+    1456,
+    1414,
+    1472,
+    1428
+   ],
+   "poly": [
+    [
+     1456,
+     1414
+    ],
+    [
+     1472,
+     1414
+    ],
+    [
+     1472,
+     1428
+    ],
+    [
+     1456,
+     1428
+    ]
+   ],
+   "b_text": "城",
+   "b_score": 0.0304,
+   "ink_px": 99,
+   "ink_frac": 0.136
+  },
+  {
+   "text": "clinds of waste",
+   "text_raw": "clinds of waste",
+   "score": 0.8172,
+   "min_token_prob": 0.5304,
+   "flags": [],
+   "box": [
+    1459,
+    1527,
+    2377,
+    1693
+   ],
+   "poly": [
+    [
+     1459,
+     1529
+    ],
+    [
+     2376,
+     1527
+    ],
+    [
+     2377,
+     1691
+    ],
+    [
+     1460,
+     1693
+    ]
+   ],
+   "b_text": "dinds of caste",
+   "b_score": 0.6629,
+   "ink_px": 18940,
+   "ink_frac": 0.1158
+  },
+  {
+   "text": "ethase.",
+   "text_raw": "ethase .",
+   "score": 0.8235,
+   "min_token_prob": 0.5791,
+   "flags": [],
+   "box": [
+    1051,
+    1550,
+    1367,
+    1686
+   ],
+   "poly": [
+    [
+     1051,
+     1555
+    ],
+    [
+     1365,
+     1550
+    ],
+    [
+     1367,
+     1681
+    ],
+    [
+     1053,
+     1686
+    ]
+   ],
+   "b_text": "ethase",
+   "b_score": 0.8883,
+   "ink_px": 7276,
+   "ink_frac": 0.1561
+  },
+  {
+   "text": "Crenerating.",
+   "text_raw": "Crenerating .",
+   "score": 0.8231,
+   "min_token_prob": 0.3514,
+   "flags": [],
+   "box": [
+    430,
+    1565,
+    984,
+    1709
+   ],
+   "poly": [
+    [
+     430,
+     1571
+    ],
+    [
+     983,
+     1565
+    ],
+    [
+     984,
+     1703
+    ],
+    [
+     432,
+     1709
+    ]
+   ],
+   "b_text": "Goneratfng",
+   "b_score": 0.7554,
+   "ink_px": 9819,
+   "ink_frac": 0.1159
+  },
+  {
+   "text": "results in the conference",
+   "text_raw": "results in the conference",
+   "score": 0.7627,
+   "min_token_prob": 0.3432,
+   "flags": [],
+   "box": [
+    844,
+    1684,
+    2459,
+    1853
+   ],
+   "poly": [
+    [
+     844,
+     1688
+    ],
+    [
+     2459,
+     1684
+    ],
+    [
+     2459,
+     1849
+    ],
+    [
+     844,
+     1853
+    ]
+   ],
+   "b_text": "Gesutts ien ti awrrme",
+   "b_score": 0.6516,
+   "ink_px": 30374,
+   "ink_frac": 0.1055
+  },
+  {
+   "text": "may.",
+   "text_raw": "may .",
+   "score": 0.8648,
+   "min_token_prob": 0.6002,
+   "flags": [],
+   "box": [
+    86,
+    1741,
+    352,
+    1848
+   ],
+   "poly": [
+    [
+     87,
+     1741
+    ],
+    [
+     352,
+     1745
+    ],
+    [
+     351,
+     1848
+    ],
+    [
+     86,
+     1843
+    ]
+   ],
+   "b_text": "may",
+   "b_score": 0.9891,
+   "ink_px": 3873,
+   "ink_frac": 0.1216
+  },
+  {
+   "text": "always.",
+   "text_raw": "always .",
+   "score": 0.9909,
+   "min_token_prob": 0.9742,
+   "flags": [],
+   "box": [
+    307,
+    1738,
+    759,
+    1844
+   ],
+   "poly": [
+    [
+     307,
+     1738
+    ],
+    [
+     759,
+     1738
+    ],
+    [
+     759,
+     1844
+    ],
+    [
+     307,
+     1844
+    ]
+   ],
+   "b_text": "always",
+   "b_score": 0.9487,
+   "ink_px": 6231,
+   "ink_frac": 0.1138
+  },
+  {
+   "text": "problems. Impropen disposal",
+   "text_raw": "problems . Impropen disposal",
+   "score": 0.8954,
+   "min_token_prob": 0.5763,
+   "flags": [],
+   "box": [
+    82,
+    1867,
+    1650,
+    2019
+   ],
+   "poly": [
+    [
+     83,
+     1867
+    ],
+    [
+     1650,
+     1871
+    ],
+    [
+     1649,
+     2019
+    ],
+    [
+     82,
+     2015
+    ]
+   ],
+   "b_text": "problems. Impropos desposal",
+   "b_score": 0.8688,
+   "ink_px": 31513,
+   "ink_frac": 0.1247
+  },
+  {
+   "text": "www",
+   "text_raw": "www",
+   "score": 0.1506,
+   "min_token_prob": 0.0421,
+   "flags": [],
+   "box": [
+    1919,
+    1869,
+    1944,
+    1884
+   ],
+   "poly": [
+    [
+     1919,
+     1869
+    ],
+    [
+     1944,
+     1869
+    ],
+    [
+     1944,
+     1884
+    ],
+    [
+     1919,
+     1884
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.0339,
+   "ink_px": 102,
+   "ink_frac": 0.1021
+  },
+  {
+   "text": "\" results for",
+   "text_raw": "\" results for",
+   "score": 0.7776,
+   "min_token_prob": 0.3806,
+   "flags": [],
+   "box": [
+    1656,
+    1865,
+    2457,
+    2025
+   ],
+   "poly": [
+    [
+     1656,
+     1883
+    ],
+    [
+     2453,
+     1865
+    ],
+    [
+     2457,
+     2007
+    ],
+    [
+     1659,
+     2025
+    ]
+   ],
+   "b_text": "euts &",
+   "b_score": 0.4621,
+   "ink_px": 16216,
+   "ink_frac": 0.13
+  },
+  {
+   "text": "the wastage.",
+   "text_raw": "the wastage .",
+   "score": 0.9083,
+   "min_token_prob": 0.5816,
+   "flags": [],
+   "box": [
+    107,
+    2004,
+    927,
+    2186
+   ],
+   "poly": [
+    [
+     109,
+     2004
+    ],
+    [
+     927,
+     2012
+    ],
+    [
+     925,
+     2186
+    ],
+    [
+     107,
+     2178
+    ]
+   ],
+   "b_text": "othe coastage.",
+   "b_score": 0.9233,
+   "ink_px": 14011,
+   "ink_frac": 0.0908
+  },
+  {
+   "text": "production and",
+   "text_raw": "production and",
+   "score": 0.9848,
+   "min_token_prob": 0.965,
+   "flags": [],
+   "box": [
+    858,
+    2010,
+    1921,
+    2211
+   ],
+   "poly": [
+    [
+     863,
+     2010
+    ],
+    [
+     1921,
+     2045
+    ],
+    [
+     1915,
+     2211
+    ],
+    [
+     858,
+     2175
+    ]
+   ],
+   "b_text": "produdfan and",
+   "b_score": 0.8911,
+   "ink_px": 25938,
+   "ink_frac": 0.1362
+  },
+  {
+   "text": "follow police.",
+   "text_raw": "follow police .",
+   "score": 0.7348,
+   "min_token_prob": 0.414,
+   "flags": [],
+   "box": [
+    2001,
+    2005,
+    2470,
+    2244
+   ],
+   "poly": [
+    [
+     2001,
+     2061
+    ],
+    [
+     2448,
+     2005
+    ],
+    [
+     2470,
+     2188
+    ],
+    [
+     2023,
+     2244
+    ]
+   ],
+   "b_text": "Follde",
+   "b_score": 0.7275,
+   "ink_px": 12361,
+   "ink_frac": 0.1365
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.7539,
+   "min_token_prob": 0.6721,
+   "flags": [],
+   "box": [
+    1242,
+    2198,
+    1264,
+    2243
+   ],
+   "poly": [
+    [
+     1242,
+     2198
+    ],
+    [
+     1264,
+     2198
+    ],
+    [
+     1264,
+     2243
+    ],
+    [
+     1242,
+     2243
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 313,
+   "ink_frac": 0.1615
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7322,
+   "min_token_prob": 0.4723,
+   "flags": [],
+   "box": [
+    1310,
+    2207,
+    1347,
+    2249
+   ],
+   "poly": [
+    [
+     1310,
+     2217
+    ],
+    [
+     1333,
+     2207
+    ],
+    [
+     1347,
+     2239
+    ],
+    [
+     1323,
+     2249
+    ]
+   ],
+   "b_text": "藏",
+   "b_score": 0.2384,
+   "ink_px": 256,
+   "ink_frac": 0.1504
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7151,
+   "min_token_prob": 0.4316,
+   "flags": [],
+   "box": [
+    1835,
+    2913,
+    1858,
+    2929
+   ],
+   "poly": [
+    [
+     1835,
+     2913
+    ],
+    [
+     1858,
+     2913
+    ],
+    [
+     1858,
+     2929
+    ],
+    [
+     1835,
+     2929
+    ]
+   ],
+   "b_text": "都",
+   "b_score": 0.0435,
+   "ink_px": 145,
+   "ink_frac": 0.148
+  },
+  {
+   "text": "eff",
+   "text_raw": "eff",
+   "score": 0.6327,
+   "min_token_prob": 0.5924,
+   "flags": [],
+   "box": [
+    92,
+    3373,
+    102,
+    3382
+   ],
+   "poly": [
+    [
+     92,
+     3373
+    ],
+    [
+     102,
+     3373
+    ],
+    [
+     102,
+     3382
+    ],
+    [
+     92,
+     3382
+    ]
+   ],
+   "b_text": "S",
+   "b_score": 0.1619,
+   "ink_px": 92,
+   "ink_frac": 0.1991
+  }
+ ],
+ "peak_torch_alloc_mib": 2693,
+ "peak_rss_mib_process": 2968
+}

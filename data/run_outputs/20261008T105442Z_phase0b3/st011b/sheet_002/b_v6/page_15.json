@@ -1,0 +1,245 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_15.jpg",
+ "latency_s": 9.278,
+ "model_load_s": 0.4,
+ "n_lines": 7,
+ "lines": [
+  {
+   "text": "Now dayss the main courice as",
+   "score": 0.9263,
+   "poly": [
+    [
+     118,
+     1089
+    ],
+    [
+     2375,
+     1005
+    ],
+    [
+     2382,
+     1207
+    ],
+    [
+     126,
+     1290
+    ]
+   ],
+   "box": [
+    118,
+    1005,
+    2382,
+    1290
+   ]
+  },
+  {
+   "text": "wastage are plastics.",
+   "score": 0.982,
+   "poly": [
+    [
+     119,
+     1273
+    ],
+    [
+     1510,
+     1235
+    ],
+    [
+     1515,
+     1398
+    ],
+    [
+     123,
+     1437
+    ]
+   ],
+   "box": [
+    119,
+    1235,
+    1515,
+    1437
+   ]
+  },
+  {
+   "text": "Greneratig those linds of coasfe",
+   "score": 0.8746,
+   "poly": [
+    [
+     430,
+     1562
+    ],
+    [
+     2369,
+     1523
+    ],
+    [
+     2372,
+     1663
+    ],
+    [
+     433,
+     1703
+    ]
+   ],
+   "box": [
+    430,
+    1523,
+    2372,
+    1703
+   ]
+  },
+  {
+   "text": "may always resutts en this chuscrme",
+   "score": 0.8501,
+   "poly": [
+    [
+     81,
+     1706
+    ],
+    [
+     2453,
+     1694
+    ],
+    [
+     2454,
+     1840
+    ],
+    [
+     81,
+     1851
+    ]
+   ],
+   "box": [
+    81,
+    1694,
+    2454,
+    1851
+   ]
+  },
+  {
+   "text": "problems. Improper desposal cresults cen",
+   "score": 0.9031,
+   "poly": [
+    [
+     81,
+     1860
+    ],
+    [
+     2450,
+     1864
+    ],
+    [
+     2450,
+     2017
+    ],
+    [
+     81,
+     2013
+    ]
+   ],
+   "box": [
+    81,
+    1860,
+    2450,
+    2017
+   ]
+  },
+  {
+   "text": "the wastage producdian and pollent",
+   "score": 0.8897,
+   "poly": [
+    [
+     115,
+     1987
+    ],
+    [
+     2465,
+     2023
+    ],
+    [
+     2463,
+     2212
+    ],
+    [
+     112,
+     2176
+    ]
+   ],
+   "box": [
+    112,
+    1987,
+    2465,
+    2212
+   ]
+  },
+  {
+   "text": "1",
+   "score": 0.4475,
+   "poly": [
+    [
+     1225,
+     2175
+    ],
+    [
+     1359,
+     2183
+    ],
+    [
+     1354,
+     2266
+    ],
+    [
+     1221,
+     2258
+    ]
+   ],
+   "box": [
+    1221,
+    2175,
+    1359,
+    2266
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3390
+}

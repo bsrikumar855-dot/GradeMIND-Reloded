@@ -1,0 +1,581 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_13.jpg",
+ "latency_s": 10.952,
+ "model_load_s": 0.41,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "we can collet all kends of",
+   "score": 0.9696,
+   "poly": [
+    [
+     798,
+     423
+    ],
+    [
+     2435,
+     352
+    ],
+    [
+     2441,
+     479
+    ],
+    [
+     804,
+     550
+    ]
+   ],
+   "box": [
+    798,
+    352,
+    2441,
+    550
+   ]
+  },
+  {
+   "text": "watse and seprate cthem cbased on",
+   "score": 0.9625,
+   "poly": [
+    [
+     455,
+     553
+    ],
+    [
+     2484,
+     464
+    ],
+    [
+     2491,
+     615
+    ],
+    [
+     461,
+     705
+    ]
+   ],
+   "box": [
+    455,
+    464,
+    2491,
+    705
+   ]
+  },
+  {
+   "text": "the degradable abelity.",
+   "score": 0.9745,
+   "poly": [
+    [
+     463,
+     676
+    ],
+    [
+     1836,
+     632
+    ],
+    [
+     1841,
+     788
+    ],
+    [
+     468,
+     832
+    ]
+   ],
+   "box": [
+    463,
+    632,
+    1841,
+    832
+   ]
+  },
+  {
+   "text": "Degradable coastes cleke, papes,",
+   "score": 0.9862,
+   "poly": [
+    [
+     831,
+     901
+    ],
+    [
+     2541,
+     847
+    ],
+    [
+     2546,
+     979
+    ],
+    [
+     836,
+     1033
+    ]
+   ],
+   "box": [
+    831,
+    847,
+    2546,
+    1033
+   ]
+  },
+  {
+   "text": "food wasto are seprated and cbe can",
+   "score": 0.9547,
+   "poly": [
+    [
+     467,
+     1029
+    ],
+    [
+     2437,
+     970
+    ],
+    [
+     2442,
+     1114
+    ],
+    [
+     471,
+     1173
+    ]
+   ],
+   "box": [
+    467,
+    970,
+    2442,
+    1173
+   ]
+  },
+  {
+   "text": "ase them as a fertplpiser. and then",
+   "score": 0.8465,
+   "poly": [
+    [
+     510,
+     1163
+    ],
+    [
+     2437,
+     1095
+    ],
+    [
+     2442,
+     1219
+    ],
+    [
+     514,
+     1288
+    ]
+   ],
+   "box": [
+    510,
+    1095,
+    2442,
+    1288
+   ]
+  },
+  {
+   "text": "seprating the plastic coastes like",
+   "score": 0.9569,
+   "poly": [
+    [
+     507,
+     1279
+    ],
+    [
+     2367,
+     1223
+    ],
+    [
+     2371,
+     1356
+    ],
+    [
+     511,
+     1412
+    ]
+   ],
+   "box": [
+    507,
+    1223,
+    2371,
+    1412
+   ]
+  },
+  {
+   "text": "plasiic bottles, plastic plates @tc..,",
+   "score": 0.9246,
+   "poly": [
+    [
+     530,
+     1396
+    ],
+    [
+     2371,
+     1338
+    ],
+    [
+     2375,
+     1484
+    ],
+    [
+     534,
+     1542
+    ]
+   ],
+   "box": [
+    530,
+    1338,
+    2375,
+    1542
+   ]
+  },
+  {
+   "text": "Proper despocal of those binds",
+   "score": 0.9571,
+   "poly": [
+    [
+     819,
+     1620
+    ],
+    [
+     2413,
+     1584
+    ],
+    [
+     2416,
+     1709
+    ],
+    [
+     822,
+     1744
+    ]
+   ],
+   "box": [
+    819,
+    1584,
+    2416,
+    1744
+   ]
+  },
+  {
+   "text": "of conrte woll creduce th. wastonge",
+   "score": 0.8834,
+   "poly": [
+    [
+     509,
+     1753
+    ],
+    [
+     2392,
+     1722
+    ],
+    [
+     2394,
+     1837
+    ],
+    [
+     511,
+     1869
+    ]
+   ],
+   "box": [
+    509,
+    1722,
+    2394,
+    1869
+   ]
+  },
+  {
+   "text": "production. harge of afodd aoaste coas",
+   "score": 0.915,
+   "poly": [
+    [
+     507,
+     1869
+    ],
+    [
+     2381,
+     1830
+    ],
+    [
+     2384,
+     1956
+    ],
+    [
+     510,
+     1995
+    ]
+   ],
+   "box": [
+    507,
+    1830,
+    2384,
+    1995
+   ]
+  },
+  {
+   "text": "firstly seprated anal chave sto produce",
+   "score": 0.9592,
+   "poly": [
+    [
+     529,
+     1993
+    ],
+    [
+     2525,
+     1960
+    ],
+    [
+     2527,
+     2076
+    ],
+    [
+     531,
+     2109
+    ]
+   ],
+   "box": [
+    529,
+    1960,
+    2527,
+    2109
+   ]
+  },
+  {
+   "text": "the chatural fertplixere by the",
+   "score": 0.9108,
+   "poly": [
+    [
+     523,
+     2109
+    ],
+    [
+     2328,
+     2083
+    ],
+    [
+     2330,
+     2209
+    ],
+    [
+     525,
+     2235
+    ]
+   ],
+   "box": [
+    523,
+    2083,
+    2330,
+    2235
+   ]
+  },
+  {
+   "text": "earthoorms. and coe can use that",
+   "score": 0.9424,
+   "poly": [
+    [
+     529,
+     2230
+    ],
+    [
+     2382,
+     2211
+    ],
+    [
+     2383,
+     2314
+    ],
+    [
+     530,
+     2333
+    ]
+   ],
+   "box": [
+    529,
+    2211,
+    2383,
+    2333
+   ]
+  },
+  {
+   "text": "nactural fertilpzieors afor troes and imall",
+   "score": 0.8738,
+   "poly": [
+    [
+     522,
+     2335
+    ],
+    [
+     2493,
+     2322
+    ],
+    [
+     2494,
+     2443
+    ],
+    [
+     523,
+     2455
+    ]
+   ],
+   "box": [
+    522,
+    2322,
+    2494,
+    2455
+   ]
+  },
+  {
+   "text": "plaits en cthe colloge.",
+   "score": 0.9428,
+   "poly": [
+    [
+     532,
+     2467
+    ],
+    [
+     1725,
+     2448
+    ],
+    [
+     1727,
+     2569
+    ],
+    [
+     534,
+     2587
+    ]
+   ],
+   "box": [
+    532,
+    2448,
+    1727,
+    2587
+   ]
+  },
+  {
+   "text": "By the Propos coay to rocasing",
+   "score": 0.9261,
+   "poly": [
+    [
+     937,
+     2683
+    ],
+    [
+     2550,
+     2687
+    ],
+    [
+     2549,
+     2808
+    ],
+    [
+     937,
+     2804
+    ]
+   ],
+   "box": [
+    937,
+    2683,
+    2550,
+    2808
+   ]
+  },
+  {
+   "text": "them will help the enupronment to",
+   "score": 0.9423,
+   "poly": [
+    [
+     508,
+     2791
+    ],
+    [
+     2514,
+     2801
+    ],
+    [
+     2513,
+     2932
+    ],
+    [
+     508,
+     2923
+    ]
+   ],
+   "box": [
+    508,
+    2791,
+    2514,
+    2932
+   ]
+  },
+  {
+   "text": "reduce the pollution.",
+   "score": 0.9702,
+   "poly": [
+    [
+     506,
+     2938
+    ],
+    [
+     1463,
+     2930
+    ],
+    [
+     1464,
+     3046
+    ],
+    [
+     507,
+     3053
+    ]
+   ],
+   "box": [
+    506,
+    2930,
+    1464,
+    3053
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3295
+}

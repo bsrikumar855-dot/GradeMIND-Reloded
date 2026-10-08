@@ -1,0 +1,581 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_04.jpg",
+ "latency_s": 11.973,
+ "model_load_s": 0.4,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     749,
+     0
+    ],
+    [
+     853,
+     0
+    ],
+    [
+     853,
+     19
+    ],
+    [
+     749,
+     19
+    ]
+   ],
+   "box": [
+    749,
+    0,
+    853,
+    19
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     346,
+     275
+    ],
+    [
+     482,
+     275
+    ],
+    [
+     482,
+     301
+    ],
+    [
+     346,
+     301
+    ]
+   ],
+   "box": [
+    346,
+    275,
+    482,
+    301
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     2424,
+     288
+    ],
+    [
+     2547,
+     288
+    ],
+    [
+     2547,
+     309
+    ],
+    [
+     2424,
+     309
+    ]
+   ],
+   "box": [
+    2424,
+    288,
+    2547,
+    309
+   ]
+  },
+  {
+   "text": "Ansoo chefottoccing",
+   "score": 0.6915,
+   "poly": [
+    [
+     345,
+     476
+    ],
+    [
+     1400,
+     484
+    ],
+    [
+     1399,
+     567
+    ],
+    [
+     344,
+     559
+    ]
+   ],
+   "box": [
+    344,
+    476,
+    1400,
+    567
+   ]
+  },
+  {
+   "text": "101 The effede of domesuse coarter",
+   "score": 0.8158,
+   "poly": [
+    [
+     106,
+     708
+    ],
+    [
+     1923,
+     712
+    ],
+    [
+     1923,
+     838
+    ],
+    [
+     106,
+     834
+    ]
+   ],
+   "box": [
+    106,
+    708,
+    1923,
+    838
+   ]
+  },
+  {
+   "text": "Domestic coaiter",
+   "score": 0.9072,
+   "poly": [
+    [
+     454,
+     986
+    ],
+    [
+     1267,
+     986
+    ],
+    [
+     1267,
+     1082
+    ],
+    [
+     454,
+     1082
+    ]
+   ],
+   "box": [
+    454,
+    986,
+    1267,
+    1082
+   ]
+  },
+  {
+   "text": "ces a kend of",
+   "score": 0.8218,
+   "poly": [
+    [
+     1899,
+     1238
+    ],
+    [
+     2605,
+     1256
+    ],
+    [
+     2602,
+     1362
+    ],
+    [
+     1896,
+     1343
+    ]
+   ],
+   "box": [
+    1896,
+    1238,
+    2605,
+    1362
+   ]
+  },
+  {
+   "text": " DomestPc oaste",
+   "score": 0.9077,
+   "poly": [
+    [
+     863,
+     1248
+    ],
+    [
+     1855,
+     1260
+    ],
+    [
+     1854,
+     1348
+    ],
+    [
+     862,
+     1336
+    ]
+   ],
+   "box": [
+    862,
+    1248,
+    1855,
+    1348
+   ]
+  },
+  {
+   "text": "woadte",
+   "score": 0.6985,
+   "poly": [
+    [
+     322,
+     1376
+    ],
+    [
+     615,
+     1380
+    ],
+    [
+     614,
+     1465
+    ],
+    [
+     321,
+     1460
+    ]
+   ],
+   "box": [
+    321,
+    1376,
+    615,
+    1465
+   ]
+  },
+  {
+   "text": "shat s cmade by The homans. Pn",
+   "score": 0.8533,
+   "poly": [
+    [
+     662,
+     1370
+    ],
+    [
+     2485,
+     1380
+    ],
+    [
+     2484,
+     1500
+    ],
+    [
+     662,
+     1491
+    ]
+   ],
+   "box": [
+    662,
+    1370,
+    2485,
+    1500
+   ]
+  },
+  {
+   "text": "the home s",
+   "score": 0.8464,
+   "poly": [
+    [
+     324,
+     1504
+    ],
+    [
+     952,
+     1512
+    ],
+    [
+     950,
+     1615
+    ],
+    [
+     323,
+     1607
+    ]
+   ],
+   "box": [
+    323,
+    1504,
+    952,
+    1615
+   ]
+  },
+  {
+   "text": "Ex",
+   "score": 0.9493,
+   "poly": [
+    [
+     348,
+     1641
+    ],
+    [
+     525,
+     1646
+    ],
+    [
+     522,
+     1748
+    ],
+    [
+     345,
+     1742
+    ]
+   ],
+   "box": [
+    345,
+    1641,
+    525,
+    1748
+   ]
+  },
+  {
+   "text": "t Vegetable oaste fst cote",
+   "score": 0.858,
+   "poly": [
+    [
+     600,
+     1778
+    ],
+    [
+     2305,
+     1798
+    ],
+    [
+     2304,
+     1901
+    ],
+    [
+     599,
+     1882
+    ]
+   ],
+   "box": [
+    599,
+    1778,
+    2305,
+    1901
+   ]
+  },
+  {
+   "text": "Effeces of domestic ioaste on freshloater",
+   "score": 0.921,
+   "poly": [
+    [
+     430,
+     2178
+    ],
+    [
+     2659,
+     2189
+    ],
+    [
+     2658,
+     2302
+    ],
+    [
+     429,
+     2291
+    ]
+   ],
+   "box": [
+    429,
+    2178,
+    2659,
+    2302
+   ]
+  },
+  {
+   "text": "ecosystom:",
+   "score": 0.9213,
+   "poly": [
+    [
+     326,
+     2326
+    ],
+    [
+     819,
+     2335
+    ],
+    [
+     818,
+     2427
+    ],
+    [
+     325,
+     2418
+    ]
+   ],
+   "box": [
+    325,
+    2326,
+    819,
+    2427
+   ]
+  },
+  {
+   "text": "Frosh loater ecosystein:",
+   "score": 0.9163,
+   "poly": [
+    [
+     466,
+     2592
+    ],
+    [
+     1581,
+     2598
+    ],
+    [
+     1580,
+     2701
+    ],
+    [
+     465,
+     2695
+    ]
+   ],
+   "box": [
+    465,
+    2592,
+    1581,
+    2701
+   ]
+  },
+  {
+   "text": "Tit as a kind of\" ecosysten tohere",
+   "score": 0.844,
+   "poly": [
+    [
+     975,
+     2851
+    ],
+    [
+     2684,
+     2873
+    ],
+    [
+     2682,
+     3001
+    ],
+    [
+     973,
+     2979
+    ]
+   ],
+   "box": [
+    973,
+    2851,
+    2684,
+    3001
+   ]
+  },
+  {
+   "text": "ies ino umore eatt contends Ph the",
+   "score": 0.8844,
+   "poly": [
+    [
+     576,
+     3008
+    ],
+    [
+     2625,
+     3027
+    ],
+    [
+     2624,
+     3136
+    ],
+    [
+     575,
+     3117
+    ]
+   ],
+   "box": [
+    575,
+    3008,
+    2625,
+    3136
+   ]
+  },
+  {
+   "text": "pond, riven",
+   "score": 0.8676,
+   "poly": [
+    [
+     719,
+     3450
+    ],
+    [
+     1358,
+     3454
+    ],
+    [
+     1357,
+     3552
+    ],
+    [
+     718,
+     3548
+    ]
+   ],
+   "box": [
+    718,
+    3450,
+    1358,
+    3552
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3234
+}

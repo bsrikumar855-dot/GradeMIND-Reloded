@@ -1,0 +1,1341 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_05.jpg",
+ "latency_s": 2.25,
+ "crop_s": 0.094,
+ "recognition_s": 2.156,
+ "model_load_s": 0.78,
+ "n_lines": 37,
+ "n_no_text": 1,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "t",
+   "text_raw": "t",
+   "score": 0.4894,
+   "min_token_prob": 0.3252,
+   "flags": [],
+   "box": [
+    367,
+    2,
+    383,
+    17
+   ],
+   "poly": [
+    [
+     367,
+     2
+    ],
+    [
+     383,
+     2
+    ],
+    [
+     383,
+     17
+    ],
+    [
+     367,
+     17
+    ]
+   ],
+   "b_text": "+",
+   "b_score": 0.213,
+   "ink_px": 118,
+   "ink_frac": 0.1561
+  },
+  {
+   "text": "Effects:",
+   "text_raw": "Effects :",
+   "score": 0.9825,
+   "min_token_prob": 0.9802,
+   "flags": [],
+   "box": [
+    451,
+    290,
+    715,
+    369
+   ],
+   "poly": [
+    [
+     451,
+     294
+    ],
+    [
+     714,
+     290
+    ],
+    [
+     715,
+     366
+    ],
+    [
+     452,
+     369
+    ]
+   ],
+   "b_text": "Efleds:",
+   "b_score": 0.8694,
+   "ink_px": 4221,
+   "ink_frac": 0.1744
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1195,
+    405,
+    1206,
+    422
+   ],
+   "poly": [
+    [
+     1195,
+     405
+    ],
+    [
+     1206,
+     405
+    ],
+    [
+     1206,
+     422
+    ],
+    [
+     1195,
+     422
+    ]
+   ],
+   "b_text": "一",
+   "b_score": 0.1605,
+   "ink_px": 56,
+   "ink_frac": 0.084
+  },
+  {
+   "text": "# I #",
+   "text_raw": "# I #",
+   "score": 0.6786,
+   "min_token_prob": 0.386,
+   "flags": [],
+   "box": [
+    582,
+    474,
+    813,
+    558
+   ],
+   "poly": [
+    [
+     582,
+     481
+    ],
+    [
+     810,
+     474
+    ],
+    [
+     813,
+     550
+    ],
+    [
+     585,
+     558
+    ]
+   ],
+   "b_text": "*工",
+   "b_score": 0.5993,
+   "ink_px": 2133,
+   "ink_frac": 0.0999
+  },
+  {
+   "text": "afterts due ecosystem.",
+   "text_raw": "afterts due ecosystem .",
+   "score": 0.6795,
+   "min_token_prob": 0.3805,
+   "flags": [],
+   "box": [
+    830,
+    391,
+    2056,
+    559
+   ],
+   "poly": [
+    [
+     830,
+     473
+    ],
+    [
+     2051,
+     391
+    ],
+    [
+     2056,
+     477
+    ],
+    [
+     836,
+     559
+    ]
+   ],
+   "b_text": "effectsdhe ecasysden",
+   "b_score": 0.645,
+   "ink_px": 15525,
+   "ink_frac": 0.1283
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6794,
+   "min_token_prob": 0.3713,
+   "flags": [],
+   "box": [
+    2360,
+    539,
+    2383,
+    560
+   ],
+   "poly": [
+    [
+     2360,
+     539
+    ],
+    [
+     2383,
+     539
+    ],
+    [
+     2383,
+     560
+    ],
+    [
+     2360,
+     560
+    ]
+   ],
+   "b_text": "真",
+   "b_score": 0.2997,
+   "ink_px": 238,
+   "ink_frac": 0.2061
+  },
+  {
+   "text": "# It Effects the organisms that",
+   "text_raw": "# It Effects the organisms that",
+   "score": 0.7526,
+   "min_token_prob": 0.1859,
+   "flags": [],
+   "box": [
+    574,
+    488,
+    2149,
+    681
+   ],
+   "poly": [
+    [
+     574,
+     589
+    ],
+    [
+     2143,
+     488
+    ],
+    [
+     2149,
+     580
+    ],
+    [
+     580,
+     681
+    ]
+   ],
+   "b_text": "A It aoctssthe ouganesmsthat",
+   "b_score": 0.587,
+   "ink_px": 19952,
+   "ink_frac": 0.1368
+  },
+  {
+   "text": "crewed on the freshwater",
+   "text_raw": "crewed on the freshwater",
+   "score": 0.714,
+   "min_token_prob": 0.4985,
+   "flags": [],
+   "box": [
+    579,
+    619,
+    1735,
+    772
+   ],
+   "poly": [
+    [
+     579,
+     690
+    ],
+    [
+     1730,
+     619
+    ],
+    [
+     1735,
+     702
+    ],
+    [
+     584,
+     772
+    ]
+   ],
+   "b_text": "Ceued Pn ths fregh coader",
+   "b_score": 0.5636,
+   "ink_px": 14438,
+   "ink_frac": 0.1305
+  },
+  {
+   "text": "one",
+   "text_raw": "one",
+   "score": 0.5649,
+   "min_token_prob": 0.409,
+   "flags": [],
+   "box": [
+    377,
+    707,
+    512,
+    765
+   ],
+   "poly": [
+    [
+     377,
+     711
+    ],
+    [
+     511,
+     707
+    ],
+    [
+     512,
+     761
+    ],
+    [
+     378,
+     765
+    ]
+   ],
+   "b_text": "aDe",
+   "b_score": 0.45,
+   "ink_px": 1597,
+   "ink_frac": 0.1657
+  },
+  {
+   "text": "\" In pollute the fresh words, to a",
+   "text_raw": "\" In pollute the fresh words , to a",
+   "score": 0.8252,
+   "min_token_prob": 0.1102,
+   "flags": [],
+   "box": [
+    580,
+    697,
+    2080,
+    876
+   ],
+   "poly": [
+    [
+     580,
+     786
+    ],
+    [
+     2075,
+     697
+    ],
+    [
+     2080,
+     787
+    ],
+    [
+     585,
+     876
+    ]
+   ],
+   "b_text": " t pollute the frosh yoater to e",
+   "b_score": 0.645,
+   "ink_px": 19934,
+   "ink_frac": 0.1295
+  },
+  {
+   "text": "5",
+   "text_raw": "5",
+   "score": 0.6356,
+   "min_token_prob": 0.378,
+   "flags": [],
+   "box": [
+    1863,
+    795,
+    1878,
+    812
+   ],
+   "poly": [
+    [
+     1863,
+     795
+    ],
+    [
+     1878,
+     795
+    ],
+    [
+     1878,
+     812
+    ],
+    [
+     1863,
+     812
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.0633,
+   "ink_px": 67,
+   "ink_frac": 0.0856
+  },
+  {
+   "text": "to wooden.",
+   "text_raw": "to wooden .",
+   "score": 0.7201,
+   "min_token_prob": 0.3207,
+   "flags": [],
+   "box": [
+    856,
+    866,
+    1178,
+    961
+   ],
+   "poly": [
+    [
+     856,
+     887
+    ],
+    [
+     1173,
+     866
+    ],
+    [
+     1178,
+     940
+    ],
+    [
+     861,
+     961
+    ]
+   ],
+   "b_text": "cocder.",
+   "b_score": 0.6941,
+   "ink_px": 3413,
+   "ink_frac": 0.1206
+  },
+  {
+   "text": "contami hooded.",
+   "text_raw": "contami hooded .",
+   "score": 0.853,
+   "min_token_prob": 0.5533,
+   "flags": [],
+   "box": [
+    380,
+    888,
+    846,
+    966
+   ],
+   "poly": [
+    [
+     380,
+     904
+    ],
+    [
+     844,
+     888
+    ],
+    [
+     846,
+     949
+    ],
+    [
+     382,
+     966
+    ]
+   ],
+   "b_text": "contamihcdgol",
+   "b_score": 0.5953,
+   "ink_px": 6489,
+   "ink_frac": 0.1842
+  },
+  {
+   "text": "# We have do separate the type",
+   "text_raw": "# We have do separate the type",
+   "score": 0.8906,
+   "min_token_prob": 0.5181,
+   "flags": [],
+   "box": [
+    551,
+    903,
+    2189,
+    1099
+   ],
+   "poly": [
+    [
+     551,
+     993
+    ],
+    [
+     2183,
+     903
+    ],
+    [
+     2189,
+     1010
+    ],
+    [
+     557,
+     1099
+    ]
+   ],
+   "b_text": " wehaue to sepratethe type",
+   "b_score": 0.7499,
+   "ink_px": 18913,
+   "ink_frac": 0.0966
+  },
+  {
+   "text": "the",
+   "text_raw": "the",
+   "score": 0.7911,
+   "min_token_prob": 0.5857,
+   "flags": [],
+   "box": [
+    476,
+    1013,
+    535,
+    1065
+   ],
+   "poly": [
+    [
+     476,
+     1021
+    ],
+    [
+     529,
+     1013
+    ],
+    [
+     535,
+     1057
+    ],
+    [
+     483,
+     1065
+    ]
+   ],
+   "b_text": "L",
+   "b_score": 0.8453,
+   "ink_px": 254,
+   "ink_frac": 0.0698
+  },
+  {
+   "text": "6",
+   "text_raw": "6",
+   "score": 0.3769,
+   "min_token_prob": 0.2451,
+   "flags": [],
+   "box": [
+    2430,
+    1043,
+    2442,
+    1062
+   ],
+   "poly": [
+    [
+     2430,
+     1043
+    ],
+    [
+     2442,
+     1043
+    ],
+    [
+     2442,
+     1062
+    ],
+    [
+     2430,
+     1062
+    ]
+   ],
+   "b_text": "5",
+   "b_score": 0.1059,
+   "ink_px": 247,
+   "ink_frac": 0.332
+  },
+  {
+   "text": "of rebased.",
+   "text_raw": "of rebased .",
+   "score": 0.8283,
+   "min_token_prob": 0.599,
+   "flags": [],
+   "box": [
+    371,
+    1077,
+    830,
+    1194
+   ],
+   "poly": [
+    [
+     371,
+     1096
+    ],
+    [
+     826,
+     1077
+    ],
+    [
+     830,
+     1175
+    ],
+    [
+     375,
+     1194
+    ]
+   ],
+   "b_text": "of sbased",
+   "b_score": 0.7053,
+   "ink_px": 6333,
+   "ink_frac": 0.1233
+  },
+  {
+   "text": "I use chosen to recycle there",
+   "text_raw": "I use chosen to recycle there",
+   "score": 0.6669,
+   "min_token_prob": 0.3176,
+   "flags": [],
+   "box": [
+    614,
+    1111,
+    2073,
+    1294
+   ],
+   "poly": [
+    [
+     614,
+     1191
+    ],
+    [
+     2067,
+     1111
+    ],
+    [
+     2073,
+     1213
+    ],
+    [
+     620,
+     1294
+    ]
+   ],
+   "b_text": "t toe chasre to geycle those",
+   "b_score": 0.6031,
+   "ink_px": 19092,
+   "ink_frac": 0.1132
+  },
+  {
+   "text": "kind of coater.",
+   "text_raw": "kind of coater .",
+   "score": 0.715,
+   "min_token_prob": 0.3555,
+   "flags": [],
+   "box": [
+    398,
+    1278,
+    1019,
+    1388
+   ],
+   "poly": [
+    [
+     398,
+     1296
+    ],
+    [
+     1016,
+     1278
+    ],
+    [
+     1019,
+     1369
+    ],
+    [
+     400,
+     1388
+    ]
+   ],
+   "b_text": "kend of coater.",
+   "b_score": 0.8211,
+   "ink_px": 8168,
+   "ink_frac": 0.1245
+  },
+  {
+   "text": "# we can be the degradable water",
+   "text_raw": "# we can be the degradable water",
+   "score": 0.7835,
+   "min_token_prob": 0.3084,
+   "flags": [],
+   "box": [
+    558,
+    1316,
+    2162,
+    1491
+   ],
+   "poly": [
+    [
+     558,
+     1403
+    ],
+    [
+     2157,
+     1316
+    ],
+    [
+     2162,
+     1404
+    ],
+    [
+     563,
+     1491
+    ]
+   ],
+   "b_text": "e  ue he degpdeble woater",
+   "b_score": 0.6176,
+   "ink_px": 24143,
+   "ink_frac": 0.1497
+  },
+  {
+   "text": "to the agricultural field as a natural",
+   "text_raw": "to the agricultural field as a natural",
+   "score": 0.9776,
+   "min_token_prob": 0.8904,
+   "flags": [],
+   "box": [
+    402,
+    1419,
+    2184,
+    1588
+   ],
+   "poly": [
+    [
+     402,
+     1498
+    ],
+    [
+     2180,
+     1419
+    ],
+    [
+     2184,
+     1509
+    ],
+    [
+     406,
+     1588
+    ]
+   ],
+   "b_text": "do sthe agricutue feeldas. a hadural",
+   "b_score": 0.6366,
+   "ink_px": 25097,
+   "ink_frac": 0.1374
+  },
+  {
+   "text": "ford- (Piler.",
+   "text_raw": "ford- ( Piler .",
+   "score": 0.4505,
+   "min_token_prob": 0.1108,
+   "flags": [],
+   "box": [
+    420,
+    1591,
+    823,
+    1677
+   ],
+   "poly": [
+    [
+     420,
+     1609
+    ],
+    [
+     820,
+     1591
+    ],
+    [
+     823,
+     1658
+    ],
+    [
+     423,
+     1677
+    ]
+   ],
+   "b_text": "fea Peen",
+   "b_score": 0.4848,
+   "ink_px": 6339,
+   "ink_frac": 0.1923
+  },
+  {
+   "text": "# FOR SOME THE FOUND",
+   "text_raw": "# FOR SOME THE FOUND",
+   "score": 0.4463,
+   "min_token_prob": 0.0354,
+   "flags": [],
+   "box": [
+    930,
+    1596,
+    1409,
+    1646
+   ],
+   "poly": [
+    [
+     930,
+     1615
+    ],
+    [
+     1408,
+     1596
+    ],
+    [
+     1409,
+     1627
+    ],
+    [
+     931,
+     1646
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 4931,
+   "ink_frac": 0.234
+  },
+  {
+   "text": "ENDOWERING THE HAY ON",
+   "text_raw": "ENDOWERING THE HAY ON",
+   "score": 0.7191,
+   "min_token_prob": 0.2435,
+   "flags": [],
+   "box": [
+    958,
+    1635,
+    1402,
+    1690
+   ],
+   "poly": [
+    [
+     958,
+     1655
+    ],
+    [
+     1400,
+     1635
+    ],
+    [
+     1402,
+     1669
+    ],
+    [
+     960,
+     1690
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 4782,
+   "ink_frac": 0.2241
+  },
+  {
+   "text": "sure can produce the food wasting",
+   "text_raw": "sure can produce the food wasting",
+   "score": 0.7537,
+   "min_token_prob": 0.1706,
+   "flags": [],
+   "box": [
+    584,
+    1639,
+    2244,
+    1776
+   ],
+   "poly": [
+    [
+     584,
+     1695
+    ],
+    [
+     2241,
+     1639
+    ],
+    [
+     2244,
+     1720
+    ],
+    [
+     587,
+     1776
+    ]
+   ],
+   "b_text": "lecanreduethefpod woastage",
+   "b_score": 0.6087,
+   "ink_px": 24652,
+   "ink_frac": 0.1588
+  },
+  {
+   "text": "Turf we pollute the freshwater",
+   "text_raw": "Turf we pollute the freshwater",
+   "score": 0.7265,
+   "min_token_prob": 0.1045,
+   "flags": [],
+   "box": [
+    644,
+    1741,
+    2141,
+    1880
+   ],
+   "poly": [
+    [
+     644,
+     1803
+    ],
+    [
+     2138,
+     1741
+    ],
+    [
+     2141,
+     1818
+    ],
+    [
+     648,
+     1880
+    ]
+   ],
+   "b_text": " oepoute eosh es",
+   "b_score": 0.508,
+   "ink_px": 20067,
+   "ink_frac": 0.1496
+  },
+  {
+   "text": "easystem the biodiversity may disturbed",
+   "text_raw": "easystem the biodiversity may disturbed",
+   "score": 0.7507,
+   "min_token_prob": 0.1819,
+   "flags": [],
+   "box": [
+    368,
+    1827,
+    2246,
+    1996
+   ],
+   "poly": [
+    [
+     368,
+     1910
+    ],
+    [
+     2242,
+     1827
+    ],
+    [
+     2246,
+     1913
+    ],
+    [
+     372,
+     1996
+    ]
+   ],
+   "b_text": "osyetem dhsboafeuity may decfenbed",
+   "b_score": 0.5852,
+   "ink_px": 30050,
+   "ink_frac": 0.1625
+  },
+  {
+   "text": "and the food chair also-ged disturbed.",
+   "text_raw": "and the food chair also-ged disturbed .",
+   "score": 0.8947,
+   "min_token_prob": 0.6388,
+   "flags": [],
+   "box": [
+    372,
+    1934,
+    2146,
+    2093
+   ],
+   "poly": [
+    [
+     372,
+     2007
+    ],
+    [
+     2142,
+     1934
+    ],
+    [
+     2146,
+     2020
+    ],
+    [
+     375,
+     2093
+    ]
+   ],
+   "b_text": "ard the fot Chaen also got alfetusbed.",
+   "b_score": 0.6547,
+   "ink_px": 27490,
+   "ink_frac": 0.1572
+  },
+  {
+   "text": "# If one ecosystem-call-afffects.",
+   "text_raw": "# If one ecosystem-call-afffects .",
+   "score": 0.7805,
+   "min_token_prob": 0.2976,
+   "flags": [],
+   "box": [
+    608,
+    2048,
+    2041,
+    2195
+   ],
+   "poly": [
+    [
+     608,
+     2103
+    ],
+    [
+     2038,
+     2048
+    ],
+    [
+     2041,
+     2140
+    ],
+    [
+     611,
+     2195
+    ]
+   ],
+   "b_text": " If one ecosgsedom cal affeds",
+   "b_score": 0.5273,
+   "ink_px": 21287,
+   "ink_frac": 0.1418
+  },
+  {
+   "text": "fitzwill also effect, the entire ecosystem.",
+   "text_raw": "fitzwill also effect , the entire ecosystem .",
+   "score": 0.8141,
+   "min_token_prob": 0.3781,
+   "flags": [],
+   "box": [
+    344,
+    2146,
+    2167,
+    2306
+   ],
+   "poly": [
+    [
+     344,
+     2210
+    ],
+    [
+     2164,
+     2146
+    ],
+    [
+     2167,
+     2243
+    ],
+    [
+     348,
+     2306
+    ]
+   ],
+   "b_text": ".itll abo efect ctheedore ecosystem.",
+   "b_score": 0.5803,
+   "ink_px": 29057,
+   "ink_frac": 0.1454
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5612,
+   "min_token_prob": 0.2313,
+   "flags": [],
+   "box": [
+    253,
+    2237,
+    388,
+    2304
+   ],
+   "poly": [
+    [
+     253,
+     2253
+    ],
+    [
+     382,
+     2237
+    ],
+    [
+     388,
+     2289
+    ],
+    [
+     259,
+     2304
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 949,
+   "ink_frac": 0.1052
+  },
+  {
+   "text": "can use composting methods",
+   "text_raw": "can use composting methods",
+   "score": 0.9554,
+   "min_token_prob": 0.8251,
+   "flags": [],
+   "box": [
+    887,
+    2259,
+    2078,
+    2389
+   ],
+   "poly": [
+    [
+     887,
+     2308
+    ],
+    [
+     2074,
+     2259
+    ],
+    [
+     2078,
+     2340
+    ],
+    [
+     890,
+     2389
+    ]
+   ],
+   "b_text": "C we composting methods",
+   "b_score": 0.6543,
+   "ink_px": 17886,
+   "ink_frac": 0.1601
+  },
+  {
+   "text": "'t not",
+   "text_raw": "'t not",
+   "score": 0.4195,
+   "min_token_prob": 0.1971,
+   "flags": [],
+   "box": [
+    631,
+    2309,
+    874,
+    2389
+   ],
+   "poly": [
+    [
+     631,
+     2321
+    ],
+    [
+     870,
+     2309
+    ],
+    [
+     874,
+     2377
+    ],
+    [
+     634,
+     2389
+    ]
+   ],
+   "b_text": "t100",
+   "b_score": 0.3592,
+   "ink_px": 2143,
+   "ink_frac": 0.1063
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.3953,
+   "min_token_prob": 0.3271,
+   "flags": [],
+   "box": [
+    264,
+    2369,
+    353,
+    2406
+   ],
+   "poly": [
+    [
+     264,
+     2369
+    ],
+    [
+     353,
+     2369
+    ],
+    [
+     353,
+     2406
+    ],
+    [
+     264,
+     2406
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 440,
+   "ink_frac": 0.0889
+  },
+  {
+   "text": "redulate the organic coatstage.",
+   "text_raw": "redulate the organic coatstage .",
+   "score": 0.644,
+   "min_token_prob": 0.1678,
+   "flags": [],
+   "box": [
+    549,
+    2369,
+    1949,
+    2502
+   ],
+   "poly": [
+    [
+     549,
+     2405
+    ],
+    [
+     1946,
+     2369
+    ],
+    [
+     1949,
+     2466
+    ],
+    [
+     552,
+     2502
+    ]
+   ],
+   "b_text": "redube the oginee coabtage,",
+   "b_score": 0.603,
+   "ink_px": 19312,
+   "ink_frac": 0.1257
+  },
+  {
+   "text": "to to",
+   "text_raw": "to to",
+   "score": 0.8193,
+   "min_token_prob": 0.578,
+   "flags": [],
+   "box": [
+    370,
+    2415,
+    494,
+    2507
+   ],
+   "poly": [
+    [
+     370,
+     2415
+    ],
+    [
+     494,
+     2415
+    ],
+    [
+     494,
+     2507
+    ],
+    [
+     370,
+     2507
+    ]
+   ],
+   "b_text": "10",
+   "b_score": 0.6736,
+   "ink_px": 2326,
+   "ink_frac": 0.1645
+  },
+  {
+   "text": "pursblem.",
+   "text_raw": "pursblem .",
+   "score": 0.6237,
+   "min_token_prob": 0.2795,
+   "flags": [],
+   "box": [
+    385,
+    2521,
+    748,
+    2620
+   ],
+   "poly": [
+    [
+     385,
+     2540
+    ],
+    [
+     744,
+     2521
+    ],
+    [
+     748,
+     2601
+    ],
+    [
+     389,
+     2620
+    ]
+   ],
+   "b_text": "pnoblem.",
+   "b_score": 0.6928,
+   "ink_px": 4716,
+   "ink_frac": 0.1382
+  }
+ ],
+ "peak_torch_alloc_mib": 2705,
+ "peak_rss_mib_process": 2969
+}

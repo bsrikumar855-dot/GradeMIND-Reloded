@@ -1,0 +1,1304 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "engine_b (see b_dir)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 2.068,
+ "crop_s": 0.101,
+ "recognition_s": 1.967,
+ "model_load_s": 0.79,
+ "n_lines": 36,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "social sessions.",
+   "text_raw": "social sessions .",
+   "score": 0.554,
+   "min_token_prob": 0.2528,
+   "flags": [],
+   "box": [
+    453,
+    491,
+    1100,
+    610
+   ],
+   "poly": [
+    [
+     458,
+     491
+    ],
+    [
+     1100,
+     522
+    ],
+    [
+     1096,
+     610
+    ],
+    [
+     453,
+     580
+    ]
+   ],
+   "b_text": "sesn",
+   "b_score": 0.4331,
+   "ink_px": 11091,
+   "ink_frac": 0.1677
+  },
+  {
+   "text": "It is a kind of emotional dismay.",
+   "text_raw": "It is a kind of emotional dismay .",
+   "score": 0.8375,
+   "min_token_prob": 0.2774,
+   "flags": [],
+   "box": [
+    898,
+    601,
+    2708,
+    762
+   ],
+   "poly": [
+    [
+     899,
+     601
+    ],
+    [
+     2708,
+     611
+    ],
+    [
+     2708,
+     762
+    ],
+    [
+     898,
+     753
+    ]
+   ],
+   "b_text": "It ai ",
+   "b_score": 0.5932,
+   "ink_px": 35462,
+   "ink_frac": 0.1187
+  },
+  {
+   "text": "Soil erosion removed with",
+   "text_raw": "Soil erosion removed with",
+   "score": 0.7941,
+   "min_token_prob": 0.5278,
+   "flags": [],
+   "box": [
+    894,
+    745,
+    2476,
+    877
+   ],
+   "poly": [
+    [
+     894,
+     759
+    ],
+    [
+     2475,
+     745
+    ],
+    [
+     2476,
+     863
+    ],
+    [
+     895,
+     877
+    ]
+   ],
+   "b_text": "Soil esin amous ",
+   "b_score": 0.4935,
+   "ink_px": 30984,
+   "ink_frac": 0.1496
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5525,
+   "min_token_prob": 0.2013,
+   "flags": [],
+   "box": [
+    2476,
+    851,
+    2504,
+    877
+   ],
+   "poly": [
+    [
+     2476,
+     851
+    ],
+    [
+     2504,
+     851
+    ],
+    [
+     2504,
+     877
+    ],
+    [
+     2476,
+     877
+    ]
+   ],
+   "b_text": "￥",
+   "b_score": 0.0883,
+   "ink_px": 303,
+   "ink_frac": 0.1993
+  },
+  {
+   "text": "\"exfired toposible.",
+   "text_raw": "\"exfired toposible .",
+   "score": 0.3546,
+   "min_token_prob": 0.0851,
+   "flags": [],
+   "box": [
+    387,
+    889,
+    1425,
+    1014
+   ],
+   "poly": [
+    [
+     390,
+     889
+    ],
+    [
+     1425,
+     920
+    ],
+    [
+     1422,
+     1014
+    ],
+    [
+     387,
+     983
+    ]
+   ],
+   "b_text": "ae tsi",
+   "b_score": 0.4989,
+   "ink_px": 19290,
+   "ink_frac": 0.1738
+  },
+  {
+   "text": "fall",
+   "text_raw": "fall",
+   "score": 0.3064,
+   "min_token_prob": 0.1344,
+   "flags": [],
+   "box": [
+    2485,
+    1264,
+    2495,
+    1275
+   ],
+   "poly": [
+    [
+     2485,
+     1264
+    ],
+    [
+     2495,
+     1264
+    ],
+    [
+     2495,
+     1275
+    ],
+    [
+     2485,
+     1275
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.3004,
+   "ink_px": 66,
+   "ink_frac": 0.1304
+  },
+  {
+   "text": "Food:",
+   "text_raw": "Food :",
+   "score": 0.9415,
+   "min_token_prob": 0.8606,
+   "flags": [],
+   "box": [
+    493,
+    1289,
+    850,
+    1397
+   ],
+   "poly": [
+    [
+     497,
+     1289
+    ],
+    [
+     850,
+     1305
+    ],
+    [
+     845,
+     1397
+    ],
+    [
+     493,
+     1381
+    ]
+   ],
+   "b_text": "Eoad:",
+   "b_score": 0.6314,
+   "ink_px": 5431,
+   "ink_frac": 0.1431
+  },
+  {
+   "text": "frew",
+   "text_raw": "frew",
+   "score": 0.3657,
+   "min_token_prob": 0.0722,
+   "flags": [],
+   "box": [
+    288,
+    1302,
+    389,
+    1359
+   ],
+   "poly": [
+    [
+     292,
+     1302
+    ],
+    [
+     389,
+     1309
+    ],
+    [
+     385,
+     1359
+    ],
+    [
+     288,
+     1352
+    ]
+   ],
+   "b_text": "上",
+   "b_score": 0.0625,
+   "ink_px": 760,
+   "ink_frac": 0.1125
+  },
+  {
+   "text": "Food is dropped due to cue",
+   "text_raw": "Food is dropped due to cue",
+   "score": 0.7103,
+   "min_token_prob": 0.4284,
+   "flags": [],
+   "box": [
+    832,
+    1423,
+    2633,
+    1605
+   ],
+   "poly": [
+    [
+     837,
+     1423
+    ],
+    [
+     2633,
+     1498
+    ],
+    [
+     2629,
+     1605
+    ],
+    [
+     832,
+     1530
+    ]
+   ],
+   "b_text": "Fii damecue da a",
+   "b_score": 0.5359,
+   "ink_px": 32502,
+   "ink_frac": 0.1509
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5342,
+   "min_token_prob": 0.2974,
+   "flags": [],
+   "box": [
+    2777,
+    1419,
+    2810,
+    1439
+   ],
+   "poly": [
+    [
+     2777,
+     1419
+    ],
+    [
+     2810,
+     1419
+    ],
+    [
+     2810,
+     1439
+    ],
+    [
+     2777,
+     1439
+    ]
+   ],
+   "b_text": "一",
+   "b_score": 0.5115,
+   "ink_px": 138,
+   "ink_frac": 0.0958
+  },
+  {
+   "text": "rainfall. It is a third of natural",
+   "text_raw": "rainfall . It is a third of natural",
+   "score": 0.7696,
+   "min_token_prob": 0.1143,
+   "flags": [],
+   "box": [
+    386,
+    1534,
+    2569,
+    1760
+   ],
+   "poly": [
+    [
+     391,
+     1534
+    ],
+    [
+     2569,
+     1627
+    ],
+    [
+     2563,
+     1760
+    ],
+    [
+     386,
+     1666
+    ]
+   ],
+   "b_text": "Gin.It s a cind ofotoal",
+   "b_score": 0.5129,
+   "ink_px": 38040,
+   "ink_frac": 0.1197
+  },
+  {
+   "text": "# drawn.",
+   "text_raw": "# drawn .",
+   "score": 0.5149,
+   "min_token_prob": 0.0815,
+   "flags": [],
+   "box": [
+    301,
+    1682,
+    751,
+    1782
+   ],
+   "poly": [
+    [
+     305,
+     1682
+    ],
+    [
+     751,
+     1704
+    ],
+    [
+     747,
+     1782
+    ],
+    [
+     301,
+     1759
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 5660,
+   "ink_frac": 0.1373
+  },
+  {
+   "text": "Droughting.",
+   "text_raw": "Droughting .",
+   "score": 0.6166,
+   "min_token_prob": 0.232,
+   "flags": [],
+   "box": [
+    493,
+    1821,
+    894,
+    1930
+   ],
+   "poly": [
+    [
+     499,
+     1821
+    ],
+    [
+     894,
+     1855
+    ],
+    [
+     887,
+     1930
+    ],
+    [
+     493,
+     1897
+    ]
+   ],
+   "b_text": "D-a",
+   "b_score": 0.4869,
+   "ink_px": 5169,
+   "ink_frac": 0.144
+  },
+  {
+   "text": "fast",
+   "text_raw": "fast",
+   "score": 0.5203,
+   "min_token_prob": 0.3231,
+   "flags": [],
+   "box": [
+    2387,
+    1848,
+    2412,
+    1871
+   ],
+   "poly": [
+    [
+     2392,
+     1848
+    ],
+    [
+     2412,
+     1854
+    ],
+    [
+     2407,
+     1871
+    ],
+    [
+     2387,
+     1865
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.3189,
+   "ink_px": 265,
+   "ink_frac": 0.2856
+  },
+  {
+   "text": "Drought its stopped due to Mr.",
+   "text_raw": "Drought its stopped due to Mr.",
+   "score": 0.7453,
+   "min_token_prob": 0.1812,
+   "flags": [],
+   "box": [
+    842,
+    1950,
+    2582,
+    2166
+   ],
+   "poly": [
+    [
+     848,
+     1950
+    ],
+    [
+     2582,
+     2060
+    ],
+    [
+     2575,
+     2166
+    ],
+    [
+     842,
+     2057
+    ]
+   ],
+   "b_text": "Doaghttappand due do ",
+   "b_score": 0.7451,
+   "ink_px": 32938,
+   "ink_frac": 0.1759
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6724,
+   "min_token_prob": 0.6473,
+   "flags": [],
+   "box": [
+    2221,
+    1967,
+    2259,
+    2006
+   ],
+   "poly": [
+    [
+     2221,
+     1990
+    ],
+    [
+     2242,
+     1967
+    ],
+    [
+     2259,
+     1983
+    ],
+    [
+     2239,
+     2006
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.0892,
+   "ink_px": 388,
+   "ink_frac": 0.3368
+  },
+  {
+   "text": "rayful for the particular area.",
+   "text_raw": "rayful for the particular area .",
+   "score": 0.8819,
+   "min_token_prob": 0.2686,
+   "flags": [],
+   "box": [
+    332,
+    2053,
+    2278,
+    2302
+   ],
+   "poly": [
+    [
+     340,
+     2053
+    ],
+    [
+     2278,
+     2176
+    ],
+    [
+     2270,
+     2302
+    ],
+    [
+     332,
+     2179
+    ]
+   ],
+   "b_text": " ",
+   "b_score": 0.5285,
+   "ink_px": 35439,
+   "ink_frac": 0.1315
+  },
+  {
+   "text": "# #",
+   "text_raw": "# #",
+   "score": 0.7009,
+   "min_token_prob": 0.4058,
+   "flags": [],
+   "box": [
+    1204,
+    2206,
+    1360,
+    2256
+   ],
+   "poly": [
+    [
+     1207,
+     2206
+    ],
+    [
+     1360,
+     2217
+    ],
+    [
+     1357,
+     2256
+    ],
+    [
+     1204,
+     2245
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 1150,
+   "ink_frac": 0.1367
+  },
+  {
+   "text": "If there is no wonder assault.",
+   "text_raw": "If there is no wonder assault .",
+   "score": 0.9187,
+   "min_token_prob": 0.6367,
+   "flags": [],
+   "box": [
+    884,
+    2216,
+    2631,
+    2453
+   ],
+   "poly": [
+    [
+     892,
+     2216
+    ],
+    [
+     2631,
+     2348
+    ],
+    [
+     2623,
+     2453
+    ],
+    [
+     884,
+     2321
+    ]
+   ],
+   "b_text": "Itioecootenasac",
+   "b_score": 0.494,
+   "ink_px": 33277,
+   "ink_frac": 0.1805
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.4858,
+   "min_token_prob": 0.1873,
+   "flags": [],
+   "box": [
+    1400,
+    2219,
+    1562,
+    2275
+   ],
+   "poly": [
+    [
+     1404,
+     2219
+    ],
+    [
+     1562,
+     2234
+    ],
+    [
+     1558,
+     2275
+    ],
+    [
+     1400,
+     2260
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 949,
+   "ink_frac": 0.1053
+  },
+  {
+   "text": "is",
+   "text_raw": "is",
+   "score": 0.6015,
+   "min_token_prob": 0.2612,
+   "flags": [],
+   "box": [
+    2424,
+    2238,
+    2452,
+    2264
+   ],
+   "poly": [
+    [
+     2430,
+     2238
+    ],
+    [
+     2452,
+     2245
+    ],
+    [
+     2445,
+     2264
+    ],
+    [
+     2424,
+     2257
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.1749,
+   "ink_px": 77,
+   "ink_frac": 0.0731
+  },
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.7863,
+   "min_token_prob": 0.6962,
+   "flags": [],
+   "box": [
+    1622,
+    2249,
+    1645,
+    2262
+   ],
+   "poly": [
+    [
+     1622,
+     2249
+    ],
+    [
+     1645,
+     2249
+    ],
+    [
+     1645,
+     2262
+    ],
+    [
+     1622,
+     2262
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 333,
+   "ink_frac": 0.3806
+  },
+  {
+   "text": "'s there it will dropped",
+   "text_raw": "'s there it will dropped",
+   "score": 0.7712,
+   "min_token_prob": 0.3617,
+   "flags": [],
+   "box": [
+    331,
+    2294,
+    1748,
+    2529
+   ],
+   "poly": [
+    [
+     341,
+     2294
+    ],
+    [
+     1748,
+     2422
+    ],
+    [
+     1738,
+     2529
+    ],
+    [
+     331,
+     2402
+    ]
+   ],
+   "b_text": "ae st fl dappend",
+   "b_score": 0.5419,
+   "ink_px": 22626,
+   "ink_frac": 0.147
+  },
+  {
+   "text": "8.",
+   "text_raw": "8 .",
+   "score": 0.4706,
+   "min_token_prob": 0.2779,
+   "flags": [],
+   "box": [
+    2805,
+    2344,
+    2849,
+    2364
+   ],
+   "poly": [
+    [
+     2805,
+     2344
+    ],
+    [
+     2849,
+     2344
+    ],
+    [
+     2849,
+     2364
+    ],
+    [
+     2805,
+     2364
+    ]
+   ],
+   "b_text": "华",
+   "b_score": 0.4473,
+   "ink_px": 185,
+   "ink_frac": 0.1032
+  },
+  {
+   "text": "Theacts of Biodiversity",
+   "text_raw": "Theacts of Biodiversity",
+   "score": 0.7627,
+   "min_token_prob": 0.1647,
+   "flags": [],
+   "box": [
+    356,
+    2551,
+    1514,
+    2777
+   ],
+   "poly": [
+    [
+     367,
+     2551
+    ],
+    [
+     1514,
+     2664
+    ],
+    [
+     1502,
+     2777
+    ],
+    [
+     356,
+     2663
+    ]
+   ],
+   "b_text": "FaetBesy",
+   "b_score": 0.5866,
+   "ink_px": 21575,
+   "ink_frac": 0.1639
+  },
+  {
+   "text": "8",
+   "text_raw": "8",
+   "score": 0.7152,
+   "min_token_prob": 0.4656,
+   "flags": [],
+   "box": [
+    241,
+    2575,
+    312,
+    2653
+   ],
+   "poly": [
+    [
+     241,
+     2586
+    ],
+    [
+     300,
+     2575
+    ],
+    [
+     312,
+     2642
+    ],
+    [
+     253,
+     2653
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.4006,
+   "ink_px": 665,
+   "ink_frac": 0.1186
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5726,
+   "min_token_prob": 0.2886,
+   "flags": [],
+   "box": [
+    1746,
+    2774,
+    1774,
+    2797
+   ],
+   "poly": [
+    [
+     1750,
+     2774
+    ],
+    [
+     1774,
+     2780
+    ],
+    [
+     1770,
+     2797
+    ],
+    [
+     1746,
+     2792
+    ]
+   ],
+   "b_text": "蓝",
+   "b_score": 0.1362,
+   "ink_px": 155,
+   "ink_frac": 0.1435
+  },
+  {
+   "text": "saper.",
+   "text_raw": "saper .",
+   "score": 0.5159,
+   "min_token_prob": 0.1634,
+   "flags": [],
+   "box": [
+    1858,
+    2785,
+    1882,
+    2801
+   ],
+   "poly": [
+    [
+     1858,
+     2785
+    ],
+    [
+     1882,
+     2785
+    ],
+    [
+     1882,
+     2801
+    ],
+    [
+     1858,
+     2801
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 286,
+   "ink_frac": 0.2837
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.4305,
+   "min_token_prob": 0.1126,
+   "flags": [],
+   "box": [
+    1839,
+    2796,
+    1862,
+    2810
+   ],
+   "poly": [
+    [
+     1839,
+     2796
+    ],
+    [
+     1862,
+     2796
+    ],
+    [
+     1862,
+     2810
+    ],
+    [
+     1839,
+     2810
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 113,
+   "ink_frac": 0.1242
+  },
+  {
+   "text": "# I'm we offer the food chain",
+   "text_raw": "# I'm we offer the food chain",
+   "score": 0.6935,
+   "min_token_prob": 0.2892,
+   "flags": [],
+   "box": [
+    574,
+    2827,
+    2436,
+    3124
+   ],
+   "poly": [
+    [
+     585,
+     2827
+    ],
+    [
+     2436,
+     3006
+    ],
+    [
+     2424,
+     3124
+    ],
+    [
+     574,
+     2945
+    ]
+   ],
+   "b_text": "Idwfdaafl",
+   "b_score": 0.4336,
+   "ink_px": 37820,
+   "ink_frac": 0.1712
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5969,
+   "min_token_prob": 0.3893,
+   "flags": [],
+   "box": [
+    2311,
+    2842,
+    2331,
+    2857
+   ],
+   "poly": [
+    [
+     2311,
+     2842
+    ],
+    [
+     2331,
+     2842
+    ],
+    [
+     2331,
+     2857
+    ],
+    [
+     2311,
+     2857
+    ]
+   ],
+   "b_text": "9",
+   "b_score": 0.0605,
+   "ink_px": 69,
+   "ink_frac": 0.0799
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.6279,
+   "min_token_prob": 0.3173,
+   "flags": [],
+   "box": [
+    300,
+    2877,
+    331,
+    3218
+   ],
+   "poly": [
+    [
+     312,
+     2877
+    ],
+    [
+     331,
+     2877
+    ],
+    [
+     319,
+     3218
+    ],
+    [
+     300,
+     3218
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 3359,
+   "ink_frac": 0.307
+  },
+  {
+   "text": "1. It is called the ecosystem",
+   "text_raw": "1 . It is called the ecosystem",
+   "score": 0.829,
+   "min_token_prob": 0.1527,
+   "flags": [],
+   "box": [
+    571,
+    2945,
+    2382,
+    3268
+   ],
+   "poly": [
+    [
+     585,
+     2945
+    ],
+    [
+     2382,
+     3148
+    ],
+    [
+     2368,
+     3268
+    ],
+    [
+     571,
+     3065
+    ]
+   ],
+   "b_text": "Idsidste",
+   "b_score": 0.426,
+   "ink_px": 36742,
+   "ink_frac": 0.1681
+  },
+  {
+   "text": "# It is leads to exclusion of",
+   "text_raw": "# It is leads to exclusion of",
+   "score": 0.7837,
+   "min_token_prob": 0.1636,
+   "flags": [],
+   "box": [
+    587,
+    3064,
+    2455,
+    3411
+   ],
+   "poly": [
+    [
+     602,
+     3064
+    ],
+    [
+     2455,
+     3277
+    ],
+    [
+     2440,
+     3411
+    ],
+    [
+     587,
+     3199
+    ]
+   ],
+   "b_text": "Iis  a",
+   "b_score": 0.4519,
+   "ink_px": 40141,
+   "ink_frac": 0.1583
+  },
+  {
+   "text": "for",
+   "text_raw": "for",
+   "score": 0.5015,
+   "min_token_prob": 0.3179,
+   "flags": [],
+   "box": [
+    373,
+    3229,
+    457,
+    3279
+   ],
+   "poly": [
+    [
+     373,
+     3229
+    ],
+    [
+     457,
+     3229
+    ],
+    [
+     457,
+     3279
+    ],
+    [
+     373,
+     3279
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 2213,
+   "ink_frac": 0.3718
+  },
+  {
+   "text": "speces.",
+   "text_raw": "speces .",
+   "score": 0.7953,
+   "min_token_prob": 0.2798,
+   "flags": [],
+   "box": [
+    715,
+    3245,
+    1067,
+    3328
+   ],
+   "poly": [
+    [
+     719,
+     3245
+    ],
+    [
+     1067,
+     3265
+    ],
+    [
+     1063,
+     3328
+    ],
+    [
+     715,
+     3308
+    ]
+   ],
+   "b_text": "Sece",
+   "b_score": 0.7649,
+   "ink_px": 9083,
+   "ink_frac": 0.3364
+  }
+ ],
+ "peak_torch_alloc_mib": 2704,
+ "peak_rss_mib_process": 2968
+}

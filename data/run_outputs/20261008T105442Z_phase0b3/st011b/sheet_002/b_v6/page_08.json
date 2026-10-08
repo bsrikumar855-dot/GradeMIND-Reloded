@@ -1,0 +1,581 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_08.jpg",
+ "latency_s": 11.662,
+ "model_load_s": 0.4,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "Effects of deforostation:",
+   "score": 0.9384,
+   "poly": [
+    [
+     470,
+     605
+    ],
+    [
+     1651,
+     600
+    ],
+    [
+     1652,
+     705
+    ],
+    [
+     471,
+     711
+    ]
+   ],
+   "box": [
+    470,
+    600,
+    1652,
+    711
+   ]
+  },
+  {
+   "text": "18",
+   "score": 0.9999,
+   "poly": [
+    [
+     291,
+     616
+    ],
+    [
+     380,
+     616
+    ],
+    [
+     380,
+     695
+    ],
+    [
+     291,
+     695
+    ]
+   ],
+   "box": [
+    291,
+    616,
+    380,
+    695
+   ]
+  },
+  {
+   "text": "8",
+   "score": 0.4094,
+   "poly": [
+    [
+     0,
+     773
+    ],
+    [
+     96,
+     773
+    ],
+    [
+     96,
+     888
+    ],
+    [
+     0,
+     888
+    ]
+   ],
+   "box": [
+    0,
+    773,
+    96,
+    888
+   ]
+  },
+  {
+   "text": "Defocresetation cis due to the cutt ing",
+   "score": 0.9227,
+   "poly": [
+    [
+     882,
+     832
+    ],
+    [
+     2557,
+     814
+    ],
+    [
+     2559,
+     937
+    ],
+    [
+     884,
+     954
+    ]
+   ],
+   "box": [
+    882,
+    814,
+    2559,
+    954
+   ]
+  },
+  {
+   "text": "docon of large amount of strees in the",
+   "score": 0.9465,
+   "poly": [
+    [
+     423,
+     965
+    ],
+    [
+     2541,
+     942
+    ],
+    [
+     2542,
+     1061
+    ],
+    [
+     424,
+     1083
+    ]
+   ],
+   "box": [
+    423,
+    942,
+    2542,
+    1083
+   ]
+  },
+  {
+   "text": "forest areos olue to human purposes leke",
+   "score": 0.9254,
+   "poly": [
+    [
+     405,
+     1085
+    ],
+    [
+     2529,
+     1070
+    ],
+    [
+     2529,
+     1181
+    ],
+    [
+     406,
+     1196
+    ]
+   ],
+   "box": [
+    405,
+    1070,
+    2529,
+    1196
+   ]
+  },
+  {
+   "text": "road, building house etc..",
+   "score": 0.9689,
+   "poly": [
+    [
+     465,
+     1205
+    ],
+    [
+     1829,
+     1209
+    ],
+    [
+     1829,
+     1327
+    ],
+    [
+     465,
+     1323
+    ]
+   ],
+   "box": [
+    465,
+    1205,
+    1829,
+    1327
+   ]
+  },
+  {
+   "text": "Eftects:",
+   "score": 0.9906,
+   "poly": [
+    [
+     488,
+     1447
+    ],
+    [
+     805,
+     1447
+    ],
+    [
+     805,
+     1546
+    ],
+    [
+     488,
+     1546
+    ]
+   ],
+   "box": [
+    488,
+    1447,
+    805,
+    1546
+   ]
+  },
+  {
+   "text": "Over cutling of drees will leads do",
+   "score": 0.9166,
+   "poly": [
+    [
+     802,
+     1682
+    ],
+    [
+     2546,
+     1688
+    ],
+    [
+     2545,
+     1787
+    ],
+    [
+     801,
+     1781
+    ]
+   ],
+   "box": [
+    801,
+    1682,
+    2546,
+    1787
+   ]
+  },
+  {
+   "text": "enveromental change and clemate ahange.",
+   "score": 0.9591,
+   "poly": [
+    [
+     411,
+     1801
+    ],
+    [
+     2423,
+     1814
+    ],
+    [
+     2422,
+     1911
+    ],
+    [
+     410,
+     1897
+    ]
+   ],
+   "box": [
+    410,
+    1801,
+    2423,
+    1911
+   ]
+  },
+  {
+   "text": "It also affect, icthe ecosystom and",
+   "score": 0.9549,
+   "poly": [
+    [
+     433,
+     1927
+    ],
+    [
+     2495,
+     1938
+    ],
+    [
+     2495,
+     2031
+    ],
+    [
+     432,
+     2020
+    ]
+   ],
+   "box": [
+    432,
+    1927,
+    2495,
+    2031
+   ]
+  },
+  {
+   "text": "the cnimals.",
+   "score": 0.9209,
+   "poly": [
+    [
+     413,
+     2045
+    ],
+    [
+     1176,
+     2053
+    ],
+    [
+     1175,
+     2146
+    ],
+    [
+     412,
+     2138
+    ]
+   ],
+   "box": [
+    412,
+    2045,
+    1176,
+    2146
+   ]
+  },
+  {
+   "text": "Deforestatpon copll leads cto making",
+   "score": 0.9689,
+   "poly": [
+    [
+     810,
+     2274
+    ],
+    [
+     2622,
+     2308
+    ],
+    [
+     2620,
+     2420
+    ],
+    [
+     808,
+     2386
+    ]
+   ],
+   "box": [
+    808,
+    2274,
+    2622,
+    2420
+   ]
+  },
+  {
+   "text": "of desert. if we cat ithe drees Pn",
+   "score": 0.9369,
+   "poly": [
+    [
+     397,
+     2400
+    ],
+    [
+     2421,
+     2425
+    ],
+    [
+     2420,
+     2531
+    ],
+    [
+     396,
+     2506
+    ]
+   ],
+   "box": [
+    396,
+    2400,
+    2421,
+    2531
+   ]
+  },
+  {
+   "text": "the forest cthe coild, anemals got desturbed",
+   "score": 0.9301,
+   "poly": [
+    [
+     410,
+     2515
+    ],
+    [
+     2626,
+     2547
+    ],
+    [
+     2624,
+     2664
+    ],
+    [
+     408,
+     2632
+    ]
+   ],
+   "box": [
+    408,
+    2515,
+    2626,
+    2664
+   ]
+  },
+  {
+   "text": "and cthe copld animals are entes Pnto",
+   "score": 0.9134,
+   "poly": [
+    [
+     414,
+     2639
+    ],
+    [
+     2503,
+     2671
+    ],
+    [
+     2501,
+     2769
+    ],
+    [
+     412,
+     2738
+    ]
+   ],
+   "box": [
+    412,
+    2639,
+    2503,
+    2769
+   ]
+  },
+  {
+   "text": "the chuman cleupng areas.",
+   "score": 0.9036,
+   "poly": [
+    [
+     427,
+     2746
+    ],
+    [
+     1980,
+     2781
+    ],
+    [
+     1977,
+     2897
+    ],
+    [
+     424,
+     2863
+    ]
+   ],
+   "box": [
+    424,
+    2746,
+    1980,
+    2897
+   ]
+  },
+  {
+   "text": "The wPld anemals are search food",
+   "score": 0.9238,
+   "poly": [
+    [
+     695,
+     2985
+    ],
+    [
+     2550,
+     3040
+    ],
+    [
+     2547,
+     3151
+    ],
+    [
+     692,
+     3096
+    ]
+   ],
+   "box": [
+    692,
+    2985,
+    2550,
+    3151
+   ]
+  },
+  {
+   "text": "and aoater Pntd ethu chuman eliving areas",
+   "score": 0.8143,
+   "poly": [
+    [
+     388,
+     3107
+    ],
+    [
+     2614,
+     3171
+    ],
+    [
+     2610,
+     3295
+    ],
+    [
+     384,
+     3231
+    ]
+   ],
+   "box": [
+    384,
+    3107,
+    2614,
+    3295
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3390
+}

@@ -1,0 +1,581 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_04.jpg",
+ "latency_s": 10.24,
+ "model_load_s": 0.41,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "PART-C",
+   "score": 0.9195,
+   "poly": [
+    [
+     1275,
+     335
+    ],
+    [
+     1606,
+     339
+    ],
+    [
+     1605,
+     431
+    ],
+    [
+     1274,
+     427
+    ]
+   ],
+   "box": [
+    1274,
+    335,
+    1606,
+    431
+   ]
+  },
+  {
+   "text": "Ansuoom the folloccim",
+   "score": 0.7048,
+   "poly": [
+    [
+     358,
+     468
+    ],
+    [
+     1388,
+     476
+    ],
+    [
+     1387,
+     565
+    ],
+    [
+     357,
+     557
+    ]
+   ],
+   "box": [
+    357,
+    468,
+    1388,
+    565
+   ]
+  },
+  {
+   "text": "10. The effect of",
+   "score": 0.932,
+   "poly": [
+    [
+     160,
+     702
+    ],
+    [
+     1031,
+     714
+    ],
+    [
+     1029,
+     844
+    ],
+    [
+     158,
+     831
+    ]
+   ],
+   "box": [
+    158,
+    702,
+    1031,
+    844
+   ]
+  },
+  {
+   "text": "domorfo coarto",
+   "score": 0.6739,
+   "poly": [
+    [
+     1141,
+     728
+    ],
+    [
+     1916,
+     734
+    ],
+    [
+     1915,
+     825
+    ],
+    [
+     1140,
+     819
+    ]
+   ],
+   "box": [
+    1140,
+    728,
+    1916,
+    825
+   ]
+  },
+  {
+   "text": "Domestic coaite.",
+   "score": 0.8236,
+   "poly": [
+    [
+     449,
+     977
+    ],
+    [
+     1256,
+     983
+    ],
+    [
+     1255,
+     1086
+    ],
+    [
+     448,
+     1080
+    ]
+   ],
+   "box": [
+    448,
+    977,
+    1256,
+    1086
+   ]
+  },
+  {
+   "text": "* Domentic waste is a kend of",
+   "score": 0.9447,
+   "poly": [
+    [
+     852,
+     1219
+    ],
+    [
+     2614,
+     1239
+    ],
+    [
+     2612,
+     1367
+    ],
+    [
+     850,
+     1347
+    ]
+   ],
+   "box": [
+    850,
+    1219,
+    2614,
+    1367
+   ]
+  },
+  {
+   "text": "waste hat as cmado by the hamans in",
+   "score": 0.9083,
+   "poly": [
+    [
+     307,
+     1355
+    ],
+    [
+     2491,
+     1374
+    ],
+    [
+     2490,
+     1508
+    ],
+    [
+     306,
+     1489
+    ]
+   ],
+   "box": [
+    306,
+    1355,
+    2491,
+    1508
+   ]
+  },
+  {
+   "text": "the home",
+   "score": 0.8835,
+   "poly": [
+    [
+     292,
+     1498
+    ],
+    [
+     734,
+     1502
+    ],
+    [
+     733,
+     1613
+    ],
+    [
+     291,
+     1609
+    ]
+   ],
+   "box": [
+    291,
+    1498,
+    734,
+    1613
+   ]
+  },
+  {
+   "text": "Ex:",
+   "score": 0.7972,
+   "poly": [
+    [
+     352,
+     1639
+    ],
+    [
+     524,
+     1639
+    ],
+    [
+     524,
+     1751
+    ],
+    [
+     352,
+     1751
+    ]
+   ],
+   "box": [
+    352,
+    1639,
+    524,
+    1751
+   ]
+  },
+  {
+   "text": " Vegotable oaste  fiuit coite",
+   "score": 0.868,
+   "poly": [
+    [
+     602,
+     1771
+    ],
+    [
+     2198,
+     1789
+    ],
+    [
+     2196,
+     1909
+    ],
+    [
+     601,
+     1891
+    ]
+   ],
+   "box": [
+    601,
+    1771,
+    2198,
+    1909
+   ]
+  },
+  {
+   "text": "glass etc.",
+   "score": 0.955,
+   "poly": [
+    [
+     587,
+     1890
+    ],
+    [
+     1456,
+     1878
+    ],
+    [
+     1459,
+     2032
+    ],
+    [
+     590,
+     2045
+    ]
+   ],
+   "box": [
+    587,
+    1878,
+    1459,
+    2045
+   ]
+  },
+  {
+   "text": "Effocts of domentir inaste on frosh loater",
+   "score": 0.9253,
+   "poly": [
+    [
+     434,
+     2178
+    ],
+    [
+     2659,
+     2193
+    ],
+    [
+     2658,
+     2302
+    ],
+    [
+     433,
+     2287
+    ]
+   ],
+   "box": [
+    433,
+    2178,
+    2659,
+    2302
+   ]
+  },
+  {
+   "text": "ecosyciom",
+   "score": 0.9417,
+   "poly": [
+    [
+     319,
+     2324
+    ],
+    [
+     812,
+     2331
+    ],
+    [
+     810,
+     2427
+    ],
+    [
+     317,
+     2420
+    ]
+   ],
+   "box": [
+    317,
+    2324,
+    812,
+    2427
+   ]
+  },
+  {
+   "text": "Fresh loater ecosuster",
+   "score": 0.9314,
+   "poly": [
+    [
+     473,
+     2598
+    ],
+    [
+     1543,
+     2598
+    ],
+    [
+     1543,
+     2699
+    ],
+    [
+     473,
+     2699
+    ]
+   ],
+   "box": [
+    473,
+    2598,
+    1543,
+    2699
+   ]
+  },
+  {
+   "text": "Tit is a tind ad ecosysten tohere",
+   "score": 0.81,
+   "poly": [
+    [
+     888,
+     2847
+    ],
+    [
+     2691,
+     2867
+    ],
+    [
+     2690,
+     3006
+    ],
+    [
+     886,
+     2987
+    ]
+   ],
+   "box": [
+    886,
+    2847,
+    2691,
+    3006
+   ]
+  },
+  {
+   "text": "tlaa is ino mare",
+   "score": 0.6971,
+   "poly": [
+    [
+     269,
+     2992
+    ],
+    [
+     1538,
+     3022
+    ],
+    [
+     1535,
+     3137
+    ],
+    [
+     266,
+     3107
+    ]
+   ],
+   "box": [
+    266,
+    2992,
+    1538,
+    3137
+   ]
+  },
+  {
+   "text": "catt contents Pn the",
+   "score": 0.9021,
+   "poly": [
+    [
+     1484,
+     3009
+    ],
+    [
+     2610,
+     3027
+    ],
+    [
+     2608,
+     3136
+    ],
+    [
+     1482,
+     3118
+    ]
+   ],
+   "box": [
+    1482,
+    3009,
+    2610,
+    3136
+   ]
+  },
+  {
+   "text": "water.",
+   "score": 0.8661,
+   "poly": [
+    [
+     346,
+     3143
+    ],
+    [
+     658,
+     3143
+    ],
+    [
+     658,
+     3243
+    ],
+    [
+     346,
+     3243
+    ]
+   ],
+   "box": [
+    346,
+    3143,
+    658,
+    3243
+   ]
+  },
+  {
+   "text": "bend、riven",
+   "score": 0.8025,
+   "poly": [
+    [
+     734,
+     3444
+    ],
+    [
+     1358,
+     3449
+    ],
+    [
+     1357,
+     3552
+    ],
+    [
+     733,
+     3548
+    ]
+   ],
+   "box": [
+    733,
+    3444,
+    1358,
+    3552
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3201
+}

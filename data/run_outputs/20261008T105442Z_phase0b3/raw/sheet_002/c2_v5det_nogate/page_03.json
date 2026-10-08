@@ -1,0 +1,739 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "engine_b (see b_dir)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": null,
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 1.304,
+ "crop_s": 0.125,
+ "recognition_s": 1.179,
+ "model_load_s": 0.79,
+ "n_lines": 20,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "Saint Eussion:",
+   "text_raw": "Saint Eussion :",
+   "score": 0.5655,
+   "min_token_prob": 0.0817,
+   "flags": [],
+   "box": [
+    452,
+    488,
+    1106,
+    610
+   ],
+   "poly": [
+    [
+     456,
+     488
+    ],
+    [
+     1106,
+     514
+    ],
+    [
+     1102,
+     610
+    ],
+    [
+     452,
+     584
+    ]
+   ],
+   "b_text": "SailsR",
+   "b_score": 0.5041,
+   "ink_px": 11876,
+   "ink_frac": 0.1661
+  },
+  {
+   "text": "It is a blend of natural disurg.",
+   "text_raw": "It is a blend of natural disurg .",
+   "score": 0.7106,
+   "min_token_prob": 0.2131,
+   "flags": [],
+   "box": [
+    896,
+    594,
+    2703,
+    774
+   ],
+   "poly": [
+    [
+     898,
+     594
+    ],
+    [
+     2703,
+     611
+    ],
+    [
+     2701,
+     774
+    ],
+    [
+     896,
+     756
+    ]
+   ],
+   "b_text": "Id  a dend aof notwal dia",
+   "b_score": 0.5724,
+   "ink_px": 41930,
+   "ink_frac": 0.1319
+  },
+  {
+   "text": "Soil erosion removed the",
+   "text_raw": "Soil erosion removed the",
+   "score": 0.836,
+   "min_token_prob": 0.5187,
+   "flags": [],
+   "box": [
+    898,
+    758,
+    2472,
+    875
+   ],
+   "poly": [
+    [
+     898,
+     762
+    ],
+    [
+     2472,
+     758
+    ],
+    [
+     2472,
+     871
+    ],
+    [
+     899,
+     875
+    ]
+   ],
+   "b_text": "Sail easion aemouel the",
+   "b_score": 0.6044,
+   "ink_px": 34907,
+   "ink_frac": 0.1761
+  },
+  {
+   "text": "federified typsocial.",
+   "text_raw": "federified typsocial .",
+   "score": 0.5172,
+   "min_token_prob": 0.1896,
+   "flags": [],
+   "box": [
+    409,
+    879,
+    1429,
+    1029
+   ],
+   "poly": [
+    [
+     413,
+     879
+    ],
+    [
+     1429,
+     915
+    ],
+    [
+     1425,
+     1029
+    ],
+    [
+     409,
+     993
+    ]
+   ],
+   "b_text": "fefiarel tapsice",
+   "b_score": 0.581,
+   "ink_px": 20341,
+   "ink_frac": 0.157
+  },
+  {
+   "text": "Flood:",
+   "text_raw": "Flood :",
+   "score": 0.933,
+   "min_token_prob": 0.759,
+   "flags": [],
+   "box": [
+    501,
+    1281,
+    859,
+    1404
+   ],
+   "poly": [
+    [
+     507,
+     1281
+    ],
+    [
+     859,
+     1301
+    ],
+    [
+     853,
+     1404
+    ],
+    [
+     501,
+     1384
+    ]
+   ],
+   "b_text": "Elood:",
+   "b_score": 0.7571,
+   "ink_px": 5514,
+   "ink_frac": 0.1317
+  },
+  {
+   "text": "Eland is dropped due to over",
+   "text_raw": "Eland is dropped due to over",
+   "score": 0.7661,
+   "min_token_prob": 0.2311,
+   "flags": [],
+   "box": [
+    826,
+    1412,
+    2617,
+    1620
+   ],
+   "poly": [
+    [
+     831,
+     1412
+    ],
+    [
+     2617,
+     1489
+    ],
+    [
+     2612,
+     1620
+    ],
+    [
+     826,
+     1543
+    ]
+   ],
+   "b_text": "Flad is chappd due to ",
+   "b_score": 0.6761,
+   "ink_px": 39454,
+   "ink_frac": 0.1534
+  },
+  {
+   "text": "rainfall. It is a kind of natural",
+   "text_raw": "rainfall . It is a kind of natural",
+   "score": 0.7687,
+   "min_token_prob": 0.2723,
+   "flags": [],
+   "box": [
+    382,
+    1509,
+    2655,
+    1785
+   ],
+   "poly": [
+    [
+     390,
+     1509
+    ],
+    [
+     2655,
+     1623
+    ],
+    [
+     2647,
+     1785
+    ],
+    [
+     382,
+     1671
+    ]
+   ],
+   "b_text": "oairfall. It as a chend of rotoal",
+   "b_score": 0.6632,
+   "ink_px": 43572,
+   "ink_frac": 0.1099
+  },
+  {
+   "text": "disaster.",
+   "text_raw": "disaster .",
+   "score": 0.8142,
+   "min_token_prob": 0.5268,
+   "flags": [],
+   "box": [
+    365,
+    1680,
+    763,
+    1793
+   ],
+   "poly": [
+    [
+     371,
+     1680
+    ],
+    [
+     763,
+     1703
+    ],
+    [
+     758,
+     1793
+    ],
+    [
+     365,
+     1770
+    ]
+   ],
+   "b_text": "disae",
+   "b_score": 0.4181,
+   "ink_px": 5629,
+   "ink_frac": 0.1363
+  },
+  {
+   "text": "Drought:",
+   "text_raw": "Drought :",
+   "score": 0.727,
+   "min_token_prob": 0.3464,
+   "flags": [],
+   "box": [
+    488,
+    1817,
+    891,
+    1942
+   ],
+   "poly": [
+    [
+     495,
+     1817
+    ],
+    [
+     891,
+     1849
+    ],
+    [
+     884,
+     1942
+    ],
+    [
+     488,
+     1910
+    ]
+   ],
+   "b_text": "Dragtt",
+   "b_score": 0.7036,
+   "ink_px": 5407,
+   "ink_frac": 0.1259
+  },
+  {
+   "text": "Dragid its Happend due to UNO",
+   "text_raw": "Dragid its Happend due to UNO",
+   "score": 0.7724,
+   "min_token_prob": 0.3514,
+   "flags": [],
+   "box": [
+    835,
+    1944,
+    2551,
+    2176
+   ],
+   "poly": [
+    [
+     843,
+     1944
+    ],
+    [
+     2551,
+     2058
+    ],
+    [
+     2543,
+     2176
+    ],
+    [
+     835,
+     2063
+    ]
+   ],
+   "b_text": "Doaght  chppond due to Jo",
+   "b_score": 0.82,
+   "ink_px": 36420,
+   "ink_frac": 0.1614
+  },
+  {
+   "text": "vright of the particular area.",
+   "text_raw": "vright of the particular area .",
+   "score": 0.7489,
+   "min_token_prob": 0.2179,
+   "flags": [],
+   "box": [
+    345,
+    2053,
+    2269,
+    2304
+   ],
+   "poly": [
+    [
+     353,
+     2053
+    ],
+    [
+     2269,
+     2173
+    ],
+    [
+     2260,
+     2304
+    ],
+    [
+     345,
+     2184
+    ]
+   ],
+   "b_text": "inal tr thpdiwa aen.",
+   "b_score": 0.5327,
+   "ink_px": 39352,
+   "ink_frac": 0.1425
+  },
+  {
+   "text": "comprehensive time may come",
+   "text_raw": "comprehensive time may come",
+   "score": 0.4676,
+   "min_token_prob": 0.1435,
+   "flags": [],
+   "box": [
+    1090,
+    2189,
+    1659,
+    2284
+   ],
+   "poly": [
+    [
+     1094,
+     2189
+    ],
+    [
+     1659,
+     2232
+    ],
+    [
+     1655,
+     2284
+    ],
+    [
+     1090,
+     2241
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 3764,
+   "ink_frac": 0.1018
+  },
+  {
+   "text": "If there is no water assault",
+   "text_raw": "If there is no water assault",
+   "score": 0.8764,
+   "min_token_prob": 0.6191,
+   "flags": [],
+   "box": [
+    873,
+    2204,
+    2630,
+    2466
+   ],
+   "poly": [
+    [
+     883,
+     2204
+    ],
+    [
+     2630,
+     2341
+    ],
+    [
+     2620,
+     2466
+    ],
+    [
+     873,
+     2330
+    ]
+   ],
+   "b_text": "I thoe is co uodte aeoe",
+   "b_score": 0.6458,
+   "ink_px": 37906,
+   "ink_frac": 0.1704
+  },
+  {
+   "text": "is there it will dropped.",
+   "text_raw": "is there it will dropped .",
+   "score": 0.8215,
+   "min_token_prob": 0.4496,
+   "flags": [],
+   "box": [
+    342,
+    2302,
+    1800,
+    2534
+   ],
+   "poly": [
+    [
+     352,
+     2302
+    ],
+    [
+     1800,
+     2422
+    ],
+    [
+     1790,
+     2534
+    ],
+    [
+     342,
+     2415
+    ]
+   ],
+   "b_text": "as thae it we dappend",
+   "b_score": 0.6777,
+   "ink_px": 25184,
+   "ink_frac": 0.1521
+  },
+  {
+   "text": "Theacts of Biodiversity",
+   "text_raw": "Theacts of Biodiversity",
+   "score": 0.7172,
+   "min_token_prob": 0.1743,
+   "flags": [],
+   "box": [
+    349,
+    2552,
+    1522,
+    2784
+   ],
+   "poly": [
+    [
+     361,
+     2552
+    ],
+    [
+     1522,
+     2659
+    ],
+    [
+     1510,
+     2784
+    ],
+    [
+     349,
+     2678
+    ]
+   ],
+   "b_text": "Traeat o Bveuy",
+   "b_score": 0.5577,
+   "ink_px": 23782,
+   "ink_frac": 0.1464
+  },
+  {
+   "text": "13",
+   "text_raw": "13",
+   "score": 0.7161,
+   "min_token_prob": 0.5859,
+   "flags": [],
+   "box": [
+    228,
+    2585,
+    312,
+    2646
+   ],
+   "poly": [
+    [
+     228,
+     2585
+    ],
+    [
+     312,
+     2585
+    ],
+    [
+     312,
+     2646
+    ],
+    [
+     228,
+     2646
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.6739,
+   "ink_px": 863,
+   "ink_frac": 0.1231
+  },
+  {
+   "text": "# I'm we offer the food chain",
+   "text_raw": "# I'm we offer the food chain",
+   "score": 0.6416,
+   "min_token_prob": 0.3814,
+   "flags": [],
+   "box": [
+    568,
+    2824,
+    2442,
+    3128
+   ],
+   "poly": [
+    [
+     580,
+     2824
+    ],
+    [
+     2442,
+     2995
+    ],
+    [
+     2430,
+     3128
+    ],
+    [
+     568,
+     2956
+    ]
+   ],
+   "b_text": "Id afed  fad chafl",
+   "b_score": 0.6354,
+   "ink_px": 43331,
+   "ink_frac": 0.173
+  },
+  {
+   "text": "1. It is offset the ecosystem",
+   "text_raw": "1 . It is offset the ecosystem",
+   "score": 0.8006,
+   "min_token_prob": 0.2003,
+   "flags": [],
+   "box": [
+    574,
+    2943,
+    2386,
+    3274
+   ],
+   "poly": [
+    [
+     589,
+     2943
+    ],
+    [
+     2386,
+     3143
+    ],
+    [
+     2371,
+     3274
+    ],
+    [
+     574,
+     3074
+    ]
+   ],
+   "b_text": "Td d dh eesystem",
+   "b_score": 0.6651,
+   "ink_px": 47828,
+   "ink_frac": 0.2005
+  },
+  {
+   "text": "# It is leads to extinction of",
+   "text_raw": "# It is leads to extinction of",
+   "score": 0.8928,
+   "min_token_prob": 0.4995,
+   "flags": [],
+   "box": [
+    580,
+    3054,
+    2463,
+    3419
+   ],
+   "poly": [
+    [
+     597,
+     3054
+    ],
+    [
+     2463,
+     3268
+    ],
+    [
+     2445,
+     3419
+    ],
+    [
+     580,
+     3206
+    ]
+   ],
+   "b_text": " It is fnds do extihsior ",
+   "b_score": 0.6782,
+   "ink_px": 48277,
+   "ink_frac": 0.168
+  },
+  {
+   "text": "more species.",
+   "text_raw": "more species .",
+   "score": 0.9756,
+   "min_token_prob": 0.9239,
+   "flags": [],
+   "box": [
+    337,
+    3192,
+    1079,
+    3368
+   ],
+   "poly": [
+    [
+     346,
+     3192
+    ],
+    [
+     1079,
+     3247
+    ],
+    [
+     1070,
+     3368
+    ],
+    [
+     337,
+     3313
+    ]
+   ],
+   "b_text": "tore Species",
+   "b_score": 0.6918,
+   "ink_px": 20712,
+   "ink_frac": 0.2085
+  }
+ ],
+ "peak_torch_alloc_mib": 2746,
+ "peak_rss_mib_process": 2966
+}

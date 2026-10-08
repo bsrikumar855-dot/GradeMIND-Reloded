@@ -1,0 +1,303 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_12.jpg",
+ "latency_s": 20.094,
+ "model_load_s": 0.42,
+ "n_lines": 9,
+ "lines": [
+  {
+   "text": "a human",
+   "score": 0.826,
+   "poly": [
+    [
+     192,
+     237
+    ],
+    [
+     642,
+     231
+    ],
+    [
+     644,
+     366
+    ],
+    [
+     194,
+     372
+    ]
+   ],
+   "box": [
+    192,
+    231,
+    644,
+    372
+   ]
+  },
+  {
+   "text": "fuom",
+   "score": 0.8519,
+   "poly": [
+    [
+     1702,
+     259
+    ],
+    [
+     2038,
+     259
+    ],
+    [
+     2038,
+     448
+    ],
+    [
+     1702,
+     448
+    ]
+   ],
+   "box": [
+    1702,
+    259,
+    2038,
+    448
+   ]
+  },
+  {
+   "text": "get",
+   "score": 0.9813,
+   "poly": [
+    [
+     821,
+     280
+    ],
+    [
+     1027,
+     263
+    ],
+    [
+     1038,
+     399
+    ],
+    [
+     832,
+     417
+    ]
+   ],
+   "box": [
+    821,
+    263,
+    1038,
+    417
+   ]
+  },
+  {
+   "text": "benefit",
+   "score": 0.7524,
+   "poly": [
+    [
+     1200,
+     282
+    ],
+    [
+     1577,
+     282
+    ],
+    [
+     1577,
+     405
+    ],
+    [
+     1200,
+     405
+    ]
+   ],
+   "box": [
+    1200,
+    282,
+    1577,
+    405
+   ]
+  },
+  {
+   "text": "this",
+   "score": 0.8716,
+   "poly": [
+    [
+     268,
+     351
+    ],
+    [
+     503,
+     351
+    ],
+    [
+     503,
+     484
+    ],
+    [
+     268,
+     484
+    ]
+   ],
+   "box": [
+    268,
+    351,
+    503,
+    484
+   ]
+  },
+  {
+   "text": "type",
+   "score": 0.7597,
+   "poly": [
+    [
+     670,
+     364
+    ],
+    [
+     924,
+     377
+    ],
+    [
+     917,
+     515
+    ],
+    [
+     663,
+     502
+    ]
+   ],
+   "box": [
+    663,
+    364,
+    924,
+    515
+   ]
+  },
+  {
+   "text": "of an",
+   "score": 0.5935,
+   "poly": [
+    [
+     1065,
+     383
+    ],
+    [
+     1602,
+     383
+    ],
+    [
+     1602,
+     558
+    ],
+    [
+     1065,
+     558
+    ]
+   ],
+   "box": [
+    1065,
+    383,
+    1602,
+    558
+   ]
+  },
+  {
+   "text": " food, enorgy",
+   "score": 0.8407,
+   "poly": [
+    [
+     154,
+     538
+    ],
+    [
+     1127,
+     572
+    ],
+    [
+     1120,
+     795
+    ],
+    [
+     146,
+     761
+    ]
+   ],
+   "box": [
+    146,
+    538,
+    1127,
+    795
+   ]
+  },
+  {
+   "text": "and More",
+   "score": 0.9505,
+   "poly": [
+    [
+     1226,
+     591
+    ],
+    [
+     1855,
+     591
+    ],
+    [
+     1855,
+     747
+    ],
+    [
+     1226,
+     747
+    ]
+   ],
+   "box": [
+    1226,
+    591,
+    1855,
+    747
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 15909
+}

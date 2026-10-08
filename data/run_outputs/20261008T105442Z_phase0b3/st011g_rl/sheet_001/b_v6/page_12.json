@@ -1,0 +1,301 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_12.jpg",
+ "latency_s": 8.983,
+ "model_load_s": 0.41,
+ "n_lines": 9,
+ "lines": [
+  {
+   "text": "x human",
+   "score": 0.9274,
+   "poly": [
+    [
+     189,
+     229
+    ],
+    [
+     644,
+     233
+    ],
+    [
+     642,
+     381
+    ],
+    [
+     187,
+     377
+    ]
+   ],
+   "box": [
+    187,
+    229,
+    644,
+    381
+   ]
+  },
+  {
+   "text": "fuom",
+   "score": 0.7847,
+   "poly": [
+    [
+     1706,
+     253
+    ],
+    [
+     2038,
+     253
+    ],
+    [
+     2038,
+     458
+    ],
+    [
+     1706,
+     458
+    ]
+   ],
+   "box": [
+    1706,
+    253,
+    2038,
+    458
+   ]
+  },
+  {
+   "text": "get",
+   "score": 1.0,
+   "poly": [
+    [
+     823,
+     267
+    ],
+    [
+     1033,
+     260
+    ],
+    [
+     1038,
+     416
+    ],
+    [
+     829,
+     423
+    ]
+   ],
+   "box": [
+    823,
+    260,
+    1038,
+    423
+   ]
+  },
+  {
+   "text": "benefits",
+   "score": 0.9684,
+   "poly": [
+    [
+     1184,
+     274
+    ],
+    [
+     1584,
+     274
+    ],
+    [
+     1584,
+     417
+    ],
+    [
+     1184,
+     417
+    ]
+   ],
+   "box": [
+    1184,
+    274,
+    1584,
+    417
+   ]
+  },
+  {
+   "text": "this",
+   "score": 0.9994,
+   "poly": [
+    [
+     279,
+     347
+    ],
+    [
+     505,
+     354
+    ],
+    [
+     500,
+     495
+    ],
+    [
+     274,
+     488
+    ]
+   ],
+   "box": [
+    274,
+    347,
+    505,
+    495
+   ]
+  },
+  {
+   "text": "type",
+   "score": 0.9965,
+   "poly": [
+    [
+     666,
+     358
+    ],
+    [
+     921,
+     370
+    ],
+    [
+     914,
+     524
+    ],
+    [
+     659,
+     512
+    ]
+   ],
+   "box": [
+    659,
+    358,
+    921,
+    524
+   ]
+  },
+  {
+   "text": "of region",
+   "score": 0.9584,
+   "poly": [
+    [
+     1057,
+     382
+    ],
+    [
+     1601,
+     386
+    ],
+    [
+     1599,
+     568
+    ],
+    [
+     1056,
+     564
+    ]
+   ],
+   "box": [
+    1056,
+    382,
+    1601,
+    568
+   ]
+  },
+  {
+   "text": "e food, energy",
+   "score": 0.8805,
+   "poly": [
+    [
+     151,
+     537
+    ],
+    [
+     1134,
+     582
+    ],
+    [
+     1124,
+     794
+    ],
+    [
+     142,
+     749
+    ]
+   ],
+   "box": [
+    142,
+    537,
+    1134,
+    794
+   ]
+  },
+  {
+   "text": "and More",
+   "score": 0.9874,
+   "poly": [
+    [
+     1217,
+     582
+    ],
+    [
+     1851,
+     592
+    ],
+    [
+     1848,
+     779
+    ],
+    [
+     1214,
+     769
+    ]
+   ],
+   "box": [
+    1214,
+    582,
+    1851,
+    779
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3167
+}

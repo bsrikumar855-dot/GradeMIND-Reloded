@@ -1,0 +1,359 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_12.jpg",
+ "latency_s": 20.692,
+ "model_load_s": 0.42,
+ "n_lines": 11,
+ "lines": [
+  {
+   "text": "a human",
+   "score": 0.7985,
+   "poly": [
+    [
+     190,
+     242
+    ],
+    [
+     645,
+     234
+    ],
+    [
+     647,
+     369
+    ],
+    [
+     193,
+     377
+    ]
+   ],
+   "box": [
+    190,
+    234,
+    647,
+    377
+   ]
+  },
+  {
+   "text": "fuon",
+   "score": 0.6666,
+   "poly": [
+    [
+     1698,
+     261
+    ],
+    [
+     2053,
+     261
+    ],
+    [
+     2053,
+     478
+    ],
+    [
+     1698,
+     478
+    ]
+   ],
+   "box": [
+    1698,
+    261,
+    2053,
+    478
+   ]
+  },
+  {
+   "text": "get",
+   "score": 0.9073,
+   "poly": [
+    [
+     823,
+     272
+    ],
+    [
+     1065,
+     263
+    ],
+    [
+     1071,
+     411
+    ],
+    [
+     829,
+     420
+    ]
+   ],
+   "box": [
+    823,
+    263,
+    1071,
+    420
+   ]
+  },
+  {
+   "text": "benefits",
+   "score": 0.8663,
+   "poly": [
+    [
+     1199,
+     284
+    ],
+    [
+     1574,
+     284
+    ],
+    [
+     1574,
+     414
+    ],
+    [
+     1199,
+     414
+    ]
+   ],
+   "box": [
+    1199,
+    284,
+    1574,
+    414
+   ]
+  },
+  {
+   "text": "this",
+   "score": 0.6412,
+   "poly": [
+    [
+     211,
+     349
+    ],
+    [
+     502,
+     355
+    ],
+    [
+     499,
+     488
+    ],
+    [
+     208,
+     482
+    ]
+   ],
+   "box": [
+    208,
+    349,
+    502,
+    488
+   ]
+  },
+  {
+   "text": "type",
+   "score": 0.8371,
+   "poly": [
+    [
+     666,
+     357
+    ],
+    [
+     930,
+     375
+    ],
+    [
+     920,
+     526
+    ],
+    [
+     655,
+     508
+    ]
+   ],
+   "box": [
+    655,
+    357,
+    930,
+    526
+   ]
+  },
+  {
+   "text": "o",
+   "score": 0.4778,
+   "poly": [
+    [
+     1070,
+     401
+    ],
+    [
+     1238,
+     401
+    ],
+    [
+     1238,
+     558
+    ],
+    [
+     1070,
+     558
+    ]
+   ],
+   "box": [
+    1070,
+    401,
+    1238,
+    558
+   ]
+  },
+  {
+   "text": "rbarn",
+   "score": 0.4095,
+   "poly": [
+    [
+     1222,
+     415
+    ],
+    [
+     1586,
+     399
+    ],
+    [
+     1592,
+     530
+    ],
+    [
+     1228,
+     547
+    ]
+   ],
+   "box": [
+    1222,
+    399,
+    1592,
+    547
+   ]
+  },
+  {
+   "text": "x fod",
+   "score": 0.7588,
+   "poly": [
+    [
+     155,
+     568
+    ],
+    [
+     581,
+     553
+    ],
+    [
+     588,
+     755
+    ],
+    [
+     162,
+     770
+    ]
+   ],
+   "box": [
+    155,
+    553,
+    588,
+    770
+   ]
+  },
+  {
+   "text": "and More",
+   "score": 0.9318,
+   "poly": [
+    [
+     1232,
+     589
+    ],
+    [
+     1855,
+     595
+    ],
+    [
+     1854,
+     756
+    ],
+    [
+     1231,
+     750
+    ]
+   ],
+   "box": [
+    1231,
+    589,
+    1855,
+    756
+   ]
+  },
+  {
+   "text": "enorgy",
+   "score": 0.7926,
+   "poly": [
+    [
+     771,
+     610
+    ],
+    [
+     1111,
+     646
+    ],
+    [
+     1097,
+     784
+    ],
+    [
+     757,
+     748
+    ]
+   ],
+   "box": [
+    757,
+    610,
+    1111,
+    784
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 15906
+}

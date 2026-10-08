@@ -1,0 +1,849 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 1.46,
+ "crop_s": 0.117,
+ "recognition_s": 1.343,
+ "model_load_s": 0.79,
+ "n_lines": 23,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "Saint Eccine:",
+   "text_raw": "Saint Eccine :",
+   "score": 0.4757,
+   "min_token_prob": 0.1754,
+   "flags": [],
+   "box": [
+    452,
+    484,
+    1104,
+    612
+   ],
+   "poly": [
+    [
+     456,
+     484
+    ],
+    [
+     1104,
+     510
+    ],
+    [
+     1100,
+     612
+    ],
+    [
+     452,
+     586
+    ]
+   ],
+   "b_text": "sle",
+   "b_score": 0.5118,
+   "ink_px": 10190,
+   "ink_frac": 0.1354
+  },
+  {
+   "text": "It is a client of emotional dismay.",
+   "text_raw": "It is a client of emotional dismay .",
+   "score": 0.885,
+   "min_token_prob": 0.5478,
+   "flags": [],
+   "box": [
+    894,
+    594,
+    2707,
+    774
+   ],
+   "poly": [
+    [
+     896,
+     594
+    ],
+    [
+     2707,
+     611
+    ],
+    [
+     2705,
+     774
+    ],
+    [
+     894,
+     756
+    ]
+   ],
+   "b_text": "Id a de o w d",
+   "b_score": 0.5954,
+   "ink_px": 32129,
+   "ink_frac": 0.1007
+  },
+  {
+   "text": "the",
+   "text_raw": "the",
+   "score": 0.7937,
+   "min_token_prob": 0.5877,
+   "flags": [],
+   "box": [
+    2222,
+    764,
+    2465,
+    856
+   ],
+   "poly": [
+    [
+     2222,
+     764
+    ],
+    [
+     2465,
+     764
+    ],
+    [
+     2465,
+     856
+    ],
+    [
+     2222,
+     856
+    ]
+   ],
+   "b_text": "H",
+   "b_score": 0.2273,
+   "ink_px": 5388,
+   "ink_frac": 0.2032
+  },
+  {
+   "text": "Soil erosion removed.",
+   "text_raw": "Soil erosion removed .",
+   "score": 0.7287,
+   "min_token_prob": 0.5083,
+   "flags": [],
+   "box": [
+    906,
+    767,
+    2153,
+    871
+   ],
+   "poly": [
+    [
+     906,
+     775
+    ],
+    [
+     2153,
+     767
+    ],
+    [
+     2153,
+     863
+    ],
+    [
+     906,
+     871
+    ]
+   ],
+   "b_text": "Safl eosicn Gemoul",
+   "b_score": 0.5976,
+   "ink_px": 18754,
+   "ink_frac": 0.1379
+  },
+  {
+   "text": "ships",
+   "text_raw": "ships",
+   "score": 0.529,
+   "min_token_prob": 0.0626,
+   "flags": [],
+   "box": [
+    2478,
+    853,
+    2498,
+    871
+   ],
+   "poly": [
+    [
+     2478,
+     853
+    ],
+    [
+     2498,
+     853
+    ],
+    [
+     2498,
+     871
+    ],
+    [
+     2478,
+     871
+    ]
+   ],
+   "b_text": ".",
+   "b_score": 0.0362,
+   "ink_px": 272,
+   "ink_frac": 0.2833
+  },
+  {
+   "text": "identified typsoid.",
+   "text_raw": "identified typsoid .",
+   "score": 0.5121,
+   "min_token_prob": 0.1379,
+   "flags": [],
+   "box": [
+    407,
+    885,
+    1419,
+    1014
+   ],
+   "poly": [
+    [
+     410,
+     885
+    ],
+    [
+     1419,
+     916
+    ],
+    [
+     1416,
+     1014
+    ],
+    [
+     407,
+     983
+    ]
+   ],
+   "b_text": "eare tpsid.",
+   "b_score": 0.4707,
+   "ink_px": 17705,
+   "ink_frac": 0.1576
+  },
+  {
+   "text": "Food:",
+   "text_raw": "Food :",
+   "score": 0.9651,
+   "min_token_prob": 0.9302,
+   "flags": [],
+   "box": [
+    496,
+    1285,
+    852,
+    1400
+   ],
+   "poly": [
+    [
+     501,
+     1285
+    ],
+    [
+     852,
+     1302
+    ],
+    [
+     847,
+     1400
+    ],
+    [
+     496,
+     1383
+    ]
+   ],
+   "b_text": "Eood:",
+   "b_score": 0.5707,
+   "ink_px": 5438,
+   "ink_frac": 0.1362
+  },
+  {
+   "text": "Food its chopped",
+   "text_raw": "Food its chopped",
+   "score": 0.6329,
+   "min_token_prob": 0.276,
+   "flags": [],
+   "box": [
+    828,
+    1416,
+    1698,
+    1577
+   ],
+   "poly": [
+    [
+     833,
+     1416
+    ],
+    [
+     1698,
+     1452
+    ],
+    [
+     1693,
+     1577
+    ],
+    [
+     828,
+     1541
+    ]
+   ],
+   "b_text": "Fiosi is damed",
+   "b_score": 0.607,
+   "ink_px": 17569,
+   "ink_frac": 0.1462
+  },
+  {
+   "text": "due to own",
+   "text_raw": "due to own",
+   "score": 0.7729,
+   "min_token_prob": 0.156,
+   "flags": [],
+   "box": [
+    1769,
+    1466,
+    2637,
+    1601
+   ],
+   "poly": [
+    [
+     1774,
+     1466
+    ],
+    [
+     2637,
+     1507
+    ],
+    [
+     2633,
+     1601
+    ],
+    [
+     1769,
+     1560
+    ]
+   ],
+   "b_text": "cuedaa",
+   "b_score": 0.6897,
+   "ink_px": 14228,
+   "ink_frac": 0.1532
+  },
+  {
+   "text": "rainfall. It is a clerk of natural",
+   "text_raw": "rainfall . It is a clerk of natural",
+   "score": 0.791,
+   "min_token_prob": 0.0745,
+   "flags": [],
+   "box": [
+    384,
+    1518,
+    2627,
+    1766
+   ],
+   "poly": [
+    [
+     391,
+     1518
+    ],
+    [
+     2627,
+     1624
+    ],
+    [
+     2621,
+     1766
+    ],
+    [
+     384,
+     1661
+    ]
+   ],
+   "b_text": "sirl. It a a tind of rotiol",
+   "b_score": 0.636,
+   "ink_px": 39003,
+   "ink_frac": 0.1118
+  },
+  {
+   "text": "disaster.",
+   "text_raw": "disaster .",
+   "score": 0.7139,
+   "min_token_prob": 0.2052,
+   "flags": [],
+   "box": [
+    354,
+    1680,
+    793,
+    1790
+   ],
+   "poly": [
+    [
+     360,
+     1680
+    ],
+    [
+     793,
+     1707
+    ],
+    [
+     787,
+     1790
+    ],
+    [
+     354,
+     1763
+    ]
+   ],
+   "b_text": "si",
+   "b_score": 0.4609,
+   "ink_px": 5877,
+   "ink_frac": 0.139
+  },
+  {
+   "text": "Punoughs.",
+   "text_raw": "Punoughs .",
+   "score": 0.6583,
+   "min_token_prob": 0.1731,
+   "flags": [],
+   "box": [
+    488,
+    1819,
+    889,
+    1940
+   ],
+   "poly": [
+    [
+     496,
+     1819
+    ],
+    [
+     889,
+     1855
+    ],
+    [
+     881,
+     1940
+    ],
+    [
+     488,
+     1904
+    ]
+   ],
+   "b_text": "Drat",
+   "b_score": 0.5622,
+   "ink_px": 5435,
+   "ink_frac": 0.138
+  },
+  {
+   "text": "Dragid its Happend due to UNO",
+   "text_raw": "Dragid its Happend due to UNO",
+   "score": 0.8115,
+   "min_token_prob": 0.3911,
+   "flags": [],
+   "box": [
+    838,
+    1948,
+    2539,
+    2167
+   ],
+   "poly": [
+    [
+     845,
+     1948
+    ],
+    [
+     2539,
+     2054
+    ],
+    [
+     2532,
+     2167
+    ],
+    [
+     838,
+     2061
+    ]
+   ],
+   "b_text": "Doaght i dappad due dtoo",
+   "b_score": 0.7511,
+   "ink_px": 33280,
+   "ink_frac": 0.1558
+  },
+  {
+   "text": "salfant for the particular area.",
+   "text_raw": "salfant for the particular area .",
+   "score": 0.7721,
+   "min_token_prob": 0.3146,
+   "flags": [],
+   "box": [
+    347,
+    2055,
+    2322,
+    2302
+   ],
+   "poly": [
+    [
+     355,
+     2055
+    ],
+    [
+     2322,
+     2176
+    ],
+    [
+     2315,
+     2302
+    ],
+    [
+     347,
+     2180
+    ]
+   ],
+   "b_text": "if thia an",
+   "b_score": 0.47,
+   "ink_px": 36040,
+   "ink_frac": 0.1317
+  },
+  {
+   "text": "If there is no wonder avenue.",
+   "text_raw": "If there is no wonder avenue .",
+   "score": 0.8293,
+   "min_token_prob": 0.1546,
+   "flags": [],
+   "box": [
+    879,
+    2210,
+    2634,
+    2459
+   ],
+   "poly": [
+    [
+     888,
+     2210
+    ],
+    [
+     2634,
+     2341
+    ],
+    [
+     2625,
+     2459
+    ],
+    [
+     879,
+     2328
+    ]
+   ],
+   "b_text": "I tioe is co cote aonae",
+   "b_score": 0.605,
+   "ink_px": 33689,
+   "ink_frac": 0.1619
+  },
+  {
+   "text": "# E",
+   "text_raw": "# E",
+   "score": 0.3695,
+   "min_token_prob": 0.1568,
+   "flags": [],
+   "box": [
+    1215,
+    2206,
+    1367,
+    2256
+   ],
+   "poly": [
+    [
+     1217,
+     2206
+    ],
+    [
+     1367,
+     2215
+    ],
+    [
+     1364,
+     2256
+    ],
+    [
+     1215,
+     2247
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 1176,
+   "ink_frac": 0.137
+  },
+  {
+   "text": "0 #",
+   "text_raw": "0 #",
+   "score": 0.5775,
+   "min_token_prob": 0.2132,
+   "flags": [],
+   "box": [
+    1399,
+    2219,
+    1562,
+    2273
+   ],
+   "poly": [
+    [
+     1402,
+     2219
+    ],
+    [
+     1562,
+     2232
+    ],
+    [
+     1559,
+     2273
+    ],
+    [
+     1399,
+     2260
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 965,
+   "ink_frac": 0.1059
+  },
+  {
+   "text": "is there it will dropped.",
+   "text_raw": "is there it will dropped .",
+   "score": 0.8468,
+   "min_token_prob": 0.5296,
+   "flags": [],
+   "box": [
+    346,
+    2302,
+    1801,
+    2533
+   ],
+   "poly": [
+    [
+     355,
+     2302
+    ],
+    [
+     1801,
+     2426
+    ],
+    [
+     1792,
+     2533
+    ],
+    [
+     346,
+     2409
+    ]
+   ],
+   "b_text": "stae st sf tarpend",
+   "b_score": 0.5957,
+   "ink_px": 23202,
+   "ink_frac": 0.1481
+  },
+  {
+   "text": "13. Thements of Biodiversity",
+   "text_raw": "13 . Thements of Biodiversity",
+   "score": 0.7719,
+   "min_token_prob": 0.3053,
+   "flags": [],
+   "box": [
+    219,
+    2541,
+    1518,
+    2779
+   ],
+   "poly": [
+    [
+     230,
+     2541
+    ],
+    [
+     1518,
+     2660
+    ],
+    [
+     1507,
+     2779
+    ],
+    [
+     219,
+     2660
+    ]
+   ],
+   "b_text": "3Faete Bdfesy",
+   "b_score": 0.5859,
+   "ink_px": 22726,
+   "ink_frac": 0.1393
+  },
+  {
+   "text": "# I'm we offer the food chain",
+   "text_raw": "# I'm we offer the food chain",
+   "score": 0.7742,
+   "min_token_prob": 0.4962,
+   "flags": [],
+   "box": [
+    568,
+    2821,
+    2443,
+    3128
+   ],
+   "poly": [
+    [
+     580,
+     2821
+    ],
+    [
+     2443,
+     2997
+    ],
+    [
+     2430,
+     3128
+    ],
+    [
+     568,
+     2953
+    ]
+   ],
+   "b_text": "Id aiet h fod caf",
+   "b_score": 0.5949,
+   "ink_px": 38363,
+   "ink_frac": 0.1543
+  },
+  {
+   "text": "1. It is called the ecosystem",
+   "text_raw": "1 . It is called the ecosystem",
+   "score": 0.8075,
+   "min_token_prob": 0.2407,
+   "flags": [],
+   "box": [
+    573,
+    2943,
+    2386,
+    3267
+   ],
+   "poly": [
+    [
+     587,
+     2943
+    ],
+    [
+     2386,
+     3143
+    ],
+    [
+     2372,
+     3267
+    ],
+    [
+     573,
+     3066
+    ]
+   ],
+   "b_text": "Id is oiet e easustem",
+   "b_score": 0.5534,
+   "ink_px": 37190,
+   "ink_frac": 0.1645
+  },
+  {
+   "text": "# It is lends to exclusion of",
+   "text_raw": "# It is lends to exclusion of",
+   "score": 0.8436,
+   "min_token_prob": 0.4125,
+   "flags": [],
+   "box": [
+    579,
+    3051,
+    2460,
+    3415
+   ],
+   "poly": [
+    [
+     597,
+     3051
+    ],
+    [
+     2460,
+     3264
+    ],
+    [
+     2443,
+     3415
+    ],
+    [
+     579,
+     3202
+    ]
+   ],
+   "b_text": "卡 Id is bids to atasin e",
+   "b_score": 0.6031,
+   "ink_px": 41622,
+   "ink_frac": 0.145
+  },
+  {
+   "text": "more species.",
+   "text_raw": "more species .",
+   "score": 0.8432,
+   "min_token_prob": 0.523,
+   "flags": [],
+   "box": [
+    345,
+    3201,
+    1100,
+    3355
+   ],
+   "poly": [
+    [
+     352,
+     3201
+    ],
+    [
+     1100,
+     3259
+    ],
+    [
+     1093,
+     3355
+    ],
+    [
+     345,
+     3297
+    ]
+   ],
+   "b_text": "toeSeca",
+   "b_score": 0.4801,
+   "ink_px": 16030,
+   "ink_frac": 0.1948
+  }
+ ],
+ "peak_torch_alloc_mib": 2689,
+ "peak_rss_mib_process": 2968
+}

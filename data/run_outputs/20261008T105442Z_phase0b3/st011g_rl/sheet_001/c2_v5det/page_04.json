@@ -1,0 +1,1269 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_04.jpg",
+ "latency_s": 1.68,
+ "crop_s": 0.075,
+ "recognition_s": 1.605,
+ "model_load_s": 0.79,
+ "n_lines": 35,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "Example in",
+   "text_raw": "Example in",
+   "score": 0.8328,
+   "min_token_prob": 0.6607,
+   "flags": [],
+   "box": [
+    273,
+    280,
+    726,
+    404
+   ],
+   "poly": [
+    [
+     273,
+     289
+    ],
+    [
+     724,
+     280
+    ],
+    [
+     726,
+     395
+    ],
+    [
+     275,
+     404
+    ]
+   ],
+   "b_text": "Erample ia",
+   "b_score": 0.8048,
+   "ink_px": 6487,
+   "ink_frac": 0.1103
+  },
+  {
+   "text": "miliger; there",
+   "text_raw": "miliger ; there",
+   "score": 0.7032,
+   "min_token_prob": 0.5208,
+   "flags": [],
+   "box": [
+    569,
+    399,
+    1133,
+    530
+   ],
+   "poly": [
+    [
+     572,
+     399
+    ],
+    [
+     1133,
+     409
+    ],
+    [
+     1131,
+     530
+    ],
+    [
+     569,
+     519
+    ]
+   ],
+   "b_text": "nitigoti thar",
+   "b_score": 0.7252,
+   "ink_px": 8691,
+   "ink_frac": 0.1138
+  },
+  {
+   "text": "14. 7 Stregg.",
+   "text_raw": "14. 7 Stregg .",
+   "score": 0.7258,
+   "min_token_prob": 0.2435,
+   "flags": [],
+   "box": [
+    65,
+    659,
+    679,
+    776
+   ],
+   "poly": [
+    [
+     65,
+     661
+    ],
+    [
+     678,
+     659
+    ],
+    [
+     679,
+     774
+    ],
+    [
+     65,
+     776
+    ]
+   ],
+   "b_text": "121.→stres8",
+   "b_score": 0.7199,
+   "ink_px": 7219,
+   "ink_frac": 0.0908
+  },
+  {
+   "text": "# hearing limp.",
+   "text_raw": "# hearing limp .",
+   "score": 0.7128,
+   "min_token_prob": 0.2125,
+   "flags": [],
+   "box": [
+    189,
+    888,
+    855,
+    1030
+   ],
+   "poly": [
+    [
+     192,
+     888
+    ],
+    [
+     855,
+     904
+    ],
+    [
+     852,
+     1030
+    ],
+    [
+     189,
+     1014
+    ]
+   ],
+   "b_text": "→hearing imp",
+   "b_score": 0.9351,
+   "ink_px": 8186,
+   "ink_frac": 0.0879
+  },
+  {
+   "text": "formed.",
+   "text_raw": "formed .",
+   "score": 0.8126,
+   "min_token_prob": 0.7049,
+   "flags": [],
+   "box": [
+    1641,
+    1121,
+    2021,
+    1329
+   ],
+   "poly": [
+    [
+     1641,
+     1121
+    ],
+    [
+     2021,
+     1121
+    ],
+    [
+     2021,
+     1329
+    ],
+    [
+     1641,
+     1329
+    ]
+   ],
+   "b_text": "formed",
+   "b_score": 0.8741,
+   "ink_px": 7393,
+   "ink_frac": 0.0857
+  },
+  {
+   "text": "15th like",
+   "text_raw": "15th like",
+   "score": 0.812,
+   "min_token_prob": 0.3138,
+   "flags": [],
+   "box": [
+    72,
+    1136,
+    527,
+    1273
+   ],
+   "poly": [
+    [
+     72,
+     1143
+    ],
+    [
+     525,
+     1136
+    ],
+    [
+     527,
+     1266
+    ],
+    [
+     74,
+     1273
+    ]
+   ],
+   "b_text": "15×1ike",
+   "b_score": 0.7786,
+   "ink_px": 5524,
+   "ink_frac": 0.0837
+  },
+  {
+   "text": "waste.",
+   "text_raw": "waste .",
+   "score": 0.9381,
+   "min_token_prob": 0.8035,
+   "flags": [],
+   "box": [
+    694,
+    1134,
+    966,
+    1265
+   ],
+   "poly": [
+    [
+     694,
+     1143
+    ],
+    [
+     962,
+     1134
+    ],
+    [
+     966,
+     1256
+    ],
+    [
+     698,
+     1265
+    ]
+   ],
+   "b_text": "wasto",
+   "b_score": 0.9424,
+   "ink_px": 4797,
+   "ink_frac": 0.1279
+  },
+  {
+   "text": "product.",
+   "text_raw": "product .",
+   "score": 0.9586,
+   "min_token_prob": 0.8793,
+   "flags": [],
+   "box": [
+    1127,
+    1137,
+    1496,
+    1268
+   ],
+   "poly": [
+    [
+     1127,
+     1137
+    ],
+    [
+     1496,
+     1137
+    ],
+    [
+     1496,
+     1268
+    ],
+    [
+     1127,
+     1268
+    ]
+   ],
+   "b_text": "product",
+   "b_score": 0.9715,
+   "ink_px": 6013,
+   "ink_frac": 0.1104
+  },
+  {
+   "text": "so water cannot",
+   "text_raw": "so water cannot",
+   "score": 0.9847,
+   "min_token_prob": 0.9683,
+   "flags": [],
+   "box": [
+    302,
+    1257,
+    1088,
+    1406
+   ],
+   "poly": [
+    [
+     302,
+     1265
+    ],
+    [
+     1087,
+     1257
+    ],
+    [
+     1088,
+     1398
+    ],
+    [
+     303,
+     1406
+    ]
+   ],
+   "b_text": "So water cannst",
+   "b_score": 0.8776,
+   "ink_px": 9798,
+   "ink_frac": 0.0804
+  },
+  {
+   "text": "flo.",
+   "text_raw": "flo .",
+   "score": 0.9479,
+   "min_token_prob": 0.8702,
+   "flags": [],
+   "box": [
+    1158,
+    1269,
+    1337,
+    1430
+   ],
+   "poly": [
+    [
+     1158,
+     1276
+    ],
+    [
+     1330,
+     1269
+    ],
+    [
+     1337,
+     1422
+    ],
+    [
+     1165,
+     1430
+    ]
+   ],
+   "b_text": "fP0",
+   "b_score": 0.4786,
+   "ink_px": 3389,
+   "ink_frac": 0.111
+  },
+  {
+   "text": "water water.",
+   "text_raw": "water water .",
+   "score": 0.7324,
+   "min_token_prob": 0.3257,
+   "flags": [],
+   "box": [
+    171,
+    1498,
+    558,
+    1643
+   ],
+   "poly": [
+    [
+     171,
+     1504
+    ],
+    [
+     556,
+     1498
+    ],
+    [
+     558,
+     1636
+    ],
+    [
+     174,
+     1643
+    ]
+   ],
+   "b_text": " wator",
+   "b_score": 0.9132,
+   "ink_px": 5388,
+   "ink_frac": 0.0899
+  },
+  {
+   "text": "became.",
+   "text_raw": "became .",
+   "score": 0.9855,
+   "min_token_prob": 0.944,
+   "flags": [],
+   "box": [
+    766,
+    1513,
+    1093,
+    1648
+   ],
+   "poly": [
+    [
+     771,
+     1513
+    ],
+    [
+     1093,
+     1529
+    ],
+    [
+     1087,
+     1648
+    ],
+    [
+     766,
+     1632
+    ]
+   ],
+   "b_text": "became",
+   "b_score": 0.9684,
+   "ink_px": 5114,
+   "ink_frac": 0.1169
+  },
+  {
+   "text": "unhe.",
+   "text_raw": "unhe .",
+   "score": 0.9791,
+   "min_token_prob": 0.9344,
+   "flags": [],
+   "box": [
+    1286,
+    1507,
+    1532,
+    1643
+   ],
+   "poly": [
+    [
+     1286,
+     1512
+    ],
+    [
+     1529,
+     1507
+    ],
+    [
+     1532,
+     1638
+    ],
+    [
+     1289,
+     1643
+    ]
+   ],
+   "b_text": "unhe",
+   "b_score": 0.7465,
+   "ink_px": 3640,
+   "ink_frac": 0.0998
+  },
+  {
+   "text": "part -",
+   "text_raw": "part -",
+   "score": 0.975,
+   "min_token_prob": 0.9293,
+   "flags": [],
+   "box": [
+    824,
+    1766,
+    1135,
+    1886
+   ],
+   "poly": [
+    [
+     824,
+     1773
+    ],
+    [
+     1133,
+     1766
+    ],
+    [
+     1135,
+     1879
+    ],
+    [
+     827,
+     1886
+    ]
+   ],
+   "b_text": "Part-",
+   "b_score": 0.9211,
+   "ink_px": 3283,
+   "ink_frac": 0.0818
+  },
+  {
+   "text": "ft.",
+   "text_raw": "ft .",
+   "score": 0.8724,
+   "min_token_prob": 0.6956,
+   "flags": [],
+   "box": [
+    87,
+    1796,
+    157,
+    1874
+   ],
+   "poly": [
+    [
+     87,
+     1796
+    ],
+    [
+     157,
+     1796
+    ],
+    [
+     157,
+     1874
+    ],
+    [
+     87,
+     1874
+    ]
+   ],
+   "b_text": "11",
+   "b_score": 0.4624,
+   "ink_px": 649,
+   "ink_frac": 0.0879
+  },
+  {
+   "text": "deforestation.",
+   "text_raw": "deforestation .",
+   "score": 0.9062,
+   "min_token_prob": 0.6408,
+   "flags": [],
+   "box": [
+    946,
+    1987,
+    1460,
+    2170
+   ],
+   "poly": [
+    [
+     946,
+     1987
+    ],
+    [
+     1460,
+     1987
+    ],
+    [
+     1460,
+     2170
+    ],
+    [
+     946,
+     2170
+    ]
+   ],
+   "b_text": "deforestathon",
+   "b_score": 0.8249,
+   "ink_px": 12148,
+   "ink_frac": 0.1184
+  },
+  {
+   "text": "on biodiversity:",
+   "text_raw": "on biodiversity :",
+   "score": 0.9312,
+   "min_token_prob": 0.7406,
+   "flags": [],
+   "box": [
+    1547,
+    1979,
+    2280,
+    2177
+   ],
+   "poly": [
+    [
+     1552,
+     1979
+    ],
+    [
+     2280,
+     2000
+    ],
+    [
+     2275,
+     2177
+    ],
+    [
+     1547,
+     2156
+    ]
+   ],
+   "b_text": "on biodiversity",
+   "b_score": 0.9704,
+   "ink_px": 14368,
+   "ink_frac": 0.1027
+  },
+  {
+   "text": "impact.",
+   "text_raw": "impact .",
+   "score": 0.9798,
+   "min_token_prob": 0.9424,
+   "flags": [],
+   "box": [
+    229,
+    1999,
+    533,
+    2134
+   ],
+   "poly": [
+    [
+     229,
+     2009
+    ],
+    [
+     529,
+     1999
+    ],
+    [
+     533,
+     2125
+    ],
+    [
+     233,
+     2134
+    ]
+   ],
+   "b_text": "impact",
+   "b_score": 0.976,
+   "ink_px": 4561,
+   "ink_frac": 0.1059
+  },
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.9955,
+   "min_token_prob": 0.9919,
+   "flags": [],
+   "box": [
+    677,
+    2002,
+    829,
+    2172
+   ],
+   "poly": [
+    [
+     677,
+     2002
+    ],
+    [
+     829,
+     2002
+    ],
+    [
+     829,
+     2172
+    ],
+    [
+     677,
+     2172
+    ]
+   ],
+   "b_text": "of",
+   "b_score": 0.9255,
+   "ink_px": 2821,
+   "ink_frac": 0.0945
+  },
+  {
+   "text": "15).",
+   "text_raw": "15 ) .",
+   "score": 0.7211,
+   "min_token_prob": 0.2946,
+   "flags": [],
+   "box": [
+    96,
+    2019,
+    206,
+    2145
+   ],
+   "poly": [
+    [
+     96,
+     2024
+    ],
+    [
+     200,
+     2019
+    ],
+    [
+     206,
+     2139
+    ],
+    [
+     102,
+     2145
+    ]
+   ],
+   "b_text": "16",
+   "b_score": 0.6287,
+   "ink_px": 2551,
+   "ink_frac": 0.1653
+  },
+  {
+   "text": "I living.",
+   "text_raw": "I living .",
+   "score": 0.7473,
+   "min_token_prob": 0.6103,
+   "flags": [],
+   "box": [
+    1573,
+    2217,
+    1953,
+    2434
+   ],
+   "poly": [
+    [
+     1590,
+     2217
+    ],
+    [
+     1953,
+     2249
+    ],
+    [
+     1937,
+     2434
+    ],
+    [
+     1573,
+     2401
+    ]
+   ],
+   "b_text": "living",
+   "b_score": 0.9515,
+   "ink_px": 5598,
+   "ink_frac": 0.0754
+  },
+  {
+   "text": "make",
+   "text_raw": "make",
+   "score": 0.8425,
+   "min_token_prob": 0.8279,
+   "flags": [],
+   "box": [
+    1097,
+    2232,
+    1381,
+    2378
+   ],
+   "poly": [
+    [
+     1097,
+     2232
+    ],
+    [
+     1381,
+     2232
+    ],
+    [
+     1381,
+     2378
+    ],
+    [
+     1097,
+     2378
+    ]
+   ],
+   "b_text": "make",
+   "b_score": 0.9858,
+   "ink_px": 4461,
+   "ink_frac": 0.0954
+  },
+  {
+   "text": "ex deforestation.",
+   "text_raw": "ex deforestation .",
+   "score": 0.8023,
+   "min_token_prob": 0.4795,
+   "flags": [],
+   "box": [
+    186,
+    2243,
+    854,
+    2382
+   ],
+   "poly": [
+    [
+     186,
+     2243
+    ],
+    [
+     854,
+     2243
+    ],
+    [
+     854,
+     2382
+    ],
+    [
+     186,
+     2382
+    ]
+   ],
+   "b_text": " deforestation",
+   "b_score": 0.87,
+   "ink_px": 13490,
+   "ink_frac": 0.1314
+  },
+  {
+   "text": "life.",
+   "text_raw": "life .",
+   "score": 0.9688,
+   "min_token_prob": 0.9451,
+   "flags": [],
+   "box": [
+    925,
+    2342,
+    1190,
+    2585
+   ],
+   "poly": [
+    [
+     925,
+     2348
+    ],
+    [
+     1185,
+     2342
+    ],
+    [
+     1190,
+     2579
+    ],
+    [
+     931,
+     2585
+    ]
+   ],
+   "b_text": "life",
+   "b_score": 0.9804,
+   "ink_px": 4764,
+   "ink_frac": 0.0703
+  },
+  {
+   "text": "organism.",
+   "text_raw": "organism .",
+   "score": 0.9942,
+   "min_token_prob": 0.9901,
+   "flags": [],
+   "box": [
+    265,
+    2371,
+    716,
+    2516
+   ],
+   "poly": [
+    [
+     265,
+     2386
+    ],
+    [
+     712,
+     2371
+    ],
+    [
+     716,
+     2501
+    ],
+    [
+     269,
+     2516
+    ]
+   ],
+   "b_text": "organism",
+   "b_score": 0.9379,
+   "ink_px": 7415,
+   "ink_frac": 0.1138
+  },
+  {
+   "text": "co.",
+   "text_raw": "co .",
+   "score": 0.8267,
+   "min_token_prob": 0.5086,
+   "flags": [],
+   "box": [
+    1352,
+    2400,
+    1487,
+    2487
+   ],
+   "poly": [
+    [
+     1352,
+     2400
+    ],
+    [
+     1487,
+     2400
+    ],
+    [
+     1487,
+     2487
+    ],
+    [
+     1352,
+     2487
+    ]
+   ],
+   "b_text": "Co",
+   "b_score": 0.5126,
+   "ink_px": 1746,
+   "ink_frac": 0.12
+  },
+  {
+   "text": "destroy.",
+   "text_raw": "destroy .",
+   "score": 0.9786,
+   "min_token_prob": 0.937,
+   "flags": [],
+   "box": [
+    1083,
+    2568,
+    1477,
+    2772
+   ],
+   "poly": [
+    [
+     1097,
+     2568
+    ],
+    [
+     1477,
+     2597
+    ],
+    [
+     1464,
+     2772
+    ],
+    [
+     1083,
+     2743
+    ]
+   ],
+   "b_text": "destroy",
+   "b_score": 0.9585,
+   "ink_px": 7753,
+   "ink_frac": 0.1052
+  },
+  {
+   "text": "until.",
+   "text_raw": "until .",
+   "score": 0.8181,
+   "min_token_prob": 0.711,
+   "flags": [],
+   "box": [
+    636,
+    2603,
+    861,
+    2737
+   ],
+   "poly": [
+    [
+     636,
+     2611
+    ],
+    [
+     857,
+     2603
+    ],
+    [
+     861,
+     2729
+    ],
+    [
+     640,
+     2737
+    ]
+   ],
+   "b_text": "w",
+   "b_score": 0.237,
+   "ink_px": 4221,
+   "ink_frac": 0.1313
+  },
+  {
+   "text": "# It",
+   "text_raw": "# It",
+   "score": 0.7692,
+   "min_token_prob": 0.4261,
+   "flags": [],
+   "box": [
+    188,
+    2619,
+    506,
+    2743
+   ],
+   "poly": [
+    [
+     188,
+     2633
+    ],
+    [
+     502,
+     2619
+    ],
+    [
+     506,
+     2729
+    ],
+    [
+     193,
+     2743
+    ]
+   ],
+   "b_text": "工+",
+   "b_score": 0.5762,
+   "ink_px": 3101,
+   "ink_frac": 0.078
+  },
+  {
+   "text": "good.",
+   "text_raw": "good .",
+   "score": 0.919,
+   "min_token_prob": 0.8102,
+   "flags": [],
+   "box": [
+    291,
+    2706,
+    616,
+    2926
+   ],
+   "poly": [
+    [
+     291,
+     2722
+    ],
+    [
+     606,
+     2706
+    ],
+    [
+     616,
+     2910
+    ],
+    [
+     301,
+     2926
+    ]
+   ],
+   "b_text": "food",
+   "b_score": 0.8163,
+   "ink_px": 6492,
+   "ink_frac": 0.0919
+  },
+  {
+   "text": "charn.",
+   "text_raw": "charn .",
+   "score": 0.9203,
+   "min_token_prob": 0.7911,
+   "flags": [],
+   "box": [
+    682,
+    2719,
+    1002,
+    2869
+   ],
+   "poly": [
+    [
+     682,
+     2719
+    ],
+    [
+     1002,
+     2719
+    ],
+    [
+     1002,
+     2869
+    ],
+    [
+     682,
+     2869
+    ]
+   ],
+   "b_text": "Chain",
+   "b_score": 0.8806,
+   "ink_px": 5258,
+   "ink_frac": 0.0978
+  },
+  {
+   "text": "# SO, I.",
+   "text_raw": "# SO , I .",
+   "score": 0.7682,
+   "min_token_prob": 0.3985,
+   "flags": [],
+   "box": [
+    200,
+    2980,
+    704,
+    3107
+   ],
+   "poly": [
+    [
+     200,
+     2986
+    ],
+    [
+     703,
+     2980
+    ],
+    [
+     704,
+     3100
+    ],
+    [
+     202,
+     3107
+    ]
+   ],
+   "b_text": "*SO,I",
+   "b_score": 0.7467,
+   "ink_px": 4800,
+   "ink_frac": 0.0701
+  },
+  {
+   "text": "extinction.",
+   "text_raw": "extinction .",
+   "score": 0.9629,
+   "min_token_prob": 0.8787,
+   "flags": [],
+   "box": [
+    283,
+    3091,
+    728,
+    3242
+   ],
+   "poly": [
+    [
+     286,
+     3091
+    ],
+    [
+     728,
+     3100
+    ],
+    [
+     725,
+     3242
+    ],
+    [
+     283,
+     3233
+    ]
+   ],
+   "b_text": "extitión",
+   "b_score": 0.6991,
+   "ink_px": 9047,
+   "ink_frac": 0.1294
+  },
+  {
+   "text": "of the",
+   "text_raw": "of the",
+   "score": 0.9992,
+   "min_token_prob": 0.9983,
+   "flags": [],
+   "box": [
+    869,
+    3093,
+    1267,
+    3290
+   ],
+   "poly": [
+    [
+     869,
+     3093
+    ],
+    [
+     1267,
+     3093
+    ],
+    [
+     1267,
+     3290
+    ],
+    [
+     869,
+     3290
+    ]
+   ],
+   "b_text": "of the",
+   "b_score": 0.9487,
+   "ink_px": 5971,
+   "ink_frac": 0.0697
+  },
+  {
+   "text": "spears.",
+   "text_raw": "spears .",
+   "score": 0.8435,
+   "min_token_prob": 0.6139,
+   "flags": [],
+   "box": [
+    1402,
+    3112,
+    1734,
+    3243
+   ],
+   "poly": [
+    [
+     1402,
+     3112
+    ],
+    [
+     1734,
+     3112
+    ],
+    [
+     1734,
+     3243
+    ],
+    [
+     1402,
+     3243
+    ]
+   ],
+   "b_text": "SpaD",
+   "b_score": 0.5265,
+   "ink_px": 7341,
+   "ink_frac": 0.1492
+  }
+ ],
+ "peak_torch_alloc_mib": 2693,
+ "peak_rss_mib_process": 2968
+}

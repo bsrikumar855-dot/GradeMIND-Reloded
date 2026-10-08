@@ -1,0 +1,17 @@
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det`.[0m
+RESOLVED {"det": {"name": "PP-OCRv6_medium_det", "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det"}}
+page_01.jpg: 8.63s det_lines=97
+page_02.jpg: 8.47s det_lines=19
+page_03.jpg: 8.21s det_lines=20
+page_04.jpg: 8.05s det_lines=18
+page_05.jpg: 9.38s det_lines=28
+page_06.jpg: 8.53s det_lines=19
+page_07.jpg: 7.85s det_lines=11
+page_08.jpg: 8.27s det_lines=19
+page_09.jpg: 8.25s det_lines=20
+page_10.jpg: 7.81s det_lines=19
+page_11.jpg: 7.98s det_lines=16
+page_12.jpg: 8.56s det_lines=21
+page_13.jpg: 8.15s det_lines=20
+page_14.jpg: 8.46s det_lines=19
+page_15.jpg: 7.84s det_lines=9

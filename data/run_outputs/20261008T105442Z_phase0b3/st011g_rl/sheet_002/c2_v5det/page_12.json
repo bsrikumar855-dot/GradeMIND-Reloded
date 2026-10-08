@@ -1,0 +1,1621 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 2.509,
+ "crop_s": 0.091,
+ "recognition_s": 2.418,
+ "model_load_s": 0.79,
+ "n_lines": 45,
+ "n_no_text": 1,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "PART D.",
+   "text_raw": "PART D.",
+   "score": 0.8768,
+   "min_token_prob": 0.6318,
+   "flags": [],
+   "box": [
+    1121,
+    467,
+    1431,
+    560
+   ],
+   "poly": [
+    [
+     1123,
+     467
+    ],
+    [
+     1431,
+     473
+    ],
+    [
+     1429,
+     560
+    ],
+    [
+     1121,
+     554
+    ]
+   ],
+   "b_text": "PORID",
+   "b_score": 0.9367,
+   "ink_px": 3215,
+   "ink_frac": 0.1015
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.6367,
+   "min_token_prob": 0.1715,
+   "flags": [],
+   "box": [
+    104,
+    622,
+    165,
+    1325
+   ],
+   "poly": [
+    [
+     133,
+     622
+    ],
+    [
+     165,
+     623
+    ],
+    [
+     136,
+     1325
+    ],
+    [
+     104,
+     1323
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 17008,
+   "ink_frac": 0.5414
+  },
+  {
+   "text": "(A).",
+   "text_raw": "( A ) .",
+   "score": 0.8647,
+   "min_token_prob": 0.6681,
+   "flags": [],
+   "box": [
+    379,
+    683,
+    525,
+    770
+   ],
+   "poly": [
+    [
+     379,
+     683
+    ],
+    [
+     525,
+     683
+    ],
+    [
+     525,
+     770
+    ],
+    [
+     379,
+     770
+    ]
+   ],
+   "b_text": "(A)",
+   "b_score": 0.6666,
+   "ink_px": 1815,
+   "ink_frac": 0.116
+  },
+  {
+   "text": "A college generator",
+   "text_raw": "A college generator",
+   "score": 0.905,
+   "min_token_prob": 0.6636,
+   "flags": [],
+   "box": [
+    683,
+    938,
+    1632,
+    1057
+   ],
+   "poly": [
+    [
+     685,
+     938
+    ],
+    [
+     1632,
+     955
+    ],
+    [
+     1630,
+     1057
+    ],
+    [
+     683,
+     1039
+    ]
+   ],
+   "b_text": "A coclege generatn",
+   "b_score": 0.6758,
+   "ink_px": 15143,
+   "ink_frac": 0.1385
+  },
+  {
+   "text": "large quantities.",
+   "text_raw": "large quantities .",
+   "score": 0.8498,
+   "min_token_prob": 0.7763,
+   "flags": [],
+   "box": [
+    1697,
+    943,
+    2496,
+    1072
+   ],
+   "poly": [
+    [
+     1697,
+     952
+    ],
+    [
+     2495,
+     943
+    ],
+    [
+     2496,
+     1063
+    ],
+    [
+     1698,
+     1072
+    ]
+   ],
+   "b_text": "ape q rn",
+   "b_score": 0.4934,
+   "ink_px": 15269,
+   "ink_frac": 0.1428
+  },
+  {
+   "text": "of good waste, paper-coaster plastic and",
+   "text_raw": "of good waste , paper-coaster plastic and",
+   "score": 0.8857,
+   "min_token_prob": 0.6134,
+   "flags": [],
+   "box": [
+    339,
+    1037,
+    2349,
+    1205
+   ],
+   "poly": [
+    [
+     341,
+     1037
+    ],
+    [
+     2349,
+     1061
+    ],
+    [
+     2347,
+     1205
+    ],
+    [
+     339,
+     1181
+    ]
+   ],
+   "b_text": "of food wate papo cerau plane ard",
+   "b_score": 0.6963,
+   "ink_px": 30337,
+   "ink_frac": 0.0963
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8107,
+   "min_token_prob": 0.6632,
+   "flags": [],
+   "box": [
+    1680,
+    1034,
+    1695,
+    1053
+   ],
+   "poly": [
+    [
+     1680,
+     1034
+    ],
+    [
+     1695,
+     1034
+    ],
+    [
+     1695,
+     1053
+    ],
+    [
+     1680,
+     1053
+    ]
+   ],
+   "b_text": "事",
+   "b_score": 0.0783,
+   "ink_px": 112,
+   "ink_frac": 0.1338
+  },
+  {
+   "text": "other sacred waste.",
+   "text_raw": "other sacred waste .",
+   "score": 0.7665,
+   "min_token_prob": 0.4242,
+   "flags": [],
+   "box": [
+    363,
+    1170,
+    1250,
+    1282
+   ],
+   "poly": [
+    [
+     366,
+     1170
+    ],
+    [
+     1250,
+     1196
+    ],
+    [
+     1247,
+     1282
+    ],
+    [
+     363,
+     1257
+    ]
+   ],
+   "b_text": "ther sasd wanle",
+   "b_score": 0.6537,
+   "ink_px": 12365,
+   "ink_frac": 0.1394
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1772,
+    1227,
+    1995,
+    1319
+   ],
+   "poly": [
+    [
+     1772,
+     1238
+    ],
+    [
+     1991,
+     1227
+    ],
+    [
+     1995,
+     1308
+    ],
+    [
+     1776,
+     1319
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 709,
+   "ink_frac": 0.033
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.8399,
+   "min_token_prob": 0.671,
+   "flags": [],
+   "box": [
+    1639,
+    1503,
+    1682,
+    1516
+   ],
+   "poly": [
+    [
+     1639,
+     1503
+    ],
+    [
+     1682,
+     1503
+    ],
+    [
+     1682,
+     1516
+    ],
+    [
+     1639,
+     1516
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 276,
+   "ink_frac": 0.2007
+  },
+  {
+   "text": "principle.",
+   "text_raw": "principle .",
+   "score": 0.9397,
+   "min_token_prob": 0.8786,
+   "flags": [],
+   "box": [
+    340,
+    1528,
+    787,
+    1667
+   ],
+   "poly": [
+    [
+     345,
+     1528
+    ],
+    [
+     787,
+     1543
+    ],
+    [
+     783,
+     1667
+    ],
+    [
+     340,
+     1652
+    ]
+   ],
+   "b_text": "pronceple",
+   "b_score": 0.7947,
+   "ink_px": 7050,
+   "ink_frac": 0.1139
+  },
+  {
+   "text": "# # # # edit #",
+   "text_raw": "# # # # edit #",
+   "score": 0.5164,
+   "min_token_prob": 0.1594,
+   "flags": [],
+   "box": [
+    933,
+    1654,
+    1354,
+    1784
+   ],
+   "poly": [
+    [
+     934,
+     1654
+    ],
+    [
+     1354,
+     1659
+    ],
+    [
+     1352,
+     1784
+    ],
+    [
+     933,
+     1780
+    ]
+   ],
+   "b_text": "Dedu",
+   "b_score": 0.6552,
+   "ink_px": 7309,
+   "ink_frac": 0.1226
+  },
+  {
+   "text": "10",
+   "text_raw": "10",
+   "score": 0.5842,
+   "min_token_prob": 0.1727,
+   "flags": [],
+   "box": [
+    1746,
+    1749,
+    1820,
+    1782
+   ],
+   "poly": [
+    [
+     1746,
+     1749
+    ],
+    [
+     1820,
+     1749
+    ],
+    [
+     1820,
+     1782
+    ],
+    [
+     1746,
+     1782
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 323,
+   "ink_frac": 0.0835
+  },
+  {
+   "text": "\" # RO#",
+   "text_raw": "\" # RO#",
+   "score": 0.4252,
+   "min_token_prob": 0.19,
+   "flags": [],
+   "box": [
+    783,
+    1772,
+    1338,
+    1925
+   ],
+   "poly": [
+    [
+     786,
+     1772
+    ],
+    [
+     1338,
+     1783
+    ],
+    [
+     1335,
+     1925
+    ],
+    [
+     783,
+     1914
+    ]
+   ],
+   "b_text": "u",
+   "b_score": 0.5545,
+   "ink_px": 7552,
+   "ink_frac": 0.0869
+  },
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.3553,
+   "min_token_prob": 0.2385,
+   "flags": [],
+   "box": [
+    1365,
+    1852,
+    1415,
+    1886
+   ],
+   "poly": [
+    [
+     1365,
+     1852
+    ],
+    [
+     1415,
+     1852
+    ],
+    [
+     1415,
+     1886
+    ],
+    [
+     1365,
+     1886
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.1198,
+   "ink_px": 656,
+   "ink_frac": 0.23
+  },
+  {
+   "text": "# ROUGH",
+   "text_raw": "# ROUGH",
+   "score": 0.6557,
+   "min_token_prob": 0.2954,
+   "flags": [],
+   "box": [
+    942,
+    1909,
+    1526,
+    2010
+   ],
+   "poly": [
+    [
+     944,
+     1909
+    ],
+    [
+     1526,
+     1921
+    ],
+    [
+     1524,
+     2010
+    ],
+    [
+     942,
+     1998
+    ]
+   ],
+   "b_text": "ou",
+   "b_score": 0.3793,
+   "ink_px": 8492,
+   "ink_frac": 0.1415
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7056,
+   "min_token_prob": 0.419,
+   "flags": [],
+   "box": [
+    1206,
+    1991,
+    1219,
+    2004
+   ],
+   "poly": [
+    [
+     1206,
+     1991
+    ],
+    [
+     1219,
+     1991
+    ],
+    [
+     1219,
+     2004
+    ],
+    [
+     1206,
+     2004
+    ]
+   ],
+   "b_text": "号",
+   "b_score": 0.4076,
+   "ink_px": 61,
+   "ink_frac": 0.0976
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.6494,
+   "min_token_prob": 0.1564,
+   "flags": [],
+   "box": [
+    59,
+    2007,
+    101,
+    2372
+   ],
+   "poly": [
+    [
+     77,
+     2007
+    ],
+    [
+     101,
+     2008
+    ],
+    [
+     84,
+     2372
+    ],
+    [
+     59,
+     2371
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 7687,
+   "ink_frac": 0.5525
+  },
+  {
+   "text": "1930s.",
+   "text_raw": "1930s .",
+   "score": 0.3303,
+   "min_token_prob": 0.0862,
+   "flags": [],
+   "box": [
+    1023,
+    2002,
+    1213,
+    2026
+   ],
+   "poly": [
+    [
+     1023,
+     2002
+    ],
+    [
+     1213,
+     2002
+    ],
+    [
+     1213,
+     2026
+    ],
+    [
+     1023,
+     2026
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 1321,
+   "ink_frac": 0.1817
+  },
+  {
+   "text": "your marijuana.",
+   "text_raw": "your marijuana .",
+   "score": 0.538,
+   "min_token_prob": 0.0862,
+   "flags": [],
+   "box": [
+    1297,
+    2002,
+    1555,
+    2060
+   ],
+   "poly": [
+    [
+     1298,
+     2002
+    ],
+    [
+     1555,
+     2008
+    ],
+    [
+     1554,
+     2060
+    ],
+    [
+     1297,
+     2053
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 3673,
+   "ink_frac": 0.2133
+  },
+  {
+   "text": "1907",
+   "text_raw": "1907",
+   "score": 0.341,
+   "min_token_prob": 0.1802,
+   "flags": [],
+   "box": [
+    1021,
+    2013,
+    1221,
+    2050
+   ],
+   "poly": [
+    [
+     1022,
+     2013
+    ],
+    [
+     1221,
+     2017
+    ],
+    [
+     1220,
+     2050
+    ],
+    [
+     1021,
+     2046
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 1992,
+   "ink_frac": 0.2098
+  },
+  {
+   "text": "Firstly.",
+   "text_raw": "Firstly .",
+   "score": 0.8358,
+   "min_token_prob": 0.5185,
+   "flags": [],
+   "box": [
+    510,
+    2134,
+    813,
+    2251
+   ],
+   "poly": [
+    [
+     514,
+     2134
+    ],
+    [
+     813,
+     2145
+    ],
+    [
+     809,
+     2251
+    ],
+    [
+     510,
+     2239
+    ]
+   ],
+   "b_text": "Fastly",
+   "b_score": 0.6865,
+   "ink_px": 5003,
+   "ink_frac": 0.1363
+  },
+  {
+   "text": "use there do\" so made the",
+   "text_raw": "use there do\" so made the",
+   "score": 0.5833,
+   "min_token_prob": 0.2241,
+   "flags": [],
+   "box": [
+    851,
+    2129,
+    2379,
+    2318
+   ],
+   "poly": [
+    [
+     853,
+     2129
+    ],
+    [
+     2379,
+     2149
+    ],
+    [
+     2377,
+     2318
+    ],
+    [
+     851,
+     2299
+    ]
+   ],
+   "b_text": "np shave cde the",
+   "b_score": 0.5397,
+   "ink_px": 23589,
+   "ink_frac": 0.0843
+  },
+  {
+   "text": "hyper of coast.",
+   "text_raw": "hyper of coast .",
+   "score": 0.6782,
+   "min_token_prob": 0.194,
+   "flags": [],
+   "box": [
+    312,
+    2250,
+    1136,
+    2406
+   ],
+   "poly": [
+    [
+     316,
+     2250
+    ],
+    [
+     1136,
+     2275
+    ],
+    [
+     1132,
+     2406
+    ],
+    [
+     312,
+     2381
+    ]
+   ],
+   "b_text": "typor of coad",
+   "b_score": 0.7484,
+   "ink_px": 12182,
+   "ink_frac": 0.1024
+  },
+  {
+   "text": "and",
+   "text_raw": "and",
+   "score": 0.9483,
+   "min_token_prob": 0.9051,
+   "flags": [],
+   "box": [
+    1232,
+    2298,
+    1415,
+    2386
+   ],
+   "poly": [
+    [
+     1232,
+     2298
+    ],
+    [
+     1415,
+     2298
+    ],
+    [
+     1415,
+     2386
+    ],
+    [
+     1232,
+     2386
+    ]
+   ],
+   "b_text": "and",
+   "b_score": 0.9394,
+   "ink_px": 3191,
+   "ink_frac": 0.1636
+  },
+  {
+   "text": "June",
+   "text_raw": "June",
+   "score": 0.5607,
+   "min_token_prob": 0.1236,
+   "flags": [],
+   "box": [
+    1457,
+    2306,
+    1670,
+    2390
+   ],
+   "poly": [
+    [
+     1459,
+     2306
+    ],
+    [
+     1670,
+     2311
+    ],
+    [
+     1668,
+     2390
+    ],
+    [
+     1457,
+     2386
+    ]
+   ],
+   "b_text": "u0",
+   "b_score": 0.2278,
+   "ink_px": 2795,
+   "ink_frac": 0.1362
+  },
+  {
+   "text": "Cols.",
+   "text_raw": "Cols .",
+   "score": 0.6249,
+   "min_token_prob": 0.1098,
+   "flags": [],
+   "box": [
+    1758,
+    2313,
+    1996,
+    2416
+   ],
+   "poly": [
+    [
+     1761,
+     2313
+    ],
+    [
+     1996,
+     2320
+    ],
+    [
+     1994,
+     2416
+    ],
+    [
+     1758,
+     2409
+    ]
+   ],
+   "b_text": "ce",
+   "b_score": 0.5398,
+   "ink_px": 2773,
+   "ink_frac": 0.1035
+  },
+  {
+   "text": "umango.",
+   "text_raw": "umango .",
+   "score": 0.6389,
+   "min_token_prob": 0.3987,
+   "flags": [],
+   "box": [
+    2006,
+    2315,
+    2378,
+    2441
+   ],
+   "poly": [
+    [
+     2010,
+     2315
+    ],
+    [
+     2378,
+     2328
+    ],
+    [
+     2374,
+     2441
+    ],
+    [
+     2006,
+     2428
+    ]
+   ],
+   "b_text": "umanga",
+   "b_score": 0.7439,
+   "ink_px": 7762,
+   "ink_frac": 0.1634
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.5705,
+   "min_token_prob": 0.2052,
+   "flags": [],
+   "box": [
+    1423,
+    2370,
+    1445,
+    2386
+   ],
+   "poly": [
+    [
+     1423,
+     2370
+    ],
+    [
+     1445,
+     2370
+    ],
+    [
+     1445,
+     2386
+    ],
+    [
+     1423,
+     2386
+    ]
+   ],
+   "b_text": "7",
+   "b_score": 0.284,
+   "ink_px": 119,
+   "ink_frac": 0.125
+  },
+  {
+   "text": "it's",
+   "text_raw": "it's",
+   "score": 0.7416,
+   "min_token_prob": 0.6325,
+   "flags": [],
+   "box": [
+    1706,
+    2377,
+    1740,
+    2401
+   ],
+   "poly": [
+    [
+     1706,
+     2377
+    ],
+    [
+     1740,
+     2377
+    ],
+    [
+     1740,
+     2401
+    ],
+    [
+     1706,
+     2401
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.1308,
+   "ink_px": 426,
+   "ink_frac": 0.2572
+  },
+  {
+   "text": "who",
+   "text_raw": "who",
+   "score": 0.637,
+   "min_token_prob": 0.338,
+   "flags": [],
+   "box": [
+    341,
+    2404,
+    555,
+    2505
+   ],
+   "poly": [
+    [
+     343,
+     2404
+    ],
+    [
+     555,
+     2409
+    ],
+    [
+     553,
+     2505
+    ],
+    [
+     341,
+     2500
+    ]
+   ],
+   "b_text": "ctho",
+   "b_score": 0.9221,
+   "ink_px": 3449,
+   "ink_frac": 0.1426
+  },
+  {
+   "text": "pollent loan.",
+   "text_raw": "pollent loan .",
+   "score": 0.616,
+   "min_token_prob": 0.1126,
+   "flags": [],
+   "box": [
+    649,
+    2402,
+    1121,
+    2525
+   ],
+   "poly": [
+    [
+     649,
+     2409
+    ],
+    [
+     1119,
+     2402
+    ],
+    [
+     1121,
+     2519
+    ],
+    [
+     651,
+     2525
+    ]
+   ],
+   "b_text": "pollutson",
+   "b_score": 0.7068,
+   "ink_px": 8303,
+   "ink_frac": 0.1335
+  },
+  {
+   "text": "happond: due:",
+   "text_raw": "happond : due :",
+   "score": 0.7313,
+   "min_token_prob": 0.3352,
+   "flags": [],
+   "box": [
+    1257,
+    2407,
+    2025,
+    2563
+   ],
+   "poly": [
+    [
+     1261,
+     2407
+    ],
+    [
+     2025,
+     2430
+    ],
+    [
+     2021,
+     2563
+    ],
+    [
+     1257,
+     2540
+    ]
+   ],
+   "b_text": "happond dua,",
+   "b_score": 0.7117,
+   "ink_px": 12425,
+   "ink_frac": 0.1104
+  },
+  {
+   "text": "\" Waste.",
+   "text_raw": "\" Waste .",
+   "score": 0.562,
+   "min_token_prob": 0.1123,
+   "flags": [],
+   "box": [
+    2035,
+    2442,
+    2531,
+    2556
+   ],
+   "poly": [
+    [
+     2035,
+     2442
+    ],
+    [
+     2531,
+     2442
+    ],
+    [
+     2531,
+     2556
+    ],
+    [
+     2035,
+     2556
+    ]
+   ],
+   "b_text": "tp.",
+   "b_score": 0.4775,
+   "ink_px": 9757,
+   "ink_frac": 0.1524
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.5738,
+   "min_token_prob": 0.1735,
+   "flags": [],
+   "box": [
+    1564,
+    2626,
+    1581,
+    2647
+   ],
+   "poly": [
+    [
+     1564,
+     2626
+    ],
+    [
+     1581,
+     2626
+    ],
+    [
+     1581,
+     2647
+    ],
+    [
+     1564,
+     2647
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.6239,
+   "ink_px": 128,
+   "ink_frac": 0.1338
+  },
+  {
+   "text": "6",
+   "text_raw": "6",
+   "score": 0.5754,
+   "min_token_prob": 0.2459,
+   "flags": [],
+   "box": [
+    2175,
+    2624,
+    2231,
+    2674
+   ],
+   "poly": [
+    [
+     2175,
+     2624
+    ],
+    [
+     2231,
+     2624
+    ],
+    [
+     2231,
+     2674
+    ],
+    [
+     2175,
+     2674
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.6223,
+   "ink_px": 380,
+   "ink_frac": 0.0901
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.629,
+   "min_token_prob": 0.2727,
+   "flags": [],
+   "box": [
+    2285,
+    2635,
+    2298,
+    2648
+   ],
+   "poly": [
+    [
+     2285,
+     2635
+    ],
+    [
+     2298,
+     2635
+    ],
+    [
+     2298,
+     2648
+    ],
+    [
+     2285,
+     2648
+    ]
+   ],
+   "b_text": "些",
+   "b_score": 0.0453,
+   "ink_px": 78,
+   "ink_frac": 0.1248
+  },
+  {
+   "text": "life change to produce",
+   "text_raw": "life change to produce",
+   "score": 0.8523,
+   "min_token_prob": 0.4505,
+   "flags": [],
+   "box": [
+    545,
+    2646,
+    1714,
+    2773
+   ],
+   "poly": [
+    [
+     546,
+     2646
+    ],
+    [
+     1714,
+     2666
+    ],
+    [
+     1712,
+     2773
+    ],
+    [
+     545,
+     2753
+    ]
+   ],
+   "b_text": "lxlo chane to moduco",
+   "b_score": 0.6618,
+   "ink_px": 15165,
+   "ink_frac": 0.108
+  },
+  {
+   "text": "the waste",
+   "text_raw": "the waste",
+   "score": 0.5979,
+   "min_token_prob": 0.5152,
+   "flags": [],
+   "box": [
+    1789,
+    2673,
+    2346,
+    2797
+   ],
+   "poly": [
+    [
+     1792,
+     2673
+    ],
+    [
+     2346,
+     2688
+    ],
+    [
+     2343,
+     2797
+    ],
+    [
+     1789,
+     2782
+    ]
+   ],
+   "b_text": "dh unule",
+   "b_score": 0.5922,
+   "ink_px": 10018,
+   "ink_frac": 0.1463
+  },
+  {
+   "text": "Land # # the # principle on the",
+   "text_raw": "Land # # the # principle on the",
+   "score": 0.8085,
+   "min_token_prob": 0.3841,
+   "flags": [],
+   "box": [
+    268,
+    2745,
+    2391,
+    2952
+   ],
+   "poly": [
+    [
+     272,
+     2745
+    ],
+    [
+     2391,
+     2797
+    ],
+    [
+     2387,
+     2952
+    ],
+    [
+     268,
+     2900
+    ]
+   ],
+   "b_text": "andt pplo n th",
+   "b_score": 0.6956,
+   "ink_px": 36352,
+   "ink_frac": 0.1021
+  },
+  {
+   "text": "# 300-unthood.",
+   "text_raw": "# 300-unthood .",
+   "score": 0.4768,
+   "min_token_prob": 0.1313,
+   "flags": [],
+   "box": [
+    274,
+    2897,
+    999,
+    3031
+   ],
+   "poly": [
+    [
+     275,
+     2897
+    ],
+    [
+     999,
+     2904
+    ],
+    [
+     998,
+     3031
+    ],
+    [
+     274,
+     3025
+    ]
+   ],
+   "b_text": "Bpmathod",
+   "b_score": 0.5082,
+   "ink_px": 13378,
+   "ink_frac": 0.1298
+  },
+  {
+   "text": "0 #",
+   "text_raw": "0 #",
+   "score": 0.6606,
+   "min_token_prob": 0.2893,
+   "flags": [],
+   "box": [
+    1161,
+    2983,
+    1243,
+    3023
+   ],
+   "poly": [
+    [
+     1161,
+     2983
+    ],
+    [
+     1243,
+     2983
+    ],
+    [
+     1243,
+     3023
+    ],
+    [
+     1161,
+     3023
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.4219,
+   "ink_px": 641,
+   "ink_frac": 0.1311
+  },
+  {
+   "text": "# feet #",
+   "text_raw": "# feet #",
+   "score": 0.5183,
+   "min_token_prob": 0.2155,
+   "flags": [],
+   "box": [
+    2029,
+    2992,
+    2201,
+    3068
+   ],
+   "poly": [
+    [
+     2029,
+     2992
+    ],
+    [
+     2201,
+     2992
+    ],
+    [
+     2201,
+     3068
+    ],
+    [
+     2029,
+     3068
+    ]
+   ],
+   "b_text": "门1",
+   "b_score": 0.5348,
+   "ink_px": 1126,
+   "ink_frac": 0.0695
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.949,
+   "min_token_prob": 0.9066,
+   "flags": [],
+   "box": [
+    2281,
+    3010,
+    2300,
+    3029
+   ],
+   "poly": [
+    [
+     2281,
+     3010
+    ],
+    [
+     2300,
+     3010
+    ],
+    [
+     2300,
+     3029
+    ],
+    [
+     2281,
+     3029
+    ]
+   ],
+   "b_text": "拖",
+   "b_score": 0.0883,
+   "ink_px": 127,
+   "ink_frac": 0.1322
+  },
+  {
+   "text": "f",
+   "text_raw": "f",
+   "score": 0.3437,
+   "min_token_prob": 0.3063,
+   "flags": [],
+   "box": [
+    2035,
+    3134,
+    2065,
+    3160
+   ],
+   "poly": [
+    [
+     2035,
+     3134
+    ],
+    [
+     2065,
+     3134
+    ],
+    [
+     2065,
+     3160
+    ],
+    [
+     2035,
+     3160
+    ]
+   ],
+   "b_text": "F",
+   "b_score": 0.0936,
+   "ink_px": 181,
+   "ink_frac": 0.1134
+  }
+ ],
+ "peak_torch_alloc_mib": 2705,
+ "peak_rss_mib_process": 2968
+}

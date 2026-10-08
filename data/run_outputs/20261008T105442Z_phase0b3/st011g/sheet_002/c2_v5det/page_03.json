@@ -1,0 +1,884 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 1.557,
+ "crop_s": 0.123,
+ "recognition_s": 1.433,
+ "model_load_s": 0.79,
+ "n_lines": 24,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "Saint Eussier",
+   "text_raw": "Saint Eussier",
+   "score": 0.4186,
+   "min_token_prob": 0.1034,
+   "flags": [],
+   "box": [
+    453,
+    486,
+    1106,
+    612
+   ],
+   "poly": [
+    [
+     458,
+     486
+    ],
+    [
+     1106,
+     516
+    ],
+    [
+     1101,
+     612
+    ],
+    [
+     453,
+     582
+    ]
+   ],
+   "b_text": "se",
+   "b_score": 0.527,
+   "ink_px": 11154,
+   "ink_frac": 0.1565
+  },
+  {
+   "text": "It is a kind of emotional diary.",
+   "text_raw": "It is a kind of emotional diary .",
+   "score": 0.8435,
+   "min_token_prob": 0.3823,
+   "flags": [],
+   "box": [
+    896,
+    596,
+    2729,
+    768
+   ],
+   "poly": [
+    [
+     897,
+     596
+    ],
+    [
+     2729,
+     611
+    ],
+    [
+     2728,
+     768
+    ],
+    [
+     896,
+     752
+    ]
+   ],
+   "b_text": "It a tind o a d",
+   "b_score": 0.5853,
+   "ink_px": 35752,
+   "ink_frac": 0.1147
+  },
+  {
+   "text": "Soil erosion removed with",
+   "text_raw": "Soil erosion removed with",
+   "score": 0.7874,
+   "min_token_prob": 0.6165,
+   "flags": [],
+   "box": [
+    900,
+    758,
+    2473,
+    871
+   ],
+   "poly": [
+    [
+     900,
+     766
+    ],
+    [
+     2472,
+     758
+    ],
+    [
+     2473,
+     863
+    ],
+    [
+     901,
+     871
+    ]
+   ],
+   "b_text": "Sailesin acmoue",
+   "b_score": 0.5657,
+   "ink_px": 31066,
+   "ink_frac": 0.1676
+  },
+  {
+   "text": "suff",
+   "text_raw": "suff",
+   "score": 0.4181,
+   "min_token_prob": 0.2756,
+   "flags": [],
+   "box": [
+    2480,
+    854,
+    2498,
+    871
+   ],
+   "poly": [
+    [
+     2480,
+     854
+    ],
+    [
+     2498,
+     854
+    ],
+    [
+     2498,
+     871
+    ],
+    [
+     2480,
+     871
+    ]
+   ],
+   "b_text": "华",
+   "b_score": 0.0589,
+   "ink_px": 253,
+   "ink_frac": 0.2908
+  },
+  {
+   "text": "described tospirit.",
+   "text_raw": "described tospirit .",
+   "score": 0.5234,
+   "min_token_prob": 0.1019,
+   "flags": [],
+   "box": [
+    405,
+    883,
+    1427,
+    1018
+   ],
+   "poly": [
+    [
+     409,
+     883
+    ],
+    [
+     1427,
+     916
+    ],
+    [
+     1423,
+     1018
+    ],
+    [
+     405,
+     984
+    ]
+   ],
+   "b_text": "esae toasih",
+   "b_score": 0.5326,
+   "ink_px": 19325,
+   "ink_frac": 0.1646
+  },
+  {
+   "text": "Food:",
+   "text_raw": "Food :",
+   "score": 0.9489,
+   "min_token_prob": 0.8897,
+   "flags": [],
+   "box": [
+    496,
+    1285,
+    853,
+    1400
+   ],
+   "poly": [
+    [
+     501,
+     1285
+    ],
+    [
+     853,
+     1302
+    ],
+    [
+     848,
+     1400
+    ],
+    [
+     496,
+     1383
+    ]
+   ],
+   "b_text": "Eood:",
+   "b_score": 0.5848,
+   "ink_px": 5413,
+   "ink_frac": 0.1352
+  },
+  {
+   "text": "Food is dropped due to over",
+   "text_raw": "Food is dropped due to over",
+   "score": 0.8229,
+   "min_token_prob": 0.4502,
+   "flags": [],
+   "box": [
+    828,
+    1414,
+    2647,
+    1620
+   ],
+   "poly": [
+    [
+     833,
+     1414
+    ],
+    [
+     2647,
+     1495
+    ],
+    [
+     2641,
+     1620
+    ],
+    [
+     828,
+     1539
+    ]
+   ],
+   "b_text": "Fioi is tame cue do c",
+   "b_score": 0.6202,
+   "ink_px": 33079,
+   "ink_frac": 0.1322
+  },
+  {
+   "text": "rainfall. It is a kind of natural",
+   "text_raw": "rainfall . It is a kind of natural",
+   "score": 0.7403,
+   "min_token_prob": 0.0905,
+   "flags": [],
+   "box": [
+    384,
+    1515,
+    2620,
+    1770
+   ],
+   "poly": [
+    [
+     391,
+     1515
+    ],
+    [
+     2620,
+     1626
+    ],
+    [
+     2613,
+     1770
+    ],
+    [
+     384,
+     1659
+    ]
+   ],
+   "b_text": "inp. It a a ctind of rotoal",
+   "b_score": 0.5983,
+   "ink_px": 38582,
+   "ink_frac": 0.1103
+  },
+  {
+   "text": "disaster.",
+   "text_raw": "disaster .",
+   "score": 0.6285,
+   "min_token_prob": 0.0842,
+   "flags": [],
+   "box": [
+    355,
+    1682,
+    792,
+    1790
+   ],
+   "poly": [
+    [
+     360,
+     1682
+    ],
+    [
+     792,
+     1706
+    ],
+    [
+     787,
+     1790
+    ],
+    [
+     355,
+     1765
+    ]
+   ],
+   "b_text": "i",
+   "b_score": 0.4469,
+   "ink_px": 5866,
+   "ink_frac": 0.1376
+  },
+  {
+   "text": "Punoughs.",
+   "text_raw": "Punoughs .",
+   "score": 0.6583,
+   "min_token_prob": 0.1731,
+   "flags": [],
+   "box": [
+    488,
+    1819,
+    889,
+    1940
+   ],
+   "poly": [
+    [
+     496,
+     1819
+    ],
+    [
+     889,
+     1855
+    ],
+    [
+     881,
+     1940
+    ],
+    [
+     488,
+     1904
+    ]
+   ],
+   "b_text": "Dract",
+   "b_score": 0.481,
+   "ink_px": 5412,
+   "ink_frac": 0.1374
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.3582,
+   "min_token_prob": 0.2068,
+   "flags": [],
+   "box": [
+    2684,
+    1912,
+    2699,
+    1934
+   ],
+   "poly": [
+    [
+     2684,
+     1912
+    ],
+    [
+     2699,
+     1912
+    ],
+    [
+     2699,
+     1934
+    ],
+    [
+     2684,
+     1934
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.0959,
+   "ink_px": 179,
+   "ink_frac": 0.195
+  },
+  {
+   "text": "Dragit We'dappard due to Mr.",
+   "text_raw": "Dragit We'dappard due to Mr.",
+   "score": 0.6779,
+   "min_token_prob": 0.2825,
+   "flags": [],
+   "box": [
+    835,
+    1939,
+    2638,
+    2186
+   ],
+   "poly": [
+    [
+     843,
+     1939
+    ],
+    [
+     2638,
+     2062
+    ],
+    [
+     2630,
+     2186
+    ],
+    [
+     835,
+     2062
+    ]
+   ],
+   "b_text": "Dorght  tappad due do ",
+   "b_score": 0.7338,
+   "ink_px": 35541,
+   "ink_frac": 0.1442
+  },
+  {
+   "text": "salfed for the particular area.",
+   "text_raw": "salfed for the particular area .",
+   "score": 0.7358,
+   "min_token_prob": 0.2347,
+   "flags": [],
+   "box": [
+    347,
+    2051,
+    2311,
+    2305
+   ],
+   "poly": [
+    [
+     355,
+     2051
+    ],
+    [
+     2311,
+     2174
+    ],
+    [
+     2303,
+     2305
+    ],
+    [
+     347,
+     2182
+    ]
+   ],
+   "b_text": "faf thei cen",
+   "b_score": 0.5227,
+   "ink_px": 35873,
+   "ink_frac": 0.1273
+  },
+  {
+   "text": "If there is no wonder assault.",
+   "text_raw": "If there is no wonder assault .",
+   "score": 0.9209,
+   "min_token_prob": 0.734,
+   "flags": [],
+   "box": [
+    881,
+    2212,
+    2629,
+    2457
+   ],
+   "poly": [
+    [
+     890,
+     2212
+    ],
+    [
+     2629,
+     2344
+    ],
+    [
+     2620,
+     2457
+    ],
+    [
+     881,
+     2324
+    ]
+   ],
+   "b_text": "I tiee i co code aanog",
+   "b_score": 0.6131,
+   "ink_px": 34568,
+   "ink_frac": 0.1742
+  },
+  {
+   "text": "# E",
+   "text_raw": "# E",
+   "score": 0.445,
+   "min_token_prob": 0.1278,
+   "flags": [],
+   "box": [
+    1215,
+    2206,
+    1367,
+    2256
+   ],
+   "poly": [
+    [
+     1218,
+     2206
+    ],
+    [
+     1367,
+     2217
+    ],
+    [
+     1364,
+     2256
+    ],
+    [
+     1215,
+     2245
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 1153,
+   "ink_frac": 0.1404
+  },
+  {
+   "text": "0 #",
+   "text_raw": "0 #",
+   "score": 0.5827,
+   "min_token_prob": 0.2124,
+   "flags": [],
+   "box": [
+    1399,
+    2219,
+    1560,
+    2273
+   ],
+   "poly": [
+    [
+     1402,
+     2219
+    ],
+    [
+     1560,
+     2232
+    ],
+    [
+     1557,
+     2273
+    ],
+    [
+     1399,
+     2260
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 948,
+   "ink_frac": 0.1052
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.5026,
+   "min_token_prob": 0.1203,
+   "flags": [],
+   "box": [
+    2430,
+    2244,
+    2448,
+    2261
+   ],
+   "poly": [
+    [
+     2430,
+     2244
+    ],
+    [
+     2448,
+     2244
+    ],
+    [
+     2448,
+     2261
+    ],
+    [
+     2430,
+     2261
+    ]
+   ],
+   "b_text": "新",
+   "b_score": 0.0465,
+   "ink_px": 84,
+   "ink_frac": 0.0966
+  },
+  {
+   "text": "is there it will dropped.",
+   "text_raw": "is there it will dropped .",
+   "score": 0.8468,
+   "min_token_prob": 0.5296,
+   "flags": [],
+   "box": [
+    346,
+    2302,
+    1801,
+    2533
+   ],
+   "poly": [
+    [
+     355,
+     2302
+    ],
+    [
+     1801,
+     2426
+    ],
+    [
+     1792,
+     2533
+    ],
+    [
+     346,
+     2409
+    ]
+   ],
+   "b_text": "stae st sf tarpend",
+   "b_score": 0.5963,
+   "ink_px": 23075,
+   "ink_frac": 0.1473
+  },
+  {
+   "text": "13. Thements of Biodiversity",
+   "text_raw": "13 . Thements of Biodiversity",
+   "score": 0.7719,
+   "min_token_prob": 0.3053,
+   "flags": [],
+   "box": [
+    219,
+    2541,
+    1518,
+    2779
+   ],
+   "poly": [
+    [
+     230,
+     2541
+    ],
+    [
+     1518,
+     2660
+    ],
+    [
+     1507,
+     2779
+    ],
+    [
+     219,
+     2660
+    ]
+   ],
+   "b_text": "3Faete Bdfesy",
+   "b_score": 0.5866,
+   "ink_px": 22626,
+   "ink_frac": 0.1387
+  },
+  {
+   "text": "# I'm we offer the food chain",
+   "text_raw": "# I'm we offer the food chain",
+   "score": 0.7756,
+   "min_token_prob": 0.5128,
+   "flags": [],
+   "box": [
+    568,
+    2821,
+    2444,
+    3128
+   ],
+   "poly": [
+    [
+     580,
+     2821
+    ],
+    [
+     2444,
+     2997
+    ],
+    [
+     2432,
+     3128
+    ],
+    [
+     568,
+     2953
+    ]
+   ],
+   "b_text": "* Id  aiet ih fod dafl",
+   "b_score": 0.5243,
+   "ink_px": 38228,
+   "ink_frac": 0.1536
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.612,
+   "min_token_prob": 0.2264,
+   "flags": [],
+   "box": [
+    2313,
+    2844,
+    2329,
+    2855
+   ],
+   "poly": [
+    [
+     2313,
+     2844
+    ],
+    [
+     2329,
+     2844
+    ],
+    [
+     2329,
+     2855
+    ],
+    [
+     2313,
+     2855
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.1025,
+   "ink_px": 68,
+   "ink_frac": 0.1056
+  },
+  {
+   "text": "1. It is called the ecosystem",
+   "text_raw": "1 . It is called the ecosystem",
+   "score": 0.8075,
+   "min_token_prob": 0.2407,
+   "flags": [],
+   "box": [
+    573,
+    2943,
+    2386,
+    3267
+   ],
+   "poly": [
+    [
+     587,
+     2943
+    ],
+    [
+     2386,
+     3143
+    ],
+    [
+     2372,
+     3267
+    ],
+    [
+     573,
+     3066
+    ]
+   ],
+   "b_text": "Id is oiet e easustem",
+   "b_score": 0.5565,
+   "ink_px": 37016,
+   "ink_frac": 0.1637
+  },
+  {
+   "text": "# It is lends to extinction of",
+   "text_raw": "# It is lends to extinction of",
+   "score": 0.7702,
+   "min_token_prob": 0.2942,
+   "flags": [],
+   "box": [
+    580,
+    3054,
+    2461,
+    3413
+   ],
+   "poly": [
+    [
+     596,
+     3054
+    ],
+    [
+     2461,
+     3266
+    ],
+    [
+     2444,
+     3413
+    ],
+    [
+     580,
+     3202
+    ]
+   ],
+   "b_text": "t I is bids to axtasion 4",
+   "b_score": 0.5463,
+   "ink_px": 41149,
+   "ink_frac": 0.1471
+  },
+  {
+   "text": "more species.",
+   "text_raw": "more species .",
+   "score": 0.8432,
+   "min_token_prob": 0.523,
+   "flags": [],
+   "box": [
+    345,
+    3201,
+    1100,
+    3355
+   ],
+   "poly": [
+    [
+     352,
+     3201
+    ],
+    [
+     1100,
+     3259
+    ],
+    [
+     1093,
+     3355
+    ],
+    [
+     345,
+     3297
+    ]
+   ],
+   "b_text": "toeSeca",
+   "b_score": 0.4821,
+   "ink_px": 15927,
+   "ink_frac": 0.1935
+  }
+ ],
+ "peak_torch_alloc_mib": 2689,
+ "peak_rss_mib_process": 2966
+}

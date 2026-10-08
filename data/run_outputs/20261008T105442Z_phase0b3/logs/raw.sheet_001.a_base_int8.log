@@ -1,0 +1,66 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+No prebuilt binary for CUDA 12.9, loading CUDA 12.8 instead. Set BNB_CUDA_VERSION to override.
+Some weights of UnlimitedOCRForCausalLM were not initialized from the model checkpoint at /home/Shreekumar/models/Unlimited-OCR and are newly initialized: ['model.vision_model.embeddings.position_ids']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+RESOLVED {"weights_file": "model-00001-of-000001.safetensors", "weights_sha256": "2bc48a7a110061ea58fff65d3169367eebe3aee371ca6968dc2219c1b2855fc6", "linear8bit_modules": 2196, "param_devices": ["cuda:0"], "class": "UnlimitedOCRForCausalLM"}
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 346706 times]
+page_01.jpg: 55.7s tokens=1223 regions=7 peak_alloc=4361MiB flags=['EMPTY_CELL_SPAM_x191']
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 70664 times]
+page_02.jpg: 11.1s tokens=244 regions=1 peak_alloc=4361MiB flags=['REPEATED_CELL_TEXT_x12']
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 41057 times]
+page_03.jpg: 6.5s tokens=139 regions=1 peak_alloc=4361MiB flags=['EMPTY_CELL_SPAM_x26']
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 47273 times]
+page_04.jpg: 7.5s tokens=161 regions=1 peak_alloc=4361MiB flags=[]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 44141 times]
+page_05.jpg: 7.0s tokens=150 regions=1 peak_alloc=4361MiB flags=[]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 95198 times]
+page_06.jpg: 14.9s tokens=331 regions=1 peak_alloc=4361MiB flags=['EMPTY_CELL_SPAM_x67']
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 48386 times]
+page_07.jpg: 7.6s tokens=165 regions=1 peak_alloc=4361MiB flags=[]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 33719 times]
+page_08.jpg: 5.4s tokens=113 regions=1 peak_alloc=4361MiB flags=[]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 55703 times]
+page_09.jpg: 8.8s tokens=191 regions=7 peak_alloc=4361MiB flags=[]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 59645 times]
+page_10.jpg: 9.5s tokens=205 regions=8 peak_alloc=4361MiB flags=[]
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 1078814 times]
+page_11.jpg: 166.5s tokens=3819 regions=1 peak_alloc=4361MiB flags=['COUNTING_SEQUENCE_x34', 'EMPTY_CELL_SPAM_x1738']
+The attention mask and the pad token id were not set. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Setting `pad_token_id` to `eos_token_id`:1 for open-end generation.
+MatMul8bitLt: inputs will be cast from torch.bfloat16 to float16 during quantization
+[previous line repeated 28097 times]
+page_12.jpg: 4.5s tokens=93 regions=4 peak_alloc=4361MiB flags=[]

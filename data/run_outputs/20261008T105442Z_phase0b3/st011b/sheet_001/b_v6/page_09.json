@@ -1,0 +1,665 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_09.jpg",
+ "latency_s": 9.75,
+ "model_load_s": 0.42,
+ "n_lines": 22,
+ "lines": [
+  {
+   "text": "→ Trees, animald, reptiles, amphibans",
+   "score": 0.9148,
+   "poly": [
+    [
+     375,
+     249
+    ],
+    [
+     2280,
+     245
+    ],
+    [
+     2281,
+     427
+    ],
+    [
+     375,
+     431
+    ]
+   ],
+   "box": [
+    375,
+    245,
+    2281,
+    431
+   ]
+  },
+  {
+   "text": "in riven, and lakes,",
+   "score": 0.9546,
+   "poly": [
+    [
+     434,
+     421
+    ],
+    [
+     1448,
+     402
+    ],
+    [
+     1451,
+     553
+    ],
+    [
+     437,
+     572
+    ]
+   ],
+   "box": [
+    434,
+    402,
+    1451,
+    572
+   ]
+  },
+  {
+   "text": "→ Each has tife, cycle",
+   "score": 0.9409,
+   "poly": [
+    [
+     376,
+     660
+    ],
+    [
+     1937,
+     640
+    ],
+    [
+     1939,
+     810
+    ],
+    [
+     378,
+     831
+    ]
+   ],
+   "box": [
+    376,
+    640,
+    1939,
+    831
+   ]
+  },
+  {
+   "text": "birth→ life→ death, ire",
+   "score": 0.9418,
+   "poly": [
+    [
+     432,
+     790
+    ],
+    [
+     2105,
+     774
+    ],
+    [
+     2106,
+     943
+    ],
+    [
+     434,
+     959
+    ]
+   ],
+   "box": [
+    432,
+    774,
+    2106,
+    959
+   ]
+  },
+  {
+   "text": "ortain one become food",
+   "score": 0.9933,
+   "poly": [
+    [
+     423,
+     920
+    ],
+    [
+     1971,
+     920
+    ],
+    [
+     1971,
+     1089
+    ],
+    [
+     423,
+     1089
+    ]
+   ],
+   "box": [
+    423,
+    920,
+    1971,
+    1089
+   ]
+  },
+  {
+   "text": "for another This is root",
+   "score": 0.9793,
+   "poly": [
+    [
+     402,
+     1047
+    ],
+    [
+     2103,
+     1037
+    ],
+    [
+     2104,
+     1213
+    ],
+    [
+     403,
+     1223
+    ]
+   ],
+   "box": [
+    402,
+    1037,
+    2104,
+    1223
+   ]
+  },
+  {
+   "text": "of naturxe.",
+   "score": 0.8911,
+   "poly": [
+    [
+     399,
+     1183
+    ],
+    [
+     1097,
+     1168
+    ],
+    [
+     1101,
+     1371
+    ],
+    [
+     403,
+     1386
+    ]
+   ],
+   "box": [
+    399,
+    1168,
+    1101,
+    1386
+   ]
+  },
+  {
+   "text": "2 for humans we can",
+   "score": 0.9724,
+   "poly": [
+    [
+     382,
+     1420
+    ],
+    [
+     1958,
+     1438
+    ],
+    [
+     1956,
+     1595
+    ],
+    [
+     380,
+     1577
+    ]
+   ],
+   "box": [
+    380,
+    1420,
+    1958,
+    1595
+   ]
+  },
+  {
+   "text": "research this species and",
+   "score": 0.9664,
+   "poly": [
+    [
+     400,
+     1568
+    ],
+    [
+     2065,
+     1568
+    ],
+    [
+     2065,
+     1731
+    ],
+    [
+     400,
+     1731
+    ]
+   ],
+   "box": [
+    400,
+    1568,
+    2065,
+    1731
+   ]
+  },
+  {
+   "text": "undorstand the orgind",
+   "score": 0.9941,
+   "poly": [
+    [
+     413,
+     1690
+    ],
+    [
+     1829,
+     1706
+    ],
+    [
+     1828,
+     1856
+    ],
+    [
+     411,
+     1839
+    ]
+   ],
+   "box": [
+    411,
+    1690,
+    1829,
+    1856
+   ]
+  },
+  {
+   "text": "→ for natere every organison",
+   "score": 0.9025,
+   "poly": [
+    [
+     369,
+     1912
+    ],
+    [
+     2068,
+     1939
+    ],
+    [
+     2065,
+     2128
+    ],
+    [
+     366,
+     2102
+    ]
+   ],
+   "box": [
+    366,
+    1912,
+    2068,
+    2128
+   ]
+  },
+  {
+   "text": "contribute vital role",
+   "score": 0.9681,
+   "poly": [
+    [
+     444,
+     2089
+    ],
+    [
+     1686,
+     2085
+    ],
+    [
+     1687,
+     2223
+    ],
+    [
+     445,
+     2227
+    ]
+   ],
+   "box": [
+    444,
+    2085,
+    1687,
+    2227
+   ]
+  },
+  {
+   "text": "grasslands:",
+   "score": 0.9612,
+   "poly": [
+    [
+     393,
+     2328
+    ],
+    [
+     1063,
+     2316
+    ],
+    [
+     1066,
+     2477
+    ],
+    [
+     396,
+     2489
+    ]
+   ],
+   "box": [
+    393,
+    2316,
+    1066,
+    2489
+   ]
+  },
+  {
+   "text": "grasslands",
+   "score": 0.992,
+   "poly": [
+    [
+     809,
+     2582
+    ],
+    [
+     1337,
+     2555
+    ],
+    [
+     1344,
+     2704
+    ],
+    [
+     817,
+     2732
+    ]
+   ],
+   "box": [
+    809,
+    2555,
+    1344,
+    2732
+   ]
+  },
+  {
+   "text": "大工",
+   "score": 0.8073,
+   "poly": [
+    [
+     361,
+     2600
+    ],
+    [
+     628,
+     2592
+    ],
+    [
+     632,
+     2715
+    ],
+    [
+     364,
+     2723
+    ]
+   ],
+   "box": [
+    361,
+    2592,
+    632,
+    2723
+   ]
+  },
+  {
+   "text": "iS",
+   "score": 0.6842,
+   "poly": [
+    [
+     1537,
+     2591
+    ],
+    [
+     1694,
+     2591
+    ],
+    [
+     1694,
+     2699
+    ],
+    [
+     1537,
+     2699
+    ]
+   ],
+   "box": [
+    1537,
+    2591,
+    1694,
+    2699
+   ]
+  },
+  {
+   "text": "place ito foum",
+   "score": 0.9753,
+   "poly": [
+    [
+     1087,
+     2687
+    ],
+    [
+     2013,
+     2687
+    ],
+    [
+     2013,
+     2881
+    ],
+    [
+     1087,
+     2881
+    ]
+   ],
+   "box": [
+    1087,
+    2687,
+    2013,
+    2881
+   ]
+  },
+  {
+   "text": "first",
+   "score": 0.9857,
+   "poly": [
+    [
+     390,
+     2709
+    ],
+    [
+     771,
+     2702
+    ],
+    [
+     774,
+     2849
+    ],
+    [
+     392,
+     2857
+    ]
+   ],
+   "box": [
+    390,
+    2702,
+    774,
+    2857
+   ]
+  },
+  {
+   "text": "Eivilization.",
+   "score": 0.9024,
+   "poly": [
+    [
+     400,
+     2842
+    ],
+    [
+     1087,
+     2842
+    ],
+    [
+     1087,
+     2990
+    ],
+    [
+     400,
+     2990
+    ]
+   ],
+   "box": [
+    400,
+    2842,
+    1087,
+    2990
+   ]
+  },
+  {
+   "text": "* It toas",
+   "score": 0.8538,
+   "poly": [
+    [
+     322,
+     3090
+    ],
+    [
+     1158,
+     3079
+    ],
+    [
+     1160,
+     3246
+    ],
+    [
+     325,
+     3257
+    ]
+   ],
+   "box": [
+    322,
+    3079,
+    1160,
+    3257
+   ]
+  },
+  {
+   "text": "few feees",
+   "score": 0.7527,
+   "poly": [
+    [
+     1348,
+     3082
+    ],
+    [
+     1938,
+     3082
+    ],
+    [
+     1938,
+     3289
+    ],
+    [
+     1348,
+     3289
+    ]
+   ],
+   "box": [
+    1348,
+    3082,
+    1938,
+    3289
+   ]
+  },
+  {
+   "text": "land plain swrface.",
+   "score": 0.8845,
+   "poly": [
+    [
+     302,
+     3205
+    ],
+    [
+     1394,
+     3231
+    ],
+    [
+     1389,
+     3463
+    ],
+    [
+     296,
+     3437
+    ]
+   ],
+   "box": [
+    296,
+    3205,
+    1394,
+    3463
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3026
+}

@@ -1,0 +1,693 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_12.jpg",
+ "latency_s": 11.907,
+ "model_load_s": 0.41,
+ "n_lines": 23,
+ "lines": [
+  {
+   "text": "8",
+   "score": 0.9967,
+   "poly": [
+    [
+     0,
+     423
+    ],
+    [
+     71,
+     423
+    ],
+    [
+     71,
+     515
+    ],
+    [
+     0,
+     515
+    ]
+   ],
+   "box": [
+    0,
+    423,
+    71,
+    515
+   ]
+  },
+  {
+   "text": "PART D",
+   "score": 0.9829,
+   "poly": [
+    [
+     1127,
+     463
+    ],
+    [
+     1429,
+     468
+    ],
+    [
+     1427,
+     567
+    ],
+    [
+     1125,
+     563
+    ]
+   ],
+   "box": [
+    1125,
+    463,
+    1429,
+    567
+   ]
+  },
+  {
+   "text": "(A)",
+   "score": 0.9809,
+   "poly": [
+    [
+     373,
+     666
+    ],
+    [
+     530,
+     671
+    ],
+    [
+     525,
+     784
+    ],
+    [
+     368,
+     778
+    ]
+   ],
+   "box": [
+    368,
+    666,
+    530,
+    784
+   ]
+  },
+  {
+   "text": "A",
+   "score": 0.2801,
+   "poly": [
+    [
+     246,
+     685
+    ],
+    [
+     319,
+     685
+    ],
+    [
+     319,
+     770
+    ],
+    [
+     246,
+     770
+    ]
+   ],
+   "box": [
+    246,
+    685,
+    319,
+    770
+   ]
+  },
+  {
+   "text": "A codllege generats, slage quantiu ra",
+   "score": 0.8791,
+   "poly": [
+    [
+     675,
+     923
+    ],
+    [
+     2495,
+     944
+    ],
+    [
+     2493,
+     1077
+    ],
+    [
+     673,
+     1056
+    ]
+   ],
+   "box": [
+    673,
+    923,
+    2495,
+    1077
+   ]
+  },
+  {
+   "text": "of food waste, papa cocstou plasite and",
+   "score": 0.8661,
+   "poly": [
+    [
+     341,
+     1032
+    ],
+    [
+     2349,
+     1063
+    ],
+    [
+     2347,
+     1207
+    ],
+    [
+     339,
+     1176
+    ]
+   ],
+   "box": [
+    339,
+    1032,
+    2349,
+    1207
+   ]
+  },
+  {
+   "text": "other saled vaste",
+   "score": 0.8684,
+   "poly": [
+    [
+     363,
+     1162
+    ],
+    [
+     1261,
+     1194
+    ],
+    [
+     1258,
+     1294
+    ],
+    [
+     359,
+     1262
+    ]
+   ],
+   "box": [
+    359,
+    1162,
+    1261,
+    1294
+   ]
+  },
+  {
+   "text": "7114",
+   "score": 0.5192,
+   "poly": [
+    [
+     1773,
+     1234
+    ],
+    [
+     1988,
+     1227
+    ],
+    [
+     1991,
+     1309
+    ],
+    [
+     1775,
+     1316
+    ]
+   ],
+   "box": [
+    1773,
+    1227,
+    1991,
+    1316
+   ]
+  },
+  {
+   "text": "eht",
+   "score": 0.8505,
+   "poly": [
+    [
+     0,
+     1297
+    ],
+    [
+     97,
+     1297
+    ],
+    [
+     97,
+     1400
+    ],
+    [
+     0,
+     1400
+    ]
+   ],
+   "box": [
+    0,
+    1297,
+    97,
+    1400
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1181,
+     1352
+    ],
+    [
+     1380,
+     1356
+    ],
+    [
+     1379,
+     1415
+    ],
+    [
+     1179,
+     1411
+    ]
+   ],
+   "box": [
+    1179,
+    1352,
+    1380,
+    1415
+   ]
+  },
+  {
+   "text": "Wo can credyce Ph using the $",
+   "score": 0.7721,
+   "poly": [
+    [
+     682,
+     1382
+    ],
+    [
+     2286,
+     1420
+    ],
+    [
+     2282,
+     1582
+    ],
+    [
+     678,
+     1545
+    ]
+   ],
+   "box": [
+    678,
+    1382,
+    2286,
+    1582
+   ]
+  },
+  {
+   "text": "princeple",
+   "score": 0.9723,
+   "poly": [
+    [
+     345,
+     1527
+    ],
+    [
+     783,
+     1541
+    ],
+    [
+     779,
+     1667
+    ],
+    [
+     340,
+     1653
+    ]
+   ],
+   "box": [
+    340,
+    1527,
+    783,
+    1667
+   ]
+  },
+  {
+   "text": "Redu.",
+   "score": 0.7336,
+   "poly": [
+    [
+     929,
+     1656
+    ],
+    [
+     1455,
+     1663
+    ],
+    [
+     1453,
+     1779
+    ],
+    [
+     927,
+     1773
+    ]
+   ],
+   "box": [
+    927,
+    1656,
+    1455,
+    1779
+   ]
+  },
+  {
+   "text": "Roue",
+   "score": 0.6548,
+   "poly": [
+    [
+     804,
+     1789
+    ],
+    [
+     1332,
+     1798
+    ],
+    [
+     1330,
+     1906
+    ],
+    [
+     802,
+     1898
+    ]
+   ],
+   "box": [
+    802,
+    1789,
+    1332,
+    1906
+   ]
+  },
+  {
+   "text": "me",
+   "score": 0.8477,
+   "poly": [
+    [
+     0,
+     1808
+    ],
+    [
+     80,
+     1808
+    ],
+    [
+     80,
+     1893
+    ],
+    [
+     0,
+     1893
+    ]
+   ],
+   "box": [
+    0,
+    1808,
+    80,
+    1893
+   ]
+  },
+  {
+   "text": "Rocyalsoou",
+   "score": 0.644,
+   "poly": [
+    [
+     942,
+     1911
+    ],
+    [
+     1531,
+     1921
+    ],
+    [
+     1530,
+     2017
+    ],
+    [
+     940,
+     2007
+    ]
+   ],
+   "box": [
+    940,
+    1911,
+    1531,
+    2017
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1022,
+     2000
+    ],
+    [
+     1553,
+     2008
+    ],
+    [
+     1553,
+     2056
+    ],
+    [
+     1021,
+     2048
+    ]
+   ],
+   "box": [
+    1021,
+    2000,
+    1553,
+    2056
+   ]
+  },
+  {
+   "text": "Fristly coe shave sto segrate the",
+   "score": 0.8773,
+   "poly": [
+    [
+     506,
+     2127
+    ],
+    [
+     2370,
+     2158
+    ],
+    [
+     2367,
+     2307
+    ],
+    [
+     503,
+     2276
+    ]
+   ],
+   "box": [
+    503,
+    2127,
+    2370,
+    2307
+   ]
+  },
+  {
+   "text": "types of coaste and oe cn marge",
+   "score": 0.9133,
+   "poly": [
+    [
+     327,
+     2256
+    ],
+    [
+     2381,
+     2308
+    ],
+    [
+     2378,
+     2439
+    ],
+    [
+     324,
+     2387
+    ]
+   ],
+   "box": [
+    324,
+    2256,
+    2381,
+    2439
+   ]
+  },
+  {
+   "text": "the pollut son happord due lo waste.",
+   "score": 0.8652,
+   "poly": [
+    [
+     345,
+     2395
+    ],
+    [
+     2528,
+     2435
+    ],
+    [
+     2526,
+     2559
+    ],
+    [
+     343,
+     2518
+    ]
+   ],
+   "box": [
+    343,
+    2395,
+    2528,
+    2559
+   ]
+  },
+  {
+   "text": "we have to educe the coaste",
+   "score": 0.8749,
+   "poly": [
+    [
+     543,
+     2640
+    ],
+    [
+     2355,
+     2681
+    ],
+    [
+     2352,
+     2799
+    ],
+    [
+     541,
+     2758
+    ]
+   ],
+   "box": [
+    541,
+    2640,
+    2355,
+    2799
+   ]
+  },
+  {
+   "text": "and st ss the ior prtnesple in the",
+   "score": 0.8274,
+   "poly": [
+    [
+     292,
+     2749
+    ],
+    [
+     2383,
+     2801
+    ],
+    [
+     2380,
+     2943
+    ],
+    [
+     288,
+     2891
+    ]
+   ],
+   "box": [
+    288,
+    2749,
+    2383,
+    2943
+   ]
+  },
+  {
+   "text": "BR.umethod.",
+   "score": 0.8406,
+   "poly": [
+    [
+     320,
+     2907
+    ],
+    [
+     1016,
+     2911
+    ],
+    [
+     1015,
+     3024
+    ],
+    [
+     319,
+     3019
+    ]
+   ],
+   "box": [
+    319,
+    2907,
+    1016,
+    3024
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3318
+}

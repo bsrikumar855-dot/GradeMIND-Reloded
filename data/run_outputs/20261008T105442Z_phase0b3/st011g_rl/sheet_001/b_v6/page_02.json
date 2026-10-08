@@ -1,0 +1,385 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_02.jpg",
+ "latency_s": 8.403,
+ "model_load_s": 0.41,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "Part-A",
+   "score": 0.9672,
+   "poly": [
+    [
+     696,
+     257
+    ],
+    [
+     1094,
+     264
+    ],
+    [
+     1091,
+     422
+    ],
+    [
+     693,
+     415
+    ]
+   ],
+   "box": [
+    693,
+    257,
+    1094,
+    422
+   ]
+  },
+  {
+   "text": "1",
+   "score": 0.9798,
+   "poly": [
+    [
+     114,
+     554
+    ],
+    [
+     163,
+     554
+    ],
+    [
+     163,
+     627
+    ],
+    [
+     114,
+     627
+    ]
+   ],
+   "box": [
+    114,
+    554,
+    163,
+    627
+   ]
+  },
+  {
+   "text": "2. non-blotic componants",
+   "score": 0.9714,
+   "poly": [
+    [
+     49,
+     739
+    ],
+    [
+     1214,
+     761
+    ],
+    [
+     1211,
+     913
+    ],
+    [
+     46,
+     891
+    ]
+   ],
+   "box": [
+    46,
+    739,
+    1214,
+    913
+   ]
+  },
+  {
+   "text": "3.c3 plants",
+   "score": 0.8397,
+   "poly": [
+    [
+     76,
+     991
+    ],
+    [
+     602,
+     998
+    ],
+    [
+     601,
+     1143
+    ],
+    [
+     74,
+     1136
+    ]
+   ],
+   "box": [
+    74,
+    991,
+    602,
+    1143
+   ]
+  },
+  {
+   "text": "24. water",
+   "score": 0.9169,
+   "poly": [
+    [
+     67,
+     1231
+    ],
+    [
+     486,
+     1235
+    ],
+    [
+     484,
+     1391
+    ],
+    [
+     65,
+     1386
+    ]
+   ],
+   "box": [
+    65,
+    1231,
+    486,
+    1391
+   ]
+  },
+  {
+   "text": "5.a) ciradar",
+   "score": 0.8955,
+   "poly": [
+    [
+     58,
+     1473
+    ],
+    [
+     726,
+     1482
+    ],
+    [
+     724,
+     1649
+    ],
+    [
+     56,
+     1640
+    ]
+   ],
+   "box": [
+    56,
+    1473,
+    726,
+    1649
+   ]
+  },
+  {
+   "text": "C. True",
+   "score": 0.9449,
+   "poly": [
+    [
+     51,
+     1735
+    ],
+    [
+     460,
+     1742
+    ],
+    [
+     457,
+     1896
+    ],
+    [
+     48,
+     1889
+    ]
+   ],
+   "box": [
+    48,
+    1735,
+    460,
+    1896
+   ]
+  },
+  {
+   "text": "7.enuiromental change",
+   "score": 0.8944,
+   "poly": [
+    [
+     60,
+     1978
+    ],
+    [
+     1053,
+     1996
+    ],
+    [
+     1050,
+     2155
+    ],
+    [
+     57,
+     2137
+    ]
+   ],
+   "box": [
+    57,
+    1978,
+    1053,
+    2155
+   ]
+  },
+  {
+   "text": "8. True",
+   "score": 0.9465,
+   "poly": [
+    [
+     52,
+     2240
+    ],
+    [
+     469,
+     2254
+    ],
+    [
+     464,
+     2401
+    ],
+    [
+     47,
+     2387
+    ]
+   ],
+   "box": [
+    47,
+    2240,
+    469,
+    2401
+   ]
+  },
+  {
+   "text": "9. I carbon monocide",
+   "score": 0.875,
+   "poly": [
+    [
+     62,
+     2482
+    ],
+    [
+     955,
+     2497
+    ],
+    [
+     952,
+     2662
+    ],
+    [
+     59,
+     2647
+    ]
+   ],
+   "box": [
+    59,
+    2482,
+    955,
+    2662
+   ]
+  },
+  {
+   "text": " deforestation",
+   "score": 0.8977,
+   "poly": [
+    [
+     0,
+     2722
+    ],
+    [
+     884,
+     2740
+    ],
+    [
+     880,
+     2948
+    ],
+    [
+     0,
+     2929
+    ]
+   ],
+   "box": [
+    0,
+    2722,
+    884,
+    2948
+   ]
+  },
+  {
+   "text": "1.a.3 Mineral8",
+   "score": 0.6586,
+   "poly": [
+    [
+     0,
+     2971
+    ],
+    [
+     746,
+     2988
+    ],
+    [
+     741,
+     3182
+    ],
+    [
+     0,
+     3166
+    ]
+   ],
+   "box": [
+    0,
+    2971,
+    746,
+    3182
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 2906
+}

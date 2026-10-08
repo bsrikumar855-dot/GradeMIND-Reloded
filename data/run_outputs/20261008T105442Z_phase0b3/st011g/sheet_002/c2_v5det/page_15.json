@@ -1,0 +1,604 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_15.jpg",
+ "latency_s": 1.027,
+ "crop_s": 0.114,
+ "recognition_s": 0.913,
+ "model_load_s": 0.79,
+ "n_lines": 16,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.9245,
+   "min_token_prob": 0.8641,
+   "flags": [],
+   "box": [
+    1992,
+    539,
+    2212,
+    710
+   ],
+   "poly": [
+    [
+     2002,
+     539
+    ],
+    [
+     2212,
+     553
+    ],
+    [
+     2202,
+     710
+    ],
+    [
+     1992,
+     695
+    ]
+   ],
+   "b_text": "a",
+   "b_score": 0.4259,
+   "ink_px": 4828,
+   "ink_frac": 0.1287
+  },
+  {
+   "text": "# McCuss",
+   "text_raw": "# McCuss",
+   "score": 0.2852,
+   "min_token_prob": 0.0853,
+   "flags": [],
+   "box": [
+    2178,
+    557,
+    2456,
+    725
+   ],
+   "poly": [
+    [
+     2194,
+     557
+    ],
+    [
+     2456,
+     587
+    ],
+    [
+     2441,
+     725
+    ],
+    [
+     2178,
+     696
+    ]
+   ],
+   "b_text": "ma",
+   "b_score": 0.8239,
+   "ink_px": 4562,
+   "ink_frac": 0.1095
+  },
+  {
+   "text": "Compositing us a method.",
+   "text_raw": "Compositing us a method .",
+   "score": 0.8152,
+   "min_token_prob": 0.4971,
+   "flags": [],
+   "box": [
+    468,
+    505,
+    1990,
+    864
+   ],
+   "poly": [
+    [
+     468,
+     656
+    ],
+    [
+     1969,
+     505
+    ],
+    [
+     1990,
+     713
+    ],
+    [
+     489,
+     864
+    ]
+   ],
+   "b_text": "Com postirg cIs a method",
+   "b_score": 0.8128,
+   "ink_px": 28877,
+   "ink_frac": 0.086
+  },
+  {
+   "text": "as very useful from polluting the \" own",
+   "text_raw": "as very useful from polluting the \" own",
+   "score": 0.7953,
+   "min_token_prob": 0.1701,
+   "flags": [],
+   "box": [
+    56,
+    826,
+    2470,
+    1185
+   ],
+   "poly": [
+    [
+     56,
+     948
+    ],
+    [
+     2466,
+     826
+    ],
+    [
+     2470,
+     1063
+    ],
+    [
+     68,
+     1185
+    ]
+   ],
+   "b_text": "&s sory usefa from polluting the C",
+   "b_score": 0.7018,
+   "ink_px": 68342,
+   "ink_frac": 0.1132
+  },
+  {
+   "text": "Now days the main source of",
+   "text_raw": "Now days the main source of",
+   "score": 0.9254,
+   "min_token_prob": 0.7415,
+   "flags": [],
+   "box": [
+    104,
+    1007,
+    2386,
+    1305
+   ],
+   "poly": [
+    [
+     104,
+     1080
+    ],
+    [
+     2379,
+     1007
+    ],
+    [
+     2386,
+     1232
+    ],
+    [
+     112,
+     1305
+    ]
+   ],
+   "b_text": "Now dayss sthe main cource a",
+   "b_score": 0.8022,
+   "ink_px": 59338,
+   "ink_frac": 0.1094
+  },
+  {
+   "text": "wastage are plastics.",
+   "text_raw": "wastage are plastics .",
+   "score": 0.8847,
+   "min_token_prob": 0.4187,
+   "flags": [],
+   "box": [
+    111,
+    1234,
+    1520,
+    1453
+   ],
+   "poly": [
+    [
+     111,
+     1283
+    ],
+    [
+     1514,
+     1234
+    ],
+    [
+     1520,
+     1405
+    ],
+    [
+     117,
+     1453
+    ]
+   ],
+   "b_text": "wabtage are plastics.",
+   "b_score": 0.8016,
+   "ink_px": 27882,
+   "ink_frac": 0.1077
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6135,
+   "min_token_prob": 0.2299,
+   "flags": [],
+   "box": [
+    2237,
+    1313,
+    2258,
+    1329
+   ],
+   "poly": [
+    [
+     2237,
+     1313
+    ],
+    [
+     2258,
+     1313
+    ],
+    [
+     2258,
+     1329
+    ],
+    [
+     2237,
+     1329
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 86,
+   "ink_frac": 0.0931
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6798,
+   "min_token_prob": 0.3684,
+   "flags": [],
+   "box": [
+    1456,
+    1414,
+    1472,
+    1428
+   ],
+   "poly": [
+    [
+     1456,
+     1414
+    ],
+    [
+     1472,
+     1414
+    ],
+    [
+     1472,
+     1428
+    ],
+    [
+     1456,
+     1428
+    ]
+   ],
+   "b_text": "城",
+   "b_score": 0.0304,
+   "ink_px": 99,
+   "ink_frac": 0.136
+  },
+  {
+   "text": "those kinds of waste",
+   "text_raw": "those kinds of waste",
+   "score": 0.7919,
+   "min_token_prob": 0.6113,
+   "flags": [],
+   "box": [
+    1023,
+    1510,
+    2406,
+    1717
+   ],
+   "poly": [
+    [
+     1025,
+     1510
+    ],
+    [
+     2406,
+     1526
+    ],
+    [
+     2404,
+     1717
+    ],
+    [
+     1023,
+     1701
+    ]
+   ],
+   "b_text": "ethase ids od aate",
+   "b_score": 0.7304,
+   "ink_px": 33158,
+   "ink_frac": 0.1173
+  },
+  {
+   "text": "Generating.",
+   "text_raw": "Generating .",
+   "score": 0.7263,
+   "min_token_prob": 0.2807,
+   "flags": [],
+   "box": [
+    428,
+    1559,
+    1031,
+    1715
+   ],
+   "poly": [
+    [
+     428,
+     1571
+    ],
+    [
+     1028,
+     1559
+    ],
+    [
+     1031,
+     1703
+    ],
+    [
+     431,
+     1715
+    ]
+   ],
+   "b_text": "Gronerating",
+   "b_score": 0.776,
+   "ink_px": 11668,
+   "ink_frac": 0.1222
+  },
+  {
+   "text": "may always results in this difference",
+   "text_raw": "may always results in this difference",
+   "score": 0.8983,
+   "min_token_prob": 0.5863,
+   "flags": [],
+   "box": [
+    70,
+    1685,
+    2456,
+    1866
+   ],
+   "poly": [
+    [
+     70,
+     1708
+    ],
+    [
+     2455,
+     1685
+    ],
+    [
+     2456,
+     1843
+    ],
+    [
+     71,
+     1866
+    ]
+   ],
+   "b_text": "may always cesuts ien thi adsrme",
+   "b_score": 0.7278,
+   "ink_px": 48280,
+   "ink_frac": 0.1185
+  },
+  {
+   "text": "problems. improper disposal \" results in",
+   "text_raw": "problems . improper disposal \" results in",
+   "score": 0.8126,
+   "min_token_prob": 0.362,
+   "flags": [],
+   "box": [
+    77,
+    1856,
+    2461,
+    2024
+   ],
+   "poly": [
+    [
+     77,
+     1860
+    ],
+    [
+     2461,
+     1856
+    ],
+    [
+     2461,
+     2020
+    ],
+    [
+     77,
+     2024
+    ]
+   ],
+   "b_text": "problems. Impropon disposal gesults de",
+   "b_score": 0.8168,
+   "ink_px": 55597,
+   "ink_frac": 0.1318
+  },
+  {
+   "text": "the westage production and",
+   "text_raw": "the westage production and",
+   "score": 0.8766,
+   "min_token_prob": 0.2716,
+   "flags": [],
+   "box": [
+    107,
+    1994,
+    1918,
+    2210
+   ],
+   "poly": [
+    [
+     110,
+     1994
+    ],
+    [
+     1918,
+     2034
+    ],
+    [
+     1914,
+     2210
+    ],
+    [
+     107,
+     2170
+    ]
+   ],
+   "b_text": "athe coastage produdfan and",
+   "b_score": 0.8535,
+   "ink_px": 41958,
+   "ink_frac": 0.1226
+  },
+  {
+   "text": "fallide.",
+   "text_raw": "fallide .",
+   "score": 0.8085,
+   "min_token_prob": 0.5064,
+   "flags": [],
+   "box": [
+    2001,
+    2007,
+    2470,
+    2242
+   ],
+   "poly": [
+    [
+     2001,
+     2056
+    ],
+    [
+     2450,
+     2007
+    ],
+    [
+     2470,
+     2193
+    ],
+    [
+     2021,
+     2242
+    ]
+   ],
+   "b_text": "pollide",
+   "b_score": 0.6465,
+   "ink_px": 14200,
+   "ink_frac": 0.1541
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.739,
+   "min_token_prob": 0.627,
+   "flags": [],
+   "box": [
+    1242,
+    2197,
+    1264,
+    2243
+   ],
+   "poly": [
+    [
+     1242,
+     2197
+    ],
+    [
+     1264,
+     2197
+    ],
+    [
+     1264,
+     2243
+    ],
+    [
+     1242,
+     2243
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 313,
+   "ink_frac": 0.1587
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.3616,
+   "min_token_prob": 0.22,
+   "flags": [],
+   "box": [
+    1833,
+    2913,
+    1860,
+    2931
+   ],
+   "poly": [
+    [
+     1833,
+     2913
+    ],
+    [
+     1860,
+     2913
+    ],
+    [
+     1860,
+     2931
+    ],
+    [
+     1833,
+     2931
+    ]
+   ],
+   "b_text": "部",
+   "b_score": 0.0421,
+   "ink_px": 145,
+   "ink_frac": 0.1239
+  }
+ ],
+ "peak_torch_alloc_mib": 2693,
+ "peak_rss_mib_process": 2966
+}

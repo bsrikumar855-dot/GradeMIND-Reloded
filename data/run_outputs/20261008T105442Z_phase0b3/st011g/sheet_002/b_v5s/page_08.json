@@ -1,0 +1,835 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_08.jpg",
+ "latency_s": 22.257,
+ "model_load_s": 0.42,
+ "n_lines": 28,
+ "lines": [
+  {
+   "text": "Effects of defonestodion",
+   "score": 0.7553,
+   "poly": [
+    [
+     458,
+     592
+    ],
+    [
+     1661,
+     598
+    ],
+    [
+     1660,
+     724
+    ],
+    [
+     458,
+     718
+    ]
+   ],
+   "box": [
+    458,
+    592,
+    1661,
+    724
+   ]
+  },
+  {
+   "text": "18",
+   "score": 0.9881,
+   "poly": [
+    [
+     289,
+     616
+    ],
+    [
+     387,
+     616
+    ],
+    [
+     387,
+     695
+    ],
+    [
+     289,
+     695
+    ]
+   ],
+   "box": [
+    289,
+    616,
+    387,
+    695
+   ]
+  },
+  {
+   "text": "Defocesctatfon ds due cto sthe cutt ing",
+   "score": 0.7661,
+   "poly": [
+    [
+     879,
+     835
+    ],
+    [
+     2564,
+     816
+    ],
+    [
+     2566,
+     946
+    ],
+    [
+     880,
+     965
+    ]
+   ],
+   "box": [
+    879,
+    816,
+    2566,
+    965
+   ]
+  },
+  {
+   "text": "docon of clarge amount of otrees Iin the",
+   "score": 0.84,
+   "poly": [
+    [
+     410,
+     963
+    ],
+    [
+     2494,
+     942
+    ],
+    [
+     2495,
+     1077
+    ],
+    [
+     412,
+     1098
+    ]
+   ],
+   "box": [
+    410,
+    942,
+    2495,
+    1098
+   ]
+  },
+  {
+   "text": "foresdt aroas slue to human purposes like",
+   "score": 0.7905,
+   "poly": [
+    [
+     389,
+     1083
+    ],
+    [
+     2543,
+     1064
+    ],
+    [
+     2544,
+     1192
+    ],
+    [
+     390,
+     1211
+    ]
+   ],
+   "box": [
+    389,
+    1064,
+    2544,
+    1211
+   ]
+  },
+  {
+   "text": "road, bueldpng hoase etc.",
+   "score": 0.7849,
+   "poly": [
+    [
+     458,
+     1205
+    ],
+    [
+     1817,
+     1211
+    ],
+    [
+     1816,
+     1335
+    ],
+    [
+     458,
+     1329
+    ]
+   ],
+   "box": [
+    458,
+    1205,
+    1817,
+    1335
+   ]
+  },
+  {
+   "text": "Effeols:",
+   "score": 0.7763,
+   "poly": [
+    [
+     483,
+     1449
+    ],
+    [
+     814,
+     1449
+    ],
+    [
+     814,
+     1551
+    ],
+    [
+     483,
+     1551
+    ]
+   ],
+   "box": [
+    483,
+    1449,
+    814,
+    1551
+   ]
+  },
+  {
+   "text": "南",
+   "score": 0.2502,
+   "poly": [
+    [
+     1762,
+     1442
+    ],
+    [
+     1782,
+     1442
+    ],
+    [
+     1782,
+     1458
+    ],
+    [
+     1762,
+     1458
+    ]
+   ],
+   "box": [
+    1762,
+    1442,
+    1782,
+    1458
+   ]
+  },
+  {
+   "text": "明",
+   "score": 0.2081,
+   "poly": [
+    [
+     1867,
+     1467
+    ],
+    [
+     1883,
+     1467
+    ],
+    [
+     1883,
+     1484
+    ],
+    [
+     1867,
+     1484
+    ]
+   ],
+   "box": [
+    1867,
+    1467,
+    1883,
+    1484
+   ]
+  },
+  {
+   "text": "1",
+   "score": 0.3282,
+   "poly": [
+    [
+     1088,
+     1588
+    ],
+    [
+     1103,
+     1583
+    ],
+    [
+     1108,
+     1601
+    ],
+    [
+     1094,
+     1606
+    ]
+   ],
+   "box": [
+    1088,
+    1583,
+    1108,
+    1606
+   ]
+  },
+  {
+   "text": "4",
+   "score": 0.1322,
+   "poly": [
+    [
+     1872,
+     1662
+    ],
+    [
+     1889,
+     1662
+    ],
+    [
+     1889,
+     1681
+    ],
+    [
+     1872,
+     1681
+    ]
+   ],
+   "box": [
+    1872,
+    1662,
+    1889,
+    1681
+   ]
+  },
+  {
+   "text": "Dver cutting of droes ual deads do",
+   "score": 0.7202,
+   "poly": [
+    [
+     791,
+     1677
+    ],
+    [
+     2551,
+     1685
+    ],
+    [
+     2551,
+     1801
+    ],
+    [
+     790,
+     1794
+    ]
+   ],
+   "box": [
+    790,
+    1677,
+    2551,
+    1801
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1375,
+     1785
+    ],
+    [
+     1389,
+     1785
+    ],
+    [
+     1389,
+     1817
+    ],
+    [
+     1375,
+     1817
+    ]
+   ],
+   "box": [
+    1375,
+    1785,
+    1389,
+    1817
+   ]
+  },
+  {
+   "text": "enupromental change and clemode change.",
+   "score": 0.8707,
+   "poly": [
+    [
+     400,
+     1803
+    ],
+    [
+     2428,
+     1816
+    ],
+    [
+     2427,
+     1927
+    ],
+    [
+     400,
+     1914
+    ]
+   ],
+   "box": [
+    400,
+    1803,
+    2428,
+    1927
+   ]
+  },
+  {
+   "text": "It also affoctthe pcosyetom and",
+   "score": 0.7712,
+   "poly": [
+    [
+     417,
+     1919
+    ],
+    [
+     2504,
+     1931
+    ],
+    [
+     2503,
+     2053
+    ],
+    [
+     416,
+     2041
+    ]
+   ],
+   "box": [
+    416,
+    1919,
+    2504,
+    2053
+   ]
+  },
+  {
+   "text": "TH",
+   "score": 0.5035,
+   "poly": [
+    [
+     1346,
+     2025
+    ],
+    [
+     1502,
+     2025
+    ],
+    [
+     1502,
+     2064
+    ],
+    [
+     1346,
+     2064
+    ]
+   ],
+   "box": [
+    1346,
+    2025,
+    1502,
+    2064
+   ]
+  },
+  {
+   "text": "cthe cnimals.",
+   "score": 0.8103,
+   "poly": [
+    [
+     400,
+     2040
+    ],
+    [
+     1180,
+     2040
+    ],
+    [
+     1180,
+     2151
+    ],
+    [
+     400,
+     2151
+    ]
+   ],
+   "box": [
+    400,
+    2040,
+    1180,
+    2151
+   ]
+  },
+  {
+   "text": "4",
+   "score": 0.278,
+   "poly": [
+    [
+     1912,
+     2091
+    ],
+    [
+     1924,
+     2103
+    ],
+    [
+     1914,
+     2113
+    ],
+    [
+     1902,
+     2101
+    ]
+   ],
+   "box": [
+    1902,
+    2091,
+    1924,
+    2113
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1980,
+     2192
+    ],
+    [
+     2008,
+     2199
+    ],
+    [
+     2004,
+     2214
+    ],
+    [
+     1976,
+     2207
+    ]
+   ],
+   "box": [
+    1976,
+    2192,
+    2008,
+    2214
+   ]
+  },
+  {
+   "text": "Deforesdatpon coll cleads cto making",
+   "score": 0.8464,
+   "poly": [
+    [
+     802,
+     2256
+    ],
+    [
+     2633,
+     2303
+    ],
+    [
+     2630,
+     2444
+    ],
+    [
+     799,
+     2396
+    ]
+   ],
+   "box": [
+    799,
+    2256,
+    2633,
+    2444
+   ]
+  },
+  {
+   "text": "of desert. of coe cat ithe droes 9n",
+   "score": 0.8039,
+   "poly": [
+    [
+     386,
+     2397
+    ],
+    [
+     2439,
+     2410
+    ],
+    [
+     2438,
+     2538
+    ],
+    [
+     385,
+     2524
+    ]
+   ],
+   "box": [
+    385,
+    2397,
+    2439,
+    2538
+   ]
+  },
+  {
+   "text": "the foreet cthe coild anemals got dlesturber",
+   "score": 0.7043,
+   "poly": [
+    [
+     391,
+     2495
+    ],
+    [
+     2633,
+     2533
+    ],
+    [
+     2631,
+     2686
+    ],
+    [
+     388,
+     2648
+    ]
+   ],
+   "box": [
+    388,
+    2495,
+    2633,
+    2686
+   ]
+  },
+  {
+   "text": "cthe copld anlmals cre entes frdo",
+   "score": 0.7778,
+   "poly": [
+    [
+     637,
+     2626
+    ],
+    [
+     2503,
+     2664
+    ],
+    [
+     2500,
+     2782
+    ],
+    [
+     634,
+     2745
+    ]
+   ],
+   "box": [
+    634,
+    2626,
+    2503,
+    2782
+   ]
+  },
+  {
+   "text": "and",
+   "score": 0.988,
+   "poly": [
+    [
+     412,
+     2654
+    ],
+    [
+     619,
+     2654
+    ],
+    [
+     619,
+     2742
+    ],
+    [
+     412,
+     2742
+    ]
+   ],
+   "box": [
+    412,
+    2654,
+    619,
+    2742
+   ]
+  },
+  {
+   "text": "the chuman cleuing areas",
+   "score": 0.8396,
+   "poly": [
+    [
+     412,
+     2747
+    ],
+    [
+     1982,
+     2771
+    ],
+    [
+     1980,
+     2901
+    ],
+    [
+     410,
+     2876
+    ]
+   ],
+   "box": [
+    410,
+    2747,
+    1982,
+    2901
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1813,
+     2913
+    ],
+    [
+     1836,
+     2913
+    ],
+    [
+     1836,
+     2928
+    ],
+    [
+     1813,
+     2928
+    ]
+   ],
+   "box": [
+    1813,
+    2913,
+    1836,
+    2928
+   ]
+  },
+  {
+   "text": ".The coPld anemals are eseanch faod",
+   "score": 0.8152,
+   "poly": [
+    [
+     682,
+     2968
+    ],
+    [
+     2563,
+     3033
+    ],
+    [
+     2559,
+     3162
+    ],
+    [
+     677,
+     3098
+    ]
+   ],
+   "box": [
+    677,
+    2968,
+    2563,
+    3162
+   ]
+  },
+  {
+   "text": "and coator dntd cthn chuman elauing asear",
+   "score": 0.7445,
+   "poly": [
+    [
+     379,
+     3103
+    ],
+    [
+     2619,
+     3179
+    ],
+    [
+     2615,
+     3308
+    ],
+    [
+     375,
+     3233
+    ]
+   ],
+   "box": [
+    375,
+    3103,
+    2619,
+    3308
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17131
+}

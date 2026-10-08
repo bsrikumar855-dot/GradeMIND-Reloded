@@ -1,0 +1,609 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_06.jpg",
+ "latency_s": 13.883,
+ "model_load_s": 0.41,
+ "n_lines": 20,
+ "lines": [
+  {
+   "text": "The organisms An geographecal regpon",
+   "score": 0.9706,
+   "poly": [
+    [
+     538,
+     401
+    ],
+    [
+     2347,
+     447
+    ],
+    [
+     2344,
+     556
+    ],
+    [
+     536,
+     510
+    ]
+   ],
+   "box": [
+    536,
+    401,
+    2347,
+    556
+   ]
+  },
+  {
+   "text": "chad to dbe descturbed. A ispecees &n",
+   "score": 0.9204,
+   "poly": [
+    [
+     295,
+     524
+    ],
+    [
+     2153,
+     566
+    ],
+    [
+     2151,
+     651
+    ],
+    [
+     293,
+     609
+    ]
+   ],
+   "box": [
+    293,
+    524,
+    2153,
+    651
+   ]
+  },
+  {
+   "text": "the frosh coater ecosystem leke fish, prown",
+   "score": 0.9374,
+   "poly": [
+    [
+     309,
+     635
+    ],
+    [
+     2327,
+     679
+    ],
+    [
+     2324,
+     786
+    ],
+    [
+     307,
+     742
+    ]
+   ],
+   "box": [
+    307,
+    635,
+    2327,
+    786
+   ]
+  },
+  {
+   "text": "are deed due to water proillution. If coe",
+   "score": 0.9008,
+   "poly": [
+    [
+     299,
+     752
+    ],
+    [
+     2158,
+     798
+    ],
+    [
+     2156,
+     891
+    ],
+    [
+     296,
+     846
+    ]
+   ],
+   "box": [
+    296,
+    752,
+    2158,
+    891
+   ]
+  },
+  {
+   "text": "pollute the fresh cwoater",
+   "score": 0.9439,
+   "poly": [
+    [
+     294,
+     870
+    ],
+    [
+     1401,
+     898
+    ],
+    [
+     1399,
+     983
+    ],
+    [
+     291,
+     955
+    ]
+   ],
+   "box": [
+    291,
+    870,
+    1401,
+    983
+   ]
+  },
+  {
+   "text": "many sppeces",
+   "score": 0.9721,
+   "poly": [
+    [
+     1484,
+     904
+    ],
+    [
+     2156,
+     911
+    ],
+    [
+     2155,
+     1003
+    ],
+    [
+     1483,
+     996
+    ]
+   ],
+   "box": [
+    1483,
+    904,
+    2156,
+    1003
+   ]
+  },
+  {
+   "text": "are got desturbed.",
+   "score": 0.997,
+   "poly": [
+    [
+     311,
+     982
+    ],
+    [
+     1147,
+     1007
+    ],
+    [
+     1144,
+     1099
+    ],
+    [
+     308,
+     1074
+    ]
+   ],
+   "box": [
+    308,
+    982,
+    1147,
+    1099
+   ]
+  },
+  {
+   "text": "We can use the 3R principle",
+   "score": 0.9696,
+   "poly": [
+    [
+     679,
+     1219
+    ],
+    [
+     2264,
+     1259
+    ],
+    [
+     2261,
+     1356
+    ],
+    [
+     677,
+     1316
+    ]
+   ],
+   "box": [
+    677,
+    1219,
+    2264,
+    1356
+   ]
+  },
+  {
+   "text": "here to creduce the wastes that",
+   "score": 0.9452,
+   "poly": [
+    [
+     289,
+     1326
+    ],
+    [
+     2165,
+     1380
+    ],
+    [
+     2163,
+     1471
+    ],
+    [
+     286,
+     1416
+    ]
+   ],
+   "box": [
+    286,
+    1326,
+    2165,
+    1471
+   ]
+  },
+  {
+   "text": "are nade an house, Farsitly we have",
+   "score": 0.9309,
+   "poly": [
+    [
+     292,
+     1452
+    ],
+    [
+     2243,
+     1494
+    ],
+    [
+     2241,
+     1576
+    ],
+    [
+     290,
+     1534
+    ]
+   ],
+   "box": [
+    290,
+    1452,
+    2243,
+    1576
+   ]
+  },
+  {
+   "text": "to sperate the waste ibased on",
+   "score": 0.9924,
+   "poly": [
+    [
+     293,
+     1533
+    ],
+    [
+     2164,
+     1588
+    ],
+    [
+     2160,
+     1716
+    ],
+    [
+     289,
+     1661
+    ]
+   ],
+   "box": [
+    289,
+    1533,
+    2164,
+    1716
+   ]
+  },
+  {
+   "text": "the degradable abplity.",
+   "score": 0.9471,
+   "poly": [
+    [
+     296,
+     1658
+    ],
+    [
+     1514,
+     1699
+    ],
+    [
+     1510,
+     1810
+    ],
+    [
+     293,
+     1768
+    ]
+   ],
+   "box": [
+    293,
+    1658,
+    1514,
+    1810
+   ]
+  },
+  {
+   "text": "we can ase the composding mothed",
+   "score": 0.9484,
+   "poly": [
+    [
+     652,
+     1895
+    ],
+    [
+     2384,
+     1942
+    ],
+    [
+     2382,
+     2048
+    ],
+    [
+     649,
+     2000
+    ]
+   ],
+   "box": [
+    649,
+    1895,
+    2384,
+    2048
+   ]
+  },
+  {
+   "text": "to mange the lomostic waste. we",
+   "score": 0.9507,
+   "poly": [
+    [
+     318,
+     2006
+    ],
+    [
+     2281,
+     2058
+    ],
+    [
+     2278,
+     2157
+    ],
+    [
+     315,
+     2104
+    ]
+   ],
+   "box": [
+    315,
+    2006,
+    2281,
+    2157
+   ]
+  },
+  {
+   "text": "can use the de gradable coates to",
+   "score": 0.9662,
+   "poly": [
+    [
+     305,
+     2121
+    ],
+    [
+     2245,
+     2169
+    ],
+    [
+     2243,
+     2261
+    ],
+    [
+     303,
+     2213
+    ]
+   ],
+   "box": [
+    303,
+    2121,
+    2245,
+    2261
+   ]
+  },
+  {
+   "text": "feed cthe anemals, berds (poulltry)",
+   "score": 0.9456,
+   "poly": [
+    [
+     316,
+     2228
+    ],
+    [
+     2322,
+     2283
+    ],
+    [
+     2319,
+     2390
+    ],
+    [
+     313,
+     2336
+    ]
+   ],
+   "box": [
+    313,
+    2228,
+    2322,
+    2390
+   ]
+  },
+  {
+   "text": "etc.",
+   "score": 0.7848,
+   "poly": [
+    [
+     318,
+     2355
+    ],
+    [
+     576,
+     2363
+    ],
+    [
+     574,
+     2443
+    ],
+    [
+     315,
+     2435
+    ]
+   ],
+   "box": [
+    315,
+    2355,
+    576,
+    2443
+   ]
+  },
+  {
+   "text": "It cwoill cholp sto creduce the",
+   "score": 0.9351,
+   "poly": [
+    [
+     705,
+     2462
+    ],
+    [
+     2249,
+     2504
+    ],
+    [
+     2246,
+     2601
+    ],
+    [
+     702,
+     2559
+    ]
+   ],
+   "box": [
+    702,
+    2462,
+    2249,
+    2601
+   ]
+  },
+  {
+   "text": "waste in the environment and doenot",
+   "score": 0.9337,
+   "poly": [
+    [
+     328,
+     2569
+    ],
+    [
+     2355,
+     2617
+    ],
+    [
+     2353,
+     2715
+    ],
+    [
+     325,
+     2668
+    ]
+   ],
+   "box": [
+    325,
+    2569,
+    2355,
+    2715
+   ]
+  },
+  {
+   "text": "affect the ecosystem.",
+   "score": 0.9751,
+   "poly": [
+    [
+     325,
+     2687
+    ],
+    [
+     1413,
+     2702
+    ],
+    [
+     1412,
+     2805
+    ],
+    [
+     324,
+     2791
+    ]
+   ],
+   "box": [
+    324,
+    2687,
+    1413,
+    2805
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3295
+}

@@ -1,0 +1,805 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_05.jpg",
+ "latency_s": 14.997,
+ "model_load_s": 0.41,
+ "n_lines": 27,
+ "lines": [
+  {
+   "text": "4",
+   "score": 0.7345,
+   "poly": [
+    [
+     367,
+     2
+    ],
+    [
+     383,
+     2
+    ],
+    [
+     383,
+     17
+    ],
+    [
+     367,
+     17
+    ]
+   ],
+   "box": [
+    367,
+    2,
+    383,
+    17
+   ]
+  },
+  {
+   "text": "Eftects:",
+   "score": 0.9275,
+   "poly": [
+    [
+     445,
+     286
+    ],
+    [
+     711,
+     273
+    ],
+    [
+     715,
+     371
+    ],
+    [
+     450,
+     384
+    ]
+   ],
+   "box": [
+    445,
+    273,
+    715,
+    384
+   ]
+  },
+  {
+   "text": "ch",
+   "score": 0.9825,
+   "poly": [
+    [
+     2398,
+     416
+    ],
+    [
+     2472,
+     416
+    ],
+    [
+     2472,
+     503
+    ],
+    [
+     2398,
+     503
+    ]
+   ],
+   "box": [
+    2398,
+    416,
+    2472,
+    503
+   ]
+  },
+  {
+   "text": "* It affects dhe ecosysdem",
+   "score": 0.9742,
+   "poly": [
+    [
+     577,
+     472
+    ],
+    [
+     1960,
+     387
+    ],
+    [
+     1966,
+     489
+    ],
+    [
+     583,
+     574
+    ]
+   ],
+   "box": [
+    577,
+    387,
+    1966,
+    574
+   ]
+  },
+  {
+   "text": "C",
+   "score": 0.6003,
+   "poly": [
+    [
+     2419,
+     516
+    ],
+    [
+     2472,
+     516
+    ],
+    [
+     2472,
+     589
+    ],
+    [
+     2419,
+     589
+    ]
+   ],
+   "box": [
+    2419,
+    516,
+    2472,
+    589
+   ]
+  },
+  {
+   "text": "* It affocts the ocrganesms that",
+   "score": 0.9729,
+   "poly": [
+    [
+     574,
+     582
+    ],
+    [
+     2129,
+     483
+    ],
+    [
+     2135,
+     579
+    ],
+    [
+     580,
+     678
+    ]
+   ],
+   "box": [
+    574,
+    483,
+    2135,
+    678
+   ]
+  },
+  {
+   "text": "a",
+   "score": 0.9783,
+   "poly": [
+    [
+     2422,
+     623
+    ],
+    [
+     2472,
+     623
+    ],
+    [
+     2472,
+     691
+    ],
+    [
+     2422,
+     691
+    ]
+   ],
+   "box": [
+    2422,
+    623,
+    2472,
+    691
+   ]
+  },
+  {
+   "text": "are cleved in the fresh coater.",
+   "score": 0.9226,
+   "poly": [
+    [
+     374,
+     694
+    ],
+    [
+     1733,
+     617
+    ],
+    [
+     1738,
+     703
+    ],
+    [
+     379,
+     780
+    ]
+   ],
+   "box": [
+    374,
+    617,
+    1738,
+    780
+   ]
+  },
+  {
+   "text": "P",
+   "score": 0.469,
+   "poly": [
+    [
+     2419,
+     724
+    ],
+    [
+     2472,
+     724
+    ],
+    [
+     2472,
+     801
+    ],
+    [
+     2419,
+     801
+    ]
+   ],
+   "box": [
+    2419,
+    724,
+    2472,
+    801
+   ]
+  },
+  {
+   "text": "* tet pollute the fresh water to a",
+   "score": 0.9329,
+   "poly": [
+    [
+     573,
+     777
+    ],
+    [
+     2078,
+     691
+    ],
+    [
+     2084,
+     793
+    ],
+    [
+     579,
+     880
+    ]
+   ],
+   "box": [
+    573,
+    691,
+    2084,
+    880
+   ]
+  },
+  {
+   "text": "contaminodod cooder.",
+   "score": 0.9017,
+   "poly": [
+    [
+     375,
+     894
+    ],
+    [
+     1170,
+     862
+    ],
+    [
+     1173,
+     943
+    ],
+    [
+     378,
+     975
+    ]
+   ],
+   "box": [
+    375,
+    862,
+    1173,
+    975
+   ]
+  },
+  {
+   "text": " we chave do seprate the type",
+   "score": 0.9518,
+   "poly": [
+    [
+     463,
+     991
+    ],
+    [
+     2157,
+     905
+    ],
+    [
+     2162,
+     1007
+    ],
+    [
+     468,
+     1093
+    ]
+   ],
+   "box": [
+    463,
+    905,
+    2162,
+    1093
+   ]
+  },
+  {
+   "text": "of based.",
+   "score": 0.9685,
+   "poly": [
+    [
+     385,
+     1092
+    ],
+    [
+     825,
+     1080
+    ],
+    [
+     828,
+     1174
+    ],
+    [
+     388,
+     1186
+    ]
+   ],
+   "box": [
+    385,
+    1080,
+    828,
+    1186
+   ]
+  },
+  {
+   "text": "+ we chave do crecycle those",
+   "score": 0.978,
+   "poly": [
+    [
+     611,
+     1186
+    ],
+    [
+     2052,
+     1114
+    ],
+    [
+     2057,
+     1212
+    ],
+    [
+     616,
+     1284
+    ]
+   ],
+   "box": [
+    611,
+    1114,
+    2057,
+    1284
+   ]
+  },
+  {
+   "text": "kend of coater.",
+   "score": 0.9886,
+   "poly": [
+    [
+     399,
+     1294
+    ],
+    [
+     1011,
+     1274
+    ],
+    [
+     1014,
+     1364
+    ],
+    [
+     402,
+     1383
+    ]
+   ],
+   "box": [
+    399,
+    1274,
+    1014,
+    1383
+   ]
+  },
+  {
+   "text": "we can we the degradable coater",
+   "score": 0.9354,
+   "poly": [
+    [
+     640,
+     1388
+    ],
+    [
+     2151,
+     1315
+    ],
+    [
+     2156,
+     1402
+    ],
+    [
+     645,
+     1475
+    ]
+   ],
+   "box": [
+    640,
+    1315,
+    2156,
+    1475
+   ]
+  },
+  {
+   "text": "to sthe agricultural fepld as a hatural",
+   "score": 0.9545,
+   "poly": [
+    [
+     403,
+     1495
+    ],
+    [
+     2165,
+     1417
+    ],
+    [
+     2169,
+     1509
+    ],
+    [
+     407,
+     1587
+    ]
+   ],
+   "box": [
+    403,
+    1417,
+    2169,
+    1587
+   ]
+  },
+  {
+   "text": "feralPzer.",
+   "score": 0.7219,
+   "poly": [
+    [
+     422,
+     1602
+    ],
+    [
+     794,
+     1586
+    ],
+    [
+     798,
+     1664
+    ],
+    [
+     425,
+     1680
+    ]
+   ],
+   "box": [
+    422,
+    1586,
+    798,
+    1680
+   ]
+  },
+  {
+   "text": " we can creduce the food oastages",
+   "score": 0.9348,
+   "poly": [
+    [
+     635,
+     1683
+    ],
+    [
+     2246,
+     1630
+    ],
+    [
+     2249,
+     1722
+    ],
+    [
+     638,
+     1775
+    ]
+   ],
+   "box": [
+    635,
+    1630,
+    2249,
+    1775
+   ]
+  },
+  {
+   "text": "* of coe pallute tthe fresh coater",
+   "score": 0.9269,
+   "poly": [
+    [
+     637,
+     1794
+    ],
+    [
+     2129,
+     1735
+    ],
+    [
+     2132,
+     1821
+    ],
+    [
+     640,
+     1880
+    ]
+   ],
+   "box": [
+    637,
+    1735,
+    2132,
+    1880
+   ]
+  },
+  {
+   "text": "ecosystem the biodeversity may desturbed",
+   "score": 0.9592,
+   "poly": [
+    [
+     371,
+     1901
+    ],
+    [
+     2220,
+     1827
+    ],
+    [
+     2223,
+     1913
+    ],
+    [
+     375,
+     1987
+    ]
+   ],
+   "box": [
+    371,
+    1827,
+    2223,
+    1987
+   ]
+  },
+  {
+   "text": "and the foad chaer also get desturbed.",
+   "score": 0.9599,
+   "poly": [
+    [
+     373,
+     2001
+    ],
+    [
+     2135,
+     1934
+    ],
+    [
+     2138,
+     2024
+    ],
+    [
+     377,
+     2091
+    ]
+   ],
+   "box": [
+    373,
+    1934,
+    2138,
+    2091
+   ]
+  },
+  {
+   "text": "4 If one ecosgsstem caell affeds",
+   "score": 0.9309,
+   "poly": [
+    [
+     603,
+     2094
+    ],
+    [
+     2019,
+     2050
+    ],
+    [
+     2021,
+     2142
+    ],
+    [
+     606,
+     2186
+    ]
+   ],
+   "box": [
+    603,
+    2050,
+    2021,
+    2186
+   ]
+  },
+  {
+   "text": "9+ coill also effect othe entpre ecosystem.",
+   "score": 0.9532,
+   "poly": [
+    [
+     385,
+     2207
+    ],
+    [
+     2148,
+     2142
+    ],
+    [
+     2152,
+     2238
+    ],
+    [
+     389,
+     2303
+    ]
+   ],
+   "box": [
+    385,
+    2142,
+    2152,
+    2303
+   ]
+  },
+  {
+   "text": "+ we can use composting methods",
+   "score": 0.912,
+   "poly": [
+    [
+     626,
+     2304
+    ],
+    [
+     2075,
+     2258
+    ],
+    [
+     2078,
+     2344
+    ],
+    [
+     629,
+     2390
+    ]
+   ],
+   "box": [
+    626,
+    2258,
+    2078,
+    2390
+   ]
+  },
+  {
+   "text": "to reduce cthe organec coabtage",
+   "score": 0.939,
+   "poly": [
+    [
+     369,
+     2408
+    ],
+    [
+     1907,
+     2368
+    ],
+    [
+     1909,
+     2464
+    ],
+    [
+     371,
+     2505
+    ]
+   ],
+   "box": [
+    369,
+    2368,
+    1909,
+    2505
+   ]
+  },
+  {
+   "text": "puroblem.",
+   "score": 0.9078,
+   "poly": [
+    [
+     387,
+     2532
+    ],
+    [
+     740,
+     2518
+    ],
+    [
+     743,
+     2607
+    ],
+    [
+     390,
+     2621
+    ]
+   ],
+   "box": [
+    387,
+    2518,
+    743,
+    2621
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3318
+}

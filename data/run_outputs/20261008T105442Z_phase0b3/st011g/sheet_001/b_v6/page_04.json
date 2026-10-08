@@ -1,0 +1,609 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_04.jpg",
+ "latency_s": 8.776,
+ "model_load_s": 0.41,
+ "n_lines": 20,
+ "lines": [
+  {
+   "text": "Example",
+   "score": 0.9951,
+   "poly": [
+    [
+     262,
+     276
+    ],
+    [
+     733,
+     267
+    ],
+    [
+     735,
+     425
+    ],
+    [
+     264,
+     433
+    ]
+   ],
+   "box": [
+    262,
+    267,
+    735,
+    433
+   ]
+  },
+  {
+   "text": "miligirithar",
+   "score": 0.9018,
+   "poly": [
+    [
+     550,
+     398
+    ],
+    [
+     1132,
+     392
+    ],
+    [
+     1133,
+     545
+    ],
+    [
+     551,
+     552
+    ]
+   ],
+   "box": [
+    550,
+    392,
+    1133,
+    552
+   ]
+  },
+  {
+   "text": "12→stres8",
+   "score": 0.9289,
+   "poly": [
+    [
+     57,
+     638
+    ],
+    [
+     679,
+     645
+    ],
+    [
+     677,
+     807
+    ],
+    [
+     56,
+     801
+    ]
+   ],
+   "box": [
+    56,
+    638,
+    679,
+    807
+   ]
+  },
+  {
+   "text": "→hearing imp",
+   "score": 0.9516,
+   "poly": [
+    [
+     190,
+     881
+    ],
+    [
+     853,
+     893
+    ],
+    [
+     850,
+     1045
+    ],
+    [
+     187,
+     1032
+    ]
+   ],
+   "box": [
+    187,
+    881,
+    853,
+    1045
+   ]
+  },
+  {
+   "text": "15 like waste product",
+   "score": 0.9558,
+   "poly": [
+    [
+     56,
+     1132
+    ],
+    [
+     1514,
+     1126
+    ],
+    [
+     1515,
+     1288
+    ],
+    [
+     57,
+     1294
+    ]
+   ],
+   "box": [
+    56,
+    1126,
+    1515,
+    1294
+   ]
+  },
+  {
+   "text": "formed",
+   "score": 0.9443,
+   "poly": [
+    [
+     1637,
+     1130
+    ],
+    [
+     2005,
+     1125
+    ],
+    [
+     2007,
+     1321
+    ],
+    [
+     1640,
+     1326
+    ]
+   ],
+   "box": [
+    1637,
+    1125,
+    2007,
+    1326
+   ]
+  },
+  {
+   "text": "so water cannot fo.",
+   "score": 0.8637,
+   "poly": [
+    [
+     288,
+     1257
+    ],
+    [
+     1367,
+     1273
+    ],
+    [
+     1364,
+     1461
+    ],
+    [
+     285,
+     1445
+    ]
+   ],
+   "box": [
+    285,
+    1257,
+    1367,
+    1461
+   ]
+  },
+  {
+   "text": " water became unhe",
+   "score": 0.9688,
+   "poly": [
+    [
+     170,
+     1502
+    ],
+    [
+     1525,
+     1502
+    ],
+    [
+     1525,
+     1677
+    ],
+    [
+     170,
+     1677
+    ]
+   ],
+   "box": [
+    170,
+    1502,
+    1525,
+    1677
+   ]
+  },
+  {
+   "text": "Part-",
+   "score": 0.93,
+   "poly": [
+    [
+     824,
+     1760
+    ],
+    [
+     1128,
+     1753
+    ],
+    [
+     1132,
+     1904
+    ],
+    [
+     828,
+     1912
+    ]
+   ],
+   "box": [
+    824,
+    1753,
+    1132,
+    1912
+   ]
+  },
+  {
+   "text": "11",
+   "score": 0.9439,
+   "poly": [
+    [
+     74,
+     1787
+    ],
+    [
+     165,
+     1787
+    ],
+    [
+     165,
+     1903
+    ],
+    [
+     74,
+     1903
+    ]
+   ],
+   "box": [
+    74,
+    1787,
+    165,
+    1903
+   ]
+  },
+  {
+   "text": "16impact of deforestatin on biodiversity:",
+   "score": 0.9115,
+   "poly": [
+    [
+     78,
+     1980
+    ],
+    [
+     2273,
+     1986
+    ],
+    [
+     2272,
+     2179
+    ],
+    [
+     78,
+     2173
+    ]
+   ],
+   "box": [
+    78,
+    1980,
+    2273,
+    2179
+   ]
+  },
+  {
+   "text": "make living",
+   "score": 0.9985,
+   "poly": [
+    [
+     1071,
+     2212
+    ],
+    [
+     1939,
+     2231
+    ],
+    [
+     1935,
+     2430
+    ],
+    [
+     1066,
+     2411
+    ]
+   ],
+   "box": [
+    1066,
+    2212,
+    1939,
+    2430
+   ]
+  },
+  {
+   "text": " deforestation",
+   "score": 0.9723,
+   "poly": [
+    [
+     187,
+     2240
+    ],
+    [
+     865,
+     2227
+    ],
+    [
+     868,
+     2392
+    ],
+    [
+     190,
+     2404
+    ]
+   ],
+   "box": [
+    187,
+    2227,
+    868,
+    2404
+   ]
+  },
+  {
+   "text": "life co",
+   "score": 0.9209,
+   "poly": [
+    [
+     927,
+     2359
+    ],
+    [
+     1519,
+     2370
+    ],
+    [
+     1515,
+     2573
+    ],
+    [
+     924,
+     2561
+    ]
+   ],
+   "box": [
+    924,
+    2359,
+    1519,
+    2573
+   ]
+  },
+  {
+   "text": "organism",
+   "score": 0.9966,
+   "poly": [
+    [
+     268,
+     2375
+    ],
+    [
+     915,
+     2388
+    ],
+    [
+     912,
+     2532
+    ],
+    [
+     265,
+     2519
+    ]
+   ],
+   "box": [
+    265,
+    2375,
+    915,
+    2532
+   ]
+  },
+  {
+   "text": "destroy",
+   "score": 0.9998,
+   "poly": [
+    [
+     1091,
+     2595
+    ],
+    [
+     1472,
+     2599
+    ],
+    [
+     1470,
+     2769
+    ],
+    [
+     1089,
+     2764
+    ]
+   ],
+   "box": [
+    1089,
+    2595,
+    1472,
+    2769
+   ]
+  },
+  {
+   "text": "xIt will",
+   "score": 0.7713,
+   "poly": [
+    [
+     189,
+     2611
+    ],
+    [
+     863,
+     2598
+    ],
+    [
+     866,
+     2744
+    ],
+    [
+     192,
+     2757
+    ]
+   ],
+   "box": [
+    189,
+    2598,
+    866,
+    2757
+   ]
+  },
+  {
+   "text": "good chain",
+   "score": 0.9597,
+   "poly": [
+    [
+     294,
+     2726
+    ],
+    [
+     1007,
+     2713
+    ],
+    [
+     1011,
+     2910
+    ],
+    [
+     297,
+     2923
+    ]
+   ],
+   "box": [
+    294,
+    2713,
+    1011,
+    2923
+   ]
+  },
+  {
+   "text": "SO,I",
+   "score": 0.8067,
+   "poly": [
+    [
+     203,
+     2975
+    ],
+    [
+     706,
+     2975
+    ],
+    [
+     706,
+     3110
+    ],
+    [
+     203,
+     3110
+    ]
+   ],
+   "box": [
+    203,
+    2975,
+    706,
+    3110
+   ]
+  },
+  {
+   "text": "exctinction of the Sprass",
+   "score": 0.9057,
+   "poly": [
+    [
+     272,
+     3090
+    ],
+    [
+     1743,
+     3094
+    ],
+    [
+     1742,
+     3280
+    ],
+    [
+     271,
+     3276
+    ]
+   ],
+   "box": [
+    271,
+    3090,
+    1743,
+    3280
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 2999
+}

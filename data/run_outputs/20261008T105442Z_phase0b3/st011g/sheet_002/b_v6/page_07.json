@@ -1,0 +1,357 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_07.jpg",
+ "latency_s": 11.25,
+ "model_load_s": 0.41,
+ "n_lines": 11,
+ "lines": [
+  {
+   "text": "Iof we pollute the frech woate",
+   "score": 0.8851,
+   "poly": [
+    [
+     784,
+     462
+    ],
+    [
+     2403,
+     471
+    ],
+    [
+     2402,
+     591
+    ],
+    [
+     783,
+     581
+    ]
+   ],
+   "box": [
+    783,
+    462,
+    2403,
+    591
+   ]
+  },
+  {
+   "text": "we did have aater do drenk. ee",
+   "score": 0.8861,
+   "poly": [
+    [
+     549,
+     573
+    ],
+    [
+     2478,
+     609
+    ],
+    [
+     2476,
+     721
+    ],
+    [
+     546,
+     685
+    ]
+   ],
+   "box": [
+    546,
+    573,
+    2478,
+    721
+   ]
+  },
+  {
+   "text": "can recyle the plasies cwaste and",
+   "score": 0.8981,
+   "poly": [
+    [
+     527,
+     694
+    ],
+    [
+     2502,
+     728
+    ],
+    [
+     2500,
+     851
+    ],
+    [
+     524,
+     817
+    ]
+   ],
+   "box": [
+    524,
+    694,
+    2502,
+    851
+   ]
+  },
+  {
+   "text": "tiwe can relise the coatode protiecs",
+   "score": 0.8134,
+   "poly": [
+    [
+     604,
+     813
+    ],
+    [
+     2531,
+     857
+    ],
+    [
+     2529,
+     974
+    ],
+    [
+     601,
+     931
+    ]
+   ],
+   "box": [
+    601,
+    813,
+    2531,
+    974
+   ]
+  },
+  {
+   "text": "Phto to a use ful produd",
+   "score": 0.9402,
+   "poly": [
+    [
+     522,
+     923
+    ],
+    [
+     2407,
+     980
+    ],
+    [
+     2404,
+     1103
+    ],
+    [
+     519,
+     1046
+    ]
+   ],
+   "box": [
+    519,
+    923,
+    2407,
+    1103
+   ]
+  },
+  {
+   "text": "If wo roduce dhe production",
+   "score": 0.8824,
+   "poly": [
+    [
+     809,
+     1176
+    ],
+    [
+     2513,
+     1214
+    ],
+    [
+     2511,
+     1326
+    ],
+    [
+     806,
+     1288
+    ]
+   ],
+   "box": [
+    806,
+    1176,
+    2513,
+    1326
+   ]
+  },
+  {
+   "text": "of many kind, of coaste theer acosgstem",
+   "score": 0.9349,
+   "poly": [
+    [
+     529,
+     1279
+    ],
+    [
+     2469,
+     1338
+    ],
+    [
+     2466,
+     1455
+    ],
+    [
+     526,
+     1396
+    ]
+   ],
+   "box": [
+    526,
+    1279,
+    2469,
+    1455
+   ]
+  },
+  {
+   "text": "doesnot got dis tuabed . If we doeanst",
+   "score": 0.8392,
+   "poly": [
+    [
+     522,
+     1400
+    ],
+    [
+     2442,
+     1455
+    ],
+    [
+     2439,
+     1565
+    ],
+    [
+     519,
+     1510
+    ]
+   ],
+   "box": [
+    519,
+    1400,
+    2442,
+    1565
+   ]
+  },
+  {
+   "text": "reduce the waste or noct wsing the",
+   "score": 0.9125,
+   "poly": [
+    [
+     522,
+     1506
+    ],
+    [
+     2439,
+     1576
+    ],
+    [
+     2434,
+     1686
+    ],
+    [
+     518,
+     1616
+    ]
+   ],
+   "box": [
+    518,
+    1506,
+    2439,
+    1686
+   ]
+  },
+  {
+   "text": "BR principle the eraronmend got",
+   "score": 0.8645,
+   "poly": [
+    [
+     521,
+     1628
+    ],
+    [
+     2128,
+     1693
+    ],
+    [
+     2123,
+     1805
+    ],
+    [
+     516,
+     1740
+    ]
+   ],
+   "box": [
+    516,
+    1628,
+    2128,
+    1805
+   ]
+  },
+  {
+   "text": "disturbed.",
+   "score": 0.9131,
+   "poly": [
+    [
+     525,
+     1761
+    ],
+    [
+     949,
+     1774
+    ],
+    [
+     946,
+     1863
+    ],
+    [
+     523,
+     1851
+    ]
+   ],
+   "box": [
+    523,
+    1761,
+    949,
+    1863
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3318
+}

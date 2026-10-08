@@ -1,0 +1,497 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_03.jpg",
+ "latency_s": 11.79,
+ "model_load_s": 0.41,
+ "n_lines": 16,
+ "lines": [
+  {
+   "text": "Sel es",
+   "score": 0.5843,
+   "poly": [
+    [
+     455,
+     470
+    ],
+    [
+     1115,
+     510
+    ],
+    [
+     1108,
+     629
+    ],
+    [
+     448,
+     590
+    ]
+   ],
+   "box": [
+    448,
+    470,
+    1115,
+    629
+   ]
+  },
+  {
+   "text": "Id i&s a dend of contural disns",
+   "score": 0.7336,
+   "poly": [
+    [
+     892,
+     590
+    ],
+    [
+     2708,
+     604
+    ],
+    [
+     2707,
+     766
+    ],
+    [
+     891,
+     753
+    ]
+   ],
+   "box": [
+    891,
+    590,
+    2708,
+    766
+   ]
+  },
+  {
+   "text": "les sred topssd.",
+   "score": 0.6247,
+   "poly": [
+    [
+     347,
+     868
+    ],
+    [
+     1425,
+     907
+    ],
+    [
+     1420,
+     1031
+    ],
+    [
+     342,
+     991
+    ]
+   ],
+   "box": [
+    342,
+    868,
+    1425,
+    1031
+   ]
+  },
+  {
+   "text": "4F.ood:",
+   "score": 0.838,
+   "poly": [
+    [
+     269,
+     1262
+    ],
+    [
+     849,
+     1294
+    ],
+    [
+     843,
+     1408
+    ],
+    [
+     263,
+     1377
+    ]
+   ],
+   "box": [
+    263,
+    1262,
+    849,
+    1408
+   ]
+  },
+  {
+   "text": "Flood is chapped due to cua",
+   "score": 0.8396,
+   "poly": [
+    [
+     831,
+     1408
+    ],
+    [
+     2669,
+     1483
+    ],
+    [
+     2664,
+     1614
+    ],
+    [
+     826,
+     1539
+    ]
+   ],
+   "box": [
+    826,
+    1408,
+    2669,
+    1614
+   ]
+  },
+  {
+   "text": "coinyill. It ss ans ckind of tatcoal",
+   "score": 0.8136,
+   "poly": [
+    [
+     395,
+     1532
+    ],
+    [
+     2636,
+     1626
+    ],
+    [
+     2630,
+     1757
+    ],
+    [
+     390,
+     1663
+    ]
+   ],
+   "box": [
+    390,
+    1532,
+    2636,
+    1757
+   ]
+  },
+  {
+   "text": "disalia.",
+   "score": 0.6933,
+   "poly": [
+    [
+     367,
+     1669
+    ],
+    [
+     803,
+     1688
+    ],
+    [
+     799,
+     1797
+    ],
+    [
+     362,
+     1777
+    ]
+   ],
+   "box": [
+    362,
+    1669,
+    803,
+    1797
+   ]
+  },
+  {
+   "text": "Draughu",
+   "score": 0.7229,
+   "poly": [
+    [
+     486,
+     1808
+    ],
+    [
+     882,
+     1830
+    ],
+    [
+     876,
+     1941
+    ],
+    [
+     480,
+     1919
+    ]
+   ],
+   "box": [
+    480,
+    1808,
+    882,
+    1941
+   ]
+  },
+  {
+   "text": "2oraght us dtappond due do. to",
+   "score": 0.8011,
+   "poly": [
+    [
+     842,
+     1943
+    ],
+    [
+     2741,
+     2058
+    ],
+    [
+     2734,
+     2182
+    ],
+    [
+     835,
+     2066
+    ]
+   ],
+   "box": [
+    835,
+    1943,
+    2741,
+    2182
+   ]
+  },
+  {
+   "text": "nfrfad efr the pasticules aren.",
+   "score": 0.722,
+   "poly": [
+    [
+     355,
+     2053
+    ],
+    [
+     2270,
+     2171
+    ],
+    [
+     2263,
+     2296
+    ],
+    [
+     347,
+     2179
+    ]
+   ],
+   "box": [
+    347,
+    2053,
+    2270,
+    2296
+   ]
+  },
+  {
+   "text": "is thoe at coill stappend.",
+   "score": 0.9143,
+   "poly": [
+    [
+     343,
+     2293
+    ],
+    [
+     1798,
+     2413
+    ],
+    [
+     1788,
+     2533
+    ],
+    [
+     333,
+     2413
+    ]
+   ],
+   "box": [
+    333,
+    2293,
+    1798,
+    2533
+   ]
+  },
+  {
+   "text": "3 Trareats of Bsdiuessly",
+   "score": 0.798,
+   "poly": [
+    [
+     228,
+     2542
+    ],
+    [
+     1518,
+     2647
+    ],
+    [
+     1507,
+     2773
+    ],
+    [
+     217,
+     2667
+    ]
+   ],
+   "box": [
+    217,
+    2542,
+    1518,
+    2773
+   ]
+  },
+  {
+   "text": "f Id 8 alfet the fod clafh",
+   "score": 0.825,
+   "poly": [
+    [
+     575,
+     2820
+    ],
+    [
+     2435,
+     2997
+    ],
+    [
+     2423,
+     3124
+    ],
+    [
+     563,
+     2947
+    ]
+   ],
+   "box": [
+    563,
+    2820,
+    2435,
+    3124
+   ]
+  },
+  {
+   "text": "t Id ees alied edi. ecosustem",
+   "score": 0.7938,
+   "poly": [
+    [
+     572,
+     2934
+    ],
+    [
+     2390,
+     3132
+    ],
+    [
+     2375,
+     3263
+    ],
+    [
+     558,
+     3065
+    ]
+   ],
+   "box": [
+    558,
+    2934,
+    2390,
+    3263
+   ]
+  },
+  {
+   "text": " It is knds do extisich of",
+   "score": 0.8365,
+   "poly": [
+    [
+     590,
+     3047
+    ],
+    [
+     2452,
+     3262
+    ],
+    [
+     2434,
+     3419
+    ],
+    [
+     572,
+     3204
+    ]
+   ],
+   "box": [
+    572,
+    3047,
+    2452,
+    3419
+   ]
+  },
+  {
+   "text": "trore Secies.",
+   "score": 0.8435,
+   "poly": [
+    [
+     342,
+     3194
+    ],
+    [
+     1166,
+     3245
+    ],
+    [
+     1158,
+     3372
+    ],
+    [
+     334,
+     3321
+    ]
+   ],
+   "box": [
+    334,
+    3194,
+    1166,
+    3372
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3150
+}

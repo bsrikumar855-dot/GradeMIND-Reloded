@@ -1,0 +1,19 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Some weights of VisionEncoderDecoderModel were not initialized from the model checkpoint at /home/Shreekumar/models/trocr-large-handwritten and are newly initialized: ['encoder.pooler.dense.bias', 'encoder.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+RESOLVED {"weights_file": "pytorch_model.bin", "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837", "architectures": ["VisionEncoderDecoderModel"], "encoder": "vit", "decoder": "trocr", "dtype": "torch.float32", "transformers": "4.57.1", "torch": "2.10.0+cu129"}
+page_01.jpg: crop 0.05s rec 7.13s lines=106 no_text=1 trunc=0 peak_vram=2740MiB
+page_02.jpg: crop 0.05s rec 2.33s lines=44 no_text=1 trunc=0 peak_vram=2699MiB
+page_03.jpg: crop 0.12s rec 1.34s lines=23 no_text=0 trunc=0 peak_vram=2689MiB
+page_04.jpg: crop 0.08s rec 1.95s lines=34 no_text=0 trunc=0 peak_vram=2701MiB
+page_05.jpg: crop 0.10s rec 1.73s lines=29 no_text=0 trunc=0 peak_vram=2674MiB
+page_06.jpg: crop 0.12s rec 1.58s lines=27 no_text=0 trunc=0 peak_vram=2703MiB
+page_07.jpg: crop 0.09s rec 1.22s lines=26 no_text=2 trunc=0 peak_vram=2695MiB
+page_08.jpg: crop 0.13s rec 2.12s lines=38 no_text=0 trunc=0 peak_vram=2700MiB
+page_09.jpg: crop 0.11s rec 2.55s lines=47 no_text=0 trunc=0 peak_vram=2703MiB
+page_10.jpg: crop 0.13s rec 3.48s lines=63 no_text=0 trunc=0 peak_vram=2700MiB
+page_11.jpg: crop 0.13s rec 2.25s lines=41 no_text=0 trunc=0 peak_vram=2719MiB
+page_12.jpg: crop 0.09s rec 2.42s lines=45 no_text=1 trunc=0 peak_vram=2705MiB
+page_13.jpg: crop 0.16s rec 2.14s lines=39 no_text=0 trunc=0 peak_vram=2703MiB
+page_14.jpg: crop 0.21s rec 2.30s lines=42 no_text=1 trunc=0 peak_vram=2705MiB
+page_15.jpg: crop 0.09s rec 1.15s lines=24 no_text=0 trunc=0 peak_vram=2693MiB

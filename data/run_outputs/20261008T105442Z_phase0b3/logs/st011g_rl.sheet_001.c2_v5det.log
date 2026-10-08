@@ -1,0 +1,16 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Some weights of VisionEncoderDecoderModel were not initialized from the model checkpoint at /home/Shreekumar/models/trocr-large-handwritten and are newly initialized: ['encoder.pooler.dense.bias', 'encoder.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+RESOLVED {"weights_file": "pytorch_model.bin", "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837", "architectures": ["VisionEncoderDecoderModel"], "encoder": "vit", "decoder": "trocr", "dtype": "torch.float32", "transformers": "4.57.1", "torch": "2.10.0+cu129"}
+page_01.jpg: crop 0.07s rec 6.75s lines=109 no_text=1 trunc=0 peak_vram=2727MiB
+page_02.jpg: crop 0.04s rec 0.61s lines=12 no_text=0 trunc=0 peak_vram=2595MiB
+page_03.jpg: crop 0.08s rec 1.54s lines=33 no_text=0 trunc=0 peak_vram=2693MiB
+page_04.jpg: crop 0.08s rec 1.60s lines=35 no_text=0 trunc=0 peak_vram=2693MiB
+page_05.jpg: crop 0.11s rec 2.22s lines=52 no_text=0 trunc=0 peak_vram=2690MiB
+page_06.jpg: crop 0.12s rec 2.67s lines=56 no_text=0 trunc=0 peak_vram=2691MiB
+page_07.jpg: crop 0.11s rec 2.16s lines=50 no_text=0 trunc=0 peak_vram=2691MiB
+page_08.jpg: crop 0.12s rec 2.49s lines=53 no_text=0 trunc=0 peak_vram=2696MiB
+page_09.jpg: crop 0.12s rec 2.00s lines=41 no_text=0 trunc=0 peak_vram=2705MiB
+page_10.jpg: crop 0.12s rec 2.06s lines=48 no_text=0 trunc=0 peak_vram=2690MiB
+page_11.jpg: crop 0.10s rec 1.66s lines=39 no_text=2 trunc=0 peak_vram=2694MiB
+page_12.jpg: crop 0.03s rec 0.41s lines=9 no_text=0 trunc=0 peak_vram=2443MiB

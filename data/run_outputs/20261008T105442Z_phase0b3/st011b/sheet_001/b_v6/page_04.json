@@ -1,0 +1,525 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_04.jpg",
+ "latency_s": 9.829,
+ "model_load_s": 0.42,
+ "n_lines": 17,
+ "lines": [
+  {
+   "text": "Example",
+   "score": 0.9936,
+   "poly": [
+    [
+     262,
+     284
+    ],
+    [
+     728,
+     275
+    ],
+    [
+     730,
+     403
+    ],
+    [
+     264,
+     411
+    ]
+   ],
+   "box": [
+    262,
+    275,
+    730,
+    411
+   ]
+  },
+  {
+   "text": "miligirithar",
+   "score": 0.858,
+   "poly": [
+    [
+     345,
+     396
+    ],
+    [
+     1127,
+     390
+    ],
+    [
+     1128,
+     542
+    ],
+    [
+     346,
+     548
+    ]
+   ],
+   "box": [
+    345,
+    390,
+    1128,
+    548
+   ]
+  },
+  {
+   "text": "14. → stress",
+   "score": 0.8388,
+   "poly": [
+    [
+     14,
+     639
+    ],
+    [
+     698,
+     639
+    ],
+    [
+     698,
+     803
+    ],
+    [
+     14,
+     803
+    ]
+   ],
+   "box": [
+    14,
+    639,
+    698,
+    803
+   ]
+  },
+  {
+   "text": "→ hearing imp",
+   "score": 0.9728,
+   "poly": [
+    [
+     193,
+     883
+    ],
+    [
+     855,
+     889
+    ],
+    [
+     853,
+     1041
+    ],
+    [
+     191,
+     1034
+    ]
+   ],
+   "box": [
+    191,
+    883,
+    855,
+    1041
+   ]
+  },
+  {
+   "text": "15 like waste product foumed",
+   "score": 0.9502,
+   "poly": [
+    [
+     37,
+     1106
+    ],
+    [
+     2018,
+     1117
+    ],
+    [
+     2017,
+     1327
+    ],
+    [
+     36,
+     1315
+    ]
+   ],
+   "box": [
+    36,
+    1106,
+    2018,
+    1327
+   ]
+  },
+  {
+   "text": "so water cannot go.",
+   "score": 0.8738,
+   "poly": [
+    [
+     290,
+     1251
+    ],
+    [
+     1365,
+     1267
+    ],
+    [
+     1362,
+     1457
+    ],
+    [
+     287,
+     1441
+    ]
+   ],
+   "box": [
+    287,
+    1251,
+    1365,
+    1457
+   ]
+  },
+  {
+   "text": " water became unhe",
+   "score": 0.9457,
+   "poly": [
+    [
+     174,
+     1500
+    ],
+    [
+     1522,
+     1506
+    ],
+    [
+     1521,
+     1668
+    ],
+    [
+     174,
+     1662
+    ]
+   ],
+   "box": [
+    174,
+    1500,
+    1522,
+    1668
+   ]
+  },
+  {
+   "text": "Part-",
+   "score": 0.9006,
+   "poly": [
+    [
+     832,
+     1761
+    ],
+    [
+     1129,
+     1761
+    ],
+    [
+     1129,
+     1903
+    ],
+    [
+     832,
+     1903
+    ]
+   ],
+   "box": [
+    832,
+    1761,
+    1129,
+    1903
+   ]
+  },
+  {
+   "text": "1",
+   "score": 0.5338,
+   "poly": [
+    [
+     80,
+     1796
+    ],
+    [
+     157,
+     1796
+    ],
+    [
+     157,
+     1896
+    ],
+    [
+     80,
+     1896
+    ]
+   ],
+   "box": [
+    80,
+    1796,
+    157,
+    1896
+   ]
+  },
+  {
+   "text": "6impact of deforestation on biodiversity:",
+   "score": 0.9233,
+   "poly": [
+    [
+     78,
+     1987
+    ],
+    [
+     2273,
+     1987
+    ],
+    [
+     2273,
+     2174
+    ],
+    [
+     78,
+     2174
+    ]
+   ],
+   "box": [
+    78,
+    1987,
+    2273,
+    2174
+   ]
+  },
+  {
+   "text": " deforestationmake living",
+   "score": 0.9469,
+   "poly": [
+    [
+     182,
+     2210
+    ],
+    [
+     1944,
+     2225
+    ],
+    [
+     1942,
+     2424
+    ],
+    [
+     180,
+     2408
+    ]
+   ],
+   "box": [
+    180,
+    2210,
+    1944,
+    2424
+   ]
+  },
+  {
+   "text": "organism",
+   "score": 0.9878,
+   "poly": [
+    [
+     257,
+     2362
+    ],
+    [
+     988,
+     2385
+    ],
+    [
+     983,
+     2545
+    ],
+    [
+     252,
+     2523
+    ]
+   ],
+   "box": [
+    252,
+    2362,
+    988,
+    2545
+   ]
+  },
+  {
+   "text": "life co",
+   "score": 0.9468,
+   "poly": [
+    [
+     926,
+     2366
+    ],
+    [
+     1500,
+     2357
+    ],
+    [
+     1503,
+     2554
+    ],
+    [
+     929,
+     2563
+    ]
+   ],
+   "box": [
+    926,
+    2357,
+    1503,
+    2563
+   ]
+  },
+  {
+   "text": "xIt wils destroy",
+   "score": 0.9041,
+   "poly": [
+    [
+     185,
+     2590
+    ],
+    [
+     1495,
+     2593
+    ],
+    [
+     1494,
+     2761
+    ],
+    [
+     184,
+     2757
+    ]
+   ],
+   "box": [
+    184,
+    2590,
+    1495,
+    2761
+   ]
+  },
+  {
+   "text": "food chain",
+   "score": 0.9534,
+   "poly": [
+    [
+     295,
+     2728
+    ],
+    [
+     1012,
+     2711
+    ],
+    [
+     1017,
+     2904
+    ],
+    [
+     300,
+     2921
+    ]
+   ],
+   "box": [
+    295,
+    2711,
+    1017,
+    2921
+   ]
+  },
+  {
+   "text": "*SO,I",
+   "score": 0.8237,
+   "poly": [
+    [
+     208,
+     2980
+    ],
+    [
+     704,
+     2980
+    ],
+    [
+     704,
+     3102
+    ],
+    [
+     208,
+     3102
+    ]
+   ],
+   "box": [
+    208,
+    2980,
+    704,
+    3102
+   ]
+  },
+  {
+   "text": "extintion of the Sprass",
+   "score": 0.8799,
+   "poly": [
+    [
+     265,
+     3084
+    ],
+    [
+     1757,
+     3090
+    ],
+    [
+     1757,
+     3289
+    ],
+    [
+     264,
+     3283
+    ]
+   ],
+   "box": [
+    264,
+    3084,
+    1757,
+    3289
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 2956
+}

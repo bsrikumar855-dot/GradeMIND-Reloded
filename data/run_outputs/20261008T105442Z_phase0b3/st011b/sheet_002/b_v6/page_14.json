@@ -1,0 +1,581 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_14.jpg",
+ "latency_s": 12.942,
+ "model_load_s": 0.4,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "we can recycle cthe plastic",
+   "score": 0.9709,
+   "poly": [
+    [
+     842,
+     467
+    ],
+    [
+     2493,
+     514
+    ],
+    [
+     2490,
+     628
+    ],
+    [
+     838,
+     582
+    ]
+   ],
+   "box": [
+    838,
+    467,
+    2493,
+    628
+   ]
+  },
+  {
+   "text": "waste and made 9t as a usedul",
+   "score": 0.933,
+   "poly": [
+    [
+     266,
+     590
+    ],
+    [
+     2533,
+     654
+    ],
+    [
+     2530,
+     763
+    ],
+    [
+     263,
+     699
+    ]
+   ],
+   "box": [
+    263,
+    590,
+    2533,
+    763
+   ]
+  },
+  {
+   "text": "product. if we doesnoct stake proper",
+   "score": 0.9569,
+   "poly": [
+    [
+     234,
+     717
+    ],
+    [
+     2725,
+     791
+    ],
+    [
+     2721,
+     920
+    ],
+    [
+     231,
+     845
+    ]
+   ],
+   "box": [
+    231,
+    717,
+    2725,
+    920
+   ]
+  },
+  {
+   "text": "coaste mangement on plastic ib will",
+   "score": 0.9451,
+   "poly": [
+    [
+     258,
+     857
+    ],
+    [
+     2567,
+     914
+    ],
+    [
+     2564,
+     1048
+    ],
+    [
+     255,
+     992
+    ]
+   ],
+   "box": [
+    255,
+    857,
+    2567,
+    1048
+   ]
+  },
+  {
+   "text": "ctotally affect the all organesms.",
+   "score": 0.967,
+   "poly": [
+    [
+     280,
+     996
+    ],
+    [
+     2595,
+     1063
+    ],
+    [
+     2592,
+     1197
+    ],
+    [
+     277,
+     1131
+    ]
+   ],
+   "box": [
+    277,
+    996,
+    2595,
+    1197
+   ]
+  },
+  {
+   "text": "Plastpc are the inon-bpodegrad",
+   "score": 0.9606,
+   "poly": [
+    [
+     902,
+     1277
+    ],
+    [
+     2833,
+     1342
+    ],
+    [
+     2829,
+     1473
+    ],
+    [
+     898,
+     1408
+    ]
+   ],
+   "box": [
+    898,
+    1277,
+    2833,
+    1473
+   ]
+  },
+  {
+   "text": "easaly and many of cattles are ato ",
+   "score": 0.9528,
+   "poly": [
+    [
+     229,
+     1536
+    ],
+    [
+     2812,
+     1620
+    ],
+    [
+     2807,
+     1775
+    ],
+    [
+     224,
+     1691
+    ]
+   ],
+   "box": [
+    224,
+    1536,
+    2812,
+    1775
+   ]
+  },
+  {
+   "text": "and deed.",
+   "score": 0.9855,
+   "poly": [
+    [
+     246,
+     1698
+    ],
+    [
+     904,
+     1714
+    ],
+    [
+     902,
+     1824
+    ],
+    [
+     243,
+     1809
+    ]
+   ],
+   "box": [
+    243,
+    1698,
+    904,
+    1824
+   ]
+  },
+  {
+   "text": "we chave gaide the situdents",
+   "score": 0.9555,
+   "poly": [
+    [
+     898,
+     1987
+    ],
+    [
+     2737,
+     2054
+    ],
+    [
+     2733,
+     2177
+    ],
+    [
+     894,
+     2110
+    ]
+   ],
+   "box": [
+    894,
+    1987,
+    2737,
+    2177
+   ]
+  },
+  {
+   "text": "and tell them about the draobacks",
+   "score": 0.9434,
+   "poly": [
+    [
+     231,
+     2116
+    ],
+    [
+     2769,
+     2201
+    ],
+    [
+     2765,
+     2317
+    ],
+    [
+     227,
+     2232
+    ]
+   ],
+   "box": [
+    227,
+    2116,
+    2769,
+    2317
+   ]
+  },
+  {
+   "text": "of the usage of plastic. and coe",
+   "score": 0.9755,
+   "poly": [
+    [
+     281,
+     2254
+    ],
+    [
+     2642,
+     2342
+    ],
+    [
+     2637,
+     2470
+    ],
+    [
+     276,
+     2383
+    ]
+   ],
+   "box": [
+    276,
+    2254,
+    2642,
+    2470
+   ]
+  },
+  {
+   "text": "NG THI NATION",
+   "score": 0.9429,
+   "poly": [
+    [
+     1296,
+     2265
+    ],
+    [
+     1663,
+     2276
+    ],
+    [
+     1662,
+     2324
+    ],
+    [
+     1295,
+     2314
+    ]
+   ],
+   "box": [
+    1295,
+    2265,
+    1663,
+    2324
+   ]
+  },
+  {
+   "text": "can use pya bio degradable plates Prstead d",
+   "score": 0.9479,
+   "poly": [
+    [
+     279,
+     2403
+    ],
+    [
+     2782,
+     2496
+    ],
+    [
+     2777,
+     2625
+    ],
+    [
+     274,
+     2532
+    ]
+   ],
+   "box": [
+    274,
+    2403,
+    2782,
+    2625
+   ]
+  },
+  {
+   "text": "plastp phto.",
+   "score": 0.8822,
+   "poly": [
+    [
+     279,
+     2567
+    ],
+    [
+     944,
+     2578
+    ],
+    [
+     942,
+     2690
+    ],
+    [
+     277,
+     2679
+    ]
+   ],
+   "box": [
+    277,
+    2567,
+    944,
+    2690
+   ]
+  },
+  {
+   "text": "Mosd of the coaste ces colleded",
+   "score": 0.9748,
+   "poly": [
+    [
+     795,
+     2845
+    ],
+    [
+     2768,
+     2921
+    ],
+    [
+     2763,
+     3055
+    ],
+    [
+     790,
+     2980
+    ]
+   ],
+   "box": [
+    790,
+    2845,
+    2768,
+    3055
+   ]
+  },
+  {
+   "text": "ofthout sogregation, ond et will resultls Pn",
+   "score": 0.9294,
+   "poly": [
+    [
+     237,
+     2982
+    ],
+    [
+     2773,
+     3077
+    ],
+    [
+     2769,
+     3200
+    ],
+    [
+     232,
+     3105
+    ]
+   ],
+   "box": [
+    232,
+    2982,
+    2773,
+    3200
+   ]
+  },
+  {
+   "text": "Impropiar desposal and enuaronmontal problems",
+   "score": 0.9421,
+   "poly": [
+    [
+     259,
+     3129
+    ],
+    [
+     2900,
+     3236
+    ],
+    [
+     2895,
+     3365
+    ],
+    [
+     254,
+     3257
+    ]
+   ],
+   "box": [
+    254,
+    3129,
+    2900,
+    3365
+   ]
+  },
+  {
+   "text": "Reculeng helps the conserve cthe natural",
+   "score": 0.9233,
+   "poly": [
+    [
+     285,
+     3273
+    ],
+    [
+     2900,
+     3381
+    ],
+    [
+     2894,
+     3510
+    ],
+    [
+     280,
+     3402
+    ]
+   ],
+   "box": [
+    280,
+    3273,
+    2900,
+    3510
+   ]
+  },
+  {
+   "text": "cresources.",
+   "score": 0.9845,
+   "poly": [
+    [
+     268,
+     3439
+    ],
+    [
+     819,
+     3457
+    ],
+    [
+     815,
+     3570
+    ],
+    [
+     265,
+     3551
+    ]
+   ],
+   "box": [
+    265,
+    3439,
+    819,
+    3570
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3390
+}

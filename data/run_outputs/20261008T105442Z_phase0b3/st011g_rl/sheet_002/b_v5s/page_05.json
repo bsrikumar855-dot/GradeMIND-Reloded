@@ -1,0 +1,863 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_05.jpg",
+ "latency_s": 24.199,
+ "model_load_s": 0.42,
+ "n_lines": 29,
+ "lines": [
+  {
+   "text": "Efleds:",
+   "score": 0.9366,
+   "poly": [
+    [
+     454,
+     295
+    ],
+    [
+     711,
+     292
+    ],
+    [
+     712,
+     361
+    ],
+    [
+     455,
+     365
+    ]
+   ],
+   "box": [
+    454,
+    292,
+    712,
+    365
+   ]
+  },
+  {
+   "text": "It affects dne ecosysdem",
+   "score": 0.8013,
+   "poly": [
+    [
+     571,
+     475
+    ],
+    [
+     1959,
+     391
+    ],
+    [
+     1965,
+     494
+    ],
+    [
+     577,
+     577
+    ]
+   ],
+   "box": [
+    571,
+    391,
+    1965,
+    577
+   ]
+  },
+  {
+   "text": "2",
+   "score": 0.056,
+   "poly": [
+    [
+     2361,
+     544
+    ],
+    [
+     2377,
+     538
+    ],
+    [
+     2384,
+     555
+    ],
+    [
+     2369,
+     562
+    ]
+   ],
+   "box": [
+    2361,
+    538,
+    2384,
+    562
+   ]
+  },
+  {
+   "text": " Iet affocts sthe ourganecms that",
+   "score": 0.7439,
+   "poly": [
+    [
+     569,
+     583
+    ],
+    [
+     2131,
+     484
+    ],
+    [
+     2138,
+     587
+    ],
+    [
+     576,
+     686
+    ]
+   ],
+   "box": [
+    569,
+    484,
+    2138,
+    686
+   ]
+  },
+  {
+   "text": "ceved en ths fresh coardes",
+   "score": 0.69,
+   "poly": [
+    [
+     567,
+     688
+    ],
+    [
+     1731,
+     619
+    ],
+    [
+     1736,
+     705
+    ],
+    [
+     573,
+     774
+    ]
+   ],
+   "box": [
+    567,
+    619,
+    1736,
+    774
+   ]
+  },
+  {
+   "text": "ae",
+   "score": 0.5349,
+   "poly": [
+    [
+     376,
+     707
+    ],
+    [
+     563,
+     700
+    ],
+    [
+     566,
+     760
+    ],
+    [
+     379,
+     767
+    ]
+   ],
+   "box": [
+    376,
+    700,
+    566,
+    767
+   ]
+  },
+  {
+   "text": "* t pollute the frosh water sto a",
+   "score": 0.7795,
+   "poly": [
+    [
+     577,
+     783
+    ],
+    [
+     2077,
+     699
+    ],
+    [
+     2083,
+     795
+    ],
+    [
+     582,
+     880
+    ]
+   ],
+   "box": [
+    577,
+    699,
+    2083,
+    880
+   ]
+  },
+  {
+   "text": "contaminatod cocder.",
+   "score": 0.741,
+   "poly": [
+    [
+     370,
+     894
+    ],
+    [
+     1179,
+     863
+    ],
+    [
+     1183,
+     951
+    ],
+    [
+     373,
+     981
+    ]
+   ],
+   "box": [
+    370,
+    863,
+    1183,
+    981
+   ]
+  },
+  {
+   "text": "  we chave to seprate the type",
+   "score": 0.8085,
+   "poly": [
+    [
+     458,
+     989
+    ],
+    [
+     2167,
+     908
+    ],
+    [
+     2173,
+     1021
+    ],
+    [
+     464,
+     1102
+    ]
+   ],
+   "box": [
+    458,
+    908,
+    2173,
+    1102
+   ]
+  },
+  {
+   "text": "ofsbased",
+   "score": 0.7686,
+   "poly": [
+    [
+     381,
+     1094
+    ],
+    [
+     826,
+     1079
+    ],
+    [
+     830,
+     1176
+    ],
+    [
+     384,
+     1192
+    ]
+   ],
+   "box": [
+    381,
+    1079,
+    830,
+    1192
+   ]
+  },
+  {
+   "text": "t woe charre to eycle those",
+   "score": 0.8294,
+   "poly": [
+    [
+     612,
+     1188
+    ],
+    [
+     2061,
+     1113
+    ],
+    [
+     2067,
+     1220
+    ],
+    [
+     617,
+     1295
+    ]
+   ],
+   "box": [
+    612,
+    1113,
+    2067,
+    1295
+   ]
+  },
+  {
+   "text": "kend of cooter.",
+   "score": 0.87,
+   "poly": [
+    [
+     396,
+     1296
+    ],
+    [
+     1016,
+     1278
+    ],
+    [
+     1019,
+     1371
+    ],
+    [
+     399,
+     1389
+    ]
+   ],
+   "box": [
+    396,
+    1278,
+    1019,
+    1389
+   ]
+  },
+  {
+   "text": "7",
+   "score": 0.0722,
+   "poly": [
+    [
+     1934,
+     1289
+    ],
+    [
+     1955,
+     1289
+    ],
+    [
+     1955,
+     1313
+    ],
+    [
+     1934,
+     1313
+    ]
+   ],
+   "box": [
+    1934,
+    1289,
+    1955,
+    1313
+   ]
+  },
+  {
+   "text": "we cn we the degradeble coat er",
+   "score": 0.7272,
+   "poly": [
+    [
+     560,
+     1397
+    ],
+    [
+     2154,
+     1316
+    ],
+    [
+     2159,
+     1404
+    ],
+    [
+     564,
+     1484
+    ]
+   ],
+   "box": [
+    560,
+    1316,
+    2159,
+    1484
+   ]
+  },
+  {
+   "text": "do sthe agricutur feeldas. a hadural",
+   "score": 0.757,
+   "poly": [
+    [
+     398,
+     1498
+    ],
+    [
+     2172,
+     1415
+    ],
+    [
+     2177,
+     1516
+    ],
+    [
+     403,
+     1599
+    ]
+   ],
+   "box": [
+    398,
+    1415,
+    2177,
+    1599
+   ]
+  },
+  {
+   "text": "feaPeen",
+   "score": 0.5548,
+   "poly": [
+    [
+     423,
+     1608
+    ],
+    [
+     796,
+     1589
+    ],
+    [
+     799,
+     1663
+    ],
+    [
+     427,
+     1681
+    ]
+   ],
+   "box": [
+    423,
+    1589,
+    799,
+    1681
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     995,
+     1614
+    ],
+    [
+     1364,
+     1599
+    ],
+    [
+     1365,
+     1624
+    ],
+    [
+     996,
+     1640
+    ]
+   ],
+   "box": [
+    995,
+    1599,
+    1365,
+    1640
+   ]
+  },
+  {
+   "text": "MPOAYOM",
+   "score": 0.66,
+   "poly": [
+    [
+     955,
+     1648
+    ],
+    [
+     1401,
+     1629
+    ],
+    [
+     1403,
+     1675
+    ],
+    [
+     957,
+     1695
+    ]
+   ],
+   "box": [
+    955,
+    1629,
+    1403,
+    1695
+   ]
+  },
+  {
+   "text": "the fpod woastages",
+   "score": 0.7834,
+   "poly": [
+    [
+     1438,
+     1663
+    ],
+    [
+     2244,
+     1636
+    ],
+    [
+     2247,
+     1728
+    ],
+    [
+     1441,
+     1755
+    ]
+   ],
+   "box": [
+    1438,
+    1636,
+    2247,
+    1755
+   ]
+  },
+  {
+   "text": "twe cansreduce",
+   "score": 0.7395,
+   "poly": [
+    [
+     641,
+     1699
+    ],
+    [
+     1419,
+     1672
+    ],
+    [
+     1422,
+     1749
+    ],
+    [
+     644,
+     1776
+    ]
+   ],
+   "box": [
+    641,
+    1672,
+    1422,
+    1776
+   ]
+  },
+  {
+   "text": " af oe pollute tlhe frosh coter",
+   "score": 0.6706,
+   "poly": [
+    [
+     638,
+     1799
+    ],
+    [
+     2133,
+     1740
+    ],
+    [
+     2137,
+     1825
+    ],
+    [
+     642,
+     1885
+    ]
+   ],
+   "box": [
+    638,
+    1740,
+    2137,
+    1885
+   ]
+  },
+  {
+   "text": "ecosystem thcbio clAverity may alesterbed",
+   "score": 0.6505,
+   "poly": [
+    [
+     362,
+     1904
+    ],
+    [
+     2237,
+     1824
+    ],
+    [
+     2242,
+     1919
+    ],
+    [
+     366,
+     1999
+    ]
+   ],
+   "box": [
+    362,
+    1824,
+    2242,
+    1999
+   ]
+  },
+  {
+   "text": "ard the fal chaer also got dfetusbed.",
+   "score": 0.7643,
+   "poly": [
+    [
+     374,
+     2002
+    ],
+    [
+     2139,
+     1931
+    ],
+    [
+     2143,
+     2023
+    ],
+    [
+     378,
+     2094
+    ]
+   ],
+   "box": [
+    374,
+    1931,
+    2143,
+    2094
+   ]
+  },
+  {
+   "text": " If one ecosgsdom carll affoos",
+   "score": 0.7025,
+   "poly": [
+    [
+     608,
+     2097
+    ],
+    [
+     2021,
+     2047
+    ],
+    [
+     2025,
+     2148
+    ],
+    [
+     611,
+     2198
+    ]
+   ],
+   "box": [
+    608,
+    2047,
+    2025,
+    2198
+   ]
+  },
+  {
+   "text": "ecosystem.",
+   "score": 0.9091,
+   "poly": [
+    [
+     1688,
+     2171
+    ],
+    [
+     2156,
+     2151
+    ],
+    [
+     2160,
+     2238
+    ],
+    [
+     1692,
+     2258
+    ]
+   ],
+   "box": [
+    1688,
+    2151,
+    2160,
+    2258
+   ]
+  },
+  {
+   "text": "It ll abo effect cthe entore",
+   "score": 0.7199,
+   "poly": [
+    [
+     376,
+     2211
+    ],
+    [
+     1673,
+     2164
+    ],
+    [
+     1676,
+     2261
+    ],
+    [
+     380,
+     2308
+    ]
+   ],
+   "box": [
+    376,
+    2164,
+    1676,
+    2308
+   ]
+  },
+  {
+   "text": "t loe can we composting methorl",
+   "score": 0.7227,
+   "poly": [
+    [
+     625,
+     2309
+    ],
+    [
+     2077,
+     2256
+    ],
+    [
+     2081,
+     2346
+    ],
+    [
+     628,
+     2400
+    ]
+   ],
+   "box": [
+    625,
+    2256,
+    2081,
+    2400
+   ]
+  },
+  {
+   "text": "to redube the boganec coattage",
+   "score": 0.7018,
+   "poly": [
+    [
+     367,
+     2411
+    ],
+    [
+     1904,
+     2371
+    ],
+    [
+     1906,
+     2466
+    ],
+    [
+     370,
+     2506
+    ]
+   ],
+   "box": [
+    367,
+    2371,
+    1906,
+    2506
+   ]
+  },
+  {
+   "text": "problem.",
+   "score": 0.7893,
+   "poly": [
+    [
+     388,
+     2541
+    ],
+    [
+     746,
+     2522
+    ],
+    [
+     750,
+     2601
+    ],
+    [
+     392,
+     2620
+    ]
+   ],
+   "box": [
+    388,
+    2522,
+    750,
+    2620
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17112
+}

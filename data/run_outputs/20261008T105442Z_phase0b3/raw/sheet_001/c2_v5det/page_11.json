@@ -1,0 +1,1764 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "engine_b (see b_dir)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_11.jpg",
+ "latency_s": 1.551,
+ "crop_s": 0.137,
+ "recognition_s": 1.413,
+ "model_load_s": 0.85,
+ "n_lines": 48,
+ "n_no_text": 20,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    477,
+    206,
+    2339,
+    486
+   ],
+   "poly": [
+    [
+     477,
+     249
+    ],
+    [
+     2333,
+     206
+    ],
+    [
+     2339,
+     443
+    ],
+    [
+     482,
+     486
+    ]
+   ],
+   "b_text": "Hiete",
+   "b_score": 0.5792,
+   "ink_px": 11260,
+   "ink_frac": 0.0242
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1894,
+    364,
+    2188,
+    516
+   ],
+   "poly": [
+    [
+     1894,
+     381
+    ],
+    [
+     2180,
+     364
+    ],
+    [
+     2188,
+     499
+    ],
+    [
+     1902,
+     516
+    ]
+   ],
+   "b_text": ".!",
+   "b_score": 0.6445,
+   "ink_px": 127,
+   "ink_frac": 0.0029
+  },
+  {
+   "text": "aquatic ecosystem.",
+   "text_raw": "aquatic ecosystem .",
+   "score": 0.9602,
+   "min_token_prob": 0.9181,
+   "flags": [],
+   "box": [
+    516,
+    518,
+    1491,
+    673
+   ],
+   "poly": [
+    [
+     516,
+     538
+    ],
+    [
+     1488,
+     518
+    ],
+    [
+     1491,
+     653
+    ],
+    [
+     519,
+     673
+    ]
+   ],
+   "b_text": "aquatl ecasystom",
+   "b_score": 0.771,
+   "ink_px": 17542,
+   "ink_frac": 0.1213
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1765,
+    614,
+    2317,
+    747
+   ],
+   "poly": [
+    [
+     1765,
+     614
+    ],
+    [
+     2317,
+     614
+    ],
+    [
+     2317,
+     747
+    ],
+    [
+     1765,
+     747
+    ]
+   ],
+   "b_text": "kadkeoy",
+   "b_score": 0.5625,
+   "ink_px": 280,
+   "ink_frac": 0.0034
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    263,
+    633,
+    449,
+    762
+   ],
+   "poly": [
+    [
+     263,
+     638
+    ],
+    [
+     446,
+     633
+    ],
+    [
+     449,
+     757
+    ],
+    [
+     267,
+     762
+    ]
+   ],
+   "b_text": "OND",
+   "b_score": 0.3998,
+   "ink_px": 15,
+   "ink_frac": 0.0006
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    559,
+    654,
+    871,
+    752
+   ],
+   "poly": [
+    [
+     559,
+     654
+    ],
+    [
+     871,
+     654
+    ],
+    [
+     871,
+     752
+    ],
+    [
+     559,
+     752
+    ]
+   ],
+   "b_text": "2u",
+   "b_score": 0.1441,
+   "ink_px": 245,
+   "ink_frac": 0.0069
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1010,
+    651,
+    1229,
+    760
+   ],
+   "poly": [
+    [
+     1013,
+     651
+    ],
+    [
+     1229,
+     658
+    ],
+    [
+     1225,
+     760
+    ],
+    [
+     1010,
+     753
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 200,
+   "ink_frac": 0.0077
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1506,
+    670,
+    1570,
+    727
+   ],
+   "poly": [
+    [
+     1506,
+     670
+    ],
+    [
+     1570,
+     670
+    ],
+    [
+     1570,
+     727
+    ],
+    [
+     1506,
+     727
+    ]
+   ],
+   "b_text": ".",
+   "b_score": 0.1562,
+   "ink_px": 61,
+   "ink_frac": 0.0116
+  },
+  {
+   "text": "x these is best type in",
+   "text_raw": "x these is best type in",
+   "score": 0.5825,
+   "min_token_prob": 0.1752,
+   "flags": [],
+   "box": [
+    447,
+    730,
+    2237,
+    913
+   ],
+   "poly": [
+    [
+     447,
+     751
+    ],
+    [
+     2235,
+     730
+    ],
+    [
+     2237,
+     892
+    ],
+    [
+     449,
+     913
+    ]
+   ],
+   "b_text": "xThese is bost type m.",
+   "b_score": 0.6994,
+   "ink_px": 24248,
+   "ink_frac": 0.0774
+  },
+  {
+   "text": "the",
+   "text_raw": "the",
+   "score": 0.999,
+   "min_token_prob": 0.9982,
+   "flags": [],
+   "box": [
+    516,
+    888,
+    708,
+    1008
+   ],
+   "poly": [
+    [
+     520,
+     888
+    ],
+    [
+     708,
+     893
+    ],
+    [
+     704,
+     1008
+    ],
+    [
+     516,
+     1002
+    ]
+   ],
+   "b_text": "the",
+   "b_score": 0.9942,
+   "ink_px": 2039,
+   "ink_frac": 0.0803
+  },
+  {
+   "text": "enters world.",
+   "text_raw": "enters world .",
+   "score": 0.8305,
+   "min_token_prob": 0.3618,
+   "flags": [],
+   "box": [
+    888,
+    886,
+    1501,
+    1020
+   ],
+   "poly": [
+    [
+     888,
+     895
+    ],
+    [
+     1500,
+     886
+    ],
+    [
+     1501,
+     1012
+    ],
+    [
+     890,
+     1020
+    ]
+   ],
+   "b_text": "eneo yorld",
+   "b_score": 0.8059,
+   "ink_px": 8516,
+   "ink_frac": 0.0989
+  },
+  {
+   "text": "dousetuling.",
+   "text_raw": "dousetuling .",
+   "score": 0.6232,
+   "min_token_prob": 0.1703,
+   "flags": [],
+   "box": [
+    1678,
+    869,
+    2201,
+    1006
+   ],
+   "poly": [
+    [
+     1678,
+     886
+    ],
+    [
+     2198,
+     869
+    ],
+    [
+     2201,
+     989
+    ],
+    [
+     1682,
+     1006
+    ]
+   ],
+   "b_text": "Da8e.9",
+   "b_score": 0.5165,
+   "ink_px": 6180,
+   "ink_frac": 0.088
+  },
+  {
+   "text": "of living.",
+   "text_raw": "of living .",
+   "score": 0.9836,
+   "min_token_prob": 0.9495,
+   "flags": [],
+   "box": [
+    917,
+    986,
+    1514,
+    1166
+   ],
+   "poly": [
+    [
+     917,
+     993
+    ],
+    [
+     1512,
+     986
+    ],
+    [
+     1514,
+     1159
+    ],
+    [
+     919,
+     1166
+    ]
+   ],
+   "b_text": "of siving",
+   "b_score": 0.81,
+   "ink_px": 9633,
+   "ink_frac": 0.0858
+  },
+  {
+   "text": "found in",
+   "text_raw": "found in",
+   "score": 0.9732,
+   "min_token_prob": 0.9601,
+   "flags": [],
+   "box": [
+    1660,
+    968,
+    2149,
+    1177
+   ],
+   "poly": [
+    [
+     1660,
+     993
+    ],
+    [
+     2139,
+     968
+    ],
+    [
+     2149,
+     1152
+    ],
+    [
+     1670,
+     1177
+    ]
+   ],
+   "b_text": "Jound on",
+   "b_score": 0.8552,
+   "ink_px": 8676,
+   "ink_frac": 0.0902
+  },
+  {
+   "text": "go.",
+   "text_raw": "go .",
+   "score": 0.3924,
+   "min_token_prob": 0.1401,
+   "flags": [],
+   "box": [
+    518,
+    1012,
+    770,
+    1130
+   ],
+   "poly": [
+    [
+     518,
+     1020
+    ],
+    [
+     766,
+     1012
+    ],
+    [
+     770,
+     1122
+    ],
+    [
+     522,
+     1130
+    ]
+   ],
+   "b_text": "90.1",
+   "b_score": 0.6155,
+   "ink_px": 3124,
+   "ink_frac": 0.0985
+  },
+  {
+   "text": "hereasount.",
+   "text_raw": "hereasount .",
+   "score": 0.4752,
+   "min_token_prob": 0.129,
+   "flags": [],
+   "box": [
+    533,
+    1119,
+    938,
+    1246
+   ],
+   "poly": [
+    [
+     533,
+     1124
+    ],
+    [
+     937,
+     1119
+    ],
+    [
+     938,
+     1241
+    ],
+    [
+     535,
+     1246
+    ]
+   ],
+   "b_text": "h",
+   "b_score": 0.6117,
+   "ink_px": 5855,
+   "ink_frac": 0.105
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    2034,
+    1127,
+    2306,
+    1215
+   ],
+   "poly": [
+    [
+     2034,
+     1131
+    ],
+    [
+     2305,
+     1127
+    ],
+    [
+     2306,
+     1210
+    ],
+    [
+     2035,
+     1215
+    ]
+   ],
+   "b_text": "x",
+   "b_score": 0.1358,
+   "ink_px": 178,
+   "ink_frac": 0.0066
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1544,
+    1143,
+    1675,
+    1217
+   ],
+   "poly": [
+    [
+     1547,
+     1143
+    ],
+    [
+     1675,
+     1148
+    ],
+    [
+     1672,
+     1217
+    ],
+    [
+     1544,
+     1212
+    ]
+   ],
+   "b_text": "o5",
+   "b_score": 0.3803,
+   "ink_px": 84,
+   "ink_frac": 0.0074
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    835,
+    1230,
+    1234,
+    1337
+   ],
+   "poly": [
+    [
+     835,
+     1241
+    ],
+    [
+     1231,
+     1230
+    ],
+    [
+     1234,
+     1327
+    ],
+    [
+     838,
+     1337
+    ]
+   ],
+   "b_text": "ii’",
+   "b_score": 0.4577,
+   "ink_px": 330,
+   "ink_frac": 0.0074
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1217,
+    1235,
+    1559,
+    1336
+   ],
+   "poly": [
+    [
+     1217,
+     1235
+    ],
+    [
+     1559,
+     1235
+    ],
+    [
+     1559,
+     1336
+    ],
+    [
+     1217,
+     1336
+    ]
+   ],
+   "b_text": "2YOM",
+   "b_score": 0.4099,
+   "ink_px": 444,
+   "ink_frac": 0.0111
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1712,
+    1236,
+    2233,
+    1340
+   ],
+   "poly": [
+    [
+     1713,
+     1236
+    ],
+    [
+     2233,
+     1240
+    ],
+    [
+     2233,
+     1340
+    ],
+    [
+     1712,
+     1336
+    ]
+   ],
+   "b_text": "0.W",
+   "b_score": 0.5127,
+   "ink_px": 644,
+   "ink_frac": 0.0108
+  },
+  {
+   "text": "x First system in the worldwide",
+   "text_raw": "x First system in the worldwide",
+   "score": 0.7287,
+   "min_token_prob": 0.3172,
+   "flags": [],
+   "box": [
+    438,
+    1325,
+    2176,
+    1514
+   ],
+   "poly": [
+    [
+     438,
+     1359
+    ],
+    [
+     2173,
+     1325
+    ],
+    [
+     2176,
+     1480
+    ],
+    [
+     441,
+     1514
+    ]
+   ],
+   "b_text": "*Fiist life in the world",
+   "b_score": 0.8085,
+   "ink_px": 20527,
+   "ink_frac": 0.0704
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1807,
+    1486,
+    2168,
+    1570
+   ],
+   "poly": [
+    [
+     1807,
+     1486
+    ],
+    [
+     2168,
+     1486
+    ],
+    [
+     2168,
+     1570
+    ],
+    [
+     1807,
+     1570
+    ]
+   ],
+   "b_text": "N19",
+   "b_score": 0.4029,
+   "ink_px": 493,
+   "ink_frac": 0.0138
+  },
+  {
+   "text": "emerge \" from water.",
+   "text_raw": "emerge \" from water .",
+   "score": 0.8027,
+   "min_token_prob": 0.5162,
+   "flags": [],
+   "box": [
+    567,
+    1472,
+    1613,
+    1647
+   ],
+   "poly": [
+    [
+     567,
+     1498
+    ],
+    [
+     1609,
+     1472
+    ],
+    [
+     1613,
+     1621
+    ],
+    [
+     571,
+     1647
+    ]
+   ],
+   "b_text": "emerge from water.",
+   "b_score": 0.8052,
+   "ink_px": 18378,
+   "ink_frac": 0.1083
+  },
+  {
+   "text": "tyred of amphipheans.",
+   "text_raw": "tyred of amphipheans .",
+   "score": 0.6736,
+   "min_token_prob": 0.1793,
+   "flags": [],
+   "box": [
+    1018,
+    1682,
+    2319,
+    1870
+   ],
+   "poly": [
+    [
+     1018,
+     1682
+    ],
+    [
+     2319,
+     1682
+    ],
+    [
+     2319,
+     1870
+    ],
+    [
+     1018,
+     1870
+    ]
+   ],
+   "b_text": "type8 of ampibion",
+   "b_score": 0.6999,
+   "ink_px": 27368,
+   "ink_frac": 0.1042
+  },
+  {
+   "text": "# various",
+   "text_raw": "# various",
+   "score": 0.7162,
+   "min_token_prob": 0.468,
+   "flags": [],
+   "box": [
+    437,
+    1727,
+    891,
+    1838
+   ],
+   "poly": [
+    [
+     437,
+     1736
+    ],
+    [
+     889,
+     1727
+    ],
+    [
+     891,
+     1829
+    ],
+    [
+     438,
+     1838
+    ]
+   ],
+   "b_text": "*variou",
+   "b_score": 0.7225,
+   "ink_px": 7524,
+   "ink_frac": 0.1419
+  },
+  {
+   "text": "fishes.",
+   "text_raw": "fishes .",
+   "score": 0.8606,
+   "min_token_prob": 0.4816,
+   "flags": [],
+   "box": [
+    508,
+    1822,
+    879,
+    2013
+   ],
+   "poly": [
+    [
+     508,
+     1827
+    ],
+    [
+     876,
+     1822
+    ],
+    [
+     879,
+     2008
+    ],
+    [
+     510,
+     2013
+    ]
+   ],
+   "b_text": "feshes",
+   "b_score": 0.7662,
+   "ink_px": 7548,
+   "ink_frac": 0.1001
+  },
+  {
+   "text": "lives here.",
+   "text_raw": "lives here .",
+   "score": 0.8449,
+   "min_token_prob": 0.6348,
+   "flags": [],
+   "box": [
+    1012,
+    1832,
+    1610,
+    1956
+   ],
+   "poly": [
+    [
+     1012,
+     1836
+    ],
+    [
+     1610,
+     1832
+    ],
+    [
+     1610,
+     1952
+    ],
+    [
+     1013,
+     1956
+    ]
+   ],
+   "b_text": "lives hoe",
+   "b_score": 0.8424,
+   "ink_px": 8789,
+   "ink_frac": 0.1092
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1820,
+    1925,
+    2102,
+    2045
+   ],
+   "poly": [
+    [
+     1820,
+     1925
+    ],
+    [
+     2102,
+     1925
+    ],
+    [
+     2102,
+     2045
+    ],
+    [
+     1820,
+     2045
+    ]
+   ],
+   "b_text": "800",
+   "b_score": 0.5338,
+   "ink_px": 673,
+   "ink_frac": 0.0173
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1122,
+    1937,
+    1552,
+    2016
+   ],
+   "poly": [
+    [
+     1122,
+     1945
+    ],
+    [
+     1551,
+     1937
+    ],
+    [
+     1552,
+     2008
+    ],
+    [
+     1123,
+     2016
+    ]
+   ],
+   "b_text": "OWERING THE NAE",
+   "b_score": 0.8376,
+   "ink_px": 325,
+   "ink_frac": 0.0089
+  },
+  {
+   "text": "involved, here",
+   "text_raw": "involved , here",
+   "score": 0.5517,
+   "min_token_prob": 0.2234,
+   "flags": [],
+   "box": [
+    965,
+    2032,
+    1915,
+    2206
+   ],
+   "poly": [
+    [
+     965,
+     2042
+    ],
+    [
+     1913,
+     2032
+    ],
+    [
+     1915,
+     2195
+    ],
+    [
+     967,
+     2206
+    ]
+   ],
+   "b_text": "evotved hoe",
+   "b_score": 0.6663,
+   "ink_px": 13698,
+   "ink_frac": 0.0811
+  },
+  {
+   "text": "1x humans.",
+   "text_raw": "1x humans .",
+   "score": 0.7591,
+   "min_token_prob": 0.1128,
+   "flags": [],
+   "box": [
+    433,
+    2073,
+    891,
+    2196
+   ],
+   "poly": [
+    [
+     433,
+     2080
+    ],
+    [
+     890,
+     2073
+    ],
+    [
+     891,
+     2190
+    ],
+    [
+     435,
+     2196
+    ]
+   ],
+   "b_text": "humang",
+   "b_score": 0.9009,
+   "ink_px": 7899,
+   "ink_frac": 0.1306
+  },
+  {
+   "text": "farm tiny.",
+   "text_raw": "farm tiny .",
+   "score": 0.7687,
+   "min_token_prob": 0.3407,
+   "flags": [],
+   "box": [
+    453,
+    2175,
+    1152,
+    2342
+   ],
+   "poly": [
+    [
+     455,
+     2175
+    ],
+    [
+     1152,
+     2184
+    ],
+    [
+     1150,
+     2342
+    ],
+    [
+     453,
+     2334
+    ]
+   ],
+   "b_text": "from tiny",
+   "b_score": 0.8999,
+   "ink_px": 9517,
+   "ink_frac": 0.0785
+  },
+  {
+   "text": "singled collod.",
+   "text_raw": "singled collod .",
+   "score": 0.8777,
+   "min_token_prob": 0.3225,
+   "flags": [],
+   "box": [
+    1352,
+    2158,
+    2100,
+    2326
+   ],
+   "poly": [
+    [
+     1352,
+     2181
+    ],
+    [
+     2095,
+     2158
+    ],
+    [
+     2100,
+     2304
+    ],
+    [
+     1356,
+     2326
+    ]
+   ],
+   "b_text": "sirgled ollod",
+   "b_score": 0.872,
+   "ink_px": 14212,
+   "ink_frac": 0.119
+  },
+  {
+   "text": "Parganistics.",
+   "text_raw": "Parganistics .",
+   "score": 0.5743,
+   "min_token_prob": 0.3381,
+   "flags": [],
+   "box": [
+    461,
+    2318,
+    1031,
+    2444
+   ],
+   "poly": [
+    [
+     461,
+     2318
+    ],
+    [
+     1031,
+     2318
+    ],
+    [
+     1031,
+     2444
+    ],
+    [
+     461,
+     2444
+    ]
+   ],
+   "b_text": "organisms.",
+   "b_score": 0.728,
+   "ink_px": 9689,
+   "ink_frac": 0.1206
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1832,
+    2299,
+    2263,
+    2402
+   ],
+   "poly": [
+    [
+     1832,
+     2310
+    ],
+    [
+     2261,
+     2299
+    ],
+    [
+     2263,
+     2392
+    ],
+    [
+     1834,
+     2402
+    ]
+   ],
+   "b_text": "9801e",
+   "b_score": 0.4764,
+   "ink_px": 79,
+   "ink_frac": 0.0017
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1488,
+    2320,
+    1769,
+    2404
+   ],
+   "poly": [
+    [
+     1488,
+     2320
+    ],
+    [
+     1769,
+     2320
+    ],
+    [
+     1769,
+     2404
+    ],
+    [
+     1488,
+     2404
+    ]
+   ],
+   "b_text": "29",
+   "b_score": 0.3302,
+   "ink_px": 224,
+   "ink_frac": 0.008
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1426,
+    2411,
+    2220,
+    2542
+   ],
+   "poly": [
+    [
+     1426,
+     2411
+    ],
+    [
+     2220,
+     2411
+    ],
+    [
+     2220,
+     2542
+    ],
+    [
+     1426,
+     2542
+    ]
+   ],
+   "b_text": "μM",
+   "b_score": 0.4371,
+   "ink_px": 469,
+   "ink_frac": 0.0041
+  },
+  {
+   "text": "produces.",
+   "text_raw": "produces .",
+   "score": 0.9916,
+   "min_token_prob": 0.9731,
+   "flags": [],
+   "box": [
+    970,
+    2528,
+    1409,
+    2679
+   ],
+   "poly": [
+    [
+     970,
+     2537
+    ],
+    [
+     1406,
+     2528
+    ],
+    [
+     1409,
+     2670
+    ],
+    [
+     973,
+     2679
+    ]
+   ],
+   "b_text": "produras",
+   "b_score": 0.8933,
+   "ink_px": 7846,
+   "ink_frac": 0.1137
+  },
+  {
+   "text": "950 lb.",
+   "text_raw": "950 lb .",
+   "score": 0.7549,
+   "min_token_prob": 0.4541,
+   "flags": [],
+   "box": [
+    1644,
+    2543,
+    1923,
+    2658
+   ],
+   "poly": [
+    [
+     1647,
+     2543
+    ],
+    [
+     1923,
+     2552
+    ],
+    [
+     1919,
+     2658
+    ],
+    [
+     1644,
+     2648
+    ]
+   ],
+   "b_text": "9-20",
+   "b_score": 0.6831,
+   "ink_px": 3975,
+   "ink_frac": 0.117
+  },
+  {
+   "text": "\" It.",
+   "text_raw": "\" It .",
+   "score": 0.6077,
+   "min_token_prob": 0.1053,
+   "flags": [],
+   "box": [
+    409,
+    2541,
+    752,
+    2694
+   ],
+   "poly": [
+    [
+     409,
+     2568
+    ],
+    [
+     741,
+     2541
+    ],
+    [
+     752,
+     2667
+    ],
+    [
+     419,
+     2694
+    ]
+   ],
+   "b_text": "女工",
+   "b_score": 0.6411,
+   "ink_px": 3715,
+   "ink_frac": 0.0778
+  },
+  {
+   "text": "\" for \" entire world.",
+   "text_raw": "\" for \" entire world .",
+   "score": 0.7344,
+   "min_token_prob": 0.5003,
+   "flags": [],
+   "box": [
+    977,
+    2637,
+    2083,
+    2851
+   ],
+   "poly": [
+    [
+     977,
+     2663
+    ],
+    [
+     2079,
+     2637
+    ],
+    [
+     2083,
+     2825
+    ],
+    [
+     981,
+     2851
+    ]
+   ],
+   "b_text": "for entice world",
+   "b_score": 0.7731,
+   "ink_px": 16336,
+   "ink_frac": 0.0733
+  },
+  {
+   "text": "osey gun.",
+   "text_raw": "osey gun .",
+   "score": 0.6384,
+   "min_token_prob": 0.3582,
+   "flags": [],
+   "box": [
+    429,
+    2694,
+    844,
+    2827
+   ],
+   "poly": [
+    [
+     429,
+     2703
+    ],
+    [
+     841,
+     2694
+    ],
+    [
+     844,
+     2818
+    ],
+    [
+     432,
+     2827
+    ]
+   ],
+   "b_text": "Gxygor",
+   "b_score": 0.6762,
+   "ink_px": 7454,
+   "ink_frac": 0.1293
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    658,
+    2831,
+    880,
+    2904
+   ],
+   "poly": [
+    [
+     658,
+     2831
+    ],
+    [
+     880,
+     2831
+    ],
+    [
+     880,
+     2904
+    ],
+    [
+     658,
+     2904
+    ]
+   ],
+   "b_text": "d",
+   "b_score": 0.3231,
+   "ink_px": 91,
+   "ink_frac": 0.0046
+  },
+  {
+   "text": "fungi, and",
+   "text_raw": "fungi , and",
+   "score": 0.8092,
+   "min_token_prob": 0.489,
+   "flags": [],
+   "box": [
+    1349,
+    2897,
+    1940,
+    3102
+   ],
+   "poly": [
+    [
+     1349,
+     2915
+    ],
+    [
+     1935,
+     2897
+    ],
+    [
+     1940,
+     3085
+    ],
+    [
+     1355,
+     3102
+    ]
+   ],
+   "b_text": "fungr and",
+   "b_score": 0.8651,
+   "ink_px": 13655,
+   "ink_frac": 0.1142
+  },
+  {
+   "text": "# It contain",
+   "text_raw": "# It contain",
+   "score": 0.8746,
+   "min_token_prob": 0.6658,
+   "flags": [],
+   "box": [
+    338,
+    2922,
+    1269,
+    3096
+   ],
+   "poly": [
+    [
+     338,
+     2938
+    ],
+    [
+     1266,
+     2922
+    ],
+    [
+     1269,
+     3080
+    ],
+    [
+     341,
+     3096
+    ]
+   ],
+   "b_text": "*It contain",
+   "b_score": 0.8421,
+   "ink_px": 10022,
+   "ink_frac": 0.0627
+  },
+  {
+   "text": "More more organisms",
+   "text_raw": "More more organisms",
+   "score": 0.8382,
+   "min_token_prob": 0.6512,
+   "flags": [],
+   "box": [
+    453,
+    3073,
+    1802,
+    3229
+   ],
+   "poly": [
+    [
+     454,
+     3073
+    ],
+    [
+     1802,
+     3079
+    ],
+    [
+     1801,
+     3229
+    ],
+    [
+     453,
+     3223
+    ]
+   ],
+   "b_text": "More& More prganisme",
+   "b_score": 0.7938,
+   "ink_px": 57473,
+   "ink_frac": 0.2609
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    224,
+    3086,
+    370,
+    3179
+   ],
+   "poly": [
+    [
+     224,
+     3086
+    ],
+    [
+     370,
+     3086
+    ],
+    [
+     370,
+     3179
+    ],
+    [
+     224,
+     3179
+    ]
+   ],
+   "b_text": "0",
+   "b_score": 0.1664,
+   "ink_px": 96,
+   "ink_frac": 0.0058
+  }
+ ],
+ "peak_torch_alloc_mib": 2696,
+ "peak_rss_mib_process": 2968
+}

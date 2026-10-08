@@ -1,0 +1,989 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_13.jpg",
+ "latency_s": 1.721,
+ "crop_s": 0.162,
+ "recognition_s": 1.559,
+ "model_load_s": 0.79,
+ "n_lines": 27,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "we can called all-tends of",
+   "text_raw": "we can called all-tends of",
+   "score": 0.8272,
+   "min_token_prob": 0.3126,
+   "flags": [],
+   "box": [
+    792,
+    349,
+    2490,
+    559
+   ],
+   "poly": [
+    [
+     792,
+     431
+    ],
+    [
+     2484,
+     349
+    ],
+    [
+     2490,
+     477
+    ],
+    [
+     798,
+     559
+    ]
+   ],
+   "b_text": "hae can colled all kends ouf",
+   "b_score": 0.7908,
+   "ink_px": 19311,
+   "ink_frac": 0.0809
+  },
+  {
+   "text": "watson and separate them-closed on",
+   "text_raw": "watson and separate them-closed on",
+   "score": 0.726,
+   "min_token_prob": 0.2867,
+   "flags": [],
+   "box": [
+    451,
+    468,
+    2494,
+    710
+   ],
+   "poly": [
+    [
+     451,
+     561
+    ],
+    [
+     2487,
+     468
+    ],
+    [
+     2494,
+     617
+    ],
+    [
+     458,
+     710
+    ]
+   ],
+   "b_text": "catse and seprate cthem cbased on",
+   "b_score": 0.8762,
+   "ink_px": 28825,
+   "ink_frac": 0.0873
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7607,
+   "min_token_prob": 0.5965,
+   "flags": [],
+   "box": [
+    2298,
+    630,
+    2324,
+    653
+   ],
+   "poly": [
+    [
+     2298,
+     630
+    ],
+    [
+     2324,
+     630
+    ],
+    [
+     2324,
+     653
+    ],
+    [
+     2298,
+     653
+    ]
+   ],
+   "b_text": "r",
+   "b_score": 0.0791,
+   "ink_px": 140,
+   "ink_frac": 0.1053
+  },
+  {
+   "text": "the decade ability.",
+   "text_raw": "the decade ability .",
+   "score": 0.77,
+   "min_token_prob": 0.1862,
+   "flags": [],
+   "box": [
+    447,
+    621,
+    1961,
+    832
+   ],
+   "poly": [
+    [
+     447,
+     671
+    ],
+    [
+     1956,
+     621
+    ],
+    [
+     1961,
+     783
+    ],
+    [
+     452,
+     832
+    ]
+   ],
+   "b_text": "the degsadable abeiety.",
+   "b_score": 0.7837,
+   "ink_px": 21018,
+   "ink_frac": 0.0794
+  },
+  {
+   "text": "Degradable roaster like, paper,",
+   "text_raw": "Degradable roaster like , paper ,",
+   "score": 0.8675,
+   "min_token_prob": 0.4064,
+   "flags": [],
+   "box": [
+    785,
+    855,
+    2558,
+    1044
+   ],
+   "poly": [
+    [
+     785,
+     898
+    ],
+    [
+     2554,
+     855
+    ],
+    [
+     2558,
+     1001
+    ],
+    [
+     788,
+     1044
+    ]
+   ],
+   "b_text": "Degradablo coastos cheke, paper,",
+   "b_score": 0.8549,
+   "ink_px": 27969,
+   "ink_frac": 0.0993
+  },
+  {
+   "text": "food waste are separated and cue can",
+   "text_raw": "food waste are separated and cue can",
+   "score": 0.7899,
+   "min_token_prob": 0.217,
+   "flags": [],
+   "box": [
+    451,
+    977,
+    2440,
+    1175
+   ],
+   "poly": [
+    [
+     451,
+     1031
+    ],
+    [
+     2436,
+     977
+    ],
+    [
+     2440,
+     1122
+    ],
+    [
+     455,
+     1175
+    ]
+   ],
+   "b_text": "food casto are seprated and coe san",
+   "b_score": 0.8153,
+   "ink_px": 30755,
+   "ink_frac": 0.0981
+  },
+  {
+   "text": "use them as a fertilizer and other",
+   "text_raw": "use them as a fertilizer and other",
+   "score": 0.9012,
+   "min_token_prob": 0.651,
+   "flags": [],
+   "box": [
+    508,
+    1096,
+    2449,
+    1293
+   ],
+   "poly": [
+    [
+     508,
+     1169
+    ],
+    [
+     2444,
+     1096
+    ],
+    [
+     2449,
+     1221
+    ],
+    [
+     513,
+     1293
+    ]
+   ],
+   "b_text": "uso dthem as a fertepeier. and cthen",
+   "b_score": 0.7111,
+   "ink_px": 28110,
+   "ink_frac": 0.1053
+  },
+  {
+   "text": "separating the plastic coaster like",
+   "text_raw": "separating the plastic coaster like",
+   "score": 0.9481,
+   "min_token_prob": 0.818,
+   "flags": [],
+   "box": [
+    496,
+    1228,
+    2382,
+    1416
+   ],
+   "poly": [
+    [
+     496,
+     1284
+    ],
+    [
+     2378,
+     1228
+    ],
+    [
+     2382,
+     1360
+    ],
+    [
+     500,
+     1416
+    ]
+   ],
+   "b_text": "seprafong cthe plastic coastes ilele",
+   "b_score": 0.7179,
+   "ink_px": 27791,
+   "ink_frac": 0.1019
+  },
+  {
+   "text": "plastic bottles, plastic plates etc. \"",
+   "text_raw": "plastic bottles , plastic plates etc. \"",
+   "score": 0.858,
+   "min_token_prob": 0.3947,
+   "flags": [],
+   "box": [
+    497,
+    1340,
+    2377,
+    1540
+   ],
+   "poly": [
+    [
+     497,
+     1407
+    ],
+    [
+     2372,
+     1340
+    ],
+    [
+     2377,
+     1474
+    ],
+    [
+     502,
+     1540
+    ]
+   ],
+   "b_text": "plastpc boes; platac ploctieos otc.",
+   "b_score": 0.667,
+   "ink_px": 28161,
+   "ink_frac": 0.1022
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7783,
+   "min_token_prob": 0.7418,
+   "flags": [],
+   "box": [
+    1942,
+    1497,
+    2020,
+    1556
+   ],
+   "poly": [
+    [
+     1942,
+     1502
+    ],
+    [
+     2016,
+     1497
+    ],
+    [
+     2020,
+     1551
+    ],
+    [
+     1946,
+     1556
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 270,
+   "ink_frac": 0.0476
+  },
+  {
+   "text": "Proper disposal of these kinds",
+   "text_raw": "Proper disposal of these kinds",
+   "score": 0.9338,
+   "min_token_prob": 0.8669,
+   "flags": [],
+   "box": [
+    810,
+    1577,
+    2423,
+    1755
+   ],
+   "poly": [
+    [
+     810,
+     1616
+    ],
+    [
+     2420,
+     1577
+    ],
+    [
+     2423,
+     1716
+    ],
+    [
+     813,
+     1755
+    ]
+   ],
+   "b_text": "Proper despotalof thase end",
+   "b_score": 0.7109,
+   "ink_px": 27093,
+   "ink_frac": 0.1106
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7276,
+   "min_token_prob": 0.4614,
+   "flags": [],
+   "box": [
+    2673,
+    1694,
+    2693,
+    1710
+   ],
+   "poly": [
+    [
+     2673,
+     1694
+    ],
+    [
+     2693,
+     1694
+    ],
+    [
+     2693,
+     1710
+    ],
+    [
+     2673,
+     1710
+    ]
+   ],
+   "b_text": "浙",
+   "b_score": 0.1459,
+   "ink_px": 96,
+   "ink_frac": 0.1071
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7254,
+   "min_token_prob": 0.4578,
+   "flags": [],
+   "box": [
+    1638,
+    1729,
+    1665,
+    1751
+   ],
+   "poly": [
+    [
+     1638,
+     1729
+    ],
+    [
+     1665,
+     1729
+    ],
+    [
+     1665,
+     1751
+    ],
+    [
+     1638,
+     1751
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 122,
+   "ink_frac": 0.092
+  },
+  {
+   "text": "of waste will medice \" the backstage",
+   "text_raw": "of waste will medice \" the backstage",
+   "score": 0.7111,
+   "min_token_prob": 0.1836,
+   "flags": [],
+   "box": [
+    502,
+    1727,
+    2418,
+    1876
+   ],
+   "poly": [
+    [
+     502,
+     1762
+    ],
+    [
+     2415,
+     1727
+    ],
+    [
+     2418,
+     1841
+    ],
+    [
+     504,
+     1876
+    ]
+   ],
+   "b_text": "of coale copll cedice tthe hoastonge",
+   "b_score": 0.7314,
+   "ink_px": 29363,
+   "ink_frac": 0.121
+  },
+  {
+   "text": "production. Large # # food waste was",
+   "text_raw": "production . Large # # food waste was",
+   "score": 0.8265,
+   "min_token_prob": 0.2826,
+   "flags": [],
+   "box": [
+    503,
+    1832,
+    2392,
+    1999
+   ],
+   "poly": [
+    [
+     503,
+     1865
+    ],
+    [
+     2390,
+     1832
+    ],
+    [
+     2392,
+     1965
+    ],
+    [
+     506,
+     1999
+    ]
+   ],
+   "b_text": "procduction hargefi oodde casto coas",
+   "b_score": 0.6845,
+   "ink_px": 30565,
+   "ink_frac": 0.1102
+  },
+  {
+   "text": "firstly.",
+   "text_raw": "firstly .",
+   "score": 0.826,
+   "min_token_prob": 0.5949,
+   "flags": [],
+   "box": [
+    520,
+    1989,
+    820,
+    2114
+   ],
+   "poly": [
+    [
+     520,
+     1989
+    ],
+    [
+     820,
+     1989
+    ],
+    [
+     820,
+     2114
+    ],
+    [
+     520,
+     2114
+    ]
+   ],
+   "b_text": "fstly",
+   "b_score": 0.5875,
+   "ink_px": 5313,
+   "ink_frac": 0.1243
+  },
+  {
+   "text": "Seprated and \" chose to produce",
+   "text_raw": "Seprated and \" chose to produce",
+   "score": 0.7135,
+   "min_token_prob": 0.2275,
+   "flags": [],
+   "box": [
+    927,
+    1964,
+    2536,
+    2109
+   ],
+   "poly": [
+    [
+     927,
+     1988
+    ],
+    [
+     2534,
+     1964
+    ],
+    [
+     2536,
+     2085
+    ],
+    [
+     929,
+     2109
+    ]
+   ],
+   "b_text": "seprated arad chave cto produce",
+   "b_score": 0.8901,
+   "ink_px": 24061,
+   "ink_frac": 0.1117
+  },
+  {
+   "text": "natural fertilizers by the",
+   "text_raw": "natural fertilizers by the",
+   "score": 0.796,
+   "min_token_prob": 0.456,
+   "flags": [],
+   "box": [
+    813,
+    2094,
+    2340,
+    2222
+   ],
+   "poly": [
+    [
+     813,
+     2101
+    ],
+    [
+     2339,
+     2094
+    ],
+    [
+     2340,
+     2215
+    ],
+    [
+     813,
+     2222
+    ]
+   ],
+   "b_text": "chatural ferteixers iby the",
+   "b_score": 0.7033,
+   "ink_px": 23848,
+   "ink_frac": 0.1165
+  },
+  {
+   "text": "the",
+   "text_raw": "the",
+   "score": 0.9341,
+   "min_token_prob": 0.8686,
+   "flags": [],
+   "box": [
+    519,
+    2109,
+    737,
+    2225
+   ],
+   "poly": [
+    [
+     519,
+     2116
+    ],
+    [
+     733,
+     2109
+    ],
+    [
+     737,
+     2218
+    ],
+    [
+     523,
+     2225
+    ]
+   ],
+   "b_text": "the",
+   "b_score": 0.9599,
+   "ink_px": 2808,
+   "ink_frac": 0.1027
+  },
+  {
+   "text": "earthworms, and use can use that",
+   "text_raw": "earthworms , and use can use that",
+   "score": 0.9507,
+   "min_token_prob": 0.6969,
+   "flags": [],
+   "box": [
+    520,
+    2213,
+    2394,
+    2335
+   ],
+   "poly": [
+    [
+     520,
+     2231
+    ],
+    [
+     2393,
+     2213
+    ],
+    [
+     2394,
+     2316
+    ],
+    [
+     521,
+     2335
+    ]
+   ],
+   "b_text": "earthcosms. and coe can rse that",
+   "b_score": 0.7629,
+   "ink_px": 25702,
+   "ink_frac": 0.1175
+  },
+  {
+   "text": "natural fertilisers, for trees and small",
+   "text_raw": "natural fertilisers , for trees and small",
+   "score": 0.8226,
+   "min_token_prob": 0.4084,
+   "flags": [],
+   "box": [
+    513,
+    2318,
+    2501,
+    2463
+   ],
+   "poly": [
+    [
+     513,
+     2329
+    ],
+    [
+     2501,
+     2318
+    ],
+    [
+     2501,
+     2451
+    ],
+    [
+     514,
+     2463
+    ]
+   ],
+   "b_text": "noctural ferdfors efor fries and small",
+   "b_score": 0.641,
+   "ink_px": 30206,
+   "ink_frac": 0.1034
+  },
+  {
+   "text": "plants in the cottage.",
+   "text_raw": "plants in the cottage .",
+   "score": 0.7326,
+   "min_token_prob": 0.3876,
+   "flags": [],
+   "box": [
+    522,
+    2451,
+    1739,
+    2598
+   ],
+   "poly": [
+    [
+     522,
+     2465
+    ],
+    [
+     1738,
+     2451
+    ],
+    [
+     1739,
+     2585
+    ],
+    [
+     523,
+     2598
+    ]
+   ],
+   "b_text": "plaits cen cthe colloge.",
+   "b_score": 0.8144,
+   "ink_px": 15871,
+   "ink_frac": 0.0885
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.7411,
+   "min_token_prob": 0.4507,
+   "flags": [],
+   "box": [
+    2560,
+    2546,
+    2578,
+    2644
+   ],
+   "poly": [
+    [
+     2560,
+     2546
+    ],
+    [
+     2578,
+     2546
+    ],
+    [
+     2578,
+     2644
+    ],
+    [
+     2560,
+     2644
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 2328,
+   "ink_frac": 0.7055
+  },
+  {
+   "text": "By the proper way \" to \" refusing",
+   "text_raw": "By the proper way \" to \" refusing",
+   "score": 0.9063,
+   "min_token_prob": 0.5407,
+   "flags": [],
+   "box": [
+    931,
+    2688,
+    2557,
+    2818
+   ],
+   "poly": [
+    [
+     931,
+     2688
+    ],
+    [
+     2557,
+     2692
+    ],
+    [
+     2557,
+     2818
+    ],
+    [
+     931,
+     2815
+    ]
+   ],
+   "b_text": "By the propos woayfo eeusing",
+   "b_score": 0.7594,
+   "ink_px": 26893,
+   "ink_frac": 0.1181
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8962,
+   "min_token_prob": 0.8187,
+   "flags": [],
+   "box": [
+    2019,
+    2695,
+    2035,
+    2713
+   ],
+   "poly": [
+    [
+     2019,
+     2695
+    ],
+    [
+     2035,
+     2695
+    ],
+    [
+     2035,
+     2713
+    ],
+    [
+     2019,
+     2713
+    ]
+   ],
+   "b_text": "t",
+   "b_score": 0.0541,
+   "ink_px": 108,
+   "ink_frac": 0.1286
+  },
+  {
+   "text": "them will help the environment to",
+   "text_raw": "them will help the environment to",
+   "score": 0.964,
+   "min_token_prob": 0.8623,
+   "flags": [],
+   "box": [
+    502,
+    2793,
+    2485,
+    2939
+   ],
+   "poly": [
+    [
+     503,
+     2793
+    ],
+    [
+     2485,
+     2808
+    ],
+    [
+     2484,
+     2939
+    ],
+    [
+     502,
+     2925
+    ]
+   ],
+   "b_text": "them wopll chelp the eooufron ment to",
+   "b_score": 0.7385,
+   "ink_px": 29727,
+   "ink_frac": 0.1035
+  },
+  {
+   "text": "reduce the pollution.",
+   "text_raw": "reduce the pollution .",
+   "score": 0.9967,
+   "min_token_prob": 0.9922,
+   "flags": [],
+   "box": [
+    497,
+    2932,
+    1474,
+    3059
+   ],
+   "poly": [
+    [
+     497,
+     2943
+    ],
+    [
+     1472,
+     2932
+    ],
+    [
+     1474,
+     3047
+    ],
+    [
+     498,
+     3059
+    ]
+   ],
+   "b_text": "reduce the pollutfon.",
+   "b_score": 0.8638,
+   "ink_px": 15213,
+   "ink_frac": 0.1203
+  }
+ ],
+ "peak_torch_alloc_mib": 2703,
+ "peak_rss_mib_process": 2966
+}

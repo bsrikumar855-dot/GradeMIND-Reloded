@@ -1,0 +1,609 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_10.jpg",
+ "latency_s": 12.989,
+ "model_load_s": 0.4,
+ "n_lines": 20,
+ "lines": [
+  {
+   "text": "Many of the copld animale are",
+   "score": 0.913,
+   "poly": [
+    [
+     679,
+     390
+    ],
+    [
+     2188,
+     406
+    ],
+    [
+     2186,
+     524
+    ],
+    [
+     678,
+     507
+    ]
+   ],
+   "box": [
+    678,
+    390,
+    2188,
+    524
+   ]
+  },
+  {
+   "text": "ontersing Tnto the chuman lpuing aroas",
+   "score": 0.8644,
+   "poly": [
+    [
+     296,
+     505
+    ],
+    [
+     2241,
+     537
+    ],
+    [
+     2239,
+     643
+    ],
+    [
+     295,
+     611
+    ]
+   ],
+   "box": [
+    295,
+    505,
+    2241,
+    643
+   ]
+  },
+  {
+   "text": "foor searching. sfood and cooder. et s",
+   "score": 0.8275,
+   "poly": [
+    [
+     296,
+     625
+    ],
+    [
+     2257,
+     653
+    ],
+    [
+     2255,
+     765
+    ],
+    [
+     295,
+     737
+    ]
+   ],
+   "box": [
+    295,
+    625,
+    2257,
+    765
+   ]
+  },
+  {
+   "text": "due clo deforestation.",
+   "score": 0.9361,
+   "poly": [
+    [
+     302,
+     731
+    ],
+    [
+     1406,
+     757
+    ],
+    [
+     1403,
+     874
+    ],
+    [
+     300,
+     849
+    ]
+   ],
+   "box": [
+    300,
+    731,
+    1406,
+    874
+   ]
+  },
+  {
+   "text": "17",
+   "score": 0.3922,
+   "poly": [
+    [
+     1681,
+     803
+    ],
+    [
+     1790,
+     803
+    ],
+    [
+     1790,
+     875
+    ],
+    [
+     1681,
+     875
+    ]
+   ],
+   "box": [
+    1681,
+    803,
+    1790,
+    875
+   ]
+  },
+  {
+   "text": "And then the deforestaction woill",
+   "score": 0.9272,
+   "poly": [
+    [
+     688,
+     966
+    ],
+    [
+     2239,
+     990
+    ],
+    [
+     2238,
+     1100
+    ],
+    [
+     687,
+     1077
+    ]
+   ],
+   "box": [
+    687,
+    966,
+    2239,
+    1100
+   ]
+  },
+  {
+   "text": "cleads do for matpon, of deserts on the",
+   "score": 0.9076,
+   "poly": [
+    [
+     253,
+     1072
+    ],
+    [
+     2271,
+     1100
+    ],
+    [
+     2269,
+     1233
+    ],
+    [
+     251,
+     1205
+    ]
+   ],
+   "box": [
+    251,
+    1072,
+    2271,
+    1233
+   ]
+  },
+  {
+   "text": "agrpcultural feplds die lo lack of",
+   "score": 0.8349,
+   "poly": [
+    [
+     279,
+     1205
+    ],
+    [
+     2108,
+     1223
+    ],
+    [
+     2107,
+     1333
+    ],
+    [
+     278,
+     1315
+    ]
+   ],
+   "box": [
+    278,
+    1205,
+    2108,
+    1333
+   ]
+  },
+  {
+   "text": "rainfall and excess choat prodiced during",
+   "score": 0.9655,
+   "poly": [
+    [
+     272,
+     1319
+    ],
+    [
+     2343,
+     1344
+    ],
+    [
+     2341,
+     1461
+    ],
+    [
+     271,
+     1436
+    ]
+   ],
+   "box": [
+    271,
+    1319,
+    2343,
+    1461
+   ]
+  },
+  {
+   "text": "summer.",
+   "score": 0.9948,
+   "poly": [
+    [
+     272,
+     1447
+    ],
+    [
+     641,
+     1451
+    ],
+    [
+     640,
+     1544
+    ],
+    [
+     271,
+     1540
+    ]
+   ],
+   "box": [
+    271,
+    1447,
+    641,
+    1544
+   ]
+  },
+  {
+   "text": " Clemate changes scoell affect the",
+   "score": 0.8315,
+   "poly": [
+    [
+     566,
+     1662
+    ],
+    [
+     2250,
+     1686
+    ],
+    [
+     2248,
+     1801
+    ],
+    [
+     564,
+     1778
+    ]
+   ],
+   "box": [
+    564,
+    1662,
+    2250,
+    1801
+   ]
+  },
+  {
+   "text": "enepronmenct and ecosustom many of",
+   "score": 0.8771,
+   "poly": [
+    [
+     279,
+     1781
+    ],
+    [
+     2198,
+     1812
+    ],
+    [
+     2196,
+     1910
+    ],
+    [
+     277,
+     1880
+    ]
+   ],
+   "box": [
+    277,
+    1781,
+    2198,
+    1910
+   ]
+  },
+  {
+   "text": "the exctinglish species are deed due ito",
+   "score": 0.9196,
+   "poly": [
+    [
+     287,
+     1894
+    ],
+    [
+     2250,
+     1912
+    ],
+    [
+     2249,
+     2022
+    ],
+    [
+     286,
+     2004
+    ]
+   ],
+   "box": [
+    286,
+    1894,
+    2250,
+    2022
+   ]
+  },
+  {
+   "text": "clemate charge.",
+   "score": 0.9263,
+   "poly": [
+    [
+     296,
+     2020
+    ],
+    [
+     957,
+     2026
+    ],
+    [
+     956,
+     2127
+    ],
+    [
+     295,
+     2122
+    ]
+   ],
+   "box": [
+    295,
+    2020,
+    957,
+    2127
+   ]
+  },
+  {
+   "text": "And deforestatpon ceoill affect the",
+   "score": 0.93,
+   "poly": [
+    [
+     662,
+     2239
+    ],
+    [
+     2333,
+     2268
+    ],
+    [
+     2331,
+     2376
+    ],
+    [
+     661,
+     2348
+    ]
+   ],
+   "box": [
+    661,
+    2239,
+    2333,
+    2376
+   ]
+  },
+  {
+   "text": "enupronment by cutt Phg othe troes.",
+   "score": 0.9183,
+   "poly": [
+    [
+     261,
+     2365
+    ],
+    [
+     2153,
+     2383
+    ],
+    [
+     2152,
+     2488
+    ],
+    [
+     260,
+     2470
+    ]
+   ],
+   "box": [
+    260,
+    2365,
+    2153,
+    2488
+   ]
+  },
+  {
+   "text": "ex-sptu counseruatPon and Pn-spty",
+   "score": 0.934,
+   "poly": [
+    [
+     698,
+     2602
+    ],
+    [
+     2339,
+     2614
+    ],
+    [
+     2339,
+     2713
+    ],
+    [
+     697,
+     2700
+    ]
+   ],
+   "box": [
+    697,
+    2602,
+    2339,
+    2713
+   ]
+  },
+  {
+   "text": "conseruatpon cwopll profect the copld",
+   "score": 0.8727,
+   "poly": [
+    [
+     239,
+     2716
+    ],
+    [
+     2196,
+     2728
+    ],
+    [
+     2195,
+     2840
+    ],
+    [
+     238,
+     2828
+    ]
+   ],
+   "box": [
+    238,
+    2716,
+    2196,
+    2840
+   ]
+  },
+  {
+   "text": "anemals and The proteats the exting of",
+   "score": 0.973,
+   "poly": [
+    [
+     224,
+     2826
+    ],
+    [
+     2319,
+     2854
+    ],
+    [
+     2317,
+     2970
+    ],
+    [
+     222,
+     2942
+    ]
+   ],
+   "box": [
+    222,
+    2826,
+    2319,
+    2970
+   ]
+  },
+  {
+   "text": "the species",
+   "score": 0.963,
+   "poly": [
+    [
+     234,
+     2950
+    ],
+    [
+     846,
+     2958
+    ],
+    [
+     845,
+     3077
+    ],
+    [
+     233,
+     3069
+    ]
+   ],
+   "box": [
+    233,
+    2950,
+    846,
+    3077
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3390
+}

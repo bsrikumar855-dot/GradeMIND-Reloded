@@ -1,0 +1,637 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_10.jpg",
+ "latency_s": 9.778,
+ "model_load_s": 0.41,
+ "n_lines": 21,
+ "lines": [
+  {
+   "text": "* few spraias n forast live",
+   "score": 0.8958,
+   "poly": [
+    [
+     174,
+     253
+    ],
+    [
+     2089,
+     239
+    ],
+    [
+     2091,
+     469
+    ],
+    [
+     176,
+     484
+    ]
+   ],
+   "box": [
+    174,
+    239,
+    2091,
+    484
+   ]
+  },
+  {
+   "text": "hee.",
+   "score": 0.8548,
+   "poly": [
+    [
+     321,
+     431
+    ],
+    [
+     587,
+     431
+    ],
+    [
+     587,
+     562
+    ],
+    [
+     321,
+     562
+    ]
+   ],
+   "box": [
+    321,
+    431,
+    587,
+    562
+   ]
+  },
+  {
+   "text": "water tunnels and",
+   "score": 0.9813,
+   "poly": [
+    [
+     1269,
+     644
+    ],
+    [
+     2399,
+     638
+    ],
+    [
+     2400,
+     809
+    ],
+    [
+     1270,
+     815
+    ]
+   ],
+   "box": [
+    1269,
+    638,
+    2400,
+    815
+   ]
+  },
+  {
+   "text": "Girassland is",
+   "score": 0.9418,
+   "poly": [
+    [
+     164,
+     684
+    ],
+    [
+     1318,
+     642
+    ],
+    [
+     1323,
+     800
+    ],
+    [
+     169,
+     841
+    ]
+   ],
+   "box": [
+    164,
+    642,
+    1323,
+    841
+   ]
+  },
+  {
+   "text": "are adroady",
+   "score": 0.8903,
+   "poly": [
+    [
+     1265,
+     788
+    ],
+    [
+     2102,
+     777
+    ],
+    [
+     2105,
+     956
+    ],
+    [
+     1267,
+     967
+    ]
+   ],
+   "box": [
+    1265,
+    777,
+    2105,
+    967
+   ]
+  },
+  {
+   "text": "More rasouiesa",
+   "score": 0.8902,
+   "poly": [
+    [
+     257,
+     829
+    ],
+    [
+     1354,
+     808
+    ],
+    [
+     1357,
+     952
+    ],
+    [
+     260,
+     973
+    ]
+   ],
+   "box": [
+    257,
+    808,
+    1357,
+    973
+   ]
+  },
+  {
+   "text": "polluted",
+   "score": 0.9995,
+   "poly": [
+    [
+     277,
+     952
+    ],
+    [
+     691,
+     938
+    ],
+    [
+     696,
+     1093
+    ],
+    [
+     283,
+     1107
+    ]
+   ],
+   "box": [
+    277,
+    938,
+    696,
+    1107
+   ]
+  },
+  {
+   "text": "of humans",
+   "score": 0.9959,
+   "poly": [
+    [
+     1334,
+     1172
+    ],
+    [
+     1935,
+     1163
+    ],
+    [
+     1937,
+     1339
+    ],
+    [
+     1337,
+     1348
+    ]
+   ],
+   "box": [
+    1334,
+    1163,
+    1937,
+    1348
+   ]
+  },
+  {
+   "text": "here majority",
+   "score": 0.9645,
+   "poly": [
+    [
+     177,
+     1198
+    ],
+    [
+     1151,
+     1192
+    ],
+    [
+     1152,
+     1349
+    ],
+    [
+     178,
+     1355
+    ]
+   ],
+   "box": [
+    177,
+    1192,
+    1152,
+    1355
+   ]
+  },
+  {
+   "text": "their ife",
+   "score": 0.9737,
+   "poly": [
+    [
+     1170,
+     1323
+    ],
+    [
+     2000,
+     1304
+    ],
+    [
+     2003,
+     1448
+    ],
+    [
+     1174,
+     1467
+    ]
+   ],
+   "box": [
+    1170,
+    1304,
+    2003,
+    1467
+   ]
+  },
+  {
+   "text": "live. and Make",
+   "score": 0.9828,
+   "poly": [
+    [
+     243,
+     1345
+    ],
+    [
+     1250,
+     1322
+    ],
+    [
+     1253,
+     1460
+    ],
+    [
+     246,
+     1482
+    ]
+   ],
+   "box": [
+    243,
+    1322,
+    1253,
+    1482
+   ]
+  },
+  {
+   "text": "aningful and with ther",
+   "score": 0.9528,
+   "poly": [
+    [
+     417,
+     1448
+    ],
+    [
+     2019,
+     1425
+    ],
+    [
+     2022,
+     1615
+    ],
+    [
+     419,
+     1638
+    ]
+   ],
+   "box": [
+    417,
+    1425,
+    2022,
+    1638
+   ]
+  },
+  {
+   "text": "σsm",
+   "score": 0.5775,
+   "poly": [
+    [
+     302,
+     1608
+    ],
+    [
+     767,
+     1608
+    ],
+    [
+     767,
+     1742
+    ],
+    [
+     302,
+     1742
+    ]
+   ],
+   "box": [
+    302,
+    1608,
+    767,
+    1742
+   ]
+  },
+  {
+   "text": "desects",
+   "score": 0.9865,
+   "poly": [
+    [
+     231,
+     1834
+    ],
+    [
+     679,
+     1834
+    ],
+    [
+     679,
+     2009
+    ],
+    [
+     231,
+     2009
+    ]
+   ],
+   "box": [
+    231,
+    1834,
+    679,
+    2009
+   ]
+  },
+  {
+   "text": "→deserts",
+   "score": 0.8763,
+   "poly": [
+    [
+     201,
+     2096
+    ],
+    [
+     804,
+     2084
+    ],
+    [
+     807,
+     2245
+    ],
+    [
+     204,
+     2257
+    ]
+   ],
+   "box": [
+    201,
+    2084,
+    807,
+    2257
+   ]
+  },
+  {
+   "text": "sand are fitled with.",
+   "score": 0.9803,
+   "poly": [
+    [
+     232,
+     2228
+    ],
+    [
+     1673,
+     2207
+    ],
+    [
+     1676,
+     2397
+    ],
+    [
+     235,
+     2418
+    ]
+   ],
+   "box": [
+    232,
+    2207,
+    1676,
+    2418
+   ]
+  },
+  {
+   "text": "→ Thase place aore not scitabe",
+   "score": 0.8928,
+   "poly": [
+    [
+     210,
+     2463
+    ],
+    [
+     2173,
+     2463
+    ],
+    [
+     2173,
+     2626
+    ],
+    [
+     210,
+     2626
+    ]
+   ],
+   "box": [
+    210,
+    2463,
+    2173,
+    2626
+   ]
+  },
+  {
+   "text": "Mayor ty Life",
+   "score": 0.8296,
+   "poly": [
+    [
+     250,
+     2601
+    ],
+    [
+     1083,
+     2601
+    ],
+    [
+     1083,
+     2779
+    ],
+    [
+     250,
+     2779
+    ]
+   ],
+   "box": [
+    250,
+    2601,
+    1083,
+    2779
+   ]
+  },
+  {
+   "text": "→ due to esctreme temporation",
+   "score": 0.9244,
+   "poly": [
+    [
+     194,
+     2824
+    ],
+    [
+     2051,
+     2813
+    ],
+    [
+     2052,
+     3007
+    ],
+    [
+     195,
+     3017
+    ]
+   ],
+   "box": [
+    194,
+    2813,
+    2052,
+    3017
+   ]
+  },
+  {
+   "text": "changes an day and hight",
+   "score": 0.9666,
+   "poly": [
+    [
+     317,
+     2988
+    ],
+    [
+     1898,
+     2982
+    ],
+    [
+     1898,
+     3145
+    ],
+    [
+     318,
+     3151
+    ]
+   ],
+   "box": [
+    317,
+    2982,
+    1898,
+    3151
+   ]
+  },
+  {
+   "text": "→col blood orgaisms coan live",
+   "score": 0.8849,
+   "poly": [
+    [
+     223,
+     3247
+    ],
+    [
+     2257,
+     3239
+    ],
+    [
+     2258,
+     3434
+    ],
+    [
+     224,
+     3443
+    ]
+   ],
+   "box": [
+    223,
+    3239,
+    2258,
+    3443
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3007
+}

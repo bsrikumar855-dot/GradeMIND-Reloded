@@ -1,0 +1,989 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_06.jpg",
+ "latency_s": 1.694,
+ "crop_s": 0.119,
+ "recognition_s": 1.575,
+ "model_load_s": 0.79,
+ "n_lines": 27,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "The organisms' Mr Geographical region",
+   "text_raw": "The organisms ' Mr Geographical region",
+   "score": 0.7621,
+   "min_token_prob": 0.4806,
+   "flags": [],
+   "box": [
+    534,
+    394,
+    2351,
+    568
+   ],
+   "poly": [
+    [
+     537,
+     394
+    ],
+    [
+     2351,
+     452
+    ],
+    [
+     2347,
+     568
+    ],
+    [
+     534,
+     510
+    ]
+   ],
+   "b_text": "The ooganisms cn googoaphecal regpon",
+   "b_score": 0.7693,
+   "ink_px": 24456,
+   "ink_frac": 0.1046
+  },
+  {
+   "text": "chad to be disturbed. A speeches an",
+   "text_raw": "chad to be disturbed . A speeches an",
+   "score": 0.7339,
+   "min_token_prob": 0.1664,
+   "flags": [],
+   "box": [
+    293,
+    522,
+    2157,
+    656
+   ],
+   "poly": [
+    [
+     295,
+     522
+    ],
+    [
+     2157,
+     571
+    ],
+    [
+     2155,
+     656
+    ],
+    [
+     293,
+     607
+    ]
+   ],
+   "b_text": "chadcto cbe desfurbed A ispeceoe an",
+   "b_score": 0.7386,
+   "ink_px": 19854,
+   "ink_frac": 0.1092
+  },
+  {
+   "text": "the fresh counter eco system.",
+   "text_raw": "the fresh counter eco system .",
+   "score": 0.8908,
+   "min_token_prob": 0.6415,
+   "flags": [],
+   "box": [
+    303,
+    633,
+    1590,
+    771
+   ],
+   "poly": [
+    [
+     306,
+     633
+    ],
+    [
+     1590,
+     672
+    ],
+    [
+     1587,
+     771
+    ],
+    [
+     303,
+     731
+    ]
+   ],
+   "b_text": "the frosh coater @co sysedom",
+   "b_score": 0.7874,
+   "ink_px": 14675,
+   "ink_frac": 0.102
+  },
+  {
+   "text": "cloke fresh-purchon",
+   "text_raw": "cloke fresh-purchon",
+   "score": 0.6085,
+   "min_token_prob": 0.1808,
+   "flags": [],
+   "box": [
+    1609,
+    672,
+    2321,
+    779
+   ],
+   "poly": [
+    [
+     1611,
+     672
+    ],
+    [
+     2321,
+     692
+    ],
+    [
+     2319,
+     779
+    ],
+    [
+     1609,
+     759
+    ]
+   ],
+   "b_text": "dleke fPsh. poaon",
+   "b_score": 0.7085,
+   "ink_px": 10188,
+   "ink_frac": 0.1425
+  },
+  {
+   "text": "are died due to water pollution. If we",
+   "text_raw": "are died due to water pollution . If we",
+   "score": 0.9245,
+   "min_token_prob": 0.419,
+   "flags": [],
+   "box": [
+    295,
+    747,
+    2162,
+    893
+   ],
+   "poly": [
+    [
+     297,
+     747
+    ],
+    [
+     2162,
+     796
+    ],
+    [
+     2159,
+     893
+    ],
+    [
+     295,
+     844
+    ]
+   ],
+   "b_text": "are dred due to oater pollod pon. If coe",
+   "b_score": 0.7306,
+   "ink_px": 20870,
+   "ink_frac": 0.102
+  },
+  {
+   "text": "pollute the fresh water",
+   "text_raw": "pollute the fresh water",
+   "score": 0.864,
+   "min_token_prob": 0.3443,
+   "flags": [],
+   "box": [
+    291,
+    866,
+    1400,
+    987
+   ],
+   "poly": [
+    [
+     294,
+     866
+    ],
+    [
+     1400,
+     897
+    ],
+    [
+     1397,
+     987
+    ],
+    [
+     291,
+     956
+    ]
+   ],
+   "b_text": "pollute the frogh coarter",
+   "b_score": 0.8042,
+   "ink_px": 13756,
+   "ink_frac": 0.1206
+  },
+  {
+   "text": "many spieces.",
+   "text_raw": "many spieces .",
+   "score": 0.759,
+   "min_token_prob": 0.4045,
+   "flags": [],
+   "box": [
+    1543,
+    906,
+    2158,
+    1007
+   ],
+   "poly": [
+    [
+     1544,
+     906
+    ],
+    [
+     2158,
+     913
+    ],
+    [
+     2157,
+     1007
+    ],
+    [
+     1543,
+     999
+    ]
+   ],
+   "b_text": "many sppeces",
+   "b_score": 0.849,
+   "ink_px": 8712,
+   "ink_frac": 0.1313
+  },
+  {
+   "text": "are got disturbed.",
+   "text_raw": "are got disturbed .",
+   "score": 0.9986,
+   "min_token_prob": 0.9967,
+   "flags": [],
+   "box": [
+    308,
+    976,
+    1154,
+    1107
+   ],
+   "poly": [
+    [
+     312,
+     976
+    ],
+    [
+     1154,
+     1013
+    ],
+    [
+     1150,
+     1107
+    ],
+    [
+     308,
+     1070
+    ]
+   ],
+   "b_text": "age got desturbed.",
+   "b_score": 0.7984,
+   "ink_px": 10983,
+   "ink_frac": 0.1213
+  },
+  {
+   "text": "We can use the \" 3/ principle",
+   "text_raw": "We can use the \" 3/ principle",
+   "score": 0.7877,
+   "min_token_prob": 0.3774,
+   "flags": [],
+   "box": [
+    668,
+    1215,
+    2269,
+    1362
+   ],
+   "poly": [
+    [
+     671,
+     1215
+    ],
+    [
+     2269,
+     1263
+    ],
+    [
+     2266,
+     1362
+    ],
+    [
+     668,
+     1314
+    ]
+   ],
+   "b_text": "we can use cthe 3rprinciple",
+   "b_score": 0.7984,
+   "ink_px": 16525,
+   "ink_frac": 0.0925
+  },
+  {
+   "text": "here to produce the master that",
+   "text_raw": "here to produce the master that",
+   "score": 0.9076,
+   "min_token_prob": 0.7773,
+   "flags": [],
+   "box": [
+    283,
+    1326,
+    2172,
+    1472
+   ],
+   "poly": [
+    [
+     285,
+     1326
+    ],
+    [
+     2172,
+     1382
+    ],
+    [
+     2170,
+     1472
+    ],
+    [
+     283,
+     1416
+    ]
+   ],
+   "b_text": "hore cto reduce the caastos that",
+   "b_score": 0.7121,
+   "ink_px": 19107,
+   "ink_frac": 0.0986
+  },
+  {
+   "text": "are made on house. Firstly use have",
+   "text_raw": "are made on house . Firstly use have",
+   "score": 0.9024,
+   "min_token_prob": 0.7092,
+   "flags": [],
+   "box": [
+    281,
+    1450,
+    2248,
+    1581
+   ],
+   "poly": [
+    [
+     283,
+     1450
+    ],
+    [
+     2248,
+     1494
+    ],
+    [
+     2246,
+     1581
+    ],
+    [
+     281,
+     1537
+    ]
+   ],
+   "b_text": "ane conaide gn hoise. Farsitly uoo hawe",
+   "b_score": 0.7162,
+   "ink_px": 21486,
+   "ink_frac": 0.1098
+  },
+  {
+   "text": "to",
+   "text_raw": "to",
+   "score": 0.9836,
+   "min_token_prob": 0.9695,
+   "flags": [],
+   "box": [
+    288,
+    1541,
+    435,
+    1639
+   ],
+   "poly": [
+    [
+     291,
+     1541
+    ],
+    [
+     435,
+     1546
+    ],
+    [
+     432,
+     1639
+    ],
+    [
+     288,
+     1634
+    ]
+   ],
+   "b_text": "t0",
+   "b_score": 0.6724,
+   "ink_px": 1501,
+   "ink_frac": 0.0916
+  },
+  {
+   "text": "sperate",
+   "text_raw": "sperate",
+   "score": 0.781,
+   "min_token_prob": 0.5475,
+   "flags": [],
+   "box": [
+    504,
+    1572,
+    934,
+    1666
+   ],
+   "poly": [
+    [
+     505,
+     1572
+    ],
+    [
+     934,
+     1579
+    ],
+    [
+     933,
+     1666
+    ],
+    [
+     504,
+     1658
+    ]
+   ],
+   "b_text": "Sperate",
+   "b_score": 0.8538,
+   "ink_px": 5494,
+   "ink_frac": 0.1258
+  },
+  {
+   "text": "\" the waste",
+   "text_raw": "\" the waste",
+   "score": 0.7187,
+   "min_token_prob": 0.3771,
+   "flags": [],
+   "box": [
+    986,
+    1585,
+    1577,
+    1673
+   ],
+   "poly": [
+    [
+     987,
+     1585
+    ],
+    [
+     1577,
+     1593
+    ],
+    [
+     1576,
+     1673
+    ],
+    [
+     986,
+     1665
+    ]
+   ],
+   "b_text": "the caste",
+   "b_score": 0.7894,
+   "ink_px": 6165,
+   "ink_frac": 0.1113
+  },
+  {
+   "text": "obased on",
+   "text_raw": "obased on",
+   "score": 0.9028,
+   "min_token_prob": 0.6385,
+   "flags": [],
+   "box": [
+    1675,
+    1583,
+    2155,
+    1689
+   ],
+   "poly": [
+    [
+     1678,
+     1583
+    ],
+    [
+     2155,
+     1600
+    ],
+    [
+     2152,
+     1689
+    ],
+    [
+     1675,
+     1672
+    ]
+   ],
+   "b_text": "ibased on",
+   "b_score": 0.8753,
+   "ink_px": 6668,
+   "ink_frac": 0.135
+  },
+  {
+   "text": "the depordable subplety.",
+   "text_raw": "the depordable subplety .",
+   "score": 0.6346,
+   "min_token_prob": 0.2215,
+   "flags": [],
+   "box": [
+    280,
+    1649,
+    1530,
+    1824
+   ],
+   "poly": [
+    [
+     285,
+     1649
+    ],
+    [
+     1530,
+     1696
+    ],
+    [
+     1525,
+     1824
+    ],
+    [
+     280,
+     1777
+    ]
+   ],
+   "b_text": "tho degoadable cuerety.",
+   "b_score": 0.7156,
+   "ink_px": 16826,
+   "ink_frac": 0.0956
+  },
+  {
+   "text": "we can like \" the composting method",
+   "text_raw": "we can like \" the composting method",
+   "score": 0.8649,
+   "min_token_prob": 0.4355,
+   "flags": [],
+   "box": [
+    646,
+    1891,
+    2393,
+    2058
+   ],
+   "poly": [
+    [
+     649,
+     1891
+    ],
+    [
+     2393,
+     1944
+    ],
+    [
+     2390,
+     2058
+    ],
+    [
+     646,
+     2005
+    ]
+   ],
+   "b_text": "ce can tse the composting mothad",
+   "b_score": 0.8327,
+   "ink_px": 24555,
+   "ink_frac": 0.111
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5721,
+   "min_token_prob": 0.233,
+   "flags": [],
+   "box": [
+    1323,
+    1902,
+    1348,
+    1923
+   ],
+   "poly": [
+    [
+     1323,
+     1902
+    ],
+    [
+     1348,
+     1902
+    ],
+    [
+     1348,
+     1923
+    ],
+    [
+     1323,
+     1923
+    ]
+   ],
+   "b_text": "粮",
+   "b_score": 0.0958,
+   "ink_px": 125,
+   "ink_frac": 0.1024
+  },
+  {
+   "text": "to manage the domestic waste. We",
+   "text_raw": "to manage the domestic waste . We",
+   "score": 0.8938,
+   "min_token_prob": 0.5939,
+   "flags": [],
+   "box": [
+    303,
+    1997,
+    2293,
+    2173
+   ],
+   "poly": [
+    [
+     306,
+     1997
+    ],
+    [
+     2293,
+     2057
+    ],
+    [
+     2289,
+     2173
+    ],
+    [
+     303,
+     2113
+    ]
+   ],
+   "b_text": "do cmange cthe slomostic uoaste.loe",
+   "b_score": 0.7452,
+   "ink_px": 22824,
+   "ink_frac": 0.0892
+  },
+  {
+   "text": "can use the",
+   "text_raw": "can use the",
+   "score": 0.9878,
+   "min_token_prob": 0.9758,
+   "flags": [],
+   "box": [
+    302,
+    2125,
+    1118,
+    2226
+   ],
+   "poly": [
+    [
+     303,
+     2125
+    ],
+    [
+     1118,
+     2140
+    ],
+    [
+     1116,
+     2226
+    ],
+    [
+     302,
+     2212
+    ]
+   ],
+   "b_text": "Can use cthe",
+   "b_score": 0.8567,
+   "ink_px": 6715,
+   "ink_frac": 0.082
+  },
+  {
+   "text": "\"degradable worker to",
+   "text_raw": "\"degradable worker to",
+   "score": 0.7208,
+   "min_token_prob": 0.2217,
+   "flags": [],
+   "box": [
+    1084,
+    2137,
+    2243,
+    2264
+   ],
+   "poly": [
+    [
+     1087,
+     2137
+    ],
+    [
+     2243,
+     2165
+    ],
+    [
+     2241,
+     2264
+    ],
+    [
+     1084,
+     2235
+    ]
+   ],
+   "b_text": "de gradablo coatosto",
+   "b_score": 0.7176,
+   "ink_px": 15067,
+   "ink_frac": 0.1161
+  },
+  {
+   "text": "feed other animals, chords (poultry),",
+   "text_raw": "feed other animals , chords ( poultry ) ,",
+   "score": 0.863,
+   "min_token_prob": 0.5634,
+   "flags": [],
+   "box": [
+    301,
+    2213,
+    2346,
+    2403
+   ],
+   "poly": [
+    [
+     305,
+     2213
+    ],
+    [
+     2346,
+     2277
+    ],
+    [
+     2342,
+     2403
+    ],
+    [
+     301,
+     2339
+    ]
+   ],
+   "b_text": "foed cthe anemals, birds poulltry)",
+   "b_score": 0.7924,
+   "ink_px": 25813,
+   "ink_frac": 0.0911
+  },
+  {
+   "text": "etcory.",
+   "text_raw": "etcory .",
+   "score": 0.6118,
+   "min_token_prob": 0.1772,
+   "flags": [],
+   "box": [
+    308,
+    2350,
+    594,
+    2449
+   ],
+   "poly": [
+    [
+     314,
+     2350
+    ],
+    [
+     594,
+     2371
+    ],
+    [
+     588,
+     2449
+    ],
+    [
+     308,
+     2429
+    ]
+   ],
+   "b_text": "Olc.",
+   "b_score": 0.5578,
+   "ink_px": 2411,
+   "ink_frac": 0.0907
+  },
+  {
+   "text": "It will help to reduce the",
+   "text_raw": "It will help to reduce the",
+   "score": 0.9524,
+   "min_token_prob": 0.8067,
+   "flags": [],
+   "box": [
+    697,
+    2460,
+    2255,
+    2600
+   ],
+   "poly": [
+    [
+     699,
+     2460
+    ],
+    [
+     2255,
+     2496
+    ],
+    [
+     2253,
+     2600
+    ],
+    [
+     697,
+     2564
+    ]
+   ],
+   "b_text": "It copll cholp to sreduce the",
+   "b_score": 0.7575,
+   "ink_px": 19412,
+   "ink_frac": 0.1067
+  },
+  {
+   "text": "was to",
+   "text_raw": "was to",
+   "score": 0.8668,
+   "min_token_prob": 0.6297,
+   "flags": [],
+   "box": [
+    325,
+    2580,
+    625,
+    2666
+   ],
+   "poly": [
+    [
+     327,
+     2580
+    ],
+    [
+     625,
+     2588
+    ],
+    [
+     623,
+     2666
+    ],
+    [
+     325,
+     2658
+    ]
+   ],
+   "b_text": "coasto",
+   "b_score": 0.5532,
+   "ink_px": 3893,
+   "ink_frac": 0.1395
+  },
+  {
+   "text": "in the environment and do got",
+   "text_raw": "in the environment and do got",
+   "score": 0.7946,
+   "min_token_prob": 0.3091,
+   "flags": [],
+   "box": [
+    653,
+    2571,
+    2364,
+    2721
+   ],
+   "poly": [
+    [
+     655,
+     2571
+    ],
+    [
+     2364,
+     2612
+    ],
+    [
+     2361,
+     2721
+    ],
+    [
+     653,
+     2680
+    ]
+   ],
+   "b_text": "In othe onuronmont and doenot",
+   "b_score": 0.8586,
+   "ink_px": 21722,
+   "ink_frac": 0.1043
+  },
+  {
+   "text": "affect the ecosystem.",
+   "text_raw": "affect the ecosystem .",
+   "score": 0.8498,
+   "min_token_prob": 0.3469,
+   "flags": [],
+   "box": [
+    319,
+    2684,
+    1416,
+    2807
+   ],
+   "poly": [
+    [
+     320,
+     2684
+    ],
+    [
+     1416,
+     2689
+    ],
+    [
+     1415,
+     2807
+    ],
+    [
+     319,
+     2801
+    ]
+   ],
+   "b_text": "affoct the ernystom.",
+   "b_score": 0.8248,
+   "ink_px": 15976,
+   "ink_frac": 0.1109
+  }
+ ],
+ "peak_torch_alloc_mib": 2703,
+ "peak_rss_mib_process": 2968
+}

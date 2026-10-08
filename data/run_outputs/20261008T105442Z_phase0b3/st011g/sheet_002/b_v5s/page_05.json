@@ -1,0 +1,807 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_05.jpg",
+ "latency_s": 24.675,
+ "model_load_s": 0.42,
+ "n_lines": 27,
+ "lines": [
+  {
+   "text": "Efleds:",
+   "score": 0.9176,
+   "poly": [
+    [
+     452,
+     296
+    ],
+    [
+     711,
+     290
+    ],
+    [
+     712,
+     361
+    ],
+    [
+     454,
+     366
+    ]
+   ],
+   "box": [
+    452,
+    290,
+    712,
+    366
+   ]
+  },
+  {
+   "text": "It affects dne ecosysdem",
+   "score": 0.8147,
+   "poly": [
+    [
+     571,
+     475
+    ],
+    [
+     1960,
+     391
+    ],
+    [
+     1966,
+     493
+    ],
+    [
+     577,
+     577
+    ]
+   ],
+   "box": [
+    571,
+    391,
+    1966,
+    577
+   ]
+  },
+  {
+   "text": "2",
+   "score": 0.056,
+   "poly": [
+    [
+     2361,
+     544
+    ],
+    [
+     2377,
+     538
+    ],
+    [
+     2384,
+     555
+    ],
+    [
+     2369,
+     562
+    ]
+   ],
+   "box": [
+    2361,
+    538,
+    2384,
+    562
+   ]
+  },
+  {
+   "text": " Iet affocts sthe ourganesms that",
+   "score": 0.7156,
+   "poly": [
+    [
+     569,
+     583
+    ],
+    [
+     2131,
+     484
+    ],
+    [
+     2138,
+     587
+    ],
+    [
+     576,
+     686
+    ]
+   ],
+   "box": [
+    569,
+    484,
+    2138,
+    686
+   ]
+  },
+  {
+   "text": "ceved en ths fresh coates",
+   "score": 0.6867,
+   "poly": [
+    [
+     569,
+     688
+    ],
+    [
+     1731,
+     619
+    ],
+    [
+     1736,
+     705
+    ],
+    [
+     574,
+     774
+    ]
+   ],
+   "box": [
+    569,
+    619,
+    1736,
+    774
+   ]
+  },
+  {
+   "text": "ae",
+   "score": 0.6843,
+   "poly": [
+    [
+     378,
+     707
+    ],
+    [
+     546,
+     699
+    ],
+    [
+     549,
+     760
+    ],
+    [
+     381,
+     767
+    ]
+   ],
+   "box": [
+    378,
+    699,
+    549,
+    767
+   ]
+  },
+  {
+   "text": "* t pollute the frosh water sto a",
+   "score": 0.7905,
+   "poly": [
+    [
+     577,
+     783
+    ],
+    [
+     2077,
+     699
+    ],
+    [
+     2083,
+     795
+    ],
+    [
+     582,
+     880
+    ]
+   ],
+   "box": [
+    577,
+    699,
+    2083,
+    880
+   ]
+  },
+  {
+   "text": "contaminadod cooder.",
+   "score": 0.7567,
+   "poly": [
+    [
+     372,
+     895
+    ],
+    [
+     1179,
+     863
+    ],
+    [
+     1183,
+     949
+    ],
+    [
+     375,
+     981
+    ]
+   ],
+   "box": [
+    372,
+    863,
+    1183,
+    981
+   ]
+  },
+  {
+   "text": " we shave do sepmate cthe type",
+   "score": 0.8019,
+   "poly": [
+    [
+     460,
+     989
+    ],
+    [
+     2167,
+     908
+    ],
+    [
+     2173,
+     1019
+    ],
+    [
+     465,
+     1101
+    ]
+   ],
+   "box": [
+    460,
+    908,
+    2173,
+    1101
+   ]
+  },
+  {
+   "text": "of cbased",
+   "score": 0.8012,
+   "poly": [
+    [
+     367,
+     1093
+    ],
+    [
+     826,
+     1077
+    ],
+    [
+     830,
+     1177
+    ],
+    [
+     370,
+     1192
+    ]
+   ],
+   "box": [
+    367,
+    1077,
+    830,
+    1192
+   ]
+  },
+  {
+   "text": "t woe charre to grecyycle those",
+   "score": 0.7041,
+   "poly": [
+    [
+     613,
+     1191
+    ],
+    [
+     2066,
+     1116
+    ],
+    [
+     2071,
+     1217
+    ],
+    [
+     618,
+     1292
+    ]
+   ],
+   "box": [
+    613,
+    1116,
+    2071,
+    1292
+   ]
+  },
+  {
+   "text": "kend of coater.",
+   "score": 0.8717,
+   "poly": [
+    [
+     396,
+     1296
+    ],
+    [
+     1016,
+     1278
+    ],
+    [
+     1019,
+     1369
+    ],
+    [
+     399,
+     1388
+    ]
+   ],
+   "box": [
+    396,
+    1278,
+    1019,
+    1388
+   ]
+  },
+  {
+   "text": "woe cnt e the degradeble cater",
+   "score": 0.7006,
+   "poly": [
+    [
+     560,
+     1397
+    ],
+    [
+     2154,
+     1318
+    ],
+    [
+     2159,
+     1405
+    ],
+    [
+     565,
+     1484
+    ]
+   ],
+   "box": [
+    560,
+    1318,
+    2159,
+    1484
+   ]
+  },
+  {
+   "text": "do cthe agricutu feeld as a nadural",
+   "score": 0.7747,
+   "poly": [
+    [
+     400,
+     1500
+    ],
+    [
+     2171,
+     1417
+    ],
+    [
+     2175,
+     1512
+    ],
+    [
+     404,
+     1594
+    ]
+   ],
+   "box": [
+    400,
+    1417,
+    2175,
+    1594
+   ]
+  },
+  {
+   "text": "fealezer.",
+   "score": 0.5398,
+   "poly": [
+    [
+     423,
+     1608
+    ],
+    [
+     796,
+     1589
+    ],
+    [
+     799,
+     1661
+    ],
+    [
+     427,
+     1680
+    ]
+   ],
+   "box": [
+    423,
+    1589,
+    799,
+    1680
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     978,
+     1615
+    ],
+    [
+     1380,
+     1597
+    ],
+    [
+     1382,
+     1629
+    ],
+    [
+     979,
+     1646
+    ]
+   ],
+   "box": [
+    978,
+    1597,
+    1382,
+    1646
+   ]
+  },
+  {
+   "text": "OM",
+   "score": 0.6154,
+   "poly": [
+    [
+     958,
+     1654
+    ],
+    [
+     1399,
+     1635
+    ],
+    [
+     1400,
+     1671
+    ],
+    [
+     960,
+     1690
+    ]
+   ],
+   "box": [
+    958,
+    1635,
+    1400,
+    1690
+   ]
+  },
+  {
+   "text": "thefpod woastages",
+   "score": 0.8226,
+   "poly": [
+    [
+     1437,
+     1663
+    ],
+    [
+     2244,
+     1636
+    ],
+    [
+     2247,
+     1726
+    ],
+    [
+     1440,
+     1754
+    ]
+   ],
+   "box": [
+    1437,
+    1636,
+    2247,
+    1754
+   ]
+  },
+  {
+   "text": "twecancreduce",
+   "score": 0.692,
+   "poly": [
+    [
+     645,
+     1702
+    ],
+    [
+     1413,
+     1678
+    ],
+    [
+     1415,
+     1745
+    ],
+    [
+     647,
+     1768
+    ]
+   ],
+   "box": [
+    645,
+    1678,
+    1415,
+    1768
+   ]
+  },
+  {
+   "text": "f oe palute thefrosh uoater",
+   "score": 0.6833,
+   "poly": [
+    [
+     640,
+     1799
+    ],
+    [
+     2133,
+     1738
+    ],
+    [
+     2137,
+     1824
+    ],
+    [
+     643,
+     1885
+    ]
+   ],
+   "box": [
+    640,
+    1738,
+    2137,
+    1885
+   ]
+  },
+  {
+   "text": "eosysctem the cbodAuerity may dlestirbed",
+   "score": 0.7124,
+   "poly": [
+    [
+     367,
+     1904
+    ],
+    [
+     2237,
+     1824
+    ],
+    [
+     2242,
+     1919
+    ],
+    [
+     371,
+     1999
+    ]
+   ],
+   "box": [
+    367,
+    1824,
+    2242,
+    1999
+   ]
+  },
+  {
+   "text": "ard the fat chaer also got dfetuabed.",
+   "score": 0.7847,
+   "poly": [
+    [
+     374,
+     2005
+    ],
+    [
+     2138,
+     1932
+    ],
+    [
+     2142,
+     2020
+    ],
+    [
+     378,
+     2093
+    ]
+   ],
+   "box": [
+    374,
+    1932,
+    2142,
+    2093
+   ]
+  },
+  {
+   "text": "If one ecosgsdom caell affoos",
+   "score": 0.742,
+   "poly": [
+    [
+     611,
+     2100
+    ],
+    [
+     2020,
+     2047
+    ],
+    [
+     2023,
+     2143
+    ],
+    [
+     615,
+     2196
+    ]
+   ],
+   "box": [
+    611,
+    2047,
+    2023,
+    2196
+   ]
+  },
+  {
+   "text": ".it ll abo efect cthe endfre ecosystem.",
+   "score": 0.7373,
+   "poly": [
+    [
+     362,
+     2213
+    ],
+    [
+     2159,
+     2148
+    ],
+    [
+     2163,
+     2244
+    ],
+    [
+     366,
+     2309
+    ]
+   ],
+   "box": [
+    362,
+    2148,
+    2163,
+    2309
+   ]
+  },
+  {
+   "text": "t woe can we, composting methads",
+   "score": 0.74,
+   "poly": [
+    [
+     624,
+     2312
+    ],
+    [
+     2077,
+     2256
+    ],
+    [
+     2081,
+     2346
+    ],
+    [
+     628,
+     2403
+    ]
+   ],
+   "box": [
+    624,
+    2256,
+    2081,
+    2403
+   ]
+  },
+  {
+   "text": "to redube the orgainec cooabtage",
+   "score": 0.7605,
+   "poly": [
+    [
+     366,
+     2411
+    ],
+    [
+     1913,
+     2368
+    ],
+    [
+     1915,
+     2466
+    ],
+    [
+     369,
+     2509
+    ]
+   ],
+   "box": [
+    366,
+    2368,
+    1915,
+    2509
+   ]
+  },
+  {
+   "text": "troblem.",
+   "score": 0.7345,
+   "poly": [
+    [
+     386,
+     2541
+    ],
+    [
+     746,
+     2522
+    ],
+    [
+     750,
+     2601
+    ],
+    [
+     390,
+     2620
+    ]
+   ],
+   "box": [
+    386,
+    2522,
+    750,
+    2620
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17131
+}

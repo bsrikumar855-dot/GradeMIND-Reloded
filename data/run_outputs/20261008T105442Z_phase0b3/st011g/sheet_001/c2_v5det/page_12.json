@@ -1,0 +1,359 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 0.437,
+ "crop_s": 0.026,
+ "recognition_s": 0.411,
+ "model_load_s": 0.78,
+ "n_lines": 9,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "# human",
+   "text_raw": "# human",
+   "score": 0.6738,
+   "min_token_prob": 0.4575,
+   "flags": [],
+   "box": [
+    192,
+    231,
+    644,
+    372
+   ],
+   "poly": [
+    [
+     192,
+     237
+    ],
+    [
+     642,
+     231
+    ],
+    [
+     644,
+     366
+    ],
+    [
+     194,
+     372
+    ]
+   ],
+   "b_text": "a human",
+   "b_score": 0.826,
+   "ink_px": 9564,
+   "ink_frac": 0.1408
+  },
+  {
+   "text": "from",
+   "text_raw": "from",
+   "score": 0.6386,
+   "min_token_prob": 0.2843,
+   "flags": [],
+   "box": [
+    1702,
+    259,
+    2038,
+    448
+   ],
+   "poly": [
+    [
+     1702,
+     259
+    ],
+    [
+     2038,
+     259
+    ],
+    [
+     2038,
+     448
+    ],
+    [
+     1702,
+     448
+    ]
+   ],
+   "b_text": "fuom",
+   "b_score": 0.8519,
+   "ink_px": 9574,
+   "ink_frac": 0.1369
+  },
+  {
+   "text": "get.",
+   "text_raw": "get .",
+   "score": 0.8814,
+   "min_token_prob": 0.6449,
+   "flags": [],
+   "box": [
+    821,
+    263,
+    1038,
+    417
+   ],
+   "poly": [
+    [
+     821,
+     280
+    ],
+    [
+     1027,
+     263
+    ],
+    [
+     1038,
+     399
+    ],
+    [
+     832,
+     417
+    ]
+   ],
+   "b_text": "get",
+   "b_score": 0.9813,
+   "ink_px": 5675,
+   "ink_frac": 0.1747
+  },
+  {
+   "text": "benefits.",
+   "text_raw": "benefits .",
+   "score": 0.9916,
+   "min_token_prob": 0.9797,
+   "flags": [],
+   "box": [
+    1200,
+    282,
+    1577,
+    405
+   ],
+   "poly": [
+    [
+     1200,
+     282
+    ],
+    [
+     1577,
+     282
+    ],
+    [
+     1577,
+     405
+    ],
+    [
+     1200,
+     405
+    ]
+   ],
+   "b_text": "benefit",
+   "b_score": 0.7524,
+   "ink_px": 12689,
+   "ink_frac": 0.2416
+  },
+  {
+   "text": "this.",
+   "text_raw": "this .",
+   "score": 0.8445,
+   "min_token_prob": 0.6317,
+   "flags": [],
+   "box": [
+    268,
+    351,
+    503,
+    484
+   ],
+   "poly": [
+    [
+     268,
+     351
+    ],
+    [
+     503,
+     351
+    ],
+    [
+     503,
+     484
+    ],
+    [
+     268,
+     484
+    ]
+   ],
+   "b_text": "this",
+   "b_score": 0.8716,
+   "ink_px": 5972,
+   "ink_frac": 0.1667
+  },
+  {
+   "text": "type.",
+   "text_raw": "type .",
+   "score": 0.9572,
+   "min_token_prob": 0.8739,
+   "flags": [],
+   "box": [
+    663,
+    364,
+    924,
+    515
+   ],
+   "poly": [
+    [
+     670,
+     364
+    ],
+    [
+     924,
+     377
+    ],
+    [
+     917,
+     515
+    ],
+    [
+     663,
+     502
+    ]
+   ],
+   "b_text": "type",
+   "b_score": 0.7597,
+   "ink_px": 6991,
+   "ink_frac": 0.1752
+  },
+  {
+   "text": "of robusion.",
+   "text_raw": "of robusion .",
+   "score": 0.7366,
+   "min_token_prob": 0.1454,
+   "flags": [],
+   "box": [
+    1065,
+    383,
+    1602,
+    558
+   ],
+   "poly": [
+    [
+     1065,
+     383
+    ],
+    [
+     1602,
+     383
+    ],
+    [
+     1602,
+     558
+    ],
+    [
+     1065,
+     558
+    ]
+   ],
+   "b_text": "of an",
+   "b_score": 0.5935,
+   "ink_px": 18649,
+   "ink_frac": 0.1817
+  },
+  {
+   "text": "\" Good \" energy.",
+   "text_raw": "\" Good \" energy .",
+   "score": 0.7973,
+   "min_token_prob": 0.2939,
+   "flags": [],
+   "box": [
+    146,
+    538,
+    1127,
+    795
+   ],
+   "poly": [
+    [
+     154,
+     538
+    ],
+    [
+     1127,
+     572
+    ],
+    [
+     1120,
+     795
+    ],
+    [
+     146,
+     761
+    ]
+   ],
+   "b_text": " food, enorgy",
+   "b_score": 0.8407,
+   "ink_px": 23334,
+   "ink_frac": 0.1007
+  },
+  {
+   "text": "and more",
+   "text_raw": "and more",
+   "score": 0.8356,
+   "min_token_prob": 0.5452,
+   "flags": [],
+   "box": [
+    1226,
+    591,
+    1855,
+    747
+   ],
+   "poly": [
+    [
+     1226,
+     591
+    ],
+    [
+     1855,
+     591
+    ],
+    [
+     1855,
+     747
+    ],
+    [
+     1226,
+     747
+    ]
+   ],
+   "b_text": "and More",
+   "b_score": 0.9505,
+   "ink_px": 13386,
+   "ink_frac": 0.1243
+  }
+ ],
+ "peak_torch_alloc_mib": 2448,
+ "peak_rss_mib_process": 2968
+}

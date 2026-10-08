@@ -1,0 +1,693 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_09.jpg",
+ "latency_s": 13.334,
+ "model_load_s": 0.41,
+ "n_lines": 23,
+ "lines": [
+  {
+   "text": "and ift can fofect cthe shuman and the",
+   "score": 0.8548,
+   "poly": [
+    [
+     403,
+     368
+    ],
+    [
+     2290,
+     301
+    ],
+    [
+     2296,
+     445
+    ],
+    [
+     408,
+     512
+    ]
+   ],
+   "box": [
+    403,
+    301,
+    2296,
+    512
+   ]
+  },
+  {
+   "text": "xttack the huomrs.",
+   "score": 0.8088,
+   "poly": [
+    [
+     1337,
+     459
+    ],
+    [
+     2212,
+     424
+    ],
+    [
+     2216,
+     535
+    ],
+    [
+     1341,
+     570
+    ]
+   ],
+   "box": [
+    1337,
+    424,
+    2216,
+    570
+   ]
+  },
+  {
+   "text": "cord anemals cr",
+   "score": 0.7635,
+   "poly": [
+    [
+     441,
+     485
+    ],
+    [
+     1341,
+     476
+    ],
+    [
+     1342,
+     581
+    ],
+    [
+     442,
+     590
+    ]
+   ],
+   "box": [
+    441,
+    476,
+    1342,
+    590
+   ]
+  },
+  {
+   "text": "Deforostation cufe leats clo no",
+   "score": 0.8217,
+   "poly": [
+    [
+     743,
+     703
+    ],
+    [
+     2137,
+     646
+    ],
+    [
+     2142,
+     766
+    ],
+    [
+     748,
+     822
+    ]
+   ],
+   "box": [
+    743,
+    646,
+    2142,
+    822
+   ]
+  },
+  {
+   "text": "mesfall and affect the agrfructcrce and",
+   "score": 0.8538,
+   "poly": [
+    [
+     414,
+     819
+    ],
+    [
+     2287,
+     763
+    ],
+    [
+     2290,
+     883
+    ],
+    [
+     418,
+     938
+    ]
+   ],
+   "box": [
+    414,
+    763,
+    2290,
+    938
+   ]
+  },
+  {
+   "text": "mary of ethe onghesms ane des turted.",
+   "score": 0.8738,
+   "poly": [
+    [
+     435,
+     933
+    ],
+    [
+     2241,
+     870
+    ],
+    [
+     2245,
+     989
+    ],
+    [
+     439,
+     1053
+    ]
+   ],
+   "box": [
+    435,
+    870,
+    2245,
+    1053
+   ]
+  },
+  {
+   "text": "Brods are get desturbed to",
+   "score": 0.8935,
+   "poly": [
+    [
+     780,
+     1122
+    ],
+    [
+     2234,
+     1093
+    ],
+    [
+     2236,
+     1219
+    ],
+    [
+     782,
+     1248
+    ]
+   ],
+   "box": [
+    780,
+    1093,
+    2236,
+    1248
+   ]
+  },
+  {
+   "text": "the cutting of strces. cooe lose cthe",
+   "score": 0.922,
+   "poly": [
+    [
+     407,
+     1238
+    ],
+    [
+     2297,
+     1205
+    ],
+    [
+     2300,
+     1334
+    ],
+    [
+     409,
+     1368
+    ]
+   ],
+   "box": [
+    407,
+    1205,
+    2300,
+    1368
+   ]
+  },
+  {
+   "text": "enatusally  occuring prcatuct: cleke",
+   "score": 0.8835,
+   "poly": [
+    [
+     410,
+     1358
+    ],
+    [
+     2108,
+     1324
+    ],
+    [
+     2110,
+     1439
+    ],
+    [
+     412,
+     1473
+    ]
+   ],
+   "box": [
+    410,
+    1324,
+    2110,
+    1473
+   ]
+  },
+  {
+   "text": "frests, bonay tc...",
+   "score": 0.7956,
+   "poly": [
+    [
+     438,
+     1456
+    ],
+    [
+     1482,
+     1446
+    ],
+    [
+     1483,
+     1572
+    ],
+    [
+     439,
+     1582
+    ]
+   ],
+   "box": [
+    438,
+    1446,
+    1483,
+    1582
+   ]
+  },
+  {
+   "text": "Deforerdatsonor ats cthe mafi reason",
+   "score": 0.8672,
+   "poly": [
+    [
+     794,
+     1681
+    ],
+    [
+     2296,
+     1654
+    ],
+    [
+     2298,
+     1757
+    ],
+    [
+     796,
+     1784
+    ]
+   ],
+   "box": [
+    794,
+    1654,
+    2298,
+    1784
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1180,
+     1764
+    ],
+    [
+     1415,
+     1764
+    ],
+    [
+     1415,
+     1798
+    ],
+    [
+     1180,
+     1798
+    ]
+   ],
+   "box": [
+    1180,
+    1764,
+    1415,
+    1798
+   ]
+  },
+  {
+   "text": "for sthe sofl erosfon. and. fload. Sutlen",
+   "score": 0.9157,
+   "poly": [
+    [
+     425,
+     1789
+    ],
+    [
+     2277,
+     1761
+    ],
+    [
+     2278,
+     1869
+    ],
+    [
+     426,
+     1897
+    ]
+   ],
+   "box": [
+    425,
+    1761,
+    2278,
+    1897
+   ]
+  },
+  {
+   "text": "dlemate changes chave happend in ith.",
+   "score": 0.9039,
+   "poly": [
+    [
+     420,
+     1901
+    ],
+    [
+     2142,
+     1872
+    ],
+    [
+     2144,
+     1987
+    ],
+    [
+     422,
+     2015
+    ]
+   ],
+   "box": [
+    420,
+    1872,
+    2144,
+    2015
+   ]
+  },
+  {
+   "text": "fece. gears.",
+   "score": 0.8527,
+   "poly": [
+    [
+     435,
+     2015
+    ],
+    [
+     868,
+     2015
+    ],
+    [
+     868,
+     2121
+    ],
+    [
+     435,
+     2121
+    ]
+   ],
+   "box": [
+    435,
+    2015,
+    868,
+    2121
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     475,
+     2179
+    ],
+    [
+     658,
+     2167
+    ],
+    [
+     661,
+     2213
+    ],
+    [
+     477,
+     2224
+    ]
+   ],
+   "box": [
+    475,
+    2167,
+    661,
+    2224
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     185,
+     2189
+    ],
+    [
+     260,
+     2189
+    ],
+    [
+     260,
+     2218
+    ],
+    [
+     185,
+     2218
+    ]
+   ],
+   "box": [
+    185,
+    2189,
+    260,
+    2218
+   ]
+  },
+  {
+   "text": "Buning of coood willl wrelease",
+   "score": 0.9263,
+   "poly": [
+    [
+     809,
+     2229
+    ],
+    [
+     2269,
+     2188
+    ],
+    [
+     2272,
+     2303
+    ],
+    [
+     812,
+     2344
+    ]
+   ],
+   "box": [
+    809,
+    2188,
+    2272,
+    2344
+   ]
+  },
+  {
+   "text": "the carbon monoxide gas and aftect",
+   "score": 0.9578,
+   "poly": [
+    [
+     387,
+     2343
+    ],
+    [
+     2121,
+     2308
+    ],
+    [
+     2123,
+     2418
+    ],
+    [
+     389,
+     2453
+    ]
+   ],
+   "box": [
+    387,
+    2308,
+    2123,
+    2453
+   ]
+  },
+  {
+   "text": "the ehuiroment. Jt wofll. affect othe",
+   "score": 0.854,
+   "poly": [
+    [
+     387,
+     2450
+    ],
+    [
+     2109,
+     2418
+    ],
+    [
+     2111,
+     2533
+    ],
+    [
+     389,
+     2565
+    ]
+   ],
+   "box": [
+    387,
+    2418,
+    2111,
+    2565
+   ]
+  },
+  {
+   "text": "praductpon oxygen because they",
+   "score": 0.9581,
+   "poly": [
+    [
+     364,
+     2560
+    ],
+    [
+     2289,
+     2520
+    ],
+    [
+     2292,
+     2651
+    ],
+    [
+     367,
+     2691
+    ]
+   ],
+   "box": [
+    364,
+    2520,
+    2292,
+    2691
+   ]
+  },
+  {
+   "text": "are the one of eason for the",
+   "score": 0.9123,
+   "poly": [
+    [
+     340,
+     2676
+    ],
+    [
+     2125,
+     2638
+    ],
+    [
+     2128,
+     2757
+    ],
+    [
+     343,
+     2796
+    ]
+   ],
+   "box": [
+    340,
+    2638,
+    2128,
+    2796
+   ]
+  },
+  {
+   "text": "Loxygen production",
+   "score": 0.944,
+   "poly": [
+    [
+     341,
+     2791
+    ],
+    [
+     1469,
+     2767
+    ],
+    [
+     1472,
+     2904
+    ],
+    [
+     344,
+     2928
+    ]
+   ],
+   "box": [
+    341,
+    2767,
+    1472,
+    2928
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3318
+}

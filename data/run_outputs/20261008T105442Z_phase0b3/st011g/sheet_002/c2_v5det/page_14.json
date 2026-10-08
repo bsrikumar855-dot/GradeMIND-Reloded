@@ -1,0 +1,1514 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_14.jpg",
+ "latency_s": 2.613,
+ "crop_s": 0.215,
+ "recognition_s": 2.398,
+ "model_load_s": 0.79,
+ "n_lines": 42,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "l",
+   "text_raw": "l",
+   "score": 0.6646,
+   "min_token_prob": 0.4333,
+   "flags": [],
+   "box": [
+    218,
+    275,
+    232,
+    334
+   ],
+   "poly": [
+    [
+     218,
+     275
+    ],
+    [
+     232,
+     275
+    ],
+    [
+     232,
+     334
+    ],
+    [
+     218,
+     334
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 456,
+   "ink_frac": 0.247
+  },
+  {
+   "text": "We can recycle the plastic",
+   "text_raw": "We can recycle the plastic",
+   "score": 0.8922,
+   "min_token_prob": 0.3582,
+   "flags": [],
+   "box": [
+    826,
+    469,
+    2505,
+    640
+   ],
+   "poly": [
+    [
+     830,
+     469
+    ],
+    [
+     2505,
+     512
+    ],
+    [
+     2502,
+     640
+    ],
+    [
+     826,
+     598
+    ]
+   ],
+   "b_text": "we can recycle ctho plaestf",
+   "b_score": 0.8077,
+   "ink_px": 27433,
+   "ink_frac": 0.1153
+  },
+  {
+   "text": "coaste and made it as a useful",
+   "text_raw": "coaste and made it as a useful",
+   "score": 0.9227,
+   "min_token_prob": 0.6441,
+   "flags": [],
+   "box": [
+    243,
+    584,
+    2553,
+    789
+   ],
+   "poly": [
+    [
+     246,
+     584
+    ],
+    [
+     2553,
+     642
+    ],
+    [
+     2550,
+     789
+    ],
+    [
+     243,
+     731
+    ]
+   ],
+   "b_text": "coaste and cmade ot as a wefue",
+   "b_score": 0.7842,
+   "ink_px": 33543,
+   "ink_frac": 0.091
+  },
+  {
+   "text": "product. If we does not take proper",
+   "text_raw": "product . If we does not take proper",
+   "score": 0.9005,
+   "min_token_prob": 0.5517,
+   "flags": [],
+   "box": [
+    225,
+    720,
+    2741,
+    938
+   ],
+   "poly": [
+    [
+     229,
+     720
+    ],
+    [
+     2741,
+     795
+    ],
+    [
+     2737,
+     938
+    ],
+    [
+     225,
+     863
+    ]
+   ],
+   "b_text": "product. ifp we doenoet ctake proper",
+   "b_score": 0.8239,
+   "ink_px": 40147,
+   "ink_frac": 0.1026
+  },
+  {
+   "text": "waste management",
+   "text_raw": "waste management",
+   "score": 0.8783,
+   "min_token_prob": 0.5548,
+   "flags": [],
+   "box": [
+    258,
+    867,
+    1277,
+    1021
+   ],
+   "poly": [
+    [
+     263,
+     867
+    ],
+    [
+     1277,
+     912
+    ],
+    [
+     1272,
+     1021
+    ],
+    [
+     258,
+     976
+    ]
+   ],
+   "b_text": "waste mangemont",
+   "b_score": 0.854,
+   "ink_px": 16510,
+   "ink_frac": 0.133
+  },
+  {
+   "text": "on plastic to will",
+   "text_raw": "on plastic to will",
+   "score": 0.8249,
+   "min_token_prob": 0.3073,
+   "flags": [],
+   "box": [
+    1375,
+    912,
+    2565,
+    1038
+   ],
+   "poly": [
+    [
+     1376,
+     912
+    ],
+    [
+     2565,
+     921
+    ],
+    [
+     2564,
+     1038
+    ],
+    [
+     1375,
+     1029
+    ]
+   ],
+   "b_text": "ah platec ib ull",
+   "b_score": 0.6086,
+   "ink_px": 18751,
+   "ink_frac": 0.121
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.4853,
+   "min_token_prob": 0.4569,
+   "flags": [],
+   "box": [
+    1243,
+    941,
+    1287,
+    989
+   ],
+   "poly": [
+    [
+     1243,
+     941
+    ],
+    [
+     1287,
+     941
+    ],
+    [
+     1287,
+     989
+    ],
+    [
+     1243,
+     989
+    ]
+   ],
+   "b_text": "-",
+   "b_score": 0.3359,
+   "ink_px": 252,
+   "ink_frac": 0.075
+  },
+  {
+   "text": "dotally effect.",
+   "text_raw": "dotally effect .",
+   "score": 0.9343,
+   "min_token_prob": 0.7616,
+   "flags": [],
+   "box": [
+    267,
+    996,
+    1320,
+    1187
+   ],
+   "poly": [
+    [
+     271,
+     996
+    ],
+    [
+     1320,
+     1022
+    ],
+    [
+     1316,
+     1187
+    ],
+    [
+     267,
+     1161
+    ]
+   ],
+   "b_text": "ctotally affect.",
+   "b_score": 0.7499,
+   "ink_px": 16388,
+   "ink_frac": 0.0873
+  },
+  {
+   "text": "the all organisms.",
+   "text_raw": "the all organisms .",
+   "score": 0.9394,
+   "min_token_prob": 0.8455,
+   "flags": [],
+   "box": [
+    1337,
+    1047,
+    2619,
+    1193
+   ],
+   "poly": [
+    [
+     1338,
+     1047
+    ],
+    [
+     2619,
+     1062
+    ],
+    [
+     2617,
+     1193
+    ],
+    [
+     1337,
+     1178
+    ]
+   ],
+   "b_text": "athe all organisms.",
+   "b_score": 0.7743,
+   "ink_px": 21932,
+   "ink_frac": 0.1186
+  },
+  {
+   "text": "Plastic are the iron-bhodograd",
+   "text_raw": "Plastic are the iron-bhodograd",
+   "score": 0.8112,
+   "min_token_prob": 0.477,
+   "flags": [],
+   "box": [
+    888,
+    1267,
+    2850,
+    1485
+   ],
+   "poly": [
+    [
+     893,
+     1267
+    ],
+    [
+     2850,
+     1329
+    ],
+    [
+     2845,
+     1485
+    ],
+    [
+     888,
+     1424
+    ]
+   ],
+   "b_text": "Plastpc are the enon- bpodograd",
+   "b_score": 0.8285,
+   "ink_px": 34122,
+   "ink_frac": 0.1025
+  },
+  {
+   "text": "after",
+   "text_raw": "after",
+   "score": 0.4673,
+   "min_token_prob": 0.2781,
+   "flags": [],
+   "box": [
+    1459,
+    1261,
+    1499,
+    1293
+   ],
+   "poly": [
+    [
+     1467,
+     1261
+    ],
+    [
+     1499,
+     1277
+    ],
+    [
+     1491,
+     1293
+    ],
+    [
+     1459,
+     1277
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 238,
+   "ink_frac": 0.2112
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.4471,
+   "min_token_prob": 0.1359,
+   "flags": [],
+   "box": [
+    2011,
+    1285,
+    2031,
+    1303
+   ],
+   "poly": [
+    [
+     2011,
+     1285
+    ],
+    [
+     2031,
+     1285
+    ],
+    [
+     2031,
+     1303
+    ],
+    [
+     2011,
+     1303
+    ]
+   ],
+   "b_text": "小",
+   "b_score": 0.1298,
+   "ink_px": 187,
+   "ink_frac": 0.1948
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.4117,
+   "min_token_prob": 0.1502,
+   "flags": [],
+   "box": [
+    2065,
+    1287,
+    2125,
+    1327
+   ],
+   "poly": [
+    [
+     2065,
+     1287
+    ],
+    [
+     2125,
+     1287
+    ],
+    [
+     2125,
+     1327
+    ],
+    [
+     2065,
+     1327
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.1817,
+   "ink_px": 435,
+   "ink_frac": 0.1162
+  },
+  {
+   "text": "firmings",
+   "text_raw": "firmings",
+   "score": 0.2299,
+   "min_token_prob": 0.0677,
+   "flags": [],
+   "box": [
+    2139,
+    1287,
+    2169,
+    1307
+   ],
+   "poly": [
+    [
+     2139,
+     1287
+    ],
+    [
+     2169,
+     1287
+    ],
+    [
+     2169,
+     1307
+    ],
+    [
+     2139,
+     1307
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.0475,
+   "ink_px": 359,
+   "ink_frac": 0.2671
+  },
+  {
+   "text": "noaste.",
+   "text_raw": "noaste .",
+   "score": 0.5834,
+   "min_token_prob": 0.1599,
+   "flags": [],
+   "box": [
+    249,
+    1423,
+    656,
+    1532
+   ],
+   "poly": [
+    [
+     251,
+     1423
+    ],
+    [
+     656,
+     1428
+    ],
+    [
+     655,
+     1532
+    ],
+    [
+     249,
+     1528
+    ]
+   ],
+   "b_text": "w0esto",
+   "b_score": 0.3759,
+   "ink_px": 5876,
+   "ink_frac": 0.1201
+  },
+  {
+   "text": "it does had",
+   "text_raw": "it does had",
+   "score": 0.7045,
+   "min_token_prob": 0.2338,
+   "flags": [],
+   "box": [
+    791,
+    1424,
+    1777,
+    1598
+   ],
+   "poly": [
+    [
+     797,
+     1424
+    ],
+    [
+     1777,
+     1467
+    ],
+    [
+     1771,
+     1598
+    ],
+    [
+     791,
+     1554
+    ]
+   ],
+   "b_text": "at doos.chod.",
+   "b_score": 0.7795,
+   "ink_px": 13499,
+   "ink_frac": 0.0952
+  },
+  {
+   "text": "mable",
+   "text_raw": "mable",
+   "score": 0.6179,
+   "min_token_prob": 0.3877,
+   "flags": [],
+   "box": [
+    2417,
+    1444,
+    2763,
+    1567
+   ],
+   "poly": [
+    [
+     2417,
+     1459
+    ],
+    [
+     2759,
+     1444
+    ],
+    [
+     2763,
+     1553
+    ],
+    [
+     2422,
+     1567
+    ]
+   ],
+   "b_text": "ab0",
+   "b_score": 0.6825,
+   "ink_px": 5198,
+   "ink_frac": 0.1214
+  },
+  {
+   "text": "degrade",
+   "text_raw": "degrade",
+   "score": 0.8078,
+   "min_token_prob": 0.5041,
+   "flags": [],
+   "box": [
+    1878,
+    1477,
+    2381,
+    1603
+   ],
+   "poly": [
+    [
+     1878,
+     1482
+    ],
+    [
+     2380,
+     1477
+    ],
+    [
+     2381,
+     1598
+    ],
+    [
+     1880,
+     1603
+    ]
+   ],
+   "b_text": "deprado",
+   "b_score": 0.7558,
+   "ink_px": 10446,
+   "ink_frac": 0.1528
+  },
+  {
+   "text": "easaly and",
+   "text_raw": "easaly and",
+   "score": 0.8195,
+   "min_token_prob": 0.3261,
+   "flags": [],
+   "box": [
+    222,
+    1544,
+    919,
+    1718
+   ],
+   "poly": [
+    [
+     227,
+     1544
+    ],
+    [
+     919,
+     1570
+    ],
+    [
+     914,
+     1718
+    ],
+    [
+     222,
+     1693
+    ]
+   ],
+   "b_text": "easaly and",
+   "b_score": 0.8887,
+   "ink_px": 11357,
+   "ink_frac": 0.1002
+  },
+  {
+   "text": "many of castles.",
+   "text_raw": "many of castles .",
+   "score": 0.9636,
+   "min_token_prob": 0.833,
+   "flags": [],
+   "box": [
+    1032,
+    1583,
+    2004,
+    1760
+   ],
+   "poly": [
+    [
+     1036,
+     1583
+    ],
+    [
+     2004,
+     1607
+    ],
+    [
+     2000,
+     1760
+    ],
+    [
+     1032,
+     1736
+    ]
+   ],
+   "b_text": "mang of satlles",
+   "b_score": 0.8241,
+   "ink_px": 18454,
+   "ink_frac": 0.1141
+  },
+  {
+   "text": "are ate in",
+   "text_raw": "are ate in",
+   "score": 0.7324,
+   "min_token_prob": 0.2434,
+   "flags": [],
+   "box": [
+    2064,
+    1614,
+    2818,
+    1766
+   ],
+   "poly": [
+    [
+     2065,
+     1614
+    ],
+    [
+     2818,
+     1621
+    ],
+    [
+     2817,
+     1766
+    ],
+    [
+     2064,
+     1759
+    ]
+   ],
+   "b_text": "are gto 9",
+   "b_score": 0.7375,
+   "ink_px": 13724,
+   "ink_frac": 0.1143
+  },
+  {
+   "text": "and dead.",
+   "text_raw": "and dead .",
+   "score": 0.8671,
+   "min_token_prob": 0.4711,
+   "flags": [],
+   "box": [
+    229,
+    1698,
+    906,
+    1830
+   ],
+   "poly": [
+    [
+     231,
+     1698
+    ],
+    [
+     906,
+     1712
+    ],
+    [
+     904,
+     1830
+    ],
+    [
+     229,
+     1817
+    ]
+   ],
+   "b_text": "and cleed.",
+   "b_score": 0.7349,
+   "ink_px": 11380,
+   "ink_frac": 0.1264
+  },
+  {
+   "text": "e",
+   "text_raw": "e",
+   "score": 0.5396,
+   "min_token_prob": 0.3316,
+   "flags": [],
+   "box": [
+    1879,
+    1719,
+    1897,
+    1731
+   ],
+   "poly": [
+    [
+     1879,
+     1719
+    ],
+    [
+     1897,
+     1719
+    ],
+    [
+     1897,
+     1731
+    ],
+    [
+     1879,
+     1731
+    ]
+   ],
+   "b_text": "海",
+   "b_score": 0.1497,
+   "ink_px": 71,
+   "ink_frac": 0.0986
+  },
+  {
+   "text": "ITAIN FORT",
+   "text_raw": "ITAIN FORT",
+   "score": 0.3232,
+   "min_token_prob": 0.0783,
+   "flags": [],
+   "box": [
+    2115,
+    1820,
+    2480,
+    1924
+   ],
+   "poly": [
+    [
+     2120,
+     1820
+    ],
+    [
+     2480,
+     1845
+    ],
+    [
+     2475,
+     1924
+    ],
+    [
+     2115,
+     1898
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 2977,
+   "ink_frac": 0.0879
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8911,
+   "min_token_prob": 0.791,
+   "flags": [],
+   "box": [
+    1157,
+    1934,
+    1175,
+    1946
+   ],
+   "poly": [
+    [
+     1157,
+     1934
+    ],
+    [
+     1175,
+     1934
+    ],
+    [
+     1175,
+     1946
+    ],
+    [
+     1157,
+     1946
+    ]
+   ],
+   "b_text": "4",
+   "b_score": 0.7508,
+   "ink_px": 100,
+   "ink_frac": 0.1389
+  },
+  {
+   "text": "se",
+   "text_raw": "se",
+   "score": 0.5142,
+   "min_token_prob": 0.1235,
+   "flags": [],
+   "box": [
+    360,
+    1952,
+    378,
+    1968
+   ],
+   "poly": [
+    [
+     360,
+     1952
+    ],
+    [
+     378,
+     1952
+    ],
+    [
+     378,
+     1968
+    ],
+    [
+     360,
+     1968
+    ]
+   ],
+   "b_text": "8",
+   "b_score": 0.1143,
+   "ink_px": 102,
+   "ink_frac": 0.1214
+  },
+  {
+   "text": "We chose guide the students",
+   "text_raw": "We chose guide the students",
+   "score": 0.831,
+   "min_token_prob": 0.315,
+   "flags": [],
+   "box": [
+    886,
+    1983,
+    2750,
+    2185
+   ],
+   "poly": [
+    [
+     891,
+     1983
+    ],
+    [
+     2750,
+     2048
+    ],
+    [
+     2745,
+     2185
+    ],
+    [
+     886,
+     2120
+    ]
+   ],
+   "b_text": "woe chave gaide dhe setudonts",
+   "b_score": 0.8055,
+   "ink_px": 39397,
+   "ink_frac": 0.1412
+  },
+  {
+   "text": "f",
+   "text_raw": "f",
+   "score": 0.6206,
+   "min_token_prob": 0.3097,
+   "flags": [],
+   "box": [
+    1325,
+    1984,
+    1345,
+    2004
+   ],
+   "poly": [
+    [
+     1325,
+     1984
+    ],
+    [
+     1345,
+     1984
+    ],
+    [
+     1345,
+     2004
+    ],
+    [
+     1325,
+     2004
+    ]
+   ],
+   "b_text": "永",
+   "b_score": 0.0699,
+   "ink_px": 114,
+   "ink_frac": 0.1113
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7242,
+   "min_token_prob": 0.4585,
+   "flags": [],
+   "box": [
+    2276,
+    2006,
+    2296,
+    2026
+   ],
+   "poly": [
+    [
+     2276,
+     2006
+    ],
+    [
+     2296,
+     2006
+    ],
+    [
+     2296,
+     2026
+    ],
+    [
+     2276,
+     2026
+    ]
+   ],
+   "b_text": "品",
+   "b_score": 0.3151,
+   "ink_px": 116,
+   "ink_frac": 0.1133
+  },
+  {
+   "text": "effax.",
+   "text_raw": "effax .",
+   "score": 0.5156,
+   "min_token_prob": 0.1246,
+   "flags": [],
+   "box": [
+    2363,
+    1997,
+    2410,
+    2030
+   ],
+   "poly": [
+    [
+     2367,
+     1997
+    ],
+    [
+     2410,
+     2006
+    ],
+    [
+     2405,
+     2030
+    ],
+    [
+     2363,
+     2021
+    ]
+   ],
+   "b_text": "专",
+   "b_score": 0.0889,
+   "ink_px": 464,
+   "ink_frac": 0.2343
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8122,
+   "min_token_prob": 0.7708,
+   "flags": [],
+   "box": [
+    2404,
+    2016,
+    2426,
+    2035
+   ],
+   "poly": [
+    [
+     2404,
+     2016
+    ],
+    [
+     2426,
+     2016
+    ],
+    [
+     2426,
+     2035
+    ],
+    [
+     2404,
+     2035
+    ]
+   ],
+   "b_text": "4",
+   "b_score": 0.2162,
+   "ink_px": 131,
+   "ink_frac": 0.1243
+  },
+  {
+   "text": "and tell them about the drawbacks",
+   "text_raw": "and tell them about the drawbacks",
+   "score": 0.9266,
+   "min_token_prob": 0.6271,
+   "flags": [],
+   "box": [
+    203,
+    2108,
+    2787,
+    2329
+   ],
+   "poly": [
+    [
+     207,
+     2108
+    ],
+    [
+     2787,
+     2189
+    ],
+    [
+     2783,
+     2329
+    ],
+    [
+     203,
+     2248
+    ]
+   ],
+   "b_text": "and tele thom abaut tho drao baces",
+   "b_score": 0.7734,
+   "ink_px": 46318,
+   "ink_frac": 0.1175
+  },
+  {
+   "text": "of the usage of plastic and use",
+   "text_raw": "of the usage of plastic and use",
+   "score": 0.9021,
+   "min_token_prob": 0.6047,
+   "flags": [],
+   "box": [
+    258,
+    2254,
+    2654,
+    2486
+   ],
+   "poly": [
+    [
+     263,
+     2254
+    ],
+    [
+     2654,
+     2329
+    ],
+    [
+     2649,
+     2486
+    ],
+    [
+     258,
+     2411
+    ]
+   ],
+   "b_text": "of the usage of plastic. and cie",
+   "b_score": 0.8644,
+   "ink_px": 42165,
+   "ink_frac": 0.1038
+  },
+  {
+   "text": "ing the nation",
+   "text_raw": "ing the nation",
+   "score": 0.6125,
+   "min_token_prob": 0.1596,
+   "flags": [],
+   "box": [
+    1282,
+    2259,
+    1668,
+    2331
+   ],
+   "poly": [
+    [
+     1285,
+     2259
+    ],
+    [
+     1668,
+     2277
+    ],
+    [
+     1665,
+     2331
+    ],
+    [
+     1282,
+     2313
+    ]
+   ],
+   "b_text": "NO TH NATION",
+   "b_score": 0.8705,
+   "ink_px": 5910,
+   "ink_frac": 0.2267
+  },
+  {
+   "text": "can use into bio degradable plates instead of",
+   "text_raw": "can use into bio degradable plates instead of",
+   "score": 0.8663,
+   "min_token_prob": 0.3947,
+   "flags": [],
+   "box": [
+    258,
+    2401,
+    2794,
+    2643
+   ],
+   "poly": [
+    [
+     263,
+     2401
+    ],
+    [
+     2794,
+     2501
+    ],
+    [
+     2788,
+     2643
+    ],
+    [
+     258,
+     2544
+    ]
+   ],
+   "b_text": "can use pa bio degradable plates ahstead a",
+   "b_score": 0.782,
+   "ink_px": 46266,
+   "ink_frac": 0.1173
+  },
+  {
+   "text": "plastic plate.",
+   "text_raw": "plastic plate .",
+   "score": 0.8441,
+   "min_token_prob": 0.3272,
+   "flags": [],
+   "box": [
+    268,
+    2573,
+    864,
+    2688
+   ],
+   "poly": [
+    [
+     268,
+     2573
+    ],
+    [
+     864,
+     2578
+    ],
+    [
+     863,
+     2688
+    ],
+    [
+     268,
+     2684
+    ]
+   ],
+   "b_text": "plaste phto",
+   "b_score": 0.746,
+   "ink_px": 10747,
+   "ink_frac": 0.1437
+  },
+  {
+   "text": "s",
+   "text_raw": "s",
+   "score": 0.2905,
+   "min_token_prob": 0.1622,
+   "flags": [],
+   "box": [
+    901,
+    2642,
+    939,
+    2680
+   ],
+   "poly": [
+    [
+     901,
+     2662
+    ],
+    [
+     921,
+     2642
+    ],
+    [
+     939,
+     2660
+    ],
+    [
+     919,
+     2680
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.2144,
+   "ink_px": 811,
+   "ink_frac": 0.4771
+  },
+  {
+   "text": "Most of the coaste is collected",
+   "text_raw": "Most of the coaste is collected",
+   "score": 0.7325,
+   "min_token_prob": 0.2694,
+   "flags": [],
+   "box": [
+    788,
+    2843,
+    2774,
+    3064
+   ],
+   "poly": [
+    [
+     793,
+     2843
+    ],
+    [
+     2774,
+     2921
+    ],
+    [
+     2768,
+     3064
+    ],
+    [
+     788,
+     2986
+    ]
+   ],
+   "b_text": "Mosd of the coasste es colleded",
+   "b_score": 0.8979,
+   "ink_px": 38070,
+   "ink_frac": 0.1232
+  },
+  {
+   "text": "without segregation, and it will results on",
+   "text_raw": "without segregation , and it will results on",
+   "score": 0.8758,
+   "min_token_prob": 0.5003,
+   "flags": [],
+   "box": [
+    216,
+    2972,
+    2796,
+    3216
+   ],
+   "poly": [
+    [
+     221,
+     2972
+    ],
+    [
+     2796,
+     3074
+    ],
+    [
+     2790,
+     3216
+    ],
+    [
+     216,
+     3114
+    ]
+   ],
+   "b_text": "fthout sogregatoon, ahd at coill resuls n",
+   "b_score": 0.7527,
+   "ink_px": 53040,
+   "ink_frac": 0.133
+  },
+  {
+   "text": "improper disposal and environmental problems.",
+   "text_raw": "improper disposal and environmental problems .",
+   "score": 0.9469,
+   "min_token_prob": 0.7015,
+   "flags": [],
+   "box": [
+    237,
+    3110,
+    2942,
+    3386
+   ],
+   "poly": [
+    [
+     244,
+     3110
+    ],
+    [
+     2942,
+     3223
+    ],
+    [
+     2941,
+     3386
+    ],
+    [
+     237,
+     3273
+    ]
+   ],
+   "b_text": "Pmpropor desposal and enuaronmontal problom.",
+   "b_score": 0.8544,
+   "ink_px": 61222,
+   "ink_frac": 0.1287
+  },
+  {
+   "text": "Regarding helps the conserve other natural",
+   "text_raw": "Regarding helps the conserve other natural",
+   "score": 0.8274,
+   "min_token_prob": 0.3558,
+   "flags": [],
+   "box": [
+    264,
+    3259,
+    2918,
+    3532
+   ],
+   "poly": [
+    [
+     271,
+     3259
+    ],
+    [
+     2918,
+     3369
+    ],
+    [
+     2911,
+     3532
+    ],
+    [
+     264,
+     3422
+    ]
+   ],
+   "b_text": "Recucling shelps cthe cohserve cthe natural",
+   "b_score": 0.828,
+   "ink_px": 55339,
+   "ink_frac": 0.1188
+  },
+  {
+   "text": "resources.",
+   "text_raw": "resources .",
+   "score": 0.9948,
+   "min_token_prob": 0.9856,
+   "flags": [],
+   "box": [
+    260,
+    3444,
+    823,
+    3576
+   ],
+   "poly": [
+    [
+     265,
+     3444
+    ],
+    [
+     823,
+     3471
+    ],
+    [
+     818,
+     3576
+    ],
+    [
+     260,
+     3549
+    ]
+   ],
+   "b_text": "cesowrces.",
+   "b_score": 0.6532,
+   "ink_px": 12796,
+   "ink_frac": 0.1919
+  }
+ ],
+ "peak_torch_alloc_mib": 2709,
+ "peak_rss_mib_process": 2966
+}

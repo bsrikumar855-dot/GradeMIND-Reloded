@@ -1,0 +1,1024 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "engine_b (see b_dir)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_06.jpg",
+ "latency_s": 1.874,
+ "crop_s": 0.111,
+ "recognition_s": 1.763,
+ "model_load_s": 0.79,
+ "n_lines": 28,
+ "n_no_text": 0,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.7053,
+   "min_token_prob": 0.324,
+   "flags": [],
+   "box": [
+    17,
+    43,
+    34,
+    249
+   ],
+   "poly": [
+    [
+     17,
+     43
+    ],
+    [
+     34,
+     43
+    ],
+    [
+     34,
+     249
+    ],
+    [
+     17,
+     249
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 874,
+   "ink_frac": 0.1382
+  },
+  {
+   "text": "The organisms' in geographical region",
+   "text_raw": "The organisms ' in geographical region",
+   "score": 0.8848,
+   "min_token_prob": 0.6879,
+   "flags": [],
+   "box": [
+    539,
+    403,
+    2352,
+    563
+   ],
+   "poly": [
+    [
+     542,
+     403
+    ],
+    [
+     2352,
+     459
+    ],
+    [
+     2349,
+     563
+    ],
+    [
+     539,
+     507
+    ]
+   ],
+   "b_text": "The ooganisms cen geogoahecal regfon",
+   "b_score": 0.7305,
+   "ink_px": 26129,
+   "ink_frac": 0.1236
+  },
+  {
+   "text": "chack-do\" she described. A \"species - An",
+   "text_raw": "chack-do\" she described . A \"species - An",
+   "score": 0.6566,
+   "min_token_prob": 0.3108,
+   "flags": [],
+   "box": [
+    295,
+    526,
+    2158,
+    653
+   ],
+   "poly": [
+    [
+     297,
+     526
+    ],
+    [
+     2158,
+     573
+    ],
+    [
+     2156,
+     653
+    ],
+    [
+     295,
+     606
+    ]
+   ],
+   "b_text": "chadcto cbo desfurbeclA ispecees an",
+   "b_score": 0.6542,
+   "ink_px": 21592,
+   "ink_frac": 0.1253
+  },
+  {
+   "text": "with fresh counter eco system alike fish,prawn",
+   "text_raw": "with fresh counter eco system alike fish ,prawn",
+   "score": 0.7847,
+   "min_token_prob": 0.183,
+   "flags": [],
+   "box": [
+    300,
+    635,
+    2333,
+    786
+   ],
+   "poly": [
+    [
+     302,
+     635
+    ],
+    [
+     2333,
+     684
+    ],
+    [
+     2331,
+     786
+    ],
+    [
+     300,
+     737
+    ]
+   ],
+   "b_text": "ethe frosh ceater Oco sysetem cleke ffh, poan",
+   "b_score": 0.6804,
+   "ink_px": 26571,
+   "ink_frac": 0.1141
+  },
+  {
+   "text": "are died due to water pollution. If we",
+   "text_raw": "are died due to water pollution . If we",
+   "score": 0.9893,
+   "min_token_prob": 0.9573,
+   "flags": [],
+   "box": [
+    296,
+    750,
+    2164,
+    890
+   ],
+   "poly": [
+    [
+     299,
+     750
+    ],
+    [
+     2164,
+     798
+    ],
+    [
+     2161,
+     890
+    ],
+    [
+     296,
+     842
+    ]
+   ],
+   "b_text": "are dred due to water polladpon If coe",
+   "b_score": 0.7134,
+   "ink_px": 22931,
+   "ink_frac": 0.1175
+  },
+  {
+   "text": "pollute the fresh wonder",
+   "text_raw": "pollute the fresh wonder",
+   "score": 0.8288,
+   "min_token_prob": 0.1848,
+   "flags": [],
+   "box": [
+    291,
+    868,
+    1400,
+    987
+   ],
+   "poly": [
+    [
+     294,
+     868
+    ],
+    [
+     1400,
+     898
+    ],
+    [
+     1397,
+     987
+    ],
+    [
+     291,
+     956
+    ]
+   ],
+   "b_text": "pollute the fregh csatles",
+   "b_score": 0.7499,
+   "ink_px": 14666,
+   "ink_frac": 0.1299
+  },
+  {
+   "text": "many spieices.",
+   "text_raw": "many spieices .",
+   "score": 0.741,
+   "min_token_prob": 0.4065,
+   "flags": [],
+   "box": [
+    1543,
+    913,
+    2156,
+    1000
+   ],
+   "poly": [
+    [
+     1544,
+     913
+    ],
+    [
+     2156,
+     918
+    ],
+    [
+     2156,
+     1000
+    ],
+    [
+     1543,
+     994
+    ]
+   ],
+   "b_text": "cmangy spp eices",
+   "b_score": 0.7328,
+   "ink_px": 9562,
+   "ink_frac": 0.1628
+  },
+  {
+   "text": "are got disturbed.",
+   "text_raw": "are got disturbed .",
+   "score": 0.9982,
+   "min_token_prob": 0.9958,
+   "flags": [],
+   "box": [
+    308,
+    978,
+    1152,
+    1106
+   ],
+   "poly": [
+    [
+     312,
+     978
+    ],
+    [
+     1152,
+     1013
+    ],
+    [
+     1148,
+     1106
+    ],
+    [
+     308,
+     1072
+    ]
+   ],
+   "b_text": "age got desturbed.",
+   "b_score": 0.8074,
+   "ink_px": 11117,
+   "ink_frac": 0.1231
+  },
+  {
+   "text": "(",
+   "text_raw": "(",
+   "score": 0.7554,
+   "min_token_prob": 0.5347,
+   "flags": [],
+   "box": [
+    1810,
+    1131,
+    1839,
+    1164
+   ],
+   "poly": [
+    [
+     1810,
+     1140
+    ],
+    [
+     1825,
+     1131
+    ],
+    [
+     1839,
+     1155
+    ],
+    [
+     1824,
+     1164
+    ]
+   ],
+   "b_text": "A",
+   "b_score": 0.761,
+   "ink_px": 105,
+   "ink_frac": 0.0987
+  },
+  {
+   "text": "We can use the 3R\" principle",
+   "text_raw": "We can use the 3R\" principle",
+   "score": 0.7645,
+   "min_token_prob": 0.3388,
+   "flags": [],
+   "box": [
+    670,
+    1217,
+    2269,
+    1362
+   ],
+   "poly": [
+    [
+     673,
+     1217
+    ],
+    [
+     2269,
+     1265
+    ],
+    [
+     2266,
+     1362
+    ],
+    [
+     670,
+     1314
+    ]
+   ],
+   "b_text": "we Can use cthe 3rprinciple",
+   "b_score": 0.7402,
+   "ink_px": 18538,
+   "ink_frac": 0.1058
+  },
+  {
+   "text": "here to produce the master. That",
+   "text_raw": "here to produce the master . That",
+   "score": 0.8575,
+   "min_token_prob": 0.5754,
+   "flags": [],
+   "box": [
+    277,
+    1322,
+    2176,
+    1478
+   ],
+   "poly": [
+    [
+     280,
+     1322
+    ],
+    [
+     2176,
+     1380
+    ],
+    [
+     2173,
+     1478
+    ],
+    [
+     277,
+     1420
+    ]
+   ],
+   "b_text": "here to oduce the coastes that",
+   "b_score": 0.7054,
+   "ink_px": 21231,
+   "ink_frac": 0.1012
+  },
+  {
+   "text": "are made in house. Firstly use have",
+   "text_raw": "are made in house . Firstly use have",
+   "score": 0.8883,
+   "min_token_prob": 0.5082,
+   "flags": [],
+   "box": [
+    280,
+    1450,
+    2252,
+    1581
+   ],
+   "poly": [
+    [
+     281,
+     1450
+    ],
+    [
+     2252,
+     1494
+    ],
+    [
+     2250,
+     1581
+    ],
+    [
+     280,
+     1537
+    ]
+   ],
+   "b_text": "ane comaide gn houseFargitly uoe hae",
+   "b_score": 0.6844,
+   "ink_px": 22890,
+   "ink_frac": 0.1166
+  },
+  {
+   "text": "to",
+   "text_raw": "to",
+   "score": 0.9789,
+   "min_token_prob": 0.9657,
+   "flags": [],
+   "box": [
+    282,
+    1535,
+    477,
+    1643
+   ],
+   "poly": [
+    [
+     288,
+     1535
+    ],
+    [
+     477,
+     1546
+    ],
+    [
+     471,
+     1643
+    ],
+    [
+     282,
+     1632
+    ]
+   ],
+   "b_text": "t0",
+   "b_score": 0.673,
+   "ink_px": 1767,
+   "ink_frac": 0.0807
+  },
+  {
+   "text": "sperate: dry waste",
+   "text_raw": "sperate : dry waste",
+   "score": 0.7977,
+   "min_token_prob": 0.2957,
+   "flags": [],
+   "box": [
+    465,
+    1566,
+    1573,
+    1683
+   ],
+   "poly": [
+    [
+     467,
+     1566
+    ],
+    [
+     1573,
+     1591
+    ],
+    [
+     1571,
+     1683
+    ],
+    [
+     465,
+     1658
+    ]
+   ],
+   "b_text": "Sporatethe csaste",
+   "b_score": 0.7267,
+   "ink_px": 12290,
+   "ink_frac": 0.1057
+  },
+  {
+   "text": "ibased on",
+   "text_raw": "ibased on",
+   "score": 0.9204,
+   "min_token_prob": 0.6908,
+   "flags": [],
+   "box": [
+    1678,
+    1581,
+    2157,
+    1691
+   ],
+   "poly": [
+    [
+     1682,
+     1581
+    ],
+    [
+     2157,
+     1602
+    ],
+    [
+     2153,
+     1691
+    ],
+    [
+     1678,
+     1670
+    ]
+   ],
+   "b_text": "ibased on",
+   "b_score": 0.8341,
+   "ink_px": 7134,
+   "ink_frac": 0.145
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5874,
+   "min_token_prob": 0.1799,
+   "flags": [],
+   "box": [
+    1597,
+    1591,
+    1632,
+    1619
+   ],
+   "poly": [
+    [
+     1597,
+     1599
+    ],
+    [
+     1626,
+     1591
+    ],
+    [
+     1632,
+     1611
+    ],
+    [
+     1603,
+     1619
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.0661,
+   "ink_px": 98,
+   "ink_frac": 0.0747
+  },
+  {
+   "text": "the depordable celebrity.",
+   "text_raw": "the depordable celebrity .",
+   "score": 0.61,
+   "min_token_prob": 0.268,
+   "flags": [],
+   "box": [
+    275,
+    1645,
+    1531,
+    1822
+   ],
+   "poly": [
+    [
+     280,
+     1645
+    ],
+    [
+     1531,
+     1696
+    ],
+    [
+     1526,
+     1822
+    ],
+    [
+     275,
+     1771
+    ]
+   ],
+   "b_text": "tho clegoadable cty.",
+   "b_score": 0.7495,
+   "ink_px": 17699,
+   "ink_frac": 0.1015
+  },
+  {
+   "text": "1",
+   "text_raw": "1",
+   "score": 0.3683,
+   "min_token_prob": 0.2037,
+   "flags": [],
+   "box": [
+    1813,
+    1737,
+    1834,
+    1766
+   ],
+   "poly": [
+    [
+     1813,
+     1737
+    ],
+    [
+     1834,
+     1737
+    ],
+    [
+     1834,
+     1766
+    ],
+    [
+     1813,
+     1766
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.3014,
+   "ink_px": 100,
+   "ink_frac": 0.0739
+  },
+  {
+   "text": "# FIL FELD",
+   "text_raw": "# FIL FELD",
+   "score": 0.211,
+   "min_token_prob": 0.0928,
+   "flags": [],
+   "box": [
+    1165,
+    1853,
+    1399,
+    1882
+   ],
+   "poly": [
+    [
+     1165,
+     1853
+    ],
+    [
+     1399,
+     1853
+    ],
+    [
+     1399,
+     1882
+    ],
+    [
+     1165,
+     1882
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 1460,
+   "ink_frac": 0.1448
+  },
+  {
+   "text": "we can lose \" the composting method",
+   "text_raw": "we can lose \" the composting method",
+   "score": 0.8474,
+   "min_token_prob": 0.3411,
+   "flags": [],
+   "box": [
+    647,
+    1889,
+    2393,
+    2057
+   ],
+   "poly": [
+    [
+     651,
+     1889
+    ],
+    [
+     2393,
+     1941
+    ],
+    [
+     2390,
+     2057
+    ],
+    [
+     647,
+     2005
+    ]
+   ],
+   "b_text": "we can ase the composating mothod",
+   "b_score": 0.7819,
+   "ink_px": 24854,
+   "ink_frac": 0.1106
+  },
+  {
+   "text": "f",
+   "text_raw": "f",
+   "score": 0.2438,
+   "min_token_prob": 0.2136,
+   "flags": [],
+   "box": [
+    1423,
+    1904,
+    1440,
+    1930
+   ],
+   "poly": [
+    [
+     1423,
+     1904
+    ],
+    [
+     1440,
+     1904
+    ],
+    [
+     1440,
+     1930
+    ],
+    [
+     1423,
+     1930
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 131,
+   "ink_frac": 0.1189
+  },
+  {
+   "text": "to manage the domestic waste. We",
+   "text_raw": "to manage the domestic waste . We",
+   "score": 0.9043,
+   "min_token_prob": 0.4347,
+   "flags": [],
+   "box": [
+    303,
+    1998,
+    2293,
+    2173
+   ],
+   "poly": [
+    [
+     306,
+     1998
+    ],
+    [
+     2293,
+     2057
+    ],
+    [
+     2290,
+     2173
+    ],
+    [
+     303,
+     2114
+    ]
+   ],
+   "b_text": "do cmange cthe olomostec woaste.wae",
+   "b_score": 0.6936,
+   "ink_px": 23877,
+   "ink_frac": 0.0933
+  },
+  {
+   "text": "can use the degradable wakes to",
+   "text_raw": "can use the degradable wakes to",
+   "score": 0.7641,
+   "min_token_prob": 0.1307,
+   "flags": [],
+   "box": [
+    300,
+    2127,
+    2245,
+    2255
+   ],
+   "poly": [
+    [
+     302,
+     2127
+    ],
+    [
+     2245,
+     2163
+    ],
+    [
+     2243,
+     2255
+    ],
+    [
+     300,
+     2219
+    ]
+   ],
+   "b_text": "Can cse cthede gradable catos to",
+   "b_score": 0.7313,
+   "ink_px": 23265,
+   "ink_frac": 0.1144
+  },
+  {
+   "text": "feed other animals, chords (poultry),",
+   "text_raw": "feed other animals , chords ( poultry ) ,",
+   "score": 0.8342,
+   "min_token_prob": 0.2878,
+   "flags": [],
+   "box": [
+    303,
+    2218,
+    2347,
+    2401
+   ],
+   "poly": [
+    [
+     306,
+     2218
+    ],
+    [
+     2347,
+     2282
+    ],
+    [
+     2344,
+     2401
+    ],
+    [
+     303,
+     2337
+    ]
+   ],
+   "b_text": "foed cthe anemals, cberde (poulltry)",
+   "b_score": 0.7256,
+   "ink_px": 27810,
+   "ink_frac": 0.1034
+  },
+  {
+   "text": "etcorp.",
+   "text_raw": "etcorp .",
+   "score": 0.812,
+   "min_token_prob": 0.7018,
+   "flags": [],
+   "box": [
+    309,
+    2350,
+    588,
+    2447
+   ],
+   "poly": [
+    [
+     314,
+     2350
+    ],
+    [
+     588,
+     2369
+    ],
+    [
+     583,
+     2447
+    ],
+    [
+     309,
+     2429
+    ]
+   ],
+   "b_text": "Oc.",
+   "b_score": 0.408,
+   "ink_px": 2377,
+   "ink_frac": 0.0913
+  },
+  {
+   "text": "It will help to reduce the",
+   "text_raw": "It will help to reduce the",
+   "score": 0.944,
+   "min_token_prob": 0.7662,
+   "flags": [],
+   "box": [
+    697,
+    2460,
+    2257,
+    2603
+   ],
+   "poly": [
+    [
+     700,
+     2460
+    ],
+    [
+     2257,
+     2499
+    ],
+    [
+     2254,
+     2603
+    ],
+    [
+     697,
+     2564
+    ]
+   ],
+   "b_text": "It copll chelp to reduce the",
+   "b_score": 0.6997,
+   "ink_px": 20982,
+   "ink_frac": 0.1153
+  },
+  {
+   "text": "waste in the environment and doe not",
+   "text_raw": "waste in the environment and doe not",
+   "score": 0.8858,
+   "min_token_prob": 0.4322,
+   "flags": [],
+   "box": [
+    318,
+    2568,
+    2362,
+    2717
+   ],
+   "poly": [
+    [
+     321,
+     2568
+    ],
+    [
+     2362,
+     2613
+    ],
+    [
+     2360,
+     2717
+    ],
+    [
+     318,
+     2672
+    ]
+   ],
+   "b_text": "woaato in othe onuronmont and doenot",
+   "b_score": 0.7372,
+   "ink_px": 27673,
+   "ink_frac": 0.1161
+  },
+  {
+   "text": "affect the ecosystem.",
+   "text_raw": "affect the ecosystem .",
+   "score": 0.9776,
+   "min_token_prob": 0.9165,
+   "flags": [],
+   "box": [
+    319,
+    2682,
+    1418,
+    2809
+   ],
+   "poly": [
+    [
+     320,
+     2682
+    ],
+    [
+     1418,
+     2688
+    ],
+    [
+     1417,
+     2809
+    ],
+    [
+     319,
+     2803
+    ]
+   ],
+   "b_text": "affoct the ecosyatem.",
+   "b_score": 0.7836,
+   "ink_px": 17903,
+   "ink_frac": 0.1213
+  }
+ ],
+ "peak_torch_alloc_mib": 2674,
+ "peak_rss_mib_process": 2968
+}

@@ -1,0 +1,387 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv5_server_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det",
+   "sha256": {
+    "config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv5_server_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_rec",
+   "sha256": {
+    "config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_02.jpg",
+ "latency_s": 18.708,
+ "model_load_s": 0.42,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "Part-A",
+   "score": 0.9196,
+   "poly": [
+    [
+     699,
+     278
+    ],
+    [
+     1089,
+     278
+    ],
+    [
+     1089,
+     389
+    ],
+    [
+     699,
+     389
+    ]
+   ],
+   "box": [
+    699,
+    278,
+    1089,
+    389
+   ]
+  },
+  {
+   "text": "2. non-botic componants",
+   "score": 0.7452,
+   "poly": [
+    [
+     72,
+     762
+    ],
+    [
+     1206,
+     777
+    ],
+    [
+     1205,
+     890
+    ],
+    [
+     71,
+     875
+    ]
+   ],
+   "box": [
+    71,
+    762,
+    1206,
+    890
+   ]
+  },
+  {
+   "text": "3. cJplants",
+   "score": 0.8846,
+   "poly": [
+    [
+     78,
+     1009
+    ],
+    [
+     600,
+     1001
+    ],
+    [
+     602,
+     1123
+    ],
+    [
+     80,
+     1132
+    ]
+   ],
+   "box": [
+    78,
+    1001,
+    602,
+    1132
+   ]
+  },
+  {
+   "text": "4. wator",
+   "score": 0.8116,
+   "poly": [
+    [
+     67,
+     1227
+    ],
+    [
+     490,
+     1234
+    ],
+    [
+     488,
+     1388
+    ],
+    [
+     65,
+     1381
+    ]
+   ],
+   "box": [
+    65,
+    1227,
+    490,
+    1388
+   ]
+  },
+  {
+   "text": "s.a7ciradar",
+   "score": 0.7855,
+   "poly": [
+    [
+     66,
+     1466
+    ],
+    [
+     721,
+     1479
+    ],
+    [
+     718,
+     1640
+    ],
+    [
+     63,
+     1627
+    ]
+   ],
+   "box": [
+    63,
+    1466,
+    721,
+    1640
+   ]
+  },
+  {
+   "text": "C. True",
+   "score": 0.8554,
+   "poly": [
+    [
+     67,
+     1714
+    ],
+    [
+     466,
+     1740
+    ],
+    [
+     456,
+     1888
+    ],
+    [
+     57,
+     1863
+    ]
+   ],
+   "box": [
+    57,
+    1714,
+    466,
+    1888
+   ]
+  },
+  {
+   "text": "+ .onurorental chage",
+   "score": 0.6975,
+   "poly": [
+    [
+     75,
+     1981
+    ],
+    [
+     1054,
+     1998
+    ],
+    [
+     1052,
+     2142
+    ],
+    [
+     72,
+     2126
+    ]
+   ],
+   "box": [
+    72,
+    1981,
+    1054,
+    2142
+   ]
+  },
+  {
+   "text": "True",
+   "score": 0.9525,
+   "poly": [
+    [
+     203,
+     2253
+    ],
+    [
+     470,
+     2265
+    ],
+    [
+     465,
+     2388
+    ],
+    [
+     197,
+     2375
+    ]
+   ],
+   "box": [
+    197,
+    2253,
+    470,
+    2388
+   ]
+  },
+  {
+   "text": "81",
+   "score": 0.7632,
+   "poly": [
+    [
+     77,
+     2264
+    ],
+    [
+     182,
+     2264
+    ],
+    [
+     182,
+     2355
+    ],
+    [
+     77,
+     2355
+    ]
+   ],
+   "box": [
+    77,
+    2264,
+    182,
+    2355
+   ]
+  },
+  {
+   "text": "9.gcarbon Monozcide",
+   "score": 0.7477,
+   "poly": [
+    [
+     74,
+     2510
+    ],
+    [
+     943,
+     2514
+    ],
+    [
+     943,
+     2642
+    ],
+    [
+     73,
+     2638
+    ]
+   ],
+   "box": [
+    73,
+    2510,
+    943,
+    2642
+   ]
+  },
+  {
+   "text": "10 deforestatior",
+   "score": 0.7891,
+   "poly": [
+    [
+     22,
+     2740
+    ],
+    [
+     759,
+     2740
+    ],
+    [
+     759,
+     2930
+    ],
+    [
+     22,
+     2930
+    ]
+   ],
+   "box": [
+    22,
+    2740,
+    759,
+    2930
+   ]
+  },
+  {
+   "text": "11aMirerals",
+   "score": 0.6467,
+   "poly": [
+    [
+     14,
+     2978
+    ],
+    [
+     740,
+     2998
+    ],
+    [
+     736,
+     3165
+    ],
+    [
+     10,
+     3145
+    ]
+   ],
+   "box": [
+    10,
+    2978,
+    740,
+    3165
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 14317
+}

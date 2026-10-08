@@ -1,0 +1,525 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "resolved": {
+  "det": {
+   "name": "PP-OCRv6_medium_det",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det",
+   "sha256": {
+    "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+    "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+    "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+   }
+  },
+  "rec": {
+   "name": "PP-OCRv6_medium_rec",
+   "dir": "/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec",
+   "sha256": {
+    "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+    "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+    "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+   }
+  }
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_03.jpg",
+ "latency_s": 11.428,
+ "model_load_s": 0.41,
+ "n_lines": 17,
+ "lines": [
+  {
+   "text": "Seel estin:",
+   "score": 0.6563,
+   "poly": [
+    [
+     455,
+     471
+    ],
+    [
+     1112,
+     504
+    ],
+    [
+     1106,
+     625
+    ],
+    [
+     448,
+     592
+    ]
+   ],
+   "box": [
+    448,
+    471,
+    1112,
+    625
+   ]
+  },
+  {
+   "text": "Id es a dind of ctatural disnn",
+   "score": 0.8382,
+   "poly": [
+    [
+     893,
+     596
+    ],
+    [
+     2803,
+     605
+    ],
+    [
+     2802,
+     762
+    ],
+    [
+     893,
+     753
+    ]
+   ],
+   "box": [
+    893,
+    596,
+    2803,
+    762
+   ]
+  },
+  {
+   "text": "leds ired topsid.",
+   "score": 0.6687,
+   "poly": [
+    [
+     352,
+     868
+    ],
+    [
+     1427,
+     907
+    ],
+    [
+     1422,
+     1033
+    ],
+    [
+     347,
+     993
+    ]
+   ],
+   "box": [
+    347,
+    868,
+    1427,
+    1033
+   ]
+  },
+  {
+   "text": "一",
+   "score": 0.3186,
+   "poly": [
+    [
+     2660,
+     875
+    ],
+    [
+     2845,
+     875
+    ],
+    [
+     2845,
+     982
+    ],
+    [
+     2660,
+     982
+    ]
+   ],
+   "box": [
+    2660,
+    875,
+    2845,
+    982
+   ]
+  },
+  {
+   "text": "4Fiood:",
+   "score": 0.8478,
+   "poly": [
+    [
+     269,
+     1262
+    ],
+    [
+     849,
+     1292
+    ],
+    [
+     843,
+     1408
+    ],
+    [
+     263,
+     1379
+    ]
+   ],
+   "box": [
+    263,
+    1262,
+    849,
+    1408
+   ]
+  },
+  {
+   "text": "Flood &s chapped due to cua",
+   "score": 0.7402,
+   "poly": [
+    [
+     831,
+     1406
+    ],
+    [
+     2755,
+     1489
+    ],
+    [
+     2749,
+     1622
+    ],
+    [
+     826,
+     1539
+    ]
+   ],
+   "box": [
+    826,
+    1406,
+    2755,
+    1622
+   ]
+  },
+  {
+   "text": "toinyill. It ss an ckind of tatcoal",
+   "score": 0.8416,
+   "poly": [
+    [
+     395,
+     1532
+    ],
+    [
+     2643,
+     1626
+    ],
+    [
+     2638,
+     1757
+    ],
+    [
+     390,
+     1663
+    ]
+   ],
+   "box": [
+    390,
+    1532,
+    2643,
+    1757
+   ]
+  },
+  {
+   "text": "disalia.",
+   "score": 0.7782,
+   "poly": [
+    [
+     367,
+     1669
+    ],
+    [
+     803,
+     1688
+    ],
+    [
+     799,
+     1797
+    ],
+    [
+     362,
+     1777
+    ]
+   ],
+   "box": [
+    362,
+    1669,
+    803,
+    1797
+   ]
+  },
+  {
+   "text": "Draghu",
+   "score": 0.8007,
+   "poly": [
+    [
+     486,
+     1807
+    ],
+    [
+     879,
+     1829
+    ],
+    [
+     872,
+     1941
+    ],
+    [
+     480,
+     1919
+    ]
+   ],
+   "box": [
+    480,
+    1807,
+    879,
+    1941
+   ]
+  },
+  {
+   "text": "2orght cus dtappood due to to",
+   "score": 0.8163,
+   "poly": [
+    [
+     842,
+     1943
+    ],
+    [
+     2838,
+     2063
+    ],
+    [
+     2831,
+     2187
+    ],
+    [
+     835,
+     2066
+    ]
+   ],
+   "box": [
+    835,
+    1943,
+    2838,
+    2187
+   ]
+  },
+  {
+   "text": "nfrtad ehr the paoticules area.",
+   "score": 0.7399,
+   "poly": [
+    [
+     357,
+     2051
+    ],
+    [
+     2270,
+     2171
+    ],
+    [
+     2263,
+     2296
+    ],
+    [
+     349,
+     2177
+    ]
+   ],
+   "box": [
+    349,
+    2051,
+    2270,
+    2296
+   ]
+  },
+  {
+   "text": "is tiae st coill ctappend.",
+   "score": 0.8508,
+   "poly": [
+    [
+     343,
+     2291
+    ],
+    [
+     1798,
+     2411
+    ],
+    [
+     1788,
+     2535
+    ],
+    [
+     333,
+     2414
+    ]
+   ],
+   "box": [
+    333,
+    2291,
+    1798,
+    2535
+   ]
+  },
+  {
+   "text": "3 rareats of Bodiuersly",
+   "score": 0.8276,
+   "poly": [
+    [
+     228,
+     2540
+    ],
+    [
+     1516,
+     2645
+    ],
+    [
+     1506,
+     2773
+    ],
+    [
+     218,
+     2667
+    ]
+   ],
+   "box": [
+    218,
+    2540,
+    1516,
+    2773
+   ]
+  },
+  {
+   "text": "f Id 8 alfet the fod ctafh",
+   "score": 0.8107,
+   "poly": [
+    [
+     573,
+     2818
+    ],
+    [
+     2437,
+     2995
+    ],
+    [
+     2424,
+     3126
+    ],
+    [
+     561,
+     2949
+    ]
+   ],
+   "box": [
+    561,
+    2818,
+    2437,
+    3126
+   ]
+  },
+  {
+   "text": "t Id ees alied edi. ecosustem",
+   "score": 0.7952,
+   "poly": [
+    [
+     572,
+     2934
+    ],
+    [
+     2390,
+     3132
+    ],
+    [
+     2375,
+     3263
+    ],
+    [
+     558,
+     3065
+    ]
+   ],
+   "box": [
+    558,
+    2934,
+    2390,
+    3263
+   ]
+  },
+  {
+   "text": " It is eids do extiision of",
+   "score": 0.8588,
+   "poly": [
+    [
+     588,
+     3045
+    ],
+    [
+     2454,
+     3261
+    ],
+    [
+     2435,
+     3421
+    ],
+    [
+     570,
+     3205
+    ]
+   ],
+   "box": [
+    570,
+    3045,
+    2454,
+    3421
+   ]
+  },
+  {
+   "text": "trore gecies.",
+   "score": 0.8202,
+   "poly": [
+    [
+     342,
+     3192
+    ],
+    [
+     1155,
+     3245
+    ],
+    [
+     1146,
+     3374
+    ],
+    [
+     334,
+     3321
+    ]
+   ],
+   "box": [
+    334,
+    3192,
+    1155,
+    3374
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3239
+}

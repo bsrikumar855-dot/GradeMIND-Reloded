@@ -1,0 +1,2076 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "resolved": {
+  "weights_file": "pytorch_model.bin",
+  "weights_sha256": "954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837",
+  "architectures": [
+   "VisionEncoderDecoderModel"
+  ],
+  "encoder": "vit",
+  "decoder": "trocr",
+  "dtype": "torch.float32",
+  "transformers": "4.57.1",
+  "torch": "2.10.0+cu129"
+ },
+ "detector": "PP-OCRv5_server_det",
+ "postprocess": "undo_iam_spacing (format only)",
+ "crop": "perspective warp of detector quad + pad",
+ "gate": {
+  "keep_ratio": 0.45,
+  "min_ink_px": 60,
+  "min_ink_frac": 0.04,
+  "threshold_source": "sheet_001/page_03 inspection (in-sample for sheet_001)"
+ },
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_11.jpg",
+ "latency_s": 2.946,
+ "crop_s": 0.114,
+ "recognition_s": 2.832,
+ "model_load_s": 0.78,
+ "n_lines": 58,
+ "n_no_text": 1,
+ "n_truncated": 0,
+ "lines": [
+  {
+   "text": "A-Homestadnon collar-brechure-close",
+   "text_raw": "A-Homestadnon collar-brechure-close",
+   "score": 0.5152,
+   "min_token_prob": 0.1452,
+   "flags": [],
+   "box": [
+    779,
+    198,
+    2575,
+    441
+   ],
+   "poly": [
+    [
+     785,
+     198
+    ],
+    [
+     2575,
+     252
+    ],
+    [
+     2569,
+     441
+    ],
+    [
+     779,
+     386
+    ]
+   ],
+   "b_text": "AHonest osponll oedue dhoe",
+   "b_score": 0.5995,
+   "ink_px": 37034,
+   "ink_frac": 0.1022
+  },
+  {
+   "text": "1903",
+   "text_raw": "1903",
+   "score": 0.4183,
+   "min_token_prob": 0.1079,
+   "flags": [],
+   "box": [
+    2049,
+    192,
+    2129,
+    211
+   ],
+   "poly": [
+    [
+     2049,
+     192
+    ],
+    [
+     2129,
+     196
+    ],
+    [
+     2128,
+     211
+    ],
+    [
+     2049,
+     206
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 355,
+   "ink_frac": 0.1429
+  },
+  {
+   "text": "environmental, officials.",
+   "text_raw": "environmental , officials .",
+   "score": 0.7648,
+   "min_token_prob": 0.382,
+   "flags": [],
+   "box": [
+    350,
+    355,
+    1575,
+    532
+   ],
+   "poly": [
+    [
+     355,
+     355
+    ],
+    [
+     1575,
+     395
+    ],
+    [
+     1571,
+     532
+    ],
+    [
+     350,
+     493
+    ]
+   ],
+   "b_text": "enumonmendal afecds",
+   "b_score": 0.6956,
+   "ink_px": 22604,
+   "ink_frac": 0.1222
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.9054,
+   "min_token_prob": 0.8257,
+   "flags": [],
+   "box": [
+    1900,
+    401,
+    1917,
+    415
+   ],
+   "poly": [
+    [
+     1900,
+     401
+    ],
+    [
+     1917,
+     401
+    ],
+    [
+     1917,
+     415
+    ],
+    [
+     1900,
+     415
+    ]
+   ],
+   "b_text": "*",
+   "b_score": 0.5032,
+   "ink_px": 76,
+   "ink_frac": 0.1008
+  },
+  {
+   "text": "Afforesdodson means planting",
+   "text_raw": "Afforesdodson means planting",
+   "score": 0.5966,
+   "min_token_prob": 0.176,
+   "flags": [],
+   "box": [
+    760,
+    489,
+    2540,
+    700
+   ],
+   "poly": [
+    [
+     764,
+     489
+    ],
+    [
+     2540,
+     532
+    ],
+    [
+     2536,
+     700
+    ],
+    [
+     760,
+     657
+    ]
+   ],
+   "b_text": "Afforesdaon eans plang",
+   "b_score": 0.5923,
+   "ink_px": 37410,
+   "ink_frac": 0.1162
+  },
+  {
+   "text": "0 #",
+   "text_raw": "0 #",
+   "score": 0.6968,
+   "min_token_prob": 0.4878,
+   "flags": [],
+   "box": [
+    2385,
+    493,
+    2484,
+    532
+   ],
+   "poly": [
+    [
+     2389,
+     493
+    ],
+    [
+     2484,
+     511
+    ],
+    [
+     2480,
+     532
+    ],
+    [
+     2385,
+     513
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 414,
+   "ink_frac": 0.1162
+  },
+  {
+   "text": "-frees.",
+   "text_raw": "-frees .",
+   "score": 0.7327,
+   "min_token_prob": 0.2891,
+   "flags": [],
+   "box": [
+    345,
+    619,
+    645,
+    751
+   ],
+   "poly": [
+    [
+     354,
+     619
+    ],
+    [
+     645,
+     645
+    ],
+    [
+     636,
+     751
+    ],
+    [
+     345,
+     725
+    ]
+   ],
+   "b_text": "froes",
+   "b_score": 0.6233,
+   "ink_px": 4496,
+   "ink_frac": 0.1253
+  },
+  {
+   "text": "in the desert and drought",
+   "text_raw": "in the desert and drought",
+   "score": 0.8587,
+   "min_token_prob": 0.6227,
+   "flags": [],
+   "box": [
+    713,
+    628,
+    2426,
+    828
+   ],
+   "poly": [
+    [
+     717,
+     628
+    ],
+    [
+     2426,
+     680
+    ],
+    [
+     2421,
+     828
+    ],
+    [
+     713,
+     776
+    ]
+   ],
+   "b_text": "Ch the desent ard trought",
+   "b_score": 0.7085,
+   "ink_px": 36478,
+   "ink_frac": 0.1325
+  },
+  {
+   "text": "areab.",
+   "text_raw": "areab .",
+   "score": 0.892,
+   "min_token_prob": 0.7775,
+   "flags": [],
+   "box": [
+    346,
+    762,
+    651,
+    884
+   ],
+   "poly": [
+    [
+     354,
+     762
+    ],
+    [
+     651,
+     787
+    ],
+    [
+     643,
+     884
+    ],
+    [
+     346,
+     859
+    ]
+   ],
+   "b_text": "aseas",
+   "b_score": 0.7391,
+   "ink_px": 5348,
+   "ink_frac": 0.1583
+  },
+  {
+   "text": "can plant in the drought",
+   "text_raw": "can plant in the drought",
+   "score": 0.8339,
+   "min_token_prob": 0.4771,
+   "flags": [],
+   "box": [
+    1146,
+    772,
+    2579,
+    988
+   ],
+   "poly": [
+    [
+     1152,
+     772
+    ],
+    [
+     2579,
+     832
+    ],
+    [
+     2573,
+     988
+    ],
+    [
+     1146,
+     927
+    ]
+   ],
+   "b_text": "can plant a te droogh",
+   "b_score": 0.7754,
+   "ink_px": 30650,
+   "ink_frac": 0.1267
+  },
+  {
+   "text": "use.",
+   "text_raw": "use .",
+   "score": 0.7732,
+   "min_token_prob": 0.5602,
+   "flags": [],
+   "box": [
+    812,
+    805,
+    1036,
+    911
+   ],
+   "poly": [
+    [
+     818,
+     805
+    ],
+    [
+     1036,
+     819
+    ],
+    [
+     1030,
+     911
+    ],
+    [
+     812,
+     896
+    ]
+   ],
+   "b_text": "oe",
+   "b_score": 0.5908,
+   "ink_px": 3241,
+   "ink_frac": 0.1355
+  },
+  {
+   "text": "areas.",
+   "text_raw": "areas .",
+   "score": 0.9923,
+   "min_token_prob": 0.9779,
+   "flags": [],
+   "box": [
+    379,
+    910,
+    730,
+    1016
+   ],
+   "poly": [
+    [
+     384,
+     910
+    ],
+    [
+     730,
+     927
+    ],
+    [
+     726,
+     1016
+    ],
+    [
+     379,
+     999
+    ]
+   ],
+   "b_text": "areas.",
+   "b_score": 0.7997,
+   "ink_px": 5465,
+   "ink_frac": 0.1507
+  },
+  {
+   "text": "e",
+   "text_raw": "e",
+   "score": 0.4005,
+   "min_token_prob": 0.1791,
+   "flags": [],
+   "box": [
+    1813,
+    947,
+    1863,
+    1008
+   ],
+   "poly": [
+    [
+     1827,
+     947
+    ],
+    [
+     1863,
+     957
+    ],
+    [
+     1849,
+     1008
+    ],
+    [
+     1813,
+     998
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.0634,
+   "ink_px": 284,
+   "ink_frac": 0.0906
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.867,
+   "min_token_prob": 0.746,
+   "flags": [],
+   "box": [
+    1676,
+    948,
+    1709,
+    979
+   ],
+   "poly": [
+    [
+     1676,
+     959
+    ],
+    [
+     1699,
+     948
+    ],
+    [
+     1709,
+     967
+    ],
+    [
+     1686,
+     979
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.0685,
+   "ink_px": 193,
+   "ink_frac": 0.1581
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5018,
+   "min_token_prob": 0.3226,
+   "flags": [],
+   "box": [
+    1889,
+    955,
+    1915,
+    1013
+   ],
+   "poly": [
+    [
+     1889,
+     955
+    ],
+    [
+     1915,
+     955
+    ],
+    [
+     1915,
+     1013
+    ],
+    [
+     1889,
+     1013
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 333,
+   "ink_frac": 0.1252
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5517,
+   "min_token_prob": 0.1048,
+   "flags": [],
+   "box": [
+    1945,
+    968,
+    1982,
+    997
+   ],
+   "poly": [
+    [
+     1951,
+     968
+    ],
+    [
+     1982,
+     977
+    ],
+    [
+     1977,
+     997
+    ],
+    [
+     1945,
+     988
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 146,
+   "ink_frac": 0.1037
+  },
+  {
+   "text": "Mainly.",
+   "text_raw": "Mainly .",
+   "score": 0.8699,
+   "min_token_prob": 0.6135,
+   "flags": [],
+   "box": [
+    792,
+    1026,
+    1188,
+    1225
+   ],
+   "poly": [
+    [
+     810,
+     1026
+    ],
+    [
+     1188,
+     1073
+    ],
+    [
+     1170,
+     1225
+    ],
+    [
+     792,
+     1178
+    ]
+   ],
+   "b_text": "Maenly",
+   "b_score": 0.9458,
+   "ink_px": 8814,
+   "ink_frac": 0.1371
+  },
+  {
+   "text": "afefacrestation leads to",
+   "text_raw": "afefacrestation leads to",
+   "score": 0.7599,
+   "min_token_prob": 0.4215,
+   "flags": [],
+   "box": [
+    1272,
+    1078,
+    2547,
+    1248
+   ],
+   "poly": [
+    [
+     1275,
+     1078
+    ],
+    [
+     2547,
+     1106
+    ],
+    [
+     2544,
+     1248
+    ],
+    [
+     1272,
+     1221
+    ]
+   ],
+   "b_text": "affochestfon foads o",
+   "b_score": 0.5168,
+   "ink_px": 33135,
+   "ink_frac": 0.1665
+  },
+  {
+   "text": "0.",
+   "text_raw": "0 .",
+   "score": 0.5034,
+   "min_token_prob": 0.1863,
+   "flags": [],
+   "box": [
+    712,
+    1128,
+    755,
+    1147
+   ],
+   "poly": [
+    [
+     714,
+     1128
+    ],
+    [
+     755,
+     1133
+    ],
+    [
+     753,
+     1147
+    ],
+    [
+     712,
+     1143
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 178,
+   "ink_frac": 0.1244
+  },
+  {
+   "text": "craft and",
+   "text_raw": "craft and",
+   "score": 0.5875,
+   "min_token_prob": 0.2415,
+   "flags": [],
+   "box": [
+    312,
+    1169,
+    1079,
+    1324
+   ],
+   "poly": [
+    [
+     317,
+     1169
+    ],
+    [
+     1079,
+     1205
+    ],
+    [
+     1074,
+     1324
+    ],
+    [
+     312,
+     1288
+    ]
+   ],
+   "b_text": "Gaanfai and",
+   "b_score": 0.684,
+   "ink_px": 15232,
+   "ink_frac": 0.1502
+  },
+  {
+   "text": "prefects the enviprome.",
+   "text_raw": "prefects the enviprome .",
+   "score": 0.8249,
+   "min_token_prob": 0.4149,
+   "flags": [],
+   "box": [
+    1238,
+    1204,
+    2604,
+    1397
+   ],
+   "poly": [
+    [
+     1244,
+     1204
+    ],
+    [
+     2604,
+     1262
+    ],
+    [
+     2598,
+     1397
+    ],
+    [
+     1238,
+     1339
+    ]
+   ],
+   "b_text": "prejeots athe opuprorme",
+   "b_score": 0.63,
+   "ink_px": 34646,
+   "ink_frac": 0.1717
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.4084,
+   "min_token_prob": 0.1987,
+   "flags": [],
+   "box": [
+    2251,
+    1229,
+    2283,
+    1261
+   ],
+   "poly": [
+    [
+     2265,
+     1229
+    ],
+    [
+     2283,
+     1247
+    ],
+    [
+     2269,
+     1261
+    ],
+    [
+     2251,
+     1243
+    ]
+   ],
+   "b_text": "老",
+   "b_score": 0.1567,
+   "ink_px": 261,
+   "ink_frac": 0.2045
+  },
+  {
+   "text": "from the",
+   "text_raw": "from the",
+   "score": 0.998,
+   "min_token_prob": 0.9942,
+   "flags": [],
+   "box": [
+    313,
+    1292,
+    1071,
+    1488
+   ],
+   "poly": [
+    [
+     315,
+     1292
+    ],
+    [
+     1071,
+     1303
+    ],
+    [
+     1068,
+     1488
+    ],
+    [
+     313,
+     1477
+    ]
+   ],
+   "b_text": "from ithe",
+   "b_score": 0.8606,
+   "ink_px": 15069,
+   "ink_frac": 0.0996
+  },
+  {
+   "text": "climate \" changes.",
+   "text_raw": "climate \" changes .",
+   "score": 0.7573,
+   "min_token_prob": 0.3287,
+   "flags": [],
+   "box": [
+    1120,
+    1331,
+    2149,
+    1532
+   ],
+   "poly": [
+    [
+     1128,
+     1331
+    ],
+    [
+     2149,
+     1389
+    ],
+    [
+     2141,
+     1532
+    ],
+    [
+     1120,
+     1474
+    ]
+   ],
+   "b_text": "ClemafeChanges",
+   "b_score": 0.5985,
+   "ink_px": 26478,
+   "ink_frac": 0.1652
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7889,
+   "min_token_prob": 0.5865,
+   "flags": [],
+   "box": [
+    2163,
+    1540,
+    2194,
+    1571
+   ],
+   "poly": [
+    [
+     2176,
+     1540
+    ],
+    [
+     2194,
+     1558
+    ],
+    [
+     2181,
+     1571
+    ],
+    [
+     2163,
+     1553
+    ]
+   ],
+   "b_text": "4",
+   "b_score": 0.0428,
+   "ink_px": 232,
+   "ink_frac": 0.1927
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5647,
+   "min_token_prob": 0.3486,
+   "flags": [],
+   "box": [
+    2256,
+    1557,
+    2276,
+    1597
+   ],
+   "poly": [
+    [
+     2256,
+     1557
+    ],
+    [
+     2276,
+     1557
+    ],
+    [
+     2276,
+     1597
+    ],
+    [
+     2256,
+     1597
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 299,
+   "ink_frac": 0.1797
+  },
+  {
+   "text": "A Speckerisfound on a",
+   "text_raw": "A Speckerisfound on a",
+   "score": 0.8413,
+   "min_token_prob": 0.3732,
+   "flags": [],
+   "box": [
+    889,
+    1604,
+    2351,
+    1813
+   ],
+   "poly": [
+    [
+     896,
+     1604
+    ],
+    [
+     2351,
+     1691
+    ],
+    [
+     2344,
+     1813
+    ],
+    [
+     889,
+     1726
+    ]
+   ],
+   "b_text": "A Speces isfound en a",
+   "b_score": 0.7539,
+   "ink_px": 30601,
+   "ink_frac": 0.1555
+  },
+  {
+   "text": "particular ecosystems can help the entire",
+   "text_raw": "particular ecosystems can help the entire",
+   "score": 0.9065,
+   "min_token_prob": 0.4764,
+   "flags": [],
+   "box": [
+    293,
+    1704,
+    2626,
+    1983
+   ],
+   "poly": [
+    [
+     301,
+     1704
+    ],
+    [
+     2626,
+     1830
+    ],
+    [
+     2618,
+     1983
+    ],
+    [
+     293,
+     1858
+    ]
+   ],
+   "b_text": "particular Ocosyste can help the en",
+   "b_score": 0.7033,
+   "ink_px": 57874,
+   "ink_frac": 0.149
+  },
+  {
+   "text": "from the draugh by' planting",
+   "text_raw": "from the draugh by ' planting",
+   "score": 0.8227,
+   "min_token_prob": 0.3063,
+   "flags": [],
+   "box": [
+    256,
+    1841,
+    2138,
+    2132
+   ],
+   "poly": [
+    [
+     267,
+     1841
+    ],
+    [
+     2138,
+     1958
+    ],
+    [
+     2127,
+     2132
+    ],
+    [
+     256,
+     2014
+    ]
+   ],
+   "b_text": "from the drough by splaidtng",
+   "b_score": 0.6317,
+   "ink_px": 45817,
+   "ink_frac": 0.1306
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8938,
+   "min_token_prob": 0.7954,
+   "flags": [],
+   "box": [
+    1295,
+    1928,
+    1307,
+    1941
+   ],
+   "poly": [
+    [
+     1295,
+     1928
+    ],
+    [
+     1307,
+     1928
+    ],
+    [
+     1307,
+     1941
+    ],
+    [
+     1295,
+     1941
+    ]
+   ],
+   "b_text": ".",
+   "b_score": 0.2308,
+   "ink_px": 119,
+   "ink_frac": 0.1983
+  },
+  {
+   "text": "them.",
+   "text_raw": "them .",
+   "score": 0.9883,
+   "min_token_prob": 0.9811,
+   "flags": [],
+   "box": [
+    2138,
+    1992,
+    2461,
+    2126
+   ],
+   "poly": [
+    [
+     2145,
+     1992
+    ],
+    [
+     2461,
+     2012
+    ],
+    [
+     2453,
+     2126
+    ],
+    [
+     2138,
+     2105
+    ]
+   ],
+   "b_text": "fhom",
+   "b_score": 0.8802,
+   "ink_px": 8424,
+   "ink_frac": 0.2038
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6143,
+   "min_token_prob": 0.2542,
+   "flags": [],
+   "box": [
+    2134,
+    2018,
+    2167,
+    2056
+   ],
+   "poly": [
+    [
+     2134,
+     2024
+    ],
+    [
+     2158,
+     2018
+    ],
+    [
+     2167,
+     2049
+    ],
+    [
+     2143,
+     2056
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.046,
+   "ink_px": 274,
+   "ink_frac": 0.173
+  },
+  {
+   "text": "",
+   "text_raw": "",
+   "score": 0.0,
+   "min_token_prob": 0.0,
+   "flags": [
+    "NO_TEXT"
+   ],
+   "box": [
+    1958,
+    2131,
+    1975,
+    2149
+   ],
+   "poly": [
+    [
+     1958,
+     2131
+    ],
+    [
+     1975,
+     2131
+    ],
+    [
+     1975,
+     2149
+    ],
+    [
+     1958,
+     2149
+    ]
+   ],
+   "b_text": "*",
+   "b_score": 0.0689,
+   "ink_px": 56,
+   "ink_frac": 0.0644
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8316,
+   "min_token_prob": 0.6697,
+   "flags": [],
+   "box": [
+    2178,
+    2299,
+    2194,
+    2314
+   ],
+   "poly": [
+    [
+     2178,
+     2299
+    ],
+    [
+     2194,
+     2299
+    ],
+    [
+     2194,
+     2314
+    ],
+    [
+     2178,
+     2314
+    ]
+   ],
+   "b_text": "希",
+   "b_score": 0.1856,
+   "ink_px": 77,
+   "ink_frac": 0.1019
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.919,
+   "min_token_prob": 0.8813,
+   "flags": [],
+   "box": [
+    26,
+    2451,
+    49,
+    2480
+   ],
+   "poly": [
+    [
+     26,
+     2455
+    ],
+    [
+     43,
+     2451
+    ],
+    [
+     49,
+     2476
+    ],
+    [
+     31,
+     2480
+    ]
+   ],
+   "b_text": "+",
+   "b_score": 0.1044,
+   "ink_px": 161,
+   "ink_frac": 0.145
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.61,
+   "min_token_prob": 0.336,
+   "flags": [],
+   "box": [
+    519,
+    2449,
+    540,
+    2484
+   ],
+   "poly": [
+    [
+     519,
+     2449
+    ],
+    [
+     540,
+     2449
+    ],
+    [
+     540,
+     2484
+    ],
+    [
+     519,
+     2484
+    ]
+   ],
+   "b_text": "海",
+   "b_score": 0.0854,
+   "ink_px": 204,
+   "ink_frac": 0.1315
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6111,
+   "min_token_prob": 0.2271,
+   "flags": [],
+   "box": [
+    374,
+    2497,
+    440,
+    2552
+   ],
+   "poly": [
+    [
+     380,
+     2497
+    ],
+    [
+     440,
+     2506
+    ],
+    [
+     433,
+     2552
+    ],
+    [
+     374,
+     2543
+    ]
+   ],
+   "b_text": "A",
+   "b_score": 0.0685,
+   "ink_px": 332,
+   "ink_frac": 0.0795
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7242,
+   "min_token_prob": 0.4736,
+   "flags": [],
+   "box": [
+    461,
+    2494,
+    488,
+    2525
+   ],
+   "poly": [
+    [
+     467,
+     2494
+    ],
+    [
+     488,
+     2498
+    ],
+    [
+     483,
+     2525
+    ],
+    [
+     461,
+     2521
+    ]
+   ],
+   "b_text": "美",
+   "b_score": 0.1228,
+   "ink_px": 147,
+   "ink_frac": 0.1109
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.7001,
+   "min_token_prob": 0.5038,
+   "flags": [],
+   "box": [
+    2589,
+    2564,
+    2607,
+    2718
+   ],
+   "poly": [
+    [
+     2589,
+     2564
+    ],
+    [
+     2607,
+     2564
+    ],
+    [
+     2607,
+     2718
+    ],
+    [
+     2589,
+     2718
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 1052,
+   "ink_frac": 0.2112
+  },
+  {
+   "text": "6",
+   "text_raw": "6",
+   "score": 0.5508,
+   "min_token_prob": 0.1649,
+   "flags": [],
+   "box": [
+    1875,
+    2577,
+    1897,
+    2608
+   ],
+   "poly": [
+    [
+     1875,
+     2577
+    ],
+    [
+     1897,
+     2577
+    ],
+    [
+     1897,
+     2608
+    ],
+    [
+     1875,
+     2608
+    ]
+   ],
+   "b_text": "料",
+   "b_score": 0.0798,
+   "ink_px": 119,
+   "ink_frac": 0.0814
+  },
+  {
+   "text": "i",
+   "text_raw": "i",
+   "score": 0.7483,
+   "min_token_prob": 0.6248,
+   "flags": [],
+   "box": [
+    1938,
+    2579,
+    1958,
+    2619
+   ],
+   "poly": [
+    [
+     1938,
+     2579
+    ],
+    [
+     1958,
+     2579
+    ],
+    [
+     1958,
+     2619
+    ],
+    [
+     1938,
+     2619
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 278,
+   "ink_frac": 0.1671
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6525,
+   "min_token_prob": 0.3169,
+   "flags": [],
+   "box": [
+    461,
+    2614,
+    482,
+    2645
+   ],
+   "poly": [
+    [
+     461,
+     2614
+    ],
+    [
+     482,
+     2614
+    ],
+    [
+     482,
+     2645
+    ],
+    [
+     461,
+     2645
+    ]
+   ],
+   "b_text": "常",
+   "b_score": 0.0777,
+   "ink_px": 125,
+   "ink_frac": 0.0881
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7,
+   "min_token_prob": 0.4035,
+   "flags": [],
+   "box": [
+    495,
+    2676,
+    522,
+    2689
+   ],
+   "poly": [
+    [
+     495,
+     2676
+    ],
+    [
+     522,
+     2676
+    ],
+    [
+     522,
+     2689
+    ],
+    [
+     495,
+     2689
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 111,
+   "ink_frac": 0.1138
+  },
+  {
+   "text": "i",
+   "text_raw": "i",
+   "score": 0.2995,
+   "min_token_prob": 0.1817,
+   "flags": [],
+   "box": [
+    1608,
+    2692,
+    1636,
+    2735
+   ],
+   "poly": [
+    [
+     1613,
+     2692
+    ],
+    [
+     1636,
+     2695
+    ],
+    [
+     1631,
+     2735
+    ],
+    [
+     1608,
+     2732
+    ]
+   ],
+   "b_text": "+",
+   "b_score": 0.0728,
+   "ink_px": 307,
+   "ink_frac": 0.1687
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6597,
+   "min_token_prob": 0.3389,
+   "flags": [],
+   "box": [
+    1813,
+    2724,
+    1831,
+    2744
+   ],
+   "poly": [
+    [
+     1813,
+     2724
+    ],
+    [
+     1831,
+     2724
+    ],
+    [
+     1831,
+     2744
+    ],
+    [
+     1813,
+     2744
+    ]
+   ],
+   "b_text": "哪",
+   "b_score": 0.3287,
+   "ink_px": 77,
+   "ink_frac": 0.0802
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6176,
+   "min_token_prob": 0.2644,
+   "flags": [],
+   "box": [
+    1855,
+    2740,
+    1886,
+    2786
+   ],
+   "poly": [
+    [
+     1855,
+     2740
+    ],
+    [
+     1886,
+     2740
+    ],
+    [
+     1886,
+     2786
+    ],
+    [
+     1855,
+     2786
+    ]
+   ],
+   "b_text": "美",
+   "b_score": 0.1645,
+   "ink_px": 314,
+   "ink_frac": 0.1259
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6819,
+   "min_token_prob": 0.4131,
+   "flags": [],
+   "box": [
+    2196,
+    2784,
+    2218,
+    2810
+   ],
+   "poly": [
+    [
+     2196,
+     2784
+    ],
+    [
+     2218,
+     2784
+    ],
+    [
+     2218,
+     2810
+    ],
+    [
+     2196,
+     2810
+    ]
+   ],
+   "b_text": "真",
+   "b_score": 0.365,
+   "ink_px": 86,
+   "ink_frac": 0.0666
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.9389,
+   "min_token_prob": 0.9238,
+   "flags": [],
+   "box": [
+    1135,
+    2907,
+    1157,
+    2934
+   ],
+   "poly": [
+    [
+     1135,
+     2907
+    ],
+    [
+     1157,
+     2907
+    ],
+    [
+     1157,
+     2934
+    ],
+    [
+     1135,
+     2934
+    ]
+   ],
+   "b_text": "中",
+   "b_score": 0.0743,
+   "ink_px": 148,
+   "ink_frac": 0.1116
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.725,
+   "min_token_prob": 0.5763,
+   "flags": [],
+   "box": [
+    1211,
+    2938,
+    1226,
+    2978
+   ],
+   "poly": [
+    [
+     1211,
+     2938
+    ],
+    [
+     1226,
+     2938
+    ],
+    [
+     1226,
+     2978
+    ],
+    [
+     1211,
+     2978
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 195,
+   "ink_frac": 0.1389
+  },
+  {
+   "text": "8",
+   "text_raw": "8",
+   "score": 0.6159,
+   "min_token_prob": 0.2411,
+   "flags": [],
+   "box": [
+    2698,
+    3025,
+    2722,
+    3049
+   ],
+   "poly": [
+    [
+     2698,
+     3025
+    ],
+    [
+     2722,
+     3025
+    ],
+    [
+     2722,
+     3049
+    ],
+    [
+     2698,
+     3049
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.0732,
+   "ink_px": 180,
+   "ink_frac": 0.1389
+  },
+  {
+   "text": "f",
+   "text_raw": "f",
+   "score": 0.4856,
+   "min_token_prob": 0.2945,
+   "flags": [],
+   "box": [
+    122,
+    3174,
+    150,
+    3219
+   ],
+   "poly": [
+    [
+     130,
+     3174
+    ],
+    [
+     150,
+     3178
+    ],
+    [
+     142,
+     3219
+    ],
+    [
+     122,
+     3215
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0,
+   "ink_px": 247,
+   "ink_frac": 0.1456
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.526,
+   "min_token_prob": 0.2414,
+   "flags": [],
+   "box": [
+    1349,
+    3186,
+    1373,
+    3199
+   ],
+   "poly": [
+    [
+     1349,
+     3186
+    ],
+    [
+     1373,
+     3186
+    ],
+    [
+     1373,
+     3199
+    ],
+    [
+     1349,
+     3199
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.2655,
+   "ink_px": 107,
+   "ink_frac": 0.1189
+  },
+  {
+   "text": "i",
+   "text_raw": "i",
+   "score": 0.2488,
+   "min_token_prob": 0.1504,
+   "flags": [],
+   "box": [
+    1902,
+    3186,
+    1920,
+    3207
+   ],
+   "poly": [
+    [
+     1902,
+     3186
+    ],
+    [
+     1920,
+     3186
+    ],
+    [
+     1920,
+     3207
+    ],
+    [
+     1902,
+     3207
+    ]
+   ],
+   "b_text": "警",
+   "b_score": 0.0531,
+   "ink_px": 112,
+   "ink_frac": 0.1131
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5159,
+   "min_token_prob": 0.1811,
+   "flags": [],
+   "box": [
+    2437,
+    3238,
+    2464,
+    3260
+   ],
+   "poly": [
+    [
+     2437,
+     3238
+    ],
+    [
+     2464,
+     3238
+    ],
+    [
+     2464,
+     3260
+    ],
+    [
+     2437,
+     3260
+    ]
+   ],
+   "b_text": "*",
+   "b_score": 0.0984,
+   "ink_px": 110,
+   "ink_frac": 0.083
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6677,
+   "min_token_prob": 0.3374,
+   "flags": [],
+   "box": [
+    2296,
+    3355,
+    2337,
+    3388
+   ],
+   "poly": [
+    [
+     2302,
+     3355
+    ],
+    [
+     2337,
+     3365
+    ],
+    [
+     2330,
+     3388
+    ],
+    [
+     2296,
+     3377
+    ]
+   ],
+   "b_text": "新",
+   "b_score": 0.1193,
+   "ink_px": 322,
+   "ink_frac": 0.1917
+  },
+  {
+   "text": "fe",
+   "text_raw": "fe",
+   "score": 0.5642,
+   "min_token_prob": 0.2687,
+   "flags": [],
+   "box": [
+    2434,
+    3357,
+    2477,
+    3395
+   ],
+   "poly": [
+    [
+     2434,
+     3363
+    ],
+    [
+     2472,
+     3357
+    ],
+    [
+     2477,
+     3389
+    ],
+    [
+     2439,
+     3395
+    ]
+   ],
+   "b_text": "X",
+   "b_score": 0.0272,
+   "ink_px": 368,
+   "ink_frac": 0.1673
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5655,
+   "min_token_prob": 0.1715,
+   "flags": [],
+   "box": [
+    2118,
+    3375,
+    2156,
+    3406
+   ],
+   "poly": [
+    [
+     2118,
+     3375
+    ],
+    [
+     2156,
+     3375
+    ],
+    [
+     2156,
+     3406
+    ],
+    [
+     2118,
+     3406
+    ]
+   ],
+   "b_text": "满",
+   "b_score": 0.2121,
+   "ink_px": 215,
+   "ink_frac": 0.1
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7735,
+   "min_token_prob": 0.5599,
+   "flags": [],
+   "box": [
+    2208,
+    3417,
+    2227,
+    3433
+   ],
+   "poly": [
+    [
+     2208,
+     3417
+    ],
+    [
+     2227,
+     3417
+    ],
+    [
+     2227,
+     3433
+    ],
+    [
+     2208,
+     3433
+    ]
+   ],
+   "b_text": "A",
+   "b_score": 0.0823,
+   "ink_px": 83,
+   "ink_frac": 0.0956
+  }
+ ],
+ "peak_torch_alloc_mib": 2715,
+ "peak_rss_mib_process": 2969
+}
