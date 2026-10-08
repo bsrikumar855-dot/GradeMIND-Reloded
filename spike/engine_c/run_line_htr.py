@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import resource
 import sys
 import time
@@ -22,6 +23,13 @@ from PIL import Image
 from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 
 PAD = 6
+
+
+def undo_iam_spacing(text: str) -> str:
+    """IAM ground truth (TrOCR's fine-tuning data) writes punctuation space-separated ('year .'). Undo that format
+    convention only: no characters are added or removed. The raw decode is kept alongside."""
+    text = re.sub(r"\s+([.,;:!?)\]'])", r"\1", text)
+    return re.sub(r"([(\[])\s+", r"\1", text).strip()
 
 
 def main() -> int:
@@ -39,7 +47,7 @@ def main() -> int:
 
     t0 = time.perf_counter()
     processor = TrOCRProcessor.from_pretrained(args.model)
-    model = VisionEncoderDecoderModel.from_pretrained(args.model, torch_dtype=torch.float32).eval().cuda()
+    model = VisionEncoderDecoderModel.from_pretrained(args.model, dtype=torch.float32).eval().cuda()
     load_s = time.perf_counter() - t0
 
     for page in args.pages:
@@ -68,7 +76,7 @@ def main() -> int:
                 valid = ids != processor.tokenizer.pad_token_id
                 probs = torch.exp(lp[valid]).tolist()
                 out_lines.append({
-                    "text": txt.strip(), "score": round(sum(probs) / len(probs), 4) if probs else 0.0,
+                    "text": undo_iam_spacing(txt), "text_raw": txt, "score": round(sum(probs) / len(probs), 4) if probs else 0.0,
                     "min_token_prob": round(min(probs), 4) if probs else 0.0,
                     "box": ln["box"], "poly": ln["poly"], "b_text": ln["text"], "b_score": ln["score"],
                 })
@@ -76,7 +84,7 @@ def main() -> int:
         latency = time.perf_counter() - t
         record = {
             "engine": "trocr-line", "model_revision": args.revision, "detector": "engine_b (PP-OCRv5_server_det)",
-            "decoding": {"num_beams": 1, "do_sample": False, "max_new_tokens": args.max_new_tokens, "dtype": "fp32"},
+            "postprocess": "undo_iam_spacing (format only)", "decoding": {"num_beams": 1, "do_sample": False, "max_new_tokens": args.max_new_tokens, "dtype": "fp32"},
             "crop_pad_px": PAD, "page": Path(page).name, "latency_s": round(latency, 3), "model_load_s": round(load_s, 2),
             "n_lines": len(out_lines), "lines": out_lines,
             "peak_torch_alloc_mib": round(torch.cuda.max_memory_allocated() / 2**20),
