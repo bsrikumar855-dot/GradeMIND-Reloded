@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent / "engine_a"))
-from run_engine_a import degenerate_checks  # noqa: E402
+from degenerate import degenerate_checks  # noqa: E402
 
 
 def a_text(rec: dict) -> str:
@@ -43,7 +43,7 @@ def main() -> int:
         at = a_text(a)
         bt = " ".join(l["text"] for l in b["lines"] if l["score"] >= args.b_min_score) if b else ""
         flags = degenerate_checks(a["raw"], a["generated_tokens"], a["regions"],
-                                  a.get("decoding", {}).get("max_length", 32768))
+                                  a.get("decoding", {}).get("max_length", 32768), a.get("finish_reason"))
         rows.append({
             "sheet": sheet, "page": page, "a_latency_s": a["latency_s"], "a_tokens": a["generated_tokens"],
             "a_peak_mib": a["peak_torch_alloc_mib"], "a_flags": flags, "a_chars": len(at),

@@ -20,7 +20,8 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from run_engine_a import PROMPT, degenerate_checks, parse_regions  # noqa: E402
+from degenerate import degenerate_checks  # noqa: E402
+from run_engine_a import PROMPT, parse_regions  # noqa: E402
 
 
 def gpu_used_mib() -> int | None:
@@ -85,7 +86,7 @@ def main() -> int:
                 "share_below_0.5": round(sum(p < 0.5 for p in probs) / len(probs), 4) if probs else None,
             },
             "token_logprobs": [round(x, 4) for x in logprobs], "token_margins": [round(x, 3) for x in margins],
-            "degenerate_flags": degenerate_checks(raw, n_tokens, regions, args.max_tokens),
+            "degenerate_flags": degenerate_checks(raw, n_tokens, regions, args.max_tokens, choice.get("finish_reason")),
             "regions": regions, "raw": raw,
         }
         (out_dir / f"{Path(page).stem}.json").write_text(json.dumps(record, ensure_ascii=False, indent=1))
