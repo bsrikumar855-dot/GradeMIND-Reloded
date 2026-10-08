@@ -1,89 +1,325 @@
-"""Build the Phase 0b results table from runner and scorer outputs (spec §2 rule 1: numbers come only from
-files the tools write). Writes <run>/phase0b_table.md and <run>/phase0b_table.json.
+"""Generate every Phase 0b table from run outputs (spec §2 rule 1). Writes the block between
+<!-- BEGIN GENERATED --> and <!-- END GENERATED --> in PHASE_0B_REPORT.md, plus spike/runs/report_0b/*.json.
+Accuracy-type tables are produced ONLY from OWNER_VERIFIED ground truth; otherwise they say PENDING_VERIFICATION.
 
-Per (engine, variant, sheet): s/page (answer pages, median), peak RSS / peak VRAM (max over page records),
-and, ONLY if the sheet's transcriptions are OWNER_VERIFIED, the scorer's CER, WER, omissions, autocorrection
-candidates, label P/R, option letters and spurious digits. Otherwise the accuracy cells say PENDING_VERIFICATION.
-
-Usage: python3 spike/report_0b.py --out-dir <dir> --cell LABEL=RUN_DIR:ENGINE_DIR:FORMAT [--cell ...]
-  e.g. --cell b_v5m=spike/runs/X_phase0b:b_mobile:lines  (reads RUN_DIR/<variant>/<sheet>/ENGINE_DIR)
-       --cell a_int8_ref=spike/runs/Y_gundam_int8:engine_a:a  (Phase 0 layout RUN_DIR/<sheet>/engine_a, raw only)
+Usage: python3 spike/report_0b.py [--cells spike/phase0b_cells.json] [--p0b3 spike/runs/<id>_phase0b3]
 """
 
 from __future__ import annotations
 
 import argparse
+import difflib
+import itertools
 import json
+import re
 import statistics
 import subprocess
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "spike"))
+from score import line_engine_lines, norm  # noqa: E402
+
 SHEETS = ["sheet_001", "sheet_002"]
+OUT = ROOT / "spike" / "runs" / "report_0b"
+REPORT = ROOT / "PHASE_0B_REPORT.md"
+PROXY_LABEL = "PROXY_NON_NUMERICAL_SHEETS_ONLY"
+DIG, LABEL = re.compile(r"\d+"), re.compile(r"^\s*\d{1,2}(?=[\s.\]\):[]|$)")
+DRAFT = False  # --draft-selftest: exercise accuracy code on drafts; output NEVER goes into the report
 
 
-def page_stats(d: Path) -> dict:
-    recs = [json.loads(p.read_text()) for p in sorted(d.glob("page_*.json")) if p.stem != "page_01"]
-    if not recs:
-        return {}
-    rss = [r.get("peak_rss_mib_process") for r in recs if r.get("peak_rss_mib_process") is not None]
-    vram = [r.get("peak_torch_alloc_mib") for r in recs if r.get("peak_torch_alloc_mib") is not None]
-    return {"answer_pages": len(recs), "s_per_page_median": round(statistics.median(r["latency_s"] for r in recs), 2),
-            "peak_rss_mib": max(rss) if rss else None, "peak_vram_mib": max(vram) if vram else None}
+def gt_status(sheet: str) -> str:
+    return json.loads((ROOT / "data" / "transcriptions" / sheet / "manifest.json").read_text())["status"]
 
 
-def score(sheet: str, name: str, fmt: str, d: Path, out: Path) -> dict | None:
-    gt = ROOT / "data" / "transcriptions" / sheet
-    status = json.loads((gt / "manifest.json").read_text())["status"]
-    if status != "OWNER_VERIFIED":
-        return {"status": status}
-    cmd = [sys.executable, str(ROOT / "spike" / "score.py"), "--gt", str(gt), "--engine", f"{name}={fmt}:{d}", "--out", str(out)]
-    subprocess.run(cmd, check=True, capture_output=True)
-    return json.loads(out.read_text())["totals"].get(name)
+def recs(d: Path, answer_only: bool = True) -> list[dict]:
+    return [json.loads(p.read_text()) for p in sorted(d.glob("page_*.json")) if not (answer_only and p.stem == "page_01")]
+
+
+def py(script: str, *args: str) -> None:
+    extra = ["--allow-draft"] if DRAFT else []
+    subprocess.run([sys.executable, str(ROOT / "spike" / script), *args, *extra], check=True, capture_output=True)
+
+
+def table(hdr: list[str], rows: list[list]) -> str:
+    out = ["| " + " | ".join(hdr) + " |", "|" + "---|" * len(hdr)]
+    out += ["| " + " | ".join("" if x is None else str(x) for x in r) + " |" for r in rows]
+    return "\n".join(out)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out-dir", required=True)
-    ap.add_argument("--cell", action="append", required=True)
+    ap.add_argument("--cells", default=str(ROOT / "spike" / "phase0b_cells.json"))
+    ap.add_argument("--p0b3", help="phase0b3 run dir (replaces PHASE0B3_RUN_ID)")
+    ap.add_argument("--draft-selftest", action="store_true",
+                    help="run accuracy sections on DRAFT GT into spike/runs/report_0b/tables_DRAFT_NOT_REPORTABLE.md only")
     args = ap.parse_args()
-    run = Path(args.out_dir)
-    run.mkdir(parents=True, exist_ok=True)
-    rows = []
-    for cell in args.cell:
-        label, rest = cell.split("=", 1)
-        run_dir, eng_dir, fmt = rest.rsplit(":", 2)
-        for var in ["raw", "st010"]:
-            for sheet in SHEETS:
-                d = Path(run_dir) / var / sheet / eng_dir
-                if not d.is_dir() and var == "raw":
-                    d = Path(run_dir) / sheet / eng_dir  # Phase 0 layout
-                if not d.is_dir():
-                    continue
-                st = page_stats(d)
-                sc = score(sheet, label, fmt, d, run / f"scores_{var}_{sheet}_{label}.json")
-                rows.append({"engine": label, "variant": var, "sheet": sheet, "source": str(d), **st, "scores": sc})
-    (run / "phase0b_table.json").write_text(json.dumps(rows, indent=1))
+    global DRAFT
+    DRAFT = args.draft_selftest
+    cfg = json.loads(Path(args.cells).read_text())
+    runs = {k: str(ROOT / v) for k, v in cfg["runs"].items()}
+    if args.p0b3:
+        runs["P0B3"] = str(Path(args.p0b3).resolve())
+    OUT.mkdir(parents=True, exist_ok=True)
+    verified = {s: gt_status(s) == "OWNER_VERIFIED" for s in SHEETS}
+    all_verified = all(verified.values())
 
-    hdr = ("| engine | variant | sheet | CER | WER | omissions | autocorrect cand. | label P / R | options | spurious digits "
-           "| s/page | peak RAM MiB | peak VRAM MiB |")
-    lines = [hdr, "|" + "---|" * 13]
-    for r in rows:
-        sc = r["scores"] or {}
-        if "status" in sc:
-            acc = ["PENDING_VERIFICATION"] + [""] * 6
-        else:
-            acc = [sc["cer_micro"], sc["wer_micro"], sc["omissions"], sc["autocorrect_candidates"],
-                   f"{sc['label_precision']} / {sc['label_recall']}", sc["option_letters_correct"], sc["spurious_digit_tokens"]]
-        lines.append("| " + " | ".join(str(x) for x in [r["engine"], r["variant"], r["sheet"], *acc,
-                                                           r.get("s_per_page_median"), r.get("peak_rss_mib"),
-                                                           r.get("peak_vram_mib")]) + " |")
-    md = "\n".join(lines) + ("\n\nNumeral / sign / unit accuracy: **UNTESTED** (owner decision D5).\n"
-                             "Generated by `spike/report_0b.py` from runner JSON and `spike/score.py` outputs; do not edit by hand.\n")
-    (run / "phase0b_table.md").write_text(md)
-    print(md)
+    # cell index: (label, variant, sheet) -> dir
+    cells, desc, fmts = {}, {}, {}
+    for c in cfg["cells"]:
+        desc[c["label"]], fmts[c["label"]] = c["config"], c["fmt"]
+        for v in c["variants"]:
+            for s in SHEETS:
+                d = Path(c["path"].format(variant=v, sheet=s, **runs))
+                if d.is_dir() and any(d.glob("page_*.json")):
+                    cells[(c["label"], v, s)] = d
+    md = [f"_Generated by `spike/report_0b.py` from run outputs; do not edit by hand._  ",
+          f"Ground truth status: " + ", ".join(f"{s}={gt_status(s)}" for s in SHEETS) + "  ",
+          "Numeral / sign / unit accuracy: **UNTESTED** (owner decision D5).", ""]
+
+    # ---- T0 configurations
+    md += ["### T0. Engine configurations (true, not requested; rule 12)", "",
+           table(["label", "configuration"], [[k, v] for k, v in desc.items()]), ""]
+
+    # ---- T1 operations
+    rows = []
+    for (lab, v, s), d in sorted(cells.items()):
+        rr = recs(d)
+        lat = [r["latency_s"] for r in rr]
+        rss = [r.get("peak_rss_mib_process") for r in rr if r.get("peak_rss_mib_process")]
+        vram = [r.get("peak_torch_alloc_mib") for r in rr if r.get("peak_torch_alloc_mib")]
+        over = sum(1 for x in vram if x > cfg["budget_vram_mib"])
+        notext = sum(r.get("n_no_text", 0) for r in rr)
+        trunc = sum(r.get("n_truncated", 0) for r in rr)
+        degen = sum(1 for r in rr if r.get("degenerate_flags"))
+        resolved = "yes" if all("resolved" in r for r in rr) else "no (pre-rule-12 run)"
+        rows.append([lab, v, s, len(rr), round(statistics.median(lat), 2) if lat else None,
+                     round(statistics.median([r["crop_s"] for r in rr]), 2) if rr and "crop_s" in rr[0] else None,
+                     round(statistics.median([r["recognition_s"] for r in rr]), 2) if rr and "recognition_s" in rr[0] else None,
+                     max(rss) if rss else None, max(vram) if vram else None, over or None, notext or None, trunc or None,
+                     degen if fmts[lab] == "a" else None, resolved])
+    md += ["### T1. Operations (answer pages; cover pages excluded)", "",
+           table(["engine", "variant", "sheet", "pages", "median s/page", "C crop s", "C rec s", "peak RAM MiB",
+                  "peak VRAM MiB", "pages > 6 GB (OVER_BUDGET)", "NO_TEXT lines", "TRUNCATED lines",
+                  "A degenerate pages", "resolved config recorded"], rows), ""]
+
+    # ---- T2 end-to-end timing for Engine C
+    rows = []
+    for s in SHEETS:
+        for det in ["PP-OCRv5_server_det", "PP-OCRv6_medium_det"]:
+            d = Path(runs["P0B3"]) / "raw" / s / f"det_only_{det}"
+            if d.is_dir():
+                det_lat = statistics.median(r["latency_s"] for r in recs(d))
+                c = cells.get(("c2_v5det", "raw", s))
+                c_lat = statistics.median(r["latency_s"] for r in recs(c)) if c and det.startswith("PP-OCRv5") else None
+                rows.append([s, det, round(det_lat, 2), round(c_lat, 2) if c_lat else None,
+                             round(det_lat + c_lat, 2) if c_lat else None])
+    md += ["### T2. Detection-only and Engine C end-to-end timing (raw, median s/page)", "",
+           table(["sheet", "detector", "detection s", "C crop+recognition s", "C end-to-end s"], rows) if rows
+           else "_det-only runs not present_", ""]
+
+    # ---- T3 proxy
+    rows = []
+    for (lab, v, s), d in sorted(cells.items()):
+        if fmts[lab] != "lines":
+            continue
+        rr = recs(d)
+        n = sum(1 for r in rr for l in r["lines"] if l.get("text"))
+        low = sum(1 for r in rr for l in r["lines"] if l.get("text") and l["score"] < 0.6)
+        digs = 0
+        for r in rr:
+            for ln in line_engine_lines(r):
+                m = LABEL.match(ln)
+                digs += len(DIG.findall(ln[m.end():] if m else ln))
+        rows.append([lab, v, s, n, low, digs])
+    md += [f"### T3. GT-free proxies: **{PROXY_LABEL}** (invalid once a numerical-subject sheet is added)", "",
+           table(["engine", "variant", "sheet", "non-empty lines", "lines score<0.6", f"non-label digit tokens ({PROXY_LABEL})"], rows), ""]
+
+    # ---- T4 page features + PAGE_DETECTION_ANOMALY
+    feats = {}
+    for s in SHEETS:
+        f = Path(runs["P0B3"]) / f"features.{s}.json"
+        if f.exists():
+            feats[s] = json.loads(f.read_text())["pages"]
+    rows, anomalies = [], []
+    for s, pages in feats.items():
+        for pg, ft in pages.items():
+            rows.append([s, pg, ft["extreme_pixel_share"], ft["grey_levels_used"], ft["show_through_est"],
+                         ft["ruled_lines"], ft["ruled_spacing_px"], ft["jpeg_blockiness"], ft["megapixels"]])
+            if pg == "page_01":
+                continue
+            for (lab, v, s2), d in cells.items():
+                if s2 != s or not lab.startswith("b_"):
+                    continue
+                f = d / f"{pg}.json"
+                if f.exists() and ft["ruled_lines"] >= 10:
+                    n_rows = len(line_engine_lines(json.loads(f.read_text())))
+                    if n_rows > 1.5 * ft["ruled_lines"]:
+                        anomalies.append([s, pg, v, lab, n_rows, ft["ruled_lines"]])
+    md += ["### T4. Page characterisation features (D8)", "",
+           table(["sheet", "page", "extreme-pixel share", "grey levels", "show-through est.", "ruled lines",
+                  "ruled spacing px", "JPEG blockiness", "MP"], rows) if rows else "_features not present_", "",
+           "**PAGE_DETECTION_ANOMALY** (detected text rows > 1.5 × ruled lines):", "",
+           table(["sheet", "page", "variant", "engine", "detected rows", "ruled lines"], anomalies) if anomalies else "_none_", ""]
+
+    if not all_verified and not DRAFT:
+        pend = "**PENDING_VERIFICATION**: transcriptions are not OWNER_VERIFIED; these tables are generated only from verified ground truth."
+        md += ["### T5. Accuracy per engine / variant / sheet", "", pend, "",
+               "### T6. Gate metrics (D11)", "", pend, "",
+               "### T7. Oracle vs best single engine; shared autocorrections", "", pend, "",
+               "### T8. Line-detection quality (D9)", "", pend, "",
+               "### T9. Empty-crop gate ablation (D9)", "", pend, "",
+               "### T10. Best variant per page and selection rule (D8)", "", pend, ""]
+    else:
+        md += accuracy_sections(cfg, cells, fmts, feats)
+
+    block = "\n".join(md)
+    if DRAFT:
+        (OUT / "tables_DRAFT_NOT_REPORTABLE.md").write_text("# NOT_REPORTABLE: DRAFT GROUND TRUTH SELF-TEST\n\n" + block)
+        print(block)
+        return 0
+    (OUT / "tables.md").write_text(block)
+    text = REPORT.read_text() if REPORT.exists() else "# PHASE 0B REPORT\n\n<!-- BEGIN GENERATED -->\n<!-- END GENERATED -->\n"
+    text = re.sub(r"<!-- BEGIN GENERATED -->.*<!-- END GENERATED -->",
+                  "<!-- BEGIN GENERATED -->\n" + block.replace("\\", "\\\\") + "\n<!-- END GENERATED -->", text, flags=re.S)
+    REPORT.write_text(text)
+    print(block)
     return 0
+
+
+def accuracy_sections(cfg: dict, cells: dict, fmts: dict, feats: dict) -> list[str]:
+    md = []
+    # T5 accuracy
+    rows, per_page_cer = [], defaultdict(dict)
+    for (lab, v, s), d in sorted(cells.items()):
+        out = OUT / f"score_{lab}_{v}_{s}.json"
+        py("score.py", "--gt", str(ROOT / "data" / "transcriptions" / s), "--engine", f"{lab}={fmts[lab]}:{d}", "--out", str(out))
+        sc = json.loads(out.read_text())
+        t = sc["totals"].get(lab)
+        if not t:
+            continue
+        for pg, e in sc["pages"].items():
+            if lab in e:
+                per_page_cer[(lab, s, pg)][v] = e[lab]["cer"]
+        rows.append([lab, v, s, t["cer_micro"], t["wer_micro"], t["omissions"], t["substitutions"], t["insertions"],
+                     t["autocorrect_candidates"], f"{t['label_precision']} / {t['label_recall']}", t["option_letters_correct"],
+                     t["spurious_digit_tokens"]])
+    md += ["### T5. Accuracy per engine / variant / sheet (OWNER_VERIFIED GT)", "",
+           table(["engine", "variant", "sheet", "CER", "WER", "omissions", "substitutions", "insertions", "autocorrect cand.",
+                  "label P / R", "option letters", "spurious digits"], rows), ""]
+
+    # T6/T7 gate metrics per variant, pooled over sheets
+    rows6, rows7 = [], []
+    variants = sorted({v for (_, v, _) in cells})
+    for v in variants:
+        engines = [e for e in cfg["gate_full_set"] if all((e, v, s) in cells for s in SHEETS)]
+        if len(engines) < 2:
+            continue
+        args = []
+        for e in engines:
+            tmpl = str(cells[(e, v, SHEETS[0])]).replace(SHEETS[0], "{sheet}")
+            args += ["--engine", f"{e}={fmts[e]}:{tmpl}"]
+        out = OUT / f"gate_{v}.json"
+        py("gate_metrics.py", *sum([["--gt", str(ROOT / "data" / "transcriptions" / s)] for s in SHEETS], []), *args, "--out", str(out))
+        g = json.loads(out.read_text())
+        wanted = [p for p in cfg["gate_pairs"] if all(x in engines for x in p)] + [engines]
+        for gs in g["gates"]:
+            if gs["engines"] in wanted:
+                rows6.append([v, " + ".join(gs["engines"]), gs["tau"], gs["lines"], gs["agree_lines"],
+                              gs["silent_error_rate"], gs["silent_errors"], gs["gate_recall"], gs["gate_cost"]])
+        rows7.append([v, ", ".join(engines), json.dumps(g["single_engine_cer"]), g["best_single"], g["oracle_cer"],
+                      len(g["shared_autocorrections"]),
+                      "; ".join(f"{x['written']}→{x['emitted']} ({'+'.join(x['engines'])})" for x in g["shared_autocorrections"][:6])])
+    md += ["### T6. Gate metrics (D11): line level, pooled over both sheets; first engine = primary", "",
+           table(["variant", "engines", "τ", "GT lines", "agree", "P(wrong | agree)", "silent errors", "gate recall",
+                  "gate cost"], rows6), "",
+           "### T7. Oracle vs best single engine; shared autocorrections", "",
+           table(["variant", "engines", "single-engine CER", "best single", "oracle CER", "shared autocorrections", "examples"], rows7), ""]
+
+    # T8 line quality
+    rows = []
+    for (lab, v, s), d in sorted(cells.items()):
+        if not lab.startswith(("b_", "c2_")):
+            continue
+        out = OUT / f"lineq_{lab}_{v}_{s}.json"
+        py("line_quality.py", "--gt", str(ROOT / "data" / "transcriptions" / s), "--engine", f"{lab}={d}", "--out", str(out))
+        t = json.loads(out.read_text())["totals"].get(lab, {})
+        rows.append([lab, v, s, t.get("gt_lines"), t.get("rows"), t.get("matched_gt_lines"), t.get("missed"),
+                     t.get("split"), t.get("merged_rows"), t.get("spurious_rows")])
+    md += ["### T8. Line-detection quality (D9), row level; matching uses recognised text (see caveat)", "",
+           table(["engine", "variant", "sheet", "GT lines", "detected rows", "GT lines matched", "missed", "split",
+                  "merged rows", "spurious rows (show-through/noise)"], rows), ""]
+
+    # T9 gate ablation: gated lines judged with their no-gate text
+    rows = []
+    for s in SHEETS:
+        g, ng = cells.get(("c2_v5det", "raw", s)), cells.get(("c2_v5det_nogate", "raw", s))
+        if not (g and ng):
+            continue
+        man = json.loads((ROOT / "data" / "transcriptions" / s / "manifest.json").read_text())
+        removed_halluc = dropped_true = 0
+        for pf in man["pages"]:
+            gt_lines = [norm(l) for l in (ROOT / "data" / "transcriptions" / s / pf).read_text().splitlines() if norm(l)]
+            a, b = json.loads((g / f"{Path(pf).stem}.json").read_text()), json.loads((ng / f"{Path(pf).stem}.json").read_text())
+            for la, lb in zip(a["lines"], b["lines"]):
+                if "NO_TEXT" in la.get("flags", []):
+                    best = max((difflib.SequenceMatcher(None, lb["text"].lower(), x.lower()).ratio() for x in gt_lines), default=0)
+                    if best >= 0.5:
+                        dropped_true += 1
+                    else:
+                        removed_halluc += 1
+        rows.append([s, removed_halluc, dropped_true])
+    md += ["### T9. Empty-crop gate ablation (D9), transcribed pages", "",
+           table(["sheet", "gated lines whose no-gate text matched no GT line (hallucination removed)",
+                  "gated lines whose no-gate text matched a GT line (true line wrongly dropped)"], rows), ""]
+
+    # T10 best variant per page + selection rule (decision stump), derive on one sheet / validate on the other
+    md += ["### T10. Best variant per page and deterministic selection rule (D8)", ""]
+    for eng in cfg["selection_engines"]:
+        pages = {(s, pg): cers for (lab, s, pg), cers in per_page_cer.items() if lab == eng and len(cers) >= 2}
+        if not pages:
+            continue
+        rows = [[s, pg, min(c, key=c.get), json.dumps(c), *(feats.get(s, {}).get(pg, {}).get(k) for k in
+                ("extreme_pixel_share", "show_through_est", "ruled_lines"))] for (s, pg), c in sorted(pages.items())]
+        md += [f"**{eng}**: per-page CER by variant", "",
+               table(["sheet", "page", "best variant", "CER by variant", "extreme-pixel share", "show-through est.", "ruled lines"], rows), ""]
+        rule_rows = []
+        for derive, validate in itertools.permutations(SHEETS, 2):
+            rule = fit_stump({k: v for k, v in pages.items() if k[0] == derive}, feats)
+            if not rule:
+                continue
+            val = {k: v for k, v in pages.items() if k[0] == validate}
+            chosen = [apply_stump(rule, feats[validate][pg]) for (_, pg) in val]
+            cer_rule = statistics.mean(val[k].get(c, val[k].get("raw")) for k, c in zip(val, chosen))
+            cer_raw = statistics.mean(c.get("raw") for c in val.values())
+            cer_oracle = statistics.mean(min(c.values()) for c in val.values())
+            rule_rows.append([derive, validate, rule["text"], round(cer_rule, 4), round(cer_raw, 4), round(cer_oracle, 4), len(val)])
+        md += [table(["derived on", "validated on", "rule", "validation CER (rule)", "validation CER (raw)",
+                      "validation CER (per-page oracle variant)", "validation pages"], rule_rows), ""]
+    return md
+
+
+def fit_stump(pages: dict, feats: dict) -> dict | None:
+    """Best single-feature threshold rule: if feature >= t -> variant_hi else variant_lo, minimising mean CER."""
+    if not pages:
+        return None
+    variants = sorted({v for c in pages.values() for v in c})
+    best = None
+    for f in ("extreme_pixel_share", "show_through_est", "ruled_lines", "jpeg_blockiness"):
+        vals = sorted({feats[s][pg][f] for (s, pg) in pages if feats.get(s, {}).get(pg, {}).get(f) is not None})
+        for t in vals:
+            for hi, lo in itertools.product(variants, repeat=2):
+                cost = statistics.mean(c.get(hi if feats[s][pg][f] >= t else lo, 9.9) for (s, pg), c in pages.items())
+                if best is None or cost < best["cost"]:
+                    best = {"feature": f, "t": t, "hi": hi, "lo": lo, "cost": cost,
+                            "text": f"if {f} >= {t} then {hi} else {lo}"}
+    return best
+
+
+def apply_stump(rule: dict, ft: dict) -> str:
+    return rule["hi"] if ft.get(rule["feature"]) is not None and ft[rule["feature"]] >= rule["t"] else rule["lo"]
 
 
 if __name__ == "__main__":

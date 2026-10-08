@@ -1,0 +1,27 @@
+{
+  "_doc": "Engine configurations ('cells') for spike/report_0b.py. Paths are templates with {variant} and {sheet}. 'config' is the TRUE detector/recogniser (from logs / rule-12 records), not what was requested.",
+  "runs": {
+    "P0": "spike/runs/20261008T074243Z_gundam_int8",
+    "P0B": "spike/runs/20261008T083940Z_phase0b",
+    "P0B2": "spike/runs/20261008T091415Z_phase0b2",
+    "P0B3": "spike/runs/PHASE0B3_RUN_ID"
+  },
+  "cells": [
+    {"label": "b_v5m", "fmt": "lines", "config": "PP-OCRv5_server_det + en_PP-OCRv5_mobile_rec", "path": "{P0B}/{variant}/{sheet}/b_mobile", "variants": ["raw", "st010"]},
+    {"label": "b_v6det_v5rec", "fmt": "lines", "config": "PP-OCRv6_medium_det (IMPLICIT, confounded run) + PP-OCRv5_server_rec", "path": "{P0B}/{variant}/{sheet}/b_server", "variants": ["raw", "st010"]},
+    {"label": "b_v5s", "fmt": "lines", "config": "PP-OCRv5_server_det + PP-OCRv5_server_rec", "path": "{P0B2}/{variant}/{sheet}/b_v5s", "variants": ["raw", "st010"]},
+    {"label": "b_v5s", "fmt": "lines", "config": "PP-OCRv5_server_det + PP-OCRv5_server_rec", "path": "{P0B3}/{variant}/{sheet}/b_v5s", "variants": ["st011b", "st011g", "st011g_rl"]},
+    {"label": "b_v6", "fmt": "lines", "config": "PP-OCRv6_medium_det + PP-OCRv6_medium_rec", "path": "{P0B2}/{variant}/{sheet}/b_v6", "variants": ["raw", "st010"]},
+    {"label": "b_v6", "fmt": "lines", "config": "PP-OCRv6_medium_det + PP-OCRv6_medium_rec", "path": "{P0B3}/{variant}/{sheet}/b_v6", "variants": ["st011b", "st011g", "st011g_rl"]},
+    {"label": "c1_v6det", "fmt": "lines", "config": "TrOCR v1 runner (axis-aligned crops, no gate) on PP-OCRv6_medium_det boxes", "path": "{P0B}/{variant}/{sheet}/c_trocr", "variants": ["raw", "st010"]},
+    {"label": "c1_v5det", "fmt": "lines", "config": "TrOCR v1 runner (axis-aligned crops, no gate) on PP-OCRv5_server_det boxes", "path": "{P0B2}/{variant}/{sheet}/c_v5det", "variants": ["raw", "st010"]},
+    {"label": "c2_v5det", "fmt": "lines", "config": "TrOCR v2 runner (perspective warp + empty-crop gate) on PP-OCRv5_server_det boxes", "path": "{P0B3}/{variant}/{sheet}/c2_v5det", "variants": ["raw", "st010", "st011b", "st011g", "st011g_rl"]},
+    {"label": "c2_v5det_nogate", "fmt": "lines", "config": "TrOCR v2 runner, gate disabled (ablation)", "path": "{P0B3}/{variant}/{sheet}/c2_v5det_nogate", "variants": ["raw"]},
+    {"label": "a_gundam_int8_ref", "fmt": "a", "config": "Unlimited-OCR gundam int8 (Phase 0; OVER the 6 GB budget)", "path": "{P0}/{sheet}/engine_a", "variants": ["raw"]},
+    {"label": "a_base_int8", "fmt": "a", "config": "Unlimited-OCR base int8 (D10)", "path": "{P0B3}/{variant}/{sheet}/a_base_int8", "variants": ["raw", "st011b", "st011g", "st011g_rl"]}
+  ],
+  "gate_pairs": [["b_v5s", "c2_v5det"], ["b_v6", "c2_v5det"], ["b_v5s", "b_v6"], ["b_v5s", "a_base_int8"], ["c2_v5det", "a_base_int8"]],
+  "gate_full_set": ["b_v5s", "b_v6", "c2_v5det", "a_base_int8"],
+  "selection_engines": ["b_v5s", "b_v6", "c2_v5det"],
+  "budget_vram_mib": 6144
+}
