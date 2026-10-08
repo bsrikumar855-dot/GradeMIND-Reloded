@@ -1,0 +1,16 @@
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false   # tests need only text/JSON fixtures, not page images
+      - uses: astral-sh/setup-uv@v6
+      - name: Python 3.12
+        run: uv python install 3.12
+      - name: make test
+        run: make test
