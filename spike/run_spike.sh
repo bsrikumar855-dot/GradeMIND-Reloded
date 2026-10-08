@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Phase 0 OCR spike driver.
-# Usage: spike/run_spike.sh [--mode gundam|base] [--engines ab|a|b] <sheet_dir>...
+# Usage: spike/run_spike.sh [--mode gundam|base] [--engines ab|a|b] [--quant int8|offload|none] [--max-length N] <sheet_dir>...
 #   <sheet_dir> is e.g. data/samples/sheet_001 (pages read from <sheet_dir>/pages/*.jpg|png)
 # Writes spike/runs/<run_id>/{env.json,<sheet_id>/engine_a/,<sheet_id>/engine_b/,*.log}.
 # Outputs contain student text: gitignored.
@@ -9,10 +9,14 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 MODE=gundam
 ENGINES=ab
+QUANT=int8
+MAXLEN=4096
 while [[ $# -gt 0 && "$1" == --* ]]; do
     case "$1" in
         --mode) MODE="$2"; shift 2 ;;
         --engines) ENGINES="$2"; shift 2 ;;
+        --quant) QUANT="$2"; shift 2 ;;
+        --max-length) MAXLEN="$2"; shift 2 ;;
         *) echo "unknown flag $1" >&2; exit 2 ;;
     esac
 done
@@ -20,7 +24,7 @@ done
 
 MODEL_DIR="${UNLIMITED_OCR_DIR:-$HOME/models/Unlimited-OCR}"
 MODEL_REV="${UNLIMITED_OCR_REV:?set UNLIMITED_OCR_REV to the pinned HF revision}"
-RUN_ID="$(date -u +%Y%m%dT%H%M%SZ)_${MODE}"
+RUN_ID="$(date -u +%Y%m%dT%H%M%SZ)_${MODE}_${QUANT}"
 RUN="$ROOT/spike/runs/$RUN_ID"
 mkdir -p "$RUN"
 
@@ -29,7 +33,7 @@ cat > "$RUN/env.json" <<EOF
  "git_dirty": $([[ -n "$(git -C "$ROOT" status --porcelain)" ]] && echo true || echo false),
  "gpu": "$(nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader)",
  "gpu_used_mib_before": $(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits),
- "engine_a": {"model_dir": "$MODEL_DIR", "revision": "$MODEL_REV", "mode": "$MODE"},
+ "engine_a": {"model_dir": "$MODEL_DIR", "revision": "$MODEL_REV", "mode": "$MODE", "quant": "$QUANT", "max_length": $MAXLEN},
  "engines": "$ENGINES", "sheets": "$*"}
 EOF
 
@@ -42,8 +46,8 @@ for SHEET_DIR in "$@"; do
             --pages "${PAGES[@]}" --out "$RUN/$SHEET/engine_b" 2>&1 | tee "$RUN/$SHEET.engine_b.log"
     fi
     if [[ "$ENGINES" == *a* ]]; then
-        "$ROOT/spike/engine_a/.venv/bin/python" "$ROOT/spike/engine_a/run_engine_a.py" \
-            --model "$MODEL_DIR" --revision "$MODEL_REV" --mode "$MODE" \
+        PYTORCH_ALLOC_CONF=expandable_segments:True "$ROOT/spike/engine_a/.venv/bin/python" "$ROOT/spike/engine_a/run_engine_a.py" \
+            --model "$MODEL_DIR" --revision "$MODEL_REV" --mode "$MODE" --quant "$QUANT" --max-length "$MAXLEN" \
             --pages "${PAGES[@]}" --out "$RUN/$SHEET/engine_a" 2>&1 | tee "$RUN/$SHEET.engine_a.log"
     fi
 done

@@ -77,10 +77,20 @@ def parse_regions(raw: str) -> list[dict]:
     return regions
 
 
-def degenerate_checks(raw: str, n_tokens: int, regions: list[dict]) -> list[str]:
+def degenerate_checks(raw: str, n_tokens: int, regions: list[dict], max_length: int = MAX_LENGTH) -> list[str]:
     flags = []
-    if n_tokens >= MAX_LENGTH - 8:
+    if n_tokens >= max_length - 8:
         flags.append("TRUNCATED_AT_MAX_LENGTH")
+    elif n_tokens >= 0.5 * MAX_LENGTH:
+        flags.append(f"RUNAWAY_LENGTH_{n_tokens}_tokens")
+    # Counting loops ("1. 2. 3. ..." / "2010. 2011. ...") evade n-gram bans and duplicate checks.
+    nums = [int(x) for x in re.findall(r"\d+", raw)]
+    longest = cur = 1
+    for a, b in zip(nums, nums[1:]):
+        cur = cur + 1 if b == a + 1 else 1
+        longest = max(longest, cur)
+    if longest >= 12:
+        flags.append(f"COUNTING_SEQUENCE_x{longest}")
     lines = [ln.strip() for ln in raw.splitlines() if ln.strip()]
     if lines:
         most = max(lines.count(x) for x in set(lines))
@@ -123,6 +133,8 @@ def main() -> int:
     ap.add_argument("--quant", choices=["none", "int8", "offload"], default="none",
                     help="int8: bitsandbytes LLM.int8 on decoder linears (vision/projector/lm_head bf16). "
                          "offload: exact bf16, routed experts of --offload-layers kept in CPU RAM and streamed")
+    ap.add_argument("--max-length", type=int, default=MAX_LENGTH,
+                    help="generation cap; spike runs use 4096 so runaway pages fail fast (flagged TRUNCATED)")
     ap.add_argument("--offload-layers", default="5-11", help="decoder layer range whose routed experts live on CPU")
     args = ap.parse_args()
 
@@ -178,7 +190,7 @@ def main() -> int:
         torch.cuda.synchronize()
         t = time.perf_counter()
         raw = model.infer(tok, prompt=PROMPT, image_file=page, output_path=str(scratch),
-                          max_length=MAX_LENGTH, no_repeat_ngram_size=NO_REPEAT_NGRAM,
+                          max_length=args.max_length, no_repeat_ngram_size=NO_REPEAT_NGRAM,
                           ngram_window=NGRAM_WINDOW, save_results=False, eval_mode=True,
                           temperature=0.0, **MODES[args.mode])
         torch.cuda.synchronize()
@@ -190,7 +202,7 @@ def main() -> int:
             "engine": "unlimited-ocr", "model_revision": args.revision, "path": "transformers",
             "mode": args.mode, "mode_params": MODES[args.mode], "prompt": PROMPT, "quant": args.quant,
             "offload_layers": args.offload_layers if args.quant == "offload" else None,
-            "decoding": {"temperature": 0.0, "max_length": MAX_LENGTH,
+            "decoding": {"temperature": 0.0, "max_length": args.max_length,
                          "no_repeat_ngram_size": NO_REPEAT_NGRAM, "ngram_window": NGRAM_WINDOW},
             "page": Path(page).name, "latency_s": round(latency, 3), "model_load_s": round(load_s, 2),
             "generated_tokens": len(rec.logprobs),
@@ -206,7 +218,7 @@ def main() -> int:
             "token_ids": rec.token_ids,
             "token_logprobs": [round(x, 4) for x in rec.logprobs],
             "token_margins": [round(x, 3) for x in rec.margins],
-            "degenerate_flags": degenerate_checks(raw, len(rec.logprobs), regions),
+            "degenerate_flags": degenerate_checks(raw, len(rec.logprobs), regions, args.max_length),
             "regions": regions,
             "raw": raw,
         }
