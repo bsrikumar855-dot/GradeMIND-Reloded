@@ -107,6 +107,10 @@ def degenerate_checks(raw: str, n_tokens: int, regions: list[dict], max_length: 
     cjk = len(re.findall(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]", content))
     if cjk:
         flags.append(f"UNEXPECTED_SCRIPT_CJK_x{cjk}")
+    cells = [c.strip() for c in re.findall(r"<td[^>]*>(.*?)</td>", raw, flags=re.DOTALL) if c.strip()]
+    cell_counts = {c: cells.count(c) for c in set(cells) if len(c) >= 4}
+    if cell_counts and max(cell_counts.values()) >= 5:
+        flags.append(f"REPEATED_CELL_TEXT_x{max(cell_counts.values())}")
     empty_cells = len(re.findall(r"<td[^>]*>\s*</td>", raw))
     if empty_cells >= 20:
         flags.append(f"EMPTY_CELL_SPAM_x{empty_cells}")
