@@ -70,6 +70,11 @@ our parser must never use `eval`. I'll add a regression test in Phase 2.
 
 ## 4. Early risks (to be measured, not assumed)
 
+0. **The GPU is shared (observed 2026-10-08).** About 4.6 GiB of the 12 GiB is already in use before GradeMIND loads anything:
+   PID 2024 `/home/techpark-9/important/interviewbot-sys2/venv/bin/python3` holds 3906 MiB (another account's service,
+   not touched), and the desktop, Chrome and sunshine hold about 0.65 GiB. That leaves about 7.4 GiB of headroom against 6.7 GB of OCR weights.
+   The production design cannot assume an exclusive GPU on this host.
+
 1. **VRAM budget, 12 GB.** OCR weights alone take ~6.7 GB, leaving ~4–5 GB for KV cache and activations at `gpu_memory_utilization≈0.9`. The local LLM cannot be co-resident: Qwen3-8B in bf16 needs ~16 GB. Options are sequential GPU stages (unload OCR, then load the LLM), a 4-bit quantized LLM, or a cloud LLM (opt-in, with redaction). This is an owner decision.
 2. **Blackwell (sm_120) support.** This needs CUDA 12.8 or later. The driver supports CUDA 13, so the default `unlimited-ocr` vLLM image should work. Paddle GPU support is unverified.
 3. **Handwriting distribution shift** (spec §5.5). Published numbers are for printed documents. Nothing is known until the measurements run on real sheets.
