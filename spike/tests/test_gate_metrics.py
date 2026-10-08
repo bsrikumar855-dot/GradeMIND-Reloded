@@ -41,5 +41,17 @@ def test_independent_correct_engine_catches_error() -> None:
 def test_tau_tolerates_small_differences() -> None:
     assert ned("on the mat", "on the mat.") <= 0.10 and cer("on the mat", "on the mat.") <= 0.10
     proj = {"X": GT, "Y": ["the cat sat", "on the mat.", "with 10 dogs"]}
-    assert pair_stats(["X", "Y"], GT, proj, 0.0)["gate_cost"] > 0
-    assert pair_stats(["X", "Y"], GT, proj, 0.10)["gate_cost"] == 0.0
+    # tau=0: Y's trailing '.' makes it wrong -> the disagreement counts toward recall, not cost
+    s0 = pair_stats(["X", "Y"], GT, proj, 0.0)
+    assert s0["gate_recall"] == 1.0 and s0["gate_cost"] == 0.0
+    # tau=0.10: both within tolerance of GT and of each other -> agree, nothing flagged
+    s1 = pair_stats(["X", "Y"], GT, proj, 0.10)
+    assert s1["agree_lines"] == 3 and s1["gate_cost"] == 0.0
+
+
+def test_gate_cost_when_both_correct_but_apart() -> None:
+    gt = ["with ten big dogs"]
+    proj = {"X": ["with ten big dogs."], "Y": ["with ten big dog"]}  # each 1/17 from GT; 2/18 from each other
+    s = pair_stats(["X", "Y"], gt, proj, 0.10)
+    assert s["lines_all_correct"] == 1 and s["gate_cost"] == 1.0
+    assert pair_stats(["X", "Y"], gt, proj, 0.0)["gate_cost"] is None  # no line is all-correct at tau=0
