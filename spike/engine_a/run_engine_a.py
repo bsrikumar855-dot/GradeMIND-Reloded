@@ -120,8 +120,10 @@ def main() -> int:
     ap.add_argument("--pages", nargs="+", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--mode", choices=MODES, default="gundam")
-    ap.add_argument("--quant", choices=["none", "int8"], default="none",
-                    help="int8: bitsandbytes LLM.int8 on decoder linears; vision/projector/lm_head stay bf16")
+    ap.add_argument("--quant", choices=["none", "int8", "offload"], default="none",
+                    help="int8: bitsandbytes LLM.int8 on decoder linears (vision/projector/lm_head bf16). "
+                         "offload: exact bf16, routed experts of --offload-layers kept in CPU RAM and streamed")
+    ap.add_argument("--offload-layers", default="5-11", help="decoder layer range whose routed experts live on CPU")
     args = ap.parse_args()
 
     out_dir = Path(args.out)
@@ -135,6 +137,26 @@ def main() -> int:
         load_kw["quantization_config"] = BitsAndBytesConfig(
             load_in_8bit=True, llm_int8_skip_modules=["sam_model", "vision_model", "projector", "lm_head"])
         load_kw["device_map"] = {"": 0}
+        model = AutoModel.from_pretrained(args.model, **load_kw).eval()
+    elif args.quant == "offload":
+        lo, hi = (int(x) for x in args.offload_layers.split("-"))
+        weight_map = json.loads((Path(args.model) / "model.safetensors.index.json").read_text())["weight_map"]
+        device_map: dict = {}
+        # Module-prefix keys (not per-parameter) so unsaved buffers such as position_ids are covered.
+        for name in weight_map:
+            m = re.match(r"(model\.layers\.(\d+)\.mlp\.experts)\.", name)
+            if m and lo <= int(m.group(2)) <= hi:
+                device_map[m.group(1)] = "cpu"
+                continue
+            parts = name.split(".")
+            if parts[0] != "model":
+                key = parts[0]
+            elif parts[1] != "layers":
+                key = ".".join(parts[:2])
+            else:
+                key = ".".join(parts[:5] if parts[3] == "mlp" else parts[:4])
+            device_map[key] = 0
+        load_kw["device_map"] = device_map
         model = AutoModel.from_pretrained(args.model, **load_kw).eval()
     else:
         model = AutoModel.from_pretrained(args.model, **load_kw).eval().cuda()
@@ -167,6 +189,7 @@ def main() -> int:
         record = {
             "engine": "unlimited-ocr", "model_revision": args.revision, "path": "transformers",
             "mode": args.mode, "mode_params": MODES[args.mode], "prompt": PROMPT, "quant": args.quant,
+            "offload_layers": args.offload_layers if args.quant == "offload" else None,
             "decoding": {"temperature": 0.0, "max_length": MAX_LENGTH,
                          "no_repeat_ngram_size": NO_REPEAT_NGRAM, "ngram_window": NGRAM_WINDOW},
             "page": Path(page).name, "latency_s": round(latency, 3), "model_load_s": round(load_s, 2),
