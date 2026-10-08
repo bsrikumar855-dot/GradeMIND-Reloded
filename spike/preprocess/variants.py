@@ -20,7 +20,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-VERSION = "0.1.1"
+VERSION = "0.1.2"  # 0.1.2: ruled-line count via row-coverage profile (0.1.1 counted fragments)
 P = {"bg_blur": 61, "thr_block": 41, "thr_c": 12, "keep_ratio": 0.45, "min_area": 12, "dilate": 1,
      "rl_h_frac": 0.08, "rl_v_frac": 0.10, "rl_close": 9}
 
@@ -49,16 +49,35 @@ def ruled_line_mask(mask: np.ndarray, p: dict = P) -> np.ndarray:
     return cv2.bitwise_or(horiz, vert)
 
 
+def count_ruled_lines(mask: np.ndarray, p: dict = P, min_cov: float = 0.15, min_gap: int = 20) -> tuple[int, float | None]:
+    """Ruled lines = bands of rows whose (vertically dilated) horizontal-line mask covers > min_cov of the width."""
+    h, w = mask.shape
+    closed = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (p["rl_close"], 1)))
+    # Tuned on 6 pages against a visual count (sheet_001 booklet: 25 ruled lines/page); curved WhatsApp pages undercount.
+    horiz = cv2.morphologyEx(closed, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_RECT, (int(w * 0.05), 1)))
+    horiz = cv2.dilate(horiz, cv2.getStructuringElement(cv2.MORPH_RECT, (1, 25)))
+    cov = (horiz > 0).sum(axis=1) / w
+    rows = np.where(cov > min_cov)[0]
+    if rows.size == 0:
+        return 0, None
+    groups, start, prev = [], rows[0], rows[0]
+    for r in rows[1:]:
+        if r - prev > min_gap:
+            groups.append((start + prev) / 2)
+            start = r
+        prev = r
+    groups.append((start + prev) / 2)
+    gaps = np.diff(groups)
+    return len(groups), (float(np.median(gaps)) if gaps.size else None)
+
+
 def features(bgr: np.ndarray) -> dict:
     gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
     h, w = gray.shape
     hist = np.bincount(gray.ravel(), minlength=256) / gray.size
     norm, mask, labels, area, keep, reject = _analyse(gray)
     cand = float(area[1:].sum()) or 1.0
-    rl = ruled_line_mask(mask)
-    n_rows, row_lbl = cv2.connectedComponents(cv2.morphologyEx(rl, cv2.MORPH_OPEN, np.ones((1, int(w * P["rl_h_frac"])), np.uint8)))
-    ys = sorted(int(np.mean(np.where(row_lbl == i)[0])) for i in range(1, n_rows)) if n_rows > 1 else []
-    gaps = np.diff(ys) if len(ys) > 1 else np.array([])
+    n_ruled, spacing = count_ruled_lines(mask)
     g = gray.astype(np.float64)
     col_d = np.abs(np.diff(g, axis=1))
     boundary = col_d[:, 7::8].mean()
@@ -68,8 +87,8 @@ def features(bgr: np.ndarray) -> dict:
         "extreme_pixel_share": round(float(hist[:31].sum() + hist[225:].sum()), 4),
         "grey_levels_used": int((hist >= 0.001).sum()),
         "show_through_est": round(float(area[reject].sum()) / cand, 4),
-        "ruled_lines": max(0, n_rows - 1),
-        "ruled_spacing_px": float(np.median(gaps)) if gaps.size else None,
+        "ruled_lines": n_ruled,
+        "ruled_spacing_px": spacing,
         "jpeg_blockiness": round(float(boundary / inside), 3) if inside else None,
     }
 
@@ -93,7 +112,13 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", required=True)
     ap.add_argument("--dst-root", required=True)
+    ap.add_argument("--features-only", help="write features JSON to this path; no variant images (cheap recompute)")
     args = ap.parse_args()
+    if args.features_only:
+        feats = {"version": VERSION, "params": P, "pages": {f.stem: features(cv2.imread(str(f), cv2.IMREAD_COLOR))
+                                                             for f in sorted(Path(args.src).glob("*.jpg"))}}
+        Path(args.features_only).write_text(json.dumps(feats, indent=1))
+        return 0
     root = Path(args.dst_root)
     feats = {"version": VERSION, "params": P, "pages": {}}
     for f in sorted(Path(args.src).glob("*.jpg")):

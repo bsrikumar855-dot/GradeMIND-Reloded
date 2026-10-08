@@ -4,7 +4,7 @@
     "P0": "spike/runs/20261008T074243Z_gundam_int8",
     "P0B": "spike/runs/20261008T083940Z_phase0b",
     "P0B2": "spike/runs/20261008T091415Z_phase0b2",
-    "P0B3": "spike/runs/PHASE0B3_RUN_ID"
+    "P0B3": "spike/runs/20261008T105442Z_phase0b3"
   },
   "cells": [
     {"label": "b_v5m", "fmt": "lines", "config": "PP-OCRv5_server_det + en_PP-OCRv5_mobile_rec", "path": "{P0B}/{variant}/{sheet}/b_mobile", "variants": ["raw", "st010"]},

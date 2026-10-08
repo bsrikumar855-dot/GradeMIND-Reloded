@@ -101,8 +101,8 @@ def pair_stats(names: list[str], gt_lines: list[str], proj: dict[str, list[str]]
     f = lambda a, b: round(a / b, 4) if b else None  # noqa: E731
     return {"engines": names, "primary": primary, "tau": tau, "lines": len(gt_lines),
             "agree_lines": agree_n, "silent_error_rate": f(agree_wrong, agree_n), "silent_errors": agree_wrong,
-            "gate_recall": f(anywrong_dis, anywrong_n), "lines_any_wrong": anywrong_n,
-            "gate_cost": f(bothok_dis, bothok_n), "lines_all_correct": bothok_n}
+            "gate_recall": f(anywrong_dis, anywrong_n), "lines_any_wrong": anywrong_n, "lines_any_wrong_disagree": anywrong_dis,
+            "gate_cost": f(bothok_dis, bothok_n), "lines_all_correct": bothok_n, "lines_all_correct_disagree": bothok_dis}
 
 
 def main() -> int:
@@ -121,6 +121,7 @@ def main() -> int:
     vocab = {w.strip().lower() for w in WORDLIST.read_text(errors="ignore").split()} if WORDLIST.exists() else set()
 
     statuses, gt_lines_all, proj_all, perword_all, gtwords_all = [], [], {n: [] for n in engines}, {n: [] for n in engines}, []
+    line_page: list[str] = []
     for gdir in map(Path, args.gt):
         man = json.loads((gdir / "manifest.json").read_text())
         statuses.append(man["status"])
@@ -130,6 +131,7 @@ def main() -> int:
             if not gt_lines:
                 continue
             gt_lines_all += gt_lines
+            line_page += [f"{sheet}/{Path(pf).stem}"] * len(gt_lines)
             gtwords_all += [w for l in gt_lines for w in l.split()]
             for n, (fmt, tmpl) in engines.items():
                 f = Path(tmpl.format(sheet=sheet)) / f"{Path(pf).stem}.json"
@@ -148,6 +150,14 @@ def main() -> int:
     tot = sum(len(g) for g in gt_lines_all)
     single = {n: round(sum(levenshtein_ops(g, proj_all[n][i])[0] for i, g in enumerate(gt_lines_all)) / tot, 4) for n in names}
     oracle = round(sum(min(levenshtein_ops(g, proj_all[n][i])[0] for n in names) for i, g in enumerate(gt_lines_all)) / tot, 4)
+    per_page: dict = {}
+    for i, g in enumerate(gt_lines_all):
+        e = {n: levenshtein_ops(g, proj_all[n][i])[0] for n in names}
+        pp = per_page.setdefault(line_page[i], {"chars": 0, "oracle": 0, **{n: 0 for n in names}})
+        pp["chars"] += len(g)
+        pp["oracle"] += min(e.values())
+        for n in names:
+            pp[n] += e[n]
     shared = []
     for wi, gw in enumerate(gtwords_all):
         gc = re.sub(r"\W", "", gw.lower())
@@ -163,7 +173,7 @@ def main() -> int:
         shared += [{"written": gw, "emitted": w, "engines": e} for w, e in emitted.items() if len(e) >= 2]
     res = {"reportable": verified, "gt_status": statuses, "lines": len(gt_lines_all), "gt_chars": tot,
            "single_engine_cer": single, "oracle_cer": oracle, "best_single": min(single, key=single.get),
-           "shared_autocorrections": shared, "gates": gates}
+           "shared_autocorrections": shared, "gates": gates, "per_page_edits": per_page}
     if not verified:
         res["WARNING"] = "NOT_REPORTABLE: scored against unverified draft transcriptions"
     Path(args.out).write_text(json.dumps(res, indent=1, ensure_ascii=False))
