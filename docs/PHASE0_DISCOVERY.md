@@ -32,7 +32,7 @@ $ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
 | Python | 3.12.3 | 3.12 | ok |
 | uv | 0.12.3 | yes | ok |
 | git / gh | 2.43.0 / 2.67.0 (logged in as `bsrikumar855-dot`) | yes | ok |
-| Docker | 29.8.0, nvidia-ctk installed | yes, with GPU | **user is still not in the `docker` group** (`getent group docker` → `docker:x:983:`, no members); owner must run `sudo usermod -aG docker $USER` and log in again |
+| Docker | 29.8.2, nvidia-ctk installed | yes, with GPU | **resolved 2026-10-08**: the owner was added to the `docker` group. GPU passthrough verified: `docker run --rm --gpus all nvidia/cuda:13.0.0-base-ubuntu24.04 nvidia-smi` → `NVIDIA GeForce RTX 5070, 12227 MiB, 595.84`. Shells opened before the change need a re-login, or `sg docker` |
 | Node | 18.19.1 | current stable Next.js | Node 20+ is needed for current Next.js (Phase 1 gap, not Phase 0) |
 | pnpm | missing | yes | Phase 1 gap |
 
@@ -88,4 +88,4 @@ our parser must never use `eval`. I'll add a regression test in Phase 2.
 2. More sheets: different writers, plus at least one numerical subject (Maths or Physics). One writer is too narrow a sample to approve an OCR strategy.
 3. The question paper and marking scheme for sheet_001. Not needed for the OCR spike; needed from Phase 2 on.
 4. Target market: the spec says CBSE, but the sample is university CIA. Which comes first?
-5. Docker group membership (see §2).
+5. ~~Docker group membership~~: resolved.
