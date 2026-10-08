@@ -1,0 +1,341 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 0.435,
+ "model_load_s": 0.86,
+ "n_lines": 10,
+ "lines": [
+  {
+   "text": "# human.",
+   "text_raw": "# human .",
+   "score": 0.8303,
+   "min_token_prob": 0.5384,
+   "box": [
+    190,
+    232,
+    647,
+    375
+   ],
+   "poly": [
+    [
+     190,
+     240
+    ],
+    [
+     645,
+     232
+    ],
+    [
+     647,
+     367
+    ],
+    [
+     193,
+     375
+    ]
+   ],
+   "b_text": "human",
+   "b_score": 0.9307
+  },
+  {
+   "text": "fuon.",
+   "text_raw": "fuon .",
+   "score": 0.7413,
+   "min_token_prob": 0.4062,
+   "box": [
+    1700,
+    261,
+    2051,
+    465
+   ],
+   "poly": [
+    [
+     1700,
+     261
+    ],
+    [
+     2051,
+     261
+    ],
+    [
+     2051,
+     465
+    ],
+    [
+     1700,
+     465
+    ]
+   ],
+   "b_text": "fuon",
+   "b_score": 0.5704
+  },
+  {
+   "text": "get.",
+   "text_raw": "get .",
+   "score": 0.8636,
+   "min_token_prob": 0.5913,
+   "box": [
+    823,
+    264,
+    1062,
+    421
+   ],
+   "poly": [
+    [
+     823,
+     288
+    ],
+    [
+     1048,
+     264
+    ],
+    [
+     1062,
+     397
+    ],
+    [
+     837,
+     421
+    ]
+   ],
+   "b_text": "get",
+   "b_score": 0.8935
+  },
+  {
+   "text": "benefits.",
+   "text_raw": "benefits .",
+   "score": 0.9925,
+   "min_token_prob": 0.9776,
+   "box": [
+    1199,
+    284,
+    1577,
+    407
+   ],
+   "poly": [
+    [
+     1199,
+     284
+    ],
+    [
+     1577,
+     284
+    ],
+    [
+     1577,
+     407
+    ],
+    [
+     1199,
+     407
+    ]
+   ],
+   "b_text": "benefits",
+   "b_score": 0.7588
+  },
+  {
+   "text": "this",
+   "text_raw": "this",
+   "score": 0.7816,
+   "min_token_prob": 0.5797,
+   "box": [
+    246,
+    349,
+    502,
+    487
+   ],
+   "poly": [
+    [
+     249,
+     349
+    ],
+    [
+     502,
+     355
+    ],
+    [
+     499,
+     487
+    ],
+    [
+     246,
+     480
+    ]
+   ],
+   "b_text": "ths",
+   "b_score": 0.5676
+  },
+  {
+   "text": "type.",
+   "text_raw": "type .",
+   "score": 0.9327,
+   "min_token_prob": 0.8007,
+   "box": [
+    663,
+    366,
+    924,
+    515
+   ],
+   "poly": [
+    [
+     669,
+     366
+    ],
+    [
+     924,
+     378
+    ],
+    [
+     918,
+     515
+    ],
+    [
+     663,
+     504
+    ]
+   ],
+   "b_text": "tape",
+   "b_score": 0.7473
+  },
+  {
+   "text": "relegions.",
+   "text_raw": "relegions .",
+   "score": 0.6955,
+   "min_token_prob": 0.2464,
+   "box": [
+    1232,
+    408,
+    1589,
+    537
+   ],
+   "poly": [
+    [
+     1232,
+     414
+    ],
+    [
+     1587,
+     408
+    ],
+    [
+     1589,
+     531
+    ],
+    [
+     1234,
+     537
+    ]
+   ],
+   "b_text": "2an",
+   "b_score": 0.2824
+  },
+  {
+   "text": "# Food.",
+   "text_raw": "# Food .",
+   "score": 0.652,
+   "min_token_prob": 0.298,
+   "box": [
+    154,
+    552,
+    707,
+    765
+   ],
+   "poly": [
+    [
+     154,
+     564
+    ],
+    [
+     702,
+     552
+    ],
+    [
+     707,
+     752
+    ],
+    [
+     158,
+     765
+    ]
+   ],
+   "b_text": "∞ food,",
+   "b_score": 0.6272
+  },
+  {
+   "text": "and more",
+   "text_raw": "and more",
+   "score": 0.898,
+   "min_token_prob": 0.6998,
+   "box": [
+    1225,
+    589,
+    1858,
+    750
+   ],
+   "poly": [
+    [
+     1225,
+     589
+    ],
+    [
+     1858,
+     589
+    ],
+    [
+     1858,
+     750
+    ],
+    [
+     1225,
+     750
+    ]
+   ],
+   "b_text": "and More",
+   "b_score": 0.9073
+  },
+  {
+   "text": "energy.",
+   "text_raw": "energy .",
+   "score": 0.9953,
+   "min_token_prob": 0.9902,
+   "box": [
+    754,
+    603,
+    1104,
+    778
+   ],
+   "poly": [
+    [
+     771,
+     603
+    ],
+    [
+     1104,
+     645
+    ],
+    [
+     1087,
+     778
+    ],
+    [
+     754,
+     736
+    ]
+   ],
+   "b_text": "enorgy",
+   "b_score": 0.7952
+  }
+ ],
+ "peak_torch_alloc_mib": 2477,
+ "peak_rss_mib_process": 2965
+}

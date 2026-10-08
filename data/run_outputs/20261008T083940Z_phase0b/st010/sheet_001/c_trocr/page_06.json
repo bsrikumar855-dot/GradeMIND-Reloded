@@ -1,0 +1,853 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_06.jpg",
+ "latency_s": 1.328,
+ "model_load_s": 0.82,
+ "n_lines": 26,
+ "lines": [
+  {
+   "text": "Endangered.",
+   "text_raw": "Endangered .",
+   "score": 0.9298,
+   "min_token_prob": 0.8244,
+   "box": [
+    273,
+    288,
+    994,
+    430
+   ],
+   "poly": [
+    [
+     273,
+     288
+    ],
+    [
+     994,
+     288
+    ],
+    [
+     994,
+     430
+    ],
+    [
+     273,
+     430
+    ]
+   ],
+   "b_text": "Endangered",
+   "b_score": 0.8863
+  },
+  {
+   "text": "species are those",
+   "text_raw": "species are those",
+   "score": 0.9879,
+   "min_token_prob": 0.9801,
+   "box": [
+    1020,
+    285,
+    2103,
+    438
+   ],
+   "poly": [
+    [
+     1020,
+     290
+    ],
+    [
+     2103,
+     285
+    ],
+    [
+     2103,
+     434
+    ],
+    [
+     1021,
+     438
+    ]
+   ],
+   "b_text": "species ae those",
+   "b_score": 0.7668
+  },
+  {
+   "text": "it",
+   "text_raw": "it",
+   "score": 0.831,
+   "min_token_prob": 0.8167,
+   "box": [
+    791,
+    417,
+    954,
+    541
+   ],
+   "poly": [
+    [
+     791,
+     417
+    ],
+    [
+     954,
+     417
+    ],
+    [
+     954,
+     541
+    ],
+    [
+     791,
+     541
+    ]
+   ],
+   "b_text": "H",
+   "b_score": 0.3035
+  },
+  {
+   "text": "near to extinction",
+   "text_raw": "near to extinction",
+   "score": 0.9404,
+   "min_token_prob": 0.8144,
+   "box": [
+    1175,
+    411,
+    2326,
+    585
+   ],
+   "poly": [
+    [
+     1177,
+     411
+    ],
+    [
+     2326,
+     425
+    ],
+    [
+     2323,
+     585
+    ],
+    [
+     1175,
+     571
+    ]
+   ],
+   "b_text": "near to extinction",
+   "b_score": 0.8216
+  },
+  {
+   "text": "poeffs.",
+   "text_raw": "poeffs .",
+   "score": 0.8379,
+   "min_token_prob": 0.4219,
+   "box": [
+    311,
+    430,
+    592,
+    554
+   ],
+   "poly": [
+    [
+     311,
+     430
+    ],
+    [
+     592,
+     430
+    ],
+    [
+     592,
+     554
+    ],
+    [
+     311,
+     554
+    ]
+   ],
+   "b_text": "poeeQ",
+   "b_score": 0.5283
+  },
+  {
+   "text": "over 4",
+   "text_raw": "over 4",
+   "score": 0.8465,
+   "min_token_prob": 0.5987,
+   "box": [
+    218,
+    545,
+    723,
+    692
+   ],
+   "poly": [
+    [
+     218,
+     545
+    ],
+    [
+     723,
+     545
+    ],
+    [
+     723,
+     692
+    ],
+    [
+     218,
+     692
+    ]
+   ],
+   "b_text": "over",
+   "b_score": 0.6947
+  },
+  {
+   "text": "the world.",
+   "text_raw": "the world .",
+   "score": 0.9319,
+   "min_token_prob": 0.7284,
+   "box": [
+    648,
+    543,
+    1301,
+    699
+   ],
+   "poly": [
+    [
+     650,
+     543
+    ],
+    [
+     1301,
+     549
+    ],
+    [
+     1300,
+     699
+    ],
+    [
+     648,
+     693
+    ]
+   ],
+   "b_text": "the world",
+   "b_score": 0.9507
+  },
+  {
+   "text": "# We can preserve this species.",
+   "text_raw": "# We can preserve this species .",
+   "score": 0.8338,
+   "min_token_prob": 0.5121,
+   "box": [
+    146,
+    782,
+    2259,
+    960
+   ],
+   "poly": [
+    [
+     146,
+     782
+    ],
+    [
+     2259,
+     789
+    ],
+    [
+     2258,
+     960
+    ],
+    [
+     146,
+     953
+    ]
+   ],
+   "b_text": "we Coan prasewe this Spees",
+   "b_score": 0.7125
+  },
+  {
+   "text": "give it suitable environment",
+   "text_raw": "give it suitable environment",
+   "score": 0.93,
+   "min_token_prob": 0.6785,
+   "box": [
+    550,
+    930,
+    2287,
+    1075
+   ],
+   "poly": [
+    [
+     550,
+     934
+    ],
+    [
+     2287,
+     930
+    ],
+    [
+     2287,
+     1071
+    ],
+    [
+     550,
+     1075
+    ]
+   ],
+   "b_text": "give it suttabele enrironment",
+   "b_score": 0.8153
+  },
+  {
+   "text": "and make them bread, wet red",
+   "text_raw": "and make them bread , wet red",
+   "score": 0.7676,
+   "min_token_prob": 0.3213,
+   "box": [
+    229,
+    1039,
+    2134,
+    1211
+   ],
+   "poly": [
+    [
+     230,
+     1039
+    ],
+    [
+     2134,
+     1053
+    ],
+    [
+     2133,
+     1211
+    ],
+    [
+     229,
+     1197
+    ]
+   ],
+   "b_text": "and Make them breed, u reod",
+   "b_score": 0.7886
+  },
+  {
+   "text": "find cause of endangered",
+   "text_raw": "find cause of endangered",
+   "score": 0.9766,
+   "min_token_prob": 0.9197,
+   "box": [
+    222,
+    1159,
+    1857,
+    1398
+   ],
+   "poly": [
+    [
+     222,
+     1159
+    ],
+    [
+     1857,
+     1159
+    ],
+    [
+     1857,
+     1398
+    ],
+    [
+     222,
+     1398
+    ]
+   ],
+   "b_text": "find caue of endangered",
+   "b_score": 0.824
+  },
+  {
+   "text": "\" Because some spots \" endangered due",
+   "text_raw": "\" Because some spots \" endangered due",
+   "score": 0.7843,
+   "min_token_prob": 0.2629,
+   "box": [
+    167,
+    1428,
+    2219,
+    1588
+   ],
+   "poly": [
+    [
+     167,
+     1428
+    ],
+    [
+     2219,
+     1428
+    ],
+    [
+     2219,
+     1588
+    ],
+    [
+     167,
+     1588
+    ]
+   ],
+   "b_text": " Bocause some Spocies ondangoed dee",
+   "b_score": 0.7363
+  },
+  {
+   "text": "to climate change and pollution",
+   "text_raw": "to climate change and pollution",
+   "score": 0.8631,
+   "min_token_prob": 0.2987,
+   "box": [
+    256,
+    1546,
+    2084,
+    1727
+   ],
+   "poly": [
+    [
+     257,
+     1546
+    ],
+    [
+     2084,
+     1560
+    ],
+    [
+     2083,
+     1727
+    ],
+    [
+     256,
+     1713
+    ]
+   ],
+   "b_text": "to dimate cChange ond polletion",
+   "b_score": 0.7562
+  },
+  {
+   "text": "And More",
+   "text_raw": "And More",
+   "score": 0.7738,
+   "min_token_prob": 0.5302,
+   "box": [
+    241,
+    1697,
+    740,
+    1842
+   ],
+   "poly": [
+    [
+     241,
+     1697
+    ],
+    [
+     740,
+     1697
+    ],
+    [
+     740,
+     1842
+    ],
+    [
+     241,
+     1842
+    ]
+   ],
+   "b_text": "And More",
+   "b_score": 0.9631
+  },
+  {
+   "text": "x to preserve it",
+   "text_raw": "x to preserve it",
+   "score": 0.8719,
+   "min_token_prob": 0.5005,
+   "box": [
+    182,
+    1941,
+    1108,
+    2080
+   ],
+   "poly": [
+    [
+     182,
+     1941
+    ],
+    [
+     1108,
+     1945
+    ],
+    [
+     1107,
+     2080
+    ],
+    [
+     182,
+     2076
+    ]
+   ],
+   "b_text": "To prowe it",
+   "b_score": 0.836
+  },
+  {
+   "text": "brodiverse area make",
+   "text_raw": "brodiverse area make",
+   "score": 0.8429,
+   "min_token_prob": 0.5969,
+   "box": [
+    656,
+    2063,
+    2050,
+    2227
+   ],
+   "poly": [
+    [
+     657,
+     2063
+    ],
+    [
+     2050,
+     2073
+    ],
+    [
+     2049,
+     2227
+    ],
+    [
+     656,
+     2217
+    ]
+   ],
+   "b_text": "biodivrse area Male",
+   "b_score": 0.8451
+  },
+  {
+   "text": "create.",
+   "text_raw": "create .",
+   "score": 0.9336,
+   "min_token_prob": 0.8038,
+   "box": [
+    271,
+    2073,
+    681,
+    2206
+   ],
+   "poly": [
+    [
+     271,
+     2073
+    ],
+    [
+     681,
+     2073
+    ],
+    [
+     681,
+     2206
+    ],
+    [
+     271,
+     2206
+    ]
+   ],
+   "b_text": "create",
+   "b_score": 0.7546
+  },
+  {
+   "text": "them Iove there.",
+   "text_raw": "them Iove there .",
+   "score": 0.7041,
+   "min_token_prob": 0.1634,
+   "box": [
+    276,
+    2193,
+    1222,
+    2338
+   ],
+   "poly": [
+    [
+     278,
+     2193
+    ],
+    [
+     1222,
+     2203
+    ],
+    [
+     1220,
+     2338
+    ],
+    [
+     276,
+     2328
+    ]
+   ],
+   "b_text": "them lae there",
+   "b_score": 0.858
+  },
+  {
+   "text": "of cause and consequence of groundwater",
+   "text_raw": "of cause and consequence of groundwater",
+   "score": 0.7456,
+   "min_token_prob": 0.1903,
+   "box": [
+    95,
+    2433,
+    2134,
+    2616
+   ],
+   "poly": [
+    [
+     96,
+     2433
+    ],
+    [
+     2134,
+     2445
+    ],
+    [
+     2133,
+     2616
+    ],
+    [
+     95,
+     2604
+    ]
+   ],
+   "b_text": "1s cause and corequme of ground uator",
+   "b_score": 0.69
+  },
+  {
+   "text": "depletism:",
+   "text_raw": "depletism :",
+   "score": 0.7611,
+   "min_token_prob": 0.3456,
+   "box": [
+    269,
+    2580,
+    812,
+    2725
+   ],
+   "poly": [
+    [
+     269,
+     2580
+    ],
+    [
+     812,
+     2580
+    ],
+    [
+     812,
+     2725
+    ],
+    [
+     269,
+     2725
+    ]
+   ],
+   "b_text": "depletion",
+   "b_score": 0.8246
+  },
+  {
+   "text": "reason for ground.",
+   "text_raw": "reason for ground .",
+   "score": 0.8588,
+   "min_token_prob": 0.501,
+   "box": [
+    827,
+    2805,
+    1954,
+    2984
+   ],
+   "poly": [
+    [
+     827,
+     2805
+    ],
+    [
+     1954,
+     2812
+    ],
+    [
+     1953,
+     2984
+    ],
+    [
+     827,
+     2978
+    ]
+   ],
+   "b_text": "goason for ground",
+   "b_score": 0.7783
+  },
+  {
+   "text": "# Marn.",
+   "text_raw": "# Marn .",
+   "score": 0.7889,
+   "min_token_prob": 0.6461,
+   "box": [
+    200,
+    2824,
+    596,
+    2958
+   ],
+   "poly": [
+    [
+     200,
+     2831
+    ],
+    [
+     594,
+     2824
+    ],
+    [
+     596,
+     2952
+    ],
+    [
+     203,
+     2958
+    ]
+   ],
+   "b_text": "Marn",
+   "b_score": 0.7977
+  },
+  {
+   "text": "depletion its",
+   "text_raw": "depletion its",
+   "score": 0.8723,
+   "min_token_prob": 0.644,
+   "box": [
+    712,
+    2942,
+    1431,
+    3113
+   ],
+   "poly": [
+    [
+     715,
+     2942
+    ],
+    [
+     1431,
+     2955
+    ],
+    [
+     1428,
+     3113
+    ],
+    [
+     712,
+     3100
+    ]
+   ],
+   "b_text": "depletion",
+   "b_score": 0.9823
+  },
+  {
+   "text": "water",
+   "text_raw": "water",
+   "score": 0.766,
+   "min_token_prob": 0.5322,
+   "box": [
+    283,
+    2954,
+    675,
+    3089
+   ],
+   "poly": [
+    [
+     283,
+     2954
+    ],
+    [
+     675,
+     2954
+    ],
+    [
+     675,
+     3089
+    ],
+    [
+     283,
+     3089
+    ]
+   ],
+   "b_text": "water",
+   "b_score": 0.9657
+  },
+  {
+   "text": "environmental",
+   "text_raw": "environmental",
+   "score": 0.8592,
+   "min_token_prob": 0.6165,
+   "box": [
+    1612,
+    2945,
+    2197,
+    3115
+   ],
+   "poly": [
+    [
+     1612,
+     2963
+    ],
+    [
+     2193,
+     2945
+    ],
+    [
+     2197,
+     3097
+    ],
+    [
+     1617,
+     3115
+    ]
+   ],
+   "b_text": "enuironmertal",
+   "b_score": 0.7706
+  },
+  {
+   "text": "change.",
+   "text_raw": "change .",
+   "score": 0.9942,
+   "min_token_prob": 0.9881,
+   "box": [
+    283,
+    3074,
+    713,
+    3228
+   ],
+   "poly": [
+    [
+     283,
+     3074
+    ],
+    [
+     713,
+     3074
+    ],
+    [
+     713,
+     3228
+    ],
+    [
+     283,
+     3228
+    ]
+   ],
+   "b_text": "Change.",
+   "b_score": 0.889
+  }
+ ],
+ "peak_torch_alloc_mib": 2686,
+ "peak_rss_mib_process": 2965
+}

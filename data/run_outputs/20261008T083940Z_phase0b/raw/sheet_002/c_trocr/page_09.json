@@ -1,0 +1,629 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_09.jpg",
+ "latency_s": 1.226,
+ "model_load_s": 0.84,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "and let an safeguard other human, and the",
+   "text_raw": "and let an safeguard other human , and the",
+   "score": 0.8003,
+   "min_token_prob": 0.3953,
+   "box": [
+    404,
+    297,
+    2297,
+    512
+   ],
+   "poly": [
+    [
+     404,
+     363
+    ],
+    [
+     2292,
+     297
+    ],
+    [
+     2297,
+     446
+    ],
+    [
+     409,
+     512
+    ]
+   ],
+   "b_text": "ad ff an afet the human and the",
+   "b_score": 0.7971
+  },
+  {
+   "text": "civil animals can attack the human",
+   "text_raw": "civil animals can attack the human",
+   "score": 0.6947,
+   "min_token_prob": 0.1335,
+   "box": [
+    433,
+    420,
+    2221,
+    610
+   ],
+   "poly": [
+    [
+     433,
+     480
+    ],
+    [
+     2217,
+     420
+    ],
+    [
+     2221,
+     551
+    ],
+    [
+     438,
+     610
+    ]
+   ],
+   "b_text": "afd animals cn attack the hoaks.",
+   "b_score": 0.7764
+  },
+  {
+   "text": "Defesertation will steals etc. no",
+   "text_raw": "Defesertation will steals etc . no",
+   "score": 0.5889,
+   "min_token_prob": 0.1694,
+   "box": [
+    743,
+    646,
+    2151,
+    822
+   ],
+   "poly": [
+    [
+     743,
+     701
+    ],
+    [
+     2147,
+     646
+    ],
+    [
+     2151,
+     768
+    ],
+    [
+     748,
+     822
+    ]
+   ],
+   "b_text": "Defosetadfn cafl sleads cto ro",
+   "b_score": 0.6153
+  },
+  {
+   "text": "inscript and affect the agriculture and",
+   "text_raw": "inscript and affect the agriculture and",
+   "score": 0.793,
+   "min_token_prob": 0.1735,
+   "box": [
+    414,
+    761,
+    2294,
+    940
+   ],
+   "poly": [
+    [
+     414,
+     815
+    ],
+    [
+     2290,
+     761
+    ],
+    [
+     2294,
+     886
+    ],
+    [
+     418,
+     940
+    ]
+   ],
+   "b_text": "mairfall and affedt sthe agr Pouctae and",
+   "b_score": 0.6798
+  },
+  {
+   "text": "many of the engineers are dedicated.",
+   "text_raw": "many of the engineers are dedicated .",
+   "score": 0.8782,
+   "min_token_prob": 0.5588,
+   "box": [
+    435,
+    870,
+    2247,
+    1051
+   ],
+   "poly": [
+    [
+     435,
+     932
+    ],
+    [
+     2243,
+     870
+    ],
+    [
+     2247,
+     989
+    ],
+    [
+     439,
+     1051
+    ]
+   ],
+   "b_text": "mang of ethe onghems ae detuad",
+   "b_score": 0.7067
+  },
+  {
+   "text": "birds are get disturbed to",
+   "text_raw": "birds are get disturbed to",
+   "score": 0.7137,
+   "min_token_prob": 0.1676,
+   "box": [
+    778,
+    1093,
+    2236,
+    1248
+   ],
+   "poly": [
+    [
+     778,
+     1122
+    ],
+    [
+     2234,
+     1093
+    ],
+    [
+     2236,
+     1219
+    ],
+    [
+     781,
+     1248
+    ]
+   ],
+   "b_text": "Bode are get desturbed do",
+   "b_score": 0.7696
+  },
+  {
+   "text": "the cutting of trees. We have also",
+   "text_raw": "the cutting of trees . We have also",
+   "score": 0.8038,
+   "min_token_prob": 0.1746,
+   "box": [
+    407,
+    1205,
+    2300,
+    1367
+   ],
+   "poly": [
+    [
+     407,
+     1237
+    ],
+    [
+     2297,
+     1205
+    ],
+    [
+     2300,
+     1335
+    ],
+    [
+     409,
+     1367
+    ]
+   ],
+   "b_text": "ithe cuttfong of strces. ce lare the",
+   "b_score": 0.7355
+  },
+  {
+   "text": "inaturally \" occurring products like",
+   "text_raw": "inaturally \" occurring products like",
+   "score": 0.851,
+   "min_token_prob": 0.5616,
+   "box": [
+    410,
+    1322,
+    2112,
+    1474
+   ],
+   "poly": [
+    [
+     410,
+     1356
+    ],
+    [
+     2109,
+     1322
+    ],
+    [
+     2112,
+     1440
+    ],
+    [
+     412,
+     1474
+    ]
+   ],
+   "b_text": "chadurally occwag praots ceke",
+   "b_score": 0.6038
+  },
+  {
+   "text": "fruits \" honey # etc \"",
+   "text_raw": "fruits \" honey # etc \"",
+   "score": 0.6102,
+   "min_token_prob": 0.2516,
+   "box": [
+    439,
+    1445,
+    1482,
+    1584
+   ],
+   "poly": [
+    [
+     439,
+     1463
+    ],
+    [
+     1480,
+     1445
+    ],
+    [
+     1482,
+     1567
+    ],
+    [
+     441,
+     1584
+    ]
+   ],
+   "b_text": "fruats honay stc",
+   "b_score": 0.6531
+  },
+  {
+   "text": "DeforestationForts. The main reason",
+   "text_raw": "DeforestationForts . The main reason",
+   "score": 0.6606,
+   "min_token_prob": 0.1007,
+   "box": [
+    801,
+    1654,
+    2300,
+    1784
+   ],
+   "poly": [
+    [
+     801,
+     1681
+    ],
+    [
+     2298,
+     1654
+    ],
+    [
+     2300,
+     1757
+    ],
+    [
+     803,
+     1784
+    ]
+   ],
+   "b_text": "Deforantadfonees cthe marn cason",
+   "b_score": 0.6388
+  },
+  {
+   "text": "for the soil season, and fraud.' Sudden",
+   "text_raw": "for the soil season , and fraud . ' Sudden",
+   "score": 0.7277,
+   "min_token_prob": 0.1332,
+   "box": [
+    423,
+    1762,
+    2277,
+    1897
+   ],
+   "poly": [
+    [
+     423,
+     1789
+    ],
+    [
+     2275,
+     1762
+    ],
+    [
+     2277,
+     1870
+    ],
+    [
+     425,
+     1897
+    ]
+   ],
+   "b_text": "for ethe sopl erasfoh. and fload. Sudden",
+   "b_score": 0.7047
+  },
+  {
+   "text": "create changes have happened in Ohio",
+   "text_raw": "create changes have happened in Ohio",
+   "score": 0.7006,
+   "min_token_prob": 0.2159,
+   "box": [
+    418,
+    1870,
+    2145,
+    2020
+   ],
+   "poly": [
+    [
+     418,
+     1899
+    ],
+    [
+     2143,
+     1870
+    ],
+    [
+     2145,
+     1991
+    ],
+    [
+     420,
+     2020
+    ]
+   ],
+   "b_text": "clemate changes chave happond ein th",
+   "b_score": 0.8238
+  },
+  {
+   "text": "face-Gender #",
+   "text_raw": "face-Gender #",
+   "score": 0.5108,
+   "min_token_prob": 0.1345,
+   "box": [
+    435,
+    2013,
+    1134,
+    2118
+   ],
+   "poly": [
+    [
+     435,
+     2018
+    ],
+    [
+     1134,
+     2013
+    ],
+    [
+     1134,
+     2113
+    ],
+    [
+     435,
+     2118
+    ]
+   ],
+   "b_text": "feco ga",
+   "b_score": 0.7539
+  },
+  {
+   "text": "Running of wood will purchase",
+   "text_raw": "Running of wood will purchase",
+   "score": 0.7805,
+   "min_token_prob": 0.0883,
+   "box": [
+    776,
+    2192,
+    2274,
+    2340
+   ],
+   "poly": [
+    [
+     776,
+     2230
+    ],
+    [
+     2271,
+     2192
+    ],
+    [
+     2274,
+     2301
+    ],
+    [
+     779,
+     2340
+    ]
+   ],
+   "b_text": "Burrlngof coood wel oelease",
+   "b_score": 0.6848
+  },
+  {
+   "text": "the carbon monoxide gas and effect",
+   "text_raw": "the carbon monoxide gas and effect",
+   "score": 0.8818,
+   "min_token_prob": 0.5449,
+   "box": [
+    394,
+    2308,
+    2123,
+    2453
+   ],
+   "poly": [
+    [
+     394,
+     2343
+    ],
+    [
+     2121,
+     2308
+    ],
+    [
+     2123,
+     2418
+    ],
+    [
+     396,
+     2453
+    ]
+   ],
+   "b_text": "thecarbonmonax fle ga ard aMeat",
+   "b_score": 0.6835
+  },
+  {
+   "text": "the environment. But will affect the",
+   "text_raw": "the environment . But will affect the",
+   "score": 0.7656,
+   "min_token_prob": 0.4475,
+   "box": [
+    395,
+    2418,
+    2113,
+    2566
+   ],
+   "poly": [
+    [
+     395,
+     2450
+    ],
+    [
+     2111,
+     2418
+    ],
+    [
+     2113,
+     2534
+    ],
+    [
+     397,
+     2566
+    ]
+   ],
+   "b_text": "theenframontau cellaffect cthe",
+   "b_score": 0.6594
+  },
+  {
+   "text": "production oxygen \" because they",
+   "text_raw": "production oxygen \" because they",
+   "score": 0.7253,
+   "min_token_prob": 0.1564,
+   "box": [
+    416,
+    2518,
+    2290,
+    2688
+   ],
+   "poly": [
+    [
+     416,
+     2557
+    ],
+    [
+     2287,
+     2518
+    ],
+    [
+     2290,
+     2649
+    ],
+    [
+     419,
+     2688
+    ]
+   ],
+   "b_text": "productpan oxygon be cause they",
+   "b_score": 0.7891
+  },
+  {
+   "text": "over the one of reason for the",
+   "text_raw": "over the one of reason for the",
+   "score": 0.7814,
+   "min_token_prob": 0.3419,
+   "box": [
+    408,
+    2638,
+    2129,
+    2793
+   ],
+   "poly": [
+    [
+     408,
+     2673
+    ],
+    [
+     2127,
+     2638
+    ],
+    [
+     2129,
+     2757
+    ],
+    [
+     411,
+     2793
+    ]
+   ],
+   "b_text": "ae the she of eaoh for the",
+   "b_score": 0.7122
+  },
+  {
+   "text": "Oxygen product.",
+   "text_raw": "Oxygen product .",
+   "score": 0.6637,
+   "min_token_prob": 0.1267,
+   "box": [
+    389,
+    2772,
+    1443,
+    2927
+   ],
+   "poly": [
+    [
+     389,
+     2789
+    ],
+    [
+     1441,
+     2772
+    ],
+    [
+     1443,
+     2909
+    ],
+    [
+     391,
+     2927
+    ]
+   ],
+   "b_text": "Oxygen produetPon",
+   "b_score": 0.7277
+  }
+ ],
+ "peak_torch_alloc_mib": 2677,
+ "peak_rss_mib_process": 2962
+}

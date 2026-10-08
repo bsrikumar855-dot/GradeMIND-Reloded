@@ -1,0 +1,560 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_06.jpg",
+ "latency_s": 11.47,
+ "model_load_s": 0.37,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "The ooganisms en googoaheal rogfon",
+   "score": 0.7195,
+   "poly": [
+    [
+     542,
+     401
+    ],
+    [
+     2345,
+     449
+    ],
+    [
+     2343,
+     553
+    ],
+    [
+     539,
+     505
+    ]
+   ],
+   "box": [
+    539,
+    401,
+    2345,
+    553
+   ]
+  },
+  {
+   "text": "chadeto cbe desturbece A ispecees an",
+   "score": 0.6922,
+   "poly": [
+    [
+     298,
+     522
+    ],
+    [
+     2155,
+     564
+    ],
+    [
+     2153,
+     651
+    ],
+    [
+     296,
+     609
+    ]
+   ],
+   "box": [
+    296,
+    522,
+    2155,
+    651
+   ]
+  },
+  {
+   "text": "cthe frosh cater eco sysdem cleke fesh,poan",
+   "score": 0.7006,
+   "poly": [
+    [
+     309,
+     635
+    ],
+    [
+     2325,
+     679
+    ],
+    [
+     2323,
+     782
+    ],
+    [
+     307,
+     738
+    ]
+   ],
+   "box": [
+    307,
+    635,
+    2325,
+    782
+   ]
+  },
+  {
+   "text": "are dred due to csater polld pon Ie coe",
+   "score": 0.7303,
+   "poly": [
+    [
+     300,
+     752
+    ],
+    [
+     2158,
+     796
+    ],
+    [
+     2156,
+     886
+    ],
+    [
+     298,
+     842
+    ]
+   ],
+   "box": [
+    298,
+    752,
+    2158,
+    886
+   ]
+  },
+  {
+   "text": "pollute the fregh csater cmany sp eces",
+   "score": 0.7922,
+   "poly": [
+    [
+     290,
+     866
+    ],
+    [
+     2158,
+     910
+    ],
+    [
+     2156,
+     1007
+    ],
+    [
+     288,
+     963
+    ]
+   ],
+   "box": [
+    288,
+    866,
+    2158,
+    1007
+   ]
+  },
+  {
+   "text": "age got dlesturbed.",
+   "score": 0.8058,
+   "poly": [
+    [
+     313,
+     980
+    ],
+    [
+     1145,
+     1006
+    ],
+    [
+     1142,
+     1098
+    ],
+    [
+     310,
+     1072
+    ]
+   ],
+   "box": [
+    310,
+    980,
+    1145,
+    1098
+   ]
+  },
+  {
+   "text": "We can wse cthe 3rprinciple",
+   "score": 0.7971,
+   "poly": [
+    [
+     681,
+     1220
+    ],
+    [
+     2262,
+     1259
+    ],
+    [
+     2260,
+     1351
+    ],
+    [
+     678,
+     1312
+    ]
+   ],
+   "box": [
+    678,
+    1220,
+    2262,
+    1351
+   ]
+  },
+  {
+   "text": "hore to croduce the coastes that",
+   "score": 0.6854,
+   "poly": [
+    [
+     290,
+     1324
+    ],
+    [
+     2167,
+     1377
+    ],
+    [
+     2164,
+     1469
+    ],
+    [
+     288,
+     1416
+    ]
+   ],
+   "box": [
+    288,
+    1324,
+    2167,
+    1469
+   ]
+  },
+  {
+   "text": "ane canaide gn hoiseFqrsitly uoe hawe",
+   "score": 0.6575,
+   "poly": [
+    [
+     292,
+     1449
+    ],
+    [
+     2245,
+     1491
+    ],
+    [
+     2243,
+     1576
+    ],
+    [
+     290,
+     1534
+    ]
+   ],
+   "box": [
+    290,
+    1449,
+    2245,
+    1576
+   ]
+  },
+  {
+   "text": "to sporate the waste ibased on",
+   "score": 0.7769,
+   "poly": [
+    [
+     293,
+     1535
+    ],
+    [
+     2162,
+     1590
+    ],
+    [
+     2159,
+     1711
+    ],
+    [
+     289,
+     1656
+    ]
+   ],
+   "box": [
+    289,
+    1535,
+    2162,
+    1711
+   ]
+  },
+  {
+   "text": "tho degoadable craty.",
+   "score": 0.7344,
+   "poly": [
+    [
+     296,
+     1656
+    ],
+    [
+     1507,
+     1697
+    ],
+    [
+     1503,
+     1808
+    ],
+    [
+     293,
+     1767
+    ]
+   ],
+   "box": [
+    293,
+    1656,
+    1507,
+    1808
+   ]
+  },
+  {
+   "text": "woe can ase othe composading mothod",
+   "score": 0.7561,
+   "poly": [
+    [
+     652,
+     1893
+    ],
+    [
+     2379,
+     1941
+    ],
+    [
+     2376,
+     2045
+    ],
+    [
+     649,
+     1997
+    ]
+   ],
+   "box": [
+    649,
+    1893,
+    2379,
+    2045
+   ]
+  },
+  {
+   "text": "do cmange cthe slomosetec woaste we",
+   "score": 0.6971,
+   "poly": [
+    [
+     319,
+     2006
+    ],
+    [
+     2279,
+     2056
+    ],
+    [
+     2277,
+     2153
+    ],
+    [
+     317,
+     2103
+    ]
+   ],
+   "box": [
+    317,
+    2006,
+    2279,
+    2153
+   ]
+  },
+  {
+   "text": "Can use cthe de gradable coatosto",
+   "score": 0.7058,
+   "poly": [
+    [
+     309,
+     2123
+    ],
+    [
+     2240,
+     2167
+    ],
+    [
+     2238,
+     2254
+    ],
+    [
+     307,
+     2210
+    ]
+   ],
+   "box": [
+    307,
+    2123,
+    2240,
+    2254
+   ]
+  },
+  {
+   "text": "feed cthe anemals, bprdes Cpoulltry)",
+   "score": 0.6843,
+   "poly": [
+    [
+     318,
+     2230
+    ],
+    [
+     2305,
+     2283
+    ],
+    [
+     2302,
+     2385
+    ],
+    [
+     315,
+     2332
+    ]
+   ],
+   "box": [
+    315,
+    2230,
+    2305,
+    2385
+   ]
+  },
+  {
+   "text": "Olc.",
+   "score": 0.5884,
+   "poly": [
+    [
+     319,
+     2353
+    ],
+    [
+     575,
+     2361
+    ],
+    [
+     572,
+     2441
+    ],
+    [
+     317,
+     2433
+    ]
+   ],
+   "box": [
+    317,
+    2353,
+    575,
+    2441
+   ]
+  },
+  {
+   "text": "It cpll chelp do educe the",
+   "score": 0.6831,
+   "poly": [
+    [
+     706,
+     2462
+    ],
+    [
+     2248,
+     2501
+    ],
+    [
+     2246,
+     2598
+    ],
+    [
+     704,
+     2559
+    ]
+   ],
+   "box": [
+    704,
+    2462,
+    2248,
+    2598
+   ]
+  },
+  {
+   "text": "woasto sn ethe onugronmont and doenot",
+   "score": 0.7677,
+   "poly": [
+    [
+     329,
+     2568
+    ],
+    [
+     2354,
+     2617
+    ],
+    [
+     2351,
+     2714
+    ],
+    [
+     327,
+     2665
+    ]
+   ],
+   "box": [
+    327,
+    2568,
+    2354,
+    2714
+   ]
+  },
+  {
+   "text": "afefoct etthe ecosystem.",
+   "score": 0.7661,
+   "poly": [
+    [
+     327,
+     2684
+    ],
+    [
+     1411,
+     2700
+    ],
+    [
+     1410,
+     2804
+    ],
+    [
+     325,
+     2788
+    ]
+   ],
+   "box": [
+    325,
+    2684,
+    1411,
+    2804
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3328
+}

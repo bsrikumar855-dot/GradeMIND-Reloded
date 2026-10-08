@@ -1,0 +1,1173 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 2.093,
+ "model_load_s": 0.87,
+ "n_lines": 36,
+ "lines": [
+  {
+   "text": "Saint Eussini",
+   "text_raw": "Saint Eussini",
+   "score": 0.5404,
+   "min_token_prob": 0.3202,
+   "box": [
+    453,
+    491,
+    1100,
+    610
+   ],
+   "poly": [
+    [
+     458,
+     491
+    ],
+    [
+     1100,
+     522
+    ],
+    [
+     1096,
+     610
+    ],
+    [
+     453,
+     580
+    ]
+   ],
+   "b_text": "sesn",
+   "b_score": 0.4331
+  },
+  {
+   "text": "It is a kind of unusual diary.",
+   "text_raw": "It is a kind of unusual diary .",
+   "score": 0.8494,
+   "min_token_prob": 0.4362,
+   "box": [
+    898,
+    601,
+    2708,
+    762
+   ],
+   "poly": [
+    [
+     899,
+     601
+    ],
+    [
+     2708,
+     611
+    ],
+    [
+     2708,
+     762
+    ],
+    [
+     898,
+     753
+    ]
+   ],
+   "b_text": "It ai ",
+   "b_score": 0.5932
+  },
+  {
+   "text": "SoFL erosion removed with",
+   "text_raw": "SoFL erosion removed with",
+   "score": 0.7884,
+   "min_token_prob": 0.3011,
+   "box": [
+    894,
+    745,
+    2476,
+    877
+   ],
+   "poly": [
+    [
+     894,
+     759
+    ],
+    [
+     2475,
+     745
+    ],
+    [
+     2476,
+     863
+    ],
+    [
+     895,
+     877
+    ]
+   ],
+   "b_text": "Soil esin amous ",
+   "b_score": 0.4935
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5525,
+   "min_token_prob": 0.2013,
+   "box": [
+    2476,
+    851,
+    2504,
+    877
+   ],
+   "poly": [
+    [
+     2476,
+     851
+    ],
+    [
+     2504,
+     851
+    ],
+    [
+     2504,
+     877
+    ],
+    [
+     2476,
+     877
+    ]
+   ],
+   "b_text": "￥",
+   "b_score": 0.0883
+  },
+  {
+   "text": "\" self-feed to assist.",
+   "text_raw": "\" self-feed to assist .",
+   "score": 0.5468,
+   "min_token_prob": 0.0518,
+   "box": [
+    387,
+    889,
+    1425,
+    1014
+   ],
+   "poly": [
+    [
+     390,
+     889
+    ],
+    [
+     1425,
+     920
+    ],
+    [
+     1422,
+     1014
+    ],
+    [
+     387,
+     983
+    ]
+   ],
+   "b_text": "ae tsi",
+   "b_score": 0.4989
+  },
+  {
+   "text": "fall",
+   "text_raw": "fall",
+   "score": 0.3064,
+   "min_token_prob": 0.1344,
+   "box": [
+    2485,
+    1264,
+    2495,
+    1275
+   ],
+   "poly": [
+    [
+     2485,
+     1264
+    ],
+    [
+     2495,
+     1264
+    ],
+    [
+     2495,
+     1275
+    ],
+    [
+     2485,
+     1275
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.3004
+  },
+  {
+   "text": "Food:",
+   "text_raw": "Food :",
+   "score": 0.9073,
+   "min_token_prob": 0.764,
+   "box": [
+    493,
+    1289,
+    850,
+    1397
+   ],
+   "poly": [
+    [
+     497,
+     1289
+    ],
+    [
+     850,
+     1305
+    ],
+    [
+     845,
+     1397
+    ],
+    [
+     493,
+     1381
+    ]
+   ],
+   "b_text": "Eoad:",
+   "b_score": 0.6314
+  },
+  {
+   "text": "firm",
+   "text_raw": "firm",
+   "score": 0.2955,
+   "min_token_prob": 0.0838,
+   "box": [
+    288,
+    1302,
+    389,
+    1359
+   ],
+   "poly": [
+    [
+     292,
+     1302
+    ],
+    [
+     389,
+     1309
+    ],
+    [
+     385,
+     1359
+    ],
+    [
+     288,
+     1352
+    ]
+   ],
+   "b_text": "上",
+   "b_score": 0.0625
+  },
+  {
+   "text": "Food is dropped due to cure.",
+   "text_raw": "Food is dropped due to cure .",
+   "score": 0.7968,
+   "min_token_prob": 0.3219,
+   "box": [
+    832,
+    1423,
+    2633,
+    1605
+   ],
+   "poly": [
+    [
+     837,
+     1423
+    ],
+    [
+     2633,
+     1498
+    ],
+    [
+     2629,
+     1605
+    ],
+    [
+     832,
+     1530
+    ]
+   ],
+   "b_text": "Fii damecue da a",
+   "b_score": 0.5359
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5342,
+   "min_token_prob": 0.2974,
+   "box": [
+    2777,
+    1419,
+    2810,
+    1439
+   ],
+   "poly": [
+    [
+     2777,
+     1419
+    ],
+    [
+     2810,
+     1419
+    ],
+    [
+     2810,
+     1439
+    ],
+    [
+     2777,
+     1439
+    ]
+   ],
+   "b_text": "一",
+   "b_score": 0.5115
+  },
+  {
+   "text": "will. It is a blend of radical",
+   "text_raw": "will . It is a blend of radical",
+   "score": 0.6663,
+   "min_token_prob": 0.0792,
+   "box": [
+    386,
+    1534,
+    2569,
+    1760
+   ],
+   "poly": [
+    [
+     391,
+     1534
+    ],
+    [
+     2569,
+     1627
+    ],
+    [
+     2563,
+     1760
+    ],
+    [
+     386,
+     1666
+    ]
+   ],
+   "b_text": "Gin.It s a cind ofotoal",
+   "b_score": 0.5129
+  },
+  {
+   "text": "# disease.",
+   "text_raw": "# disease .",
+   "score": 0.6311,
+   "min_token_prob": 0.2448,
+   "box": [
+    301,
+    1682,
+    751,
+    1782
+   ],
+   "poly": [
+    [
+     305,
+     1682
+    ],
+    [
+     751,
+     1704
+    ],
+    [
+     747,
+     1782
+    ],
+    [
+     301,
+     1759
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "Droughts.",
+   "text_raw": "Droughts .",
+   "score": 0.8329,
+   "min_token_prob": 0.445,
+   "box": [
+    493,
+    1821,
+    894,
+    1930
+   ],
+   "poly": [
+    [
+     499,
+     1821
+    ],
+    [
+     894,
+     1855
+    ],
+    [
+     887,
+     1930
+    ],
+    [
+     493,
+     1897
+    ]
+   ],
+   "b_text": "D-a",
+   "b_score": 0.4869
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5924,
+   "min_token_prob": 0.1879,
+   "box": [
+    2387,
+    1848,
+    2412,
+    1871
+   ],
+   "poly": [
+    [
+     2392,
+     1848
+    ],
+    [
+     2412,
+     1854
+    ],
+    [
+     2407,
+     1871
+    ],
+    [
+     2387,
+     1865
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.3189
+  },
+  {
+   "text": "Dragid We happened due to. We",
+   "text_raw": "Dragid We happened due to . We",
+   "score": 0.5735,
+   "min_token_prob": 0.2116,
+   "box": [
+    842,
+    1950,
+    2582,
+    2166
+   ],
+   "poly": [
+    [
+     848,
+     1950
+    ],
+    [
+     2582,
+     2060
+    ],
+    [
+     2575,
+     2166
+    ],
+    [
+     842,
+     2057
+    ]
+   ],
+   "b_text": "Doaghttappand due do ",
+   "b_score": 0.7451
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.7578,
+   "min_token_prob": 0.6399,
+   "box": [
+    2221,
+    1967,
+    2259,
+    2006
+   ],
+   "poly": [
+    [
+     2221,
+     1990
+    ],
+    [
+     2242,
+     1967
+    ],
+    [
+     2259,
+     1983
+    ],
+    [
+     2239,
+     2006
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.0892
+  },
+  {
+   "text": "valged to the same area",
+   "text_raw": "valged to the same area",
+   "score": 0.5704,
+   "min_token_prob": 0.1525,
+   "box": [
+    332,
+    2053,
+    2278,
+    2302
+   ],
+   "poly": [
+    [
+     340,
+     2053
+    ],
+    [
+     2278,
+     2176
+    ],
+    [
+     2270,
+     2302
+    ],
+    [
+     332,
+     2179
+    ]
+   ],
+   "b_text": " ",
+   "b_score": 0.5285
+  },
+  {
+   "text": "# E",
+   "text_raw": "# E",
+   "score": 0.6628,
+   "min_token_prob": 0.5135,
+   "box": [
+    1204,
+    2206,
+    1360,
+    2256
+   ],
+   "poly": [
+    [
+     1207,
+     2206
+    ],
+    [
+     1360,
+     2217
+    ],
+    [
+     1357,
+     2256
+    ],
+    [
+     1204,
+     2245
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "# two issues because",
+   "text_raw": "# two issues because",
+   "score": 0.4113,
+   "min_token_prob": 0.1004,
+   "box": [
+    884,
+    2216,
+    2631,
+    2453
+   ],
+   "poly": [
+    [
+     892,
+     2216
+    ],
+    [
+     2631,
+     2348
+    ],
+    [
+     2623,
+     2453
+    ],
+    [
+     884,
+     2321
+    ]
+   ],
+   "b_text": "Itioecootenasac",
+   "b_score": 0.494
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6161,
+   "min_token_prob": 0.5564,
+   "box": [
+    1400,
+    2219,
+    1562,
+    2275
+   ],
+   "poly": [
+    [
+     1404,
+     2219
+    ],
+    [
+     1562,
+     2234
+    ],
+    [
+     1558,
+     2275
+    ],
+    [
+     1400,
+     2260
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6355,
+   "min_token_prob": 0.3315,
+   "box": [
+    2424,
+    2238,
+    2452,
+    2264
+   ],
+   "poly": [
+    [
+     2430,
+     2238
+    ],
+    [
+     2452,
+     2245
+    ],
+    [
+     2445,
+     2264
+    ],
+    [
+     2424,
+     2257
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.1749
+  },
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.7863,
+   "min_token_prob": 0.6962,
+   "box": [
+    1622,
+    2249,
+    1645,
+    2262
+   ],
+   "poly": [
+    [
+     1622,
+     2249
+    ],
+    [
+     1645,
+     2249
+    ],
+    [
+     1645,
+     2262
+    ],
+    [
+     1622,
+     2262
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "is there at well dropped",
+   "text_raw": "is there at well dropped",
+   "score": 0.667,
+   "min_token_prob": 0.3976,
+   "box": [
+    331,
+    2294,
+    1748,
+    2529
+   ],
+   "poly": [
+    [
+     341,
+     2294
+    ],
+    [
+     1748,
+     2422
+    ],
+    [
+     1738,
+     2529
+    ],
+    [
+     331,
+     2402
+    ]
+   ],
+   "b_text": "ae st fl dappend",
+   "b_score": 0.5419
+  },
+  {
+   "text": "8 #",
+   "text_raw": "8 #",
+   "score": 0.5314,
+   "min_token_prob": 0.299,
+   "box": [
+    2805,
+    2344,
+    2849,
+    2364
+   ],
+   "poly": [
+    [
+     2805,
+     2344
+    ],
+    [
+     2849,
+     2344
+    ],
+    [
+     2849,
+     2364
+    ],
+    [
+     2805,
+     2364
+    ]
+   ],
+   "b_text": "华",
+   "b_score": 0.4473
+  },
+  {
+   "text": "Tracts of Biodiversity.",
+   "text_raw": "Tracts of Biodiversity .",
+   "score": 0.8615,
+   "min_token_prob": 0.5184,
+   "box": [
+    356,
+    2551,
+    1514,
+    2777
+   ],
+   "poly": [
+    [
+     367,
+     2551
+    ],
+    [
+     1514,
+     2664
+    ],
+    [
+     1502,
+     2777
+    ],
+    [
+     356,
+     2663
+    ]
+   ],
+   "b_text": "FaetBesy",
+   "b_score": 0.5866
+  },
+  {
+   "text": "2",
+   "text_raw": "2",
+   "score": 0.4761,
+   "min_token_prob": 0.2925,
+   "box": [
+    241,
+    2575,
+    312,
+    2653
+   ],
+   "poly": [
+    [
+     241,
+     2586
+    ],
+    [
+     300,
+     2575
+    ],
+    [
+     312,
+     2642
+    ],
+    [
+     253,
+     2653
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.4006
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6949,
+   "min_token_prob": 0.4651,
+   "box": [
+    1746,
+    2774,
+    1774,
+    2797
+   ],
+   "poly": [
+    [
+     1750,
+     2774
+    ],
+    [
+     1774,
+     2780
+    ],
+    [
+     1770,
+     2797
+    ],
+    [
+     1746,
+     2792
+    ]
+   ],
+   "b_text": "蓝",
+   "b_score": 0.1362
+  },
+  {
+   "text": "saper.",
+   "text_raw": "saper .",
+   "score": 0.5159,
+   "min_token_prob": 0.1634,
+   "box": [
+    1858,
+    2785,
+    1882,
+    2801
+   ],
+   "poly": [
+    [
+     1858,
+     2785
+    ],
+    [
+     1882,
+     2785
+    ],
+    [
+     1882,
+     2801
+    ],
+    [
+     1858,
+     2801
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.4305,
+   "min_token_prob": 0.1126,
+   "box": [
+    1839,
+    2796,
+    1862,
+    2810
+   ],
+   "poly": [
+    [
+     1839,
+     2796
+    ],
+    [
+     1862,
+     2796
+    ],
+    [
+     1862,
+     2810
+    ],
+    [
+     1839,
+     2810
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "# it is too # good clash.",
+   "text_raw": "# it is too # good clash .",
+   "score": 0.5316,
+   "min_token_prob": 0.1467,
+   "box": [
+    574,
+    2827,
+    2436,
+    3124
+   ],
+   "poly": [
+    [
+     585,
+     2827
+    ],
+    [
+     2436,
+     3006
+    ],
+    [
+     2424,
+     3124
+    ],
+    [
+     574,
+     2945
+    ]
+   ],
+   "b_text": "Idwfdaafl",
+   "b_score": 0.4336
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5969,
+   "min_token_prob": 0.3893,
+   "box": [
+    2311,
+    2842,
+    2331,
+    2857
+   ],
+   "poly": [
+    [
+     2311,
+     2842
+    ],
+    [
+     2331,
+     2842
+    ],
+    [
+     2331,
+     2857
+    ],
+    [
+     2311,
+     2857
+    ]
+   ],
+   "b_text": "9",
+   "b_score": 0.0605
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.495,
+   "min_token_prob": 0.4669,
+   "box": [
+    300,
+    2877,
+    331,
+    3218
+   ],
+   "poly": [
+    [
+     312,
+     2877
+    ],
+    [
+     331,
+     2877
+    ],
+    [
+     319,
+     3218
+    ],
+    [
+     300,
+     3218
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "1 1st century",
+   "text_raw": "1 1st century",
+   "score": 0.3495,
+   "min_token_prob": 0.0951,
+   "box": [
+    571,
+    2945,
+    2382,
+    3268
+   ],
+   "poly": [
+    [
+     585,
+     2945
+    ],
+    [
+     2382,
+     3148
+    ],
+    [
+     2368,
+     3268
+    ],
+    [
+     571,
+     3065
+    ]
+   ],
+   "b_text": "Idsidste",
+   "b_score": 0.426
+  },
+  {
+   "text": "# guests # little do question of",
+   "text_raw": "# guests # little do question of",
+   "score": 0.4862,
+   "min_token_prob": 0.0782,
+   "box": [
+    587,
+    3064,
+    2455,
+    3411
+   ],
+   "poly": [
+    [
+     602,
+     3064
+    ],
+    [
+     2455,
+     3277
+    ],
+    [
+     2440,
+     3411
+    ],
+    [
+     587,
+     3199
+    ]
+   ],
+   "b_text": "Iis  a",
+   "b_score": 0.4519
+  },
+  {
+   "text": "for",
+   "text_raw": "for",
+   "score": 0.5015,
+   "min_token_prob": 0.3179,
+   "box": [
+    373,
+    3229,
+    457,
+    3279
+   ],
+   "poly": [
+    [
+     373,
+     3229
+    ],
+    [
+     457,
+     3229
+    ],
+    [
+     457,
+     3279
+    ],
+    [
+     373,
+     3279
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "species.",
+   "text_raw": "species .",
+   "score": 0.8729,
+   "min_token_prob": 0.6439,
+   "box": [
+    715,
+    3245,
+    1067,
+    3328
+   ],
+   "poly": [
+    [
+     719,
+     3245
+    ],
+    [
+     1067,
+     3265
+    ],
+    [
+     1063,
+     3328
+    ],
+    [
+     715,
+     3308
+    ]
+   ],
+   "b_text": "Sece",
+   "b_score": 0.7649
+  }
+ ],
+ "peak_torch_alloc_mib": 2704,
+ "peak_rss_mib_process": 2965
+}

@@ -1,0 +1,341 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 0.463,
+ "model_load_s": 0.87,
+ "n_lines": 10,
+ "lines": [
+  {
+   "text": "x human.",
+   "text_raw": "x human .",
+   "score": 0.7266,
+   "min_token_prob": 0.4245,
+   "box": [
+    191,
+    233,
+    645,
+    371
+   ],
+   "poly": [
+    [
+     192,
+     233
+    ],
+    [
+     645,
+     237
+    ],
+    [
+     644,
+     371
+    ],
+    [
+     191,
+     367
+    ]
+   ],
+   "b_text": "x human",
+   "b_score": 0.8534
+  },
+  {
+   "text": "from",
+   "text_raw": "from",
+   "score": 0.6929,
+   "min_token_prob": 0.4035,
+   "box": [
+    1699,
+    260,
+    2040,
+    460
+   ],
+   "poly": [
+    [
+     1702,
+     260
+    ],
+    [
+     2040,
+     265
+    ],
+    [
+     2038,
+     460
+    ],
+    [
+     1699,
+     456
+    ]
+   ],
+   "b_text": "fuom",
+   "b_score": 0.7614
+  },
+  {
+   "text": "get.",
+   "text_raw": "get .",
+   "score": 0.8891,
+   "min_token_prob": 0.6676,
+   "box": [
+    829,
+    268,
+    1031,
+    413
+   ],
+   "poly": [
+    [
+     829,
+     273
+    ],
+    [
+     1028,
+     268
+    ],
+    [
+     1031,
+     408
+    ],
+    [
+     832,
+     413
+    ]
+   ],
+   "b_text": "get",
+   "b_score": 0.9722
+  },
+  {
+   "text": "benefits.",
+   "text_raw": "benefits .",
+   "score": 0.9909,
+   "min_token_prob": 0.9841,
+   "box": [
+    1197,
+    279,
+    1578,
+    408
+   ],
+   "poly": [
+    [
+     1197,
+     283
+    ],
+    [
+     1577,
+     279
+    ],
+    [
+     1578,
+     403
+    ],
+    [
+     1198,
+     408
+    ]
+   ],
+   "b_text": "benelits",
+   "b_score": 0.8021
+  },
+  {
+   "text": "this.",
+   "text_raw": "this .",
+   "score": 0.945,
+   "min_token_prob": 0.8896,
+   "box": [
+    274,
+    353,
+    506,
+    484
+   ],
+   "poly": [
+    [
+     274,
+     353
+    ],
+    [
+     506,
+     353
+    ],
+    [
+     506,
+     484
+    ],
+    [
+     274,
+     484
+    ]
+   ],
+   "b_text": "this",
+   "b_score": 0.927
+  },
+  {
+   "text": "type.",
+   "text_raw": "type .",
+   "score": 0.9714,
+   "min_token_prob": 0.9159,
+   "box": [
+    658,
+    361,
+    920,
+    520
+   ],
+   "poly": [
+    [
+     671,
+     361
+    ],
+    [
+     920,
+     384
+    ],
+    [
+     908,
+     520
+    ],
+    [
+     658,
+     497
+    ]
+   ],
+   "b_text": "type",
+   "b_score": 0.9505
+  },
+  {
+   "text": "of robusion.",
+   "text_raw": "of robusion .",
+   "score": 0.7127,
+   "min_token_prob": 0.2781,
+   "box": [
+    1065,
+    389,
+    1597,
+    553
+   ],
+   "poly": [
+    [
+     1065,
+     389
+    ],
+    [
+     1597,
+     389
+    ],
+    [
+     1597,
+     553
+    ],
+    [
+     1065,
+     553
+    ]
+   ],
+   "b_text": "of an",
+   "b_score": 0.7252
+  },
+  {
+   "text": "x food \" energy.",
+   "text_raw": "x food \" energy .",
+   "score": 0.8876,
+   "min_token_prob": 0.7011,
+   "box": [
+    155,
+    544,
+    1121,
+    788
+   ],
+   "poly": [
+    [
+     162,
+     544
+    ],
+    [
+     1121,
+     581
+    ],
+    [
+     1113,
+     788
+    ],
+    [
+     155,
+     751
+    ]
+   ],
+   "b_text": "x food,enorgy",
+   "b_score": 0.7199
+  },
+  {
+   "text": "and more.",
+   "text_raw": "and more .",
+   "score": 0.9983,
+   "min_token_prob": 0.9965,
+   "box": [
+    1221,
+    591,
+    1883,
+    752
+   ],
+   "poly": [
+    [
+     1221,
+     591
+    ],
+    [
+     1883,
+     591
+    ],
+    [
+     1883,
+     752
+    ],
+    [
+     1221,
+     752
+    ]
+   ],
+   "b_text": "and More.",
+   "b_score": 0.9327
+  },
+  {
+   "text": "1961 62m",
+   "text_raw": "1961 62m",
+   "score": 0.1776,
+   "min_token_prob": 0.067,
+   "box": [
+    857,
+    1801,
+    1372,
+    1859
+   ],
+   "poly": [
+    [
+     858,
+     1801
+    ],
+    [
+     1372,
+     1809
+    ],
+    [
+     1371,
+     1859
+    ],
+    [
+     857,
+     1850
+    ]
+   ],
+   "b_text": "EMPOWIRING THS NATION",
+   "b_score": 0.8521
+  }
+ ],
+ "peak_torch_alloc_mib": 2491,
+ "peak_rss_mib_process": 2965
+}

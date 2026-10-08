@@ -1,0 +1,645 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_09.jpg",
+ "latency_s": 12.434,
+ "model_load_s": 0.39,
+ "n_lines": 22,
+ "lines": [
+  {
+   "text": "wihi eft can toflect cthe shuman and the",
+   "score": 0.7275,
+   "poly": [
+    [
+     400,
+     367
+    ],
+    [
+     2292,
+     297
+    ],
+    [
+     2297,
+     444
+    ],
+    [
+     406,
+     514
+    ]
+   ],
+   "box": [
+    400,
+    297,
+    2297,
+    514
+   ]
+  },
+  {
+   "text": "card anemals n sattack the heie.",
+   "score": 0.7234,
+   "poly": [
+    [
+     432,
+     476
+    ],
+    [
+     2221,
+     419
+    ],
+    [
+     2226,
+     554
+    ],
+    [
+     436,
+     612
+    ]
+   ],
+   "box": [
+    432,
+    419,
+    2226,
+    612
+   ]
+  },
+  {
+   "text": "Deforostalion cuff cleats ofr ",
+   "score": 0.7898,
+   "poly": [
+    [
+     741,
+     699
+    ],
+    [
+     2137,
+     645
+    ],
+    [
+     2142,
+     769
+    ],
+    [
+     746,
+     824
+    ]
+   ],
+   "box": [
+    741,
+    645,
+    2142,
+    824
+   ]
+  },
+  {
+   "text": "meafale sond affect the ayrructcre and",
+   "score": 0.8042,
+   "poly": [
+    [
+     414,
+     820
+    ],
+    [
+     2287,
+     763
+    ],
+    [
+     2290,
+     884
+    ],
+    [
+     418,
+     941
+    ]
+   ],
+   "box": [
+    414,
+    763,
+    2290,
+    941
+   ]
+  },
+  {
+   "text": "mary of ethe ongthesms ane des furtedl.",
+   "score": 0.8034,
+   "poly": [
+    [
+     435,
+     929
+    ],
+    [
+     2243,
+     871
+    ],
+    [
+     2247,
+     996
+    ],
+    [
+     439,
+     1053
+    ]
+   ],
+   "box": [
+    435,
+    871,
+    2247,
+    1053
+   ]
+  },
+  {
+   "text": "Briade are get desturbed to",
+   "score": 0.8817,
+   "poly": [
+    [
+     778,
+     1120
+    ],
+    [
+     2234,
+     1090
+    ],
+    [
+     2237,
+     1221
+    ],
+    [
+     781,
+     1251
+    ]
+   ],
+   "box": [
+    778,
+    1090,
+    2237,
+    1251
+   ]
+  },
+  {
+   "text": "the outting of strces. cooe lose cthe",
+   "score": 0.9016,
+   "poly": [
+    [
+     408,
+     1237
+    ],
+    [
+     2297,
+     1205
+    ],
+    [
+     2300,
+     1335
+    ],
+    [
+     410,
+     1367
+    ]
+   ],
+   "box": [
+    408,
+    1205,
+    2300,
+    1367
+   ]
+  },
+  {
+   "text": "cnaturally occuiring prcatunt: clike",
+   "score": 0.8701,
+   "poly": [
+    [
+     411,
+     1356
+    ],
+    [
+     2109,
+     1323
+    ],
+    [
+     2112,
+     1439
+    ],
+    [
+     414,
+     1473
+    ]
+   ],
+   "box": [
+    411,
+    1323,
+    2112,
+    1473
+   ]
+  },
+  {
+   "text": "frestsi, bonay tc...",
+   "score": 0.7722,
+   "poly": [
+    [
+     438,
+     1453
+    ],
+    [
+     1484,
+     1444
+    ],
+    [
+     1485,
+     1577
+    ],
+    [
+     439,
+     1585
+    ]
+   ],
+   "box": [
+    438,
+    1444,
+    1485,
+    1585
+   ]
+  },
+  {
+   "text": "Deforerdatsonor ats cthe mair mison",
+   "score": 0.8039,
+   "poly": [
+    [
+     793,
+     1679
+    ],
+    [
+     2296,
+     1656
+    ],
+    [
+     2298,
+     1759
+    ],
+    [
+     795,
+     1783
+    ]
+   ],
+   "box": [
+    793,
+    1656,
+    2298,
+    1783
+   ]
+  },
+  {
+   "text": "紫继",
+   "score": 0.3804,
+   "poly": [
+    [
+     1282,
+     1767
+    ],
+    [
+     1405,
+     1767
+    ],
+    [
+     1405,
+     1797
+    ],
+    [
+     1282,
+     1797
+    ]
+   ],
+   "box": [
+    1282,
+    1767,
+    1405,
+    1797
+   ]
+  },
+  {
+   "text": "for sthe sofl erosion. and. fload. Sutlen",
+   "score": 0.8779,
+   "poly": [
+    [
+     426,
+     1787
+    ],
+    [
+     2274,
+     1761
+    ],
+    [
+     2275,
+     1870
+    ],
+    [
+     428,
+     1897
+    ]
+   ],
+   "box": [
+    426,
+    1761,
+    2275,
+    1897
+   ]
+  },
+  {
+   "text": "clemate changes chave haapond in ithe",
+   "score": 0.8748,
+   "poly": [
+    [
+     421,
+     1901
+    ],
+    [
+     2142,
+     1872
+    ],
+    [
+     2144,
+     1988
+    ],
+    [
+     423,
+     2017
+    ]
+   ],
+   "box": [
+    421,
+    1872,
+    2144,
+    2017
+   ]
+  },
+  {
+   "text": "fece goars.",
+   "score": 0.8752,
+   "poly": [
+    [
+     436,
+     2015
+    ],
+    [
+     873,
+     2015
+    ],
+    [
+     873,
+     2121
+    ],
+    [
+     436,
+     2121
+    ]
+   ],
+   "box": [
+    436,
+    2015,
+    873,
+    2121
+   ]
+  },
+  {
+   "text": " Bwning of coood will wrelease",
+   "score": 0.886,
+   "poly": [
+    [
+     476,
+     2232
+    ],
+    [
+     2274,
+     2185
+    ],
+    [
+     2277,
+     2305
+    ],
+    [
+     479,
+     2352
+    ]
+   ],
+   "box": [
+    476,
+    2185,
+    2277,
+    2352
+   ]
+  },
+  {
+   "text": "数",
+   "score": 0.2172,
+   "poly": [
+    [
+     240,
+     2306
+    ],
+    [
+     311,
+     2302
+    ],
+    [
+     312,
+     2324
+    ],
+    [
+     241,
+     2329
+    ]
+   ],
+   "box": [
+    240,
+    2302,
+    312,
+    2329
+   ]
+  },
+  {
+   "text": " the carbon monoxide gas and aftect",
+   "score": 0.9379,
+   "poly": [
+    [
+     199,
+     2345
+    ],
+    [
+     2121,
+     2306
+    ],
+    [
+     2123,
+     2421
+    ],
+    [
+     201,
+     2460
+    ]
+   ],
+   "box": [
+    199,
+    2306,
+    2123,
+    2460
+   ]
+  },
+  {
+   "text": "the ensiroment. It ofll. affect othe",
+   "score": 0.8091,
+   "poly": [
+    [
+     186,
+     2447
+    ],
+    [
+     2113,
+     2418
+    ],
+    [
+     2115,
+     2538
+    ],
+    [
+     188,
+     2566
+    ]
+   ],
+   "box": [
+    186,
+    2418,
+    2115,
+    2566
+   ]
+  },
+  {
+   "text": "I praductpon oxygen because they",
+   "score": 0.9006,
+   "poly": [
+    [
+     322,
+     2560
+    ],
+    [
+     2284,
+     2520
+    ],
+    [
+     2287,
+     2652
+    ],
+    [
+     325,
+     2692
+    ]
+   ],
+   "box": [
+    322,
+    2520,
+    2287,
+    2692
+   ]
+  },
+  {
+   "text": "areteb of ason for the",
+   "score": 0.7496,
+   "poly": [
+    [
+     153,
+     2678
+    ],
+    [
+     2125,
+     2638
+    ],
+    [
+     2128,
+     2757
+    ],
+    [
+     156,
+     2797
+    ]
+   ],
+   "box": [
+    153,
+    2638,
+    2128,
+    2797
+   ]
+  },
+  {
+   "text": "Lovygen productfon",
+   "score": 0.935,
+   "poly": [
+    [
+     340,
+     2789
+    ],
+    [
+     1471,
+     2765
+    ],
+    [
+     1474,
+     2904
+    ],
+    [
+     343,
+     2928
+    ]
+   ],
+   "box": [
+    340,
+    2765,
+    1474,
+    2928
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1749,
+     2844
+    ],
+    [
+     1772,
+     2844
+    ],
+    [
+     1772,
+     2865
+    ],
+    [
+     1749,
+     2865
+    ]
+   ],
+   "box": [
+    1749,
+    2844,
+    1772,
+    2865
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3336
+}

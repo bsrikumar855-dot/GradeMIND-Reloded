@@ -1,0 +1,949 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_02.jpg",
+ "latency_s": 1.702,
+ "model_load_s": 1.12,
+ "n_lines": 29,
+ "lines": [
+  {
+   "text": "part. A",
+   "text_raw": "part . A",
+   "score": 0.8521,
+   "min_token_prob": 0.4863,
+   "box": [
+    694,
+    263,
+    1097,
+    410
+   ],
+   "poly": [
+    [
+     694,
+     263
+    ],
+    [
+     1097,
+     263
+    ],
+    [
+     1097,
+     410
+    ],
+    [
+     694,
+     410
+    ]
+   ],
+   "b_text": "Part-A",
+   "b_score": 0.848
+  },
+  {
+   "text": "al Army.",
+   "text_raw": "al Army .",
+   "score": 0.7836,
+   "min_token_prob": 0.4533,
+   "box": [
+    1415,
+    522,
+    1769,
+    638
+   ],
+   "poly": [
+    [
+     1417,
+     522
+    ],
+    [
+     1769,
+     527
+    ],
+    [
+     1767,
+     638
+    ],
+    [
+     1415,
+     634
+    ]
+   ],
+   "b_text": "a+r",
+   "b_score": 0.4631
+  },
+  {
+   "text": "1.",
+   "text_raw": "1 .",
+   "score": 0.789,
+   "min_token_prob": 0.4821,
+   "box": [
+    103,
+    540,
+    201,
+    634
+   ],
+   "poly": [
+    [
+     103,
+     540
+    ],
+    [
+     201,
+     540
+    ],
+    [
+     201,
+     634
+    ],
+    [
+     103,
+     634
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.9462
+  },
+  {
+   "text": "a-Republic components - SWY2 transombing in",
+   "text_raw": "a-Republic components - SWY2 transombing in",
+   "score": 0.4703,
+   "min_token_prob": 0.0844,
+   "box": [
+    54,
+    747,
+    2376,
+    901
+   ],
+   "poly": [
+    [
+     55,
+     747
+    ],
+    [
+     2376,
+     757
+    ],
+    [
+     2375,
+     901
+    ],
+    [
+     54,
+     892
+    ]
+   ],
+   "b_text": "2. bon-botic componts-&g2 borgo CE",
+   "b_score": 0.6013
+  },
+  {
+   "text": "and",
+   "text_raw": "and",
+   "score": 0.4708,
+   "min_token_prob": 0.1607,
+   "box": [
+    784,
+    979,
+    986,
+    1114
+   ],
+   "poly": [
+    [
+     784,
+     979
+    ],
+    [
+     986,
+     979
+    ],
+    [
+     986,
+     1114
+    ],
+    [
+     784,
+     1114
+    ]
+   ],
+   "b_text": "8ed",
+   "b_score": 0.522
+  },
+  {
+   "text": "front #",
+   "text_raw": "front #",
+   "score": 0.4477,
+   "min_token_prob": 0.3911,
+   "box": [
+    1226,
+    983,
+    1494,
+    1114
+   ],
+   "poly": [
+    [
+     1226,
+     983
+    ],
+    [
+     1494,
+     983
+    ],
+    [
+     1494,
+     1114
+    ],
+    [
+     1226,
+     1114
+    ]
+   ],
+   "b_text": "1oN-",
+   "b_score": 0.4446
+  },
+  {
+   "text": "30/ cyplants.",
+   "text_raw": "30/ cyplants .",
+   "score": 0.631,
+   "min_token_prob": 0.1123,
+   "box": [
+    72,
+    991,
+    608,
+    1143
+   ],
+   "poly": [
+    [
+     72,
+     1000
+    ],
+    [
+     606,
+     991
+    ],
+    [
+     608,
+     1134
+    ],
+    [
+     75,
+     1143
+    ]
+   ],
+   "b_text": "3. c3plants",
+   "b_score": 0.8515
+  },
+  {
+   "text": "Germany. A.14.",
+   "text_raw": "Germany . A.14 .",
+   "score": 0.5292,
+   "min_token_prob": 0.1598,
+   "box": [
+    1640,
+    1007,
+    2213,
+    1126
+   ],
+   "poly": [
+    [
+     1641,
+     1007
+    ],
+    [
+     2213,
+     1011
+    ],
+    [
+     2212,
+     1126
+    ],
+    [
+     1640,
+     1122
+    ]
+   ],
+   "b_text": "0032Ak",
+   "b_score": 0.3808
+  },
+  {
+   "text": "# notification.",
+   "text_raw": "# notification .",
+   "score": 0.5901,
+   "min_token_prob": 0.1877,
+   "box": [
+    793,
+    1110,
+    1480,
+    1244
+   ],
+   "poly": [
+    [
+     794,
+     1110
+    ],
+    [
+     1480,
+     1115
+    ],
+    [
+     1479,
+     1244
+    ],
+    [
+     793,
+     1240
+    ]
+   ],
+   "b_text": "Noibautia",
+   "b_score": 0.5544
+  },
+  {
+   "text": "sift \" of",
+   "text_raw": "sift \" of",
+   "score": 0.634,
+   "min_token_prob": 0.3208,
+   "box": [
+    1706,
+    1114,
+    2191,
+    1260
+   ],
+   "poly": [
+    [
+     1708,
+     1114
+    ],
+    [
+     2191,
+     1120
+    ],
+    [
+     2189,
+     1260
+    ],
+    [
+     1706,
+     1253
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.3756
+  },
+  {
+   "text": "4- water.",
+   "text_raw": "4- water .",
+   "score": 0.8973,
+   "min_token_prob": 0.6171,
+   "box": [
+    56,
+    1234,
+    490,
+    1393
+   ],
+   "poly": [
+    [
+     56,
+     1241
+    ],
+    [
+     488,
+     1234
+    ],
+    [
+     490,
+     1386
+    ],
+    [
+     58,
+     1393
+    ]
+   ],
+   "b_text": "4. wator",
+   "b_score": 0.8407
+  },
+  {
+   "text": "work.",
+   "text_raw": "work .",
+   "score": 0.7584,
+   "min_token_prob": 0.3638,
+   "box": [
+    647,
+    1344,
+    847,
+    1480
+   ],
+   "poly": [
+    [
+     647,
+     1344
+    ],
+    [
+     847,
+     1344
+    ],
+    [
+     847,
+     1480
+    ],
+    [
+     647,
+     1480
+    ]
+   ],
+   "b_text": "1N08",
+   "b_score": 0.4273
+  },
+  {
+   "text": "Arthur K.",
+   "text_raw": "Arthur K.",
+   "score": 0.5927,
+   "min_token_prob": 0.3786,
+   "box": [
+    1813,
+    1357,
+    2222,
+    1496
+   ],
+   "poly": [
+    [
+     1813,
+     1357
+    ],
+    [
+     2222,
+     1357
+    ],
+    [
+     2222,
+     1496
+    ],
+    [
+     1813,
+     1496
+    ]
+   ],
+   "b_text": "NVWK",
+   "b_score": 0.2607
+  },
+  {
+   "text": "bills and",
+   "text_raw": "bills and",
+   "score": 0.3862,
+   "min_token_prob": 0.1413,
+   "box": [
+    1282,
+    1370,
+    1616,
+    1489
+   ],
+   "poly": [
+    [
+     1282,
+     1370
+    ],
+    [
+     1616,
+     1370
+    ],
+    [
+     1616,
+     1489
+    ],
+    [
+     1282,
+     1489
+    ]
+   ],
+   "b_text": "bnoom",
+   "b_score": 0.5183
+  },
+  {
+   "text": "s. (an circular",
+   "text_raw": "s. ( an circular",
+   "score": 0.5147,
+   "min_token_prob": 0.2619,
+   "box": [
+    58,
+    1485,
+    730,
+    1636
+   ],
+   "poly": [
+    [
+     59,
+     1485
+    ],
+    [
+     730,
+     1489
+    ],
+    [
+     729,
+     1636
+    ],
+    [
+     58,
+     1631
+    ]
+   ],
+   "b_text": "s.a7ciralar",
+   "b_score": 0.8715
+  },
+  {
+   "text": "the most of ambiguous \"",
+   "text_raw": "the most of ambiguous \"",
+   "score": 0.389,
+   "min_token_prob": 0.1264,
+   "box": [
+    1070,
+    1605,
+    2123,
+    1749
+   ],
+   "poly": [
+    [
+     1072,
+     1605
+    ],
+    [
+     2123,
+     1615
+    ],
+    [
+     2122,
+     1749
+    ],
+    [
+     1070,
+     1739
+    ]
+   ],
+   "b_text": "Sewi",
+   "b_score": 0.4427
+  },
+  {
+   "text": "6. True.",
+   "text_raw": "6 . True .",
+   "score": 0.8345,
+   "min_token_prob": 0.6025,
+   "box": [
+    51,
+    1750,
+    456,
+    1884
+   ],
+   "poly": [
+    [
+     51,
+     1750
+    ],
+    [
+     456,
+     1750
+    ],
+    [
+     456,
+     1884
+    ],
+    [
+     51,
+     1884
+    ]
+   ],
+   "b_text": "C. True",
+   "b_score": 0.9771
+  },
+  {
+   "text": "to sign-orary.",
+   "text_raw": "to sign-orary .",
+   "score": 0.4162,
+   "min_token_prob": 0.0713,
+   "box": [
+    1672,
+    1861,
+    2123,
+    1992
+   ],
+   "poly": [
+    [
+     1673,
+     1861
+    ],
+    [
+     2123,
+     1866
+    ],
+    [
+     2122,
+     1992
+    ],
+    [
+     1672,
+     1987
+    ]
+   ],
+   "b_text": "803",
+   "b_score": 0.2461
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.523,
+   "min_token_prob": 0.1311,
+   "box": [
+    986,
+    1951,
+    1436,
+    1990
+   ],
+   "poly": [
+    [
+     986,
+     1951
+    ],
+    [
+     1436,
+     1951
+    ],
+    [
+     1436,
+     1990
+    ],
+    [
+     986,
+     1990
+    ]
+   ],
+   "b_text": "OWTRING THE YOUTH",
+   "b_score": 0.8357
+  },
+  {
+   "text": "7 Environmental change.",
+   "text_raw": "7 Environmental change .",
+   "score": 0.7551,
+   "min_token_prob": 0.4409,
+   "box": [
+    60,
+    1989,
+    1054,
+    2142
+   ],
+   "poly": [
+    [
+     61,
+     1989
+    ],
+    [
+     1054,
+     1995
+    ],
+    [
+     1053,
+     2142
+    ],
+    [
+     60,
+     2136
+    ]
+   ],
+   "b_text": "+.onuirorental chauge",
+   "b_score": 0.7032
+  },
+  {
+   "text": "8. True",
+   "text_raw": "8 . True",
+   "score": 0.7487,
+   "min_token_prob": 0.4388,
+   "box": [
+    49,
+    2253,
+    467,
+    2392
+   ],
+   "poly": [
+    [
+     49,
+     2253
+    ],
+    [
+     467,
+     2253
+    ],
+    [
+     467,
+     2392
+    ],
+    [
+     49,
+     2392
+    ]
+   ],
+   "b_text": "8. True",
+   "b_score": 0.9037
+  },
+  {
+   "text": "brigays something",
+   "text_raw": "brigays something",
+   "score": 0.5009,
+   "min_token_prob": 0.154,
+   "box": [
+    1358,
+    2244,
+    2199,
+    2377
+   ],
+   "poly": [
+    [
+     1358,
+     2244
+    ],
+    [
+     2199,
+     2244
+    ],
+    [
+     2199,
+     2377
+    ],
+    [
+     1358,
+     2377
+    ]
+   ],
+   "b_text": "bia? chd",
+   "b_score": 0.438
+  },
+  {
+   "text": "things seventeen.",
+   "text_raw": "things seventeen .",
+   "score": 0.6415,
+   "min_token_prob": 0.1497,
+   "box": [
+    1129,
+    2485,
+    2053,
+    2631
+   ],
+   "poly": [
+    [
+     1129,
+     2485
+    ],
+    [
+     2053,
+     2485
+    ],
+    [
+     2053,
+     2631
+    ],
+    [
+     1129,
+     2631
+    ]
+   ],
+   "b_text": "89&i",
+   "b_score": 0.3984
+  },
+  {
+   "text": "9. cigarbon monoxide",
+   "text_raw": "9. cigarbon monoxide",
+   "score": 0.554,
+   "min_token_prob": 0.0613,
+   "box": [
+    58,
+    2495,
+    955,
+    2654
+   ],
+   "poly": [
+    [
+     59,
+     2495
+    ],
+    [
+     955,
+     2505
+    ],
+    [
+     953,
+     2654
+    ],
+    [
+     58,
+     2644
+    ]
+   ],
+   "b_text": "9.carbon Monozcide",
+   "b_score": 0.8699
+  },
+  {
+   "text": "sudo?.",
+   "text_raw": "sudo ? .",
+   "score": 0.6896,
+   "min_token_prob": 0.1719,
+   "box": [
+    969,
+    2635,
+    1230,
+    2744
+   ],
+   "poly": [
+    [
+     969,
+     2635
+    ],
+    [
+     1230,
+     2635
+    ],
+    [
+     1230,
+     2744
+    ],
+    [
+     969,
+     2744
+    ]
+   ],
+   "b_text": "2M02",
+   "b_score": 0.7408
+  },
+  {
+   "text": "philino.",
+   "text_raw": "philino .",
+   "score": 0.6564,
+   "min_token_prob": 0.1855,
+   "box": [
+    1901,
+    2633,
+    2175,
+    2763
+   ],
+   "poly": [
+    [
+     1901,
+     2633
+    ],
+    [
+     2175,
+     2633
+    ],
+    [
+     2175,
+     2763
+    ],
+    [
+     1901,
+     2763
+    ]
+   ],
+   "b_text": "KNO",
+   "b_score": 0.7447
+  },
+  {
+   "text": "1nd information, and the",
+   "text_raw": "1nd information , and the",
+   "score": 0.2474,
+   "min_token_prob": 0.0717,
+   "box": [
+    5,
+    2729,
+    2157,
+    2939
+   ],
+   "poly": [
+    [
+     7,
+     2729
+    ],
+    [
+     2157,
+     2745
+    ],
+    [
+     2155,
+     2939
+    ],
+    [
+     5,
+     2924
+    ]
+   ],
+   "b_text": "1 deforestatior f ton o Noe",
+   "b_score": 0.6299
+  },
+  {
+   "text": "years presumptive",
+   "text_raw": "years presumptive",
+   "score": 0.2816,
+   "min_token_prob": 0.0727,
+   "box": [
+    1329,
+    2885,
+    2067,
+    3023
+   ],
+   "poly": [
+    [
+     1330,
+     2885
+    ],
+    [
+     2067,
+     2893
+    ],
+    [
+     2065,
+     3023
+    ],
+    [
+     1329,
+     3014
+    ]
+   ],
+   "b_text": ".0μ",
+   "b_score": 0.4942
+  },
+  {
+   "text": "11) commercials.",
+   "text_raw": "11 ) commercials .",
+   "score": 0.6728,
+   "min_token_prob": 0.1571,
+   "box": [
+    0,
+    2981,
+    739,
+    3160
+   ],
+   "poly": [
+    [
+     0,
+     2981
+    ],
+    [
+     739,
+     2991
+    ],
+    [
+     737,
+     3160
+    ],
+    [
+     0,
+     3150
+    ]
+   ],
+   "b_text": "11 a3Mirerals",
+   "b_score": 0.5908
+  }
+ ],
+ "peak_torch_alloc_mib": 2688,
+ "peak_rss_mib_process": 2966
+}

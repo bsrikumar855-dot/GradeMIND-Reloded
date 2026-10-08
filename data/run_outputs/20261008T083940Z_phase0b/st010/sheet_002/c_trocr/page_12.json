@@ -1,0 +1,789 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 1.466,
+ "model_load_s": 0.83,
+ "n_lines": 24,
+ "lines": [
+  {
+   "text": "8 8",
+   "text_raw": "8 8",
+   "score": 0.708,
+   "min_token_prob": 0.5235,
+   "box": [
+    0,
+    427,
+    69,
+    515
+   ],
+   "poly": [
+    [
+     0,
+     427
+    ],
+    [
+     69,
+     427
+    ],
+    [
+     69,
+     515
+    ],
+    [
+     0,
+     515
+    ]
+   ],
+   "b_text": "8",
+   "b_score": 0.6922
+  },
+  {
+   "text": "PART D.",
+   "text_raw": "PART D.",
+   "score": 0.8609,
+   "min_token_prob": 0.6616,
+   "box": [
+    1125,
+    463,
+    1430,
+    567
+   ],
+   "poly": [
+    [
+     1127,
+     463
+    ],
+    [
+     1430,
+     468
+    ],
+    [
+     1429,
+     567
+    ],
+    [
+     1125,
+     563
+    ]
+   ],
+   "b_text": "PARI D",
+   "b_score": 0.8785
+  },
+  {
+   "text": "CAS",
+   "text_raw": "CAS",
+   "score": 0.4632,
+   "min_token_prob": 0.3471,
+   "box": [
+    368,
+    666,
+    528,
+    784
+   ],
+   "poly": [
+    [
+     373,
+     666
+    ],
+    [
+     528,
+     671
+    ],
+    [
+     523,
+     784
+    ],
+    [
+     368,
+     778
+    ]
+   ],
+   "b_text": "(A)",
+   "b_score": 0.7827
+  },
+  {
+   "text": "p.",
+   "text_raw": "p.",
+   "score": 0.6643,
+   "min_token_prob": 0.172,
+   "box": [
+    246,
+    685,
+    319,
+    770
+   ],
+   "poly": [
+    [
+     246,
+     685
+    ],
+    [
+     319,
+     685
+    ],
+    [
+     319,
+     770
+    ],
+    [
+     246,
+     770
+    ]
+   ],
+   "b_text": "h",
+   "b_score": 0.2341
+  },
+  {
+   "text": "A college genorades, stage quantities",
+   "text_raw": "A college genorades , stage quantities",
+   "score": 0.7167,
+   "min_token_prob": 0.2365,
+   "box": [
+    672,
+    925,
+    2495,
+    1073
+   ],
+   "poly": [
+    [
+     673,
+     925
+    ],
+    [
+     2495,
+     942
+    ],
+    [
+     2493,
+     1073
+    ],
+    [
+     672,
+     1056
+    ]
+   ],
+   "b_text": "A coege genadr sag quat ra",
+   "b_score": 0.5942
+  },
+  {
+   "text": "of good waste, paper-coastous plastic and",
+   "text_raw": "of good waste , paper-coastous plastic and",
+   "score": 0.7931,
+   "min_token_prob": 0.2132,
+   "box": [
+    339,
+    1032,
+    2349,
+    1207
+   ],
+   "poly": [
+    [
+     341,
+     1032
+    ],
+    [
+     2349,
+     1063
+    ],
+    [
+     2347,
+     1207
+    ],
+    [
+     339,
+     1176
+    ]
+   ],
+   "b_text": "of sfood wate papocedau plane ard",
+   "b_score": 0.6214
+  },
+  {
+   "text": "other sacred muscle \"",
+   "text_raw": "other sacred muscle \"",
+   "score": 0.7002,
+   "min_token_prob": 0.2957,
+   "box": [
+    361,
+    1162,
+    1259,
+    1292
+   ],
+   "poly": [
+    [
+     365,
+     1162
+    ],
+    [
+     1259,
+     1192
+    ],
+    [
+     1256,
+     1292
+    ],
+    [
+     361,
+     1262
+    ]
+   ],
+   "b_text": "other Sd wande",
+   "b_score": 0.6546
+  },
+  {
+   "text": "and",
+   "text_raw": "and",
+   "score": 0.4594,
+   "min_token_prob": 0.1633,
+   "box": [
+    0,
+    1293,
+    97,
+    1398
+   ],
+   "poly": [
+    [
+     0,
+     1293
+    ],
+    [
+     97,
+     1293
+    ],
+    [
+     97,
+     1398
+    ],
+    [
+     0,
+     1398
+    ]
+   ],
+   "b_text": "eht",
+   "b_score": 0.7065
+  },
+  {
+   "text": "# #",
+   "text_raw": "# #",
+   "score": 0.7245,
+   "min_token_prob": 0.5963,
+   "box": [
+    1182,
+    1356,
+    1383,
+    1415
+   ],
+   "poly": [
+    [
+     1182,
+     1356
+    ],
+    [
+     1383,
+     1356
+    ],
+    [
+     1383,
+     1415
+    ],
+    [
+     1182,
+     1415
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "We can produce them being the'",
+   "text_raw": "We can produce them being the '",
+   "score": 0.6312,
+   "min_token_prob": 0.2967,
+   "box": [
+    676,
+    1378,
+    2288,
+    1588
+   ],
+   "poly": [
+    [
+     681,
+     1378
+    ],
+    [
+     2288,
+     1418
+    ],
+    [
+     2284,
+     1588
+    ],
+    [
+     676,
+     1548
+    ]
+   ],
+   "b_text": "Wo can ed Fng tha R",
+   "b_score": 0.59
+  },
+  {
+   "text": "principle.",
+   "text_raw": "principle .",
+   "score": 0.8976,
+   "min_token_prob": 0.7388,
+   "box": [
+    341,
+    1528,
+    783,
+    1665
+   ],
+   "poly": [
+    [
+     344,
+     1528
+    ],
+    [
+     783,
+     1539
+    ],
+    [
+     780,
+     1665
+    ],
+    [
+     341,
+     1654
+    ]
+   ],
+   "b_text": "pronceple",
+   "b_score": 0.7088
+  },
+  {
+   "text": "# E.EDLER C.",
+   "text_raw": "# E.EDLER C.",
+   "score": 0.5934,
+   "min_token_prob": 0.1572,
+   "box": [
+    916,
+    1660,
+    1458,
+    1779
+   ],
+   "poly": [
+    [
+     917,
+     1660
+    ],
+    [
+     1458,
+     1664
+    ],
+    [
+     1457,
+     1779
+    ],
+    [
+     916,
+     1775
+    ]
+   ],
+   "b_text": "skedug.",
+   "b_score": 0.5566
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.842,
+   "min_token_prob": 0.6967,
+   "box": [
+    325,
+    1718,
+    347,
+    1740
+   ],
+   "poly": [
+    [
+     334,
+     1718
+    ],
+    [
+     347,
+     1731
+    ],
+    [
+     338,
+     1740
+    ],
+    [
+     325,
+     1727
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.3414
+  },
+  {
+   "text": "\"# # # EPHOP #",
+   "text_raw": "\"# # # EPHOP #",
+   "score": 0.3941,
+   "min_token_prob": 0.1659,
+   "box": [
+    607,
+    1788,
+    1438,
+    1912
+   ],
+   "poly": [
+    [
+     607,
+     1788
+    ],
+    [
+     1438,
+     1792
+    ],
+    [
+     1437,
+     1912
+    ],
+    [
+     607,
+     1908
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "m #",
+   "text_raw": "m #",
+   "score": 0.7968,
+   "min_token_prob": 0.6772,
+   "box": [
+    0,
+    1806,
+    80,
+    1893
+   ],
+   "poly": [
+    [
+     0,
+     1806
+    ],
+    [
+     80,
+     1806
+    ],
+    [
+     80,
+     1893
+    ],
+    [
+     0,
+     1893
+    ]
+   ],
+   "b_text": "me",
+   "b_score": 0.9073
+  },
+  {
+   "text": "# ROOYGLOOD",
+   "text_raw": "# ROOYGLOOD",
+   "score": 0.6293,
+   "min_token_prob": 0.3001,
+   "box": [
+    931,
+    1909,
+    1533,
+    2021
+   ],
+   "poly": [
+    [
+     933,
+     1909
+    ],
+    [
+     1533,
+     1919
+    ],
+    [
+     1531,
+     2021
+    ],
+    [
+     931,
+     2011
+    ]
+   ],
+   "b_text": "RG",
+   "b_score": 0.4103
+  },
+  {
+   "text": "# #",
+   "text_raw": "# #",
+   "score": 0.7562,
+   "min_token_prob": 0.6347,
+   "box": [
+    1411,
+    2098,
+    1568,
+    2133
+   ],
+   "poly": [
+    [
+     1412,
+     2098
+    ],
+    [
+     1568,
+     2102
+    ],
+    [
+     1568,
+     2133
+    ],
+    [
+     1411,
+     2129
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "Firstly use shown do-disagree the",
+   "text_raw": "Firstly use shown do-disagree the",
+   "score": 0.6004,
+   "min_token_prob": 0.1127,
+   "box": [
+    505,
+    2127,
+    2368,
+    2308
+   ],
+   "poly": [
+    [
+     508,
+     2127
+    ],
+    [
+     2368,
+     2162
+    ],
+    [
+     2365,
+     2308
+    ],
+    [
+     505,
+     2273
+    ]
+   ],
+   "b_text": "Fostly coe shave oa e",
+   "b_score": 0.5881
+  },
+  {
+   "text": "types of course and use can arrange",
+   "text_raw": "types of course and use can arrange",
+   "score": 0.7714,
+   "min_token_prob": 0.3533,
+   "box": [
+    320,
+    2252,
+    2383,
+    2441
+   ],
+   "poly": [
+    [
+     324,
+     2252
+    ],
+    [
+     2383,
+     2304
+    ],
+    [
+     2380,
+     2441
+    ],
+    [
+     320,
+     2389
+    ]
+   ],
+   "b_text": "types of coade ann C manga",
+   "b_score": 0.6037
+  },
+  {
+   "text": "the pollution happened due, who, waste.",
+   "text_raw": "the pollution happened due , who , waste .",
+   "score": 0.6774,
+   "min_token_prob": 0.1869,
+   "box": [
+    341,
+    2395,
+    2528,
+    2559
+   ],
+   "poly": [
+    [
+     343,
+     2395
+    ],
+    [
+     2528,
+     2435
+    ],
+    [
+     2526,
+     2559
+    ],
+    [
+     341,
+     2518
+    ]
+   ],
+   "b_text": "sthapolt sonbappopda, o,wasto.",
+   "b_score": 0.5592
+  },
+  {
+   "text": "We have to produce the waste",
+   "text_raw": "We have to produce the waste",
+   "score": 0.8121,
+   "min_token_prob": 0.4398,
+   "box": [
+    533,
+    2638,
+    2364,
+    2799
+   ],
+   "poly": [
+    [
+     536,
+     2638
+    ],
+    [
+     2364,
+     2681
+    ],
+    [
+     2361,
+     2799
+    ],
+    [
+     533,
+     2757
+    ]
+   ],
+   "b_text": "Wo chave to medue dhe coaml.",
+   "b_score": 0.5784
+  },
+  {
+   "text": "and yet # otherwise on the",
+   "text_raw": "and yet # otherwise on the",
+   "score": 0.7248,
+   "min_token_prob": 0.2262,
+   "box": [
+    287,
+    2756,
+    2381,
+    2941
+   ],
+   "poly": [
+    [
+     290,
+     2756
+    ],
+    [
+     2381,
+     2804
+    ],
+    [
+     2378,
+     2941
+    ],
+    [
+     287,
+     2893
+    ]
+   ],
+   "b_text": "andtpplo on th",
+   "b_score": 0.527
+  },
+  {
+   "text": "BR# upon extraordinary.",
+   "text_raw": "BR# upon extraordinary .",
+   "score": 0.4576,
+   "min_token_prob": 0.0607,
+   "box": [
+    319,
+    2905,
+    1035,
+    3024
+   ],
+   "poly": [
+    [
+     320,
+     2905
+    ],
+    [
+     1035,
+     2911
+    ],
+    [
+     1034,
+     3024
+    ],
+    [
+     319,
+     3018
+    ]
+   ],
+   "b_text": "Brmethod",
+   "b_score": 0.4905
+  },
+  {
+   "text": "cas",
+   "text_raw": "cas",
+   "score": 0.6013,
+   "min_token_prob": 0.357,
+   "box": [
+    1275,
+    3249,
+    1284,
+    3258
+   ],
+   "poly": [
+    [
+     1275,
+     3249
+    ],
+    [
+     1284,
+     3249
+    ],
+    [
+     1284,
+     3258
+    ],
+    [
+     1275,
+     3258
+    ]
+   ],
+   "b_text": "心",
+   "b_score": 0.1533
+  }
+ ],
+ "peak_torch_alloc_mib": 2695,
+ "peak_rss_mib_process": 2964
+}

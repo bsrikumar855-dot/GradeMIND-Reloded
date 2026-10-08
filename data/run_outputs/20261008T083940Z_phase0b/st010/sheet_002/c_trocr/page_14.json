@@ -1,0 +1,597 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_14.jpg",
+ "latency_s": 1.217,
+ "model_load_s": 0.83,
+ "n_lines": 18,
+ "lines": [
+  {
+   "text": "We can recycle the plastic",
+   "text_raw": "We can recycle the plastic",
+   "score": 0.9165,
+   "min_token_prob": 0.5079,
+   "box": [
+    836,
+    463,
+    2495,
+    632
+   ],
+   "poly": [
+    [
+     840,
+     463
+    ],
+    [
+     2495,
+     510
+    ],
+    [
+     2492,
+     632
+    ],
+    [
+     836,
+     586
+    ]
+   ],
+   "b_text": "we can oecycle ctho plastfe",
+   "b_score": 0.8304
+  },
+  {
+   "text": "waste and made it as a useful",
+   "text_raw": "waste and made it as a useful",
+   "score": 0.9061,
+   "min_token_prob": 0.2153,
+   "box": [
+    263,
+    588,
+    2531,
+    767
+   ],
+   "poly": [
+    [
+     266,
+     588
+    ],
+    [
+     2531,
+     652
+    ],
+    [
+     2528,
+     767
+    ],
+    [
+     263,
+     703
+    ]
+   ],
+   "b_text": "coaste and cmade at as a weful",
+   "b_score": 0.7381
+  },
+  {
+   "text": "product if we doesnod dake proper",
+   "text_raw": "product if we doesnod dake proper",
+   "score": 0.7589,
+   "min_token_prob": 0.2896,
+   "box": [
+    229,
+    717,
+    2727,
+    924
+   ],
+   "poly": [
+    [
+     233,
+     717
+    ],
+    [
+     2727,
+     787
+    ],
+    [
+     2723,
+     924
+    ],
+    [
+     229,
+     853
+    ]
+   ],
+   "b_text": "product. ifp we doenot take proper",
+   "b_score": 0.8126
+  },
+  {
+   "text": "coaste management on plastic to will",
+   "text_raw": "coaste management on plastic to will",
+   "score": 0.8699,
+   "min_token_prob": 0.5523,
+   "box": [
+    257,
+    857,
+    2569,
+    1052
+   ],
+   "poly": [
+    [
+     260,
+     857
+    ],
+    [
+     2569,
+     916
+    ],
+    [
+     2566,
+     1052
+    ],
+    [
+     257,
+     994
+    ]
+   ],
+   "b_text": "coaste mangemont oh plastc it liopl",
+   "b_score": 0.6997
+  },
+  {
+   "text": "dotally effect at the all organisms.",
+   "text_raw": "dotally effect at the all organisms .",
+   "score": 0.8069,
+   "min_token_prob": 0.4497,
+   "box": [
+    275,
+    996,
+    2599,
+    1201
+   ],
+   "poly": [
+    [
+     278,
+     996
+    ],
+    [
+     2599,
+     1059
+    ],
+    [
+     2596,
+     1201
+    ],
+    [
+     275,
+     1139
+    ]
+   ],
+   "b_text": "ctotally affoct the al organesms.",
+   "b_score": 0.7785
+  },
+  {
+   "text": "Plastic are the iron-brodegrad",
+   "text_raw": "Plastic are the iron-brodegrad",
+   "score": 0.787,
+   "min_token_prob": 0.3861,
+   "box": [
+    896,
+    1277,
+    2835,
+    1473
+   ],
+   "poly": [
+    [
+     900,
+     1277
+    ],
+    [
+     2835,
+     1338
+    ],
+    [
+     2831,
+     1473
+    ],
+    [
+     896,
+     1412
+    ]
+   ],
+   "b_text": "Plastpc aro the inon-bpodograd",
+   "b_score": 0.8213
+  },
+  {
+   "text": "easily and many of castles are able in",
+   "text_raw": "easily and many of castles are able in",
+   "score": 0.8811,
+   "min_token_prob": 0.2685,
+   "box": [
+    222,
+    1534,
+    2814,
+    1781
+   ],
+   "poly": [
+    [
+     227,
+     1534
+    ],
+    [
+     2814,
+     1618
+    ],
+    [
+     2809,
+     1781
+    ],
+    [
+     222,
+     1697
+    ]
+   ],
+   "b_text": "easaly ard many of catllos are ato ",
+   "b_score": 0.782
+  },
+  {
+   "text": "and deed.",
+   "text_raw": "and deed .",
+   "score": 0.8798,
+   "min_token_prob": 0.5205,
+   "box": [
+    245,
+    1700,
+    908,
+    1830
+   ],
+   "poly": [
+    [
+     247,
+     1700
+    ],
+    [
+     908,
+     1714
+    ],
+    [
+     906,
+     1830
+    ],
+    [
+     245,
+     1817
+    ]
+   ],
+   "b_text": "andcleod。",
+   "b_score": 0.7325
+  },
+  {
+   "text": "We have guide the students",
+   "text_raw": "We have guide the students",
+   "score": 0.8059,
+   "min_token_prob": 0.3016,
+   "box": [
+    894,
+    1983,
+    2738,
+    2183
+   ],
+   "poly": [
+    [
+     899,
+     1983
+    ],
+    [
+     2738,
+     2052
+    ],
+    [
+     2733,
+     2183
+    ],
+    [
+     894,
+     2114
+    ]
+   ],
+   "b_text": "woe chavo gaide Ihe setudonds",
+   "b_score": 0.7297
+  },
+  {
+   "text": "and tell them about the drawbacks",
+   "text_raw": "and tell them about the drawbacks",
+   "score": 0.9597,
+   "min_token_prob": 0.7294,
+   "box": [
+    227,
+    2114,
+    2771,
+    2321
+   ],
+   "poly": [
+    [
+     231,
+     2114
+    ],
+    [
+     2771,
+     2199
+    ],
+    [
+     2767,
+     2321
+    ],
+    [
+     227,
+     2236
+    ]
+   ],
+   "b_text": "and toll thonabaut tho draobacks",
+   "b_score": 0.7246
+  },
+  {
+   "text": "of the usage of plastic and we",
+   "text_raw": "of the usage of plastic and we",
+   "score": 0.9626,
+   "min_token_prob": 0.7731,
+   "box": [
+    274,
+    2256,
+    2642,
+    2472
+   ],
+   "poly": [
+    [
+     279,
+     2256
+    ],
+    [
+     2642,
+     2340
+    ],
+    [
+     2637,
+     2472
+    ],
+    [
+     274,
+     2389
+    ]
+   ],
+   "b_text": "of the usage of plastpc and cioe",
+   "b_score": 0.8477
+  },
+  {
+   "text": "can use # plan \" bio degradable plates \" Instead of",
+   "text_raw": "can use # plan \" bio degradable plates \" Instead of",
+   "score": 0.7655,
+   "min_token_prob": 0.1108,
+   "box": [
+    274,
+    2401,
+    2786,
+    2631
+   ],
+   "poly": [
+    [
+     279,
+     2401
+    ],
+    [
+     2786,
+     2496
+    ],
+    [
+     2781,
+     2631
+    ],
+    [
+     274,
+     2536
+    ]
+   ],
+   "b_text": "can age p bfo dogradable plates ahetead ad",
+   "b_score": 0.7177
+  },
+  {
+   "text": "plastip plate.",
+   "text_raw": "plastip plate .",
+   "score": 0.7934,
+   "min_token_prob": 0.342,
+   "box": [
+    275,
+    2567,
+    946,
+    2695
+   ],
+   "poly": [
+    [
+     277,
+     2567
+    ],
+    [
+     946,
+     2578
+    ],
+    [
+     944,
+     2695
+    ],
+    [
+     275,
+     2683
+    ]
+   ],
+   "b_text": "phaste phto.",
+   "b_score": 0.7499
+  },
+  {
+   "text": "Most of the coaste as collected",
+   "text_raw": "Most of the coaste as collected",
+   "score": 0.7639,
+   "min_token_prob": 0.3298,
+   "box": [
+    790,
+    2847,
+    2764,
+    3055
+   ],
+   "poly": [
+    [
+     795,
+     2847
+    ],
+    [
+     2764,
+     2919
+    ],
+    [
+     2759,
+     3055
+    ],
+    [
+     790,
+     2984
+    ]
+   ],
+   "b_text": "Mosd of the coaste Ss colleded",
+   "b_score": 0.8352
+  },
+  {
+   "text": "without so engaged for, and it will results on",
+   "text_raw": "without so engaged for , and it will results on",
+   "score": 0.6828,
+   "min_token_prob": 0.1839,
+   "box": [
+    234,
+    2986,
+    2771,
+    3200
+   ],
+   "poly": [
+    [
+     239,
+     2986
+    ],
+    [
+     2771,
+     3079
+    ],
+    [
+     2767,
+     3200
+    ],
+    [
+     234,
+     3107
+    ]
+   ],
+   "b_text": "costhout sogregatfon, ohd ft woell resuls n",
+   "b_score": 0.6844
+  },
+  {
+   "text": "improper disposal and environmental problems.",
+   "text_raw": "improper disposal and environmental problems .",
+   "score": 0.9281,
+   "min_token_prob": 0.772,
+   "box": [
+    256,
+    3131,
+    2908,
+    3365
+   ],
+   "poly": [
+    [
+     261,
+     3131
+    ],
+    [
+     2908,
+     3236
+    ],
+    [
+     2903,
+     3365
+    ],
+    [
+     256,
+     3259
+    ]
+   ],
+   "b_text": "Pmpropos des posal and ehuaronmontal probloms",
+   "b_score": 0.7663
+  },
+  {
+   "text": "Reading helps the conserve the natural",
+   "text_raw": "Reading helps the conserve the natural",
+   "score": 0.8844,
+   "min_token_prob": 0.606,
+   "box": [
+    276,
+    3271,
+    2902,
+    3514
+   ],
+   "poly": [
+    [
+     281,
+     3271
+    ],
+    [
+     2902,
+     3379
+    ],
+    [
+     2896,
+     3514
+    ],
+    [
+     276,
+     3406
+    ]
+   ],
+   "b_text": "Recucling holps othe cohserve cthe natural",
+   "b_score": 0.8082
+  },
+  {
+   "text": "resources.",
+   "text_raw": "resources .",
+   "score": 0.9836,
+   "min_token_prob": 0.9517,
+   "box": [
+    269,
+    3437,
+    819,
+    3576
+   ],
+   "poly": [
+    [
+     273,
+     3437
+    ],
+    [
+     819,
+     3455
+    ],
+    [
+     815,
+     3576
+    ],
+    [
+     269,
+     3557
+    ]
+   ],
+   "b_text": "oesources.",
+   "b_score": 0.5455
+  }
+ ],
+ "peak_torch_alloc_mib": 2677,
+ "peak_rss_mib_process": 2964
+}

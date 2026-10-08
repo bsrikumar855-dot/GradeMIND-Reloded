@@ -1,0 +1,560 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_09.jpg",
+ "latency_s": 10.733,
+ "model_load_s": 0.37,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "ad ff an afet the human and the",
+   "score": 0.7971,
+   "poly": [
+    [
+     404,
+     363
+    ],
+    [
+     2292,
+     297
+    ],
+    [
+     2297,
+     446
+    ],
+    [
+     409,
+     512
+    ]
+   ],
+   "box": [
+    404,
+    297,
+    2297,
+    512
+   ]
+  },
+  {
+   "text": "afd animals cn attack the hoaks.",
+   "score": 0.7764,
+   "poly": [
+    [
+     433,
+     480
+    ],
+    [
+     2217,
+     420
+    ],
+    [
+     2221,
+     551
+    ],
+    [
+     438,
+     610
+    ]
+   ],
+   "box": [
+    433,
+    420,
+    2221,
+    610
+   ]
+  },
+  {
+   "text": "Defosetadfn cafl sleads cto ro",
+   "score": 0.6153,
+   "poly": [
+    [
+     743,
+     701
+    ],
+    [
+     2147,
+     646
+    ],
+    [
+     2151,
+     768
+    ],
+    [
+     748,
+     822
+    ]
+   ],
+   "box": [
+    743,
+    646,
+    2151,
+    822
+   ]
+  },
+  {
+   "text": "mairfall and affedt sthe agr Pouctae and",
+   "score": 0.6798,
+   "poly": [
+    [
+     414,
+     815
+    ],
+    [
+     2290,
+     761
+    ],
+    [
+     2294,
+     886
+    ],
+    [
+     418,
+     940
+    ]
+   ],
+   "box": [
+    414,
+    761,
+    2294,
+    940
+   ]
+  },
+  {
+   "text": "mang of ethe onghems ae detuad",
+   "score": 0.7067,
+   "poly": [
+    [
+     435,
+     932
+    ],
+    [
+     2243,
+     870
+    ],
+    [
+     2247,
+     989
+    ],
+    [
+     439,
+     1051
+    ]
+   ],
+   "box": [
+    435,
+    870,
+    2247,
+    1051
+   ]
+  },
+  {
+   "text": "Bode are get desturbed do",
+   "score": 0.7696,
+   "poly": [
+    [
+     778,
+     1122
+    ],
+    [
+     2234,
+     1093
+    ],
+    [
+     2236,
+     1219
+    ],
+    [
+     781,
+     1248
+    ]
+   ],
+   "box": [
+    778,
+    1093,
+    2236,
+    1248
+   ]
+  },
+  {
+   "text": "ithe cuttfong of strces. ce lare the",
+   "score": 0.7355,
+   "poly": [
+    [
+     407,
+     1237
+    ],
+    [
+     2297,
+     1205
+    ],
+    [
+     2300,
+     1335
+    ],
+    [
+     409,
+     1367
+    ]
+   ],
+   "box": [
+    407,
+    1205,
+    2300,
+    1367
+   ]
+  },
+  {
+   "text": "chadurally occwag praots ceke",
+   "score": 0.6038,
+   "poly": [
+    [
+     410,
+     1356
+    ],
+    [
+     2109,
+     1322
+    ],
+    [
+     2112,
+     1440
+    ],
+    [
+     412,
+     1474
+    ]
+   ],
+   "box": [
+    410,
+    1322,
+    2112,
+    1474
+   ]
+  },
+  {
+   "text": "fruats honay stc",
+   "score": 0.6531,
+   "poly": [
+    [
+     439,
+     1463
+    ],
+    [
+     1480,
+     1445
+    ],
+    [
+     1482,
+     1567
+    ],
+    [
+     441,
+     1584
+    ]
+   ],
+   "box": [
+    439,
+    1445,
+    1482,
+    1584
+   ]
+  },
+  {
+   "text": "Deforantadfonees cthe marn cason",
+   "score": 0.6388,
+   "poly": [
+    [
+     801,
+     1681
+    ],
+    [
+     2298,
+     1654
+    ],
+    [
+     2300,
+     1757
+    ],
+    [
+     803,
+     1784
+    ]
+   ],
+   "box": [
+    801,
+    1654,
+    2300,
+    1784
+   ]
+  },
+  {
+   "text": "for ethe sopl erasfoh. and fload. Sudden",
+   "score": 0.7047,
+   "poly": [
+    [
+     423,
+     1789
+    ],
+    [
+     2275,
+     1762
+    ],
+    [
+     2277,
+     1870
+    ],
+    [
+     425,
+     1897
+    ]
+   ],
+   "box": [
+    423,
+    1762,
+    2277,
+    1897
+   ]
+  },
+  {
+   "text": "clemate changes chave happond ein th",
+   "score": 0.8238,
+   "poly": [
+    [
+     418,
+     1899
+    ],
+    [
+     2143,
+     1870
+    ],
+    [
+     2145,
+     1991
+    ],
+    [
+     420,
+     2020
+    ]
+   ],
+   "box": [
+    418,
+    1870,
+    2145,
+    2020
+   ]
+  },
+  {
+   "text": "feco ga",
+   "score": 0.7539,
+   "poly": [
+    [
+     435,
+     2018
+    ],
+    [
+     1134,
+     2013
+    ],
+    [
+     1134,
+     2113
+    ],
+    [
+     435,
+     2118
+    ]
+   ],
+   "box": [
+    435,
+    2013,
+    1134,
+    2118
+   ]
+  },
+  {
+   "text": "Burrlngof coood wel oelease",
+   "score": 0.6848,
+   "poly": [
+    [
+     776,
+     2230
+    ],
+    [
+     2271,
+     2192
+    ],
+    [
+     2274,
+     2301
+    ],
+    [
+     779,
+     2340
+    ]
+   ],
+   "box": [
+    776,
+    2192,
+    2274,
+    2340
+   ]
+  },
+  {
+   "text": "thecarbonmonax fle ga ard aMeat",
+   "score": 0.6835,
+   "poly": [
+    [
+     394,
+     2343
+    ],
+    [
+     2121,
+     2308
+    ],
+    [
+     2123,
+     2418
+    ],
+    [
+     396,
+     2453
+    ]
+   ],
+   "box": [
+    394,
+    2308,
+    2123,
+    2453
+   ]
+  },
+  {
+   "text": "theenframontau cellaffect cthe",
+   "score": 0.6594,
+   "poly": [
+    [
+     395,
+     2450
+    ],
+    [
+     2111,
+     2418
+    ],
+    [
+     2113,
+     2534
+    ],
+    [
+     397,
+     2566
+    ]
+   ],
+   "box": [
+    395,
+    2418,
+    2113,
+    2566
+   ]
+  },
+  {
+   "text": "productpan oxygon be cause they",
+   "score": 0.7891,
+   "poly": [
+    [
+     416,
+     2557
+    ],
+    [
+     2287,
+     2518
+    ],
+    [
+     2290,
+     2649
+    ],
+    [
+     419,
+     2688
+    ]
+   ],
+   "box": [
+    416,
+    2518,
+    2290,
+    2688
+   ]
+  },
+  {
+   "text": "ae the she of eaoh for the",
+   "score": 0.7122,
+   "poly": [
+    [
+     408,
+     2673
+    ],
+    [
+     2127,
+     2638
+    ],
+    [
+     2129,
+     2757
+    ],
+    [
+     411,
+     2793
+    ]
+   ],
+   "box": [
+    408,
+    2638,
+    2129,
+    2793
+   ]
+  },
+  {
+   "text": "Oxygen produetPon",
+   "score": 0.7277,
+   "poly": [
+    [
+     389,
+     2789
+    ],
+    [
+     1441,
+     2772
+    ],
+    [
+     1443,
+     2909
+    ],
+    [
+     391,
+     2927
+    ]
+   ],
+   "box": [
+    389,
+    2772,
+    1443,
+    2927
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3297
+}

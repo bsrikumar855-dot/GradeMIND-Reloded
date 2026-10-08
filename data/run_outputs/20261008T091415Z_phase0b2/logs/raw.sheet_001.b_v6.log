@@ -1,0 +1,35 @@
+/home/Shreekumar/GradeMIND-v2/spike/runs/20261008T091415Z_phase0b2/code/engine_b/run_engine_b.py:46: UserWarning: `lang` and `ocr_version` will be ignored when model names or model directories are not `None`.
+  ocr = PaddleOCR(**kw)
+[32mCreating model: ('PP-OCRv6_medium_det', None, None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_det`.[0m
+[32mCreating model: ('PP-OCRv6_medium_rec', None, None)[0m
+[33mChecking connectivity to the model hosters, this may take a while. To bypass this check, set `PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK` to `True`.[0m
+[32mUsing official model (PP-OCRv6_medium_rec), the model files will be automatically downloaded and saved in `/home/Shreekumar/.paddlex/official_models/PP-OCRv6_medium_rec`.[0m
+[2026-10-08 14:48:29,401] [    INFO] _client.py:1085 - HTTP Request: GET https://huggingface.co/api/models/PaddlePaddle/PP-OCRv6_medium_rec/revision/main "HTTP/1.1 200 OK"
+[2026-10-08 14:48:29,647] [    INFO] _client.py:1085 - HTTP Request: GET https://huggingface.co/api/models/PaddlePaddle/PP-OCRv6_medium_rec/tree/e5a92bcbc5cc1b494628e458d267778f0704fd7c?recursive=true&expand=false "HTTP/1.1 200 OK"
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s][2026-10-08 14:48:29,910] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/PaddlePaddle/PP-OCRv6_medium_rec/resolve/e5a92bcbc5cc1b494628e458d267778f0704fd7c/inference.yml "HTTP/1.1 307 Temporary Redirect"
+[2026-10-08 14:48:29,980] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/PaddlePaddle/PP-OCRv6_medium_rec/resolve/e5a92bcbc5cc1b494628e458d267778f0704fd7c/.gitattributes "HTTP/1.1 307 Temporary Redirect"
+[2026-10-08 14:48:29,990] [    INFO] _client.py:1085 - HTTP Request: GET https://huggingface.co/api/models/PaddlePaddle/PP-OCRv6_medium_rec/xet-read-token/e5a92bcbc5cc1b494628e458d267778f0704fd7c "HTTP/1.1 200 OK"
+[2026-10-08 14:48:30,000] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/PaddlePaddle/PP-OCRv6_medium_rec/resolve/e5a92bcbc5cc1b494628e458d267778f0704fd7c/README.md "HTTP/1.1 307 Temporary Redirect"
+[2026-10-08 14:48:30,013] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/PaddlePaddle/PP-OCRv6_medium_rec/resolve/e5a92bcbc5cc1b494628e458d267778f0704fd7c/inference.json "HTTP/1.1 307 Temporary Redirect"
+[2026-10-08 14:48:30,163] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/inference.yml?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2Finference.yml=&etag=%22c53a96fcd315a86cb4748d2746f3d90941e1c6d8%22 "HTTP/1.1 200 OK"
+[2026-10-08 14:48:30,246] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/README.md?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2FREADME.md=&etag=%22580e21d8953c774df101f56bf01aa851992e344f%22 "HTTP/1.1 200 OK"
+[2026-10-08 14:48:30,249] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/.gitattributes?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2F.gitattributes=&etag=%22c48a31d8dce80bfbfe392212dc49792e212a6436%22 "HTTP/1.1 200 OK"
+[2026-10-08 14:48:30,269] [    INFO] _client.py:1085 - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/inference.json?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2Finference.json=&etag=%229e0192344de3b69dacdb19dd735efbd06bd852f9%22 "HTTP/1.1 200 OK"
+[2026-10-08 14:48:30,436] [    INFO] _client.py:1085 - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/inference.yml?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2Finference.yml=&etag=%22c53a96fcd315a86cb4748d2746f3d90941e1c6d8%22 "HTTP/1.1 200 OK"
+Fetching 5 files:  20%|██        | 1/5 [00:00<00:03,  1.25it/s][2026-10-08 14:48:30,497] [    INFO] _client.py:1085 - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/README.md?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2FREADME.md=&etag=%22580e21d8953c774df101f56bf01aa851992e344f%22 "HTTP/1.1 200 OK"
+[2026-10-08 14:48:30,515] [    INFO] _client.py:1085 - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/inference.json?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2Finference.json=&etag=%229e0192344de3b69dacdb19dd735efbd06bd852f9%22 "HTTP/1.1 200 OK"
+[2026-10-08 14:48:30,561] [    INFO] _client.py:1085 - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/PaddlePaddle/PP-OCRv6_medium_rec/e5a92bcbc5cc1b494628e458d267778f0704fd7c/.gitattributes?%2FPaddlePaddle%2FPP-OCRv6_medium_rec%2Fresolve%2Fe5a92bcbc5cc1b494628e458d267778f0704fd7c%2F.gitattributes=&etag=%22c48a31d8dce80bfbfe392212dc49792e212a6436%22 "HTTP/1.1 200 OK"
+Fetching 5 files:  80%|████████  | 4/5 [00:00<00:00,  5.49it/s]Fetching 5 files:  80%|████████  | 4/5 [00:19<00:00,  5.49it/s]Fetching 5 files: 100%|██████████| 5/5 [00:21<00:00,  5.99s/it]Fetching 5 files: 100%|██████████| 5/5 [00:21<00:00,  4.39s/it]
+page_01.jpg: 21.91s lines=102
+page_02.jpg: 10.73s lines=29
+page_03.jpg: 10.61s lines=30
+page_04.jpg: 10.68s lines=27
+page_05.jpg: 12.31s lines=42
+page_06.jpg: 10.98s lines=33
+page_07.jpg: 11.12s lines=39
+page_08.jpg: 11.17s lines=34
+page_09.jpg: 10.28s lines=30
+page_10.jpg: 11.08s lines=36
+page_11.jpg: 11.20s lines=36
+page_12.jpg: 9.01s lines=10

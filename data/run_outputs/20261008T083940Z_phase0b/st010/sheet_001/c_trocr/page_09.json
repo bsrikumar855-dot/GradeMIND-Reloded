@@ -1,0 +1,629 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_09.jpg",
+ "latency_s": 1.099,
+ "model_load_s": 0.82,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "- Trees, animals, reptiles, amphibians",
+   "text_raw": "- Trees , animals , reptiles , amphibians",
+   "score": 0.8039,
+   "min_token_prob": 0.3969,
+   "box": [
+    384,
+    247,
+    2277,
+    433
+   ],
+   "poly": [
+    [
+     385,
+     247
+    ],
+    [
+     2277,
+     251
+    ],
+    [
+     2277,
+     433
+    ],
+    [
+     384,
+     429
+    ]
+   ],
+   "b_text": "→Treas, animal,pties,ampbe",
+   "b_score": 0.6814
+  },
+  {
+   "text": "in river, and lakes;",
+   "text_raw": "in river , and lakes ;",
+   "score": 0.8958,
+   "min_token_prob": 0.5977,
+   "box": [
+    434,
+    402,
+    1460,
+    576
+   ],
+   "poly": [
+    [
+     434,
+     419
+    ],
+    [
+     1458,
+     402
+    ],
+    [
+     1460,
+     559
+    ],
+    [
+     436,
+     576
+    ]
+   ],
+   "b_text": "in riven,and laked",
+   "b_score": 0.8872
+  },
+  {
+   "text": "# Each had life, cycle",
+   "text_raw": "# Each had life , cycle",
+   "score": 0.8004,
+   "min_token_prob": 0.2668,
+   "box": [
+    376,
+    641,
+    1935,
+    832
+   ],
+   "poly": [
+    [
+     376,
+     662
+    ],
+    [
+     1933,
+     641
+    ],
+    [
+     1935,
+     812
+    ],
+    [
+     378,
+     832
+    ]
+   ],
+   "b_text": " Bach ha Tife, cyde",
+   "b_score": 0.7243
+  },
+  {
+   "text": "birth's life's death, ire.",
+   "text_raw": "birth's life's death , ire .",
+   "score": 0.8184,
+   "min_token_prob": 0.3785,
+   "box": [
+    432,
+    772,
+    2093,
+    965
+   ],
+   "poly": [
+    [
+     432,
+     788
+    ],
+    [
+     2091,
+     772
+    ],
+    [
+     2093,
+     948
+    ],
+    [
+     434,
+     965
+    ]
+   ],
+   "b_text": "binthlifedeath,ine",
+   "b_score": 0.8518
+  },
+  {
+   "text": "certain one become food.",
+   "text_raw": "certain one become food .",
+   "score": 0.8465,
+   "min_token_prob": 0.4878,
+   "box": [
+    419,
+    912,
+    1944,
+    1102
+   ],
+   "poly": [
+    [
+     419,
+     912
+    ],
+    [
+     1944,
+     912
+    ],
+    [
+     1944,
+     1102
+    ],
+    [
+     419,
+     1102
+    ]
+   ],
+   "b_text": "ortain one beoome food",
+   "b_score": 0.8374
+  },
+  {
+   "text": "for another risks to root",
+   "text_raw": "for another risks to root",
+   "score": 0.6988,
+   "min_token_prob": 0.1422,
+   "box": [
+    389,
+    1017,
+    2107,
+    1245
+   ],
+   "poly": [
+    [
+     389,
+     1044
+    ],
+    [
+     2104,
+     1017
+    ],
+    [
+     2107,
+     1218
+    ],
+    [
+     393,
+     1245
+    ]
+   ],
+   "b_text": "for another This is root",
+   "b_score": 0.7621
+  },
+  {
+   "text": "of nature.",
+   "text_raw": "of nature .",
+   "score": 0.9728,
+   "min_token_prob": 0.9445,
+   "box": [
+    399,
+    1172,
+    1099,
+    1383
+   ],
+   "poly": [
+    [
+     399,
+     1188
+    ],
+    [
+     1095,
+     1172
+    ],
+    [
+     1099,
+     1367
+    ],
+    [
+     403,
+     1383
+    ]
+   ],
+   "b_text": "of nate.",
+   "b_score": 0.9113
+  },
+  {
+   "text": "after humans we can",
+   "text_raw": "after humans we can",
+   "score": 0.8327,
+   "min_token_prob": 0.2068,
+   "box": [
+    382,
+    1418,
+    1952,
+    1597
+   ],
+   "poly": [
+    [
+     384,
+     1418
+    ],
+    [
+     1952,
+     1434
+    ],
+    [
+     1951,
+     1597
+    ],
+    [
+     382,
+     1581
+    ]
+   ],
+   "b_text": " for humang we con",
+   "b_score": 0.784
+  },
+  {
+   "text": "research this species and",
+   "text_raw": "research this species and",
+   "score": 0.9964,
+   "min_token_prob": 0.9901,
+   "box": [
+    398,
+    1560,
+    2066,
+    1740
+   ],
+   "poly": [
+    [
+     398,
+     1564
+    ],
+    [
+     2065,
+     1560
+    ],
+    [
+     2066,
+     1736
+    ],
+    [
+     398,
+     1740
+    ]
+   ],
+   "b_text": "sebearch this species and",
+   "b_score": 0.7055
+  },
+  {
+   "text": "understand the'orging",
+   "text_raw": "understand the 'orging",
+   "score": 0.8446,
+   "min_token_prob": 0.511,
+   "box": [
+    436,
+    1690,
+    1829,
+    1858
+   ],
+   "poly": [
+    [
+     437,
+     1690
+    ],
+    [
+     1829,
+     1702
+    ],
+    [
+     1828,
+     1858
+    ],
+    [
+     436,
+     1845
+    ]
+   ],
+   "b_text": "undorstand the orgine",
+   "b_score": 0.8081
+  },
+  {
+   "text": "# for nature every organism",
+   "text_raw": "# for nature every organism",
+   "score": 0.6993,
+   "min_token_prob": 0.3956,
+   "box": [
+    366,
+    1912,
+    2068,
+    2136
+   ],
+   "poly": [
+    [
+     370,
+     1912
+    ],
+    [
+     2068,
+     1941
+    ],
+    [
+     2065,
+     2136
+    ],
+    [
+     366,
+     2107
+    ]
+   ],
+   "b_text": " for natee every organsm",
+   "b_score": 0.7504
+  },
+  {
+   "text": "contribute vital role.",
+   "text_raw": "contribute vital role .",
+   "score": 0.9949,
+   "min_token_prob": 0.9868,
+   "box": [
+    444,
+    2079,
+    1677,
+    2237
+   ],
+   "poly": [
+    [
+     444,
+     2088
+    ],
+    [
+     1676,
+     2079
+    ],
+    [
+     1677,
+     2229
+    ],
+    [
+     445,
+     2237
+    ]
+   ],
+   "b_text": "contribute vital role",
+   "b_score": 0.8667
+  },
+  {
+   "text": "grasslands:",
+   "text_raw": "grasslands :",
+   "score": 0.9665,
+   "min_token_prob": 0.9191,
+   "box": [
+    395,
+    2318,
+    1062,
+    2491
+   ],
+   "poly": [
+    [
+     395,
+     2330
+    ],
+    [
+     1060,
+     2318
+    ],
+    [
+     1062,
+     2479
+    ],
+    [
+     398,
+     2491
+    ]
+   ],
+   "b_text": "goasslands:",
+   "b_score": 0.7376
+  },
+  {
+   "text": "place to form.",
+   "text_raw": "place to form .",
+   "score": 0.9812,
+   "min_token_prob": 0.9513,
+   "box": [
+    1085,
+    2683,
+    2017,
+    2883
+   ],
+   "poly": [
+    [
+     1085,
+     2683
+    ],
+    [
+     2017,
+     2683
+    ],
+    [
+     2017,
+     2883
+    ],
+    [
+     1085,
+     2883
+    ]
+   ],
+   "b_text": "place to foum",
+   "b_score": 0.8436
+  },
+  {
+   "text": "first",
+   "text_raw": "first",
+   "score": 0.772,
+   "min_token_prob": 0.5447,
+   "box": [
+    390,
+    2697,
+    779,
+    2871
+   ],
+   "poly": [
+    [
+     390,
+     2710
+    ],
+    [
+     774,
+     2697
+    ],
+    [
+     779,
+     2858
+    ],
+    [
+     396,
+     2871
+    ]
+   ],
+   "b_text": "first",
+   "b_score": 0.9038
+  },
+  {
+   "text": "By utilization.",
+   "text_raw": "By utilization .",
+   "score": 0.6571,
+   "min_token_prob": 0.1527,
+   "box": [
+    394,
+    2834,
+    1087,
+    3002
+   ],
+   "poly": [
+    [
+     394,
+     2841
+    ],
+    [
+     1085,
+     2834
+    ],
+    [
+     1087,
+     2995
+    ],
+    [
+     395,
+     3002
+    ]
+   ],
+   "b_text": "Kivilization.",
+   "b_score": 0.6832
+  },
+  {
+   "text": "# It was",
+   "text_raw": "# It was",
+   "score": 0.7364,
+   "min_token_prob": 0.3883,
+   "box": [
+    325,
+    3080,
+    1187,
+    3259
+   ],
+   "poly": [
+    [
+     325,
+     3086
+    ],
+    [
+     1186,
+     3080
+    ],
+    [
+     1187,
+     3252
+    ],
+    [
+     326,
+     3259
+    ]
+   ],
+   "b_text": "工t toa",
+   "b_score": 0.736
+  },
+  {
+   "text": "few forces.",
+   "text_raw": "few forces .",
+   "score": 0.8304,
+   "min_token_prob": 0.3306,
+   "box": [
+    1344,
+    3078,
+    1935,
+    3289
+   ],
+   "poly": [
+    [
+     1344,
+     3082
+    ],
+    [
+     1933,
+     3078
+    ],
+    [
+     1935,
+     3285
+    ],
+    [
+     1345,
+     3289
+    ]
+   ],
+   "b_text": "few fe",
+   "b_score": 0.652
+  },
+  {
+   "text": "land plain surface.'",
+   "text_raw": "land plain surface . '",
+   "score": 0.9794,
+   "min_token_prob": 0.9122,
+   "box": [
+    301,
+    3208,
+    1393,
+    3458
+   ],
+   "poly": [
+    [
+     304,
+     3208
+    ],
+    [
+     1393,
+     3219
+    ],
+    [
+     1391,
+     3458
+    ],
+    [
+     301,
+     3447
+    ]
+   ],
+   "b_text": "and plain sufoe",
+   "b_score": 0.7128
+  }
+ ],
+ "peak_torch_alloc_mib": 2691,
+ "peak_rss_mib_process": 2965
+}

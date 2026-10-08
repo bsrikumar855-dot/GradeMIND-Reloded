@@ -1,0 +1,1205 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_11.jpg",
+ "latency_s": 1.671,
+ "model_load_s": 0.86,
+ "n_lines": 37,
+ "lines": [
+  {
+   "text": "there.",
+   "text_raw": "there .",
+   "score": 0.9904,
+   "min_token_prob": 0.9754,
+   "box": [
+    504,
+    281,
+    773,
+    429
+   ],
+   "poly": [
+    [
+     507,
+     281
+    ],
+    [
+     773,
+     288
+    ],
+    [
+     770,
+     429
+    ],
+    [
+     504,
+     421
+    ]
+   ],
+   "b_text": "there",
+   "b_score": 0.7479
+  },
+  {
+   "text": "aquatic ecosystem.",
+   "text_raw": "aquatic ecosystem .",
+   "score": 0.8945,
+   "min_token_prob": 0.5316,
+   "box": [
+    513,
+    509,
+    1442,
+    676
+   ],
+   "poly": [
+    [
+     513,
+     525
+    ],
+    [
+     1439,
+     509
+    ],
+    [
+     1442,
+     660
+    ],
+    [
+     515,
+     676
+    ]
+   ],
+   "b_text": "aquatte easstm.",
+   "b_score": 0.7707
+  },
+  {
+   "text": "\" These is best.",
+   "text_raw": "\" These is best .",
+   "score": 0.8333,
+   "min_token_prob": 0.5787,
+   "box": [
+    452,
+    745,
+    1371,
+    902
+   ],
+   "poly": [
+    [
+     452,
+     771
+    ],
+    [
+     1367,
+     745
+    ],
+    [
+     1371,
+     877
+    ],
+    [
+     456,
+     902
+    ]
+   ],
+   "b_text": "These is bast",
+   "b_score": 0.7458
+  },
+  {
+   "text": "type in",
+   "text_raw": "type in",
+   "score": 0.9934,
+   "min_token_prob": 0.9841,
+   "box": [
+    1475,
+    767,
+    1989,
+    889
+   ],
+   "poly": [
+    [
+     1475,
+     767
+    ],
+    [
+     1989,
+     767
+    ],
+    [
+     1989,
+     889
+    ],
+    [
+     1475,
+     889
+    ]
+   ],
+   "b_text": "type m",
+   "b_score": 0.8379
+  },
+  {
+   "text": "the",
+   "text_raw": "the",
+   "score": 0.9988,
+   "min_token_prob": 0.9977,
+   "box": [
+    515,
+    890,
+    709,
+    1008
+   ],
+   "poly": [
+    [
+     518,
+     890
+    ],
+    [
+     709,
+     895
+    ],
+    [
+     706,
+     1008
+    ],
+    [
+     515,
+     1002
+    ]
+   ],
+   "b_text": "the",
+   "b_score": 0.9905
+  },
+  {
+   "text": "dause.",
+   "text_raw": "dause .",
+   "score": 0.692,
+   "min_token_prob": 0.3763,
+   "box": [
+    1680,
+    886,
+    1984,
+    1004
+   ],
+   "poly": [
+    [
+     1680,
+     893
+    ],
+    [
+     1982,
+     886
+    ],
+    [
+     1984,
+     997
+    ],
+    [
+     1683,
+     1004
+    ]
+   ],
+   "b_text": "Dause",
+   "b_score": 0.6629
+  },
+  {
+   "text": "entero.",
+   "text_raw": "entero .",
+   "score": 0.9536,
+   "min_token_prob": 0.8796,
+   "box": [
+    892,
+    902,
+    1147,
+    1015
+   ],
+   "poly": [
+    [
+     892,
+     909
+    ],
+    [
+     1144,
+     902
+    ],
+    [
+     1147,
+     1008
+    ],
+    [
+     895,
+     1015
+    ]
+   ],
+   "b_text": "enteo",
+   "b_score": 0.8097
+  },
+  {
+   "text": "being",
+   "text_raw": "being",
+   "score": 0.5876,
+   "min_token_prob": 0.3929,
+   "box": [
+    1195,
+    978,
+    1527,
+    1171
+   ],
+   "poly": [
+    [
+     1209,
+     978
+    ],
+    [
+     1527,
+     1005
+    ],
+    [
+     1512,
+     1171
+    ],
+    [
+     1195,
+     1143
+    ]
+   ],
+   "b_text": "D ing",
+   "b_score": 0.8079
+  },
+  {
+   "text": "found on",
+   "text_raw": "found on",
+   "score": 0.994,
+   "min_token_prob": 0.9897,
+   "box": [
+    1664,
+    979,
+    2139,
+    1179
+   ],
+   "poly": [
+    [
+     1664,
+     988
+    ],
+    [
+     2136,
+     979
+    ],
+    [
+     2139,
+     1170
+    ],
+    [
+     1668,
+     1179
+    ]
+   ],
+   "b_text": "Jound in",
+   "b_score": 0.8578
+  },
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.9942,
+   "min_token_prob": 0.9891,
+   "box": [
+    927,
+    1003,
+    1089,
+    1180
+   ],
+   "poly": [
+    [
+     927,
+     1003
+    ],
+    [
+     1089,
+     1003
+    ],
+    [
+     1089,
+     1180
+    ],
+    [
+     927,
+     1180
+    ]
+   ],
+   "b_text": "of",
+   "b_score": 0.8132
+  },
+  {
+   "text": "90 lb.",
+   "text_raw": "90 lb .",
+   "score": 0.86,
+   "min_token_prob": 0.6473,
+   "box": [
+    519,
+    1016,
+    769,
+    1129
+   ],
+   "poly": [
+    [
+     519,
+     1016
+    ],
+    [
+     769,
+     1016
+    ],
+    [
+     769,
+     1129
+    ],
+    [
+     519,
+     1129
+    ]
+   ],
+   "b_text": "90上",
+   "b_score": 0.6872
+  },
+  {
+   "text": "here",
+   "text_raw": "here",
+   "score": 0.8633,
+   "min_token_prob": 0.7436,
+   "box": [
+    526,
+    1117,
+    762,
+    1255
+   ],
+   "poly": [
+    [
+     529,
+     1117
+    ],
+    [
+     762,
+     1122
+    ],
+    [
+     759,
+     1255
+    ],
+    [
+     526,
+     1250
+    ]
+   ],
+   "b_text": "hore",
+   "b_score": 0.7658
+  },
+  {
+   "text": "l",
+   "text_raw": "l",
+   "score": 0.7216,
+   "min_token_prob": 0.5835,
+   "box": [
+    1526,
+    1293,
+    1548,
+    1322
+   ],
+   "poly": [
+    [
+     1526,
+     1293
+    ],
+    [
+     1548,
+     1293
+    ],
+    [
+     1548,
+     1322
+    ],
+    [
+     1526,
+     1322
+    ]
+   ],
+   "b_text": ",",
+   "b_score": 0.9529
+  },
+  {
+   "text": "xfirst life in the world",
+   "text_raw": "xfirst life in the world",
+   "score": 0.8089,
+   "min_token_prob": 0.3247,
+   "box": [
+    426,
+    1329,
+    1991,
+    1510
+   ],
+   "poly": [
+    [
+     426,
+     1348
+    ],
+    [
+     1989,
+     1329
+    ],
+    [
+     1991,
+     1491
+    ],
+    [
+     428,
+     1510
+    ]
+   ],
+   "b_text": "*First life in the world",
+   "b_score": 0.8387
+  },
+  {
+   "text": "emerge Goun water.",
+   "text_raw": "emerge Goun water .",
+   "score": 0.7159,
+   "min_token_prob": 0.2873,
+   "box": [
+    559,
+    1462,
+    1552,
+    1655
+   ],
+   "poly": [
+    [
+     559,
+     1498
+    ],
+    [
+     1546,
+     1462
+    ],
+    [
+     1552,
+     1619
+    ],
+    [
+     564,
+     1655
+    ]
+   ],
+   "b_text": "emerge fron water",
+   "b_score": 0.7843
+  },
+  {
+   "text": "types of amphiphrans.",
+   "text_raw": "types of amphiphrans .",
+   "score": 0.6337,
+   "min_token_prob": 0.2447,
+   "box": [
+    1025,
+    1686,
+    2319,
+    1865
+   ],
+   "poly": [
+    [
+     1025,
+     1696
+    ],
+    [
+     2318,
+     1686
+    ],
+    [
+     2319,
+     1855
+    ],
+    [
+     1026,
+     1865
+    ]
+   ],
+   "b_text": "type of amphiphons",
+   "b_score": 0.7719
+  },
+  {
+   "text": "co",
+   "text_raw": "co",
+   "score": 0.482,
+   "min_token_prob": 0.2014,
+   "box": [
+    710,
+    1741,
+    801,
+    1821
+   ],
+   "poly": [
+    [
+     710,
+     1741
+    ],
+    [
+     801,
+     1741
+    ],
+    [
+     801,
+     1821
+    ],
+    [
+     710,
+     1821
+    ]
+   ],
+   "b_text": "0",
+   "b_score": 0.3207
+  },
+  {
+   "text": "fishes.",
+   "text_raw": "fishes .",
+   "score": 0.8807,
+   "min_token_prob": 0.5649,
+   "box": [
+    495,
+    1808,
+    882,
+    2023
+   ],
+   "poly": [
+    [
+     495,
+     1823
+    ],
+    [
+     874,
+     1808
+    ],
+    [
+     882,
+     2008
+    ],
+    [
+     503,
+     2023
+    ]
+   ],
+   "b_text": "feshes",
+   "b_score": 0.6696
+  },
+  {
+   "text": "lives here",
+   "text_raw": "lives here",
+   "score": 0.8028,
+   "min_token_prob": 0.2963,
+   "box": [
+    1016,
+    1824,
+    1553,
+    1956
+   ],
+   "poly": [
+    [
+     1016,
+     1836
+    ],
+    [
+     1550,
+     1824
+    ],
+    [
+     1553,
+     1944
+    ],
+    [
+     1018,
+     1956
+    ]
+   ],
+   "b_text": "lives hoe",
+   "b_score": 0.8385
+  },
+  {
+   "text": "evolved here.",
+   "text_raw": "evolved here .",
+   "score": 0.8668,
+   "min_token_prob": 0.6963,
+   "box": [
+    1127,
+    2028,
+    1922,
+    2205
+   ],
+   "poly": [
+    [
+     1127,
+     2034
+    ],
+    [
+     1921,
+     2028
+    ],
+    [
+     1922,
+     2199
+    ],
+    [
+     1128,
+     2205
+    ]
+   ],
+   "b_text": "evoned hoe",
+   "b_score": 0.6115
+  },
+  {
+   "text": "# humans.",
+   "text_raw": "# humans .",
+   "score": 0.8937,
+   "min_token_prob": 0.6039,
+   "box": [
+    431,
+    2069,
+    890,
+    2200
+   ],
+   "poly": [
+    [
+     431,
+     2080
+    ],
+    [
+     887,
+     2069
+    ],
+    [
+     890,
+     2190
+    ],
+    [
+     434,
+     2200
+    ]
+   ],
+   "b_text": "humans",
+   "b_score": 0.8701
+  },
+  {
+   "text": "try.",
+   "text_raw": "try .",
+   "score": 0.902,
+   "min_token_prob": 0.8311,
+   "box": [
+    891,
+    2178,
+    1151,
+    2343
+   ],
+   "poly": [
+    [
+     905,
+     2178
+    ],
+    [
+     1151,
+     2203
+    ],
+    [
+     1137,
+     2343
+    ],
+    [
+     891,
+     2318
+    ]
+   ],
+   "b_text": "ting",
+   "b_score": 0.9102
+  },
+  {
+   "text": "singled called",
+   "text_raw": "singled called",
+   "score": 0.8102,
+   "min_token_prob": 0.2506,
+   "box": [
+    1354,
+    2156,
+    2096,
+    2330
+   ],
+   "poly": [
+    [
+     1354,
+     2179
+    ],
+    [
+     2091,
+     2156
+    ],
+    [
+     2096,
+     2307
+    ],
+    [
+     1358,
+     2330
+    ]
+   ],
+   "b_text": "sirgled ollod",
+   "b_score": 0.8273
+  },
+  {
+   "text": "foram.",
+   "text_raw": "foram .",
+   "score": 0.7777,
+   "min_token_prob": 0.4387,
+   "box": [
+    454,
+    2194,
+    741,
+    2331
+   ],
+   "poly": [
+    [
+     454,
+     2194
+    ],
+    [
+     741,
+     2194
+    ],
+    [
+     741,
+     2331
+    ],
+    [
+     454,
+     2331
+    ]
+   ],
+   "b_text": "from",
+   "b_score": 0.7237
+  },
+  {
+   "text": "Porganisms.",
+   "text_raw": "Porganisms .",
+   "score": 0.6304,
+   "min_token_prob": 0.2124,
+   "box": [
+    461,
+    2323,
+    977,
+    2440
+   ],
+   "poly": [
+    [
+     461,
+     2327
+    ],
+    [
+     976,
+     2323
+    ],
+    [
+     977,
+     2436
+    ],
+    [
+     461,
+     2440
+    ]
+   ],
+   "b_text": "rgarisme",
+   "b_score": 0.7093
+  },
+  {
+   "text": "f",
+   "text_raw": "f",
+   "score": 0.3898,
+   "min_token_prob": 0.3391,
+   "box": [
+    599,
+    2551,
+    747,
+    2664
+   ],
+   "poly": [
+    [
+     599,
+     2551
+    ],
+    [
+     747,
+     2551
+    ],
+    [
+     747,
+     2664
+    ],
+    [
+     599,
+     2664
+    ]
+   ],
+   "b_text": "七",
+   "b_score": 0.1922
+  },
+  {
+   "text": "produces.",
+   "text_raw": "produces .",
+   "score": 0.9911,
+   "min_token_prob": 0.976,
+   "box": [
+    968,
+    2526,
+    1402,
+    2682
+   ],
+   "poly": [
+    [
+     968,
+     2546
+    ],
+    [
+     1395,
+     2526
+    ],
+    [
+     1402,
+     2662
+    ],
+    [
+     974,
+     2682
+    ]
+   ],
+   "b_text": "producas",
+   "b_score": 0.8282
+  },
+  {
+   "text": "95 0",
+   "text_raw": "95 0",
+   "score": 0.6459,
+   "min_token_prob": 0.5597,
+   "box": [
+    1648,
+    2543,
+    1848,
+    2654
+   ],
+   "poly": [
+    [
+     1650,
+     2543
+    ],
+    [
+     1848,
+     2548
+    ],
+    [
+     1845,
+     2654
+    ],
+    [
+     1648,
+     2649
+    ]
+   ],
+   "b_text": "9",
+   "b_score": 0.9077
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.8667,
+   "min_token_prob": 0.8308,
+   "box": [
+    412,
+    2587,
+    545,
+    2688
+   ],
+   "poly": [
+    [
+     412,
+     2587
+    ],
+    [
+     545,
+     2587
+    ],
+    [
+     545,
+     2688
+    ],
+    [
+     412,
+     2688
+    ]
+   ],
+   "b_text": "女",
+   "b_score": 0.4519
+  },
+  {
+   "text": "\" for",
+   "text_raw": "\" for",
+   "score": 0.8822,
+   "min_token_prob": 0.6634,
+   "box": [
+    964,
+    2661,
+    1220,
+    2845
+   ],
+   "poly": [
+    [
+     964,
+     2667
+    ],
+    [
+     1216,
+     2661
+    ],
+    [
+     1220,
+     2840
+    ],
+    [
+     968,
+     2845
+    ]
+   ],
+   "b_text": "for",
+   "b_score": 0.7808
+  },
+  {
+   "text": "sentace world.",
+   "text_raw": "sentace world .",
+   "score": 0.675,
+   "min_token_prob": 0.1489,
+   "box": [
+    1150,
+    2641,
+    2061,
+    2843
+   ],
+   "poly": [
+    [
+     1150,
+     2659
+    ],
+    [
+     2057,
+     2641
+    ],
+    [
+     2061,
+     2825
+    ],
+    [
+     1154,
+     2843
+    ]
+   ],
+   "b_text": "entoce corld",
+   "b_score": 0.8666
+  },
+  {
+   "text": "easy you.",
+   "text_raw": "easy you .",
+   "score": 0.6693,
+   "min_token_prob": 0.2919,
+   "box": [
+    421,
+    2700,
+    832,
+    2824
+   ],
+   "poly": [
+    [
+     421,
+     2700
+    ],
+    [
+     832,
+     2700
+    ],
+    [
+     832,
+     2824
+    ],
+    [
+     421,
+     2824
+    ]
+   ],
+   "b_text": "Gxygon",
+   "b_score": 0.591
+  },
+  {
+   "text": "Jungi and",
+   "text_raw": "Jungi and",
+   "score": 0.763,
+   "min_token_prob": 0.2388,
+   "box": [
+    1340,
+    2884,
+    1947,
+    3105
+   ],
+   "poly": [
+    [
+     1340,
+     2904
+    ],
+    [
+     1940,
+     2884
+    ],
+    [
+     1947,
+     3084
+    ],
+    [
+     1347,
+     3105
+    ]
+   ],
+   "b_text": "funge and",
+   "b_score": 0.8243
+  },
+  {
+   "text": "contain.",
+   "text_raw": "contain .",
+   "score": 0.9764,
+   "min_token_prob": 0.9114,
+   "box": [
+    841,
+    2926,
+    1268,
+    3076
+   ],
+   "poly": [
+    [
+     841,
+     2930
+    ],
+    [
+     1267,
+     2926
+    ],
+    [
+     1268,
+     3071
+    ],
+    [
+     843,
+     3076
+    ]
+   ],
+   "b_text": "Contain",
+   "b_score": 0.9349
+  },
+  {
+   "text": "it",
+   "text_raw": "it",
+   "score": 0.6922,
+   "min_token_prob": 0.5177,
+   "box": [
+    468,
+    2942,
+    659,
+    3066
+   ],
+   "poly": [
+    [
+     468,
+     2942
+    ],
+    [
+     659,
+     2942
+    ],
+    [
+     659,
+     3066
+    ],
+    [
+     468,
+     3066
+    ]
+   ],
+   "b_text": "工+",
+   "b_score": 0.5983
+  },
+  {
+   "text": "mor.",
+   "text_raw": "mor .",
+   "score": 0.758,
+   "min_token_prob": 0.5711,
+   "box": [
+    461,
+    3077,
+    696,
+    3203
+   ],
+   "poly": [
+    [
+     461,
+     3077
+    ],
+    [
+     696,
+     3077
+    ],
+    [
+     696,
+     3203
+    ],
+    [
+     461,
+     3203
+    ]
+   ],
+   "b_text": "Mor",
+   "b_score": 0.9785
+  },
+  {
+   "text": "more organisms.",
+   "text_raw": "more organisms .",
+   "score": 0.9179,
+   "min_token_prob": 0.7444,
+   "box": [
+    920,
+    3077,
+    1805,
+    3232
+   ],
+   "poly": [
+    [
+     920,
+     3081
+    ],
+    [
+     1805,
+     3077
+    ],
+    [
+     1805,
+     3228
+    ],
+    [
+     920,
+     3232
+    ]
+   ],
+   "b_text": "More prganisms",
+   "b_score": 0.7838
+  }
+ ],
+ "peak_torch_alloc_mib": 2693,
+ "peak_rss_mib_process": 2965
+}

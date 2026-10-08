@@ -1,0 +1,309 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_12.jpg",
+ "latency_s": 20.44,
+ "model_load_s": 0.38,
+ "n_lines": 10,
+ "lines": [
+  {
+   "text": "human",
+   "score": 0.9307,
+   "poly": [
+    [
+     190,
+     240
+    ],
+    [
+     645,
+     232
+    ],
+    [
+     647,
+     367
+    ],
+    [
+     193,
+     375
+    ]
+   ],
+   "box": [
+    190,
+    232,
+    647,
+    375
+   ]
+  },
+  {
+   "text": "fuon",
+   "score": 0.5704,
+   "poly": [
+    [
+     1700,
+     261
+    ],
+    [
+     2051,
+     261
+    ],
+    [
+     2051,
+     465
+    ],
+    [
+     1700,
+     465
+    ]
+   ],
+   "box": [
+    1700,
+    261,
+    2051,
+    465
+   ]
+  },
+  {
+   "text": "get",
+   "score": 0.8935,
+   "poly": [
+    [
+     823,
+     288
+    ],
+    [
+     1048,
+     264
+    ],
+    [
+     1062,
+     397
+    ],
+    [
+     837,
+     421
+    ]
+   ],
+   "box": [
+    823,
+    264,
+    1062,
+    421
+   ]
+  },
+  {
+   "text": "benefits",
+   "score": 0.7588,
+   "poly": [
+    [
+     1199,
+     284
+    ],
+    [
+     1577,
+     284
+    ],
+    [
+     1577,
+     407
+    ],
+    [
+     1199,
+     407
+    ]
+   ],
+   "box": [
+    1199,
+    284,
+    1577,
+    407
+   ]
+  },
+  {
+   "text": "ths",
+   "score": 0.5676,
+   "poly": [
+    [
+     249,
+     349
+    ],
+    [
+     502,
+     355
+    ],
+    [
+     499,
+     487
+    ],
+    [
+     246,
+     480
+    ]
+   ],
+   "box": [
+    246,
+    349,
+    502,
+    487
+   ]
+  },
+  {
+   "text": "tape",
+   "score": 0.7473,
+   "poly": [
+    [
+     669,
+     366
+    ],
+    [
+     924,
+     378
+    ],
+    [
+     918,
+     515
+    ],
+    [
+     663,
+     504
+    ]
+   ],
+   "box": [
+    663,
+    366,
+    924,
+    515
+   ]
+  },
+  {
+   "text": "2an",
+   "score": 0.2824,
+   "poly": [
+    [
+     1232,
+     414
+    ],
+    [
+     1587,
+     408
+    ],
+    [
+     1589,
+     531
+    ],
+    [
+     1234,
+     537
+    ]
+   ],
+   "box": [
+    1232,
+    408,
+    1589,
+    537
+   ]
+  },
+  {
+   "text": "∞ food,",
+   "score": 0.6272,
+   "poly": [
+    [
+     154,
+     564
+    ],
+    [
+     702,
+     552
+    ],
+    [
+     707,
+     752
+    ],
+    [
+     158,
+     765
+    ]
+   ],
+   "box": [
+    154,
+    552,
+    707,
+    765
+   ]
+  },
+  {
+   "text": "and More",
+   "score": 0.9073,
+   "poly": [
+    [
+     1225,
+     589
+    ],
+    [
+     1858,
+     589
+    ],
+    [
+     1858,
+     750
+    ],
+    [
+     1225,
+     750
+    ]
+   ],
+   "box": [
+    1225,
+    589,
+    1858,
+    750
+   ]
+  },
+  {
+   "text": "enorgy",
+   "score": 0.7952,
+   "poly": [
+    [
+     771,
+     603
+    ],
+    [
+     1104,
+     645
+    ],
+    [
+     1087,
+     778
+    ],
+    [
+     754,
+     736
+    ]
+   ],
+   "box": [
+    754,
+    603,
+    1104,
+    778
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 15906
+}

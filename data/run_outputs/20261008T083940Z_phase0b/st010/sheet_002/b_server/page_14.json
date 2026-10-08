@@ -1,0 +1,532 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_14.jpg",
+ "latency_s": 10.435,
+ "model_load_s": 0.37,
+ "n_lines": 18,
+ "lines": [
+  {
+   "text": "we can oecycle ctho plastfe",
+   "score": 0.8304,
+   "poly": [
+    [
+     840,
+     463
+    ],
+    [
+     2495,
+     510
+    ],
+    [
+     2492,
+     632
+    ],
+    [
+     836,
+     586
+    ]
+   ],
+   "box": [
+    836,
+    463,
+    2495,
+    632
+   ]
+  },
+  {
+   "text": "coaste and cmade at as a weful",
+   "score": 0.7381,
+   "poly": [
+    [
+     266,
+     588
+    ],
+    [
+     2531,
+     652
+    ],
+    [
+     2528,
+     767
+    ],
+    [
+     263,
+     703
+    ]
+   ],
+   "box": [
+    263,
+    588,
+    2531,
+    767
+   ]
+  },
+  {
+   "text": "product. ifp we doenot take proper",
+   "score": 0.8126,
+   "poly": [
+    [
+     233,
+     717
+    ],
+    [
+     2727,
+     787
+    ],
+    [
+     2723,
+     924
+    ],
+    [
+     229,
+     853
+    ]
+   ],
+   "box": [
+    229,
+    717,
+    2727,
+    924
+   ]
+  },
+  {
+   "text": "coaste mangemont oh plastc it liopl",
+   "score": 0.6997,
+   "poly": [
+    [
+     260,
+     857
+    ],
+    [
+     2569,
+     916
+    ],
+    [
+     2566,
+     1052
+    ],
+    [
+     257,
+     994
+    ]
+   ],
+   "box": [
+    257,
+    857,
+    2569,
+    1052
+   ]
+  },
+  {
+   "text": "ctotally affoct the al organesms.",
+   "score": 0.7785,
+   "poly": [
+    [
+     278,
+     996
+    ],
+    [
+     2599,
+     1059
+    ],
+    [
+     2596,
+     1201
+    ],
+    [
+     275,
+     1139
+    ]
+   ],
+   "box": [
+    275,
+    996,
+    2599,
+    1201
+   ]
+  },
+  {
+   "text": "Plastpc aro the inon-bpodograd",
+   "score": 0.8213,
+   "poly": [
+    [
+     900,
+     1277
+    ],
+    [
+     2835,
+     1338
+    ],
+    [
+     2831,
+     1473
+    ],
+    [
+     896,
+     1412
+    ]
+   ],
+   "box": [
+    896,
+    1277,
+    2835,
+    1473
+   ]
+  },
+  {
+   "text": "easaly ard many of catllos are ato ",
+   "score": 0.782,
+   "poly": [
+    [
+     227,
+     1534
+    ],
+    [
+     2814,
+     1618
+    ],
+    [
+     2809,
+     1781
+    ],
+    [
+     222,
+     1697
+    ]
+   ],
+   "box": [
+    222,
+    1534,
+    2814,
+    1781
+   ]
+  },
+  {
+   "text": "andcleod。",
+   "score": 0.7325,
+   "poly": [
+    [
+     247,
+     1700
+    ],
+    [
+     908,
+     1714
+    ],
+    [
+     906,
+     1830
+    ],
+    [
+     245,
+     1817
+    ]
+   ],
+   "box": [
+    245,
+    1700,
+    908,
+    1830
+   ]
+  },
+  {
+   "text": "woe chavo gaide Ihe setudonds",
+   "score": 0.7297,
+   "poly": [
+    [
+     899,
+     1983
+    ],
+    [
+     2738,
+     2052
+    ],
+    [
+     2733,
+     2183
+    ],
+    [
+     894,
+     2114
+    ]
+   ],
+   "box": [
+    894,
+    1983,
+    2738,
+    2183
+   ]
+  },
+  {
+   "text": "and toll thonabaut tho draobacks",
+   "score": 0.7246,
+   "poly": [
+    [
+     231,
+     2114
+    ],
+    [
+     2771,
+     2199
+    ],
+    [
+     2767,
+     2321
+    ],
+    [
+     227,
+     2236
+    ]
+   ],
+   "box": [
+    227,
+    2114,
+    2771,
+    2321
+   ]
+  },
+  {
+   "text": "of the usage of plastpc and cioe",
+   "score": 0.8477,
+   "poly": [
+    [
+     279,
+     2256
+    ],
+    [
+     2642,
+     2340
+    ],
+    [
+     2637,
+     2472
+    ],
+    [
+     274,
+     2389
+    ]
+   ],
+   "box": [
+    274,
+    2256,
+    2642,
+    2472
+   ]
+  },
+  {
+   "text": "can age p bfo dogradable plates ahetead ad",
+   "score": 0.7177,
+   "poly": [
+    [
+     279,
+     2401
+    ],
+    [
+     2786,
+     2496
+    ],
+    [
+     2781,
+     2631
+    ],
+    [
+     274,
+     2536
+    ]
+   ],
+   "box": [
+    274,
+    2401,
+    2786,
+    2631
+   ]
+  },
+  {
+   "text": "phaste phto.",
+   "score": 0.7499,
+   "poly": [
+    [
+     277,
+     2567
+    ],
+    [
+     946,
+     2578
+    ],
+    [
+     944,
+     2695
+    ],
+    [
+     275,
+     2683
+    ]
+   ],
+   "box": [
+    275,
+    2567,
+    946,
+    2695
+   ]
+  },
+  {
+   "text": "Mosd of the coaste Ss colleded",
+   "score": 0.8352,
+   "poly": [
+    [
+     795,
+     2847
+    ],
+    [
+     2764,
+     2919
+    ],
+    [
+     2759,
+     3055
+    ],
+    [
+     790,
+     2984
+    ]
+   ],
+   "box": [
+    790,
+    2847,
+    2764,
+    3055
+   ]
+  },
+  {
+   "text": "costhout sogregatfon, ohd ft woell resuls n",
+   "score": 0.6844,
+   "poly": [
+    [
+     239,
+     2986
+    ],
+    [
+     2771,
+     3079
+    ],
+    [
+     2767,
+     3200
+    ],
+    [
+     234,
+     3107
+    ]
+   ],
+   "box": [
+    234,
+    2986,
+    2771,
+    3200
+   ]
+  },
+  {
+   "text": "Pmpropos des posal and ehuaronmontal probloms",
+   "score": 0.7663,
+   "poly": [
+    [
+     261,
+     3131
+    ],
+    [
+     2908,
+     3236
+    ],
+    [
+     2903,
+     3365
+    ],
+    [
+     256,
+     3259
+    ]
+   ],
+   "box": [
+    256,
+    3131,
+    2908,
+    3365
+   ]
+  },
+  {
+   "text": "Recucling holps othe cohserve cthe natural",
+   "score": 0.8082,
+   "poly": [
+    [
+     281,
+     3271
+    ],
+    [
+     2902,
+     3379
+    ],
+    [
+     2896,
+     3514
+    ],
+    [
+     276,
+     3406
+    ]
+   ],
+   "box": [
+    276,
+    3271,
+    2902,
+    3514
+   ]
+  },
+  {
+   "text": "oesources.",
+   "score": 0.5455,
+   "poly": [
+    [
+     273,
+     3437
+    ],
+    [
+     819,
+     3455
+    ],
+    [
+     815,
+     3576
+    ],
+    [
+     269,
+     3557
+    ]
+   ],
+   "box": [
+    269,
+    3437,
+    819,
+    3576
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3328
+}

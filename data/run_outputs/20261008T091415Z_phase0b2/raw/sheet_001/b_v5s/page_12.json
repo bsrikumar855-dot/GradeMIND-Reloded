@@ -1,0 +1,309 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_12.jpg",
+ "latency_s": 20.854,
+ "model_load_s": 0.41,
+ "n_lines": 10,
+ "lines": [
+  {
+   "text": "x human",
+   "score": 0.8534,
+   "poly": [
+    [
+     192,
+     233
+    ],
+    [
+     645,
+     237
+    ],
+    [
+     644,
+     371
+    ],
+    [
+     191,
+     367
+    ]
+   ],
+   "box": [
+    191,
+    233,
+    645,
+    371
+   ]
+  },
+  {
+   "text": "fuom",
+   "score": 0.7614,
+   "poly": [
+    [
+     1702,
+     260
+    ],
+    [
+     2040,
+     265
+    ],
+    [
+     2038,
+     460
+    ],
+    [
+     1699,
+     456
+    ]
+   ],
+   "box": [
+    1699,
+    260,
+    2040,
+    460
+   ]
+  },
+  {
+   "text": "get",
+   "score": 0.9722,
+   "poly": [
+    [
+     829,
+     273
+    ],
+    [
+     1028,
+     268
+    ],
+    [
+     1031,
+     408
+    ],
+    [
+     832,
+     413
+    ]
+   ],
+   "box": [
+    829,
+    268,
+    1031,
+    413
+   ]
+  },
+  {
+   "text": "benelits",
+   "score": 0.8021,
+   "poly": [
+    [
+     1197,
+     283
+    ],
+    [
+     1577,
+     279
+    ],
+    [
+     1578,
+     403
+    ],
+    [
+     1198,
+     408
+    ]
+   ],
+   "box": [
+    1197,
+    279,
+    1578,
+    408
+   ]
+  },
+  {
+   "text": "this",
+   "score": 0.927,
+   "poly": [
+    [
+     274,
+     353
+    ],
+    [
+     506,
+     353
+    ],
+    [
+     506,
+     484
+    ],
+    [
+     274,
+     484
+    ]
+   ],
+   "box": [
+    274,
+    353,
+    506,
+    484
+   ]
+  },
+  {
+   "text": "type",
+   "score": 0.9505,
+   "poly": [
+    [
+     671,
+     361
+    ],
+    [
+     920,
+     384
+    ],
+    [
+     908,
+     520
+    ],
+    [
+     658,
+     497
+    ]
+   ],
+   "box": [
+    658,
+    361,
+    920,
+    520
+   ]
+  },
+  {
+   "text": "of an",
+   "score": 0.7252,
+   "poly": [
+    [
+     1065,
+     389
+    ],
+    [
+     1597,
+     389
+    ],
+    [
+     1597,
+     553
+    ],
+    [
+     1065,
+     553
+    ]
+   ],
+   "box": [
+    1065,
+    389,
+    1597,
+    553
+   ]
+  },
+  {
+   "text": "x food,enorgy",
+   "score": 0.7199,
+   "poly": [
+    [
+     162,
+     544
+    ],
+    [
+     1121,
+     581
+    ],
+    [
+     1113,
+     788
+    ],
+    [
+     155,
+     751
+    ]
+   ],
+   "box": [
+    155,
+    544,
+    1121,
+    788
+   ]
+  },
+  {
+   "text": "and More.",
+   "score": 0.9327,
+   "poly": [
+    [
+     1221,
+     591
+    ],
+    [
+     1883,
+     591
+    ],
+    [
+     1883,
+     752
+    ],
+    [
+     1221,
+     752
+    ]
+   ],
+   "box": [
+    1221,
+    591,
+    1883,
+    752
+   ]
+  },
+  {
+   "text": "EMPOWIRING THS NATION",
+   "score": 0.8521,
+   "poly": [
+    [
+     858,
+     1801
+    ],
+    [
+     1372,
+     1809
+    ],
+    [
+     1371,
+     1859
+    ],
+    [
+     857,
+     1850
+    ]
+   ],
+   "box": [
+    857,
+    1801,
+    1372,
+    1859
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 15875
+}

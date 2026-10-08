@@ -1,0 +1,533 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_07.jpg",
+ "latency_s": 0.919,
+ "model_load_s": 0.89,
+ "n_lines": 16,
+ "lines": [
+  {
+   "text": "If we pollute the fresh waste",
+   "text_raw": "If we pollute the fresh waste",
+   "score": 0.9298,
+   "min_token_prob": 0.6148,
+   "box": [
+    775,
+    453,
+    2405,
+    596
+   ],
+   "poly": [
+    [
+     777,
+     453
+    ],
+    [
+     2405,
+     466
+    ],
+    [
+     2404,
+     596
+    ],
+    [
+     775,
+     583
+    ]
+   ],
+   "b_text": "Ief ue. pollute sthe preph sate",
+   "b_score": 0.723
+  },
+  {
+   "text": "we did have \"water do drunk. We",
+   "text_raw": "we did have \"water do drunk . We",
+   "score": 0.7428,
+   "min_token_prob": 0.1522,
+   "box": [
+    548,
+    573,
+    2465,
+    721
+   ],
+   "poly": [
+    [
+     550,
+     573
+    ],
+    [
+     2465,
+     609
+    ],
+    [
+     2463,
+     721
+    ],
+    [
+     548,
+     685
+    ]
+   ],
+   "b_text": "we cld have aoator do drenk.e",
+   "b_score": 0.7457
+  },
+  {
+   "text": "can recycle the plastic waste and",
+   "text_raw": "can recycle the plastic waste and",
+   "score": 0.8469,
+   "min_token_prob": 0.1832,
+   "box": [
+    523,
+    700,
+    2500,
+    849
+   ],
+   "poly": [
+    [
+     525,
+     700
+    ],
+    [
+     2500,
+     730
+    ],
+    [
+     2498,
+     849
+    ],
+    [
+     523,
+     819
+    ]
+   ],
+   "b_text": "Can socgle the plasfes uatte and",
+   "b_score": 0.7173
+  },
+  {
+   "text": "We can realise the creature produce",
+   "text_raw": "We can realise the creature produce",
+   "score": 0.6847,
+   "min_token_prob": 0.2337,
+   "box": [
+    607,
+    817,
+    2531,
+    974
+   ],
+   "poly": [
+    [
+     609,
+     817
+    ],
+    [
+     2531,
+     857
+    ],
+    [
+     2529,
+     974
+    ],
+    [
+     607,
+     934
+    ]
+   ],
+   "b_text": "loe can meuse the apate prodies",
+   "b_score": 0.683
+  },
+  {
+   "text": "into do a useful product",
+   "text_raw": "into do a useful product",
+   "score": 0.8416,
+   "min_token_prob": 0.5558,
+   "box": [
+    515,
+    919,
+    2418,
+    1101
+   ],
+   "poly": [
+    [
+     519,
+     919
+    ],
+    [
+     2418,
+     976
+    ],
+    [
+     2415,
+     1101
+    ],
+    [
+     515,
+     1044
+    ]
+   ],
+   "b_text": "Phto etoa we f product",
+   "b_score": 0.735
+  },
+  {
+   "text": "If we reduce the production",
+   "text_raw": "If we reduce the production",
+   "score": 0.9064,
+   "min_token_prob": 0.5737,
+   "box": [
+    799,
+    1171,
+    2482,
+    1328
+   ],
+   "poly": [
+    [
+     802,
+     1171
+    ],
+    [
+     2482,
+     1209
+    ],
+    [
+     2479,
+     1328
+    ],
+    [
+     799,
+     1290
+    ]
+   ],
+   "b_text": "Iof co secuce dhe prodidion",
+   "b_score": 0.5988
+  },
+  {
+   "text": "of many kind of waste other ecosystem",
+   "text_raw": "of many kind of waste other ecosystem",
+   "score": 0.9184,
+   "min_token_prob": 0.5528,
+   "box": [
+    522,
+    1277,
+    2470,
+    1466
+   ],
+   "poly": [
+    [
+     526,
+     1277
+    ],
+    [
+     2470,
+     1338
+    ],
+    [
+     2466,
+     1466
+    ],
+    [
+     522,
+     1405
+    ]
+   ],
+   "b_text": "of many kincof coaste ether eosgstem",
+   "b_score": 0.6624
+  },
+  {
+   "text": "does not yet disturbed. If we doesn't",
+   "text_raw": "does not yet disturbed . If we doesn't",
+   "score": 0.8963,
+   "min_token_prob": 0.4287,
+   "box": [
+    517,
+    1401,
+    2440,
+    1570
+   ],
+   "poly": [
+    [
+     520,
+     1401
+    ],
+    [
+     2440,
+     1460
+    ],
+    [
+     2437,
+     1570
+    ],
+    [
+     517,
+     1512
+    ]
+   ],
+   "b_text": "doesnot. ged cstrbedTef we doesnat",
+   "b_score": 0.6326
+  },
+  {
+   "text": "seduce the waste or not using the",
+   "text_raw": "seduce the waste or not using the",
+   "score": 0.8934,
+   "min_token_prob": 0.6296,
+   "box": [
+    515,
+    1513,
+    2440,
+    1703
+   ],
+   "poly": [
+    [
+     519,
+     1513
+    ],
+    [
+     2440,
+     1578
+    ],
+    [
+     2436,
+     1703
+    ],
+    [
+     515,
+     1638
+    ]
+   ],
+   "b_text": "oedurethe caste or nost g th",
+   "b_score": 0.6631
+  },
+  {
+   "text": "3appropriate the environment got",
+   "text_raw": "3appropriate the environment got",
+   "score": 0.6055,
+   "min_token_prob": 0.105,
+   "box": [
+    508,
+    1615,
+    2135,
+    1826
+   ],
+   "poly": [
+    [
+     514,
+     1615
+    ],
+    [
+     2135,
+     1690
+    ],
+    [
+     2129,
+     1826
+    ],
+    [
+     508,
+     1751
+    ]
+   ],
+   "b_text": "BR princople eth puron mend got",
+   "b_score": 0.6578
+  },
+  {
+   "text": "disturbed.",
+   "text_raw": "disturbed .",
+   "score": 0.9525,
+   "min_token_prob": 0.8753,
+   "box": [
+    517,
+    1755,
+    954,
+    1869
+   ],
+   "poly": [
+    [
+     520,
+     1755
+    ],
+    [
+     954,
+     1768
+    ],
+    [
+     951,
+     1869
+    ],
+    [
+     517,
+     1856
+    ]
+   ],
+   "b_text": "drsturbede",
+   "b_score": 0.729
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7244,
+   "min_token_prob": 0.4603,
+   "box": [
+    1149,
+    1852,
+    1166,
+    1868
+   ],
+   "poly": [
+    [
+     1149,
+     1852
+    ],
+    [
+     1166,
+     1852
+    ],
+    [
+     1166,
+     1868
+    ],
+    [
+     1149,
+     1868
+    ]
+   ],
+   "b_text": "哪",
+   "b_score": 0.0757
+  },
+  {
+   "text": "1940s,",
+   "text_raw": "1940s ,",
+   "score": 0.4208,
+   "min_token_prob": 0.0879,
+   "box": [
+    1229,
+    1937,
+    1687,
+    1995
+   ],
+   "poly": [
+    [
+     1231,
+     1937
+    ],
+    [
+     1687,
+     1951
+    ],
+    [
+     1686,
+     1995
+    ],
+    [
+     1229,
+     1981
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "improve the nation",
+   "text_raw": "improve the nation",
+   "score": 0.7366,
+   "min_token_prob": 0.1091,
+   "box": [
+    1193,
+    1981,
+    1700,
+    2041
+   ],
+   "poly": [
+    [
+     1194,
+     1981
+    ],
+    [
+     1700,
+     1997
+    ],
+    [
+     1699,
+     2041
+    ],
+    [
+     1193,
+     2025
+    ]
+   ],
+   "b_text": "OAON",
+   "b_score": 0.5151
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.5057,
+   "min_token_prob": 0.1228,
+   "box": [
+    489,
+    2398,
+    512,
+    2413
+   ],
+   "poly": [
+    [
+     489,
+     2398
+    ],
+    [
+     512,
+     2398
+    ],
+    [
+     512,
+     2413
+    ],
+    [
+     489,
+     2413
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.7026,
+   "min_token_prob": 0.5197,
+   "box": [
+    346,
+    2647,
+    366,
+    2664
+   ],
+   "poly": [
+    [
+     346,
+     2647
+    ],
+    [
+     366,
+     2647
+    ],
+    [
+     366,
+     2664
+    ],
+    [
+     346,
+     2664
+    ]
+   ],
+   "b_text": "我",
+   "b_score": 0.0435
+  }
+ ],
+ "peak_torch_alloc_mib": 2704,
+ "peak_rss_mib_process": 2966
+}

@@ -1,0 +1,245 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_15.jpg",
+ "latency_s": 0.4,
+ "model_load_s": 0.84,
+ "n_lines": 7,
+ "lines": [
+  {
+   "text": "every useful from the",
+   "text_raw": "every useful from the",
+   "score": 0.5303,
+   "min_token_prob": 0.1483,
+   "box": [
+    67,
+    831,
+    2468,
+    1180
+   ],
+   "poly": [
+    [
+     67,
+     961
+    ],
+    [
+     2456,
+     831
+    ],
+    [
+     2468,
+     1051
+    ],
+    [
+     78,
+     1180
+    ]
+   ],
+   "b_text": "as iery useifl from polluting the che",
+   "b_score": 0.7317
+  },
+  {
+   "text": "Now days the main service of",
+   "text_raw": "Now days the main service of",
+   "score": 0.8061,
+   "min_token_prob": 0.3419,
+   "box": [
+    114,
+    1009,
+    2377,
+    1303
+   ],
+   "poly": [
+    [
+     114,
+     1094
+    ],
+    [
+     2369,
+     1009
+    ],
+    [
+     2377,
+     1217
+    ],
+    [
+     122,
+     1303
+    ]
+   ],
+   "b_text": "Now dayss the main sowice of",
+   "b_score": 0.8437
+  },
+  {
+   "text": "wastage \" are plastics.",
+   "text_raw": "wastage \" are plastics .",
+   "score": 0.9152,
+   "min_token_prob": 0.7366,
+   "box": [
+    110,
+    1235,
+    1532,
+    1453
+   ],
+   "poly": [
+    [
+     110,
+     1268
+    ],
+    [
+     1528,
+     1235
+    ],
+    [
+     1532,
+     1420
+    ],
+    [
+     114,
+     1453
+    ]
+   ],
+   "b_text": "wabtage are plastics.",
+   "b_score": 0.827
+  },
+  {
+   "text": "Crenending those kinds of waste",
+   "text_raw": "Crenending those kinds of waste",
+   "score": 0.8315,
+   "min_token_prob": 0.3083,
+   "box": [
+    421,
+    1519,
+    2383,
+    1719
+   ],
+   "poly": [
+    [
+     421,
+     1553
+    ],
+    [
+     2380,
+     1519
+    ],
+    [
+     2383,
+     1685
+    ],
+    [
+     424,
+     1719
+    ]
+   ],
+   "b_text": "Gonerating ethase cbinds of cate",
+   "b_score": 0.7487
+  },
+  {
+   "text": "may always results. In other conference",
+   "text_raw": "may always results . In other conference",
+   "score": 0.7131,
+   "min_token_prob": 0.3442,
+   "box": [
+    73,
+    1685,
+    2454,
+    1866
+   ],
+   "poly": [
+    [
+     73,
+     1702
+    ],
+    [
+     2453,
+     1685
+    ],
+    [
+     2454,
+     1849
+    ],
+    [
+     74,
+     1866
+    ]
+   ],
+   "b_text": "may always cesutts ien the einorme",
+   "b_score": 0.7374
+  },
+  {
+   "text": "problems. improper disposal results in",
+   "text_raw": "problems . improper disposal results in",
+   "score": 0.8961,
+   "min_token_prob": 0.6048,
+   "box": [
+    66,
+    1847,
+    2436,
+    2042
+   ],
+   "poly": [
+    [
+     66,
+     1853
+    ],
+    [
+     2436,
+     1847
+    ],
+    [
+     2436,
+     2036
+    ],
+    [
+     67,
+     2042
+    ]
+   ],
+   "b_text": "problems. Impropor dsposal seilts ch",
+   "b_score": 0.6918
+  },
+  {
+   "text": "the onstage production and political",
+   "text_raw": "the onstage production and political",
+   "score": 0.7669,
+   "min_token_prob": 0.2146,
+   "box": [
+    101,
+    1979,
+    2462,
+    2241
+   ],
+   "poly": [
+    [
+     105,
+     1979
+    ],
+    [
+     2462,
+     2021
+    ],
+    [
+     2458,
+     2241
+    ],
+    [
+     101,
+     2199
+    ]
+   ],
+   "b_text": "cthe coastage proudtfon and pollds",
+   "b_score": 0.7938
+  }
+ ],
+ "peak_torch_alloc_mib": 2375,
+ "peak_rss_mib_process": 2962
+}

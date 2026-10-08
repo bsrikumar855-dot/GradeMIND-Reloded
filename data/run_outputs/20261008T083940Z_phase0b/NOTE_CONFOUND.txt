@@ -1,0 +1,1 @@
+Engine b_server here = PP-OCRv6_medium_det (IMPLICIT default) + PP-OCRv5_server_rec; c_trocr ran on those v6-det boxes. Discovered after the run from logs (Creating model: PP-OCRv6_medium_det). b_mobile = PP-OCRv5_server_det + en_PP-OCRv5_mobile_rec. Controlled rerun: next *_phase0b2 run.

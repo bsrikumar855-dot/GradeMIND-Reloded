@@ -1,0 +1,949 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_06.jpg",
+ "latency_s": 1.787,
+ "model_load_s": 0.89,
+ "n_lines": 29,
+ "lines": [
+  {
+   "text": "The organisms in geographical region",
+   "text_raw": "The organisms in geographical region",
+   "score": 0.9508,
+   "min_token_prob": 0.8783,
+   "box": [
+    532,
+    394,
+    2356,
+    567
+   ],
+   "poly": [
+    [
+     536,
+     394
+    ],
+    [
+     2356,
+     451
+    ],
+    [
+     2352,
+     567
+    ],
+    [
+     532,
+     510
+    ]
+   ],
+   "b_text": "The ooganisms cn googoapheel regfon",
+   "b_score": 0.7851
+  },
+  {
+   "text": "chad do be described. A speeches an",
+   "text_raw": "chad do be described . A speeches an",
+   "score": 0.7919,
+   "min_token_prob": 0.2072,
+   "box": [
+    288,
+    519,
+    2160,
+    656
+   ],
+   "poly": [
+    [
+     290,
+     519
+    ],
+    [
+     2160,
+     564
+    ],
+    [
+     2158,
+     656
+    ],
+    [
+     288,
+     611
+    ]
+   ],
+   "b_text": "chad cto cbe desfiabeco A ispecees an",
+   "b_score": 0.7452
+  },
+  {
+   "text": "the fresh wonder eco system alike first person",
+   "text_raw": "the fresh wonder eco system alike first person",
+   "score": 0.7653,
+   "min_token_prob": 0.293,
+   "box": [
+    291,
+    622,
+    2334,
+    800
+   ],
+   "poly": [
+    [
+     294,
+     622
+    ],
+    [
+     2334,
+     684
+    ],
+    [
+     2330,
+     800
+    ],
+    [
+     291,
+     738
+    ]
+   ],
+   "b_text": "ithe frosh coater co sysdem deke fesh, poraon",
+   "b_score": 0.7208
+  },
+  {
+   "text": "are died due to water pollution. If we",
+   "text_raw": "are died due to water pollution . If we",
+   "score": 0.9485,
+   "min_token_prob": 0.5587,
+   "box": [
+    293,
+    749,
+    2162,
+    891
+   ],
+   "poly": [
+    [
+     295,
+     749
+    ],
+    [
+     2162,
+     794
+    ],
+    [
+     2160,
+     891
+    ],
+    [
+     293,
+     846
+    ]
+   ],
+   "b_text": "are dpod due to water polld fon If coe",
+   "b_score": 0.7462
+  },
+  {
+   "text": "pollute the fresh updates.",
+   "text_raw": "pollute the fresh updates .",
+   "score": 0.7729,
+   "min_token_prob": 0.2106,
+   "box": [
+    288,
+    864,
+    1406,
+    989
+   ],
+   "poly": [
+    [
+     290,
+     864
+    ],
+    [
+     1406,
+     891
+    ],
+    [
+     1404,
+     989
+    ],
+    [
+     288,
+     962
+    ]
+   ],
+   "b_text": "pollute cthe fregh csatter",
+   "b_score": 0.8125
+  },
+  {
+   "text": "many spiences.",
+   "text_raw": "many spiences .",
+   "score": 0.5944,
+   "min_token_prob": 0.335,
+   "box": [
+    1538,
+    904,
+    2160,
+    1007
+   ],
+   "poly": [
+    [
+     1539,
+     904
+    ],
+    [
+     2160,
+     913
+    ],
+    [
+     2158,
+     1007
+    ],
+    [
+     1538,
+     998
+    ]
+   ],
+   "b_text": "cmangj sppeces",
+   "b_score": 0.7969
+  },
+  {
+   "text": "are got disturbed.",
+   "text_raw": "are got disturbed .",
+   "score": 0.9946,
+   "min_token_prob": 0.9784,
+   "box": [
+    304,
+    975,
+    1152,
+    1110
+   ],
+   "poly": [
+    [
+     308,
+     975
+    ],
+    [
+     1152,
+     1009
+    ],
+    [
+     1148,
+     1110
+    ],
+    [
+     304,
+     1075
+    ]
+   ],
+   "b_text": "age gol desturbod.",
+   "b_score": 0.8188
+  },
+  {
+   "text": "4.53",
+   "text_raw": "4.53",
+   "score": 0.4705,
+   "min_token_prob": 0.2631,
+   "box": [
+    1683,
+    1113,
+    1853,
+    1213
+   ],
+   "poly": [
+    [
+     1683,
+     1130
+    ],
+    [
+     1845,
+     1113
+    ],
+    [
+     1853,
+     1197
+    ],
+    [
+     1691,
+     1213
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "We can use the 3p. principle",
+   "text_raw": "We can use the 3p. principle",
+   "score": 0.7936,
+   "min_token_prob": 0.1079,
+   "box": [
+    665,
+    1212,
+    2271,
+    1363
+   ],
+   "poly": [
+    [
+     668,
+     1212
+    ],
+    [
+     2271,
+     1259
+    ],
+    [
+     2268,
+     1363
+    ],
+    [
+     665,
+     1316
+    ]
+   ],
+   "b_text": "We Canusecthe 3Rprinciple",
+   "b_score": 0.7342
+  },
+  {
+   "text": "here to produce the master that",
+   "text_raw": "here to produce the master that",
+   "score": 0.8668,
+   "min_token_prob": 0.4285,
+   "box": [
+    276,
+    1323,
+    2174,
+    1476
+   ],
+   "poly": [
+    [
+     279,
+     1323
+    ],
+    [
+     2174,
+     1377
+    ],
+    [
+     2171,
+     1476
+    ],
+    [
+     276,
+     1421
+    ]
+   ],
+   "b_text": "Kere cto roduce the castothat",
+   "b_score": 0.7588
+  },
+  {
+   "text": "are",
+   "text_raw": "are",
+   "score": 0.9789,
+   "min_token_prob": 0.9587,
+   "box": [
+    281,
+    1452,
+    497,
+    1541
+   ],
+   "poly": [
+    [
+     284,
+     1452
+    ],
+    [
+     497,
+     1460
+    ],
+    [
+     493,
+     1541
+    ],
+    [
+     281,
+     1532
+    ]
+   ],
+   "b_text": "ane",
+   "b_score": 0.7735
+  },
+  {
+   "text": "made on house. Firstly use have",
+   "text_raw": "made on house . Firstly use have",
+   "score": 0.9226,
+   "min_token_prob": 0.5803,
+   "box": [
+    510,
+    1452,
+    2252,
+    1583
+   ],
+   "poly": [
+    [
+     512,
+     1452
+    ],
+    [
+     2252,
+     1491
+    ],
+    [
+     2250,
+     1583
+    ],
+    [
+     510,
+     1544
+    ]
+   ],
+   "b_text": "emaide gn house. Farsitlyuoo hawe",
+   "b_score": 0.6877
+  },
+  {
+   "text": "to",
+   "text_raw": "to",
+   "score": 0.921,
+   "min_token_prob": 0.8975,
+   "box": [
+    279,
+    1532,
+    442,
+    1646
+   ],
+   "poly": [
+    [
+     287,
+     1532
+    ],
+    [
+     442,
+     1545
+    ],
+    [
+     434,
+     1646
+    ],
+    [
+     279,
+     1633
+    ]
+   ],
+   "b_text": "to",
+   "b_score": 0.6656
+  },
+  {
+   "text": "sperate \" the waste",
+   "text_raw": "sperate \" the waste",
+   "score": 0.7254,
+   "min_token_prob": 0.4338,
+   "box": [
+    502,
+    1563,
+    1586,
+    1685
+   ],
+   "poly": [
+    [
+     504,
+     1563
+    ],
+    [
+     1586,
+     1586
+    ],
+    [
+     1584,
+     1685
+    ],
+    [
+     502,
+     1662
+    ]
+   ],
+   "b_text": "Speratenthe caste",
+   "b_score": 0.8015
+  },
+  {
+   "text": "# ribased on",
+   "text_raw": "# ribased on",
+   "score": 0.6094,
+   "min_token_prob": 0.2615,
+   "box": [
+    1574,
+    1578,
+    2155,
+    1694
+   ],
+   "poly": [
+    [
+     1578,
+     1578
+    ],
+    [
+     2155,
+     1598
+    ],
+    [
+     2152,
+     1694
+    ],
+    [
+     1574,
+     1673
+    ]
+   ],
+   "b_text": "based on",
+   "b_score": 0.8484
+  },
+  {
+   "text": "the depordable quality.",
+   "text_raw": "the depordable quality .",
+   "score": 0.5845,
+   "min_token_prob": 0.1081,
+   "box": [
+    280,
+    1649,
+    1528,
+    1817
+   ],
+   "poly": [
+    [
+     285,
+     1649
+    ],
+    [
+     1528,
+     1696
+    ],
+    [
+     1523,
+     1817
+    ],
+    [
+     280,
+     1770
+    ]
+   ],
+   "b_text": "tho cdegradable abe1aty.",
+   "b_score": 0.7026
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.5136,
+   "min_token_prob": 0.2055,
+   "box": [
+    1708,
+    1741,
+    1723,
+    1759
+   ],
+   "poly": [
+    [
+     1708,
+     1741
+    ],
+    [
+     1723,
+     1741
+    ],
+    [
+     1723,
+     1759
+    ],
+    [
+     1708,
+     1759
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.1375
+  },
+  {
+   "text": "# THE FOURTH",
+   "text_raw": "# THE FOURTH",
+   "score": 0.6289,
+   "min_token_prob": 0.2892,
+   "box": [
+    1130,
+    1844,
+    1404,
+    1886
+   ],
+   "poly": [
+    [
+     1131,
+     1844
+    ],
+    [
+     1404,
+     1850
+    ],
+    [
+     1404,
+     1886
+    ],
+    [
+     1130,
+     1880
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "I'mc. THE MARION",
+   "text_raw": "I'mc. THE MARION",
+   "score": 0.5628,
+   "min_token_prob": 0.2888,
+   "box": [
+    1132,
+    1890,
+    1436,
+    1932
+   ],
+   "poly": [
+    [
+     1133,
+     1890
+    ],
+    [
+     1436,
+     1896
+    ],
+    [
+     1436,
+     1932
+    ],
+    [
+     1132,
+     1926
+    ]
+   ],
+   "b_text": "NGFHATION",
+   "b_score": 0.6618
+  },
+  {
+   "text": "we can use the",
+   "text_raw": "we can use the",
+   "score": 0.8434,
+   "min_token_prob": 0.4824,
+   "box": [
+    653,
+    1910,
+    1469,
+    2012
+   ],
+   "poly": [
+    [
+     655,
+     1910
+    ],
+    [
+     1469,
+     1925
+    ],
+    [
+     1467,
+     2012
+    ],
+    [
+     653,
+     1997
+    ]
+   ],
+   "b_text": "we Can tse dhe",
+   "b_score": 0.7512
+  },
+  {
+   "text": "composing method.",
+   "text_raw": "composing method .",
+   "score": 0.8233,
+   "min_token_prob": 0.5597,
+   "box": [
+    1513,
+    1916,
+    2390,
+    2059
+   ],
+   "poly": [
+    [
+     1517,
+     1916
+    ],
+    [
+     2390,
+     1950
+    ],
+    [
+     2386,
+     2059
+    ],
+    [
+     1513,
+     2026
+    ]
+   ],
+   "b_text": "composding mothod",
+   "b_score": 0.8456
+  },
+  {
+   "text": "to manage the domestic waste. We",
+   "text_raw": "to manage the domestic waste . We",
+   "score": 0.7801,
+   "min_token_prob": 0.3392,
+   "box": [
+    306,
+    2000,
+    2293,
+    2162
+   ],
+   "poly": [
+    [
+     309,
+     2000
+    ],
+    [
+     2293,
+     2053
+    ],
+    [
+     2290,
+     2162
+    ],
+    [
+     306,
+     2109
+    ]
+   ],
+   "b_text": "do cmange cthe slom osatec woaste. e",
+   "b_score": 0.6991
+  },
+  {
+   "text": "can use the degradable wades to",
+   "text_raw": "can use the degradable wades to",
+   "score": 0.8638,
+   "min_token_prob": 0.346,
+   "box": [
+    298,
+    2120,
+    2245,
+    2262
+   ],
+   "poly": [
+    [
+     300,
+     2120
+    ],
+    [
+     2245,
+     2165
+    ],
+    [
+     2243,
+     2262
+    ],
+    [
+     298,
+     2217
+    ]
+   ],
+   "b_text": "Can use cthe de gradable catosto",
+   "b_score": 0.7985
+  },
+  {
+   "text": "feed other enremals', words (poultry),",
+   "text_raw": "feed other enremals' , words ( poultry ) ,",
+   "score": 0.8286,
+   "min_token_prob": 0.1793,
+   "box": [
+    301,
+    2215,
+    2344,
+    2401
+   ],
+   "poly": [
+    [
+     305,
+     2215
+    ],
+    [
+     2344,
+     2275
+    ],
+    [
+     2340,
+     2401
+    ],
+    [
+     301,
+     2341
+    ]
+   ],
+   "b_text": "foed cthe aunemals, rdes (poulltry)",
+   "b_score": 0.7608
+  },
+  {
+   "text": "etcorts.",
+   "text_raw": "etcorts .",
+   "score": 0.7102,
+   "min_token_prob": 0.2823,
+   "box": [
+    307,
+    2349,
+    595,
+    2451
+   ],
+   "poly": [
+    [
+     313,
+     2349
+    ],
+    [
+     595,
+     2367
+    ],
+    [
+     589,
+     2451
+    ],
+    [
+     307,
+     2432
+    ]
+   ],
+   "b_text": "otc.",
+   "b_score": 0.5466
+  },
+  {
+   "text": "It will help to reduce the",
+   "text_raw": "It will help to reduce the",
+   "score": 0.9033,
+   "min_token_prob": 0.7801,
+   "box": [
+    699,
+    2459,
+    2254,
+    2603
+   ],
+   "poly": [
+    [
+     701,
+     2459
+    ],
+    [
+     2254,
+     2499
+    ],
+    [
+     2251,
+     2603
+    ],
+    [
+     699,
+     2562
+    ]
+   ],
+   "b_text": "Iot copll chelp to sreduce the",
+   "b_score": 0.7344
+  },
+  {
+   "text": "waste",
+   "text_raw": "waste",
+   "score": 0.9011,
+   "min_token_prob": 0.7705,
+   "box": [
+    325,
+    2580,
+    648,
+    2668
+   ],
+   "poly": [
+    [
+     328,
+     2580
+    ],
+    [
+     648,
+     2589
+    ],
+    [
+     645,
+     2668
+    ],
+    [
+     325,
+     2658
+    ]
+   ],
+   "b_text": "coaste",
+   "b_score": 0.5449
+  },
+  {
+   "text": "in the environment and do got",
+   "text_raw": "in the environment and do got",
+   "score": 0.833,
+   "min_token_prob": 0.3004,
+   "box": [
+    610,
+    2571,
+    2364,
+    2722
+   ],
+   "poly": [
+    [
+     613,
+     2571
+    ],
+    [
+     2364,
+     2613
+    ],
+    [
+     2361,
+     2722
+    ],
+    [
+     610,
+     2680
+    ]
+   ],
+   "b_text": "en othe onuironmont and doenot",
+   "b_score": 0.8218
+  },
+  {
+   "text": "affect the ecosystem.",
+   "text_raw": "affect the ecosystem .",
+   "score": 0.9692,
+   "min_token_prob": 0.8996,
+   "box": [
+    319,
+    2682,
+    1423,
+    2814
+   ],
+   "poly": [
+    [
+     320,
+     2682
+    ],
+    [
+     1423,
+     2693
+    ],
+    [
+     1422,
+     2814
+    ],
+    [
+     319,
+     2803
+    ]
+   ],
+   "b_text": "affoct cthe ecosystem.",
+   "b_score": 0.8337
+  }
+ ],
+ "peak_torch_alloc_mib": 2688,
+ "peak_rss_mib_process": 2966
+}

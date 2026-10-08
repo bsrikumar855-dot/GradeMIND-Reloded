@@ -1,0 +1,981 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_08.jpg",
+ "latency_s": 1.529,
+ "model_load_s": 0.82,
+ "n_lines": 30,
+ "lines": [
+  {
+   "text": "7 me",
+   "text_raw": "7 me",
+   "score": 0.7625,
+   "min_token_prob": 0.5966,
+   "box": [
+    204,
+    264,
+    575,
+    427
+   ],
+   "poly": [
+    [
+     204,
+     264
+    ],
+    [
+     575,
+     264
+    ],
+    [
+     575,
+     427
+    ],
+    [
+     204,
+     427
+    ]
+   ],
+   "b_text": "→we",
+   "b_score": 0.6528
+  },
+  {
+   "text": "\" need to",
+   "text_raw": "\" need to",
+   "score": 0.7711,
+   "min_token_prob": 0.2904,
+   "box": [
+    565,
+    268,
+    1294,
+    451
+   ],
+   "poly": [
+    [
+     568,
+     268
+    ],
+    [
+     1294,
+     279
+    ],
+    [
+     1291,
+     451
+    ],
+    [
+     565,
+     440
+    ]
+   ],
+   "b_text": "reedto",
+   "b_score": 0.7586
+  },
+  {
+   "text": "onesome.",
+   "text_raw": "onesome .",
+   "score": 0.7088,
+   "min_token_prob": 0.1902,
+   "box": [
+    1611,
+    277,
+    1951,
+    457
+   ],
+   "poly": [
+    [
+     1611,
+     282
+    ],
+    [
+     1949,
+     277
+    ],
+    [
+     1951,
+     452
+    ],
+    [
+     1613,
+     457
+    ]
+   ],
+   "b_text": "onserue",
+   "b_score": 0.5761
+  },
+  {
+   "text": "water",
+   "text_raw": "water",
+   "score": 0.7834,
+   "min_token_prob": 0.5672,
+   "box": [
+    229,
+    414,
+    577,
+    579
+   ],
+   "poly": [
+    [
+     229,
+     414
+    ],
+    [
+     577,
+     414
+    ],
+    [
+     577,
+     579
+    ],
+    [
+     229,
+     579
+    ]
+   ],
+   "b_text": "aater",
+   "b_score": 0.8808
+  },
+  {
+   "text": "like",
+   "text_raw": "like",
+   "score": 0.7624,
+   "min_token_prob": 0.5251,
+   "box": [
+    579,
+    416,
+    880,
+    567
+   ],
+   "poly": [
+    [
+     579,
+     416
+    ],
+    [
+     880,
+     416
+    ],
+    [
+     880,
+     567
+    ],
+    [
+     579,
+     567
+    ]
+   ],
+   "b_text": "like",
+   "b_score": 0.9893
+  },
+  {
+   "text": "evaporation # condemnation storage",
+   "text_raw": "evaporation # condemnation storage",
+   "score": 0.7513,
+   "min_token_prob": 0.284,
+   "box": [
+    560,
+    512,
+    2328,
+    763
+   ],
+   "poly": [
+    [
+     565,
+     512
+    ],
+    [
+     2328,
+     561
+    ],
+    [
+     2322,
+     763
+    ],
+    [
+     560,
+     713
+    ]
+   ],
+   "b_text": "evaporatior→condahbation→storng",
+   "b_score": 0.7763
+  },
+  {
+   "text": "Thus.",
+   "text_raw": "Thus .",
+   "score": 0.6189,
+   "min_token_prob": 0.3712,
+   "box": [
+    263,
+    680,
+    566,
+    830
+   ],
+   "poly": [
+    [
+     263,
+     680
+    ],
+    [
+     566,
+     680
+    ],
+    [
+     566,
+     830
+    ],
+    [
+     263,
+     830
+    ]
+   ],
+   "b_text": "Ths",
+   "b_score": 0.7962
+  },
+  {
+   "text": "cycle is produce to",
+   "text_raw": "cycle is produce to",
+   "score": 0.9556,
+   "min_token_prob": 0.7835,
+   "box": [
+    583,
+    684,
+    1932,
+    851
+   ],
+   "poly": [
+    [
+     583,
+     684
+    ],
+    [
+     1932,
+     688
+    ],
+    [
+     1931,
+     851
+    ],
+    [
+     583,
+     847
+    ]
+   ],
+   "b_text": "cycle 15 prowe to",
+   "b_score": 0.724
+  },
+  {
+   "text": "control,",
+   "text_raw": "control ,",
+   "score": 0.7283,
+   "min_token_prob": 0.2079,
+   "box": [
+    266,
+    794,
+    795,
+    977
+   ],
+   "poly": [
+    [
+     266,
+     812
+    ],
+    [
+     789,
+     794
+    ],
+    [
+     795,
+     959
+    ],
+    [
+     272,
+     977
+    ]
+   ],
+   "b_text": "controf",
+   "b_score": 0.8354
+  },
+  {
+   "text": "five need change non-remable",
+   "text_raw": "five need change non-remable",
+   "score": 0.8297,
+   "min_token_prob": 0.4604,
+   "box": [
+    184,
+    1042,
+    2090,
+    1218
+   ],
+   "poly": [
+    [
+     186,
+     1042
+    ],
+    [
+     2090,
+     1060
+    ],
+    [
+     2088,
+     1218
+    ],
+    [
+     184,
+     1199
+    ]
+   ],
+   "b_text": " Me reed change hon-rerewal",
+   "b_score": 0.7706
+  },
+  {
+   "text": "energy to renewable energy that",
+   "text_raw": "energy to renewable energy that",
+   "score": 0.9317,
+   "min_token_prob": 0.7313,
+   "box": [
+    240,
+    1171,
+    2210,
+    1380
+   ],
+   "poly": [
+    [
+     240,
+     1185
+    ],
+    [
+     2209,
+     1171
+    ],
+    [
+     2210,
+     1366
+    ],
+    [
+     241,
+     1380
+    ]
+   ],
+   "b_text": "enorgy to sorewable erergy that",
+   "b_score": 0.7792
+  },
+  {
+   "text": "about.",
+   "text_raw": "about .",
+   "score": 0.639,
+   "min_token_prob": 0.4235,
+   "box": [
+    298,
+    1314,
+    694,
+    1477
+   ],
+   "poly": [
+    [
+     298,
+     1324
+    ],
+    [
+     691,
+     1314
+    ],
+    [
+     694,
+     1467
+    ],
+    [
+     302,
+     1477
+    ]
+   ],
+   "b_text": "doesht",
+   "b_score": 0.6097
+  },
+  {
+   "text": "cause pollution.",
+   "text_raw": "cause pollution .",
+   "score": 0.8398,
+   "min_token_prob": 0.5853,
+   "box": [
+    878,
+    1335,
+    1778,
+    1486
+   ],
+   "poly": [
+    [
+     879,
+     1335
+    ],
+    [
+     1778,
+     1348
+    ],
+    [
+     1776,
+     1486
+    ],
+    [
+     878,
+     1473
+    ]
+   ],
+   "b_text": "cadde pollution",
+   "b_score": 0.8169
+  },
+  {
+   "text": "\" The world.",
+   "text_raw": "\" The world .",
+   "score": 0.7696,
+   "min_token_prob": 0.3423,
+   "box": [
+    203,
+    1546,
+    1086,
+    1724
+   ],
+   "poly": [
+    [
+     205,
+     1546
+    ],
+    [
+     1086,
+     1559
+    ],
+    [
+     1084,
+     1724
+    ],
+    [
+     203,
+     1711
+    ]
+   ],
+   "b_text": "→The world",
+   "b_score": 0.9083
+  },
+  {
+   "text": "needs to like",
+   "text_raw": "needs to like",
+   "score": 0.9892,
+   "min_token_prob": 0.9817,
+   "box": [
+    1303,
+    1570,
+    2270,
+    1740
+   ],
+   "poly": [
+    [
+     1303,
+     1570
+    ],
+    [
+     2270,
+     1570
+    ],
+    [
+     2270,
+     1740
+    ],
+    [
+     1303,
+     1740
+    ]
+   ],
+   "b_text": "hoids to like",
+   "b_score": 0.8337
+  },
+  {
+   "text": "good quality.",
+   "text_raw": "good quality .",
+   "score": 0.9801,
+   "min_token_prob": 0.9229,
+   "box": [
+    272,
+    1704,
+    1067,
+    1850
+   ],
+   "poly": [
+    [
+     272,
+     1704
+    ],
+    [
+     1067,
+     1704
+    ],
+    [
+     1067,
+     1850
+    ],
+    [
+     272,
+     1850
+    ]
+   ],
+   "b_text": "good quality",
+   "b_score": 0.8859
+  },
+  {
+   "text": "life for",
+   "text_raw": "life for",
+   "score": 0.9206,
+   "min_token_prob": 0.7685,
+   "box": [
+    1632,
+    1696,
+    2204,
+    1859
+   ],
+   "poly": [
+    [
+     1632,
+     1696
+    ],
+    [
+     2204,
+     1696
+    ],
+    [
+     2204,
+     1859
+    ],
+    [
+     1632,
+     1859
+    ]
+   ],
+   "b_text": "life for",
+   "b_score": 0.8943
+  },
+  {
+   "text": "for",
+   "text_raw": "for",
+   "score": 0.9984,
+   "min_token_prob": 0.9973,
+   "box": [
+    1234,
+    1710,
+    1444,
+    1848
+   ],
+   "poly": [
+    [
+     1234,
+     1710
+    ],
+    [
+     1444,
+     1710
+    ],
+    [
+     1444,
+     1848
+    ],
+    [
+     1234,
+     1848
+    ]
+   ],
+   "b_text": "fr",
+   "b_score": 0.3202
+  },
+  {
+   "text": "is essential.",
+   "text_raw": "is essential .",
+   "score": 0.9584,
+   "min_token_prob": 0.8844,
+   "box": [
+    1666,
+    1820,
+    2351,
+    2004
+   ],
+   "poly": [
+    [
+     1668,
+     1820
+    ],
+    [
+     2351,
+     1829
+    ],
+    [
+     2349,
+     2004
+    ],
+    [
+     1666,
+     1995
+    ]
+   ],
+   "b_text": "Is ertral",
+   "b_score": 0.6611
+  },
+  {
+   "text": "all organism, water",
+   "text_raw": "all organism , water",
+   "score": 0.9607,
+   "min_token_prob": 0.8876,
+   "box": [
+    261,
+    1830,
+    1453,
+    1988
+   ],
+   "poly": [
+    [
+     261,
+     1830
+    ],
+    [
+     1453,
+     1830
+    ],
+    [
+     1453,
+     1988
+    ],
+    [
+     261,
+     1988
+    ]
+   ],
+   "b_text": "al organism,water",
+   "b_score": 0.76
+  },
+  {
+   "text": "for living.",
+   "text_raw": "for living .",
+   "score": 0.9914,
+   "min_token_prob": 0.9837,
+   "box": [
+    308,
+    1941,
+    1014,
+    2163
+   ],
+   "poly": [
+    [
+     308,
+     1950
+    ],
+    [
+     1011,
+     1941
+    ],
+    [
+     1014,
+     2154
+    ],
+    [
+     311,
+     2163
+    ]
+   ],
+   "b_text": "for living",
+   "b_score": 0.9375
+  },
+  {
+   "text": "art p.",
+   "text_raw": "art p.",
+   "score": 0.9432,
+   "min_token_prob": 0.7971,
+   "box": [
+    771,
+    2215,
+    1079,
+    2364
+   ],
+   "poly": [
+    [
+     771,
+     2220
+    ],
+    [
+     1076,
+     2215
+    ],
+    [
+     1079,
+     2359
+    ],
+    [
+     773,
+     2364
+    ]
+   ],
+   "b_text": "artD-",
+   "b_score": 0.7597
+  },
+  {
+   "text": "IUPAT Forest region.",
+   "text_raw": "IUPAT Forest region .",
+   "score": 0.6575,
+   "min_token_prob": 0.1885,
+   "box": [
+    65,
+    2440,
+    1195,
+    2649
+   ],
+   "poly": [
+    [
+     65,
+     2440
+    ],
+    [
+     1195,
+     2444
+    ],
+    [
+     1194,
+     2649
+    ],
+    [
+     65,
+     2645
+    ]
+   ],
+   "b_text": "(4. A forast rogion",
+   "b_score": 0.7129
+  },
+  {
+   "text": "a world for",
+   "text_raw": "a world for",
+   "score": 0.9995,
+   "min_token_prob": 0.9992,
+   "box": [
+    1243,
+    2688,
+    2168,
+    2910
+   ],
+   "poly": [
+    [
+     1245,
+     2688
+    ],
+    [
+     2168,
+     2697
+    ],
+    [
+     2166,
+     2910
+    ],
+    [
+     1243,
+     2901
+    ]
+   ],
+   "b_text": "a world for",
+   "b_score": 0.8671
+  },
+  {
+   "text": "- forest.",
+   "text_raw": "- forest .",
+   "score": 0.8397,
+   "min_token_prob": 0.4998,
+   "box": [
+    187,
+    2710,
+    699,
+    2860
+   ],
+   "poly": [
+    [
+     187,
+     2710
+    ],
+    [
+     699,
+     2710
+    ],
+    [
+     699,
+     2860
+    ],
+    [
+     187,
+     2860
+    ]
+   ],
+   "b_text": "→forest",
+   "b_score": 0.5398
+  },
+  {
+   "text": "1/8",
+   "text_raw": "1/8",
+   "score": 0.4748,
+   "min_token_prob": 0.1115,
+   "box": [
+    827,
+    2718,
+    1038,
+    2856
+   ],
+   "poly": [
+    [
+     827,
+     2718
+    ],
+    [
+     1038,
+     2718
+    ],
+    [
+     1038,
+     2856
+    ],
+    [
+     827,
+     2856
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "1810 diversity.",
+   "text_raw": "1810 diversity .",
+   "score": 0.7677,
+   "min_token_prob": 0.3801,
+   "box": [
+    269,
+    2837,
+    960,
+    3032
+   ],
+   "poly": [
+    [
+     269,
+     2837
+    ],
+    [
+     960,
+     2837
+    ],
+    [
+     960,
+     3032
+    ],
+    [
+     269,
+     3032
+    ]
+   ],
+   "b_text": "Bio divearty",
+   "b_score": 0.8562
+  },
+  {
+   "text": "-forest contain vast",
+   "text_raw": "-forest contain vast",
+   "score": 0.7265,
+   "min_token_prob": 0.3594,
+   "box": [
+    167,
+    3078,
+    1813,
+    3291
+   ],
+   "poly": [
+    [
+     168,
+     3078
+    ],
+    [
+     1813,
+     3082
+    ],
+    [
+     1813,
+     3291
+    ],
+    [
+     167,
+     3287
+    ]
+   ],
+   "b_text": "forest contarn vat",
+   "b_score": 0.7937
+  },
+  {
+   "text": "speechies.",
+   "text_raw": "speechies .",
+   "score": 0.8344,
+   "min_token_prob": 0.4952,
+   "box": [
+    1766,
+    3097,
+    2192,
+    3272
+   ],
+   "poly": [
+    [
+     1766,
+     3097
+    ],
+    [
+     2192,
+     3097
+    ],
+    [
+     2192,
+     3272
+    ],
+    [
+     1766,
+     3272
+    ]
+   ],
+   "b_text": "spi8",
+   "b_score": 0.6271
+  },
+  {
+   "text": "in entire ecosystem.",
+   "text_raw": "in entire ecosystem .",
+   "score": 0.9565,
+   "min_token_prob": 0.7928,
+   "box": [
+    247,
+    3243,
+    1559,
+    3450
+   ],
+   "poly": [
+    [
+     249,
+     3243
+    ],
+    [
+     1559,
+     3253
+    ],
+    [
+     1557,
+     3450
+    ],
+    [
+     247,
+     3440
+    ]
+   ],
+   "b_text": "in entore ecosyston.",
+   "b_score": 0.7737
+  }
+ ],
+ "peak_torch_alloc_mib": 2683,
+ "peak_rss_mib_process": 2965
+}

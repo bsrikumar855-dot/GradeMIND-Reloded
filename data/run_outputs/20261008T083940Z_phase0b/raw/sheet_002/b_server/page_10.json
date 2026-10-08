@@ -1,0 +1,560 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_10.jpg",
+ "latency_s": 10.496,
+ "model_load_s": 0.37,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "Mang of the cld apimals are",
+   "score": 0.7662,
+   "poly": [
+    [
+     674,
+     385
+    ],
+    [
+     2186,
+     399
+    ],
+    [
+     2185,
+     524
+    ],
+    [
+     673,
+     509
+    ]
+   ],
+   "box": [
+    673,
+    385,
+    2186,
+    524
+   ]
+  },
+  {
+   "text": "ontersng Into the chumansang gas",
+   "score": 0.7097,
+   "poly": [
+    [
+     296,
+     504
+    ],
+    [
+     2243,
+     536
+    ],
+    [
+     2241,
+     641
+    ],
+    [
+     295,
+     609
+    ]
+   ],
+   "box": [
+    295,
+    504,
+    2243,
+    641
+   ]
+  },
+  {
+   "text": "foor seaching sfood aurd coador. et s",
+   "score": 0.6638,
+   "poly": [
+    [
+     295,
+     621
+    ],
+    [
+     2231,
+     651
+    ],
+    [
+     2229,
+     764
+    ],
+    [
+     293,
+     733
+    ]
+   ],
+   "box": [
+    293,
+    621,
+    2231,
+    764
+   ]
+  },
+  {
+   "text": "cue clo deforestad ion.",
+   "score": 0.7813,
+   "poly": [
+    [
+     301,
+     729
+    ],
+    [
+     1399,
+     757
+    ],
+    [
+     1396,
+     881
+    ],
+    [
+     298,
+     854
+    ]
+   ],
+   "box": [
+    298,
+    729,
+    1399,
+    881
+   ]
+  },
+  {
+   "text": "And then the deforesctation coll",
+   "score": 0.7823,
+   "poly": [
+    [
+     688,
+     966
+    ],
+    [
+     2238,
+     990
+    ],
+    [
+     2236,
+     1102
+    ],
+    [
+     687,
+     1079
+    ]
+   ],
+   "box": [
+    687,
+    966,
+    2238,
+    1102
+   ]
+  },
+  {
+   "text": "cleadscdofor matpon, ofceerts In tthe",
+   "score": 0.6802,
+   "poly": [
+    [
+     253,
+     1072
+    ],
+    [
+     2264,
+     1099
+    ],
+    [
+     2262,
+     1233
+    ],
+    [
+     251,
+     1206
+    ]
+   ],
+   "box": [
+    251,
+    1072,
+    2264,
+    1233
+   ]
+  },
+  {
+   "text": "agrfcuttwral feplds due oo facke,of",
+   "score": 0.6082,
+   "poly": [
+    [
+     260,
+     1203
+    ],
+    [
+     2103,
+     1223
+    ],
+    [
+     2102,
+     1333
+    ],
+    [
+     259,
+     1314
+    ]
+   ],
+   "box": [
+    259,
+    1203,
+    2103,
+    1333
+   ]
+  },
+  {
+   "text": "rainfall apd exess choat prodiced during",
+   "score": 0.7377,
+   "poly": [
+    [
+     267,
+     1313
+    ],
+    [
+     2348,
+     1340
+    ],
+    [
+     2347,
+     1466
+    ],
+    [
+     265,
+     1439
+    ]
+   ],
+   "box": [
+    265,
+    1313,
+    2348,
+    1466
+   ]
+  },
+  {
+   "text": "summer",
+   "score": 0.8943,
+   "poly": [
+    [
+     269,
+     1438
+    ],
+    [
+     646,
+     1444
+    ],
+    [
+     644,
+     1546
+    ],
+    [
+     267,
+     1540
+    ]
+   ],
+   "box": [
+    267,
+    1438,
+    646,
+    1546
+   ]
+  },
+  {
+   "text": "Clemate changes coell affect,the",
+   "score": 0.7757,
+   "poly": [
+    [
+     678,
+     1660
+    ],
+    [
+     2239,
+     1682
+    ],
+    [
+     2238,
+     1805
+    ],
+    [
+     676,
+     1783
+    ]
+   ],
+   "box": [
+    676,
+    1660,
+    2239,
+    1805
+   ]
+  },
+  {
+   "text": "enufronmentanlasytomamany f",
+   "score": 0.6514,
+   "poly": [
+    [
+     274,
+     1780
+    ],
+    [
+     2196,
+     1808
+    ],
+    [
+     2195,
+     1912
+    ],
+    [
+     272,
+     1883
+    ]
+   ],
+   "box": [
+    272,
+    1780,
+    2196,
+    1912
+   ]
+  },
+  {
+   "text": "ethe exdinguish species are dleed due ito",
+   "score": 0.6658,
+   "poly": [
+    [
+     281,
+     1887
+    ],
+    [
+     2253,
+     1912
+    ],
+    [
+     2252,
+     2034
+    ],
+    [
+     279,
+     2009
+    ]
+   ],
+   "box": [
+    279,
+    1887,
+    2253,
+    2034
+   ]
+  },
+  {
+   "text": "alemate charge.",
+   "score": 0.8624,
+   "poly": [
+    [
+     291,
+     2015
+    ],
+    [
+     964,
+     2022
+    ],
+    [
+     962,
+     2134
+    ],
+    [
+     290,
+     2127
+    ]
+   ],
+   "box": [
+    290,
+    2015,
+    964,
+    2134
+   ]
+  },
+  {
+   "text": "And deforestatfon cpll affect cthe",
+   "score": 0.8333,
+   "poly": [
+    [
+     668,
+     2234
+    ],
+    [
+     2336,
+     2262
+    ],
+    [
+     2334,
+     2385
+    ],
+    [
+     666,
+     2356
+    ]
+   ],
+   "box": [
+    666,
+    2234,
+    2336,
+    2385
+   ]
+  },
+  {
+   "text": "enupronmont by cutt Png cthe ctroos",
+   "score": 0.8439,
+   "poly": [
+    [
+     263,
+     2362
+    ],
+    [
+     2131,
+     2381
+    ],
+    [
+     2129,
+     2497
+    ],
+    [
+     262,
+     2477
+    ]
+   ],
+   "box": [
+    262,
+    2362,
+    2131,
+    2497
+   ]
+  },
+  {
+   "text": "ex-satu cocnseruatPon and Pn-spu",
+   "score": 0.7735,
+   "poly": [
+    [
+     703,
+     2596
+    ],
+    [
+     2344,
+     2609
+    ],
+    [
+     2344,
+     2720
+    ],
+    [
+     702,
+     2707
+    ]
+   ],
+   "box": [
+    702,
+    2596,
+    2344,
+    2720
+   ]
+  },
+  {
+   "text": "conseruatPon cll poofoct the opld",
+   "score": 0.7565,
+   "poly": [
+    [
+     230,
+     2712
+    ],
+    [
+     2198,
+     2723
+    ],
+    [
+     2197,
+     2846
+    ],
+    [
+     229,
+     2835
+    ]
+   ],
+   "box": [
+    229,
+    2712,
+    2198,
+    2846
+   ]
+  },
+  {
+   "text": "anemals and The protoats tho erting of",
+   "score": 0.8422,
+   "poly": [
+    [
+     224,
+     2822
+    ],
+    [
+     2317,
+     2855
+    ],
+    [
+     2315,
+     2977
+    ],
+    [
+     222,
+     2945
+    ]
+   ],
+   "box": [
+    222,
+    2822,
+    2317,
+    2977
+   ]
+  },
+  {
+   "text": "the specles",
+   "score": 0.8543,
+   "poly": [
+    [
+     231,
+     2947
+    ],
+    [
+     831,
+     2957
+    ],
+    [
+     829,
+     3086
+    ],
+    [
+     229,
+     3076
+    ]
+   ],
+   "box": [
+    229,
+    2947,
+    831,
+    3086
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3297
+}

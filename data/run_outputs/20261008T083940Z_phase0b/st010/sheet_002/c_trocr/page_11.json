@@ -1,0 +1,405 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_11.jpg",
+ "latency_s": 0.696,
+ "model_load_s": 0.83,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "environment. Effects.",
+   "text_raw": "environment . Effects .",
+   "score": 0.7533,
+   "min_token_prob": 0.3455,
+   "box": [
+    356,
+    354,
+    1582,
+    524
+   ],
+   "poly": [
+    [
+     360,
+     354
+    ],
+    [
+     1582,
+     393
+    ],
+    [
+     1578,
+     524
+    ],
+    [
+     356,
+     485
+    ]
+   ],
+   "b_text": "enumonmental'affeds.",
+   "b_score": 0.8314
+  },
+  {
+   "text": "Afforesdodnon, means planting",
+   "text_raw": "Afforesdodnon , means planting",
+   "score": 0.6459,
+   "min_token_prob": 0.1375,
+   "box": [
+    761,
+    493,
+    2411,
+    683
+   ],
+   "poly": [
+    [
+     763,
+     493
+    ],
+    [
+     2411,
+     522
+    ],
+    [
+     2408,
+     683
+    ],
+    [
+     761,
+     654
+    ]
+   ],
+   "b_text": "Afforesdatfon means plantong",
+   "b_score": 0.7647
+  },
+  {
+   "text": "trees in the desert and brought",
+   "text_raw": "trees in the desert and brought",
+   "score": 0.8814,
+   "min_token_prob": 0.4789,
+   "box": [
+    339,
+    600,
+    2413,
+    830
+   ],
+   "poly": [
+    [
+     344,
+     600
+    ],
+    [
+     2413,
+     669
+    ],
+    [
+     2408,
+     830
+    ],
+    [
+     339,
+     761
+    ]
+   ],
+   "b_text": "troes cn tthe desort ardtrought",
+   "b_score": 0.7642
+  },
+  {
+   "text": "areab.",
+   "text_raw": "areab .",
+   "score": 0.9173,
+   "min_token_prob": 0.8266,
+   "box": [
+    347,
+    755,
+    700,
+    889
+   ],
+   "poly": [
+    [
+     354,
+     755
+    ],
+    [
+     700,
+     778
+    ],
+    [
+     693,
+     889
+    ],
+    [
+     347,
+     867
+    ]
+   ],
+   "b_text": "areas",
+   "b_score": 0.8146
+  },
+  {
+   "text": "we can plan the draugh",
+   "text_raw": "we can plan the draugh",
+   "score": 0.535,
+   "min_token_prob": 0.2075,
+   "box": [
+    794,
+    757,
+    2562,
+    984
+   ],
+   "poly": [
+    [
+     800,
+     757
+    ],
+    [
+     2562,
+     823
+    ],
+    [
+     2556,
+     984
+    ],
+    [
+     794,
+     918
+    ]
+   ],
+   "b_text": "toe can plant ethe drogh",
+   "b_score": 0.7948
+  },
+  {
+   "text": "areas.",
+   "text_raw": "areas .",
+   "score": 0.9585,
+   "min_token_prob": 0.8859,
+   "box": [
+    379,
+    897,
+    733,
+    1026
+   ],
+   "poly": [
+    [
+     384,
+     897
+    ],
+    [
+     733,
+     912
+    ],
+    [
+     728,
+     1026
+    ],
+    [
+     379,
+     1010
+    ]
+   ],
+   "b_text": "areas.",
+   "b_score": 0.8374
+  },
+  {
+   "text": "Marnly afefocused for beads to",
+   "text_raw": "Marnly afefocused for beads to",
+   "score": 0.7184,
+   "min_token_prob": 0.2043,
+   "box": [
+    801,
+    1033,
+    2534,
+    1255
+   ],
+   "poly": [
+    [
+     807,
+     1033
+    ],
+    [
+     2534,
+     1101
+    ],
+    [
+     2528,
+     1255
+    ],
+    [
+     801,
+     1187
+    ]
+   ],
+   "b_text": "Maenly affochesdpon foadsto",
+   "b_score": 0.7138
+  },
+  {
+   "text": "gainfall and projects the enversome",
+   "text_raw": "gainfall and projects the enversome",
+   "score": 0.7116,
+   "min_token_prob": 0.2265,
+   "box": [
+    308,
+    1158,
+    2591,
+    1396
+   ],
+   "poly": [
+    [
+     314,
+     1158
+    ],
+    [
+     2591,
+     1258
+    ],
+    [
+     2585,
+     1396
+    ],
+    [
+     308,
+     1295
+    ]
+   ],
+   "b_text": "Graanfail and profeds the onuprormer",
+   "b_score": 0.7544
+  },
+  {
+   "text": "from the decade charges.",
+   "text_raw": "from the decade charges .",
+   "score": 0.8787,
+   "min_token_prob": 0.3471,
+   "box": [
+    315,
+    1287,
+    2141,
+    1542
+   ],
+   "poly": [
+    [
+     323,
+     1287
+    ],
+    [
+     2141,
+     1369
+    ],
+    [
+     2134,
+     1542
+    ],
+    [
+     315,
+     1461
+    ]
+   ],
+   "b_text": "ofrom ithe clemato Changes",
+   "b_score": 0.7489
+  },
+  {
+   "text": "A Species found on a",
+   "text_raw": "A Species found on a",
+   "score": 0.8306,
+   "min_token_prob": 0.178,
+   "box": [
+    875,
+    1591,
+    2354,
+    1817
+   ],
+   "poly": [
+    [
+     883,
+     1591
+    ],
+    [
+     2354,
+     1674
+    ],
+    [
+     2346,
+     1817
+    ],
+    [
+     875,
+     1733
+    ]
+   ],
+   "b_text": "A.speces ifound en a",
+   "b_score": 0.8357
+  },
+  {
+   "text": "particular ecosystem can help the envir.",
+   "text_raw": "particular ecosystem can help the envir .",
+   "score": 0.7925,
+   "min_token_prob": 0.257,
+   "box": [
+    293,
+    1700,
+    2582,
+    1980
+   ],
+   "poly": [
+    [
+     302,
+     1700
+    ],
+    [
+     2582,
+     1837
+    ],
+    [
+     2574,
+     1980
+    ],
+    [
+     293,
+     1843
+    ]
+   ],
+   "b_text": "particular ocosyste can help cthe enion",
+   "b_score": 0.7197
+  },
+  {
+   "text": "from the drown by spending them",
+   "text_raw": "from the drown by spending them",
+   "score": 0.7227,
+   "min_token_prob": 0.0971,
+   "box": [
+    250,
+    1835,
+    2494,
+    2160
+   ],
+   "poly": [
+    [
+     262,
+     1835
+    ],
+    [
+     2494,
+     1979
+    ],
+    [
+     2482,
+     2160
+    ],
+    [
+     250,
+     2016
+    ]
+   ],
+   "b_text": "from sthe troughiby plaiting thom.",
+   "b_score": 0.7018
+  }
+ ],
+ "peak_torch_alloc_mib": 2545,
+ "peak_rss_mib_process": 2964
+}

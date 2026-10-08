@@ -1,0 +1,477 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec",
+  "text_detection_model_name": "PP-OCRv5_server_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_07.jpg",
+ "latency_s": 22.475,
+ "model_load_s": 0.39,
+ "n_lines": 16,
+ "lines": [
+  {
+   "text": "Ief ue. pollute sthe preph sate",
+   "score": 0.723,
+   "poly": [
+    [
+     777,
+     453
+    ],
+    [
+     2405,
+     466
+    ],
+    [
+     2404,
+     596
+    ],
+    [
+     775,
+     583
+    ]
+   ],
+   "box": [
+    775,
+    453,
+    2405,
+    596
+   ]
+  },
+  {
+   "text": "we cld have aoator do drenk.e",
+   "score": 0.7457,
+   "poly": [
+    [
+     550,
+     573
+    ],
+    [
+     2465,
+     609
+    ],
+    [
+     2463,
+     721
+    ],
+    [
+     548,
+     685
+    ]
+   ],
+   "box": [
+    548,
+    573,
+    2465,
+    721
+   ]
+  },
+  {
+   "text": "Can socgle the plasfes uatte and",
+   "score": 0.7173,
+   "poly": [
+    [
+     525,
+     700
+    ],
+    [
+     2500,
+     730
+    ],
+    [
+     2498,
+     849
+    ],
+    [
+     523,
+     819
+    ]
+   ],
+   "box": [
+    523,
+    700,
+    2500,
+    849
+   ]
+  },
+  {
+   "text": "loe can meuse the apate prodies",
+   "score": 0.683,
+   "poly": [
+    [
+     609,
+     817
+    ],
+    [
+     2531,
+     857
+    ],
+    [
+     2529,
+     974
+    ],
+    [
+     607,
+     934
+    ]
+   ],
+   "box": [
+    607,
+    817,
+    2531,
+    974
+   ]
+  },
+  {
+   "text": "Phto etoa we f product",
+   "score": 0.735,
+   "poly": [
+    [
+     519,
+     919
+    ],
+    [
+     2418,
+     976
+    ],
+    [
+     2415,
+     1101
+    ],
+    [
+     515,
+     1044
+    ]
+   ],
+   "box": [
+    515,
+    919,
+    2418,
+    1101
+   ]
+  },
+  {
+   "text": "Iof co secuce dhe prodidion",
+   "score": 0.5988,
+   "poly": [
+    [
+     802,
+     1171
+    ],
+    [
+     2482,
+     1209
+    ],
+    [
+     2479,
+     1328
+    ],
+    [
+     799,
+     1290
+    ]
+   ],
+   "box": [
+    799,
+    1171,
+    2482,
+    1328
+   ]
+  },
+  {
+   "text": "of many kincof coaste ether eosgstem",
+   "score": 0.6624,
+   "poly": [
+    [
+     526,
+     1277
+    ],
+    [
+     2470,
+     1338
+    ],
+    [
+     2466,
+     1466
+    ],
+    [
+     522,
+     1405
+    ]
+   ],
+   "box": [
+    522,
+    1277,
+    2470,
+    1466
+   ]
+  },
+  {
+   "text": "doesnot. ged cstrbedTef we doesnat",
+   "score": 0.6326,
+   "poly": [
+    [
+     520,
+     1401
+    ],
+    [
+     2440,
+     1460
+    ],
+    [
+     2437,
+     1570
+    ],
+    [
+     517,
+     1512
+    ]
+   ],
+   "box": [
+    517,
+    1401,
+    2440,
+    1570
+   ]
+  },
+  {
+   "text": "oedurethe caste or nost g th",
+   "score": 0.6631,
+   "poly": [
+    [
+     519,
+     1513
+    ],
+    [
+     2440,
+     1578
+    ],
+    [
+     2436,
+     1703
+    ],
+    [
+     515,
+     1638
+    ]
+   ],
+   "box": [
+    515,
+    1513,
+    2440,
+    1703
+   ]
+  },
+  {
+   "text": "BR princople eth puron mend got",
+   "score": 0.6578,
+   "poly": [
+    [
+     514,
+     1615
+    ],
+    [
+     2135,
+     1690
+    ],
+    [
+     2129,
+     1826
+    ],
+    [
+     508,
+     1751
+    ]
+   ],
+   "box": [
+    508,
+    1615,
+    2135,
+    1826
+   ]
+  },
+  {
+   "text": "drsturbede",
+   "score": 0.729,
+   "poly": [
+    [
+     520,
+     1755
+    ],
+    [
+     954,
+     1768
+    ],
+    [
+     951,
+     1869
+    ],
+    [
+     517,
+     1856
+    ]
+   ],
+   "box": [
+    517,
+    1755,
+    954,
+    1869
+   ]
+  },
+  {
+   "text": "哪",
+   "score": 0.0757,
+   "poly": [
+    [
+     1149,
+     1852
+    ],
+    [
+     1166,
+     1852
+    ],
+    [
+     1166,
+     1868
+    ],
+    [
+     1149,
+     1868
+    ]
+   ],
+   "box": [
+    1149,
+    1852,
+    1166,
+    1868
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1231,
+     1937
+    ],
+    [
+     1687,
+     1951
+    ],
+    [
+     1686,
+     1995
+    ],
+    [
+     1229,
+     1981
+    ]
+   ],
+   "box": [
+    1229,
+    1937,
+    1687,
+    1995
+   ]
+  },
+  {
+   "text": "OAON",
+   "score": 0.5151,
+   "poly": [
+    [
+     1194,
+     1981
+    ],
+    [
+     1700,
+     1997
+    ],
+    [
+     1699,
+     2041
+    ],
+    [
+     1193,
+     2025
+    ]
+   ],
+   "box": [
+    1193,
+    1981,
+    1700,
+    2041
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     489,
+     2398
+    ],
+    [
+     512,
+     2398
+    ],
+    [
+     512,
+     2413
+    ],
+    [
+     489,
+     2413
+    ]
+   ],
+   "box": [
+    489,
+    2398,
+    512,
+    2413
+   ]
+  },
+  {
+   "text": "我",
+   "score": 0.0435,
+   "poly": [
+    [
+     346,
+     2647
+    ],
+    [
+     366,
+     2647
+    ],
+    [
+     366,
+     2664
+    ],
+    [
+     346,
+     2664
+    ]
+   ],
+   "box": [
+    346,
+    2647,
+    366,
+    2664
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 17156
+}

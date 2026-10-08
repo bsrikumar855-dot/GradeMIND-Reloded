@@ -1,0 +1,146 @@
+{
+ "engine": "unlimited-ocr",
+ "model_revision": "07dea832e22aefee32ad281d4b80551282e1c168",
+ "path": "transformers",
+ "mode": "gundam",
+ "mode_params": {
+  "base_size": 1024,
+  "image_size": 640,
+  "crop_mode": true
+ },
+ "prompt": "<image>document parsing.",
+ "quant": "int8",
+ "offload_layers": null,
+ "decoding": {
+  "temperature": 0.0,
+  "max_length": 4096,
+  "no_repeat_ngram_size": 35,
+  "ngram_window": 128
+ },
+ "page": "page_01.jpg",
+ "latency_s": 67.119,
+ "model_load_s": 18.54,
+ "generated_tokens": 1359,
+ "tokens_per_s": 20.2,
+ "peak_torch_alloc_mib": 6153,
+ "peak_torch_reserved_mib": 6322,
+ "nvidia_smi_used_mib_after": 11213,
+ "token_prob": {
+  "mean": 0.9649,
+  "min": 0.0624,
+  "share_below_0.5": 0.0147
+ },
+ "token_ids": [],
+ "token_logprobs": [],
+ "token_margins": [],
+ "degenerate_flags": [
+  "COUNTING_SEQUENCE_x32"
+ ],
+ "regions": [
+  {
+   "category": "header",
+   "bbox_raw": [
+    [
+     820,
+     14,
+     886,
+     40
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "title",
+   "bbox_raw": [
+    [
+     346,
+     53,
+     604,
+     79
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     255,
+     80,
+     692,
+     95
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     378,
+     97,
+     583,
+     110
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     280,
+     111,
+     667,
+     127
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "image",
+   "bbox_raw": [
+    [
+     766,
+     58,
+     864,
+     111
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     257,
+     133,
+     692,
+     151
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "table",
+   "bbox_raw": [
+    [
+     100,
+     151,
+     888,
+     314
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  }
+ ],
+ "raw": "[REDACTED]"
+}

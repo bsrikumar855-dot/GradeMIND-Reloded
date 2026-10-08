@@ -1,0 +1,565 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_10.jpg",
+ "latency_s": 1.003,
+ "model_load_s": 0.82,
+ "n_lines": 17,
+ "lines": [
+  {
+   "text": "# few springs in forest live.",
+   "text_raw": "# few springs in forest live .",
+   "score": 0.7666,
+   "min_token_prob": 0.3997,
+   "box": [
+    174,
+    235,
+    2093,
+    488
+   ],
+   "poly": [
+    [
+     174,
+     260
+    ],
+    [
+     2090,
+     235
+    ],
+    [
+     2093,
+     463
+    ],
+    [
+     177,
+     488
+    ]
+   ],
+   "b_text": " few spias n frest ive",
+   "b_score": 0.7775
+  },
+  {
+   "text": "Rome a",
+   "text_raw": "Rome a",
+   "score": 0.624,
+   "min_token_prob": 0.2913,
+   "box": [
+    318,
+    426,
+    618,
+    568
+   ],
+   "poly": [
+    [
+     318,
+     434
+    ],
+    [
+     615,
+     426
+    ],
+    [
+     618,
+     561
+    ],
+    [
+     322,
+     568
+    ]
+   ],
+   "b_text": "Boee",
+   "b_score": 0.4418
+  },
+  {
+   "text": "x Grassland is water tunnels, and",
+   "text_raw": "x Grassland is water tunnels , and",
+   "score": 0.927,
+   "min_token_prob": 0.797,
+   "box": [
+    161,
+    628,
+    2341,
+    848
+   ],
+   "poly": [
+    [
+     161,
+     666
+    ],
+    [
+     2338,
+     628
+    ],
+    [
+     2341,
+     810
+    ],
+    [
+     164,
+     848
+    ]
+   ],
+   "b_text": "Girasslard is water tunrels, and",
+   "b_score": 0.8088
+  },
+  {
+   "text": "more reserves are already",
+   "text_raw": "more reserves are already",
+   "score": 0.9361,
+   "min_token_prob": 0.7944,
+   "box": [
+    247,
+    779,
+    2107,
+    994
+   ],
+   "poly": [
+    [
+     247,
+     820
+    ],
+    [
+     2103,
+     779
+    ],
+    [
+     2107,
+     953
+    ],
+    [
+     251,
+     994
+    ]
+   ],
+   "b_text": "More rowies ce abady",
+   "b_score": 0.6545
+  },
+  {
+   "text": "polluted.",
+   "text_raw": "polluted .",
+   "score": 0.9505,
+   "min_token_prob": 0.8214,
+   "box": [
+    279,
+    937,
+    696,
+    1110
+   ],
+   "poly": [
+    [
+     279,
+     959
+    ],
+    [
+     688,
+     937
+    ],
+    [
+     696,
+     1088
+    ],
+    [
+     287,
+     1110
+    ]
+   ],
+   "b_text": "pollutod",
+   "b_score": 0.9258
+  },
+  {
+   "text": "# here majority of humans,",
+   "text_raw": "# here majority of humans ,",
+   "score": 0.9577,
+   "min_token_prob": 0.7281,
+   "box": [
+    166,
+    1160,
+    1936,
+    1371
+   ],
+   "poly": [
+    [
+     166,
+     1195
+    ],
+    [
+     1932,
+     1160
+    ],
+    [
+     1936,
+     1337
+    ],
+    [
+     170,
+     1371
+    ]
+   ],
+   "b_text": " hese migjority of humans.",
+   "b_score": 0.8212
+  },
+  {
+   "text": "five. and \" make their life",
+   "text_raw": "five . and \" make their life",
+   "score": 0.795,
+   "min_token_prob": 0.5124,
+   "box": [
+    238,
+    1306,
+    2005,
+    1490
+   ],
+   "poly": [
+    [
+     238,
+     1335
+    ],
+    [
+     2002,
+     1306
+    ],
+    [
+     2005,
+     1462
+    ],
+    [
+     240,
+     1490
+    ]
+   ],
+   "b_text": "live. andMaketheir ife",
+   "b_score": 0.8558
+  },
+  {
+   "text": "aningful and with other",
+   "text_raw": "aningful and with other",
+   "score": 0.9907,
+   "min_token_prob": 0.9704,
+   "box": [
+    428,
+    1439,
+    2018,
+    1630
+   ],
+   "poly": [
+    [
+     428,
+     1459
+    ],
+    [
+     2016,
+     1439
+    ],
+    [
+     2018,
+     1609
+    ],
+    [
+     430,
+     1630
+    ]
+   ],
+   "b_text": "aningful and with other",
+   "b_score": 0.9028
+  },
+  {
+   "text": "o sn.",
+   "text_raw": "o sn .",
+   "score": 0.5786,
+   "min_token_prob": 0.2006,
+   "box": [
+    302,
+    1610,
+    771,
+    1744
+   ],
+   "poly": [
+    [
+     302,
+     1610
+    ],
+    [
+     771,
+     1610
+    ],
+    [
+     771,
+     1744
+    ],
+    [
+     302,
+     1744
+    ]
+   ],
+   "b_text": "9 sm.",
+   "b_score": 0.5854
+  },
+  {
+   "text": "deserts #",
+   "text_raw": "deserts #",
+   "score": 0.7781,
+   "min_token_prob": 0.3142,
+   "box": [
+    231,
+    1836,
+    687,
+    2011
+   ],
+   "poly": [
+    [
+     231,
+     1836
+    ],
+    [
+     687,
+     1836
+    ],
+    [
+     687,
+     2011
+    ],
+    [
+     231,
+     2011
+    ]
+   ],
+   "b_text": "deserts:",
+   "b_score": 0.6582
+  },
+  {
+   "text": "sidements are the \" place",
+   "text_raw": "sidements are the \" place",
+   "score": 0.7017,
+   "min_token_prob": 0.3495,
+   "box": [
+    184,
+    2064,
+    1947,
+    2270
+   ],
+   "poly": [
+    [
+     184,
+     2076
+    ],
+    [
+     1945,
+     2064
+    ],
+    [
+     1947,
+     2257
+    ],
+    [
+     186,
+     2270
+    ]
+   ],
+   "b_text": "→deserts ae theplace",
+   "b_score": 0.7873
+  },
+  {
+   "text": "sand are fitted with:",
+   "text_raw": "sand are fitted with :",
+   "score": 0.8278,
+   "min_token_prob": 0.5679,
+   "box": [
+    208,
+    2209,
+    1670,
+    2418
+   ],
+   "poly": [
+    [
+     208,
+     2240
+    ],
+    [
+     1667,
+     2209
+    ],
+    [
+     1670,
+     2387
+    ],
+    [
+     212,
+     2418
+    ]
+   ],
+   "b_text": "sand are fitled with.",
+   "b_score": 0.7594
+  },
+  {
+   "text": "\" These place are not suitable.",
+   "text_raw": "\" These place are not suitable .",
+   "score": 0.9301,
+   "min_token_prob": 0.7956,
+   "box": [
+    206,
+    2455,
+    2291,
+    2632
+   ],
+   "poly": [
+    [
+     206,
+     2455
+    ],
+    [
+     2291,
+     2463
+    ],
+    [
+     2290,
+     2632
+    ],
+    [
+     206,
+     2624
+    ]
+   ],
+   "b_text": "→thase place ae not seuitable",
+   "b_score": 0.769
+  },
+  {
+   "text": "Majority, wife",
+   "text_raw": "Majority , wife",
+   "score": 0.6709,
+   "min_token_prob": 0.3552,
+   "box": [
+    252,
+    2603,
+    1083,
+    2775
+   ],
+   "poly": [
+    [
+     252,
+     2603
+    ],
+    [
+     1083,
+     2603
+    ],
+    [
+     1083,
+     2775
+    ],
+    [
+     252,
+     2775
+    ]
+   ],
+   "b_text": "Major'tyife",
+   "b_score": 0.7742
+  },
+  {
+   "text": "is due to extreme, temperature.",
+   "text_raw": "is due to extreme , temperature .",
+   "score": 0.7754,
+   "min_token_prob": 0.333,
+   "box": [
+    198,
+    2809,
+    2385,
+    3023
+   ],
+   "poly": [
+    [
+     198,
+     2830
+    ],
+    [
+     2383,
+     2809
+    ],
+    [
+     2385,
+     3003
+    ],
+    [
+     199,
+     3023
+    ]
+   ],
+   "b_text": " due to tome tempration",
+   "b_score": 0.741
+  },
+  {
+   "text": "changes on clay and night",
+   "text_raw": "changes on clay and night",
+   "score": 0.8851,
+   "min_token_prob": 0.6834,
+   "box": [
+    315,
+    2980,
+    1898,
+    3153
+   ],
+   "poly": [
+    [
+     315,
+     2990
+    ],
+    [
+     1897,
+     2980
+    ],
+    [
+     1898,
+     3143
+    ],
+    [
+     316,
+     3153
+    ]
+   ],
+   "b_text": "changes on day and hight",
+   "b_score": 0.8313
+  },
+  {
+   "text": "scol blood-orgarsing centre.",
+   "text_raw": "scol blood-orgarsing centre .",
+   "score": 0.8044,
+   "min_token_prob": 0.2037,
+   "box": [
+    227,
+    3233,
+    2400,
+    3447
+   ],
+   "poly": [
+    [
+     227,
+     3245
+    ],
+    [
+     2400,
+     3233
+    ],
+    [
+     2400,
+     3434
+    ],
+    [
+     228,
+     3447
+    ]
+   ],
+   "b_text": "col blood orgarsm cn live",
+   "b_score": 0.7217
+  }
+ ],
+ "peak_torch_alloc_mib": 2676,
+ "peak_rss_mib_process": 2965
+}

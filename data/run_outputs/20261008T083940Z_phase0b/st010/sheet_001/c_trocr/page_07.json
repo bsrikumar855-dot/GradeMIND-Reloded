@@ -1,0 +1,725 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_07.jpg",
+ "latency_s": 1.097,
+ "model_load_s": 0.82,
+ "n_lines": 22,
+ "lines": [
+  {
+   "text": "cutting, treck Make",
+   "text_raw": "cutting , treck Make",
+   "score": 0.7056,
+   "min_token_prob": 0.1701,
+   "box": [
+    956,
+    272,
+    2227,
+    456
+   ],
+   "poly": [
+    [
+     956,
+     272
+    ],
+    [
+     2227,
+     272
+    ],
+    [
+     2227,
+     456
+    ],
+    [
+     956,
+     456
+    ]
+   ],
+   "b_text": "outting,te Make",
+   "b_score": 0.8804
+  },
+  {
+   "text": "#ause,",
+   "text_raw": "#ause ,",
+   "score": 0.7852,
+   "min_token_prob": 0.4582,
+   "box": [
+    299,
+    319,
+    718,
+    467
+   ],
+   "poly": [
+    [
+     299,
+     331
+    ],
+    [
+     715,
+     319
+    ],
+    [
+     718,
+     455
+    ],
+    [
+     303,
+     467
+    ]
+   ],
+   "b_text": " ause,",
+   "b_score": 0.6589
+  },
+  {
+   "text": "water depleted.",
+   "text_raw": "water depleted .",
+   "score": 0.872,
+   "min_token_prob": 0.628,
+   "box": [
+    912,
+    403,
+    1744,
+    586
+   ],
+   "poly": [
+    [
+     912,
+     427
+    ],
+    [
+     1739,
+     403
+    ],
+    [
+     1744,
+     562
+    ],
+    [
+     917,
+     586
+    ]
+   ],
+   "b_text": "wator depretod",
+   "b_score": 0.8415
+  },
+  {
+   "text": "ground",
+   "text_raw": "ground",
+   "score": 0.7545,
+   "min_token_prob": 0.5122,
+   "box": [
+    365,
+    431,
+    866,
+    606
+   ],
+   "poly": [
+    [
+     365,
+     456
+    ],
+    [
+     858,
+     431
+    ],
+    [
+     866,
+     580
+    ],
+    [
+     373,
+     606
+    ]
+   ],
+   "b_text": "gROUnD",
+   "b_score": 0.64
+  },
+  {
+   "text": "presumed the ground",
+   "text_raw": "presumed the ground",
+   "score": 0.8844,
+   "min_token_prob": 0.7033,
+   "box": [
+    772,
+    628,
+    2168,
+    827
+   ],
+   "poly": [
+    [
+     772,
+     645
+    ],
+    [
+     2166,
+     628
+    ],
+    [
+     2168,
+     810
+    ],
+    [
+     775,
+     827
+    ]
+   ],
+   "b_text": "prosowed,the. ground",
+   "b_score": 0.8451
+  },
+  {
+   "text": "\" were need change",
+   "text_raw": "\" were need change",
+   "score": 0.7392,
+   "min_token_prob": 0.5068,
+   "box": [
+    832,
+    778,
+    1949,
+    947
+   ],
+   "poly": [
+    [
+     834,
+     778
+    ],
+    [
+     1949,
+     788
+    ],
+    [
+     1947,
+     947
+    ],
+    [
+     832,
+     937
+    ]
+   ],
+   "b_text": "wel need change",
+   "b_score": 0.8256
+  },
+  {
+   "text": "water",
+   "text_raw": "water",
+   "score": 0.8015,
+   "min_token_prob": 0.6088,
+   "box": [
+    362,
+    802,
+    653,
+    954
+   ],
+   "poly": [
+    [
+     362,
+     810
+    ],
+    [
+     649,
+     802
+    ],
+    [
+     653,
+     946
+    ],
+    [
+     366,
+     954
+    ]
+   ],
+   "b_text": "wator",
+   "b_score": 0.8921
+  },
+  {
+   "text": "defects.",
+   "text_raw": "defects .",
+   "score": 0.9406,
+   "min_token_prob": 0.7114,
+   "box": [
+    717,
+    900,
+    1118,
+    1128
+   ],
+   "poly": [
+    [
+     717,
+     905
+    ],
+    [
+     1115,
+     900
+    ],
+    [
+     1118,
+     1122
+    ],
+    [
+     720,
+     1128
+    ]
+   ],
+   "b_text": "deffects",
+   "b_score": 0.789
+  },
+  {
+   "text": "the a",
+   "text_raw": "the a",
+   "score": 0.907,
+   "min_token_prob": 0.725,
+   "box": [
+    337,
+    930,
+    790,
+    1094
+   ],
+   "poly": [
+    [
+     337,
+     930
+    ],
+    [
+     790,
+     930
+    ],
+    [
+     790,
+     1094
+    ],
+    [
+     337,
+     1094
+    ]
+   ],
+   "b_text": "h",
+   "b_score": 0.1158
+  },
+  {
+   "text": "x ground is essential cause",
+   "text_raw": "x ground is essential cause",
+   "score": 0.8602,
+   "min_token_prob": 0.6463,
+   "box": [
+    320,
+    1128,
+    2213,
+    1343
+   ],
+   "poly": [
+    [
+     320,
+     1174
+    ],
+    [
+     2209,
+     1128
+    ],
+    [
+     2213,
+     1296
+    ],
+    [
+     324,
+     1343
+    ]
+   ],
+   "b_text": "Giround is eertiaf . cude",
+   "b_score": 0.6989
+  },
+  {
+   "text": "water sources and more",
+   "text_raw": "water sources and more",
+   "score": 0.7906,
+   "min_token_prob": 0.6347,
+   "box": [
+    368,
+    1394,
+    1820,
+    1596
+   ],
+   "poly": [
+    [
+     368,
+     1419
+    ],
+    [
+     1817,
+     1394
+    ],
+    [
+     1820,
+     1571
+    ],
+    [
+     371,
+     1596
+    ]
+   ],
+   "b_text": "wator sow and More",
+   "b_score": 0.8585
+  },
+  {
+   "text": "attack of rainfall, makes",
+   "text_raw": "attack of rainfall , makes",
+   "score": 0.8426,
+   "min_token_prob": 0.4064,
+   "box": [
+    311,
+    1658,
+    2070,
+    1861
+   ],
+   "poly": [
+    [
+     311,
+     1666
+    ],
+    [
+     2069,
+     1658
+    ],
+    [
+     2070,
+     1853
+    ],
+    [
+     312,
+     1861
+    ]
+   ],
+   "b_text": "Pack of rainfel, Mabes",
+   "b_score": 0.7298
+  },
+  {
+   "text": "groundwater depleted.",
+   "text_raw": "groundwater depleted .",
+   "score": 0.986,
+   "min_token_prob": 0.9394,
+   "box": [
+    338,
+    1788,
+    1600,
+    2007
+   ],
+   "poly": [
+    [
+     338,
+     1830
+    ],
+    [
+     1594,
+     1788
+    ],
+    [
+     1600,
+     1965
+    ],
+    [
+     344,
+     2007
+    ]
+   ],
+   "b_text": "ground uater deplotod.",
+   "b_score": 0.8004
+  },
+  {
+   "text": "# Make sure to control",
+   "text_raw": "# Make sure to control",
+   "score": 0.9371,
+   "min_token_prob": 0.7164,
+   "box": [
+    326,
+    2041,
+    2145,
+    2239
+   ],
+   "poly": [
+    [
+     326,
+     2063
+    ],
+    [
+     2143,
+     2041
+    ],
+    [
+     2145,
+     2217
+    ],
+    [
+     328,
+     2239
+    ]
+   ],
+   "b_text": "* Make swe to contre",
+   "b_score": 0.7477
+  },
+  {
+   "text": "the nature according to it.",
+   "text_raw": "the nature according to it .",
+   "score": 0.9875,
+   "min_token_prob": 0.934,
+   "box": [
+    377,
+    2208,
+    2096,
+    2365
+   ],
+   "poly": [
+    [
+     377,
+     2214
+    ],
+    [
+     2096,
+     2208
+    ],
+    [
+     2096,
+     2359
+    ],
+    [
+     377,
+     2365
+    ]
+   ],
+   "b_text": "the nature accordorng to it.",
+   "b_score": 0.861
+  },
+  {
+   "text": "Measure.",
+   "text_raw": "Measure .",
+   "score": 0.7196,
+   "min_token_prob": 0.4012,
+   "box": [
+    369,
+    2459,
+    975,
+    2612
+   ],
+   "poly": [
+    [
+     369,
+     2459
+    ],
+    [
+     975,
+     2459
+    ],
+    [
+     975,
+     2612
+    ],
+    [
+     369,
+     2612
+    ]
+   ],
+   "b_text": "MOASURE",
+   "b_score": 0.7549
+  },
+  {
+   "text": "for groundwater.",
+   "text_raw": "for groundwater .",
+   "score": 0.7018,
+   "min_token_prob": 0.4411,
+   "box": [
+    860,
+    2419,
+    2090,
+    2691
+   ],
+   "poly": [
+    [
+     860,
+     2453
+    ],
+    [
+     2084,
+     2419
+    ],
+    [
+     2090,
+     2656
+    ],
+    [
+     866,
+     2691
+    ]
+   ],
+   "b_text": "fot ground wator",
+   "b_score": 0.8072
+  },
+  {
+   "text": "depletion #",
+   "text_raw": "depletion #",
+   "score": 0.8608,
+   "min_token_prob": 0.7025,
+   "box": [
+    392,
+    2587,
+    985,
+    2764
+   ],
+   "poly": [
+    [
+     392,
+     2594
+    ],
+    [
+     983,
+     2587
+    ],
+    [
+     985,
+     2758
+    ],
+    [
+     394,
+     2764
+    ]
+   ],
+   "b_text": "depletion",
+   "b_score": 0.8759
+  },
+  {
+   "text": "# Make sure that, seasonal",
+   "text_raw": "# Make sure that , seasonal",
+   "score": 0.8844,
+   "min_token_prob": 0.2188,
+   "box": [
+    320,
+    2828,
+    2339,
+    3048
+   ],
+   "poly": [
+    [
+     320,
+     2855
+    ],
+    [
+     2337,
+     2828
+    ],
+    [
+     2339,
+     3022
+    ],
+    [
+     323,
+     3048
+    ]
+   ],
+   "b_text": "Make swe that soastonaf",
+   "b_score": 0.7532
+  },
+  {
+   "text": "rarnfall.",
+   "text_raw": "rarnfall .",
+   "score": 0.962,
+   "min_token_prob": 0.922,
+   "box": [
+    444,
+    2994,
+    977,
+    3175
+   ],
+   "poly": [
+    [
+     444,
+     3011
+    ],
+    [
+     972,
+     2994
+    ],
+    [
+     977,
+     3159
+    ],
+    [
+     449,
+     3175
+    ]
+   ],
+   "b_text": "rarnfall",
+   "b_score": 0.7493
+  },
+  {
+   "text": "cycle need to",
+   "text_raw": "cycle need to",
+   "score": 0.9975,
+   "min_token_prob": 0.9935,
+   "box": [
+    1076,
+    2993,
+    1965,
+    3185
+   ],
+   "poly": [
+    [
+     1076,
+     3012
+    ],
+    [
+     1961,
+     2993
+    ],
+    [
+     1965,
+     3165
+    ],
+    [
+     1080,
+     3185
+    ]
+   ],
+   "b_text": "cycle need to",
+   "b_score": 0.8851
+  },
+  {
+   "text": "produced.",
+   "text_raw": "produced .",
+   "score": 0.7892,
+   "min_token_prob": 0.3725,
+   "box": [
+    440,
+    3141,
+    924,
+    3320
+   ],
+   "poly": [
+    [
+     440,
+     3163
+    ],
+    [
+     917,
+     3141
+    ],
+    [
+     924,
+     3299
+    ],
+    [
+     447,
+     3320
+    ]
+   ],
+   "b_text": "prabeved.",
+   "b_score": 0.7506
+  }
+ ],
+ "peak_torch_alloc_mib": 2686,
+ "peak_rss_mib_process": 2965
+}

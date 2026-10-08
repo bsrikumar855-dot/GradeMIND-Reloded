@@ -1,0 +1,561 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_06.jpg",
+ "latency_s": 11.912,
+ "model_load_s": 0.39,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "The organisms En geographecal regpon",
+   "score": 0.9703,
+   "poly": [
+    [
+     538,
+     401
+    ],
+    [
+     2349,
+     450
+    ],
+    [
+     2346,
+     556
+    ],
+    [
+     536,
+     507
+    ]
+   ],
+   "box": [
+    536,
+    401,
+    2349,
+    556
+   ]
+  },
+  {
+   "text": "chad cto cbe descturbed. A ispecees en",
+   "score": 0.9412,
+   "poly": [
+    [
+     297,
+     524
+    ],
+    [
+     2155,
+     566
+    ],
+    [
+     2153,
+     651
+    ],
+    [
+     295,
+     609
+    ]
+   ],
+   "box": [
+    295,
+    524,
+    2155,
+    651
+   ]
+  },
+  {
+   "text": "the frosh coater ecosystem leke fish, prown",
+   "score": 0.9402,
+   "poly": [
+    [
+     307,
+     635
+    ],
+    [
+     2327,
+     680
+    ],
+    [
+     2324,
+     784
+    ],
+    [
+     305,
+     738
+    ]
+   ],
+   "box": [
+    305,
+    635,
+    2327,
+    784
+   ]
+  },
+  {
+   "text": "are deed due to water pollutPor. If coe",
+   "score": 0.9196,
+   "poly": [
+    [
+     299,
+     750
+    ],
+    [
+     2158,
+     796
+    ],
+    [
+     2156,
+     890
+    ],
+    [
+     296,
+     844
+    ]
+   ],
+   "box": [
+    296,
+    750,
+    2158,
+    890
+   ]
+  },
+  {
+   "text": "pollute the fresh oater many sppeces",
+   "score": 0.964,
+   "poly": [
+    [
+     289,
+     863
+    ],
+    [
+     2159,
+     910
+    ],
+    [
+     2156,
+     1009
+    ],
+    [
+     286,
+     962
+    ]
+   ],
+   "box": [
+    286,
+    863,
+    2159,
+    1009
+   ]
+  },
+  {
+   "text": "are got desturbed.",
+   "score": 0.997,
+   "poly": [
+    [
+     313,
+     982
+    ],
+    [
+     1147,
+     1007
+    ],
+    [
+     1144,
+     1099
+    ],
+    [
+     310,
+     1074
+    ]
+   ],
+   "box": [
+    310,
+    982,
+    1147,
+    1099
+   ]
+  },
+  {
+   "text": "We can use the 3R principle",
+   "score": 0.9789,
+   "poly": [
+    [
+     677,
+     1219
+    ],
+    [
+     2264,
+     1259
+    ],
+    [
+     2261,
+     1356
+    ],
+    [
+     675,
+     1316
+    ]
+   ],
+   "box": [
+    675,
+    1219,
+    2264,
+    1356
+   ]
+  },
+  {
+   "text": "here to croduce the cwastes that",
+   "score": 0.9346,
+   "poly": [
+    [
+     282,
+     1323
+    ],
+    [
+     2169,
+     1375
+    ],
+    [
+     2166,
+     1472
+    ],
+    [
+     279,
+     1420
+    ]
+   ],
+   "box": [
+    279,
+    1323,
+    2169,
+    1472
+   ]
+  },
+  {
+   "text": "are nade an house, Farstly we have",
+   "score": 0.9435,
+   "poly": [
+    [
+     285,
+     1449
+    ],
+    [
+     2245,
+     1491
+    ],
+    [
+     2243,
+     1576
+    ],
+    [
+     283,
+     1534
+    ]
+   ],
+   "box": [
+    283,
+    1449,
+    2245,
+    1576
+   ]
+  },
+  {
+   "text": "to sperate the waste ibased on",
+   "score": 0.9636,
+   "poly": [
+    [
+     291,
+     1535
+    ],
+    [
+     2162,
+     1592
+    ],
+    [
+     2159,
+     1713
+    ],
+    [
+     288,
+     1656
+    ]
+   ],
+   "box": [
+    288,
+    1535,
+    2162,
+    1713
+   ]
+  },
+  {
+   "text": "the degradable abplety.",
+   "score": 0.9535,
+   "poly": [
+    [
+     295,
+     1654
+    ],
+    [
+     1516,
+     1696
+    ],
+    [
+     1512,
+     1812
+    ],
+    [
+     291,
+     1770
+    ]
+   ],
+   "box": [
+    291,
+    1654,
+    1516,
+    1812
+   ]
+  },
+  {
+   "text": "we can ase the composting methed",
+   "score": 0.9141,
+   "poly": [
+    [
+     654,
+     1896
+    ],
+    [
+     2383,
+     1944
+    ],
+    [
+     2380,
+     2046
+    ],
+    [
+     651,
+     1999
+    ]
+   ],
+   "box": [
+    651,
+    1896,
+    2383,
+    2046
+   ]
+  },
+  {
+   "text": "to marge the lomostic waste. we",
+   "score": 0.9557,
+   "poly": [
+    [
+     316,
+     2004
+    ],
+    [
+     2284,
+     2057
+    ],
+    [
+     2282,
+     2159
+    ],
+    [
+     313,
+     2106
+    ]
+   ],
+   "box": [
+    313,
+    2004,
+    2284,
+    2159
+   ]
+  },
+  {
+   "text": "can use the de gradable coates to",
+   "score": 0.9713,
+   "poly": [
+    [
+     305,
+     2121
+    ],
+    [
+     2245,
+     2169
+    ],
+    [
+     2243,
+     2261
+    ],
+    [
+     303,
+     2213
+    ]
+   ],
+   "box": [
+    303,
+    2121,
+    2245,
+    2261
+   ]
+  },
+  {
+   "text": "feed cthe anemals, birds (poulltry)",
+   "score": 0.9643,
+   "poly": [
+    [
+     316,
+     2225
+    ],
+    [
+     2322,
+     2285
+    ],
+    [
+     2319,
+     2389
+    ],
+    [
+     313,
+     2329
+    ]
+   ],
+   "box": [
+    313,
+    2225,
+    2322,
+    2389
+   ]
+  },
+  {
+   "text": "tc..",
+   "score": 0.7218,
+   "poly": [
+    [
+     315,
+     2355
+    ],
+    [
+     573,
+     2359
+    ],
+    [
+     571,
+     2443
+    ],
+    [
+     314,
+     2438
+    ]
+   ],
+   "box": [
+    314,
+    2355,
+    573,
+    2443
+   ]
+  },
+  {
+   "text": "It cwoill chelp to creduce the",
+   "score": 0.9169,
+   "poly": [
+    [
+     706,
+     2464
+    ],
+    [
+     2247,
+     2504
+    ],
+    [
+     2244,
+     2598
+    ],
+    [
+     704,
+     2557
+    ]
+   ],
+   "box": [
+    704,
+    2464,
+    2247,
+    2598
+   ]
+  },
+  {
+   "text": "waste en the enuironment and doenot",
+   "score": 0.9484,
+   "poly": [
+    [
+     328,
+     2569
+    ],
+    [
+     2355,
+     2617
+    ],
+    [
+     2353,
+     2714
+    ],
+    [
+     325,
+     2666
+    ]
+   ],
+   "box": [
+    325,
+    2569,
+    2355,
+    2714
+   ]
+  },
+  {
+   "text": "affect the ecosystem.",
+   "score": 0.9951,
+   "poly": [
+    [
+     327,
+     2685
+    ],
+    [
+     1411,
+     2698
+    ],
+    [
+     1410,
+     2804
+    ],
+    [
+     326,
+     2791
+    ]
+   ],
+   "box": [
+    326,
+    2685,
+    1411,
+    2804
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3296
+}

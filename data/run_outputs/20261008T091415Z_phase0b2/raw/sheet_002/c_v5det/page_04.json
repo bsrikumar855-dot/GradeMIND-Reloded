@@ -1,0 +1,885 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_04.jpg",
+ "latency_s": 1.666,
+ "model_load_s": 0.89,
+ "n_lines": 27,
+ "lines": [
+  {
+   "text": "PARTOC",
+   "text_raw": "PARTOC",
+   "score": 0.7842,
+   "min_token_prob": 0.5402,
+   "box": [
+    1272,
+    334,
+    1639,
+    445
+   ],
+   "poly": [
+    [
+     1275,
+     334
+    ],
+    [
+     1639,
+     347
+    ],
+    [
+     1635,
+     445
+    ],
+    [
+     1272,
+     432
+    ]
+   ],
+   "b_text": "PART-C",
+   "b_score": 0.8644
+  },
+  {
+   "text": "Answom with following",
+   "text_raw": "Answom with following",
+   "score": 0.7631,
+   "min_token_prob": 0.3235,
+   "box": [
+    352,
+    467,
+    1398,
+    582
+   ],
+   "poly": [
+    [
+     352,
+     467
+    ],
+    [
+     1398,
+     473
+    ],
+    [
+     1397,
+     582
+    ],
+    [
+     352,
+     576
+    ]
+   ],
+   "b_text": "Ansunettfatlouding",
+   "b_score": 0.6469
+  },
+  {
+   "text": "16. The effect of domestic master",
+   "text_raw": "16 . The effect of domestic master",
+   "score": 0.7262,
+   "min_token_prob": 0.2149,
+   "box": [
+    187,
+    709,
+    1929,
+    851
+   ],
+   "poly": [
+    [
+     188,
+     709
+    ],
+    [
+     1929,
+     723
+    ],
+    [
+     1928,
+     851
+    ],
+    [
+     187,
+     837
+    ]
+   ],
+   "b_text": "10 The ayd of domefe sater",
+   "b_score": 0.5961
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7976,
+   "min_token_prob": 0.5995,
+   "box": [
+    1095,
+    960,
+    1123,
+    975
+   ],
+   "poly": [
+    [
+     1095,
+     960
+    ],
+    [
+     1123,
+     960
+    ],
+    [
+     1123,
+     975
+    ],
+    [
+     1095,
+     975
+    ]
+   ],
+   "b_text": "鄂",
+   "b_score": 0.1581
+  },
+  {
+   "text": "Domestic coaster",
+   "text_raw": "Domestic coaster",
+   "score": 0.6939,
+   "min_token_prob": 0.2594,
+   "box": [
+    451,
+    978,
+    1264,
+    1096
+   ],
+   "poly": [
+    [
+     453,
+     978
+    ],
+    [
+     1264,
+     994
+    ],
+    [
+     1262,
+     1096
+    ],
+    [
+     451,
+     1080
+    ]
+   ],
+   "b_text": "Domestfcuoaste",
+   "b_score": 0.7264
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5863,
+   "min_token_prob": 0.1741,
+   "box": [
+    2008,
+    983,
+    2021,
+    992
+   ],
+   "poly": [
+    [
+     2008,
+     983
+    ],
+    [
+     2021,
+     983
+    ],
+    [
+     2021,
+     992
+    ],
+    [
+     2008,
+     992
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "# #",
+   "text_raw": "# #",
+   "score": 0.7616,
+   "min_token_prob": 0.6698,
+   "box": [
+    1840,
+    1124,
+    2061,
+    1171
+   ],
+   "poly": [
+    [
+     1840,
+     1124
+    ],
+    [
+     2061,
+     1124
+    ],
+    [
+     2061,
+     1171
+    ],
+    [
+     1840,
+     1171
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "4 Domestic waste \" as a kind of",
+   "text_raw": "4 Domestic waste \" as a kind of",
+   "score": 0.8574,
+   "min_token_prob": 0.4878,
+   "box": [
+    854,
+    1225,
+    2612,
+    1367
+   ],
+   "poly": [
+    [
+     856,
+     1225
+    ],
+    [
+     2612,
+     1245
+    ],
+    [
+     2610,
+     1367
+    ],
+    [
+     854,
+     1347
+    ]
+   ],
+   "b_text": " Domestoc woaste isa kend of",
+   "b_score": 0.7208
+  },
+  {
+   "text": "walde that Es made why The Romans. In",
+   "text_raw": "walde that Es made why The Romans . In",
+   "score": 0.7072,
+   "min_token_prob": 0.1388,
+   "box": [
+    308,
+    1361,
+    2489,
+    1510
+   ],
+   "poly": [
+    [
+     309,
+     1361
+    ],
+    [
+     2489,
+     1376
+    ],
+    [
+     2488,
+     1510
+    ],
+    [
+     308,
+     1494
+    ]
+   ],
+   "b_text": "wate cthat as cmade aby the homans.n",
+   "b_score": 0.7938
+  },
+  {
+   "text": "the home.'",
+   "text_raw": "the home . '",
+   "score": 0.8738,
+   "min_token_prob": 0.6257,
+   "box": [
+    300,
+    1498,
+    785,
+    1615
+   ],
+   "poly": [
+    [
+     302,
+     1498
+    ],
+    [
+     785,
+     1504
+    ],
+    [
+     784,
+     1615
+    ],
+    [
+     300,
+     1609
+    ]
+   ],
+   "b_text": "the honis",
+   "b_score": 0.8255
+  },
+  {
+   "text": "Exi.",
+   "text_raw": "Exi .",
+   "score": 0.7372,
+   "min_token_prob": 0.3923,
+   "box": [
+    352,
+    1639,
+    528,
+    1751
+   ],
+   "poly": [
+    [
+     352,
+     1639
+    ],
+    [
+     528,
+     1639
+    ],
+    [
+     528,
+     1751
+    ],
+    [
+     352,
+     1751
+    ]
+   ],
+   "b_text": "Ex",
+   "b_score": 0.6453
+  },
+  {
+   "text": "# Vegetable waste, # fault waste,",
+   "text_raw": "# Vegetable waste , # fault waste ,",
+   "score": 0.8099,
+   "min_token_prob": 0.2791,
+   "box": [
+    603,
+    1773,
+    2234,
+    1898
+   ],
+   "poly": [
+    [
+     604,
+     1773
+    ],
+    [
+     2234,
+     1788
+    ],
+    [
+     2232,
+     1898
+    ],
+    [
+     603,
+     1882
+    ]
+   ],
+   "b_text": "Vegetable woaste fout ciste",
+   "b_score": 0.7449
+  },
+  {
+   "text": "# glass etc.",
+   "text_raw": "# glass etc .",
+   "score": 0.7597,
+   "min_token_prob": 0.371,
+   "box": [
+    601,
+    1918,
+    1252,
+    2028
+   ],
+   "poly": [
+    [
+     601,
+     1924
+    ],
+    [
+     1251,
+     1918
+    ],
+    [
+     1252,
+     2021
+    ],
+    [
+     602,
+     2028
+    ]
+   ],
+   "b_text": "glass otc",
+   "b_score": 0.7925
+  },
+  {
+   "text": "0 0",
+   "text_raw": "0 0",
+   "score": 0.3457,
+   "min_token_prob": 0.0679,
+   "box": [
+    1070,
+    2151,
+    1165,
+    2192
+   ],
+   "poly": [
+    [
+     1072,
+     2151
+    ],
+    [
+     1165,
+     2156
+    ],
+    [
+     1164,
+     2192
+    ],
+    [
+     1070,
+     2187
+    ]
+   ],
+   "b_text": "雪",
+   "b_score": 0.2972
+  },
+  {
+   "text": "Effects of",
+   "text_raw": "Effects of",
+   "score": 0.8422,
+   "min_token_prob": 0.5431,
+   "box": [
+    432,
+    2166,
+    1018,
+    2305
+   ],
+   "poly": [
+    [
+     435,
+     2166
+    ],
+    [
+     1018,
+     2181
+    ],
+    [
+     1015,
+     2305
+    ],
+    [
+     432,
+     2290
+    ]
+   ],
+   "b_text": "Effeasof",
+   "b_score": 0.7818
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6817,
+   "min_token_prob": 0.6242,
+   "box": [
+    1239,
+    2163,
+    1256,
+    2187
+   ],
+   "poly": [
+    [
+     1239,
+     2163
+    ],
+    [
+     1256,
+     2163
+    ],
+    [
+     1256,
+     2187
+    ],
+    [
+     1239,
+     2187
+    ]
+   ],
+   "b_text": "B",
+   "b_score": 0.0563
+  },
+  {
+   "text": "0.",
+   "text_raw": "0 .",
+   "score": 0.5218,
+   "min_token_prob": 0.2177,
+   "box": [
+    894,
+    2178,
+    942,
+    2199
+   ],
+   "poly": [
+    [
+     894,
+     2178
+    ],
+    [
+     942,
+     2178
+    ],
+    [
+     942,
+     2199
+    ],
+    [
+     894,
+     2199
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "domestic waste \" on freshwater",
+   "text_raw": "domestic waste \" on freshwater",
+   "score": 0.8917,
+   "min_token_prob": 0.6789,
+   "box": [
+    1068,
+    2185,
+    2663,
+    2306
+   ],
+   "poly": [
+    [
+     1069,
+     2185
+    ],
+    [
+     2663,
+     2191
+    ],
+    [
+     2662,
+     2306
+    ],
+    [
+     1068,
+     2300
+    ]
+   ],
+   "b_text": "somestoc loaste on freshloater",
+   "b_score": 0.7746
+  },
+  {
+   "text": "e",
+   "text_raw": "e",
+   "score": 0.6941,
+   "min_token_prob": 0.5083,
+   "box": [
+    391,
+    2195,
+    408,
+    2210
+   ],
+   "poly": [
+    [
+     391,
+     2195
+    ],
+    [
+     408,
+     2195
+    ],
+    [
+     408,
+     2210
+    ],
+    [
+     391,
+     2210
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.1023
+  },
+  {
+   "text": "ecosystem:",
+   "text_raw": "ecosystem :",
+   "score": 0.9693,
+   "min_token_prob": 0.9196,
+   "box": [
+    317,
+    2324,
+    814,
+    2433
+   ],
+   "poly": [
+    [
+     319,
+     2324
+    ],
+    [
+     814,
+     2335
+    ],
+    [
+     812,
+     2433
+    ],
+    [
+     317,
+     2422
+    ]
+   ],
+   "b_text": "ecosysttem",
+   "b_score": 0.9112
+  },
+  {
+   "text": "Freshwater.",
+   "text_raw": "Freshwater .",
+   "score": 0.8851,
+   "min_token_prob": 0.7852,
+   "box": [
+    471,
+    2594,
+    1108,
+    2703
+   ],
+   "poly": [
+    [
+     471,
+     2594
+    ],
+    [
+     1108,
+     2594
+    ],
+    [
+     1108,
+     2703
+    ],
+    [
+     471,
+     2703
+    ]
+   ],
+   "b_text": "Fresh loater",
+   "b_score": 0.8682
+  },
+  {
+   "text": "Lecosystem.",
+   "text_raw": "Lecosystem .",
+   "score": 0.5836,
+   "min_token_prob": 0.1318,
+   "box": [
+    1077,
+    2593,
+    1551,
+    2707
+   ],
+   "poly": [
+    [
+     1079,
+     2593
+    ],
+    [
+     1551,
+     2602
+    ],
+    [
+     1549,
+     2707
+    ],
+    [
+     1077,
+     2699
+    ]
+   ],
+   "b_text": "ecasyste",
+   "b_score": 0.8937
+  },
+  {
+   "text": "\" But As \" a blend of ecosystem. Where",
+   "text_raw": "\" But As \" a blend of ecosystem . Where",
+   "score": 0.7465,
+   "min_token_prob": 0.2876,
+   "box": [
+    917,
+    2855,
+    2691,
+    3010
+   ],
+   "poly": [
+    [
+     918,
+     2855
+    ],
+    [
+     2691,
+     2865
+    ],
+    [
+     2690,
+     3010
+    ],
+    [
+     917,
+     3000
+    ]
+   ],
+   "b_text": "Tit as a iend of erosysten tohere",
+   "b_score": 0.6246
+  },
+  {
+   "text": "where it's no more earth-contends in the",
+   "text_raw": "where it's no more earth-contends in the",
+   "score": 0.708,
+   "min_token_prob": 0.1265,
+   "box": [
+    325,
+    2996,
+    2617,
+    3149
+   ],
+   "poly": [
+    [
+     326,
+     2996
+    ],
+    [
+     2617,
+     3016
+    ],
+    [
+     2616,
+     3149
+    ],
+    [
+     325,
+     3130
+    ]
+   ],
+   "b_text": "there is irio mane eatt contends Sh the",
+   "b_score": 0.6953
+  },
+  {
+   "text": "no acten.",
+   "text_raw": "no acten .",
+   "score": 0.8012,
+   "min_token_prob": 0.3824,
+   "box": [
+    304,
+    3149,
+    609,
+    3267
+   ],
+   "poly": [
+    [
+     304,
+     3166
+    ],
+    [
+     604,
+     3149
+    ],
+    [
+     609,
+     3251
+    ],
+    [
+     310,
+     3267
+    ]
+   ],
+   "b_text": "uocclen",
+   "b_score": 0.6853
+  },
+  {
+   "text": "exi",
+   "text_raw": "exi",
+   "score": 0.4605,
+   "min_token_prob": 0.3206,
+   "box": [
+    361,
+    3275,
+    554,
+    3413
+   ],
+   "poly": [
+    [
+     361,
+     3275
+    ],
+    [
+     554,
+     3275
+    ],
+    [
+     554,
+     3413
+    ],
+    [
+     361,
+     3413
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "pond- # given",
+   "text_raw": "pond- # given",
+   "score": 0.4619,
+   "min_token_prob": 0.2109,
+   "box": [
+    720,
+    3435,
+    1364,
+    3575
+   ],
+   "poly": [
+    [
+     720,
+     3445
+    ],
+    [
+     1362,
+     3435
+    ],
+    [
+     1364,
+     3564
+    ],
+    [
+     722,
+     3575
+    ]
+   ],
+   "b_text": "pond*riven",
+   "b_score": 0.8349
+  }
+ ],
+ "peak_torch_alloc_mib": 2678,
+ "peak_rss_mib_process": 2966
+}

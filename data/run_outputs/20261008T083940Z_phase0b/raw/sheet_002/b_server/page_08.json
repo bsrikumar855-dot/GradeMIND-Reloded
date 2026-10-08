@@ -1,0 +1,560 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_08.jpg",
+ "latency_s": 10.359,
+ "model_load_s": 0.37,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "Effects of deforestofio",
+   "score": 0.7763,
+   "poly": [
+    [
+     465,
+     600
+    ],
+    [
+     1657,
+     592
+    ],
+    [
+     1657,
+     711
+    ],
+    [
+     465,
+     718
+    ]
+   ],
+   "box": [
+    465,
+    592,
+    1657,
+    718
+   ]
+  },
+  {
+   "text": "18",
+   "score": 0.9838,
+   "poly": [
+    [
+     286,
+     611
+    ],
+    [
+     389,
+     611
+    ],
+    [
+     389,
+     698
+    ],
+    [
+     286,
+     698
+    ]
+   ],
+   "box": [
+    286,
+    611,
+    389,
+    698
+   ]
+  },
+  {
+   "text": "8",
+   "score": 0.4281,
+   "poly": [
+    [
+     0,
+     775
+    ],
+    [
+     89,
+     775
+    ],
+    [
+     89,
+     890
+    ],
+    [
+     0,
+     890
+    ]
+   ],
+   "box": [
+    0,
+    775,
+    89,
+    890
+   ]
+  },
+  {
+   "text": "Defocesctat fon ds dae cto cthe cutt ing",
+   "score": 0.7374,
+   "poly": [
+    [
+     881,
+     830
+    ],
+    [
+     2562,
+     809
+    ],
+    [
+     2564,
+     938
+    ],
+    [
+     882,
+     959
+    ]
+   ],
+   "box": [
+    881,
+    809,
+    2564,
+    959
+   ]
+  },
+  {
+   "text": "docon of large amoun't of otrees In cthe",
+   "score": 0.8704,
+   "poly": [
+    [
+     418,
+     959
+    ],
+    [
+     2489,
+     940
+    ],
+    [
+     2490,
+     1068
+    ],
+    [
+     419,
+     1087
+    ]
+   ],
+   "box": [
+    418,
+    940,
+    2490,
+    1087
+   ]
+  },
+  {
+   "text": "forest aroas slie to human purposes loke",
+   "score": 0.7893,
+   "poly": [
+    [
+     398,
+     1087
+    ],
+    [
+     2521,
+     1070
+    ],
+    [
+     2522,
+     1186
+    ],
+    [
+     399,
+     1203
+    ]
+   ],
+   "box": [
+    398,
+    1070,
+    2522,
+    1203
+   ]
+  },
+  {
+   "text": "yoad, buildpng hoase et.",
+   "score": 0.7921,
+   "poly": [
+    [
+     464,
+     1203
+    ],
+    [
+     1833,
+     1211
+    ],
+    [
+     1832,
+     1335
+    ],
+    [
+     463,
+     1327
+    ]
+   ],
+   "box": [
+    463,
+    1203,
+    1833,
+    1335
+   ]
+  },
+  {
+   "text": "Effecls:",
+   "score": 0.8494,
+   "poly": [
+    [
+     485,
+     1444
+    ],
+    [
+     809,
+     1444
+    ],
+    [
+     809,
+     1553
+    ],
+    [
+     485,
+     1553
+    ]
+   ],
+   "box": [
+    485,
+    1444,
+    809,
+    1553
+   ]
+  },
+  {
+   "text": "Dver cutting of drees ufl: deads do",
+   "score": 0.7625,
+   "poly": [
+    [
+     798,
+     1679
+    ],
+    [
+     2540,
+     1684
+    ],
+    [
+     2540,
+     1790
+    ],
+    [
+     798,
+     1785
+    ]
+   ],
+   "box": [
+    798,
+    1679,
+    2540,
+    1790
+   ]
+  },
+  {
+   "text": "enupromontal change and demode change.",
+   "score": 0.8842,
+   "poly": [
+    [
+     408,
+     1797
+    ],
+    [
+     2425,
+     1814
+    ],
+    [
+     2424,
+     1918
+    ],
+    [
+     407,
+     1901
+    ]
+   ],
+   "box": [
+    407,
+    1797,
+    2425,
+    1918
+   ]
+  },
+  {
+   "text": "It also affectthe gcosystom andl",
+   "score": 0.7592,
+   "poly": [
+    [
+     426,
+     1923
+    ],
+    [
+     2493,
+     1934
+    ],
+    [
+     2493,
+     2040
+    ],
+    [
+     425,
+     2029
+    ]
+   ],
+   "box": [
+    425,
+    1923,
+    2493,
+    2040
+   ]
+  },
+  {
+   "text": "the cnimals",
+   "score": 0.8016,
+   "poly": [
+    [
+     411,
+     2043
+    ],
+    [
+     1185,
+     2049
+    ],
+    [
+     1184,
+     2149
+    ],
+    [
+     410,
+     2144
+    ]
+   ],
+   "box": [
+    410,
+    2043,
+    1185,
+    2149
+   ]
+  },
+  {
+   "text": "Deforerdatpon coPll dleads cto maping",
+   "score": 0.8193,
+   "poly": [
+    [
+     808,
+     2269
+    ],
+    [
+     2619,
+     2303
+    ],
+    [
+     2616,
+     2427
+    ],
+    [
+     806,
+     2393
+    ]
+   ],
+   "box": [
+    806,
+    2269,
+    2619,
+    2427
+   ]
+  },
+  {
+   "text": "of desert. If wooe cart ithe drees 9n",
+   "score": 0.7856,
+   "poly": [
+    [
+     395,
+     2400
+    ],
+    [
+     2423,
+     2423
+    ],
+    [
+     2422,
+     2534
+    ],
+    [
+     394,
+     2512
+    ]
+   ],
+   "box": [
+    394,
+    2400,
+    2423,
+    2534
+   ]
+  },
+  {
+   "text": "thi forest cthe coild anemals god desturbed",
+   "score": 0.7936,
+   "poly": [
+    [
+     406,
+     2515
+    ],
+    [
+     2626,
+     2547
+    ],
+    [
+     2624,
+     2666
+    ],
+    [
+     405,
+     2634
+    ]
+   ],
+   "box": [
+    405,
+    2515,
+    2626,
+    2666
+   ]
+  },
+  {
+   "text": "and cthe copld anemals are endes fnto",
+   "score": 0.7793,
+   "poly": [
+    [
+     408,
+     2637
+    ],
+    [
+     2503,
+     2671
+    ],
+    [
+     2501,
+     2775
+    ],
+    [
+     407,
+     2741
+    ]
+   ],
+   "box": [
+    407,
+    2637,
+    2503,
+    2775
+   ]
+  },
+  {
+   "text": "ethe chuman clfuing areas.",
+   "score": 0.8373,
+   "poly": [
+    [
+     422,
+     2741
+    ],
+    [
+     1940,
+     2775
+    ],
+    [
+     1937,
+     2905
+    ],
+    [
+     419,
+     2870
+    ]
+   ],
+   "box": [
+    419,
+    2741,
+    1940,
+    2905
+   ]
+  },
+  {
+   "text": "The coPld anemals are esearch food",
+   "score": 0.8008,
+   "poly": [
+    [
+     728,
+     2985
+    ],
+    [
+     2552,
+     3040
+    ],
+    [
+     2549,
+     3155
+    ],
+    [
+     724,
+     3100
+    ]
+   ],
+   "box": [
+    724,
+    2985,
+    2552,
+    3155
+   ]
+  },
+  {
+   "text": "and coator Pnto ethen chuman elaving aseas",
+   "score": 0.7288,
+   "poly": [
+    [
+     383,
+     3105
+    ],
+    [
+     2608,
+     3169
+    ],
+    [
+     2604,
+     3304
+    ],
+    [
+     379,
+     3240
+    ]
+   ],
+   "box": [
+    379,
+    3105,
+    2608,
+    3304
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3297
+}

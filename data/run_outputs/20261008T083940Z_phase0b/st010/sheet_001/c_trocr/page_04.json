@@ -1,0 +1,565 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_04.jpg",
+ "latency_s": 0.913,
+ "model_load_s": 0.82,
+ "n_lines": 17,
+ "lines": [
+  {
+   "text": "Example's",
+   "text_raw": "Example's",
+   "score": 0.5751,
+   "min_token_prob": 0.5016,
+   "box": [
+    263,
+    265,
+    734,
+    428
+   ],
+   "poly": [
+    [
+     263,
+     279
+    ],
+    [
+     730,
+     265
+    ],
+    [
+     734,
+     415
+    ],
+    [
+     267,
+     428
+    ]
+   ],
+   "b_text": "Examplea",
+   "b_score": 0.828
+  },
+  {
+   "text": "miliar than",
+   "text_raw": "miliar than",
+   "score": 0.5494,
+   "min_token_prob": 0.2239,
+   "box": [
+    351,
+    381,
+    1131,
+    559
+   ],
+   "poly": [
+    [
+     351,
+     389
+    ],
+    [
+     1130,
+     381
+    ],
+    [
+     1131,
+     551
+    ],
+    [
+     352,
+     559
+    ]
+   ],
+   "b_text": "ntigorithar",
+   "b_score": 0.7717
+  },
+  {
+   "text": "14 # stress",
+   "text_raw": "14 # stress",
+   "score": 0.7629,
+   "min_token_prob": 0.5463,
+   "box": [
+    32,
+    627,
+    685,
+    811
+   ],
+   "poly": [
+    [
+     35,
+     627
+    ],
+    [
+     685,
+     638
+    ],
+    [
+     682,
+     811
+    ],
+    [
+     32,
+     800
+    ]
+   ],
+   "b_text": "11→s+ress",
+   "b_score": 0.6536
+  },
+  {
+   "text": "# hearing jump.",
+   "text_raw": "# hearing jump .",
+   "score": 0.6638,
+   "min_token_prob": 0.1878,
+   "box": [
+    186,
+    877,
+    851,
+    1048
+   ],
+   "poly": [
+    [
+     187,
+     877
+    ],
+    [
+     851,
+     884
+    ],
+    [
+     849,
+     1048
+    ],
+    [
+     186,
+     1042
+    ]
+   ],
+   "b_text": "hearing imp",
+   "b_score": 0.9811
+  },
+  {
+   "text": "15x like waste product formed",
+   "text_raw": "15x like waste product formed",
+   "score": 0.9038,
+   "min_token_prob": 0.5303,
+   "box": [
+    0,
+    1098,
+    2016,
+    1333
+   ],
+   "poly": [
+    [
+     0,
+     1098
+    ],
+    [
+     2016,
+     1116
+    ],
+    [
+     2015,
+     1333
+    ],
+    [
+     0,
+     1315
+    ]
+   ],
+   "b_text": "15× like waste product fomed",
+   "b_score": 0.8243
+  },
+  {
+   "text": "so water cannot \" fro.",
+   "text_raw": "so water cannot \" fro .",
+   "score": 0.8588,
+   "min_token_prob": 0.3715,
+   "box": [
+    287,
+    1255,
+    1372,
+    1459
+   ],
+   "poly": [
+    [
+     289,
+     1255
+    ],
+    [
+     1372,
+     1265
+    ],
+    [
+     1370,
+     1459
+    ],
+    [
+     287,
+     1449
+    ]
+   ],
+   "b_text": "So wator cannot flo.",
+   "b_score": 0.808
+  },
+  {
+   "text": "# water became",
+   "text_raw": "# water became",
+   "score": 0.6313,
+   "min_token_prob": 0.2717,
+   "box": [
+    168,
+    1496,
+    1526,
+    1676
+   ],
+   "poly": [
+    [
+     169,
+     1496
+    ],
+    [
+     1526,
+     1500
+    ],
+    [
+     1525,
+     1676
+    ],
+    [
+     168,
+     1672
+    ]
+   ],
+   "b_text": "wator became urhe",
+   "b_score": 0.8814
+  },
+  {
+   "text": "part -",
+   "text_raw": "part -",
+   "score": 0.9493,
+   "min_token_prob": 0.8618,
+   "box": [
+    831,
+    1757,
+    1129,
+    1913
+   ],
+   "poly": [
+    [
+     831,
+     1757
+    ],
+    [
+     1129,
+     1757
+    ],
+    [
+     1129,
+     1913
+    ],
+    [
+     831,
+     1913
+    ]
+   ],
+   "b_text": "part-",
+   "b_score": 0.8854
+  },
+  {
+   "text": "H",
+   "text_raw": "H",
+   "score": 0.4576,
+   "min_token_prob": 0.2751,
+   "box": [
+    60,
+    1781,
+    166,
+    1907
+   ],
+   "poly": [
+    [
+     60,
+     1786
+    ],
+    [
+     160,
+     1781
+    ],
+    [
+     166,
+     1902
+    ],
+    [
+     66,
+     1907
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.3253
+  },
+  {
+   "text": "15 impact of deforestation on biodiversity:",
+   "text_raw": "15 impact of deforestation on biodiversity :",
+   "score": 0.7825,
+   "min_token_prob": 0.4357,
+   "box": [
+    78,
+    1982,
+    2269,
+    2177
+   ],
+   "poly": [
+    [
+     78,
+     1982
+    ],
+    [
+     2269,
+     1986
+    ],
+    [
+     2269,
+     2177
+    ],
+    [
+     78,
+     2173
+    ]
+   ],
+   "b_text": "6 impact of deforestato on bidiesity",
+   "b_score": 0.7218
+  },
+  {
+   "text": "\" make living.",
+   "text_raw": "\" make living .",
+   "score": 0.9467,
+   "min_token_prob": 0.7766,
+   "box": [
+    962,
+    2217,
+    1942,
+    2430
+   ],
+   "poly": [
+    [
+     964,
+     2217
+    ],
+    [
+     1942,
+     2225
+    ],
+    [
+     1940,
+     2430
+    ],
+    [
+     962,
+     2421
+    ]
+   ],
+   "b_text": "make living",
+   "b_score": 0.9305
+  },
+  {
+   "text": "ex deforestation.",
+   "text_raw": "ex deforestation .",
+   "score": 0.8002,
+   "min_token_prob": 0.5009,
+   "box": [
+    191,
+    2226,
+    873,
+    2404
+   ],
+   "poly": [
+    [
+     191,
+     2238
+    ],
+    [
+     870,
+     2226
+    ],
+    [
+     873,
+     2392
+    ],
+    [
+     194,
+     2404
+    ]
+   ],
+   "b_text": " deforestation",
+   "b_score": 0.8529
+  },
+  {
+   "text": "organism life too",
+   "text_raw": "organism life too",
+   "score": 0.7943,
+   "min_token_prob": 0.4327,
+   "box": [
+    242,
+    2348,
+    1519,
+    2578
+   ],
+   "poly": [
+    [
+     242,
+     2362
+    ],
+    [
+     1517,
+     2348
+    ],
+    [
+     1519,
+     2564
+    ],
+    [
+     244,
+     2578
+    ]
+   ],
+   "b_text": "organism life co",
+   "b_score": 0.8204
+  },
+  {
+   "text": "# It, will destroy",
+   "text_raw": "# It , will destroy",
+   "score": 0.8307,
+   "min_token_prob": 0.5959,
+   "box": [
+    181,
+    2586,
+    1504,
+    2771
+   ],
+   "poly": [
+    [
+     181,
+     2586
+    ],
+    [
+     1504,
+     2590
+    ],
+    [
+     1503,
+     2771
+    ],
+    [
+     181,
+     2767
+    ]
+   ],
+   "b_text": "It ui destroy",
+   "b_score": 0.7271
+  },
+  {
+   "text": "good charm.",
+   "text_raw": "good charm .",
+   "score": 0.8458,
+   "min_token_prob": 0.4028,
+   "box": [
+    296,
+    2714,
+    1014,
+    2923
+   ],
+   "poly": [
+    [
+     296,
+     2730
+    ],
+    [
+     1010,
+     2714
+    ],
+    [
+     1014,
+     2908
+    ],
+    [
+     300,
+     2923
+    ]
+   ],
+   "b_text": "food chain",
+   "b_score": 0.849
+  },
+  {
+   "text": "# SO, I.",
+   "text_raw": "# SO , I .",
+   "score": 0.8025,
+   "min_token_prob": 0.3991,
+   "box": [
+    203,
+    2973,
+    708,
+    3108
+   ],
+   "poly": [
+    [
+     203,
+     2973
+    ],
+    [
+     708,
+     2973
+    ],
+    [
+     708,
+     3108
+    ],
+    [
+     203,
+     3108
+    ]
+   ],
+   "b_text": "*SO,I",
+   "b_score": 0.6279
+  },
+  {
+   "text": "extinction of the Spears.",
+   "text_raw": "extinction of the Spears .",
+   "score": 0.947,
+   "min_token_prob": 0.8226,
+   "box": [
+    269,
+    3082,
+    1746,
+    3283
+   ],
+   "poly": [
+    [
+     269,
+     3090
+    ],
+    [
+     1745,
+     3082
+    ],
+    [
+     1746,
+     3276
+    ],
+    [
+     270,
+     3283
+    ]
+   ],
+   "b_text": "extinton of the spass",
+   "b_score": 0.7955
+  }
+ ],
+ "peak_torch_alloc_mib": 2673,
+ "peak_rss_mib_process": 2965
+}

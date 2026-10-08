@@ -1,0 +1,405 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_15.jpg",
+ "latency_s": 0.668,
+ "model_load_s": 0.89,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "organic waste proper non",
+   "text_raw": "organic waste proper non",
+   "score": 0.6981,
+   "min_token_prob": 0.2373,
+   "box": [
+    58,
+    664,
+    2470,
+    1027
+   ],
+   "poly": [
+    [
+     58,
+     784
+    ],
+    [
+     2470,
+     664
+    ],
+    [
+     2470,
+     907
+    ],
+    [
+     70,
+     1027
+    ]
+   ],
+   "b_text": "organ ctepoper mnc ",
+   "b_score": 0.5731
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.2167,
+   "min_token_prob": 0.1021,
+   "box": [
+    61,
+    831,
+    2470,
+    1184
+   ],
+   "poly": [
+    [
+     61,
+     959
+    ],
+    [
+     2458,
+     831
+    ],
+    [
+     2470,
+     1056
+    ],
+    [
+     73,
+     1184
+    ]
+   ],
+   "b_text": "as very useifl from polluting the ovi",
+   "b_score": 0.7321
+  },
+  {
+   "text": "Now days of the Union's advice of",
+   "text_raw": "Now days of the Union's advice of",
+   "score": 0.7349,
+   "min_token_prob": 0.2739,
+   "box": [
+    110,
+    1014,
+    2373,
+    1303
+   ],
+   "poly": [
+    [
+     110,
+     1090
+    ],
+    [
+     2366,
+     1014
+    ],
+    [
+     2373,
+     1227
+    ],
+    [
+     117,
+     1303
+    ]
+   ],
+   "b_text": "Nowo dayss sthe cmain sounce of",
+   "b_score": 0.8165
+  },
+  {
+   "text": "wastage \" are plastics.",
+   "text_raw": "wastage \" are plastics .",
+   "score": 0.9128,
+   "min_token_prob": 0.6393,
+   "box": [
+    109,
+    1232,
+    1511,
+    1452
+   ],
+   "poly": [
+    [
+     109,
+     1275
+    ],
+    [
+     1506,
+     1232
+    ],
+    [
+     1511,
+     1409
+    ],
+    [
+     115,
+     1452
+    ]
+   ],
+   "b_text": "woabtage are plastics.",
+   "b_score": 0.8377
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.42,
+   "min_token_prob": 0.0811,
+   "box": [
+    1551,
+    1347,
+    1567,
+    1362
+   ],
+   "poly": [
+    [
+     1551,
+     1347
+    ],
+    [
+     1567,
+     1347
+    ],
+    [
+     1567,
+     1362
+    ],
+    [
+     1551,
+     1362
+    ]
+   ],
+   "b_text": "海",
+   "b_score": 0.173
+  },
+  {
+   "text": "Prenderating these kinds of waste",
+   "text_raw": "Prenderating these kinds of waste",
+   "score": 0.7543,
+   "min_token_prob": 0.1924,
+   "box": [
+    416,
+    1519,
+    2385,
+    1728
+   ],
+   "poly": [
+    [
+     416,
+     1544
+    ],
+    [
+     2382,
+     1519
+    ],
+    [
+     2385,
+     1703
+    ],
+    [
+     418,
+     1728
+    ]
+   ],
+   "b_text": "Goneradig ethase cbinds of cate",
+   "b_score": 0.7621
+  },
+  {
+   "text": "results with other symptoms.",
+   "text_raw": "results with other symptoms .",
+   "score": 0.5681,
+   "min_token_prob": 0.1529,
+   "box": [
+    746,
+    1687,
+    2456,
+    1857
+   ],
+   "poly": [
+    [
+     746,
+     1698
+    ],
+    [
+     2455,
+     1687
+    ],
+    [
+     2456,
+     1845
+    ],
+    [
+     747,
+     1857
+    ]
+   ],
+   "b_text": "sesutts ieh th euhome",
+   "b_score": 0.6726
+  },
+  {
+   "text": "may always.",
+   "text_raw": "may always .",
+   "score": 0.9323,
+   "min_token_prob": 0.7333,
+   "box": [
+    80,
+    1728,
+    763,
+    1855
+   ],
+   "poly": [
+    [
+     80,
+     1736
+    ],
+    [
+     762,
+     1728
+    ],
+    [
+     763,
+     1847
+    ],
+    [
+     82,
+     1855
+    ]
+   ],
+   "b_text": "may always",
+   "b_score": 0.962
+  },
+  {
+   "text": "problems. improper disposal results in",
+   "text_raw": "problems . improper disposal results in",
+   "score": 0.9138,
+   "min_token_prob": 0.6375,
+   "box": [
+    73,
+    1851,
+    2440,
+    2040
+   ],
+   "poly": [
+    [
+     73,
+     1857
+    ],
+    [
+     2439,
+     1851
+    ],
+    [
+     2440,
+     2034
+    ],
+    [
+     74,
+     2040
+    ]
+   ],
+   "b_text": "problems. Impropen dlesposal seiuts d",
+   "b_score": 0.7582
+  },
+  {
+   "text": "the wastage production and",
+   "text_raw": "the wastage production and",
+   "score": 0.8954,
+   "min_token_prob": 0.3944,
+   "box": [
+    106,
+    1992,
+    1920,
+    2214
+   ],
+   "poly": [
+    [
+     111,
+     1992
+    ],
+    [
+     1920,
+     2038
+    ],
+    [
+     1916,
+     2214
+    ],
+    [
+     106,
+     2168
+    ]
+   ],
+   "b_text": "athe coastage production and",
+   "b_score": 0.846
+  },
+  {
+   "text": "polludes;",
+   "text_raw": "polludes ;",
+   "score": 0.7357,
+   "min_token_prob": 0.4319,
+   "box": [
+    2001,
+    2010,
+    2463,
+    2243
+   ],
+   "poly": [
+    [
+     2001,
+     2056
+    ],
+    [
+     2443,
+     2010
+    ],
+    [
+     2463,
+     2197
+    ],
+    [
+     2021,
+     2243
+    ]
+   ],
+   "b_text": "pollde",
+   "b_score": 0.8415
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.4573,
+   "min_token_prob": 0.1342,
+   "box": [
+    2,
+    2157,
+    13,
+    2166
+   ],
+   "poly": [
+    [
+     2,
+     2157
+    ],
+    [
+     13,
+     2157
+    ],
+    [
+     13,
+     2166
+    ],
+    [
+     2,
+     2166
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.0523
+  }
+ ],
+ "peak_torch_alloc_mib": 2542,
+ "peak_rss_mib_process": 2966
+}

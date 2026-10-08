@@ -1,0 +1,341 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 0.473,
+ "model_load_s": 1.12,
+ "n_lines": 10,
+ "lines": [
+  {
+   "text": "# human",
+   "text_raw": "# human",
+   "score": 0.6953,
+   "min_token_prob": 0.564,
+   "box": [
+    188,
+    230,
+    647,
+    381
+   ],
+   "poly": [
+    [
+     188,
+     230
+    ],
+    [
+     647,
+     230
+    ],
+    [
+     647,
+     381
+    ],
+    [
+     188,
+     381
+    ]
+   ],
+   "b_text": "α human",
+   "b_score": 0.8084
+  },
+  {
+   "text": "from",
+   "text_raw": "from",
+   "score": 0.7074,
+   "min_token_prob": 0.4449,
+   "box": [
+    1702,
+    254,
+    2042,
+    464
+   ],
+   "poly": [
+    [
+     1705,
+     254
+    ],
+    [
+     2042,
+     258
+    ],
+    [
+     2039,
+     464
+    ],
+    [
+     1702,
+     459
+    ]
+   ],
+   "b_text": "fuon",
+   "b_score": 0.7406
+  },
+  {
+   "text": "get.",
+   "text_raw": "get .",
+   "score": 0.8893,
+   "min_token_prob": 0.6683,
+   "box": [
+    826,
+    266,
+    1032,
+    422
+   ],
+   "poly": [
+    [
+     826,
+     266
+    ],
+    [
+     1032,
+     266
+    ],
+    [
+     1032,
+     422
+    ],
+    [
+     826,
+     422
+    ]
+   ],
+   "b_text": "get",
+   "b_score": 0.9686
+  },
+  {
+   "text": "benefits.",
+   "text_raw": "benefits .",
+   "score": 0.9806,
+   "min_token_prob": 0.9645,
+   "box": [
+    1187,
+    274,
+    1584,
+    421
+   ],
+   "poly": [
+    [
+     1188,
+     274
+    ],
+    [
+     1584,
+     278
+    ],
+    [
+     1583,
+     421
+    ],
+    [
+     1187,
+     417
+    ]
+   ],
+   "b_text": "benefits",
+   "b_score": 0.8415
+  },
+  {
+   "text": "this.",
+   "text_raw": "this .",
+   "score": 0.9474,
+   "min_token_prob": 0.8723,
+   "box": [
+    274,
+    349,
+    500,
+    495
+   ],
+   "poly": [
+    [
+     277,
+     349
+    ],
+    [
+     500,
+     354
+    ],
+    [
+     497,
+     495
+    ],
+    [
+     274,
+     490
+    ]
+   ],
+   "b_text": "this",
+   "b_score": 0.7312
+  },
+  {
+   "text": "type.",
+   "text_raw": "type .",
+   "score": 0.9646,
+   "min_token_prob": 0.8956,
+   "box": [
+    661,
+    359,
+    918,
+    526
+   ],
+   "poly": [
+    [
+     668,
+     359
+    ],
+    [
+     918,
+     371
+    ],
+    [
+     911,
+     526
+    ],
+    [
+     661,
+     514
+    ]
+   ],
+   "b_text": "type",
+   "b_score": 0.8451
+  },
+  {
+   "text": "of robusion.",
+   "text_raw": "of robusion .",
+   "score": 0.7925,
+   "min_token_prob": 0.2988,
+   "box": [
+    1056,
+    387,
+    1598,
+    564
+   ],
+   "poly": [
+    [
+     1058,
+     387
+    ],
+    [
+     1598,
+     393
+    ],
+    [
+     1596,
+     564
+    ],
+    [
+     1056,
+     558
+    ]
+   ],
+   "b_text": "of 8a",
+   "b_score": 0.6755
+  },
+  {
+   "text": "# food \" energy.",
+   "text_raw": "# food \" energy .",
+   "score": 0.813,
+   "min_token_prob": 0.3277,
+   "box": [
+    136,
+    535,
+    1125,
+    801
+   ],
+   "poly": [
+    [
+     146,
+     535
+    ],
+    [
+     1125,
+     584
+    ],
+    [
+     1114,
+     801
+    ],
+    [
+     136,
+     752
+    ]
+   ],
+   "b_text": "∞ fod, enorgy",
+   "b_score": 0.8271
+  },
+  {
+   "text": "and",
+   "text_raw": "and",
+   "score": 0.8223,
+   "min_token_prob": 0.6447,
+   "box": [
+    1218,
+    589,
+    1483,
+    765
+   ],
+   "poly": [
+    [
+     1218,
+     589
+    ],
+    [
+     1483,
+     589
+    ],
+    [
+     1483,
+     765
+    ],
+    [
+     1218,
+     765
+    ]
+   ],
+   "b_text": "and",
+   "b_score": 0.9947
+  },
+  {
+   "text": "more.",
+   "text_raw": "more .",
+   "score": 0.8617,
+   "min_token_prob": 0.5862,
+   "box": [
+    1521,
+    604,
+    1869,
+    757
+   ],
+   "poly": [
+    [
+     1523,
+     604
+    ],
+    [
+     1869,
+     608
+    ],
+    [
+     1867,
+     757
+    ],
+    [
+     1521,
+     753
+    ]
+   ],
+   "b_text": "More.",
+   "b_score": 0.8735
+  }
+ ],
+ "peak_torch_alloc_mib": 2477,
+ "peak_rss_mib_process": 2966
+}

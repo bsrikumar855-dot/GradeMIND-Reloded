@@ -1,0 +1,532 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_14.jpg",
+ "latency_s": 11.122,
+ "model_load_s": 0.37,
+ "n_lines": 18,
+ "lines": [
+  {
+   "text": "we can orecycle ctho plastfe",
+   "score": 0.7969,
+   "poly": [
+    [
+     840,
+     459
+    ],
+    [
+     2499,
+     508
+    ],
+    [
+     2496,
+     636
+    ],
+    [
+     836,
+     588
+    ]
+   ],
+   "box": [
+    836,
+    459,
+    2499,
+    636
+   ]
+  },
+  {
+   "text": "coaste and cmade at as a useful",
+   "score": 0.8061,
+   "poly": [
+    [
+     264,
+     582
+    ],
+    [
+     2537,
+     652
+    ],
+    [
+     2534,
+     775
+    ],
+    [
+     261,
+     705
+    ]
+   ],
+   "box": [
+    261,
+    582,
+    2537,
+    775
+   ]
+  },
+  {
+   "text": "product. i we doenod ctake propes",
+   "score": 0.8104,
+   "poly": [
+    [
+     227,
+     714
+    ],
+    [
+     2735,
+     787
+    ],
+    [
+     2731,
+     930
+    ],
+    [
+     223,
+     857
+    ]
+   ],
+   "box": [
+    223,
+    714,
+    2735,
+    930
+   ]
+  },
+  {
+   "text": "waste mangement on plastec it coll",
+   "score": 0.7609,
+   "poly": [
+    [
+     254,
+     855
+    ],
+    [
+     2573,
+     914
+    ],
+    [
+     2570,
+     1057
+    ],
+    [
+     251,
+     998
+    ]
+   ],
+   "box": [
+    251,
+    855,
+    2573,
+    1057
+   ]
+  },
+  {
+   "text": "ctotally affoct the all organisms.",
+   "score": 0.8124,
+   "poly": [
+    [
+     277,
+     994
+    ],
+    [
+     2613,
+     1059
+    ],
+    [
+     2609,
+     1208
+    ],
+    [
+     273,
+     1143
+    ]
+   ],
+   "box": [
+    273,
+    994,
+    2613,
+    1208
+   ]
+  },
+  {
+   "text": "Plastpc are othe cnon-bpodegrad",
+   "score": 0.8515,
+   "poly": [
+    [
+     900,
+     1277
+    ],
+    [
+     2839,
+     1340
+    ],
+    [
+     2835,
+     1477
+    ],
+    [
+     896,
+     1414
+    ]
+   ],
+   "box": [
+    896,
+    1277,
+    2839,
+    1477
+   ]
+  },
+  {
+   "text": "easaly and many of catllos are gto 9t",
+   "score": 0.7904,
+   "poly": [
+    [
+     223,
+     1532
+    ],
+    [
+     2822,
+     1618
+    ],
+    [
+     2816,
+     1787
+    ],
+    [
+     218,
+     1701
+    ]
+   ],
+   "box": [
+    218,
+    1532,
+    2822,
+    1787
+   ]
+  },
+  {
+   "text": "and,dleed",
+   "score": 0.8065,
+   "poly": [
+    [
+     244,
+     1696
+    ],
+    [
+     910,
+     1714
+    ],
+    [
+     907,
+     1836
+    ],
+    [
+     241,
+     1818
+    ]
+   ],
+   "box": [
+    241,
+    1696,
+    910,
+    1836
+   ]
+  },
+  {
+   "text": "Woe chaue gaide Ihe setudonts",
+   "score": 0.7743,
+   "poly": [
+    [
+     897,
+     1989
+    ],
+    [
+     2743,
+     2054
+    ],
+    [
+     2739,
+     2183
+    ],
+    [
+     892,
+     2118
+    ]
+   ],
+   "box": [
+    892,
+    1989,
+    2743,
+    2183
+   ]
+  },
+  {
+   "text": "and tell thomo about tho drauo baces",
+   "score": 0.7203,
+   "poly": [
+    [
+     227,
+     2110
+    ],
+    [
+     2775,
+     2197
+    ],
+    [
+     2771,
+     2325
+    ],
+    [
+     223,
+     2238
+    ]
+   ],
+   "box": [
+    223,
+    2110,
+    2775,
+    2325
+   ]
+  },
+  {
+   "text": "of tthe usage of plastic. and coe",
+   "score": 0.8434,
+   "poly": [
+    [
+     279,
+     2254
+    ],
+    [
+     2648,
+     2340
+    ],
+    [
+     2643,
+     2476
+    ],
+    [
+     274,
+     2391
+    ]
+   ],
+   "box": [
+    274,
+    2254,
+    2648,
+    2476
+   ]
+  },
+  {
+   "text": "can ase pa bio degradable plates Phstead of",
+   "score": 0.7746,
+   "poly": [
+    [
+     275,
+     2399
+    ],
+    [
+     2792,
+     2499
+    ],
+    [
+     2786,
+     2639
+    ],
+    [
+     270,
+     2540
+    ]
+   ],
+   "box": [
+    270,
+    2399,
+    2792,
+    2639
+   ]
+  },
+  {
+   "text": "phastp phto.",
+   "score": 0.7215,
+   "poly": [
+    [
+     276,
+     2564
+    ],
+    [
+     948,
+     2580
+    ],
+    [
+     945,
+     2699
+    ],
+    [
+     273,
+     2683
+    ]
+   ],
+   "box": [
+    273,
+    2564,
+    948,
+    2699
+   ]
+  },
+  {
+   "text": "Mosd of the coaste ses collecded",
+   "score": 0.8848,
+   "poly": [
+    [
+     791,
+     2843
+    ],
+    [
+     2772,
+     2919
+    ],
+    [
+     2767,
+     3061
+    ],
+    [
+     786,
+     2986
+    ]
+   ],
+   "box": [
+    786,
+    2843,
+    2772,
+    3061
+   ]
+  },
+  {
+   "text": "wofthout sogregatfon, ond ff copll resuls on",
+   "score": 0.7316,
+   "poly": [
+    [
+     235,
+     2980
+    ],
+    [
+     2776,
+     3077
+    ],
+    [
+     2771,
+     3206
+    ],
+    [
+     230,
+     3109
+    ]
+   ],
+   "box": [
+    230,
+    2980,
+    2776,
+    3206
+   ]
+  },
+  {
+   "text": "Pmpropor des posal and enuaronmontal probloms",
+   "score": 0.8347,
+   "poly": [
+    [
+     255,
+     3129
+    ],
+    [
+     2906,
+     3234
+    ],
+    [
+     2900,
+     3369
+    ],
+    [
+     250,
+     3263
+    ]
+   ],
+   "box": [
+    250,
+    3129,
+    2906,
+    3369
+   ]
+  },
+  {
+   "text": "Recuclina sholps cthe cohserve cthe naturad",
+   "score": 0.8205,
+   "poly": [
+    [
+     279,
+     3271
+    ],
+    [
+     2902,
+     3381
+    ],
+    [
+     2896,
+     3518
+    ],
+    [
+     274,
+     3408
+    ]
+   ],
+   "box": [
+    274,
+    3271,
+    2902,
+    3518
+   ]
+  },
+  {
+   "text": "oesources.",
+   "score": 0.7346,
+   "poly": [
+    [
+     267,
+     3435
+    ],
+    [
+     817,
+     3455
+    ],
+    [
+     812,
+     3582
+    ],
+    [
+     262,
+     3561
+    ]
+   ],
+   "box": [
+    262,
+    3435,
+    817,
+    3582
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3297
+}

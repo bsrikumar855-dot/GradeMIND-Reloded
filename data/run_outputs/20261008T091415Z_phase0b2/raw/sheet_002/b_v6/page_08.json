@@ -1,0 +1,561 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_08.jpg",
+ "latency_s": 13.013,
+ "model_load_s": 0.39,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "Effects of deforestation:",
+   "score": 0.9169,
+   "poly": [
+    [
+     465,
+     600
+    ],
+    [
+     1657,
+     592
+    ],
+    [
+     1657,
+     711
+    ],
+    [
+     465,
+     718
+    ]
+   ],
+   "box": [
+    465,
+    592,
+    1657,
+    718
+   ]
+  },
+  {
+   "text": "18",
+   "score": 1.0,
+   "poly": [
+    [
+     286,
+     611
+    ],
+    [
+     389,
+     611
+    ],
+    [
+     389,
+     698
+    ],
+    [
+     286,
+     698
+    ]
+   ],
+   "box": [
+    286,
+    611,
+    389,
+    698
+   ]
+  },
+  {
+   "text": "8",
+   "score": 0.3629,
+   "poly": [
+    [
+     0,
+     775
+    ],
+    [
+     89,
+     775
+    ],
+    [
+     89,
+     890
+    ],
+    [
+     0,
+     890
+    ]
+   ],
+   "box": [
+    0,
+    775,
+    89,
+    890
+   ]
+  },
+  {
+   "text": "Defocresetation is due to the cutt ing",
+   "score": 0.9477,
+   "poly": [
+    [
+     881,
+     830
+    ],
+    [
+     2562,
+     809
+    ],
+    [
+     2564,
+     938
+    ],
+    [
+     882,
+     959
+    ]
+   ],
+   "box": [
+    881,
+    809,
+    2564,
+    959
+   ]
+  },
+  {
+   "text": "docon of large amount of strees in the",
+   "score": 0.9376,
+   "poly": [
+    [
+     418,
+     959
+    ],
+    [
+     2489,
+     940
+    ],
+    [
+     2490,
+     1068
+    ],
+    [
+     419,
+     1087
+    ]
+   ],
+   "box": [
+    418,
+    940,
+    2490,
+    1087
+   ]
+  },
+  {
+   "text": "forest areas alue to human purpoases like",
+   "score": 0.9392,
+   "poly": [
+    [
+     398,
+     1087
+    ],
+    [
+     2521,
+     1070
+    ],
+    [
+     2522,
+     1186
+    ],
+    [
+     399,
+     1203
+    ]
+   ],
+   "box": [
+    398,
+    1070,
+    2522,
+    1203
+   ]
+  },
+  {
+   "text": "road, building house etc.,",
+   "score": 0.9829,
+   "poly": [
+    [
+     464,
+     1203
+    ],
+    [
+     1833,
+     1211
+    ],
+    [
+     1832,
+     1335
+    ],
+    [
+     463,
+     1327
+    ]
+   ],
+   "box": [
+    463,
+    1203,
+    1833,
+    1335
+   ]
+  },
+  {
+   "text": "Eftects:",
+   "score": 0.9509,
+   "poly": [
+    [
+     485,
+     1444
+    ],
+    [
+     809,
+     1444
+    ],
+    [
+     809,
+     1553
+    ],
+    [
+     485,
+     1553
+    ]
+   ],
+   "box": [
+    485,
+    1444,
+    809,
+    1553
+   ]
+  },
+  {
+   "text": "Over cutting of drees will deads do",
+   "score": 0.9627,
+   "poly": [
+    [
+     798,
+     1679
+    ],
+    [
+     2540,
+     1684
+    ],
+    [
+     2540,
+     1790
+    ],
+    [
+     798,
+     1785
+    ]
+   ],
+   "box": [
+    798,
+    1679,
+    2540,
+    1790
+   ]
+  },
+  {
+   "text": "envpromental change and clemate change.",
+   "score": 0.9631,
+   "poly": [
+    [
+     408,
+     1797
+    ],
+    [
+     2425,
+     1814
+    ],
+    [
+     2424,
+     1918
+    ],
+    [
+     407,
+     1901
+    ]
+   ],
+   "box": [
+    407,
+    1797,
+    2425,
+    1918
+   ]
+  },
+  {
+   "text": "It also affect  cthe ecosystem and",
+   "score": 0.971,
+   "poly": [
+    [
+     426,
+     1923
+    ],
+    [
+     2493,
+     1934
+    ],
+    [
+     2493,
+     2040
+    ],
+    [
+     425,
+     2029
+    ]
+   ],
+   "box": [
+    425,
+    1923,
+    2493,
+    2040
+   ]
+  },
+  {
+   "text": "the cnimals.",
+   "score": 0.9271,
+   "poly": [
+    [
+     411,
+     2043
+    ],
+    [
+     1185,
+     2049
+    ],
+    [
+     1184,
+     2149
+    ],
+    [
+     410,
+     2144
+    ]
+   ],
+   "box": [
+    410,
+    2043,
+    1185,
+    2149
+   ]
+  },
+  {
+   "text": "Deforertatpon copll leads cto making",
+   "score": 0.9561,
+   "poly": [
+    [
+     808,
+     2269
+    ],
+    [
+     2619,
+     2303
+    ],
+    [
+     2616,
+     2427
+    ],
+    [
+     806,
+     2393
+    ]
+   ],
+   "box": [
+    806,
+    2269,
+    2619,
+    2427
+   ]
+  },
+  {
+   "text": "of desert. 9f we cat ithe drees Pn",
+   "score": 0.9675,
+   "poly": [
+    [
+     395,
+     2400
+    ],
+    [
+     2423,
+     2423
+    ],
+    [
+     2422,
+     2534
+    ],
+    [
+     394,
+     2512
+    ]
+   ],
+   "box": [
+    394,
+    2400,
+    2423,
+    2534
+   ]
+  },
+  {
+   "text": "the forest cthe coild anemals got desturbed",
+   "score": 0.9758,
+   "poly": [
+    [
+     406,
+     2515
+    ],
+    [
+     2626,
+     2547
+    ],
+    [
+     2624,
+     2666
+    ],
+    [
+     405,
+     2634
+    ]
+   ],
+   "box": [
+    405,
+    2515,
+    2626,
+    2666
+   ]
+  },
+  {
+   "text": "and the copld animals are entes Prto",
+   "score": 0.9291,
+   "poly": [
+    [
+     408,
+     2637
+    ],
+    [
+     2503,
+     2671
+    ],
+    [
+     2501,
+     2775
+    ],
+    [
+     407,
+     2741
+    ]
+   ],
+   "box": [
+    407,
+    2637,
+    2503,
+    2775
+   ]
+  },
+  {
+   "text": "the chuman cleupng areas.",
+   "score": 0.9308,
+   "poly": [
+    [
+     422,
+     2741
+    ],
+    [
+     1940,
+     2775
+    ],
+    [
+     1937,
+     2905
+    ],
+    [
+     419,
+     2870
+    ]
+   ],
+   "box": [
+    419,
+    2741,
+    1940,
+    2905
+   ]
+  },
+  {
+   "text": "The wold anemals are search food",
+   "score": 0.9379,
+   "poly": [
+    [
+     728,
+     2985
+    ],
+    [
+     2552,
+     3040
+    ],
+    [
+     2549,
+     3155
+    ],
+    [
+     724,
+     3100
+    ]
+   ],
+   "box": [
+    724,
+    2985,
+    2552,
+    3155
+   ]
+  },
+  {
+   "text": "and coater ento the chuman living arear",
+   "score": 0.8684,
+   "poly": [
+    [
+     383,
+     3105
+    ],
+    [
+     2608,
+     3169
+    ],
+    [
+     2604,
+     3304
+    ],
+    [
+     379,
+     3240
+    ]
+   ],
+   "box": [
+    379,
+    3105,
+    2608,
+    3304
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3296
+}

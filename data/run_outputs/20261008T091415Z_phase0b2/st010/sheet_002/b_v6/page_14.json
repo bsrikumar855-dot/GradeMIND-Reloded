@@ -1,0 +1,533 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_14.jpg",
+ "latency_s": 12.814,
+ "model_load_s": 0.39,
+ "n_lines": 18,
+ "lines": [
+  {
+   "text": "we can recycle cthe plastic",
+   "score": 0.9729,
+   "poly": [
+    [
+     840,
+     463
+    ],
+    [
+     2495,
+     510
+    ],
+    [
+     2492,
+     632
+    ],
+    [
+     836,
+     586
+    ]
+   ],
+   "box": [
+    836,
+    463,
+    2495,
+    632
+   ]
+  },
+  {
+   "text": "waste and made 9t as a usedul",
+   "score": 0.9717,
+   "poly": [
+    [
+     266,
+     588
+    ],
+    [
+     2531,
+     652
+    ],
+    [
+     2528,
+     767
+    ],
+    [
+     263,
+     703
+    ]
+   ],
+   "box": [
+    263,
+    588,
+    2531,
+    767
+   ]
+  },
+  {
+   "text": "product. if we doesnoct stake proper",
+   "score": 0.9506,
+   "poly": [
+    [
+     233,
+     717
+    ],
+    [
+     2727,
+     787
+    ],
+    [
+     2723,
+     924
+    ],
+    [
+     229,
+     853
+    ]
+   ],
+   "box": [
+    229,
+    717,
+    2727,
+    924
+   ]
+  },
+  {
+   "text": "coaste mangement on plastic 96 will",
+   "score": 0.941,
+   "poly": [
+    [
+     260,
+     857
+    ],
+    [
+     2569,
+     916
+    ],
+    [
+     2566,
+     1052
+    ],
+    [
+     257,
+     994
+    ]
+   ],
+   "box": [
+    257,
+    857,
+    2569,
+    1052
+   ]
+  },
+  {
+   "text": "ctotally affect the all organesms.",
+   "score": 0.9663,
+   "poly": [
+    [
+     278,
+     996
+    ],
+    [
+     2599,
+     1059
+    ],
+    [
+     2596,
+     1201
+    ],
+    [
+     275,
+     1139
+    ]
+   ],
+   "box": [
+    275,
+    996,
+    2599,
+    1201
+   ]
+  },
+  {
+   "text": "Plastpc are the inon-beodegrad",
+   "score": 0.9446,
+   "poly": [
+    [
+     900,
+     1277
+    ],
+    [
+     2835,
+     1338
+    ],
+    [
+     2831,
+     1473
+    ],
+    [
+     896,
+     1412
+    ]
+   ],
+   "box": [
+    896,
+    1277,
+    2835,
+    1473
+   ]
+  },
+  {
+   "text": "easaly and many of cattles are ato ",
+   "score": 0.9599,
+   "poly": [
+    [
+     227,
+     1534
+    ],
+    [
+     2814,
+     1618
+    ],
+    [
+     2809,
+     1781
+    ],
+    [
+     222,
+     1697
+    ]
+   ],
+   "box": [
+    222,
+    1534,
+    2814,
+    1781
+   ]
+  },
+  {
+   "text": "and deed.",
+   "score": 0.9778,
+   "poly": [
+    [
+     247,
+     1700
+    ],
+    [
+     908,
+     1714
+    ],
+    [
+     906,
+     1830
+    ],
+    [
+     245,
+     1817
+    ]
+   ],
+   "box": [
+    245,
+    1700,
+    908,
+    1830
+   ]
+  },
+  {
+   "text": "we chave gaide the situdents",
+   "score": 0.9683,
+   "poly": [
+    [
+     899,
+     1983
+    ],
+    [
+     2738,
+     2052
+    ],
+    [
+     2733,
+     2183
+    ],
+    [
+     894,
+     2114
+    ]
+   ],
+   "box": [
+    894,
+    1983,
+    2738,
+    2183
+   ]
+  },
+  {
+   "text": "and tell them about the drawbacks",
+   "score": 0.9622,
+   "poly": [
+    [
+     231,
+     2114
+    ],
+    [
+     2771,
+     2199
+    ],
+    [
+     2767,
+     2321
+    ],
+    [
+     227,
+     2236
+    ]
+   ],
+   "box": [
+    227,
+    2114,
+    2771,
+    2321
+   ]
+  },
+  {
+   "text": "of the usage of plastic. and coe",
+   "score": 0.9556,
+   "poly": [
+    [
+     279,
+     2256
+    ],
+    [
+     2642,
+     2340
+    ],
+    [
+     2637,
+     2472
+    ],
+    [
+     274,
+     2389
+    ]
+   ],
+   "box": [
+    274,
+    2256,
+    2642,
+    2472
+   ]
+  },
+  {
+   "text": "can use pya bio degradable plates Phetead d",
+   "score": 0.9235,
+   "poly": [
+    [
+     279,
+     2401
+    ],
+    [
+     2786,
+     2496
+    ],
+    [
+     2781,
+     2631
+    ],
+    [
+     274,
+     2536
+    ]
+   ],
+   "box": [
+    274,
+    2401,
+    2786,
+    2631
+   ]
+  },
+  {
+   "text": "plaste pate.",
+   "score": 0.9191,
+   "poly": [
+    [
+     277,
+     2567
+    ],
+    [
+     946,
+     2578
+    ],
+    [
+     944,
+     2695
+    ],
+    [
+     275,
+     2683
+    ]
+   ],
+   "box": [
+    275,
+    2567,
+    946,
+    2695
+   ]
+  },
+  {
+   "text": "Mosd of the coaste es colleded",
+   "score": 0.9758,
+   "poly": [
+    [
+     795,
+     2847
+    ],
+    [
+     2764,
+     2919
+    ],
+    [
+     2759,
+     3055
+    ],
+    [
+     790,
+     2984
+    ]
+   ],
+   "box": [
+    790,
+    2847,
+    2764,
+    3055
+   ]
+  },
+  {
+   "text": "oithout sogregation, ond et coill results en",
+   "score": 0.9294,
+   "poly": [
+    [
+     239,
+     2986
+    ],
+    [
+     2771,
+     3079
+    ],
+    [
+     2767,
+     3200
+    ],
+    [
+     234,
+     3107
+    ]
+   ],
+   "box": [
+    234,
+    2986,
+    2771,
+    3200
+   ]
+  },
+  {
+   "text": "Improper desposal and enuaronmontal problens",
+   "score": 0.9495,
+   "poly": [
+    [
+     261,
+     3131
+    ],
+    [
+     2908,
+     3236
+    ],
+    [
+     2903,
+     3365
+    ],
+    [
+     256,
+     3259
+    ]
+   ],
+   "box": [
+    256,
+    3131,
+    2908,
+    3365
+   ]
+  },
+  {
+   "text": "Reculeng helps the conserve cthe natural",
+   "score": 0.9575,
+   "poly": [
+    [
+     281,
+     3271
+    ],
+    [
+     2902,
+     3379
+    ],
+    [
+     2896,
+     3514
+    ],
+    [
+     276,
+     3406
+    ]
+   ],
+   "box": [
+    276,
+    3271,
+    2902,
+    3514
+   ]
+  },
+  {
+   "text": "cresources.",
+   "score": 0.9819,
+   "poly": [
+    [
+     273,
+     3437
+    ],
+    [
+     819,
+     3455
+    ],
+    [
+     815,
+     3576
+    ],
+    [
+     269,
+     3557
+    ]
+   ],
+   "box": [
+    269,
+    3437,
+    819,
+    3576
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3336
+}

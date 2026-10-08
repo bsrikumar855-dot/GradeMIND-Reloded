@@ -1,0 +1,597 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_04.jpg",
+ "latency_s": 1.078,
+ "model_load_s": 0.84,
+ "n_lines": 18,
+ "lines": [
+  {
+   "text": "PARTOC",
+   "text_raw": "PARTOC",
+   "score": 0.7798,
+   "min_token_prob": 0.7167,
+   "box": [
+    1279,
+    338,
+    1612,
+    441
+   ],
+   "poly": [
+    [
+     1282,
+     338
+    ],
+    [
+     1612,
+     347
+    ],
+    [
+     1609,
+     441
+    ],
+    [
+     1279,
+     432
+    ]
+   ],
+   "b_text": "PART-C",
+   "b_score": 0.9061
+  },
+  {
+   "text": "Answer with following",
+   "text_raw": "Answer with following",
+   "score": 0.8315,
+   "min_token_prob": 0.5498,
+   "box": [
+    355,
+    464,
+    1394,
+    576
+   ],
+   "poly": [
+    [
+     357,
+     464
+    ],
+    [
+     1394,
+     480
+    ],
+    [
+     1393,
+     576
+    ],
+    [
+     355,
+     560
+    ]
+   ],
+   "b_text": "Ansuefotloding",
+   "b_score": 0.702
+  },
+  {
+   "text": "16. The effect of domestic master",
+   "text_raw": "16 . The effect of domestic master",
+   "score": 0.7911,
+   "min_token_prob": 0.3611,
+   "box": [
+    177,
+    703,
+    1926,
+    853
+   ],
+   "poly": [
+    [
+     179,
+     703
+    ],
+    [
+     1926,
+     727
+    ],
+    [
+     1924,
+     853
+    ],
+    [
+     177,
+     830
+    ]
+   ],
+   "b_text": "16 Theayd of domefe coater",
+   "b_score": 0.5981
+  },
+  {
+   "text": "Domestic waste.",
+   "text_raw": "Domestic waste .",
+   "score": 0.6824,
+   "min_token_prob": 0.1706,
+   "box": [
+    448,
+    977,
+    1258,
+    1088
+   ],
+   "poly": [
+    [
+     449,
+     977
+    ],
+    [
+     1258,
+     985
+    ],
+    [
+     1257,
+     1088
+    ],
+    [
+     448,
+     1080
+    ]
+   ],
+   "b_text": "Domestrc uoaster",
+   "b_score": 0.7328
+  },
+  {
+   "text": "4 Domestic waste.",
+   "text_raw": "4 Domestic waste .",
+   "score": 0.9926,
+   "min_token_prob": 0.9829,
+   "box": [
+    858,
+    1242,
+    1827,
+    1348
+   ],
+   "poly": [
+    [
+     859,
+     1242
+    ],
+    [
+     1827,
+     1252
+    ],
+    [
+     1826,
+     1348
+    ],
+    [
+     858,
+     1338
+    ]
+   ],
+   "b_text": "DomesetPc waste",
+   "b_score": 0.8205
+  },
+  {
+   "text": "as \" a trend of",
+   "text_raw": "as \" a trend of",
+   "score": 0.8812,
+   "min_token_prob": 0.6539,
+   "box": [
+    1905,
+    1236,
+    2608,
+    1360
+   ],
+   "poly": [
+    [
+     1908,
+     1236
+    ],
+    [
+     2608,
+     1251
+    ],
+    [
+     2606,
+     1360
+    ],
+    [
+     1905,
+     1345
+    ]
+   ],
+   "b_text": "asta kend of",
+   "b_score": 0.6715
+  },
+  {
+   "text": "walde that as made by the humans. In",
+   "text_raw": "walde that as made by the humans . In",
+   "score": 0.72,
+   "min_token_prob": 0.3293,
+   "box": [
+    312,
+    1361,
+    2487,
+    1506
+   ],
+   "poly": [
+    [
+     313,
+     1361
+    ],
+    [
+     2487,
+     1378
+    ],
+    [
+     2486,
+     1506
+    ],
+    [
+     312,
+     1489
+    ]
+   ],
+   "b_text": "waidte cthat as cmade aby the hiomans. n",
+   "b_score": 0.7232
+  },
+  {
+   "text": "the home.",
+   "text_raw": "the home .",
+   "score": 0.886,
+   "min_token_prob": 0.665,
+   "box": [
+    313,
+    1503,
+    755,
+    1614
+   ],
+   "poly": [
+    [
+     316,
+     1503
+    ],
+    [
+     755,
+     1514
+    ],
+    [
+     753,
+     1614
+    ],
+    [
+     313,
+     1603
+    ]
+   ],
+   "b_text": "the hone",
+   "b_score": 0.8468
+  },
+  {
+   "text": "Exi.",
+   "text_raw": "Exi .",
+   "score": 0.8396,
+   "min_token_prob": 0.5946,
+   "box": [
+    350,
+    1641,
+    520,
+    1745
+   ],
+   "poly": [
+    [
+     350,
+     1641
+    ],
+    [
+     520,
+     1641
+    ],
+    [
+     520,
+     1745
+    ],
+    [
+     350,
+     1745
+    ]
+   ],
+   "b_text": "Ex",
+   "b_score": 0.7478
+  },
+  {
+   "text": "# Vegetable waste, # fault waste,",
+   "text_raw": "# Vegetable waste , # fault waste ,",
+   "score": 0.8603,
+   "min_token_prob": 0.568,
+   "box": [
+    605,
+    1775,
+    2232,
+    1900
+   ],
+   "poly": [
+    [
+     606,
+     1775
+    ],
+    [
+     2232,
+     1790
+    ],
+    [
+     2231,
+     1900
+    ],
+    [
+     605,
+     1884
+    ]
+   ],
+   "b_text": "egetable woaste fiut ciste",
+   "b_score": 0.7886
+  },
+  {
+   "text": "# glass etc...",
+   "text_raw": "# glass etc ...",
+   "score": 0.7708,
+   "min_token_prob": 0.2106,
+   "box": [
+    601,
+    1916,
+    1263,
+    2025
+   ],
+   "poly": [
+    [
+     601,
+     1916
+    ],
+    [
+     1263,
+     1916
+    ],
+    [
+     1263,
+     2025
+    ],
+    [
+     601,
+     2025
+    ]
+   ],
+   "b_text": "glass otc",
+   "b_score": 0.8016
+  },
+  {
+   "text": "Effects of domestic waste on freshwater",
+   "text_raw": "Effects of domestic waste on freshwater",
+   "score": 0.8778,
+   "min_token_prob": 0.3974,
+   "box": [
+    433,
+    2174,
+    2659,
+    2304
+   ],
+   "poly": [
+    [
+     433,
+     2174
+    ],
+    [
+     2659,
+     2184
+    ],
+    [
+     2658,
+     2304
+    ],
+    [
+     433,
+     2294
+    ]
+   ],
+   "b_text": "Effects  of dometfc coaste on freshuoater",
+   "b_score": 0.7693
+  },
+  {
+   "text": "ecosystem:",
+   "text_raw": "ecosystem :",
+   "score": 0.9712,
+   "min_token_prob": 0.9185,
+   "box": [
+    317,
+    2326,
+    819,
+    2428
+   ],
+   "poly": [
+    [
+     318,
+     2326
+    ],
+    [
+     819,
+     2331
+    ],
+    [
+     818,
+     2428
+    ],
+    [
+     317,
+     2424
+    ]
+   ],
+   "b_text": "ecosysttem",
+   "b_score": 0.9033
+  },
+  {
+   "text": "Fresh border ecosystem:",
+   "text_raw": "Fresh border ecosystem :",
+   "score": 0.8411,
+   "min_token_prob": 0.6054,
+   "box": [
+    467,
+    2594,
+    1581,
+    2705
+   ],
+   "poly": [
+    [
+     467,
+     2594
+    ],
+    [
+     1581,
+     2598
+    ],
+    [
+     1581,
+     2705
+    ],
+    [
+     467,
+     2701
+    ]
+   ],
+   "b_text": "Freshloator ecasyste",
+   "b_score": 0.8358
+  },
+  {
+   "text": "Tut is a word of ecosystem before",
+   "text_raw": "Tut is a word of ecosystem before",
+   "score": 0.7858,
+   "min_token_prob": 0.361,
+   "box": [
+    970,
+    2857,
+    2687,
+    3006
+   ],
+   "poly": [
+    [
+     971,
+     2857
+    ],
+    [
+     2687,
+     2873
+    ],
+    [
+     2686,
+     3006
+    ],
+    [
+     970,
+     2991
+    ]
+   ],
+   "b_text": "Tt s a kind of erosysten iohere",
+   "b_score": 0.7438
+  },
+  {
+   "text": "other it's no more earth contests in the",
+   "text_raw": "other it's no more earth contests in the",
+   "score": 0.6532,
+   "min_token_prob": 0.0992,
+   "box": [
+    336,
+    2998,
+    2612,
+    3142
+   ],
+   "poly": [
+    [
+     337,
+     2998
+    ],
+    [
+     2612,
+     3016
+    ],
+    [
+     2611,
+     3142
+    ],
+    [
+     336,
+     3124
+    ]
+   ],
+   "b_text": "there s ia umore catt contendks Sh the",
+   "b_score": 0.6795
+  },
+  {
+   "text": "no acten.",
+   "text_raw": "no acten .",
+   "score": 0.8305,
+   "min_token_prob": 0.5518,
+   "box": [
+    317,
+    3143,
+    642,
+    3266
+   ],
+   "poly": [
+    [
+     317,
+     3150
+    ],
+    [
+     639,
+     3143
+    ],
+    [
+     642,
+     3260
+    ],
+    [
+     319,
+     3266
+    ]
+   ],
+   "b_text": "uoaten.",
+   "b_score": 0.6052
+  },
+  {
+   "text": "# pond # silver.",
+   "text_raw": "# pond # silver .",
+   "score": 0.6178,
+   "min_token_prob": 0.2557,
+   "box": [
+    607,
+    3448,
+    1367,
+    3561
+   ],
+   "poly": [
+    [
+     607,
+     3452
+    ],
+    [
+     1367,
+     3448
+    ],
+    [
+     1367,
+     3557
+    ],
+    [
+     607,
+     3561
+    ]
+   ],
+   "b_text": "pond*riven",
+   "b_score": 0.7803
+  }
+ ],
+ "peak_torch_alloc_mib": 2676,
+ "peak_rss_mib_process": 2962
+}

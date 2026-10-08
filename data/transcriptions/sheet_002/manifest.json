@@ -1,0 +1,18 @@
+{
+  "sheet_id": "sheet_002",
+  "status": "DRAFT_UNVERIFIED",
+  "drafted_by": "claude (visual reading of the scan) -- NOT ground truth until owner-verified",
+  "verified_by": null,
+  "verified_at": null,
+  "pages": ["page_02.txt", "page_12.txt"],
+  "conventions": "docs/TRANSCRIPTION_GUIDE.md",
+  "notes": [
+    "Writer's 't' has a leading stroke (looks like 'ct'/'d'); 'i' looks like 'P'/'?'. Drafted as the intended letters -- please check the word choices, e.g. 'due to' vs 'due do'.",
+    "page_02 Q10 answer looks like 'del' but may be 'dB' (decibel) -- critical unit token, please verify carefully",
+    "page_02 question labels in rows 3-8 are hard to read (one row may be 4 or 5; two rows look like 8)",
+    "page_02 lines 1-2 (Biodiversity / Biosphere reserve) are heavily smudged",
+    "page_02 Part B label read as '1?.' -- likely 13 or 15",
+    "page_12 left-margin text ('38', 'ent', 'ment') is from the facing page in the photo -- excluded",
+    "page_12 Part D label read as '1? (A)' -- likely 17 or 19"
+  ]
+}

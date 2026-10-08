@@ -1,0 +1,1237 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_04.jpg",
+ "latency_s": 2.163,
+ "model_load_s": 0.87,
+ "n_lines": 38,
+ "lines": [
+  {
+   "text": "off any",
+   "text_raw": "off any",
+   "score": 0.5279,
+   "min_token_prob": 0.1776,
+   "box": [
+    1387,
+    273,
+    2013,
+    413
+   ],
+   "poly": [
+    [
+     1390,
+     273
+    ],
+    [
+     2013,
+     287
+    ],
+    [
+     2010,
+     413
+    ],
+    [
+     1387,
+     399
+    ]
+   ],
+   "b_text": "0402x",
+   "b_score": 0.6156
+  },
+  {
+   "text": "Example is",
+   "text_raw": "Example is",
+   "score": 0.5786,
+   "min_token_prob": 0.3605,
+   "box": [
+    271,
+    280,
+    732,
+    411
+   ],
+   "poly": [
+    [
+     271,
+     291
+    ],
+    [
+     729,
+     280
+    ],
+    [
+     732,
+     401
+    ],
+    [
+     273,
+     411
+    ]
+   ],
+   "b_text": "Example a",
+   "b_score": 0.8795
+  },
+  {
+   "text": "muligeritharagad's about",
+   "text_raw": "muligeritharagad's about",
+   "score": 0.4916,
+   "min_token_prob": 0.1788,
+   "box": [
+    559,
+    372,
+    1960,
+    559
+   ],
+   "poly": [
+    [
+     560,
+     372
+    ],
+    [
+     1960,
+     386
+    ],
+    [
+     1959,
+     559
+    ],
+    [
+     559,
+     545
+    ]
+   ],
+   "b_text": "nii giri thar sd t 8k",
+   "b_score": 0.5879
+  },
+  {
+   "text": "14- Distissandro storageor",
+   "text_raw": "14- Distissandro storageor",
+   "score": 0.3145,
+   "min_token_prob": 0.095,
+   "box": [
+    49,
+    622,
+    1477,
+    798
+   ],
+   "poly": [
+    [
+     49,
+     622
+    ],
+    [
+     1477,
+     630
+    ],
+    [
+     1476,
+     798
+    ],
+    [
+     49,
+     790
+    ]
+   ],
+   "b_text": "121.→s+resgi 8to90r",
+   "b_score": 0.618
+  },
+  {
+   "text": "200 ft",
+   "text_raw": "200 ft",
+   "score": 0.3938,
+   "min_token_prob": 0.2447,
+   "box": [
+    1512,
+    658,
+    2049,
+    793
+   ],
+   "poly": [
+    [
+     1515,
+     658
+    ],
+    [
+     2049,
+     673
+    ],
+    [
+     2046,
+     793
+    ],
+    [
+     1512,
+     778
+    ]
+   ],
+   "b_text": "204",
+   "b_score": 0.6918
+  },
+  {
+   "text": "Here #",
+   "text_raw": "Here #",
+   "score": 0.3129,
+   "min_token_prob": 0.237,
+   "box": [
+    889,
+    773,
+    1492,
+    904
+   ],
+   "poly": [
+    [
+     892,
+     773
+    ],
+    [
+     1492,
+     789
+    ],
+    [
+     1489,
+     904
+    ],
+    [
+     889,
+     888
+    ]
+   ],
+   "b_text": "A0",
+   "b_score": 0.4642
+  },
+  {
+   "text": "treatless.",
+   "text_raw": "treatless .",
+   "score": 0.4491,
+   "min_token_prob": 0.1463,
+   "box": [
+    1598,
+    785,
+    1942,
+    896
+   ],
+   "poly": [
+    [
+     1598,
+     785
+    ],
+    [
+     1942,
+     785
+    ],
+    [
+     1942,
+     896
+    ],
+    [
+     1598,
+     896
+    ]
+   ],
+   "b_text": "twodiu",
+   "b_score": 0.5882
+  },
+  {
+   "text": "shearing Impact",
+   "text_raw": "shearing Impact",
+   "score": 0.4837,
+   "min_token_prob": 0.1321,
+   "box": [
+    193,
+    888,
+    1059,
+    1034
+   ],
+   "poly": [
+    [
+     195,
+     888
+    ],
+    [
+     1059,
+     904
+    ],
+    [
+     1057,
+     1034
+    ],
+    [
+     193,
+     1018
+    ]
+   ],
+   "b_text": "→hearing impact",
+   "b_score": 0.9184
+  },
+  {
+   "text": "lookies.",
+   "text_raw": "lookies .",
+   "score": 0.691,
+   "min_token_prob": 0.1423,
+   "box": [
+    1679,
+    885,
+    1960,
+    1022
+   ],
+   "poly": [
+    [
+     1679,
+     885
+    ],
+    [
+     1960,
+     885
+    ],
+    [
+     1960,
+     1022
+    ],
+    [
+     1679,
+     1022
+    ]
+   ],
+   "b_text": "10085",
+   "b_score": 0.5242
+  },
+  {
+   "text": "\" Strauss.",
+   "text_raw": "\" Strauss .",
+   "score": 0.7374,
+   "min_token_prob": 0.2791,
+   "box": [
+    1196,
+    903,
+    1493,
+    1017
+   ],
+   "poly": [
+    [
+     1196,
+     903
+    ],
+    [
+     1493,
+     903
+    ],
+    [
+     1493,
+     1017
+    ],
+    [
+     1196,
+     1017
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.2552
+  },
+  {
+   "text": "classedment.",
+   "text_raw": "classedment .",
+   "score": 0.5771,
+   "min_token_prob": 0.1722,
+   "box": [
+    1634,
+    1007,
+    1976,
+    1139
+   ],
+   "poly": [
+    [
+     1634,
+     1007
+    ],
+    [
+     1976,
+     1007
+    ],
+    [
+     1976,
+     1139
+    ],
+    [
+     1634,
+     1139
+    ]
+   ],
+   "b_text": "den",
+   "b_score": 0.3955
+  },
+  {
+   "text": "product.",
+   "text_raw": "product .",
+   "score": 0.9772,
+   "min_token_prob": 0.9339,
+   "box": [
+    1118,
+    1127,
+    1503,
+    1280
+   ],
+   "poly": [
+    [
+     1120,
+     1127
+    ],
+    [
+     1503,
+     1134
+    ],
+    [
+     1500,
+     1280
+    ],
+    [
+     1118,
+     1273
+    ]
+   ],
+   "b_text": "product",
+   "b_score": 0.9746
+  },
+  {
+   "text": "formed.",
+   "text_raw": "formed .",
+   "score": 0.8805,
+   "min_token_prob": 0.786,
+   "box": [
+    1646,
+    1116,
+    2028,
+    1326
+   ],
+   "poly": [
+    [
+     1646,
+     1123
+    ],
+    [
+     2024,
+     1116
+    ],
+    [
+     2028,
+     1318
+    ],
+    [
+     1649,
+     1326
+    ]
+   ],
+   "b_text": "formed",
+   "b_score": 0.8837
+  },
+  {
+   "text": "15, X like waste",
+   "text_raw": "15, X like waste",
+   "score": 0.699,
+   "min_token_prob": 0.1843,
+   "box": [
+    75,
+    1131,
+    978,
+    1282
+   ],
+   "poly": [
+    [
+     75,
+     1143
+    ],
+    [
+     976,
+     1131
+    ],
+    [
+     978,
+     1270
+    ],
+    [
+     77,
+     1282
+    ]
+   ],
+   "b_text": "15× likewaste",
+   "b_score": 0.8613
+  },
+  {
+   "text": "so whatever cannot \" grow.",
+   "text_raw": "so whatever cannot \" grow .",
+   "score": 0.7487,
+   "min_token_prob": 0.175,
+   "box": [
+    288,
+    1255,
+    1404,
+    1447
+   ],
+   "poly": [
+    [
+     288,
+     1255
+    ],
+    [
+     1404,
+     1259
+    ],
+    [
+     1404,
+     1447
+    ],
+    [
+     288,
+     1443
+    ]
+   ],
+   "b_text": "so water camot flow",
+   "b_score": 0.8528
+  },
+  {
+   "text": "ex water became",
+   "text_raw": "ex water became",
+   "score": 0.8981,
+   "min_token_prob": 0.6472,
+   "box": [
+    166,
+    1489,
+    1112,
+    1658
+   ],
+   "poly": [
+    [
+     168,
+     1489
+    ],
+    [
+     1112,
+     1499
+    ],
+    [
+     1110,
+     1658
+    ],
+    [
+     166,
+     1647
+    ]
+   ],
+   "b_text": " wator became",
+   "b_score": 0.8842
+  },
+  {
+   "text": "unhealthy.",
+   "text_raw": "unhealthy .",
+   "score": 0.9512,
+   "min_token_prob": 0.8212,
+   "box": [
+    1288,
+    1494,
+    1743,
+    1665
+   ],
+   "poly": [
+    [
+     1290,
+     1494
+    ],
+    [
+     1743,
+     1501
+    ],
+    [
+     1741,
+     1665
+    ],
+    [
+     1288,
+     1658
+    ]
+   ],
+   "b_text": "unhealthy",
+   "b_score": 0.8953
+  },
+  {
+   "text": "vin-townplace.",
+   "text_raw": "vin-townplace .",
+   "score": 0.5445,
+   "min_token_prob": 0.0708,
+   "box": [
+    444,
+    1642,
+    918,
+    1756
+   ],
+   "poly": [
+    [
+     447,
+     1642
+    ],
+    [
+     918,
+     1654
+    ],
+    [
+     916,
+     1756
+    ],
+    [
+     444,
+     1744
+    ]
+   ],
+   "b_text": "ritowob",
+   "b_score": 0.4812
+  },
+  {
+   "text": "grugoms.",
+   "text_raw": "grugoms .",
+   "score": 0.6606,
+   "min_token_prob": 0.2353,
+   "box": [
+    1606,
+    1647,
+    1988,
+    1758
+   ],
+   "poly": [
+    [
+     1606,
+     1656
+    ],
+    [
+     1985,
+     1647
+    ],
+    [
+     1988,
+     1749
+    ],
+    [
+     1608,
+     1758
+    ]
+   ],
+   "b_text": "SMWCOOM,",
+   "b_score": 0.3902
+  },
+  {
+   "text": "out",
+   "text_raw": "out",
+   "score": 0.7171,
+   "min_token_prob": 0.6185,
+   "box": [
+    1343,
+    1668,
+    1440,
+    1745
+   ],
+   "poly": [
+    [
+     1343,
+     1668
+    ],
+    [
+     1440,
+     1668
+    ],
+    [
+     1440,
+     1745
+    ],
+    [
+     1343,
+     1745
+    ]
+   ],
+   "b_text": "心",
+   "b_score": 0.162
+  },
+  {
+   "text": "\" surveys busyparts. Even \" somehow to",
+   "text_raw": "\" surveys busyparts . Even \" somehow to",
+   "score": 0.499,
+   "min_token_prob": 0.0823,
+   "box": [
+    54,
+    1745,
+    2011,
+    1920
+   ],
+   "poly": [
+    [
+     54,
+     1752
+    ],
+    [
+     2010,
+     1745
+    ],
+    [
+     2011,
+     1912
+    ],
+    [
+     55,
+     1920
+    ]
+   ],
+   "b_text": "11:92rart-Cf0",
+   "b_score": 0.5635
+  },
+  {
+   "text": "15) impact of defestation on biodiversity.",
+   "text_raw": "15 ) impact of defestation on biodiversity .",
+   "score": 0.7867,
+   "min_token_prob": 0.318,
+   "box": [
+    76,
+    1965,
+    2288,
+    2179
+   ],
+   "poly": [
+    [
+     77,
+     1965
+    ],
+    [
+     2288,
+     1981
+    ],
+    [
+     2286,
+     2179
+    ],
+    [
+     76,
+     2164
+    ]
+   ],
+   "b_text": "5impact ofefetat on biodisity",
+   "b_score": 0.6827
+  },
+  {
+   "text": "that make our living.",
+   "text_raw": "that make our living .",
+   "score": 0.736,
+   "min_token_prob": 0.2804,
+   "box": [
+    923,
+    2210,
+    1949,
+    2403
+   ],
+   "poly": [
+    [
+     928,
+     2210
+    ],
+    [
+     1949,
+     2241
+    ],
+    [
+     1944,
+     2403
+    ],
+    [
+     923,
+     2373
+    ]
+   ],
+   "b_text": "tuomakew living",
+   "b_score": 0.8038
+  },
+  {
+   "text": "ex deforestation.",
+   "text_raw": "ex deforestation .",
+   "score": 0.8071,
+   "min_token_prob": 0.6715,
+   "box": [
+    192,
+    2243,
+    854,
+    2383
+   ],
+   "poly": [
+    [
+     192,
+     2243
+    ],
+    [
+     854,
+     2243
+    ],
+    [
+     854,
+     2383
+    ],
+    [
+     192,
+     2383
+    ]
+   ],
+   "b_text": "x deforestation",
+   "b_score": 0.8129
+  },
+  {
+   "text": "1infering complaining.",
+   "text_raw": "1infering complaining .",
+   "score": 0.4782,
+   "min_token_prob": 0.1124,
+   "box": [
+    937,
+    2356,
+    1967,
+    2559
+   ],
+   "poly": [
+    [
+     937,
+     2356
+    ],
+    [
+     1967,
+     2356
+    ],
+    [
+     1967,
+     2559
+    ],
+    [
+     937,
+     2559
+    ]
+   ],
+   "b_text": "lifecomplen.",
+   "b_score": 0.7984
+  },
+  {
+   "text": "organism.",
+   "text_raw": "organism .",
+   "score": 0.9941,
+   "min_token_prob": 0.9823,
+   "box": [
+    267,
+    2375,
+    737,
+    2521
+   ],
+   "poly": [
+    [
+     267,
+     2386
+    ],
+    [
+     734,
+     2375
+    ],
+    [
+     737,
+     2510
+    ],
+    [
+     270,
+     2521
+    ]
+   ],
+   "b_text": "organism",
+   "b_score": 0.9572
+  },
+  {
+   "text": "sidestraping them.",
+   "text_raw": "sidestraping them .",
+   "score": 0.5807,
+   "min_token_prob": 0.1693,
+   "box": [
+    1000,
+    2578,
+    2067,
+    2767
+   ],
+   "poly": [
+    [
+     1002,
+     2578
+    ],
+    [
+     2067,
+     2586
+    ],
+    [
+     2066,
+     2767
+    ],
+    [
+     1000,
+     2759
+    ]
+   ],
+   "b_text": "destroythes",
+   "b_score": 0.8865
+  },
+  {
+   "text": "# I.I.DOWN",
+   "text_raw": "# I.I.DOWN",
+   "score": 0.4418,
+   "min_token_prob": 0.0414,
+   "box": [
+    189,
+    2602,
+    858,
+    2746
+   ],
+   "poly": [
+    [
+     189,
+     2614
+    ],
+    [
+     856,
+     2602
+    ],
+    [
+     858,
+     2733
+    ],
+    [
+     192,
+     2746
+    ]
+   ],
+   "b_text": "xI+",
+   "b_score": 0.5374
+  },
+  {
+   "text": "good chain.",
+   "text_raw": "good chain .",
+   "score": 0.9527,
+   "min_token_prob": 0.9087,
+   "box": [
+    297,
+    2701,
+    1014,
+    2913
+   ],
+   "poly": [
+    [
+     297,
+     2729
+    ],
+    [
+     1006,
+     2701
+    ],
+    [
+     1014,
+     2885
+    ],
+    [
+     304,
+     2913
+    ]
+   ],
+   "b_text": "food: chain",
+   "b_score": 0.8178
+  },
+  {
+   "text": "only",
+   "text_raw": "only",
+   "score": 0.8441,
+   "min_token_prob": 0.8201,
+   "box": [
+    1257,
+    2748,
+    1396,
+    2840
+   ],
+   "poly": [
+    [
+     1266,
+     2748
+    ],
+    [
+     1396,
+     2764
+    ],
+    [
+     1387,
+     2840
+    ],
+    [
+     1257,
+     2824
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "using a",
+   "text_raw": "using a",
+   "score": 0.7826,
+   "min_token_prob": 0.4062,
+   "box": [
+    1610,
+    2746,
+    1959,
+    2860
+   ],
+   "poly": [
+    [
+     1612,
+     2746
+    ],
+    [
+     1959,
+     2753
+    ],
+    [
+     1956,
+     2860
+    ],
+    [
+     1610,
+     2854
+    ]
+   ],
+   "b_text": "81192",
+   "b_score": 0.5728
+  },
+  {
+   "text": "input.",
+   "text_raw": "input .",
+   "score": 0.5904,
+   "min_token_prob": 0.3019,
+   "box": [
+    999,
+    2844,
+    1196,
+    2963
+   ],
+   "poly": [
+    [
+     1004,
+     2844
+    ],
+    [
+     1196,
+     2852
+    ],
+    [
+     1191,
+     2963
+    ],
+    [
+     999,
+     2955
+    ]
+   ],
+   "b_text": "20",
+   "b_score": 0.7285
+  },
+  {
+   "text": "looked.",
+   "text_raw": "looked .",
+   "score": 0.8176,
+   "min_token_prob": 0.327,
+   "box": [
+    1661,
+    2849,
+    1954,
+    2969
+   ],
+   "poly": [
+    [
+     1661,
+     2849
+    ],
+    [
+     1954,
+     2849
+    ],
+    [
+     1954,
+     2969
+    ],
+    [
+     1661,
+     2969
+    ]
+   ],
+   "b_text": "b01a1",
+   "b_score": 0.5594
+  },
+  {
+   "text": "flouses.",
+   "text_raw": "flouses .",
+   "score": 0.7315,
+   "min_token_prob": 0.3679,
+   "box": [
+    523,
+    2870,
+    759,
+    2953
+   ],
+   "poly": [
+    [
+     523,
+     2875
+    ],
+    [
+     757,
+     2870
+    ],
+    [
+     759,
+     2949
+    ],
+    [
+     524,
+     2953
+    ]
+   ],
+   "b_text": "Boae",
+   "b_score": 0.4277
+  },
+  {
+   "text": "reads to",
+   "text_raw": "reads to",
+   "score": 0.8331,
+   "min_token_prob": 0.6036,
+   "box": [
+    1531,
+    2945,
+    2006,
+    3134
+   ],
+   "poly": [
+    [
+     1541,
+     2945
+    ],
+    [
+     2006,
+     2972
+    ],
+    [
+     1997,
+     3134
+    ],
+    [
+     1531,
+     3107
+    ]
+   ],
+   "b_text": "Doad8 to",
+   "b_score": 0.834
+  },
+  {
+   "text": "xso, I thinknow mild.",
+   "text_raw": "xso , I thinknow mild .",
+   "score": 0.6491,
+   "min_token_prob": 0.3566,
+   "box": [
+    198,
+    2954,
+    1365,
+    3114
+   ],
+   "poly": [
+    [
+     198,
+     2972
+    ],
+    [
+     1363,
+     2954
+    ],
+    [
+     1365,
+     3096
+    ],
+    [
+     201,
+     3114
+    ]
+   ],
+   "b_text": "*so, Itrow uill.",
+   "b_score": 0.7184
+  },
+  {
+   "text": "extinction.",
+   "text_raw": "extinction .",
+   "score": 0.9082,
+   "min_token_prob": 0.7843,
+   "box": [
+    284,
+    3090,
+    729,
+    3247
+   ],
+   "poly": [
+    [
+     290,
+     3090
+    ],
+    [
+     729,
+     3110
+    ],
+    [
+     723,
+     3247
+    ],
+    [
+     284,
+     3227
+    ]
+   ],
+   "b_text": "extidton",
+   "b_score": 0.7477
+  },
+  {
+   "text": "of the sports.",
+   "text_raw": "of the sports .",
+   "score": 0.8004,
+   "min_token_prob": 0.2091,
+   "box": [
+    865,
+    3097,
+    1811,
+    3285
+   ],
+   "poly": [
+    [
+     865,
+     3097
+    ],
+    [
+     1811,
+     3097
+    ],
+    [
+     1811,
+     3285
+    ],
+    [
+     865,
+     3285
+    ]
+   ],
+   "b_text": "of the spats。",
+   "b_score": 0.8956
+  }
+ ],
+ "peak_torch_alloc_mib": 2702,
+ "peak_rss_mib_process": 2965
+}

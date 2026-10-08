@@ -1,0 +1,561 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_09.jpg",
+ "latency_s": 12.773,
+ "model_load_s": 0.39,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "and ft an afofed cthe shuman and the",
+   "score": 0.8552,
+   "poly": [
+    [
+     404,
+     363
+    ],
+    [
+     2292,
+     297
+    ],
+    [
+     2297,
+     446
+    ],
+    [
+     409,
+     512
+    ]
+   ],
+   "box": [
+    404,
+    297,
+    2297,
+    512
+   ]
+  },
+  {
+   "text": "cosd antmals can attack the huomans.",
+   "score": 0.8773,
+   "poly": [
+    [
+     433,
+     480
+    ],
+    [
+     2217,
+     420
+    ],
+    [
+     2221,
+     551
+    ],
+    [
+     438,
+     610
+    ]
+   ],
+   "box": [
+    433,
+    420,
+    2221,
+    610
+   ]
+  },
+  {
+   "text": "Deforestation ofl deads clo no",
+   "score": 0.8993,
+   "poly": [
+    [
+     743,
+     701
+    ],
+    [
+     2147,
+     646
+    ],
+    [
+     2151,
+     768
+    ],
+    [
+     748,
+     822
+    ]
+   ],
+   "box": [
+    743,
+    646,
+    2151,
+    822
+   ]
+  },
+  {
+   "text": "mesfall and affect the ag Pouctcre and",
+   "score": 0.8741,
+   "poly": [
+    [
+     414,
+     815
+    ],
+    [
+     2290,
+     761
+    ],
+    [
+     2294,
+     886
+    ],
+    [
+     418,
+     940
+    ]
+   ],
+   "box": [
+    414,
+    761,
+    2294,
+    940
+   ]
+  },
+  {
+   "text": "mang of ethe orghesms aore desturbod.",
+   "score": 0.9133,
+   "poly": [
+    [
+     435,
+     932
+    ],
+    [
+     2243,
+     870
+    ],
+    [
+     2247,
+     989
+    ],
+    [
+     439,
+     1051
+    ]
+   ],
+   "box": [
+    435,
+    870,
+    2247,
+    1051
+   ]
+  },
+  {
+   "text": "Brids are get desturbed do",
+   "score": 0.9377,
+   "poly": [
+    [
+     778,
+     1122
+    ],
+    [
+     2234,
+     1093
+    ],
+    [
+     2236,
+     1219
+    ],
+    [
+     781,
+     1248
+    ]
+   ],
+   "box": [
+    778,
+    1093,
+    2236,
+    1248
+   ]
+  },
+  {
+   "text": "the cutting of strces. cooe lose the",
+   "score": 0.9298,
+   "poly": [
+    [
+     407,
+     1237
+    ],
+    [
+     2297,
+     1205
+    ],
+    [
+     2300,
+     1335
+    ],
+    [
+     409,
+     1367
+    ]
+   ],
+   "box": [
+    407,
+    1205,
+    2300,
+    1367
+   ]
+  },
+  {
+   "text": "enaturally occuring prcducts clike",
+   "score": 0.947,
+   "poly": [
+    [
+     410,
+     1356
+    ],
+    [
+     2109,
+     1322
+    ],
+    [
+     2112,
+     1440
+    ],
+    [
+     412,
+     1474
+    ]
+   ],
+   "box": [
+    410,
+    1322,
+    2112,
+    1474
+   ]
+  },
+  {
+   "text": "frusts., bonoy atc...",
+   "score": 0.8053,
+   "poly": [
+    [
+     439,
+     1463
+    ],
+    [
+     1480,
+     1445
+    ],
+    [
+     1482,
+     1567
+    ],
+    [
+     441,
+     1584
+    ]
+   ],
+   "box": [
+    439,
+    1445,
+    1482,
+    1584
+   ]
+  },
+  {
+   "text": "Deforertatsonourets cthe mair reason",
+   "score": 0.822,
+   "poly": [
+    [
+     801,
+     1681
+    ],
+    [
+     2298,
+     1654
+    ],
+    [
+     2300,
+     1757
+    ],
+    [
+     803,
+     1784
+    ]
+   ],
+   "box": [
+    801,
+    1654,
+    2300,
+    1784
+   ]
+  },
+  {
+   "text": "for sthe soil exosfon. and filood. Sudtlen",
+   "score": 0.8836,
+   "poly": [
+    [
+     423,
+     1789
+    ],
+    [
+     2275,
+     1762
+    ],
+    [
+     2277,
+     1870
+    ],
+    [
+     425,
+     1897
+    ]
+   ],
+   "box": [
+    423,
+    1762,
+    2277,
+    1897
+   ]
+  },
+  {
+   "text": "clemate changes chave haopend in itho",
+   "score": 0.9262,
+   "poly": [
+    [
+     418,
+     1899
+    ],
+    [
+     2143,
+     1870
+    ],
+    [
+     2145,
+     1991
+    ],
+    [
+     420,
+     2020
+    ]
+   ],
+   "box": [
+    418,
+    1870,
+    2145,
+    2020
+   ]
+  },
+  {
+   "text": "foco gorrs.",
+   "score": 0.774,
+   "poly": [
+    [
+     435,
+     2018
+    ],
+    [
+     1134,
+     2013
+    ],
+    [
+     1134,
+     2113
+    ],
+    [
+     435,
+     2118
+    ]
+   ],
+   "box": [
+    435,
+    2013,
+    1134,
+    2118
+   ]
+  },
+  {
+   "text": "Bwoneng of coood welll wreleas",
+   "score": 0.8562,
+   "poly": [
+    [
+     776,
+     2230
+    ],
+    [
+     2271,
+     2192
+    ],
+    [
+     2274,
+     2301
+    ],
+    [
+     779,
+     2340
+    ]
+   ],
+   "box": [
+    776,
+    2192,
+    2274,
+    2340
+   ]
+  },
+  {
+   "text": "the carbon monoxide gas and aftect",
+   "score": 0.9463,
+   "poly": [
+    [
+     394,
+     2343
+    ],
+    [
+     2121,
+     2308
+    ],
+    [
+     2123,
+     2418
+    ],
+    [
+     396,
+     2453
+    ]
+   ],
+   "box": [
+    394,
+    2308,
+    2123,
+    2453
+   ]
+  },
+  {
+   "text": "the enuiroment. e coofll affect othe",
+   "score": 0.8703,
+   "poly": [
+    [
+     395,
+     2450
+    ],
+    [
+     2111,
+     2418
+    ],
+    [
+     2113,
+     2534
+    ],
+    [
+     397,
+     2566
+    ]
+   ],
+   "box": [
+    395,
+    2418,
+    2113,
+    2566
+   ]
+  },
+  {
+   "text": "productpon oxygen be cause ithey",
+   "score": 0.9537,
+   "poly": [
+    [
+     416,
+     2557
+    ],
+    [
+     2287,
+     2518
+    ],
+    [
+     2290,
+     2649
+    ],
+    [
+     419,
+     2688
+    ]
+   ],
+   "box": [
+    416,
+    2518,
+    2290,
+    2688
+   ]
+  },
+  {
+   "text": "are the ohe of reason for the",
+   "score": 0.9506,
+   "poly": [
+    [
+     408,
+     2673
+    ],
+    [
+     2127,
+     2638
+    ],
+    [
+     2129,
+     2757
+    ],
+    [
+     411,
+     2793
+    ]
+   ],
+   "box": [
+    408,
+    2638,
+    2129,
+    2793
+   ]
+  },
+  {
+   "text": "Ovygen production.",
+   "score": 0.9328,
+   "poly": [
+    [
+     389,
+     2789
+    ],
+    [
+     1441,
+     2772
+    ],
+    [
+     1443,
+     2909
+    ],
+    [
+     391,
+     2927
+    ]
+   ],
+   "box": [
+    389,
+    2772,
+    1443,
+    2927
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3296
+}

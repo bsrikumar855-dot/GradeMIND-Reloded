@@ -1,0 +1,565 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 0.858,
+ "model_load_s": 0.82,
+ "n_lines": 17,
+ "lines": [
+  {
+   "text": "1.2) True.",
+   "text_raw": "1.2 ) True .",
+   "score": 0.8567,
+   "min_token_prob": 0.5073,
+   "box": [
+    282,
+    243,
+    672,
+    456
+   ],
+   "poly": [
+    [
+     282,
+     243
+    ],
+    [
+     672,
+     243
+    ],
+    [
+     672,
+     456
+    ],
+    [
+     282,
+     456
+    ]
+   ],
+   "b_text": "1对tre",
+   "b_score": 0.6743
+  },
+  {
+   "text": "part B.",
+   "text_raw": "part B.",
+   "score": 0.8611,
+   "min_token_prob": 0.505,
+   "box": [
+    868,
+    523,
+    1216,
+    685
+   ],
+   "poly": [
+    [
+     870,
+     523
+    ],
+    [
+     1216,
+     528
+    ],
+    [
+     1214,
+     685
+    ],
+    [
+     868,
+     680
+    ]
+   ],
+   "b_text": "partB",
+   "b_score": 0.931
+  },
+  {
+   "text": "13) endangered species:",
+   "text_raw": "13 ) endangered species :",
+   "score": 0.7682,
+   "min_token_prob": 0.5289,
+   "box": [
+    252,
+    768,
+    1408,
+    965
+   ],
+   "poly": [
+    [
+     255,
+     768
+    ],
+    [
+     1408,
+     787
+    ],
+    [
+     1406,
+     965
+    ],
+    [
+     252,
+     946
+    ]
+   ],
+   "b_text": "13) endangered species",
+   "b_score": 0.775
+  },
+  {
+   "text": "# A species that has near",
+   "text_raw": "# A species that has near",
+   "score": 0.8348,
+   "min_token_prob": 0.523,
+   "box": [
+    398,
+    1021,
+    2246,
+    1220
+   ],
+   "poly": [
+    [
+     399,
+     1021
+    ],
+    [
+     2246,
+     1039
+    ],
+    [
+     2244,
+     1220
+    ],
+    [
+     398,
+     1201
+    ]
+   ],
+   "b_text": "*Aspecies that, hat rear",
+   "b_score": 0.8107
+  },
+  {
+   "text": "to \" his.",
+   "text_raw": "to \" his .",
+   "score": 0.7956,
+   "min_token_prob": 0.4009,
+   "box": [
+    443,
+    1171,
+    1162,
+    1331
+   ],
+   "poly": [
+    [
+     445,
+     1171
+    ],
+    [
+     1162,
+     1177
+    ],
+    [
+     1161,
+     1331
+    ],
+    [
+     443,
+     1324
+    ]
+   ],
+   "b_text": "LOLIS",
+   "b_score": 0.8251
+  },
+  {
+   "text": "extinction.",
+   "text_raw": "extinction .",
+   "score": 0.8218,
+   "min_token_prob": 0.3002,
+   "box": [
+    1165,
+    1184,
+    1827,
+    1344
+   ],
+   "poly": [
+    [
+     1167,
+     1184
+    ],
+    [
+     1827,
+     1191
+    ],
+    [
+     1826,
+     1344
+    ],
+    [
+     1165,
+     1337
+    ]
+   ],
+   "b_text": "extindtion.",
+   "b_score": 0.891
+  },
+  {
+   "text": "x which means in few",
+   "text_raw": "x which means in few",
+   "score": 0.8968,
+   "min_token_prob": 0.5979,
+   "box": [
+    374,
+    1400,
+    1944,
+    1611
+   ],
+   "poly": [
+    [
+     378,
+     1400
+    ],
+    [
+     1944,
+     1429
+    ],
+    [
+     1941,
+     1611
+    ],
+    [
+     374,
+     1582
+    ]
+   ],
+   "b_text": "whichmeandinfew",
+   "b_score": 0.839
+  },
+  {
+   "text": "anywhere in the world",
+   "text_raw": "anywhere in the world",
+   "score": 0.9521,
+   "min_token_prob": 0.8236,
+   "box": [
+    482,
+    1698,
+    1526,
+    1842
+   ],
+   "poly": [
+    [
+     482,
+     1698
+    ],
+    [
+     1526,
+     1698
+    ],
+    [
+     1526,
+     1842
+    ],
+    [
+     482,
+     1842
+    ]
+   ],
+   "b_text": "anyuhee in the world",
+   "b_score": 0.7652
+  },
+  {
+   "text": "example:",
+   "text_raw": "example :",
+   "score": 0.7428,
+   "min_token_prob": 0.5893,
+   "box": [
+    470,
+    1941,
+    939,
+    2101
+   ],
+   "poly": [
+    [
+     470,
+     1946
+    ],
+    [
+     938,
+     1941
+    ],
+    [
+     939,
+     2096
+    ],
+    [
+     472,
+     2101
+    ]
+   ],
+   "b_text": "Exampkeis",
+   "b_score": 0.6976
+  },
+  {
+   "text": "pandas.",
+   "text_raw": "pandas .",
+   "score": 0.8907,
+   "min_token_prob": 0.6162,
+   "box": [
+    897,
+    2079,
+    1231,
+    2234
+   ],
+   "poly": [
+    [
+     899,
+     2079
+    ],
+    [
+     1231,
+     2084
+    ],
+    [
+     1229,
+     2234
+    ],
+    [
+     897,
+     2228
+    ]
+   ],
+   "b_text": "Pardas",
+   "b_score": 0.722
+  },
+  {
+   "text": "Endemic species:",
+   "text_raw": "Endemic species :",
+   "score": 0.7447,
+   "min_token_prob": 0.5074,
+   "box": [
+    402,
+    2334,
+    1358,
+    2492
+   ],
+   "poly": [
+    [
+     402,
+     2334
+    ],
+    [
+     1358,
+     2334
+    ],
+    [
+     1358,
+     2492
+    ],
+    [
+     402,
+     2492
+    ]
+   ],
+   "b_text": "Endemic spcieds",
+   "b_score": 0.8792
+  },
+  {
+   "text": "endemic species.",
+   "text_raw": "endemic species .",
+   "score": 0.9794,
+   "min_token_prob": 0.909,
+   "box": [
+    469,
+    2576,
+    1467,
+    2733
+   ],
+   "poly": [
+    [
+     469,
+     2576
+    ],
+    [
+     1467,
+     2576
+    ],
+    [
+     1467,
+     2733
+    ],
+    [
+     469,
+     2733
+    ]
+   ],
+   "b_text": "Endemic Species",
+   "b_score": 0.8622
+  },
+  {
+   "text": "are found.",
+   "text_raw": "are found .",
+   "score": 0.9961,
+   "min_token_prob": 0.9868,
+   "box": [
+    1688,
+    2568,
+    2290,
+    2750
+   ],
+   "poly": [
+    [
+     1688,
+     2568
+    ],
+    [
+     2290,
+     2568
+    ],
+    [
+     2290,
+     2750
+    ],
+    [
+     1688,
+     2750
+    ]
+   ],
+   "b_text": "ao found",
+   "b_score": 0.605
+  },
+  {
+   "text": "only",
+   "text_raw": "only",
+   "score": 0.8297,
+   "min_token_prob": 0.6604,
+   "box": [
+    417,
+    2714,
+    712,
+    2892
+   ],
+   "poly": [
+    [
+     417,
+     2714
+    ],
+    [
+     712,
+     2714
+    ],
+    [
+     712,
+     2892
+    ],
+    [
+     417,
+     2892
+    ]
+   ],
+   "b_text": "only",
+   "b_score": 0.9125
+  },
+  {
+   "text": "in",
+   "text_raw": "in",
+   "score": 0.9818,
+   "min_token_prob": 0.9638,
+   "box": [
+    923,
+    2730,
+    1092,
+    2857
+   ],
+   "poly": [
+    [
+     929,
+     2730
+    ],
+    [
+     1092,
+     2739
+    ],
+    [
+     1086,
+     2857
+    ],
+    [
+     923,
+     2848
+    ]
+   ],
+   "b_text": "m",
+   "b_score": 0.2261
+  },
+  {
+   "text": "region and not found.",
+   "text_raw": "region and not found .",
+   "score": 0.9003,
+   "min_token_prob": 0.717,
+   "box": [
+    439,
+    2824,
+    1959,
+    3072
+   ],
+   "poly": [
+    [
+     443,
+     2824
+    ],
+    [
+     1959,
+     2855
+    ],
+    [
+     1955,
+     3072
+    ],
+    [
+     439,
+     3040
+    ]
+   ],
+   "b_text": "gegion and not found",
+   "b_score": 0.8602
+  },
+  {
+   "text": "anywhere else.",
+   "text_raw": "anywhere else .",
+   "score": 0.9615,
+   "min_token_prob": 0.8712,
+   "box": [
+    527,
+    2989,
+    1273,
+    3157
+   ],
+   "poly": [
+    [
+     527,
+     2998
+    ],
+    [
+     1271,
+     2989
+    ],
+    [
+     1273,
+     3149
+    ],
+    [
+     529,
+     3157
+    ]
+   ],
+   "b_text": "arymhoe ese.",
+   "b_score": 0.5965
+  }
+ ],
+ "peak_torch_alloc_mib": 2680,
+ "peak_rss_mib_process": 2965
+}

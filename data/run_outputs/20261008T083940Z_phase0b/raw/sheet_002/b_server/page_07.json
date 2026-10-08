@@ -1,0 +1,336 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_07.jpg",
+ "latency_s": 9.354,
+ "model_load_s": 0.37,
+ "n_lines": 11,
+ "lines": [
+  {
+   "text": "Iof wer pollute thephech coate",
+   "score": 0.6969,
+   "poly": [
+    [
+     782,
+     458
+    ],
+    [
+     2406,
+     471
+    ],
+    [
+     2405,
+     596
+    ],
+    [
+     781,
+     583
+    ]
+   ],
+   "box": [
+    781,
+    458,
+    2406,
+    596
+   ]
+  },
+  {
+   "text": "we clid have aator cdo drenkee",
+   "score": 0.7333,
+   "poly": [
+    [
+     547,
+     571
+    ],
+    [
+     2478,
+     606
+    ],
+    [
+     2476,
+     723
+    ],
+    [
+     545,
+     689
+    ]
+   ],
+   "box": [
+    545,
+    571,
+    2478,
+    723
+   ]
+  },
+  {
+   "text": "Can socygle the plasips uraste ard",
+   "score": 0.6173,
+   "poly": [
+    [
+     525,
+     694
+    ],
+    [
+     2506,
+     728
+    ],
+    [
+     2503,
+     853
+    ],
+    [
+     523,
+     819
+    ]
+   ],
+   "box": [
+    523,
+    694,
+    2506,
+    853
+   ]
+  },
+  {
+   "text": "woe can oelse the cpatde pradie",
+   "score": 0.6423,
+   "poly": [
+    [
+     606,
+     813
+    ],
+    [
+     2531,
+     857
+    ],
+    [
+     2529,
+     974
+    ],
+    [
+     603,
+     931
+    ]
+   ],
+   "box": [
+    603,
+    813,
+    2531,
+    974
+   ]
+  },
+  {
+   "text": "Phto eto a we fiproduo",
+   "score": 0.7552,
+   "poly": [
+    [
+     523,
+     921
+    ],
+    [
+     2107,
+     973
+    ],
+    [
+     2103,
+     1098
+    ],
+    [
+     518,
+     1046
+    ]
+   ],
+   "box": [
+    518,
+    921,
+    2107,
+    1098
+   ]
+  },
+  {
+   "text": "Iof wo arocuce dhe pradudion",
+   "score": 0.6573,
+   "poly": [
+    [
+     805,
+     1174
+    ],
+    [
+     2498,
+     1213
+    ],
+    [
+     2496,
+     1330
+    ],
+    [
+     802,
+     1292
+    ]
+   ],
+   "box": [
+    802,
+    1174,
+    2498,
+    1330
+   ]
+  },
+  {
+   "text": "of many kinci of coaste ether acosgsten",
+   "score": 0.7005,
+   "poly": [
+    [
+     528,
+     1277
+    ],
+    [
+     2468,
+     1334
+    ],
+    [
+     2464,
+     1457
+    ],
+    [
+     524,
+     1400
+    ]
+   ],
+   "box": [
+    524,
+    1277,
+    2468,
+    1457
+   ]
+  },
+  {
+   "text": "doesnot. god cisturbed Tf we doenot",
+   "score": 0.6839,
+   "poly": [
+    [
+     518,
+     1400
+    ],
+    [
+     2444,
+     1455
+    ],
+    [
+     2441,
+     1567
+    ],
+    [
+     515,
+     1512
+    ]
+   ],
+   "box": [
+    515,
+    1400,
+    2444,
+    1567
+   ]
+  },
+  {
+   "text": "oeducethe-waste or not cng th",
+   "score": 0.6889,
+   "poly": [
+    [
+     522,
+     1508
+    ],
+    [
+     2438,
+     1576
+    ],
+    [
+     2435,
+     1686
+    ],
+    [
+     518,
+     1618
+    ]
+   ],
+   "box": [
+    518,
+    1508,
+    2438,
+    1686
+   ]
+  },
+  {
+   "text": "BR prinop  eth onaron mend got",
+   "score": 0.666,
+   "poly": [
+    [
+     519,
+     1628
+    ],
+    [
+     2144,
+     1693
+    ],
+    [
+     2140,
+     1805
+    ],
+    [
+     515,
+     1740
+    ]
+   ],
+   "box": [
+    515,
+    1628,
+    2144,
+    1805
+   ]
+  },
+  {
+   "text": "drseturbede",
+   "score": 0.7259,
+   "poly": [
+    [
+     523,
+     1759
+    ],
+    [
+     951,
+     1772
+    ],
+    [
+     948,
+     1867
+    ],
+    [
+     521,
+     1854
+    ]
+   ],
+   "box": [
+    521,
+    1759,
+    951,
+    1867
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3297
+}

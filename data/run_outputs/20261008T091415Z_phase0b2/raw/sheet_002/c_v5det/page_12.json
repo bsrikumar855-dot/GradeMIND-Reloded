@@ -1,0 +1,821 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 1.665,
+ "model_load_s": 0.89,
+ "n_lines": 25,
+ "lines": [
+  {
+   "text": "PART - D.",
+   "text_raw": "PART - D.",
+   "score": 0.8573,
+   "min_token_prob": 0.6144,
+   "box": [
+    1121,
+    469,
+    1429,
+    560
+   ],
+   "poly": [
+    [
+     1123,
+     469
+    ],
+    [
+     1429,
+     475
+    ],
+    [
+     1427,
+     560
+    ],
+    [
+     1121,
+     554
+    ]
+   ],
+   "b_text": "PORID",
+   "b_score": 0.8107
+  },
+  {
+   "text": "man about",
+   "text_raw": "man about",
+   "score": 0.4161,
+   "min_token_prob": 0.1035,
+   "box": [
+    1751,
+    652,
+    1813,
+    678
+   ],
+   "poly": [
+    [
+     1751,
+     652
+    ],
+    [
+     1813,
+     652
+    ],
+    [
+     1813,
+     678
+    ],
+    [
+     1751,
+     678
+    ]
+   ],
+   "b_text": "能真",
+   "b_score": 0.1605
+  },
+  {
+   "text": "(A).",
+   "text_raw": "( A ) .",
+   "score": 0.8436,
+   "min_token_prob": 0.7363,
+   "box": [
+    374,
+    677,
+    527,
+    777
+   ],
+   "poly": [
+    [
+     378,
+     677
+    ],
+    [
+     527,
+     682
+    ],
+    [
+     524,
+     777
+    ],
+    [
+     374,
+     771
+    ]
+   ],
+   "b_text": "（A)",
+   "b_score": 0.7227
+  },
+  {
+   "text": "A college generator-large quardment",
+   "text_raw": "A college generator-large quardment",
+   "score": 0.4329,
+   "min_token_prob": 0.172,
+   "box": [
+    646,
+    930,
+    2495,
+    1073
+   ],
+   "poly": [
+    [
+     647,
+     930
+    ],
+    [
+     2495,
+     950
+    ],
+    [
+     2493,
+     1073
+    ],
+    [
+     646,
+     1054
+    ]
+   ],
+   "b_text": "A coclage generat a sasge quadm ra",
+   "b_score": 0.6156
+  },
+  {
+   "text": "of good words \" paper, words, plastic and",
+   "text_raw": "of good words \" paper , words , plastic and",
+   "score": 0.634,
+   "min_token_prob": 0.0342,
+   "box": [
+    339,
+    1037,
+    2351,
+    1201
+   ],
+   "poly": [
+    [
+     341,
+     1037
+    ],
+    [
+     2351,
+     1062
+    ],
+    [
+     2349,
+     1201
+    ],
+    [
+     339,
+     1176
+    ]
+   ],
+   "b_text": "of efood wate papecpaau plante ard",
+   "b_score": 0.6514
+  },
+  {
+   "text": "to perform a strong woman, successfully urged the infrequently highway as",
+   "text_raw": "to perform a strong woman , successfully urged the infrequently highway as",
+   "score": 0.2499,
+   "min_token_prob": 0.0533,
+   "box": [
+    1282,
+    1354,
+    2128,
+    1415
+   ],
+   "poly": [
+    [
+     1283,
+     1354
+    ],
+    [
+     2128,
+     1365
+    ],
+    [
+     2128,
+     1415
+    ],
+    [
+     1282,
+     1403
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "http can produce returning the' BR",
+   "text_raw": "http can produce returning the ' BR",
+   "score": 0.4757,
+   "min_token_prob": 0.1249,
+   "box": [
+    684,
+    1389,
+    2277,
+    1573
+   ],
+   "poly": [
+    [
+     688,
+     1389
+    ],
+    [
+     2277,
+     1440
+    ],
+    [
+     2273,
+     1573
+    ],
+    [
+     684,
+     1522
+    ]
+   ],
+   "b_text": "Wo canduce tng the aR",
+   "b_score": 0.571
+  },
+  {
+   "text": "principle.",
+   "text_raw": "principle .",
+   "score": 0.9534,
+   "min_token_prob": 0.9058,
+   "box": [
+    340,
+    1529,
+    785,
+    1669
+   ],
+   "poly": [
+    [
+     345,
+     1529
+    ],
+    [
+     785,
+     1543
+    ],
+    [
+     781,
+     1669
+    ],
+    [
+     340,
+     1654
+    ]
+   ],
+   "b_text": "pronceple",
+   "b_score": 0.7611
+  },
+  {
+   "text": "to establish a number of a number of a",
+   "text_raw": "to establish a number of a number of a",
+   "score": 0.4123,
+   "min_token_prob": 0.1022,
+   "box": [
+    1794,
+    1618,
+    2141,
+    1649
+   ],
+   "poly": [
+    [
+     1794,
+     1618
+    ],
+    [
+     2141,
+     1618
+    ],
+    [
+     2141,
+     1649
+    ],
+    [
+     1794,
+     1649
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "# # Eclipse.",
+   "text_raw": "# # Eclipse .",
+   "score": 0.6744,
+   "min_token_prob": 0.1676,
+   "box": [
+    935,
+    1662,
+    1408,
+    1784
+   ],
+   "poly": [
+    [
+     935,
+     1662
+    ],
+    [
+     1408,
+     1662
+    ],
+    [
+     1408,
+     1784
+    ],
+    [
+     935,
+     1784
+    ]
+   ],
+   "b_text": "xedue",
+   "b_score": 0.6966
+  },
+  {
+   "text": "to",
+   "text_raw": "to",
+   "score": 0.6068,
+   "min_token_prob": 0.2265,
+   "box": [
+    1884,
+    1699,
+    1923,
+    1731
+   ],
+   "poly": [
+    [
+     1884,
+     1699
+    ],
+    [
+     1923,
+     1699
+    ],
+    [
+     1923,
+     1731
+    ],
+    [
+     1884,
+     1731
+    ]
+   ],
+   "b_text": "8",
+   "b_score": 0.0345
+  },
+  {
+   "text": "1961- # # #",
+   "text_raw": "1961- # # #",
+   "score": 0.3308,
+   "min_token_prob": 0.0752,
+   "box": [
+    1597,
+    1715,
+    2351,
+    1796
+   ],
+   "poly": [
+    [
+     1599,
+     1715
+    ],
+    [
+     2351,
+     1738
+    ],
+    [
+     2349,
+     1796
+    ],
+    [
+     1597,
+     1772
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "will build out from herself gathering to William",
+   "text_raw": "will build out from herself gathering to William",
+   "score": 0.34,
+   "min_token_prob": 0.0519,
+   "box": [
+    2363,
+    1747,
+    2595,
+    1784
+   ],
+   "poly": [
+    [
+     2364,
+     1747
+    ],
+    [
+     2595,
+     1751
+    ],
+    [
+     2595,
+     1784
+    ],
+    [
+     2363,
+     1780
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5987,
+   "min_token_prob": 0.3049,
+   "box": [
+    936,
+    1893,
+    2275,
+    2081
+   ],
+   "poly": [
+    [
+     943,
+     1893
+    ],
+    [
+     2275,
+     1963
+    ],
+    [
+     2268,
+     2081
+    ],
+    [
+     936,
+     2011
+    ]
+   ],
+   "b_text": " Rey",
+   "b_score": 0.4418
+  },
+  {
+   "text": "environment to the musician",
+   "text_raw": "environment to the musician",
+   "score": 0.3363,
+   "min_token_prob": 0.0881,
+   "box": [
+    1017,
+    1996,
+    1555,
+    2058
+   ],
+   "poly": [
+    [
+     1018,
+     1996
+    ],
+    [
+     1555,
+     2006
+    ],
+    [
+     1554,
+     2058
+    ],
+    [
+     1017,
+     2048
+    ]
+   ],
+   "b_text": "LAOWO AON",
+   "b_score": 0.6257
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.1995,
+   "min_token_prob": 0.0837,
+   "box": [
+    909,
+    2087,
+    1262,
+    2122
+   ],
+   "poly": [
+    [
+     909,
+     2087
+    ],
+    [
+     1262,
+     2091
+    ],
+    [
+     1262,
+     2122
+    ],
+    [
+     909,
+     2118
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "# # #",
+   "text_raw": "# # #",
+   "score": 0.3413,
+   "min_token_prob": 0.0986,
+   "box": [
+    1570,
+    2094,
+    2250,
+    2158
+   ],
+   "poly": [
+    [
+     1571,
+     2094
+    ],
+    [
+     2250,
+     2113
+    ],
+    [
+     2249,
+     2158
+    ],
+    [
+     1570,
+     2138
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "Firstly use shown to upgrade the",
+   "text_raw": "Firstly use shown to upgrade the",
+   "score": 0.8162,
+   "min_token_prob": 0.4211,
+   "box": [
+    499,
+    2125,
+    2370,
+    2308
+   ],
+   "poly": [
+    [
+     502,
+     2125
+    ],
+    [
+     2370,
+     2164
+    ],
+    [
+     2367,
+     2308
+    ],
+    [
+     499,
+     2269
+    ]
+   ],
+   "b_text": "toisthy cpe shave sto epnate cthe",
+   "b_score": 0.6723
+  },
+  {
+   "text": "types of counter and use can emerge",
+   "text_raw": "types of counter and use can emerge",
+   "score": 0.7873,
+   "min_token_prob": 0.3119,
+   "box": [
+    320,
+    2252,
+    2389,
+    2445
+   ],
+   "poly": [
+    [
+     324,
+     2252
+    ],
+    [
+     2389,
+     2308
+    ],
+    [
+     2385,
+     2445
+    ],
+    [
+     320,
+     2389
+    ]
+   ],
+   "b_text": "types of coasteandcnecmarga",
+   "b_score": 0.7409
+  },
+  {
+   "text": "the pollution happened due to waste.",
+   "text_raw": "the pollution happened due to waste .",
+   "score": 0.9245,
+   "min_token_prob": 0.6059,
+   "box": [
+    335,
+    2385,
+    2536,
+    2564
+   ],
+   "poly": [
+    [
+     338,
+     2385
+    ],
+    [
+     2536,
+     2428
+    ],
+    [
+     2533,
+     2564
+    ],
+    [
+     335,
+     2522
+    ]
+   ],
+   "b_text": "cthe pollut ponhappond due wat.",
+   "b_score": 0.691
+  },
+  {
+   "text": "to strengthen the highest performance from a few person was",
+   "text_raw": "to strengthen the highest performance from a few person was",
+   "score": 0.2039,
+   "min_token_prob": 0.0255,
+   "box": [
+    1289,
+    2581,
+    2485,
+    2675
+   ],
+   "poly": [
+    [
+     1291,
+     2581
+    ],
+    [
+     2485,
+     2618
+    ],
+    [
+     2484,
+     2675
+    ],
+    [
+     1289,
+     2639
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "We have too reduce the waste",
+   "text_raw": "We have too reduce the waste",
+   "score": 0.9191,
+   "min_token_prob": 0.631,
+   "box": [
+    539,
+    2637,
+    2353,
+    2801
+   ],
+   "poly": [
+    [
+     541,
+     2637
+    ],
+    [
+     2353,
+     2675
+    ],
+    [
+     2350,
+     2801
+    ],
+    [
+     539,
+     2762
+    ]
+   ],
+   "b_text": "we chave to ceduce dhe coante",
+   "b_score": 0.6927
+  },
+  {
+   "text": "and yet as they \" principle on the",
+   "text_raw": "and yet as they \" principle on the",
+   "score": 0.7238,
+   "min_token_prob": 0.1209,
+   "box": [
+    279,
+    2747,
+    2383,
+    2945
+   ],
+   "poly": [
+    [
+     283,
+     2747
+    ],
+    [
+     2383,
+     2801
+    ],
+    [
+     2379,
+     2945
+    ],
+    [
+     279,
+     2891
+    ]
+   ],
+   "b_text": "andt thpplonthe",
+   "b_score": 0.7234
+  },
+  {
+   "text": "Brunathod #",
+   "text_raw": "Brunathod #",
+   "score": 0.3476,
+   "min_token_prob": 0.0902,
+   "box": [
+    307,
+    2880,
+    2326,
+    3088
+   ],
+   "poly": [
+    [
+     311,
+     2880
+    ],
+    [
+     2326,
+     2943
+    ],
+    [
+     2321,
+     3088
+    ],
+    [
+     307,
+     3024
+    ]
+   ],
+   "b_text": "td",
+   "b_score": 0.4516
+  },
+  {
+   "text": "also other other projects are given a very ambiguous",
+   "text_raw": "also other other projects are given a very ambiguous",
+   "score": 0.2393,
+   "min_token_prob": 0.0338,
+   "box": [
+    1868,
+    3107,
+    2247,
+    3185
+   ],
+   "poly": [
+    [
+     1871,
+     3107
+    ],
+    [
+     2247,
+     3128
+    ],
+    [
+     2244,
+     3185
+    ],
+    [
+     1868,
+     3165
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  }
+ ],
+ "peak_torch_alloc_mib": 2694,
+ "peak_rss_mib_process": 2966
+}

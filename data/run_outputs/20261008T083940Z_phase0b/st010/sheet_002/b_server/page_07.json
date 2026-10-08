@@ -1,0 +1,364 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_07.jpg",
+ "latency_s": 10.202,
+ "model_load_s": 0.37,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "If e pollute dheposh saate",
+   "score": 0.5849,
+   "poly": [
+    [
+     780,
+     464
+    ],
+    [
+     2405,
+     471
+    ],
+    [
+     2404,
+     589
+    ],
+    [
+     779,
+     581
+    ]
+   ],
+   "box": [
+    779,
+    464,
+    2405,
+    589
+   ]
+  },
+  {
+   "text": "we ad have aoten d dnenkhe",
+   "score": 0.6496,
+   "poly": [
+    [
+     547,
+     573
+    ],
+    [
+     2478,
+     607
+    ],
+    [
+     2476,
+     717
+    ],
+    [
+     545,
+     683
+    ]
+   ],
+   "box": [
+    545,
+    573,
+    2478,
+    717
+   ]
+  },
+  {
+   "text": "Can socyle the plaasfs aate ard",
+   "score": 0.6032,
+   "poly": [
+    [
+     525,
+     696
+    ],
+    [
+     2502,
+     727
+    ],
+    [
+     2500,
+     849
+    ],
+    [
+     523,
+     819
+    ]
+   ],
+   "box": [
+    523,
+    696,
+    2502,
+    849
+   ]
+  },
+  {
+   "text": "hoe can oeue tthe aoatt pretie",
+   "score": 0.583,
+   "poly": [
+    [
+     567,
+     813
+    ],
+    [
+     2533,
+     859
+    ],
+    [
+     2531,
+     971
+    ],
+    [
+     565,
+     925
+    ]
+   ],
+   "box": [
+    565,
+    813,
+    2533,
+    971
+   ]
+  },
+  {
+   "text": "Phto eto a wef pradud",
+   "score": 0.6385,
+   "poly": [
+    [
+     524,
+     921
+    ],
+    [
+     2395,
+     980
+    ],
+    [
+     2391,
+     1103
+    ],
+    [
+     520,
+     1044
+    ]
+   ],
+   "box": [
+    520,
+    921,
+    2395,
+    1103
+   ]
+  },
+  {
+   "text": "Tof wao rocluce dhe pracdion",
+   "score": 0.5453,
+   "poly": [
+    [
+     812,
+     1178
+    ],
+    [
+     2520,
+     1216
+    ],
+    [
+     2518,
+     1323
+    ],
+    [
+     810,
+     1284
+    ]
+   ],
+   "box": [
+    810,
+    1178,
+    2520,
+    1323
+   ]
+  },
+  {
+   "text": "of mangf kinchi of coasteeth ecoegstem",
+   "score": 0.6108,
+   "poly": [
+    [
+     529,
+     1279
+    ],
+    [
+     2473,
+     1338
+    ],
+    [
+     2470,
+     1453
+    ],
+    [
+     526,
+     1394
+    ]
+   ],
+   "box": [
+    526,
+    1279,
+    2473,
+    1453
+   ]
+  },
+  {
+   "text": "doesnot god si tited If we doesnot",
+   "score": 0.6061,
+   "poly": [
+    [
+     522,
+     1402
+    ],
+    [
+     2442,
+     1457
+    ],
+    [
+     2439,
+     1563
+    ],
+    [
+     519,
+     1508
+    ]
+   ],
+   "box": [
+    519,
+    1402,
+    2442,
+    1563
+   ]
+  },
+  {
+   "text": "seducethe-waste or not ing the",
+   "score": 0.5655,
+   "poly": [
+    [
+     521,
+     1504
+    ],
+    [
+     2439,
+     1571
+    ],
+    [
+     2434,
+     1688
+    ],
+    [
+     517,
+     1621
+    ]
+   ],
+   "box": [
+    517,
+    1504,
+    2439,
+    1688
+   ]
+  },
+  {
+   "text": "Br princpleeth naron mendgt",
+   "score": 0.5679,
+   "poly": [
+    [
+     519,
+     1629
+    ],
+    [
+     2131,
+     1688
+    ],
+    [
+     2127,
+     1805
+    ],
+    [
+     515,
+     1746
+    ]
+   ],
+   "box": [
+    515,
+    1629,
+    2131,
+    1805
+   ]
+  },
+  {
+   "text": "destubede",
+   "score": 0.6962,
+   "poly": [
+    [
+     526,
+     1757
+    ],
+    [
+     952,
+     1772
+    ],
+    [
+     949,
+     1867
+    ],
+    [
+     522,
+     1853
+    ]
+   ],
+   "box": [
+    522,
+    1757,
+    952,
+    1867
+   ]
+  },
+  {
+   "text": "方",
+   "score": 0.2072,
+   "poly": [
+    [
+     2296,
+     2911
+    ],
+    [
+     2315,
+     2911
+    ],
+    [
+     2315,
+     2928
+    ],
+    [
+     2296,
+     2928
+    ]
+   ],
+   "box": [
+    2296,
+    2911,
+    2315,
+    2928
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3328
+}

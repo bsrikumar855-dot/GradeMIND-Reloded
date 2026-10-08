@@ -1,0 +1,6 @@
+{
+ "source_run": "20261008T075358Z_base_int8_retry",
+ "redaction": "data/redaction.json via spike/redact.py",
+ "logs_collapsed": [],
+ "collapse_rule": "logs > 1 MB: runs of identical consecutive lines collapsed to one line + '[previous line repeated N times]'; raw logs kept local"
+}

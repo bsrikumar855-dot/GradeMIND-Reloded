@@ -1,0 +1,15 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Some weights of VisionEncoderDecoderModel were not initialized from the model checkpoint at /home/Shreekumar/models/trocr-large-handwritten and are newly initialized: ['encoder.pooler.dense.bias', 'encoder.pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+page_01.jpg: 6.8s lines=101 peak_vram=2721MiB
+page_02.jpg: 1.0s lines=22 peak_vram=2681MiB
+page_03.jpg: 0.9s lines=17 peak_vram=2680MiB
+page_04.jpg: 0.9s lines=17 peak_vram=2673MiB
+page_05.jpg: 1.4s lines=26 peak_vram=2673MiB
+page_06.jpg: 1.3s lines=26 peak_vram=2686MiB
+page_07.jpg: 1.1s lines=22 peak_vram=2686MiB
+page_08.jpg: 1.5s lines=30 peak_vram=2683MiB
+page_09.jpg: 1.1s lines=19 peak_vram=2691MiB
+page_10.jpg: 1.0s lines=17 peak_vram=2676MiB
+page_11.jpg: 1.1s lines=22 peak_vram=2674MiB
+page_12.jpg: 0.4s lines=7 peak_vram=2382MiB

@@ -1,0 +1,224 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_12.jpg",
+ "latency_s": 8.428,
+ "model_load_s": 0.37,
+ "n_lines": 7,
+ "lines": [
+  {
+   "text": "&human",
+   "score": 0.8381,
+   "poly": [
+    [
+     196,
+     228
+    ],
+    [
+     647,
+     228
+    ],
+    [
+     647,
+     387
+    ],
+    [
+     196,
+     387
+    ]
+   ],
+   "box": [
+    196,
+    228,
+    647,
+    387
+   ]
+  },
+  {
+   "text": "get benefits",
+   "score": 0.7718,
+   "poly": [
+    [
+     816,
+     259
+    ],
+    [
+     1618,
+     259
+    ],
+    [
+     1618,
+     442
+    ],
+    [
+     816,
+     442
+    ]
+   ],
+   "box": [
+    816,
+    259,
+    1618,
+    442
+   ]
+  },
+  {
+   "text": "fuon",
+   "score": 0.6924,
+   "poly": [
+    [
+     1672,
+     264
+    ],
+    [
+     2032,
+     253
+    ],
+    [
+     2038,
+     453
+    ],
+    [
+     1679,
+     465
+    ]
+   ],
+   "box": [
+    1672,
+    253,
+    2038,
+    465
+   ]
+  },
+  {
+   "text": "this",
+   "score": 0.9113,
+   "poly": [
+    [
+     251,
+     350
+    ],
+    [
+     568,
+     359
+    ],
+    [
+     564,
+     512
+    ],
+    [
+     247,
+     503
+    ]
+   ],
+   "box": [
+    247,
+    350,
+    568,
+    512
+   ]
+  },
+  {
+   "text": "type",
+   "score": 0.7297,
+   "poly": [
+    [
+     669,
+     363
+    ],
+    [
+     981,
+     372
+    ],
+    [
+     977,
+     528
+    ],
+    [
+     665,
+     519
+    ]
+   ],
+   "box": [
+    665,
+    363,
+    981,
+    528
+   ]
+  },
+  {
+   "text": "of rba",
+   "score": 0.7224,
+   "poly": [
+    [
+     1057,
+     400
+    ],
+    [
+     1594,
+     388
+    ],
+    [
+     1598,
+     552
+    ],
+    [
+     1061,
+     564
+    ]
+   ],
+   "box": [
+    1057,
+    388,
+    1598,
+    564
+   ]
+  },
+  {
+   "text": " food, enorgy and More",
+   "score": 0.8412,
+   "poly": [
+    [
+     150,
+     544
+    ],
+    [
+     1870,
+     578
+    ],
+    [
+     1865,
+     812
+    ],
+    [
+     145,
+     778
+    ]
+   ],
+   "box": [
+    145,
+    544,
+    1870,
+    812
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3200
+}

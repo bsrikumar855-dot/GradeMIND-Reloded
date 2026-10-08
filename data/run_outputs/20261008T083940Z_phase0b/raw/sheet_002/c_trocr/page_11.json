@@ -1,0 +1,501 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_11.jpg",
+ "latency_s": 0.891,
+ "model_load_s": 0.84,
+ "n_lines": 15,
+ "lines": [
+  {
+   "text": "environment effects.",
+   "text_raw": "environment effects .",
+   "score": 0.8157,
+   "min_token_prob": 0.301,
+   "box": [
+    353,
+    342,
+    1559,
+    534
+   ],
+   "poly": [
+    [
+     359,
+     342
+    ],
+    [
+     1559,
+     386
+    ],
+    [
+     1554,
+     534
+    ],
+    [
+     353,
+     490
+    ]
+   ],
+   "b_text": "enuronmental affeds",
+   "b_score": 0.8033
+  },
+  {
+   "text": "Affederation) means planting",
+   "text_raw": "Affederation ) means planting",
+   "score": 0.5894,
+   "min_token_prob": 0.0903,
+   "box": [
+    761,
+    493,
+    2425,
+    681
+   ],
+   "poly": [
+    [
+     763,
+     493
+    ],
+    [
+     2425,
+     520
+    ],
+    [
+     2422,
+     681
+    ],
+    [
+     761,
+     654
+    ]
+   ],
+   "b_text": "Afforesdation means plantong",
+   "b_score": 0.7828
+  },
+  {
+   "text": "trees in the desert and brought",
+   "text_raw": "trees in the desert and brought",
+   "score": 0.9532,
+   "min_token_prob": 0.7337,
+   "box": [
+    336,
+    596,
+    2417,
+    836
+   ],
+   "poly": [
+    [
+     341,
+     596
+    ],
+    [
+     2417,
+     668
+    ],
+    [
+     2412,
+     836
+    ],
+    [
+     336,
+     765
+    ]
+   ],
+   "b_text": "trees cIn the desort ardtrought",
+   "b_score": 0.7886
+  },
+  {
+   "text": "areab.",
+   "text_raw": "areab .",
+   "score": 0.8867,
+   "min_token_prob": 0.607,
+   "box": [
+    346,
+    753,
+    653,
+    886
+   ],
+   "poly": [
+    [
+     354,
+     753
+    ],
+    [
+     653,
+     774
+    ],
+    [
+     645,
+     886
+    ],
+    [
+     346,
+     865
+    ]
+   ],
+   "b_text": "aseas",
+   "b_score": 0.8504
+  },
+  {
+   "text": "can plant in the droogia.",
+   "text_raw": "can plant in the droogia .",
+   "score": 0.7334,
+   "min_token_prob": 0.3362,
+   "box": [
+    1140,
+    772,
+    2566,
+    988
+   ],
+   "poly": [
+    [
+     1146,
+     772
+    ],
+    [
+     2566,
+     827
+    ],
+    [
+     2560,
+     988
+    ],
+    [
+     1140,
+     933
+    ]
+   ],
+   "b_text": "can plant , ethe drogh",
+   "b_score": 0.8377
+  },
+  {
+   "text": "group.",
+   "text_raw": "group .",
+   "score": 0.6864,
+   "min_token_prob": 0.1422,
+   "box": [
+    1792,
+    749,
+    2045,
+    829
+   ],
+   "poly": [
+    [
+     1792,
+     763
+    ],
+    [
+     2041,
+     749
+    ],
+    [
+     2045,
+     815
+    ],
+    [
+     1796,
+     829
+    ]
+   ],
+   "b_text": "troopn",
+   "b_score": 0.7627
+  },
+  {
+   "text": "LOR C.",
+   "text_raw": "LOR C.",
+   "score": 0.6135,
+   "min_token_prob": 0.4885,
+   "box": [
+    811,
+    792,
+    1215,
+    925
+   ],
+   "poly": [
+    [
+     816,
+     792
+    ],
+    [
+     1215,
+     810
+    ],
+    [
+     1210,
+     925
+    ],
+    [
+     811,
+     908
+    ]
+   ],
+   "b_text": "coe",
+   "b_score": 0.6032
+  },
+  {
+   "text": "areas.",
+   "text_raw": "areas .",
+   "score": 0.9559,
+   "min_token_prob": 0.8523,
+   "box": [
+    376,
+    891,
+    734,
+    1029
+   ],
+   "poly": [
+    [
+     380,
+     891
+    ],
+    [
+     734,
+     905
+    ],
+    [
+     729,
+     1029
+    ],
+    [
+     376,
+     1016
+    ]
+   ],
+   "b_text": "aroas.",
+   "b_score": 0.8668
+  },
+  {
+   "text": "Mainly afefocused for \" leads to",
+   "text_raw": "Mainly afefocused for \" leads to",
+   "score": 0.6747,
+   "min_token_prob": 0.1287,
+   "box": [
+    794,
+    1030,
+    2539,
+    1262
+   ],
+   "poly": [
+    [
+     800,
+     1030
+    ],
+    [
+     2539,
+     1096
+    ],
+    [
+     2533,
+     1262
+    ],
+    [
+     794,
+     1196
+    ]
+   ],
+   "b_text": "Maenly afochestatfon toads to",
+   "b_score": 0.7092
+  },
+  {
+   "text": "crainfall and \"",
+   "text_raw": "crainfall and \"",
+   "score": 0.717,
+   "min_token_prob": 0.4328,
+   "box": [
+    306,
+    1156,
+    1163,
+    1334
+   ],
+   "poly": [
+    [
+     313,
+     1156
+    ],
+    [
+     1163,
+     1200
+    ],
+    [
+     1157,
+     1334
+    ],
+    [
+     306,
+     1289
+    ]
+   ],
+   "b_text": "Gaanfail and",
+   "b_score": 0.7571
+  },
+  {
+   "text": "profects the enverame.",
+   "text_raw": "profects the enverame .",
+   "score": 0.6778,
+   "min_token_prob": 0.282,
+   "box": [
+    1217,
+    1191,
+    2595,
+    1407
+   ],
+   "poly": [
+    [
+     1224,
+     1191
+    ],
+    [
+     2595,
+     1257
+    ],
+    [
+     2588,
+     1407
+    ],
+    [
+     1217,
+     1341
+    ]
+   ],
+   "b_text": "protects sthe ohuprorme",
+   "b_score": 0.8053
+  },
+  {
+   "text": "from the climate charges.",
+   "text_raw": "from the climate charges .",
+   "score": 0.8055,
+   "min_token_prob": 0.3383,
+   "box": [
+    308,
+    1282,
+    2153,
+    1557
+   ],
+   "poly": [
+    [
+     316,
+     1282
+    ],
+    [
+     2153,
+     1363
+    ],
+    [
+     2144,
+     1557
+    ],
+    [
+     308,
+     1475
+    ]
+   ],
+   "b_text": "ofrom cthe lmate chaunges",
+   "b_score": 0.7665
+  },
+  {
+   "text": "to Specter found on a",
+   "text_raw": "to Specter found on a",
+   "score": 0.7285,
+   "min_token_prob": 0.189,
+   "box": [
+    870,
+    1593,
+    2360,
+    1826
+   ],
+   "poly": [
+    [
+     878,
+     1593
+    ],
+    [
+     2360,
+     1676
+    ],
+    [
+     2351,
+     1826
+    ],
+    [
+     870,
+     1743
+    ]
+   ],
+   "b_text": "A. specfes yfourd cen a",
+   "b_score": 0.807
+  },
+  {
+   "text": "particular ecosystem can help the entire",
+   "text_raw": "particular ecosystem can help the entire",
+   "score": 0.9705,
+   "min_token_prob": 0.9234,
+   "box": [
+    284,
+    1695,
+    2605,
+    1991
+   ],
+   "poly": [
+    [
+     293,
+     1695
+    ],
+    [
+     2605,
+     1830
+    ],
+    [
+     2595,
+     1991
+    ],
+    [
+     284,
+     1856
+    ]
+   ],
+   "b_text": "particular ecosystem con help cthe enror",
+   "b_score": 0.7338
+  },
+  {
+   "text": "from the drugs by placing them.",
+   "text_raw": "from the drugs by placing them .",
+   "score": 0.8396,
+   "min_token_prob": 0.2848,
+   "box": [
+    243,
+    1839,
+    2514,
+    2154
+   ],
+   "poly": [
+    [
+     254,
+     1839
+    ],
+    [
+     2514,
+     1975
+    ],
+    [
+     2504,
+     2154
+    ],
+    [
+     243,
+     2018
+    ]
+   ],
+   "b_text": "from sthe brough by splaiding thom.",
+   "b_score": 0.7709
+  }
+ ],
+ "peak_torch_alloc_mib": 2644,
+ "peak_rss_mib_process": 2962
+}

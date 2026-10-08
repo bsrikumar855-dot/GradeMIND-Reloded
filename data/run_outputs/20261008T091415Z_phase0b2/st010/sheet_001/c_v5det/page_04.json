@@ -1,0 +1,917 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_04.jpg",
+ "latency_s": 1.37,
+ "model_load_s": 0.86,
+ "n_lines": 28,
+ "lines": [
+  {
+   "text": "example:",
+   "text_raw": "example :",
+   "score": 0.5976,
+   "min_token_prob": 0.1611,
+   "box": [
+    271,
+    280,
+    726,
+    404
+   ],
+   "poly": [
+    [
+     271,
+     289
+    ],
+    [
+     724,
+     280
+    ],
+    [
+     726,
+     396
+    ],
+    [
+     273,
+     404
+    ]
+   ],
+   "b_text": "Examplea",
+   "b_score": 0.8827
+  },
+  {
+   "text": "niliger i there",
+   "text_raw": "niliger i there",
+   "score": 0.5669,
+   "min_token_prob": 0.2624,
+   "box": [
+    566,
+    407,
+    1135,
+    522
+   ],
+   "poly": [
+    [
+     566,
+     407
+    ],
+    [
+     1135,
+     407
+    ],
+    [
+     1135,
+     522
+    ],
+    [
+     566,
+     522
+    ]
+   ],
+   "b_text": "ntigoithar",
+   "b_score": 0.7607
+  },
+  {
+   "text": "14 # stress",
+   "text_raw": "14 # stress",
+   "score": 0.5744,
+   "min_token_prob": 0.3214,
+   "box": [
+    54,
+    642,
+    688,
+    785
+   ],
+   "poly": [
+    [
+     54,
+     650
+    ],
+    [
+     686,
+     642
+    ],
+    [
+     688,
+     777
+    ],
+    [
+     56,
+     785
+    ]
+   ],
+   "b_text": "12→stresg",
+   "b_score": 0.7192
+  },
+  {
+   "text": "# hearing jump.",
+   "text_raw": "# hearing jump .",
+   "score": 0.6594,
+   "min_token_prob": 0.1741,
+   "box": [
+    185,
+    890,
+    853,
+    1027
+   ],
+   "poly": [
+    [
+     189,
+     890
+    ],
+    [
+     853,
+     908
+    ],
+    [
+     850,
+     1027
+    ],
+    [
+     185,
+     1008
+    ]
+   ],
+   "b_text": "hearing imp",
+   "b_score": 0.9711
+  },
+  {
+   "text": "formed.",
+   "text_raw": "formed .",
+   "score": 0.906,
+   "min_token_prob": 0.8484,
+   "box": [
+    1645,
+    1121,
+    2023,
+    1319
+   ],
+   "poly": [
+    [
+     1645,
+     1121
+    ],
+    [
+     2023,
+     1121
+    ],
+    [
+     2023,
+     1319
+    ],
+    [
+     1645,
+     1319
+    ]
+   ],
+   "b_text": "fomed",
+   "b_score": 0.9348
+  },
+  {
+   "text": "15x like waste product",
+   "text_raw": "15x like waste product",
+   "score": 0.9012,
+   "min_token_prob": 0.6059,
+   "box": [
+    65,
+    1128,
+    1506,
+    1281
+   ],
+   "poly": [
+    [
+     65,
+     1132
+    ],
+    [
+     1505,
+     1128
+    ],
+    [
+     1506,
+     1277
+    ],
+    [
+     65,
+     1281
+    ]
+   ],
+   "b_text": "15× like wastoe product",
+   "b_score": 0.8004
+  },
+  {
+   "text": "so water cannot \" fro.",
+   "text_raw": "so water cannot \" fro .",
+   "score": 0.9041,
+   "min_token_prob": 0.5942,
+   "box": [
+    292,
+    1253,
+    1378,
+    1443
+   ],
+   "poly": [
+    [
+     296,
+     1253
+    ],
+    [
+     1378,
+     1275
+    ],
+    [
+     1375,
+     1443
+    ],
+    [
+     292,
+     1421
+    ]
+   ],
+   "b_text": "So watoer cannot ffo",
+   "b_score": 0.8094
+  },
+  {
+   "text": "ex water.",
+   "text_raw": "ex water .",
+   "score": 0.79,
+   "min_token_prob": 0.1807,
+   "box": [
+    175,
+    1505,
+    569,
+    1639
+   ],
+   "poly": [
+    [
+     175,
+     1510
+    ],
+    [
+     567,
+     1505
+    ],
+    [
+     569,
+     1635
+    ],
+    [
+     177,
+     1639
+    ]
+   ],
+   "b_text": "wator",
+   "b_score": 0.9447
+  },
+  {
+   "text": "became.",
+   "text_raw": "became .",
+   "score": 0.9153,
+   "min_token_prob": 0.6699,
+   "box": [
+    757,
+    1514,
+    1262,
+    1652
+   ],
+   "poly": [
+    [
+     760,
+     1514
+    ],
+    [
+     1262,
+     1525
+    ],
+    [
+     1259,
+     1652
+    ],
+    [
+     757,
+     1642
+    ]
+   ],
+   "b_text": "beCaMe",
+   "b_score": 0.6363
+  },
+  {
+   "text": "unhe.",
+   "text_raw": "unhe .",
+   "score": 0.9624,
+   "min_token_prob": 0.9191,
+   "box": [
+    1284,
+    1506,
+    1527,
+    1644
+   ],
+   "poly": [
+    [
+     1284,
+     1516
+    ],
+    [
+     1522,
+     1506
+    ],
+    [
+     1527,
+     1634
+    ],
+    [
+     1289,
+     1644
+    ]
+   ],
+   "b_text": "unhe",
+   "b_score": 0.6582
+  },
+  {
+   "text": "0.",
+   "text_raw": "0.",
+   "score": 0.3097,
+   "min_token_prob": 0.1877,
+   "box": [
+    539,
+    1531,
+    800,
+    1624
+   ],
+   "poly": [
+    [
+     539,
+     1531
+    ],
+    [
+     800,
+     1531
+    ],
+    [
+     800,
+     1624
+    ],
+    [
+     539,
+     1624
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "part -",
+   "text_raw": "part -",
+   "score": 0.8985,
+   "min_token_prob": 0.8265,
+   "box": [
+    828,
+    1770,
+    1128,
+    1880
+   ],
+   "poly": [
+    [
+     828,
+     1774
+    ],
+    [
+     1126,
+     1770
+    ],
+    [
+     1128,
+     1876
+    ],
+    [
+     830,
+     1880
+    ]
+   ],
+   "b_text": "Part-",
+   "b_score": 0.871
+  },
+  {
+   "text": "it",
+   "text_raw": "it",
+   "score": 0.3981,
+   "min_token_prob": 0.1598,
+   "box": [
+    80,
+    1794,
+    163,
+    1896
+   ],
+   "poly": [
+    [
+     80,
+     1794
+    ],
+    [
+     163,
+     1794
+    ],
+    [
+     163,
+     1896
+    ],
+    [
+     80,
+     1896
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.2761
+  },
+  {
+   "text": "s.",
+   "text_raw": "s .",
+   "score": 0.5935,
+   "min_token_prob": 0.3491,
+   "box": [
+    1453,
+    1785,
+    1475,
+    1821
+   ],
+   "poly": [
+    [
+     1453,
+     1785
+    ],
+    [
+     1475,
+     1785
+    ],
+    [
+     1475,
+     1821
+    ],
+    [
+     1453,
+     1821
+    ]
+   ],
+   "b_text": "-",
+   "b_score": 0.133
+  },
+  {
+   "text": "15 impact of deforestation on biodiversity.",
+   "text_raw": "15 impact of deforestation on biodiversity .",
+   "score": 0.7928,
+   "min_token_prob": 0.4621,
+   "box": [
+    71,
+    1982,
+    2289,
+    2179
+   ],
+   "poly": [
+    [
+     71,
+     1982
+    ],
+    [
+     2289,
+     1982
+    ],
+    [
+     2289,
+     2179
+    ],
+    [
+     71,
+     2179
+    ]
+   ],
+   "b_text": " impact of defrestat on bidiesity",
+   "b_score": 0.6789
+  },
+  {
+   "text": "make",
+   "text_raw": "make",
+   "score": 0.764,
+   "min_token_prob": 0.5983,
+   "box": [
+    1098,
+    2232,
+    1393,
+    2376
+   ],
+   "poly": [
+    [
+     1098,
+     2232
+    ],
+    [
+     1393,
+     2232
+    ],
+    [
+     1393,
+     2376
+    ],
+    [
+     1098,
+     2376
+    ]
+   ],
+   "b_text": "make",
+   "b_score": 0.9884
+  },
+  {
+   "text": "living.",
+   "text_raw": "living .",
+   "score": 0.9375,
+   "min_token_prob": 0.8958,
+   "box": [
+    1572,
+    2228,
+    1953,
+    2429
+   ],
+   "poly": [
+    [
+     1587,
+     2228
+    ],
+    [
+     1953,
+     2260
+    ],
+    [
+     1938,
+     2429
+    ],
+    [
+     1572,
+     2398
+    ]
+   ],
+   "b_text": "living",
+   "b_score": 0.9883
+  },
+  {
+   "text": "ex deforestation.",
+   "text_raw": "ex deforestation .",
+   "score": 0.7619,
+   "min_token_prob": 0.5661,
+   "box": [
+    182,
+    2237,
+    862,
+    2395
+   ],
+   "poly": [
+    [
+     182,
+     2241
+    ],
+    [
+     861,
+     2237
+    ],
+    [
+     862,
+     2391
+    ],
+    [
+     183,
+     2395
+    ]
+   ],
+   "b_text": "deforestation",
+   "b_score": 0.9114
+  },
+  {
+   "text": "life.",
+   "text_raw": "life .",
+   "score": 0.9931,
+   "min_token_prob": 0.9833,
+   "box": [
+    932,
+    2356,
+    1198,
+    2562
+   ],
+   "poly": [
+    [
+     932,
+     2356
+    ],
+    [
+     1198,
+     2356
+    ],
+    [
+     1198,
+     2562
+    ],
+    [
+     932,
+     2562
+    ]
+   ],
+   "b_text": "life",
+   "b_score": 0.9397
+  },
+  {
+   "text": "eco.",
+   "text_raw": "eco .",
+   "score": 0.8207,
+   "min_token_prob": 0.5665,
+   "box": [
+    1126,
+    2378,
+    1509,
+    2544
+   ],
+   "poly": [
+    [
+     1126,
+     2378
+    ],
+    [
+     1509,
+     2378
+    ],
+    [
+     1509,
+     2544
+    ],
+    [
+     1126,
+     2544
+    ]
+   ],
+   "b_text": "Co",
+   "b_score": 0.347
+  },
+  {
+   "text": "organism.",
+   "text_raw": "organism .",
+   "score": 0.8952,
+   "min_token_prob": 0.7511,
+   "box": [
+    267,
+    2383,
+    801,
+    2510
+   ],
+   "poly": [
+    [
+     267,
+     2395
+    ],
+    [
+     798,
+     2383
+    ],
+    [
+     801,
+     2498
+    ],
+    [
+     270,
+     2510
+    ]
+   ],
+   "b_text": "organism",
+   "b_score": 0.8782
+  },
+  {
+   "text": "destroy.",
+   "text_raw": "destroy .",
+   "score": 0.9929,
+   "min_token_prob": 0.9802,
+   "box": [
+    1082,
+    2569,
+    1479,
+    2769
+   ],
+   "poly": [
+    [
+     1095,
+     2569
+    ],
+    [
+     1479,
+     2601
+    ],
+    [
+     1466,
+     2769
+    ],
+    [
+     1082,
+     2737
+    ]
+   ],
+   "b_text": "destroy",
+   "b_score": 0.951
+  },
+  {
+   "text": "until",
+   "text_raw": "until",
+   "score": 0.676,
+   "min_token_prob": 0.4881,
+   "box": [
+    631,
+    2607,
+    857,
+    2736
+   ],
+   "poly": [
+    [
+     631,
+     2612
+    ],
+    [
+     854,
+     2607
+    ],
+    [
+     857,
+     2731
+    ],
+    [
+     634,
+     2736
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "# It",
+   "text_raw": "# It",
+   "score": 0.8079,
+   "min_token_prob": 0.5688,
+   "box": [
+    197,
+    2628,
+    509,
+    2736
+   ],
+   "poly": [
+    [
+     197,
+     2632
+    ],
+    [
+     507,
+     2628
+    ],
+    [
+     509,
+     2732
+    ],
+    [
+     198,
+     2736
+    ]
+   ],
+   "b_text": "T",
+   "b_score": 0.52
+  },
+  {
+   "text": "good.",
+   "text_raw": "good .",
+   "score": 0.9547,
+   "min_token_prob": 0.8751,
+   "box": [
+    299,
+    2718,
+    606,
+    2916
+   ],
+   "poly": [
+    [
+     299,
+     2728
+    ],
+    [
+     600,
+     2718
+    ],
+    [
+     606,
+     2906
+    ],
+    [
+     305,
+     2916
+    ]
+   ],
+   "b_text": "food",
+   "b_score": 0.8359
+  },
+  {
+   "text": "chain.",
+   "text_raw": "chain .",
+   "score": 0.8069,
+   "min_token_prob": 0.5667,
+   "box": [
+    684,
+    2723,
+    1004,
+    2873
+   ],
+   "poly": [
+    [
+     684,
+     2723
+    ],
+    [
+     1004,
+     2723
+    ],
+    [
+     1004,
+     2873
+    ],
+    [
+     684,
+     2873
+    ]
+   ],
+   "b_text": "chain",
+   "b_score": 0.8657
+  },
+  {
+   "text": "# SO, I.",
+   "text_raw": "# SO , I .",
+   "score": 0.802,
+   "min_token_prob": 0.3712,
+   "box": [
+    206,
+    2988,
+    706,
+    3101
+   ],
+   "poly": [
+    [
+     206,
+     2988
+    ],
+    [
+     706,
+     2988
+    ],
+    [
+     706,
+     3101
+    ],
+    [
+     206,
+     3101
+    ]
+   ],
+   "b_text": "*SO,工",
+   "b_score": 0.638
+  },
+  {
+   "text": "extinction of the spared",
+   "text_raw": "extinction of the spared",
+   "score": 0.8446,
+   "min_token_prob": 0.4279,
+   "box": [
+    273,
+    3084,
+    1765,
+    3278
+   ],
+   "poly": [
+    [
+     274,
+     3084
+    ],
+    [
+     1765,
+     3096
+    ],
+    [
+     1763,
+     3278
+    ],
+    [
+     273,
+     3266
+    ]
+   ],
+   "b_text": "extiction of the spaes",
+   "b_score": 0.818
+  }
+ ],
+ "peak_torch_alloc_mib": 2691,
+ "peak_rss_mib_process": 2965
+}

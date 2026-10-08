@@ -1,0 +1,661 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 1.147,
+ "model_load_s": 0.89,
+ "n_lines": 20,
+ "lines": [
+  {
+   "text": "Saint Easton:",
+   "text_raw": "Saint Easton :",
+   "score": 0.7483,
+   "min_token_prob": 0.299,
+   "box": [
+    452,
+    488,
+    1106,
+    610
+   ],
+   "poly": [
+    [
+     456,
+     488
+    ],
+    [
+     1106,
+     514
+    ],
+    [
+     1102,
+     610
+    ],
+    [
+     452,
+     584
+    ]
+   ],
+   "b_text": "SailsR",
+   "b_score": 0.5041
+  },
+  {
+   "text": "It is a kind of natural disarm.",
+   "text_raw": "It is a kind of natural disarm .",
+   "score": 0.7359,
+   "min_token_prob": 0.3201,
+   "box": [
+    896,
+    594,
+    2703,
+    774
+   ],
+   "poly": [
+    [
+     898,
+     594
+    ],
+    [
+     2703,
+     611
+    ],
+    [
+     2701,
+     774
+    ],
+    [
+     896,
+     756
+    ]
+   ],
+   "b_text": "Id  a dend aof notwal dia",
+   "b_score": 0.5724
+  },
+  {
+   "text": "Soil erosion removes the",
+   "text_raw": "Soil erosion removes the",
+   "score": 0.8635,
+   "min_token_prob": 0.5928,
+   "box": [
+    898,
+    758,
+    2472,
+    875
+   ],
+   "poly": [
+    [
+     898,
+     762
+    ],
+    [
+     2472,
+     758
+    ],
+    [
+     2472,
+     871
+    ],
+    [
+     899,
+     875
+    ]
+   ],
+   "b_text": "Sail easion aemouel the",
+   "b_score": 0.6044
+  },
+  {
+   "text": "federified typsocial.",
+   "text_raw": "federified typsocial .",
+   "score": 0.5992,
+   "min_token_prob": 0.2963,
+   "box": [
+    409,
+    879,
+    1429,
+    1029
+   ],
+   "poly": [
+    [
+     413,
+     879
+    ],
+    [
+     1429,
+     915
+    ],
+    [
+     1425,
+     1029
+    ],
+    [
+     409,
+     993
+    ]
+   ],
+   "b_text": "fefiarel tapsice",
+   "b_score": 0.581
+  },
+  {
+   "text": "Flood:",
+   "text_raw": "Flood :",
+   "score": 0.9238,
+   "min_token_prob": 0.7525,
+   "box": [
+    501,
+    1281,
+    859,
+    1404
+   ],
+   "poly": [
+    [
+     507,
+     1281
+    ],
+    [
+     859,
+     1301
+    ],
+    [
+     853,
+     1404
+    ],
+    [
+     501,
+     1384
+    ]
+   ],
+   "b_text": "Elood:",
+   "b_score": 0.7571
+  },
+  {
+   "text": "Flood is dropped alike to over",
+   "text_raw": "Flood is dropped alike to over",
+   "score": 0.6349,
+   "min_token_prob": 0.3378,
+   "box": [
+    826,
+    1412,
+    2617,
+    1620
+   ],
+   "poly": [
+    [
+     831,
+     1412
+    ],
+    [
+     2617,
+     1489
+    ],
+    [
+     2612,
+     1620
+    ],
+    [
+     826,
+     1543
+    ]
+   ],
+   "b_text": "Flad is chappd due to ",
+   "b_score": 0.6761
+  },
+  {
+   "text": "# Taste # a #word of natural",
+   "text_raw": "# Taste # a #word of natural",
+   "score": 0.4939,
+   "min_token_prob": 0.1244,
+   "box": [
+    382,
+    1509,
+    2655,
+    1785
+   ],
+   "poly": [
+    [
+     390,
+     1509
+    ],
+    [
+     2655,
+     1623
+    ],
+    [
+     2647,
+     1785
+    ],
+    [
+     382,
+     1671
+    ]
+   ],
+   "b_text": "oairfall. It as a chend of rotoal",
+   "b_score": 0.6632
+  },
+  {
+   "text": "disaction.",
+   "text_raw": "disaction .",
+   "score": 0.8175,
+   "min_token_prob": 0.515,
+   "box": [
+    365,
+    1680,
+    763,
+    1793
+   ],
+   "poly": [
+    [
+     371,
+     1680
+    ],
+    [
+     763,
+     1703
+    ],
+    [
+     758,
+     1793
+    ],
+    [
+     365,
+     1770
+    ]
+   ],
+   "b_text": "disae",
+   "b_score": 0.4181
+  },
+  {
+   "text": "Punought:",
+   "text_raw": "Punought :",
+   "score": 0.7163,
+   "min_token_prob": 0.3222,
+   "box": [
+    488,
+    1817,
+    891,
+    1942
+   ],
+   "poly": [
+    [
+     495,
+     1817
+    ],
+    [
+     891,
+     1849
+    ],
+    [
+     884,
+     1942
+    ],
+    [
+     488,
+     1910
+    ]
+   ],
+   "b_text": "Dragtt",
+   "b_score": 0.7036
+  },
+  {
+   "text": "Drought to happened due to uno",
+   "text_raw": "Drought to happened due to uno",
+   "score": 0.594,
+   "min_token_prob": 0.2105,
+   "box": [
+    835,
+    1944,
+    2551,
+    2176
+   ],
+   "poly": [
+    [
+     843,
+     1944
+    ],
+    [
+     2551,
+     2058
+    ],
+    [
+     2543,
+     2176
+    ],
+    [
+     835,
+     2063
+    ]
+   ],
+   "b_text": "Doaght  chppond due to Jo",
+   "b_score": 0.82
+  },
+  {
+   "text": "briefful as #",
+   "text_raw": "briefful as #",
+   "score": 0.5227,
+   "min_token_prob": 0.2824,
+   "box": [
+    345,
+    2053,
+    2269,
+    2304
+   ],
+   "poly": [
+    [
+     353,
+     2053
+    ],
+    [
+     2269,
+     2173
+    ],
+    [
+     2260,
+     2304
+    ],
+    [
+     345,
+     2184
+    ]
+   ],
+   "b_text": "inal tr thpdiwa aen.",
+   "b_score": 0.5327
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.0921,
+   "min_token_prob": 0.0587,
+   "box": [
+    1090,
+    2189,
+    1659,
+    2284
+   ],
+   "poly": [
+    [
+     1094,
+     2189
+    ],
+    [
+     1659,
+     2232
+    ],
+    [
+     1655,
+     2284
+    ],
+    [
+     1090,
+     2241
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "# # #",
+   "text_raw": "# # #",
+   "score": 0.1686,
+   "min_token_prob": 0.1136,
+   "box": [
+    873,
+    2204,
+    2630,
+    2466
+   ],
+   "poly": [
+    [
+     883,
+     2204
+    ],
+    [
+     2630,
+     2341
+    ],
+    [
+     2620,
+     2466
+    ],
+    [
+     873,
+     2330
+    ]
+   ],
+   "b_text": "I thoe is co uodte aeoe",
+   "b_score": 0.6458
+  },
+  {
+   "text": "is there at well dropped.",
+   "text_raw": "is there at well dropped .",
+   "score": 0.7895,
+   "min_token_prob": 0.2476,
+   "box": [
+    342,
+    2302,
+    1800,
+    2534
+   ],
+   "poly": [
+    [
+     352,
+     2302
+    ],
+    [
+     1800,
+     2422
+    ],
+    [
+     1790,
+     2534
+    ],
+    [
+     342,
+     2415
+    ]
+   ],
+   "b_text": "as thae it we dappend",
+   "b_score": 0.6777
+  },
+  {
+   "text": "Theads of Biodiversity",
+   "text_raw": "Theads of Biodiversity",
+   "score": 0.6773,
+   "min_token_prob": 0.1405,
+   "box": [
+    349,
+    2552,
+    1522,
+    2784
+   ],
+   "poly": [
+    [
+     361,
+     2552
+    ],
+    [
+     1522,
+     2659
+    ],
+    [
+     1510,
+     2784
+    ],
+    [
+     349,
+     2678
+    ]
+   ],
+   "b_text": "Traeat o Bveuy",
+   "b_score": 0.5577
+  },
+  {
+   "text": "13",
+   "text_raw": "13",
+   "score": 0.7161,
+   "min_token_prob": 0.5859,
+   "box": [
+    228,
+    2585,
+    312,
+    2646
+   ],
+   "poly": [
+    [
+     228,
+     2585
+    ],
+    [
+     312,
+     2585
+    ],
+    [
+     312,
+     2646
+    ],
+    [
+     228,
+     2646
+    ]
+   ],
+   "b_text": "3",
+   "b_score": 0.6739
+  },
+  {
+   "text": "# # # # good chair.",
+   "text_raw": "# # # # good chair .",
+   "score": 0.645,
+   "min_token_prob": 0.251,
+   "box": [
+    568,
+    2824,
+    2442,
+    3128
+   ],
+   "poly": [
+    [
+     580,
+     2824
+    ],
+    [
+     2442,
+     2995
+    ],
+    [
+     2430,
+     3128
+    ],
+    [
+     568,
+     2956
+    ]
+   ],
+   "b_text": "Id afed  fad chafl",
+   "b_score": 0.6354
+  },
+  {
+   "text": "4tho #",
+   "text_raw": "4tho #",
+   "score": 0.4129,
+   "min_token_prob": 0.1015,
+   "box": [
+    574,
+    2943,
+    2386,
+    3274
+   ],
+   "poly": [
+    [
+     589,
+     2943
+    ],
+    [
+     2386,
+     3143
+    ],
+    [
+     2371,
+     3274
+    ],
+    [
+     574,
+     3074
+    ]
+   ],
+   "b_text": "Td d dh eesystem",
+   "b_score": 0.6651
+  },
+  {
+   "text": "# operations # to # over #",
+   "text_raw": "# operations # to # over #",
+   "score": 0.2952,
+   "min_token_prob": 0.0952,
+   "box": [
+    580,
+    3054,
+    2463,
+    3419
+   ],
+   "poly": [
+    [
+     597,
+     3054
+    ],
+    [
+     2463,
+     3268
+    ],
+    [
+     2445,
+     3419
+    ],
+    [
+     580,
+     3206
+    ]
+   ],
+   "b_text": " It is fnds do extihsior ",
+   "b_score": 0.6782
+  },
+  {
+   "text": "more species.",
+   "text_raw": "more species .",
+   "score": 0.9913,
+   "min_token_prob": 0.9848,
+   "box": [
+    337,
+    3192,
+    1079,
+    3368
+   ],
+   "poly": [
+    [
+     346,
+     3192
+    ],
+    [
+     1079,
+     3247
+    ],
+    [
+     1070,
+     3368
+    ],
+    [
+     337,
+     3313
+    ]
+   ],
+   "b_text": "tore Species",
+   "b_score": 0.6918
+  }
+ ],
+ "peak_torch_alloc_mib": 2692,
+ "peak_rss_mib_process": 2966
+}

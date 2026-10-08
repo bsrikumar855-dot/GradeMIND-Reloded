@@ -1,0 +1,248 @@
+{
+ "engine": "unlimited-ocr",
+ "model_revision": "07dea832e22aefee32ad281d4b80551282e1c168",
+ "path": "transformers",
+ "mode": "gundam",
+ "mode_params": {
+  "base_size": 1024,
+  "image_size": 640,
+  "crop_mode": true
+ },
+ "prompt": "<image>document parsing.",
+ "quant": "int8",
+ "offload_layers": null,
+ "decoding": {
+  "temperature": 0.0,
+  "max_length": 4096,
+  "no_repeat_ngram_size": 35,
+  "ngram_window": 128
+ },
+ "page": "page_01.jpg",
+ "latency_s": 53.924,
+ "model_load_s": 3.58,
+ "generated_tokens": 1129,
+ "tokens_per_s": 20.9,
+ "peak_torch_alloc_mib": 5148,
+ "peak_torch_reserved_mib": 5244,
+ "nvidia_smi_used_mib_after": 10131,
+ "token_prob": {
+  "mean": 0.9138,
+  "min": 0.0551,
+  "share_below_0.5": 0.0717
+ },
+ "token_ids": [],
+ "token_logprobs": [],
+ "token_margins": [],
+ "degenerate_flags": [],
+ "regions": [
+  {
+   "category": "header",
+   "bbox_raw": [
+    [
+     784,
+     23,
+     896,
+     42
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "header",
+   "bbox_raw": [
+    [
+     100,
+     55,
+     167,
+     108
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "header",
+   "bbox_raw": [
+    [
+     98,
+     113,
+     172,
+     124
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "title",
+   "bbox_raw": [
+    [
+     338,
+     56,
+     589,
+     81
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     245,
+     83,
+     674,
+     99
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     368,
+     100,
+     567,
+     114
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     271,
+     114,
+     649,
+     130
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     247,
+     133,
+     674,
+     152
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "image",
+   "bbox_raw": [
+    [
+     746,
+     73,
+     848,
+     130
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "table",
+   "bbox_raw": [
+    [
+     95,
+     152,
+     868,
+     263
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     376,
+     260,
+     584,
+     275
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     95,
+     269,
+     380,
+     304
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     527,
+     293,
+     853,
+     308
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     94,
+     304,
+     617,
+     320
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     349,
+     325,
+     616,
+     340
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "table",
+   "bbox_raw": [
+    [
+     95,
+     340,
+     884,
+     944
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  }
+ ],
+ "raw": "[REDACTED]"
+}

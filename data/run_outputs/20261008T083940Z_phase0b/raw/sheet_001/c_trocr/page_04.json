@@ -1,0 +1,885 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_04.jpg",
+ "latency_s": 1.62,
+ "model_load_s": 1.12,
+ "n_lines": 27,
+ "lines": [
+  {
+   "text": "Example in",
+   "text_raw": "Example in",
+   "score": 0.5771,
+   "min_token_prob": 0.2887,
+   "box": [
+    268,
+    267,
+    745,
+    425
+   ],
+   "poly": [
+    [
+     268,
+     281
+    ],
+    [
+     741,
+     267
+    ],
+    [
+     745,
+     411
+    ],
+    [
+     273,
+     425
+    ]
+   ],
+   "b_text": "Erample a",
+   "b_score": 0.8848
+  },
+  {
+   "text": "niliger i-thareggod.",
+   "text_raw": "niliger i-thareggod .",
+   "score": 0.6662,
+   "min_token_prob": 0.222,
+   "box": [
+    557,
+    396,
+    1354,
+    542
+   ],
+   "poly": [
+    [
+     557,
+     396
+    ],
+    [
+     1354,
+     396
+    ],
+    [
+     1354,
+     542
+    ],
+    [
+     557,
+     542
+    ]
+   ],
+   "b_text": "ntigorithar9d",
+   "b_score": 0.6618
+  },
+  {
+   "text": "14. Distiresboro.",
+   "text_raw": "14 . Distiresboro .",
+   "score": 0.5982,
+   "min_token_prob": 0.2056,
+   "box": [
+    45,
+    627,
+    891,
+    794
+   ],
+   "poly": [
+    [
+     45,
+     637
+    ],
+    [
+     889,
+     627
+    ],
+    [
+     891,
+     784
+    ],
+    [
+     47,
+     794
+    ]
+   ],
+   "b_text": "121.→stresg",
+   "b_score": 0.7183
+  },
+  {
+   "text": "grove.",
+   "text_raw": "grove .",
+   "score": 0.5704,
+   "min_token_prob": 0.1502,
+   "box": [
+    997,
+    664,
+    1229,
+    765
+   ],
+   "poly": [
+    [
+     997,
+     664
+    ],
+    [
+     1229,
+     664
+    ],
+    [
+     1229,
+     765
+    ],
+    [
+     997,
+     765
+    ]
+   ],
+   "b_text": "80e",
+   "b_score": 0.5362
+  },
+  {
+   "text": "shearing impacts.",
+   "text_raw": "shearing impacts .",
+   "score": 0.6384,
+   "min_token_prob": 0.1547,
+   "box": [
+    186,
+    885,
+    1066,
+    1037
+   ],
+   "poly": [
+    [
+     187,
+     885
+    ],
+    [
+     1066,
+     893
+    ],
+    [
+     1065,
+     1037
+    ],
+    [
+     186,
+     1029
+    ]
+   ],
+   "b_text": "→hearing impact",
+   "b_score": 0.9024
+  },
+  {
+   "text": "waste.",
+   "text_raw": "waste .",
+   "score": 0.921,
+   "min_token_prob": 0.723,
+   "box": [
+    691,
+    1133,
+    1030,
+    1272
+   ],
+   "poly": [
+    [
+     691,
+     1133
+    ],
+    [
+     1030,
+     1133
+    ],
+    [
+     1030,
+     1272
+    ],
+    [
+     691,
+     1272
+    ]
+   ],
+   "b_text": "waste",
+   "b_score": 0.9554
+  },
+  {
+   "text": "product.",
+   "text_raw": "product .",
+   "score": 0.9511,
+   "min_token_prob": 0.8553,
+   "box": [
+    1120,
+    1132,
+    1495,
+    1278
+   ],
+   "poly": [
+    [
+     1120,
+     1132
+    ],
+    [
+     1495,
+     1132
+    ],
+    [
+     1495,
+     1278
+    ],
+    [
+     1120,
+     1278
+    ]
+   ],
+   "b_text": "product",
+   "b_score": 0.9763
+  },
+  {
+   "text": "formed.",
+   "text_raw": "formed .",
+   "score": 0.9035,
+   "min_token_prob": 0.8074,
+   "box": [
+    1649,
+    1123,
+    2024,
+    1322
+   ],
+   "poly": [
+    [
+     1649,
+     1131
+    ],
+    [
+     2020,
+     1123
+    ],
+    [
+     2024,
+     1315
+    ],
+    [
+     1653,
+     1322
+    ]
+   ],
+   "b_text": "formed",
+   "b_score": 0.8329
+  },
+  {
+   "text": "15/ X like",
+   "text_raw": "15/ X like",
+   "score": 0.7585,
+   "min_token_prob": 0.3199,
+   "box": [
+    70,
+    1132,
+    537,
+    1286
+   ],
+   "poly": [
+    [
+     70,
+     1143
+    ],
+    [
+     533,
+     1132
+    ],
+    [
+     537,
+     1275
+    ],
+    [
+     73,
+     1286
+    ]
+   ],
+   "b_text": "15×1ike",
+   "b_score": 0.8395
+  },
+  {
+   "text": "so whatever cannot grow.",
+   "text_raw": "so whatever cannot grow .",
+   "score": 0.7377,
+   "min_token_prob": 0.1605,
+   "box": [
+    285,
+    1236,
+    1404,
+    1456
+   ],
+   "poly": [
+    [
+     289,
+     1236
+    ],
+    [
+     1404,
+     1262
+    ],
+    [
+     1399,
+     1456
+    ],
+    [
+     285,
+     1429
+    ]
+   ],
+   "b_text": "so wator cannot fow",
+   "b_score": 0.8751
+  },
+  {
+   "text": "# water.",
+   "text_raw": "# water .",
+   "score": 0.7843,
+   "min_token_prob": 0.1726,
+   "box": [
+    174,
+    1502,
+    563,
+    1655
+   ],
+   "poly": [
+    [
+     174,
+     1502
+    ],
+    [
+     563,
+     1502
+    ],
+    [
+     563,
+     1655
+    ],
+    [
+     174,
+     1655
+    ]
+   ],
+   "b_text": "* wator",
+   "b_score": 0.8706
+  },
+  {
+   "text": "became.",
+   "text_raw": "became .",
+   "score": 0.9952,
+   "min_token_prob": 0.9866,
+   "box": [
+    756,
+    1505,
+    1105,
+    1660
+   ],
+   "poly": [
+    [
+     759,
+     1505
+    ],
+    [
+     1105,
+     1512
+    ],
+    [
+     1102,
+     1660
+    ],
+    [
+     756,
+     1653
+    ]
+   ],
+   "b_text": "became",
+   "b_score": 0.9498
+  },
+  {
+   "text": "unhealthy.",
+   "text_raw": "unhealthy .",
+   "score": 0.998,
+   "min_token_prob": 0.9958,
+   "box": [
+    1281,
+    1500,
+    1775,
+    1672
+   ],
+   "poly": [
+    [
+     1281,
+     1500
+    ],
+    [
+     1775,
+     1500
+    ],
+    [
+     1775,
+     1672
+    ],
+    [
+     1281,
+     1672
+    ]
+   ],
+   "b_text": "unhealthy.",
+   "b_score": 0.8853
+  },
+  {
+   "text": "grugatory.",
+   "text_raw": "grugatory .",
+   "score": 0.5114,
+   "min_token_prob": 0.2366,
+   "box": [
+    1553,
+    1644,
+    1990,
+    1761
+   ],
+   "poly": [
+    [
+     1553,
+     1644
+    ],
+    [
+     1990,
+     1644
+    ],
+    [
+     1990,
+     1761
+    ],
+    [
+     1553,
+     1761
+    ]
+   ],
+   "b_text": "BUCOOM",
+   "b_score": 0.468
+  },
+  {
+   "text": "history # funny parents # Hello \" somehow to",
+   "text_raw": "history # funny parents # Hello \" somehow to",
+   "score": 0.4415,
+   "min_token_prob": 0.126,
+   "box": [
+    251,
+    1752,
+    2003,
+    1907
+   ],
+   "poly": [
+    [
+     252,
+     1752
+    ],
+    [
+     2003,
+     1759
+    ],
+    [
+     2003,
+     1907
+    ],
+    [
+     251,
+     1900
+    ]
+   ],
+   "b_text": "8093lrart-Cb2b. f0",
+   "b_score": 0.4664
+  },
+  {
+   "text": "fr",
+   "text_raw": "fr",
+   "score": 0.3328,
+   "min_token_prob": 0.1543,
+   "box": [
+    63,
+    1778,
+    170,
+    1907
+   ],
+   "poly": [
+    [
+     63,
+     1778
+    ],
+    [
+     170,
+     1778
+    ],
+    [
+     170,
+     1907
+    ],
+    [
+     63,
+     1907
+    ]
+   ],
+   "b_text": "11",
+   "b_score": 0.7113
+  },
+  {
+   "text": "to impact of defenstation on biodiversity.",
+   "text_raw": "to impact of defenstation on biodiversity .",
+   "score": 0.7725,
+   "min_token_prob": 0.2779,
+   "box": [
+    67,
+    1978,
+    2266,
+    2174
+   ],
+   "poly": [
+    [
+     67,
+     1982
+    ],
+    [
+     2265,
+     1978
+    ],
+    [
+     2266,
+     2170
+    ],
+    [
+     67,
+     2174
+    ]
+   ],
+   "b_text": "15 impactofdeforestat on biodiversity",
+   "b_score": 0.7169
+  },
+  {
+   "text": "had make our living.",
+   "text_raw": "had make our living .",
+   "score": 0.636,
+   "min_token_prob": 0.1727,
+   "box": [
+    917,
+    2228,
+    1940,
+    2400
+   ],
+   "poly": [
+    [
+     919,
+     2228
+    ],
+    [
+     1940,
+     2238
+    ],
+    [
+     1939,
+     2400
+    ],
+    [
+     917,
+     2390
+    ]
+   ],
+   "b_text": "tudmake living",
+   "b_score": 0.8299
+  },
+  {
+   "text": "ex deforestation.",
+   "text_raw": "ex deforestation .",
+   "score": 0.8181,
+   "min_token_prob": 0.5938,
+   "box": [
+    186,
+    2233,
+    867,
+    2393
+   ],
+   "poly": [
+    [
+     186,
+     2242
+    ],
+    [
+     865,
+     2233
+    ],
+    [
+     867,
+     2385
+    ],
+    [
+     188,
+     2393
+    ]
+   ],
+   "b_text": "doforestation",
+   "b_score": 0.8846
+  },
+  {
+   "text": "lifering complaints.",
+   "text_raw": "lifering complaints .",
+   "score": 0.5171,
+   "min_token_prob": 0.2368,
+   "box": [
+    933,
+    2348,
+    1968,
+    2557
+   ],
+   "poly": [
+    [
+     933,
+     2360
+    ],
+    [
+     1965,
+     2348
+    ],
+    [
+     1968,
+     2545
+    ],
+    [
+     935,
+     2557
+    ]
+   ],
+   "b_text": "life comple.",
+   "b_score": 0.8807
+  },
+  {
+   "text": "organism.",
+   "text_raw": "organism .",
+   "score": 0.979,
+   "min_token_prob": 0.9475,
+   "box": [
+    266,
+    2376,
+    797,
+    2515
+   ],
+   "poly": [
+    [
+     266,
+     2380
+    ],
+    [
+     795,
+     2376
+    ],
+    [
+     797,
+     2511
+    ],
+    [
+     267,
+     2515
+    ]
+   ],
+   "b_text": "organism",
+   "b_score": 0.9456
+  },
+  {
+   "text": "oldestroy, then",
+   "text_raw": "oldestroy , then",
+   "score": 0.6376,
+   "min_token_prob": 0.1379,
+   "box": [
+    1021,
+    2595,
+    1931,
+    2752
+   ],
+   "poly": [
+    [
+     1021,
+     2595
+    ],
+    [
+     1931,
+     2595
+    ],
+    [
+     1931,
+     2752
+    ],
+    [
+     1021,
+     2752
+    ]
+   ],
+   "b_text": "destroythes",
+   "b_score": 0.8969
+  },
+  {
+   "text": "# I.I.TENNED",
+   "text_raw": "# I.I.TENNED",
+   "score": 0.3633,
+   "min_token_prob": 0.0395,
+   "box": [
+    191,
+    2600,
+    860,
+    2745
+   ],
+   "poly": [
+    [
+     191,
+     2608
+    ],
+    [
+     858,
+     2600
+    ],
+    [
+     860,
+     2737
+    ],
+    [
+     193,
+     2745
+    ]
+   ],
+   "b_text": "xT+",
+   "b_score": 0.4484
+  },
+  {
+   "text": "good chain.",
+   "text_raw": "good chain .",
+   "score": 0.9433,
+   "min_token_prob": 0.8421,
+   "box": [
+    294,
+    2701,
+    1011,
+    2913
+   ],
+   "poly": [
+    [
+     294,
+     2727
+    ],
+    [
+     1004,
+     2701
+    ],
+    [
+     1011,
+     2887
+    ],
+    [
+     300,
+     2913
+    ]
+   ],
+   "b_text": "food: chatn",
+   "b_score": 0.8492
+  },
+  {
+   "text": "Reads to",
+   "text_raw": "Reads to",
+   "score": 0.8154,
+   "min_token_prob": 0.4424,
+   "box": [
+    1535,
+    2955,
+    1997,
+    3128
+   ],
+   "poly": [
+    [
+     1539,
+     2955
+    ],
+    [
+     1997,
+     2969
+    ],
+    [
+     1993,
+     3128
+    ],
+    [
+     1535,
+     3114
+    ]
+   ],
+   "b_text": "Road8 to",
+   "b_score": 0.8329
+  },
+  {
+   "text": "xso, It shows mild.",
+   "text_raw": "xso , It shows mild .",
+   "score": 0.6962,
+   "min_token_prob": 0.209,
+   "box": [
+    197,
+    2954,
+    1340,
+    3116
+   ],
+   "poly": [
+    [
+     197,
+     2974
+    ],
+    [
+     1337,
+     2954
+    ],
+    [
+     1340,
+     3096
+    ],
+    [
+     199,
+     3116
+    ]
+   ],
+   "b_text": "*so,Itrow uill",
+   "b_score": 0.7193
+  },
+  {
+   "text": "extinction of the species.",
+   "text_raw": "extinction of the species .",
+   "score": 0.9505,
+   "min_token_prob": 0.7059,
+   "box": [
+    269,
+    3082,
+    1806,
+    3289
+   ],
+   "poly": [
+    [
+     271,
+     3082
+    ],
+    [
+     1806,
+     3094
+    ],
+    [
+     1805,
+     3289
+    ],
+    [
+     269,
+     3277
+    ]
+   ],
+   "b_text": "ectincton of the sppats.",
+   "b_score": 0.7696
+  }
+ ],
+ "peak_torch_alloc_mib": 2697,
+ "peak_rss_mib_process": 2966
+}

@@ -1,11 +1,12 @@
-# --- Student data: NEVER commit (repo is public) ---
+# --- Student data (repo is PUBLIC). Owner decision D6/D15: only REDACTED data is committed. ---
+# Unredacted originals: never committed (runs read these).
 data/samples/
-data/golden/
-data/transcriptions/
-data/fixtures/
 data/originals/
+data/golden/
+# Raw run dirs and preprocessing-variant images: local only (redacted text/JSON exports live in data/run_outputs/).
 spike/runs/
 spike/pages/
+# Committed (redacted / verified): data/redacted/, data/run_outputs/, data/transcriptions/, data/fixtures/
 
 # --- Python ---
 __pycache__/

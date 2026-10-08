@@ -1,0 +1,597 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_02.jpg",
+ "latency_s": 1.125,
+ "model_load_s": 0.84,
+ "n_lines": 18,
+ "lines": [
+  {
+   "text": "business. We following",
+   "text_raw": "business . We following",
+   "score": 0.7984,
+   "min_token_prob": 0.5974,
+   "box": [
+    242,
+    368,
+    998,
+    485
+   ],
+   "poly": [
+    [
+     244,
+     368
+    ],
+    [
+     998,
+     389
+    ],
+    [
+     996,
+     485
+    ],
+    [
+     242,
+     464
+    ]
+   ],
+   "b_text": "h t ",
+   "b_score": 0.4328
+  },
+  {
+   "text": "# UNYTON",
+   "text_raw": "# UNYTON",
+   "score": 0.2971,
+   "min_token_prob": 0.0562,
+   "box": [
+    278,
+    705,
+    574,
+    787
+   ],
+   "poly": [
+    [
+     278,
+     705
+    ],
+    [
+     574,
+     705
+    ],
+    [
+     574,
+     787
+    ],
+    [
+     278,
+     787
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "Tow",
+   "text_raw": "Tow",
+   "score": 0.3964,
+   "min_token_prob": 0.1524,
+   "box": [
+    245,
+    805,
+    433,
+    889
+   ],
+   "poly": [
+    [
+     247,
+     805
+    ],
+    [
+     433,
+     809
+    ],
+    [
+     432,
+     889
+    ],
+    [
+     245,
+     885
+    ]
+   ],
+   "b_text": "Tauo",
+   "b_score": 0.6809
+  },
+  {
+   "text": "Touve",
+   "text_raw": "Touve",
+   "score": 0.6513,
+   "min_token_prob": 0.3875,
+   "box": [
+    259,
+    907,
+    478,
+    996
+   ],
+   "poly": [
+    [
+     260,
+     907
+    ],
+    [
+     478,
+     911
+    ],
+    [
+     476,
+     996
+    ],
+    [
+     259,
+     992
+    ]
+   ],
+   "b_text": "Tome",
+   "b_score": 0.6676
+  },
+  {
+   "text": "National disaster",
+   "text_raw": "National disaster",
+   "score": 0.8687,
+   "min_token_prob": 0.8516,
+   "box": [
+    290,
+    1015,
+    926,
+    1104
+   ],
+   "poly": [
+    [
+     291,
+     1015
+    ],
+    [
+     926,
+     1025
+    ],
+    [
+     925,
+     1104
+    ],
+    [
+     290,
+     1094
+    ]
+   ],
+   "b_text": "DatwaLdsalte",
+   "b_score": 0.6107
+  },
+  {
+   "text": "extending speeches.",
+   "text_raw": "extending speeches .",
+   "score": 0.8161,
+   "min_token_prob": 0.6038,
+   "box": [
+    298,
+    1118,
+    1024,
+    1212
+   ],
+   "poly": [
+    [
+     298,
+     1118
+    ],
+    [
+     1024,
+     1118
+    ],
+    [
+     1024,
+     1212
+    ],
+    [
+     298,
+     1212
+    ]
+   ],
+   "b_text": "Extining Specer",
+   "b_score": 0.8157
+  },
+  {
+   "text": "at Reduce news.",
+   "text_raw": "at Reduce news .",
+   "score": 0.7706,
+   "min_token_prob": 0.263,
+   "box": [
+    270,
+    1225,
+    909,
+    1310
+   ],
+   "poly": [
+    [
+     270,
+     1225
+    ],
+    [
+     909,
+     1225
+    ],
+    [
+     909,
+     1310
+    ],
+    [
+     270,
+     1310
+    ]
+   ],
+   "b_text": "a Redue.neus",
+   "b_score": 0.7118
+  },
+  {
+   "text": "1f wooden pollution",
+   "text_raw": "1f wooden pollution",
+   "score": 0.5565,
+   "min_token_prob": 0.1131,
+   "box": [
+    159,
+    1341,
+    912,
+    1423
+   ],
+   "poly": [
+    [
+     159,
+     1344
+    ],
+    [
+     911,
+     1341
+    ],
+    [
+     912,
+     1420
+    ],
+    [
+     160,
+     1423
+    ]
+   ],
+   "b_text": "asoadepollution",
+   "b_score": 0.7167
+  },
+  {
+   "text": "of b-del.",
+   "text_raw": "of b-del .",
+   "score": 0.7373,
+   "min_token_prob": 0.2898,
+   "box": [
+    155,
+    1427,
+    573,
+    1529
+   ],
+   "poly": [
+    [
+     155,
+     1433
+    ],
+    [
+     572,
+     1427
+    ],
+    [
+     573,
+     1523
+    ],
+    [
+     156,
+     1529
+    ]
+   ],
+   "b_text": "o del",
+   "b_score": 0.8378
+  },
+  {
+   "text": "11f b. Recycling.",
+   "text_raw": "11f b. Recycling .",
+   "score": 0.768,
+   "min_token_prob": 0.4134,
+   "box": [
+    160,
+    1545,
+    732,
+    1635
+   ],
+   "poly": [
+    [
+     160,
+     1545
+    ],
+    [
+     732,
+     1545
+    ],
+    [
+     732,
+     1635
+    ],
+    [
+     160,
+     1635
+    ]
+   ],
+   "b_text": "f b RoyciPng",
+   "b_score": 0.679
+  },
+  {
+   "text": "If Time. \"",
+   "text_raw": "If Time . \"",
+   "score": 0.7107,
+   "min_token_prob": 0.3174,
+   "box": [
+    160,
+    1646,
+    534,
+    1737
+   ],
+   "poly": [
+    [
+     160,
+     1646
+    ],
+    [
+     534,
+     1646
+    ],
+    [
+     534,
+     1737
+    ],
+    [
+     160,
+     1737
+    ]
+   ],
+   "b_text": "nTaue.",
+   "b_score": 0.6462
+  },
+  {
+   "text": "part - B.",
+   "text_raw": "part - B.",
+   "score": 0.775,
+   "min_token_prob": 0.6063,
+   "box": [
+    967,
+    1850,
+    1223,
+    1932
+   ],
+   "poly": [
+    [
+     967,
+     1850
+    ],
+    [
+     1223,
+     1850
+    ],
+    [
+     1223,
+     1932
+    ],
+    [
+     967,
+     1932
+    ]
+   ],
+   "b_text": "PART-B",
+   "b_score": 0.8107
+  },
+  {
+   "text": "16.",
+   "text_raw": "16 .",
+   "score": 0.3752,
+   "min_token_prob": 0.2572,
+   "box": [
+    150,
+    2089,
+    287,
+    2146
+   ],
+   "poly": [
+    [
+     150,
+     2089
+    ],
+    [
+     287,
+     2089
+    ],
+    [
+     287,
+     2146
+    ],
+    [
+     150,
+     2146
+    ]
+   ],
+   "b_text": "5",
+   "b_score": 0.3192
+  },
+  {
+   "text": "Deforestation.",
+   "text_raw": "Deforestation .",
+   "score": 0.6877,
+   "min_token_prob": 0.2978,
+   "box": [
+    311,
+    2078,
+    807,
+    2157
+   ],
+   "poly": [
+    [
+     311,
+     2083
+    ],
+    [
+     807,
+     2078
+    ],
+    [
+     807,
+     2152
+    ],
+    [
+     312,
+     2157
+    ]
+   ],
+   "b_text": "Defonesatatfon",
+   "b_score": 0.6154
+  },
+  {
+   "text": "Deforestation like the cutting down",
+   "text_raw": "Deforestation like the cutting down",
+   "score": 0.9224,
+   "min_token_prob": 0.7797,
+   "box": [
+    641,
+    2158,
+    2101,
+    2258
+   ],
+   "poly": [
+    [
+     641,
+     2168
+    ],
+    [
+     2101,
+     2158
+    ],
+    [
+     2101,
+     2248
+    ],
+    [
+     642,
+     2258
+    ]
+   ],
+   "b_text": "Defooatatfon at the cutling doton",
+   "b_score": 0.7088
+  },
+  {
+   "text": "(of acres.' The village numbers of trees",
+   "text_raw": "( of acres . ' The village numbers of trees",
+   "score": 0.6813,
+   "min_token_prob": 0.2211,
+   "box": [
+    228,
+    2243,
+    2137,
+    2377
+   ],
+   "poly": [
+    [
+     228,
+     2264
+    ],
+    [
+     2135,
+     2243
+    ],
+    [
+     2137,
+     2356
+    ],
+    [
+     229,
+     2377
+    ]
+   ],
+   "b_text": "of trees.the dooge numhaur of trees",
+   "b_score": 0.7394
+  },
+  {
+   "text": "fissure cutted due to human purposes.",
+   "text_raw": "fissure cutted due to human purposes .",
+   "score": 0.8254,
+   "min_token_prob": 0.2438,
+   "box": [
+    245,
+    2361,
+    2109,
+    2475
+   ],
+   "poly": [
+    [
+     245,
+     2371
+    ],
+    [
+     2108,
+     2361
+    ],
+    [
+     2109,
+     2465
+    ],
+    [
+     246,
+     2475
+    ]
+   ],
+   "b_text": "woene cutted due to haman purpase.",
+   "b_score": 0.7847
+  },
+  {
+   "text": "Even \" the Footest",
+   "text_raw": "Even \" the Footest",
+   "score": 0.5896,
+   "min_token_prob": 0.2577,
+   "box": [
+    254,
+    2464,
+    1069,
+    2579
+   ],
+   "poly": [
+    [
+     254,
+     2484
+    ],
+    [
+     1067,
+     2464
+    ],
+    [
+     1069,
+     2559
+    ],
+    [
+     256,
+     2579
+    ]
+   ],
+   "b_text": "en'thFoaat",
+   "b_score": 0.728
+  }
+ ],
+ "peak_torch_alloc_mib": 2720,
+ "peak_rss_mib_process": 2962
+}

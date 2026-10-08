@@ -1,0 +1,725 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_11.jpg",
+ "latency_s": 1.133,
+ "model_load_s": 0.82,
+ "n_lines": 22,
+ "lines": [
+  {
+   "text": "there.",
+   "text_raw": "there .",
+   "score": 0.9884,
+   "min_token_prob": 0.9677,
+   "box": [
+    515,
+    273,
+    767,
+    439
+   ],
+   "poly": [
+    [
+     515,
+     273
+    ],
+    [
+     767,
+     273
+    ],
+    [
+     767,
+     439
+    ],
+    [
+     515,
+     439
+    ]
+   ],
+   "b_text": "there",
+   "b_score": 0.8536
+  },
+  {
+   "text": "aquatic ecosystem.",
+   "text_raw": "aquatic ecosystem .",
+   "score": 0.9392,
+   "min_token_prob": 0.7399,
+   "box": [
+    529,
+    514,
+    1425,
+    687
+   ],
+   "poly": [
+    [
+     529,
+     531
+    ],
+    [
+     1422,
+     514
+    ],
+    [
+     1425,
+     671
+    ],
+    [
+     532,
+     687
+    ]
+   ],
+   "b_text": "aquatte eastom.",
+   "b_score": 0.7348
+  },
+  {
+   "text": "xThese is best type in",
+   "text_raw": "xThese is best type in",
+   "score": 0.9004,
+   "min_token_prob": 0.7084,
+   "box": [
+    453,
+    739,
+    1988,
+    909
+   ],
+   "poly": [
+    [
+     453,
+     756
+    ],
+    [
+     1986,
+     739
+    ],
+    [
+     1988,
+     892
+    ],
+    [
+     455,
+     909
+    ]
+   ],
+   "b_text": "Thege is bast type m",
+   "b_score": 0.7467
+  },
+  {
+   "text": "enters world \" double",
+   "text_raw": "enters world \" double",
+   "score": 0.7204,
+   "min_token_prob": 0.3297,
+   "box": [
+    881,
+    881,
+    1977,
+    1028
+   ],
+   "poly": [
+    [
+     881,
+     902
+    ],
+    [
+     1975,
+     881
+    ],
+    [
+     1977,
+     1006
+    ],
+    [
+     883,
+     1028
+    ]
+   ],
+   "b_text": "enteo world Daude",
+   "b_score": 0.6822
+  },
+  {
+   "text": "out of being found on",
+   "text_raw": "out of being found on",
+   "score": 0.7773,
+   "min_token_prob": 0.1171,
+   "box": [
+    495,
+    985,
+    2135,
+    1189
+   ],
+   "poly": [
+    [
+     495,
+     998
+    ],
+    [
+     2134,
+     985
+    ],
+    [
+     2135,
+     1176
+    ],
+    [
+     497,
+     1189
+    ]
+   ],
+   "b_text": "gor of tr ing found ion",
+   "b_score": 0.7295
+  },
+  {
+   "text": "here.",
+   "text_raw": "here .",
+   "score": 0.886,
+   "min_token_prob": 0.6824,
+   "box": [
+    531,
+    1121,
+    771,
+    1270
+   ],
+   "poly": [
+    [
+     531,
+     1126
+    ],
+    [
+     768,
+     1121
+    ],
+    [
+     771,
+     1265
+    ],
+    [
+     534,
+     1270
+    ]
+   ],
+   "b_text": "hore",
+   "b_score": 0.7215
+  },
+  {
+   "text": "x First life in the world",
+   "text_raw": "x First life in the world",
+   "score": 0.9018,
+   "min_token_prob": 0.6449,
+   "box": [
+    431,
+    1323,
+    1984,
+    1516
+   ],
+   "poly": [
+    [
+     431,
+     1343
+    ],
+    [
+     1982,
+     1323
+    ],
+    [
+     1984,
+     1496
+    ],
+    [
+     433,
+     1516
+    ]
+   ],
+   "b_text": "*First life in the world",
+   "b_score": 0.8724
+  },
+  {
+   "text": "emerge' down water.",
+   "text_raw": "emerge' down water .",
+   "score": 0.8268,
+   "min_token_prob": 0.4833,
+   "box": [
+    571,
+    1474,
+    1544,
+    1649
+   ],
+   "poly": [
+    [
+     571,
+     1490
+    ],
+    [
+     1541,
+     1474
+    ],
+    [
+     1544,
+     1633
+    ],
+    [
+     574,
+     1649
+    ]
+   ],
+   "b_text": "emerge fron water",
+   "b_score": 0.8008
+  },
+  {
+   "text": "tyred of ampliphrans.",
+   "text_raw": "tyred of ampliphrans .",
+   "score": 0.63,
+   "min_token_prob": 0.2443,
+   "box": [
+    1019,
+    1684,
+    2316,
+    1876
+   ],
+   "poly": [
+    [
+     1019,
+     1701
+    ],
+    [
+     2313,
+     1684
+    ],
+    [
+     2316,
+     1858
+    ],
+    [
+     1022,
+     1876
+    ]
+   ],
+   "b_text": "types of ampipto",
+   "b_score": 0.7583
+  },
+  {
+   "text": "so",
+   "text_raw": "so",
+   "score": 0.4904,
+   "min_token_prob": 0.2496,
+   "box": [
+    710,
+    1728,
+    812,
+    1826
+   ],
+   "poly": [
+    [
+     710,
+     1728
+    ],
+    [
+     812,
+     1728
+    ],
+    [
+     812,
+     1826
+    ],
+    [
+     710,
+     1826
+    ]
+   ],
+   "b_text": "0",
+   "b_score": 0.1943
+  },
+  {
+   "text": "fishes lives here",
+   "text_raw": "fishes lives here",
+   "score": 0.8195,
+   "min_token_prob": 0.6225,
+   "box": [
+    489,
+    1798,
+    1586,
+    2021
+   ],
+   "poly": [
+    [
+     489,
+     1820
+    ],
+    [
+     1582,
+     1798
+    ],
+    [
+     1586,
+     1998
+    ],
+    [
+     493,
+     2021
+    ]
+   ],
+   "b_text": "frshes lies hord",
+   "b_score": 0.7598
+  },
+  {
+   "text": "evolved here.",
+   "text_raw": "evolved here .",
+   "score": 0.8883,
+   "min_token_prob": 0.8433,
+   "box": [
+    1114,
+    2033,
+    1917,
+    2202
+   ],
+   "poly": [
+    [
+     1114,
+     2046
+    ],
+    [
+     1914,
+     2033
+    ],
+    [
+     1917,
+     2190
+    ],
+    [
+     1116,
+     2202
+    ]
+   ],
+   "b_text": "evotued hre",
+   "b_score": 0.5632
+  },
+  {
+   "text": "# humans.",
+   "text_raw": "# humans .",
+   "score": 0.8469,
+   "min_token_prob": 0.4265,
+   "box": [
+    439,
+    2070,
+    900,
+    2202
+   ],
+   "poly": [
+    [
+     439,
+     2074
+    ],
+    [
+     899,
+     2070
+    ],
+    [
+     900,
+     2197
+    ],
+    [
+     440,
+     2202
+    ]
+   ],
+   "b_text": "humans",
+   "b_score": 0.8377
+  },
+  {
+   "text": "tiny # singled-collod",
+   "text_raw": "tiny # singled-collod",
+   "score": 0.6051,
+   "min_token_prob": 0.2633,
+   "box": [
+    890,
+    2160,
+    2105,
+    2352
+   ],
+   "poly": [
+    [
+     890,
+     2182
+    ],
+    [
+     2102,
+     2160
+    ],
+    [
+     2105,
+     2330
+    ],
+    [
+     893,
+     2352
+    ]
+   ],
+   "b_text": "tiny sirgled ollod",
+   "b_score": 0.8765
+  },
+  {
+   "text": "foram t",
+   "text_raw": "foram t",
+   "score": 0.7502,
+   "min_token_prob": 0.5007,
+   "box": [
+    448,
+    2192,
+    965,
+    2340
+   ],
+   "poly": [
+    [
+     448,
+     2192
+    ],
+    [
+     965,
+     2192
+    ],
+    [
+     965,
+     2340
+    ],
+    [
+     448,
+     2340
+    ]
+   ],
+   "b_text": "from",
+   "b_score": 0.8181
+  },
+  {
+   "text": "Organisms.",
+   "text_raw": "Organisms .",
+   "score": 0.863,
+   "min_token_prob": 0.5315,
+   "box": [
+    438,
+    2308,
+    1028,
+    2459
+   ],
+   "poly": [
+    [
+     438,
+     2319
+    ],
+    [
+     1026,
+     2308
+    ],
+    [
+     1028,
+     2448
+    ],
+    [
+     441,
+     2459
+    ]
+   ],
+   "b_text": "rgarisre",
+   "b_score": 0.7077
+  },
+  {
+   "text": "# produces",
+   "text_raw": "# produces",
+   "score": 0.7916,
+   "min_token_prob": 0.6562,
+   "box": [
+    401,
+    2522,
+    1402,
+    2705
+   ],
+   "poly": [
+    [
+     401,
+     2550
+    ],
+    [
+     1398,
+     2522
+    ],
+    [
+     1402,
+     2677
+    ],
+    [
+     406,
+     2705
+    ]
+   ],
+   "b_text": "tproduas",
+   "b_score": 0.7776
+  },
+  {
+   "text": "boygon for entire world",
+   "text_raw": "boygon for entire world",
+   "score": 0.6597,
+   "min_token_prob": 0.1864,
+   "box": [
+    414,
+    2641,
+    2056,
+    2864
+   ],
+   "poly": [
+    [
+     414,
+     2678
+    ],
+    [
+     2052,
+     2641
+    ],
+    [
+     2056,
+     2827
+    ],
+    [
+     418,
+     2864
+    ]
+   ],
+   "b_text": "Gxygor for entioce corld",
+   "b_score": 0.7387
+  },
+  {
+   "text": "contain fungi and",
+   "text_raw": "contain fungi and",
+   "score": 0.879,
+   "min_token_prob": 0.4123,
+   "box": [
+    811,
+    2892,
+    1940,
+    3111
+   ],
+   "poly": [
+    [
+     811,
+     2922
+    ],
+    [
+     1935,
+     2892
+    ],
+    [
+     1940,
+     3081
+    ],
+    [
+     816,
+     3111
+    ]
+   ],
+   "b_text": "Contain fuongr and",
+   "b_score": 0.8187
+  },
+  {
+   "text": "it (",
+   "text_raw": "it (",
+   "score": 0.7917,
+   "min_token_prob": 0.4751,
+   "box": [
+    456,
+    2934,
+    897,
+    3080
+   ],
+   "poly": [
+    [
+     456,
+     2943
+    ],
+    [
+     894,
+     2934
+    ],
+    [
+     897,
+     3071
+    ],
+    [
+     459,
+     3080
+    ]
+   ],
+   "b_text": "工+",
+   "b_score": 0.4482
+  },
+  {
+   "text": "Nor.",
+   "text_raw": "Nor .",
+   "score": 0.6434,
+   "min_token_prob": 0.4404,
+   "box": [
+    466,
+    3077,
+    761,
+    3230
+   ],
+   "poly": [
+    [
+     466,
+     3077
+    ],
+    [
+     761,
+     3077
+    ],
+    [
+     761,
+     3230
+    ],
+    [
+     466,
+     3230
+    ]
+   ],
+   "b_text": "MoR",
+   "b_score": 0.728
+  },
+  {
+   "text": "more organisms.",
+   "text_raw": "more organisms .",
+   "score": 0.8984,
+   "min_token_prob": 0.7808,
+   "box": [
+    927,
+    3081,
+    1800,
+    3237
+   ],
+   "poly": [
+    [
+     927,
+     3081
+    ],
+    [
+     1800,
+     3081
+    ],
+    [
+     1800,
+     3237
+    ],
+    [
+     927,
+     3237
+    ]
+   ],
+   "b_text": "More prganisme",
+   "b_score": 0.8192
+  }
+ ],
+ "peak_torch_alloc_mib": 2674,
+ "peak_rss_mib_process": 2965
+}

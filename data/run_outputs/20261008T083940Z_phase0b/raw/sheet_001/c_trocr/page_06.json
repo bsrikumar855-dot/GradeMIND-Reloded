@@ -1,0 +1,1077 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_06.jpg",
+ "latency_s": 1.84,
+ "model_load_s": 1.12,
+ "n_lines": 33,
+ "lines": [
+  {
+   "text": "# Endangered.",
+   "text_raw": "# Endangered .",
+   "score": 0.8495,
+   "min_token_prob": 0.3794,
+   "box": [
+    184,
+    286,
+    872,
+    428
+   ],
+   "poly": [
+    [
+     184,
+     286
+    ],
+    [
+     872,
+     286
+    ],
+    [
+     872,
+     428
+    ],
+    [
+     184,
+     428
+    ]
+   ],
+   "b_text": "*Endangored",
+   "b_score": 0.8515
+  },
+  {
+   "text": "species are those",
+   "text_raw": "species are those",
+   "score": 0.886,
+   "min_token_prob": 0.6417,
+   "box": [
+    1037,
+    283,
+    2109,
+    444
+   ],
+   "poly": [
+    [
+     1037,
+     290
+    ],
+    [
+     2108,
+     283
+    ],
+    [
+     2109,
+     438
+    ],
+    [
+     1038,
+     444
+    ]
+   ],
+   "b_text": "spociad ae thoe",
+   "b_score": 0.6883
+  },
+  {
+   "text": "to extinction.",
+   "text_raw": "to extinction .",
+   "score": 0.9404,
+   "min_token_prob": 0.8984,
+   "box": [
+    1651,
+    416,
+    2328,
+    578
+   ],
+   "poly": [
+    [
+     1653,
+     416
+    ],
+    [
+     2328,
+     427
+    ],
+    [
+     2325,
+     578
+    ],
+    [
+     1651,
+     567
+    ]
+   ],
+   "b_text": "to extinction",
+   "b_score": 0.8898
+  },
+  {
+   "text": "speechs. \" Judith",
+   "text_raw": "speechs . \" Judith",
+   "score": 0.6494,
+   "min_token_prob": 0.2694,
+   "box": [
+    219,
+    415,
+    960,
+    563
+   ],
+   "poly": [
+    [
+     219,
+     427
+    ],
+    [
+     958,
+     415
+    ],
+    [
+     960,
+     550
+    ],
+    [
+     222,
+     563
+    ]
+   ],
+   "b_text": "spee",
+   "b_score": 0.645
+  },
+  {
+   "text": "hearer.",
+   "text_raw": "hearer .",
+   "score": 0.8349,
+   "min_token_prob": 0.5287,
+   "box": [
+    1178,
+    430,
+    1454,
+    562
+   ],
+   "poly": [
+    [
+     1178,
+     430
+    ],
+    [
+     1454,
+     430
+    ],
+    [
+     1454,
+     562
+    ],
+    [
+     1178,
+     562
+    ]
+   ],
+   "b_text": "near",
+   "b_score": 0.793
+  },
+  {
+   "text": "the world",
+   "text_raw": "the world",
+   "score": 0.8762,
+   "min_token_prob": 0.6328,
+   "box": [
+    652,
+    535,
+    1307,
+    702
+   ],
+   "poly": [
+    [
+     654,
+     535
+    ],
+    [
+     1307,
+     544
+    ],
+    [
+     1305,
+     702
+    ],
+    [
+     652,
+     693
+    ]
+   ],
+   "b_text": "the world",
+   "b_score": 0.9054
+  },
+  {
+   "text": "over.",
+   "text_raw": "over .",
+   "score": 0.774,
+   "min_token_prob": 0.5995,
+   "box": [
+    217,
+    546,
+    551,
+    685
+   ],
+   "poly": [
+    [
+     217,
+     553
+    ],
+    [
+     548,
+     546
+    ],
+    [
+     551,
+     678
+    ],
+    [
+     220,
+     685
+    ]
+   ],
+   "b_text": "over",
+   "b_score": 0.7361
+  },
+  {
+   "text": "# We oppose",
+   "text_raw": "# We oppose",
+   "score": 0.7205,
+   "min_token_prob": 0.5246,
+   "box": [
+    161,
+    801,
+    844,
+    943
+   ],
+   "poly": [
+    [
+     161,
+     801
+    ],
+    [
+     844,
+     801
+    ],
+    [
+     844,
+     943
+    ],
+    [
+     161,
+     943
+    ]
+   ],
+   "b_text": " we cn",
+   "b_score": 0.6975
+  },
+  {
+   "text": "bresement first dospecies.",
+   "text_raw": "bresement first dospecies .",
+   "score": 0.5324,
+   "min_token_prob": 0.1244,
+   "box": [
+    1020,
+    793,
+    2253,
+    951
+   ],
+   "poly": [
+    [
+     1021,
+     793
+    ],
+    [
+     2253,
+     803
+    ],
+    [
+     2252,
+     951
+    ],
+    [
+     1020,
+     941
+    ]
+   ],
+   "b_text": "prasowe thisd Speaes",
+   "b_score": 0.728
+  },
+  {
+   "text": "by,",
+   "text_raw": "by ,",
+   "score": 0.9974,
+   "min_token_prob": 0.9953,
+   "box": [
+    228,
+    934,
+    412,
+    1077
+   ],
+   "poly": [
+    [
+     228,
+     934
+    ],
+    [
+     412,
+     934
+    ],
+    [
+     412,
+     1077
+    ],
+    [
+     228,
+     1077
+    ]
+   ],
+   "b_text": "by",
+   "b_score": 0.9967
+  },
+  {
+   "text": "give.",
+   "text_raw": "give .",
+   "score": 0.8924,
+   "min_token_prob": 0.6793,
+   "box": [
+    564,
+    933,
+    812,
+    1074
+   ],
+   "poly": [
+    [
+     564,
+     939
+    ],
+    [
+     809,
+     933
+    ],
+    [
+     812,
+     1068
+    ],
+    [
+     567,
+     1074
+    ]
+   ],
+   "b_text": "give",
+   "b_score": 0.9198
+  },
+  {
+   "text": "it.",
+   "text_raw": "it .",
+   "score": 0.8555,
+   "min_token_prob": 0.5686,
+   "box": [
+    954,
+    938,
+    1094,
+    1062
+   ],
+   "poly": [
+    [
+     954,
+     938
+    ],
+    [
+     1094,
+     938
+    ],
+    [
+     1094,
+     1062
+    ],
+    [
+     954,
+     1062
+    ]
+   ],
+   "b_text": "it",
+   "b_score": 0.9384
+  },
+  {
+   "text": "suitable environment.",
+   "text_raw": "suitable environment .",
+   "score": 0.9134,
+   "min_token_prob": 0.8323,
+   "box": [
+    1293,
+    932,
+    2284,
+    1070
+   ],
+   "poly": [
+    [
+     1294,
+     932
+    ],
+    [
+     2284,
+     940
+    ],
+    [
+     2282,
+     1070
+    ],
+    [
+     1293,
+     1061
+    ]
+   ],
+   "b_text": "suttabee enrironment",
+   "b_score": 0.8092
+  },
+  {
+   "text": "and Make",
+   "text_raw": "and Make",
+   "score": 0.8438,
+   "min_token_prob": 0.6332,
+   "box": [
+    233,
+    1052,
+    887,
+    1195
+   ],
+   "poly": [
+    [
+     233,
+     1052
+    ],
+    [
+     887,
+     1052
+    ],
+    [
+     887,
+     1195
+    ],
+    [
+     233,
+     1195
+    ]
+   ],
+   "b_text": "and Make",
+   "b_score": 0.9299
+  },
+  {
+   "text": "them bread; wet read",
+   "text_raw": "them bread ; wet read",
+   "score": 0.7375,
+   "min_token_prob": 0.3857,
+   "box": [
+    938,
+    1044,
+    2134,
+    1205
+   ],
+   "poly": [
+    [
+     940,
+     1044
+    ],
+    [
+     2134,
+     1058
+    ],
+    [
+     2132,
+     1205
+    ],
+    [
+     938,
+     1191
+    ]
+   ],
+   "b_text": "them breed ue reod",
+   "b_score": 0.7207
+  },
+  {
+   "text": "a Because some species endangered due",
+   "text_raw": "a Because some species endangered due",
+   "score": 0.6893,
+   "min_token_prob": 0.3437,
+   "box": [
+    163,
+    1430,
+    2223,
+    1586
+   ],
+   "poly": [
+    [
+     163,
+     1434
+    ],
+    [
+     2222,
+     1430
+    ],
+    [
+     2223,
+     1582
+    ],
+    [
+     163,
+     1586
+    ]
+   ],
+   "b_text": " Becuse Some Speded ondangoed de",
+   "b_score": 0.7166
+  },
+  {
+   "text": "climate change and pollution",
+   "text_raw": "climate change and pollution",
+   "score": 0.9336,
+   "min_token_prob": 0.6783,
+   "box": [
+    589,
+    1550,
+    2083,
+    1728
+   ],
+   "poly": [
+    [
+     591,
+     1550
+    ],
+    [
+     2083,
+     1570
+    ],
+    [
+     2081,
+     1728
+    ],
+    [
+     589,
+     1708
+    ]
+   ],
+   "b_text": "dimate change ond polletion",
+   "b_score": 0.7848
+  },
+  {
+   "text": "to.",
+   "text_raw": "to .",
+   "score": 0.9223,
+   "min_token_prob": 0.78,
+   "box": [
+    275,
+    1586,
+    438,
+    1699
+   ],
+   "poly": [
+    [
+     275,
+     1586
+    ],
+    [
+     438,
+     1586
+    ],
+    [
+     438,
+     1699
+    ],
+    [
+     275,
+     1699
+    ]
+   ],
+   "b_text": "to.",
+   "b_score": 0.8595
+  },
+  {
+   "text": "And More,",
+   "text_raw": "And More ,",
+   "score": 0.8408,
+   "min_token_prob": 0.5251,
+   "box": [
+    237,
+    1693,
+    768,
+    1840
+   ],
+   "poly": [
+    [
+     237,
+     1693
+    ],
+    [
+     768,
+     1693
+    ],
+    [
+     768,
+     1840
+    ],
+    [
+     237,
+     1840
+    ]
+   ],
+   "b_text": "And More.",
+   "b_score": 0.9138
+  },
+  {
+   "text": "x to preserve it.",
+   "text_raw": "x to preserve it .",
+   "score": 0.8812,
+   "min_token_prob": 0.6596,
+   "box": [
+    182,
+    1939,
+    1151,
+    2080
+   ],
+   "poly": [
+    [
+     182,
+     1939
+    ],
+    [
+     1151,
+     1939
+    ],
+    [
+     1151,
+     2080
+    ],
+    [
+     182,
+     2080
+    ]
+   ],
+   "b_text": " To proweit.",
+   "b_score": 0.7851
+  },
+  {
+   "text": "me",
+   "text_raw": "me",
+   "score": 0.8566,
+   "min_token_prob": 0.7322,
+   "box": [
+    1392,
+    1969,
+    1557,
+    2078
+   ],
+   "poly": [
+    [
+     1392,
+     1969
+    ],
+    [
+     1557,
+     1969
+    ],
+    [
+     1557,
+     2078
+    ],
+    [
+     1392,
+     2078
+    ]
+   ],
+   "b_text": "we",
+   "b_score": 0.7118
+  },
+  {
+   "text": "can",
+   "text_raw": "can",
+   "score": 0.8404,
+   "min_token_prob": 0.6811,
+   "box": [
+    1769,
+    1967,
+    1978,
+    2092
+   ],
+   "poly": [
+    [
+     1769,
+     1967
+    ],
+    [
+     1978,
+     1967
+    ],
+    [
+     1978,
+     2092
+    ],
+    [
+     1769,
+     2092
+    ]
+   ],
+   "b_text": "can",
+   "b_score": 0.9697
+  },
+  {
+   "text": "create biodiversity #",
+   "text_raw": "create biodiversity #",
+   "score": 0.3818,
+   "min_token_prob": 0.1135,
+   "box": [
+    265,
+    2061,
+    2067,
+    2214
+   ],
+   "poly": [
+    [
+     266,
+     2061
+    ],
+    [
+     2067,
+     2067
+    ],
+    [
+     2067,
+     2214
+    ],
+    [
+     265,
+     2208
+    ]
+   ],
+   "b_text": "coate biodivere aed Male",
+   "b_score": 0.7647
+  },
+  {
+   "text": "them. I give further.",
+   "text_raw": "them . I give further .",
+   "score": 0.6186,
+   "min_token_prob": 0.2602,
+   "box": [
+    273,
+    2193,
+    1254,
+    2340
+   ],
+   "poly": [
+    [
+     273,
+     2193
+    ],
+    [
+     1254,
+     2197
+    ],
+    [
+     1253,
+     2340
+    ],
+    [
+     273,
+     2336
+    ]
+   ],
+   "b_text": "them laethee.",
+   "b_score": 0.8545
+  },
+  {
+   "text": "country.",
+   "text_raw": "country .",
+   "score": 0.8401,
+   "min_token_prob": 0.5308,
+   "box": [
+    1392,
+    2208,
+    1674,
+    2309
+   ],
+   "poly": [
+    [
+     1392,
+     2208
+    ],
+    [
+     1674,
+     2208
+    ],
+    [
+     1674,
+     2309
+    ],
+    [
+     1392,
+     2309
+    ]
+   ],
+   "b_text": "Quto!",
+   "b_score": 0.4495
+  },
+  {
+   "text": "golf.",
+   "text_raw": "golf .",
+   "score": 0.7723,
+   "min_token_prob": 0.535,
+   "box": [
+    1855,
+    2201,
+    2018,
+    2313
+   ],
+   "poly": [
+    [
+     1855,
+     2201
+    ],
+    [
+     2018,
+     2201
+    ],
+    [
+     2018,
+     2313
+    ],
+    [
+     1855,
+     2313
+    ]
+   ],
+   "b_text": "91",
+   "b_score": 0.6007
+  },
+  {
+   "text": "is cause and consequence of a round water",
+   "text_raw": "is cause and consequence of a round water",
+   "score": 0.8413,
+   "min_token_prob": 0.4921,
+   "box": [
+    89,
+    2424,
+    2141,
+    2626
+   ],
+   "poly": [
+    [
+     90,
+     2424
+    ],
+    [
+     2141,
+     2440
+    ],
+    [
+     2140,
+     2626
+    ],
+    [
+     89,
+     2610
+    ]
+   ],
+   "b_text": "1s cause and orsquemce of ground ustor",
+   "b_score": 0.7567
+  },
+  {
+   "text": "depletism is",
+   "text_raw": "depletism is",
+   "score": 0.7127,
+   "min_token_prob": 0.2809,
+   "box": [
+    259,
+    2572,
+    814,
+    2731
+   ],
+   "poly": [
+    [
+     259,
+     2579
+    ],
+    [
+     812,
+     2572
+    ],
+    [
+     814,
+     2724
+    ],
+    [
+     261,
+     2731
+    ]
+   ],
+   "b_text": "depletion",
+   "b_score": 0.8746
+  },
+  {
+   "text": "season for ground.",
+   "text_raw": "season for ground .",
+   "score": 0.8361,
+   "min_token_prob": 0.4468,
+   "box": [
+    811,
+    2803,
+    1958,
+    2975
+   ],
+   "poly": [
+    [
+     813,
+     2803
+    ],
+    [
+     1958,
+     2816
+    ],
+    [
+     1956,
+     2975
+    ],
+    [
+     811,
+     2963
+    ]
+   ],
+   "b_text": "soason for ground",
+   "b_score": 0.7559
+  },
+  {
+   "text": "# Marni.",
+   "text_raw": "# Marni .",
+   "score": 0.7069,
+   "min_token_prob": 0.2966,
+   "box": [
+    198,
+    2816,
+    634,
+    2958
+   ],
+   "poly": [
+    [
+     198,
+     2823
+    ],
+    [
+     632,
+     2816
+    ],
+    [
+     634,
+     2952
+    ],
+    [
+     201,
+     2958
+    ]
+   ],
+   "b_text": "Marn",
+   "b_score": 0.8038
+  },
+  {
+   "text": "water of depletion. As",
+   "text_raw": "water of depletion . As",
+   "score": 0.7822,
+   "min_token_prob": 0.4622,
+   "box": [
+    275,
+    2941,
+    1426,
+    3103
+   ],
+   "poly": [
+    [
+     276,
+     2941
+    ],
+    [
+     1426,
+     2949
+    ],
+    [
+     1425,
+     3103
+    ],
+    [
+     275,
+     3095
+    ]
+   ],
+   "b_text": "water  depletion95",
+   "b_score": 0.8113
+  },
+  {
+   "text": "environmental",
+   "text_raw": "environmental",
+   "score": 0.9133,
+   "min_token_prob": 0.7574,
+   "box": [
+    1609,
+    2944,
+    2199,
+    3099
+   ],
+   "poly": [
+    [
+     1609,
+     2953
+    ],
+    [
+     2196,
+     2944
+    ],
+    [
+     2199,
+     3091
+    ],
+    [
+     1612,
+     3099
+    ]
+   ],
+   "b_text": "enmronmental",
+   "b_score": 0.8123
+  },
+  {
+   "text": "change.",
+   "text_raw": "change .",
+   "score": 0.9974,
+   "min_token_prob": 0.9937,
+   "box": [
+    279,
+    3072,
+    709,
+    3227
+   ],
+   "poly": [
+    [
+     279,
+     3072
+    ],
+    [
+     709,
+     3072
+    ],
+    [
+     709,
+     3227
+    ],
+    [
+     279,
+     3227
+    ]
+   ],
+   "b_text": "Change.",
+   "b_score": 0.9076
+  }
+ ],
+ "peak_torch_alloc_mib": 2700,
+ "peak_rss_mib_process": 2966
+}

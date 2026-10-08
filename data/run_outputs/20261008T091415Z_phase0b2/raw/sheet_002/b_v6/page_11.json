@@ -1,0 +1,449 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_11.jpg",
+ "latency_s": 10.548,
+ "model_load_s": 0.39,
+ "n_lines": 15,
+ "lines": [
+  {
+   "text": "enurronmental aftects.",
+   "score": 0.9334,
+   "poly": [
+    [
+     359,
+     342
+    ],
+    [
+     1559,
+     386
+    ],
+    [
+     1554,
+     534
+    ],
+    [
+     353,
+     490
+    ]
+   ],
+   "box": [
+    353,
+    342,
+    1559,
+    534
+   ]
+  },
+  {
+   "text": "Afforesdation means planting",
+   "score": 0.9782,
+   "poly": [
+    [
+     763,
+     493
+    ],
+    [
+     2425,
+     520
+    ],
+    [
+     2422,
+     681
+    ],
+    [
+     761,
+     654
+    ]
+   ],
+   "box": [
+    761,
+    493,
+    2425,
+    681
+   ]
+  },
+  {
+   "text": "trees en the desent and drought",
+   "score": 0.9187,
+   "poly": [
+    [
+     341,
+     596
+    ],
+    [
+     2417,
+     668
+    ],
+    [
+     2412,
+     836
+    ],
+    [
+     336,
+     765
+    ]
+   ],
+   "box": [
+    336,
+    596,
+    2417,
+    836
+   ]
+  },
+  {
+   "text": "areas",
+   "score": 0.9968,
+   "poly": [
+    [
+     354,
+     753
+    ],
+    [
+     653,
+     774
+    ],
+    [
+     645,
+     886
+    ],
+    [
+     346,
+     865
+    ]
+   ],
+   "box": [
+    346,
+    753,
+    653,
+    886
+   ]
+  },
+  {
+   "text": "can plant a cthe drouglt",
+   "score": 0.9226,
+   "poly": [
+    [
+     1146,
+     772
+    ],
+    [
+     2566,
+     827
+    ],
+    [
+     2560,
+     988
+    ],
+    [
+     1140,
+     933
+    ]
+   ],
+   "box": [
+    1140,
+    772,
+    2566,
+    988
+   ]
+  },
+  {
+   "text": "trooph",
+   "score": 0.8513,
+   "poly": [
+    [
+     1792,
+     763
+    ],
+    [
+     2041,
+     749
+    ],
+    [
+     2045,
+     815
+    ],
+    [
+     1796,
+     829
+    ]
+   ],
+   "box": [
+    1792,
+    749,
+    2045,
+    829
+   ]
+  },
+  {
+   "text": "we",
+   "score": 0.9789,
+   "poly": [
+    [
+     816,
+     792
+    ],
+    [
+     1215,
+     810
+    ],
+    [
+     1210,
+     925
+    ],
+    [
+     811,
+     908
+    ]
+   ],
+   "box": [
+    811,
+    792,
+    1215,
+    925
+   ]
+  },
+  {
+   "text": "areas.",
+   "score": 0.9997,
+   "poly": [
+    [
+     380,
+     891
+    ],
+    [
+     734,
+     905
+    ],
+    [
+     729,
+     1029
+    ],
+    [
+     376,
+     1016
+    ]
+   ],
+   "box": [
+    376,
+    891,
+    734,
+    1029
+   ]
+  },
+  {
+   "text": "Mapnly affochestation leads to",
+   "score": 0.9248,
+   "poly": [
+    [
+     800,
+     1030
+    ],
+    [
+     2539,
+     1096
+    ],
+    [
+     2533,
+     1262
+    ],
+    [
+     794,
+     1196
+    ]
+   ],
+   "box": [
+    794,
+    1030,
+    2539,
+    1262
+   ]
+  },
+  {
+   "text": "rainfail and",
+   "score": 0.9925,
+   "poly": [
+    [
+     313,
+     1156
+    ],
+    [
+     1163,
+     1200
+    ],
+    [
+     1157,
+     1334
+    ],
+    [
+     306,
+     1289
+    ]
+   ],
+   "box": [
+    306,
+    1156,
+    1163,
+    1334
+   ]
+  },
+  {
+   "text": "protects the enuprorme",
+   "score": 0.9133,
+   "poly": [
+    [
+     1224,
+     1191
+    ],
+    [
+     2595,
+     1257
+    ],
+    [
+     2588,
+     1407
+    ],
+    [
+     1217,
+     1341
+    ]
+   ],
+   "box": [
+    1217,
+    1191,
+    2595,
+    1407
+   ]
+  },
+  {
+   "text": "from cthe clemate changes.",
+   "score": 0.9703,
+   "poly": [
+    [
+     316,
+     1282
+    ],
+    [
+     2153,
+     1363
+    ],
+    [
+     2144,
+     1557
+    ],
+    [
+     308,
+     1475
+    ]
+   ],
+   "box": [
+    308,
+    1282,
+    2153,
+    1557
+   ]
+  },
+  {
+   "text": "A. specees found en a",
+   "score": 0.9347,
+   "poly": [
+    [
+     878,
+     1593
+    ],
+    [
+     2360,
+     1676
+    ],
+    [
+     2351,
+     1826
+    ],
+    [
+     870,
+     1743
+    ]
+   ],
+   "box": [
+    870,
+    1593,
+    2360,
+    1826
+   ]
+  },
+  {
+   "text": "particular ecosystem can help the enviror",
+   "score": 0.9526,
+   "poly": [
+    [
+     293,
+     1695
+    ],
+    [
+     2605,
+     1830
+    ],
+    [
+     2595,
+     1991
+    ],
+    [
+     284,
+     1856
+    ]
+   ],
+   "box": [
+    284,
+    1695,
+    2605,
+    1991
+   ]
+  },
+  {
+   "text": "from the drough by splanting them.",
+   "score": 0.9518,
+   "poly": [
+    [
+     254,
+     1839
+    ],
+    [
+     2514,
+     1975
+    ],
+    [
+     2504,
+     2154
+    ],
+    [
+     243,
+     2018
+    ]
+   ],
+   "box": [
+    243,
+    1839,
+    2514,
+    2154
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3296
+}

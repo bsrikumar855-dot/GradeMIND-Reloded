@@ -1,0 +1,629 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_08.jpg",
+ "latency_s": 1.182,
+ "model_load_s": 0.84,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "Effects of defomestations.",
+   "text_raw": "Effects of defomestations .",
+   "score": 0.706,
+   "min_token_prob": 0.0918,
+   "box": [
+    465,
+    592,
+    1657,
+    718
+   ],
+   "poly": [
+    [
+     465,
+     600
+    ],
+    [
+     1657,
+     592
+    ],
+    [
+     1657,
+     711
+    ],
+    [
+     465,
+     718
+    ]
+   ],
+   "b_text": "Effects of deforestofio",
+   "b_score": 0.7763
+  },
+  {
+   "text": "18.",
+   "text_raw": "18 .",
+   "score": 0.8903,
+   "min_token_prob": 0.6748,
+   "box": [
+    286,
+    611,
+    389,
+    698
+   ],
+   "poly": [
+    [
+     286,
+     611
+    ],
+    [
+     389,
+     611
+    ],
+    [
+     389,
+     698
+    ],
+    [
+     286,
+     698
+    ]
+   ],
+   "b_text": "18",
+   "b_score": 0.9838
+  },
+  {
+   "text": "6",
+   "text_raw": "6",
+   "score": 0.5287,
+   "min_token_prob": 0.1858,
+   "box": [
+    0,
+    775,
+    89,
+    890
+   ],
+   "poly": [
+    [
+     0,
+     775
+    ],
+    [
+     89,
+     775
+    ],
+    [
+     89,
+     890
+    ],
+    [
+     0,
+     890
+    ]
+   ],
+   "b_text": "8",
+   "b_score": 0.4281
+  },
+  {
+   "text": "Deforestation \" As due to the cutting",
+   "text_raw": "Deforestation \" As due to the cutting",
+   "score": 0.7401,
+   "min_token_prob": 0.2996,
+   "box": [
+    881,
+    809,
+    2564,
+    959
+   ],
+   "poly": [
+    [
+     881,
+     830
+    ],
+    [
+     2562,
+     809
+    ],
+    [
+     2564,
+     938
+    ],
+    [
+     882,
+     959
+    ]
+   ],
+   "b_text": "Defocesctat fon ds dae cto cthe cutt ing",
+   "b_score": 0.7374
+  },
+  {
+   "text": "down of large amount of trees in the",
+   "text_raw": "down of large amount of trees in the",
+   "score": 0.9474,
+   "min_token_prob": 0.6346,
+   "box": [
+    418,
+    940,
+    2490,
+    1087
+   ],
+   "poly": [
+    [
+     418,
+     959
+    ],
+    [
+     2489,
+     940
+    ],
+    [
+     2490,
+     1068
+    ],
+    [
+     419,
+     1087
+    ]
+   ],
+   "b_text": "docon of large amoun't of otrees In cthe",
+   "b_score": 0.8704
+  },
+  {
+   "text": "forest \" areas \" due to human purposes like",
+   "text_raw": "forest \" areas \" due to human purposes like",
+   "score": 0.9268,
+   "min_token_prob": 0.4918,
+   "box": [
+    398,
+    1070,
+    2522,
+    1203
+   ],
+   "poly": [
+    [
+     398,
+     1087
+    ],
+    [
+     2521,
+     1070
+    ],
+    [
+     2522,
+     1186
+    ],
+    [
+     399,
+     1203
+    ]
+   ],
+   "b_text": "forest aroas slie to human purposes loke",
+   "b_score": 0.7893
+  },
+  {
+   "text": "road, building house etc. \"",
+   "text_raw": "road , building house etc. \"",
+   "score": 0.9365,
+   "min_token_prob": 0.6129,
+   "box": [
+    463,
+    1203,
+    1833,
+    1335
+   ],
+   "poly": [
+    [
+     464,
+     1203
+    ],
+    [
+     1833,
+     1211
+    ],
+    [
+     1832,
+     1335
+    ],
+    [
+     463,
+     1327
+    ]
+   ],
+   "b_text": "yoad, buildpng hoase et.",
+   "b_score": 0.7921
+  },
+  {
+   "text": "Effects:",
+   "text_raw": "Effects :",
+   "score": 0.9248,
+   "min_token_prob": 0.838,
+   "box": [
+    485,
+    1444,
+    809,
+    1553
+   ],
+   "poly": [
+    [
+     485,
+     1444
+    ],
+    [
+     809,
+     1444
+    ],
+    [
+     809,
+     1553
+    ],
+    [
+     485,
+     1553
+    ]
+   ],
+   "b_text": "Effecls:",
+   "b_score": 0.8494
+  },
+  {
+   "text": "Over cutting of cheer will heads do",
+   "text_raw": "Over cutting of cheer will heads do",
+   "score": 0.8477,
+   "min_token_prob": 0.3921,
+   "box": [
+    798,
+    1679,
+    2540,
+    1790
+   ],
+   "poly": [
+    [
+     798,
+     1679
+    ],
+    [
+     2540,
+     1684
+    ],
+    [
+     2540,
+     1790
+    ],
+    [
+     798,
+     1785
+    ]
+   ],
+   "b_text": "Dver cutting of drees ufl: deads do",
+   "b_score": 0.7625
+  },
+  {
+   "text": "environmental change and climate change.",
+   "text_raw": "environmental change and climate change .",
+   "score": 0.9324,
+   "min_token_prob": 0.7339,
+   "box": [
+    407,
+    1797,
+    2425,
+    1918
+   ],
+   "poly": [
+    [
+     408,
+     1797
+    ],
+    [
+     2425,
+     1814
+    ],
+    [
+     2424,
+     1918
+    ],
+    [
+     407,
+     1901
+    ]
+   ],
+   "b_text": "enupromontal change and demode change.",
+   "b_score": 0.8842
+  },
+  {
+   "text": "It also affect the ecosystem and",
+   "text_raw": "It also affect the ecosystem and",
+   "score": 0.9935,
+   "min_token_prob": 0.9618,
+   "box": [
+    425,
+    1923,
+    2493,
+    2040
+   ],
+   "poly": [
+    [
+     426,
+     1923
+    ],
+    [
+     2493,
+     1934
+    ],
+    [
+     2493,
+     2040
+    ],
+    [
+     425,
+     2029
+    ]
+   ],
+   "b_text": "It also affectthe gcosystom andl",
+   "b_score": 0.7592
+  },
+  {
+   "text": "the criminals.",
+   "text_raw": "the criminals .",
+   "score": 0.8124,
+   "min_token_prob": 0.3509,
+   "box": [
+    410,
+    2043,
+    1185,
+    2149
+   ],
+   "poly": [
+    [
+     411,
+     2043
+    ],
+    [
+     1185,
+     2049
+    ],
+    [
+     1184,
+     2149
+    ],
+    [
+     410,
+     2144
+    ]
+   ],
+   "b_text": "the cnimals",
+   "b_score": 0.8016
+  },
+  {
+   "text": "Deforestation will heads to making",
+   "text_raw": "Deforestation will heads to making",
+   "score": 0.7831,
+   "min_token_prob": 0.456,
+   "box": [
+    806,
+    2269,
+    2619,
+    2427
+   ],
+   "poly": [
+    [
+     808,
+     2269
+    ],
+    [
+     2619,
+     2303
+    ],
+    [
+     2616,
+     2427
+    ],
+    [
+     806,
+     2393
+    ]
+   ],
+   "b_text": "Deforerdatpon coPll dleads cto maping",
+   "b_score": 0.8193
+  },
+  {
+   "text": "of desert. If we cut the dress in",
+   "text_raw": "of desert . If we cut the dress in",
+   "score": 0.9172,
+   "min_token_prob": 0.5365,
+   "box": [
+    394,
+    2400,
+    2423,
+    2534
+   ],
+   "poly": [
+    [
+     395,
+     2400
+    ],
+    [
+     2423,
+     2423
+    ],
+    [
+     2422,
+     2534
+    ],
+    [
+     394,
+     2512
+    ]
+   ],
+   "b_text": "of desert. If wooe cart ithe drees 9n",
+   "b_score": 0.7856
+  },
+  {
+   "text": "the forest the cold animals got disturbed",
+   "text_raw": "the forest the cold animals got disturbed",
+   "score": 0.8832,
+   "min_token_prob": 0.551,
+   "box": [
+    405,
+    2515,
+    2626,
+    2666
+   ],
+   "poly": [
+    [
+     406,
+     2515
+    ],
+    [
+     2626,
+     2547
+    ],
+    [
+     2624,
+     2666
+    ],
+    [
+     405,
+     2634
+    ]
+   ],
+   "b_text": "thi forest cthe coild anemals god desturbed",
+   "b_score": 0.7936
+  },
+  {
+   "text": "and \" other child \" animals were \" enter into",
+   "text_raw": "and \" other child \" animals were \" enter into",
+   "score": 0.8082,
+   "min_token_prob": 0.5302,
+   "box": [
+    407,
+    2637,
+    2503,
+    2775
+   ],
+   "poly": [
+    [
+     408,
+     2637
+    ],
+    [
+     2503,
+     2671
+    ],
+    [
+     2501,
+     2775
+    ],
+    [
+     407,
+     2741
+    ]
+   ],
+   "b_text": "and cthe copld anemals are endes fnto",
+   "b_score": 0.7793
+  },
+  {
+   "text": "the chuman cluing areas.",
+   "text_raw": "the chuman cluing areas .",
+   "score": 0.8676,
+   "min_token_prob": 0.1854,
+   "box": [
+    419,
+    2741,
+    1940,
+    2905
+   ],
+   "poly": [
+    [
+     422,
+     2741
+    ],
+    [
+     1940,
+     2775
+    ],
+    [
+     1937,
+     2905
+    ],
+    [
+     419,
+     2870
+    ]
+   ],
+   "b_text": "ethe chuman clfuing areas.",
+   "b_score": 0.8373
+  },
+  {
+   "text": "The world animals are search food",
+   "text_raw": "The world animals are search food",
+   "score": 0.9444,
+   "min_token_prob": 0.7418,
+   "box": [
+    724,
+    2985,
+    2552,
+    3155
+   ],
+   "poly": [
+    [
+     728,
+     2985
+    ],
+    [
+     2552,
+     3040
+    ],
+    [
+     2549,
+     3155
+    ],
+    [
+     724,
+     3100
+    ]
+   ],
+   "b_text": "The coPld anemals are esearch food",
+   "b_score": 0.8008
+  },
+  {
+   "text": "and counter old \" other human diving areas",
+   "text_raw": "and counter old \" other human diving areas",
+   "score": 0.612,
+   "min_token_prob": 0.177,
+   "box": [
+    379,
+    3105,
+    2608,
+    3304
+   ],
+   "poly": [
+    [
+     383,
+     3105
+    ],
+    [
+     2608,
+     3169
+    ],
+    [
+     2604,
+     3304
+    ],
+    [
+     379,
+     3240
+    ]
+   ],
+   "b_text": "and coator Pnto ethen chuman elaving aseas",
+   "b_score": 0.7288
+  }
+ ],
+ "peak_torch_alloc_mib": 2695,
+ "peak_rss_mib_process": 2962
+}

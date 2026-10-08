@@ -1,0 +1,255 @@
+{
+ "engine": "unlimited-ocr",
+ "model_revision": "07dea832e22aefee32ad281d4b80551282e1c168",
+ "path": "vllm",
+ "serving": "vllm/vllm-openai@sha256:542961a42d9183813819a23ef3a8b50bfb4f5ef7b0fb4f8e4f56edd8445efb18 (vLLM 0.23.1rc1.dev541, torch 2.11.0+cu130); --quantization fp8 --gpu-memory-utilization 0.60 --max-model-len 6144 --max-num-seqs 1 --no-enable-prefix-caching --mm-processor-cache-gb 0 --logits_processors ...NGramPerReqLogitsProcessor; KV cache bf16",
+ "mode": "gundam (server default for single image)",
+ "prompt": "<image>document parsing.",
+ "decoding": {
+  "temperature": 0.0,
+  "max_length": 4096,
+  "ngram_size": 35,
+  "window_size": 128
+ },
+ "page": "page_01.jpg",
+ "latency_s": 5.231,
+ "generated_tokens": 1114,
+ "finish_reason": "stop",
+ "tokens_per_s": 212.9,
+ "peak_torch_alloc_mib": null,
+ "nvidia_smi_used_mib_after": 11392,
+ "token_prob": {
+  "mean": 0.9088,
+  "min": 0.0604,
+  "share_below_0.5": 0.0736
+ },
+ "token_logprobs": [],
+ "token_margins": [],
+ "degenerate_flags": [
+  "EMPTY_CELL_SPAM_x121"
+ ],
+ "regions": [
+  {
+   "category": "header",
+   "bbox_raw": [
+    [
+     784,
+     23,
+     896,
+     43
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "image",
+   "bbox_raw": [
+    [
+     100,
+     58,
+     168,
+     110
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     100,
+     113,
+     172,
+     125
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "title",
+   "bbox_raw": [
+    [
+     338,
+     56,
+     588,
+     82
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     245,
+     82,
+     674,
+     98
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     368,
+     99,
+     567,
+     113
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     270,
+     113,
+     649,
+     129
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "image",
+   "bbox_raw": [
+    [
+     746,
+     66,
+     847,
+     130
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     247,
+     133,
+     674,
+     151
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "table",
+   "bbox_raw": [
+    [
+     95,
+     151,
+     868,
+     263
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     375,
+     260,
+     584,
+     275
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     99,
+     268,
+     380,
+     304
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     99,
+     304,
+     617,
+     320
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "image",
+   "bbox_raw": [
+    [
+     598,
+     264,
+     718,
+     300
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     524,
+     293,
+     853,
+     308
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "text",
+   "bbox_raw": [
+    [
+     349,
+     325,
+     610,
+     340
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  },
+  {
+   "category": "table",
+   "bbox_raw": [
+    [
+     95,
+     340,
+     884,
+     945
+    ]
+   ],
+   "text": "[REDACTED]",
+   "raw_marker": "[REDACTED]"
+  }
+ ],
+ "raw": "[REDACTED]"
+}

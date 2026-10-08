@@ -1,0 +1,225 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_15.jpg",
+ "latency_s": 9.033,
+ "model_load_s": 0.39,
+ "n_lines": 7,
+ "lines": [
+  {
+   "text": "is rery usecful from polluting the onve",
+   "score": 0.9066,
+   "poly": [
+    [
+     67,
+     961
+    ],
+    [
+     2456,
+     831
+    ],
+    [
+     2468,
+     1051
+    ],
+    [
+     78,
+     1180
+    ]
+   ],
+   "box": [
+    67,
+    831,
+    2468,
+    1180
+   ]
+  },
+  {
+   "text": "Now dayss the main sourice of",
+   "score": 0.9667,
+   "poly": [
+    [
+     114,
+     1094
+    ],
+    [
+     2369,
+     1009
+    ],
+    [
+     2377,
+     1217
+    ],
+    [
+     122,
+     1303
+    ]
+   ],
+   "box": [
+    114,
+    1009,
+    2377,
+    1303
+   ]
+  },
+  {
+   "text": "wastage are plastics.",
+   "score": 0.9855,
+   "poly": [
+    [
+     110,
+     1268
+    ],
+    [
+     1528,
+     1235
+    ],
+    [
+     1532,
+     1420
+    ],
+    [
+     114,
+     1453
+    ]
+   ],
+   "box": [
+    110,
+    1235,
+    1532,
+    1453
+   ]
+  },
+  {
+   "text": "Grenerating those kinds of coasfe",
+   "score": 0.8485,
+   "poly": [
+    [
+     421,
+     1553
+    ],
+    [
+     2380,
+     1519
+    ],
+    [
+     2383,
+     1685
+    ],
+    [
+     424,
+     1719
+    ]
+   ],
+   "box": [
+    421,
+    1519,
+    2383,
+    1719
+   ]
+  },
+  {
+   "text": "may always resutts en the enurorme",
+   "score": 0.9089,
+   "poly": [
+    [
+     73,
+     1702
+    ],
+    [
+     2453,
+     1685
+    ],
+    [
+     2454,
+     1849
+    ],
+    [
+     74,
+     1866
+    ]
+   ],
+   "box": [
+    73,
+    1685,
+    2454,
+    1866
+   ]
+  },
+  {
+   "text": "problems. Improper disposal cresielts cin",
+   "score": 0.9349,
+   "poly": [
+    [
+     66,
+     1853
+    ],
+    [
+     2436,
+     1847
+    ],
+    [
+     2436,
+     2036
+    ],
+    [
+     67,
+     2042
+    ]
+   ],
+   "box": [
+    66,
+    1847,
+    2436,
+    2042
+   ]
+  },
+  {
+   "text": "the wastege production and pollide",
+   "score": 0.9541,
+   "poly": [
+    [
+     105,
+     1979
+    ],
+    [
+     2462,
+     2021
+    ],
+    [
+     2458,
+     2241
+    ],
+    [
+     101,
+     2199
+    ]
+   ],
+   "box": [
+    101,
+    1979,
+    2462,
+    2241
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3296
+}

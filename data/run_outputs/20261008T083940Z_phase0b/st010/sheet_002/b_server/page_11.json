@@ -1,0 +1,364 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_11.jpg",
+ "latency_s": 9.264,
+ "model_load_s": 0.37,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "enumonmental'affeds.",
+   "score": 0.8314,
+   "poly": [
+    [
+     360,
+     354
+    ],
+    [
+     1582,
+     393
+    ],
+    [
+     1578,
+     524
+    ],
+    [
+     356,
+     485
+    ]
+   ],
+   "box": [
+    356,
+    354,
+    1582,
+    524
+   ]
+  },
+  {
+   "text": "Afforesdatfon means plantong",
+   "score": 0.7647,
+   "poly": [
+    [
+     763,
+     493
+    ],
+    [
+     2411,
+     522
+    ],
+    [
+     2408,
+     683
+    ],
+    [
+     761,
+     654
+    ]
+   ],
+   "box": [
+    761,
+    493,
+    2411,
+    683
+   ]
+  },
+  {
+   "text": "troes cn tthe desort ardtrought",
+   "score": 0.7642,
+   "poly": [
+    [
+     344,
+     600
+    ],
+    [
+     2413,
+     669
+    ],
+    [
+     2408,
+     830
+    ],
+    [
+     339,
+     761
+    ]
+   ],
+   "box": [
+    339,
+    600,
+    2413,
+    830
+   ]
+  },
+  {
+   "text": "areas",
+   "score": 0.8146,
+   "poly": [
+    [
+     354,
+     755
+    ],
+    [
+     700,
+     778
+    ],
+    [
+     693,
+     889
+    ],
+    [
+     347,
+     867
+    ]
+   ],
+   "box": [
+    347,
+    755,
+    700,
+    889
+   ]
+  },
+  {
+   "text": "toe can plant ethe drogh",
+   "score": 0.7948,
+   "poly": [
+    [
+     800,
+     757
+    ],
+    [
+     2562,
+     823
+    ],
+    [
+     2556,
+     984
+    ],
+    [
+     794,
+     918
+    ]
+   ],
+   "box": [
+    794,
+    757,
+    2562,
+    984
+   ]
+  },
+  {
+   "text": "areas.",
+   "score": 0.8374,
+   "poly": [
+    [
+     384,
+     897
+    ],
+    [
+     733,
+     912
+    ],
+    [
+     728,
+     1026
+    ],
+    [
+     379,
+     1010
+    ]
+   ],
+   "box": [
+    379,
+    897,
+    733,
+    1026
+   ]
+  },
+  {
+   "text": "Maenly affochesdpon foadsto",
+   "score": 0.7138,
+   "poly": [
+    [
+     807,
+     1033
+    ],
+    [
+     2534,
+     1101
+    ],
+    [
+     2528,
+     1255
+    ],
+    [
+     801,
+     1187
+    ]
+   ],
+   "box": [
+    801,
+    1033,
+    2534,
+    1255
+   ]
+  },
+  {
+   "text": "Graanfail and profeds the onuprormer",
+   "score": 0.7544,
+   "poly": [
+    [
+     314,
+     1158
+    ],
+    [
+     2591,
+     1258
+    ],
+    [
+     2585,
+     1396
+    ],
+    [
+     308,
+     1295
+    ]
+   ],
+   "box": [
+    308,
+    1158,
+    2591,
+    1396
+   ]
+  },
+  {
+   "text": "ofrom ithe clemato Changes",
+   "score": 0.7489,
+   "poly": [
+    [
+     323,
+     1287
+    ],
+    [
+     2141,
+     1369
+    ],
+    [
+     2134,
+     1542
+    ],
+    [
+     315,
+     1461
+    ]
+   ],
+   "box": [
+    315,
+    1287,
+    2141,
+    1542
+   ]
+  },
+  {
+   "text": "A.speces ifound en a",
+   "score": 0.8357,
+   "poly": [
+    [
+     883,
+     1591
+    ],
+    [
+     2354,
+     1674
+    ],
+    [
+     2346,
+     1817
+    ],
+    [
+     875,
+     1733
+    ]
+   ],
+   "box": [
+    875,
+    1591,
+    2354,
+    1817
+   ]
+  },
+  {
+   "text": "particular ocosyste can help cthe enion",
+   "score": 0.7197,
+   "poly": [
+    [
+     302,
+     1700
+    ],
+    [
+     2582,
+     1837
+    ],
+    [
+     2574,
+     1980
+    ],
+    [
+     293,
+     1843
+    ]
+   ],
+   "box": [
+    293,
+    1700,
+    2582,
+    1980
+   ]
+  },
+  {
+   "text": "from sthe troughiby plaiting thom.",
+   "score": 0.7018,
+   "poly": [
+    [
+     262,
+     1835
+    ],
+    [
+     2494,
+     1979
+    ],
+    [
+     2482,
+     2160
+    ],
+    [
+     250,
+     2016
+    ]
+   ],
+   "box": [
+    250,
+    1835,
+    2494,
+    2160
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3328
+}

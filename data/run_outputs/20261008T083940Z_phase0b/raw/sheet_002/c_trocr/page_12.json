@@ -1,0 +1,661 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 1.201,
+ "model_load_s": 0.84,
+ "n_lines": 20,
+ "lines": [
+  {
+   "text": "18.",
+   "text_raw": "18 .",
+   "score": 0.5689,
+   "min_token_prob": 0.241,
+   "box": [
+    0,
+    422,
+    76,
+    515
+   ],
+   "poly": [
+    [
+     0,
+     422
+    ],
+    [
+     76,
+     432
+    ],
+    [
+     65,
+     515
+    ],
+    [
+     0,
+     506
+    ]
+   ],
+   "b_text": "8",
+   "b_score": 0.8396
+  },
+  {
+   "text": "PART - D.",
+   "text_raw": "PART - D.",
+   "score": 0.8747,
+   "min_token_prob": 0.6246,
+   "box": [
+    1125,
+    467,
+    1427,
+    564
+   ],
+   "poly": [
+    [
+     1127,
+     467
+    ],
+    [
+     1427,
+     471
+    ],
+    [
+     1425,
+     564
+    ],
+    [
+     1125,
+     559
+    ]
+   ],
+   "b_text": "PARID",
+   "b_score": 0.8503
+  },
+  {
+   "text": "(A).",
+   "text_raw": "( A ) .",
+   "score": 0.8402,
+   "min_token_prob": 0.6235,
+   "box": [
+    360,
+    665,
+    530,
+    783
+   ],
+   "poly": [
+    [
+     365,
+     665
+    ],
+    [
+     530,
+     674
+    ],
+    [
+     524,
+     783
+    ],
+    [
+     360,
+     774
+    ]
+   ],
+   "b_text": "（A)",
+   "b_score": 0.7014
+  },
+  {
+   "text": "n.",
+   "text_raw": "n.",
+   "score": 0.6786,
+   "min_token_prob": 0.3389,
+   "box": [
+    250,
+    685,
+    329,
+    766
+   ],
+   "poly": [
+    [
+     250,
+     685
+    ],
+    [
+     329,
+     685
+    ],
+    [
+     329,
+     766
+    ],
+    [
+     250,
+     766
+    ]
+   ],
+   "b_text": "H",
+   "b_score": 0.119
+  },
+  {
+   "text": "A college general stage guard. Mr.",
+   "text_raw": "A college general stage guard . Mr.",
+   "score": 0.6271,
+   "min_token_prob": 0.1994,
+   "box": [
+    627,
+    927,
+    2496,
+    1075
+   ],
+   "poly": [
+    [
+     628,
+     927
+    ],
+    [
+     2496,
+     944
+    ],
+    [
+     2495,
+     1075
+    ],
+    [
+     627,
+     1058
+    ]
+   ],
+   "b_text": "A colage generad esage quad ra",
+   "b_score": 0.6328
+  },
+  {
+   "text": "of good words \" paper example, plastic and",
+   "text_raw": "of good words \" paper example , plastic and",
+   "score": 0.6542,
+   "min_token_prob": 0.1132,
+   "box": [
+    335,
+    1030,
+    2353,
+    1207
+   ],
+   "poly": [
+    [
+     338,
+     1030
+    ],
+    [
+     2353,
+     1063
+    ],
+    [
+     2351,
+     1207
+    ],
+    [
+     335,
+     1174
+    ]
+   ],
+   "b_text": "of food waste papepa plamt ard",
+   "b_score": 0.6621
+  },
+  {
+   "text": "other sacred waste \"",
+   "text_raw": "other sacred waste \"",
+   "score": 0.7356,
+   "min_token_prob": 0.4035,
+   "box": [
+    353,
+    1155,
+    1228,
+    1302
+   ],
+   "poly": [
+    [
+     358,
+     1155
+    ],
+    [
+     1228,
+     1193
+    ],
+    [
+     1223,
+     1302
+    ],
+    [
+     353,
+     1264
+    ]
+   ],
+   "b_text": "Other sasd wanle.",
+   "b_score": 0.6849
+  },
+  {
+   "text": "pht.",
+   "text_raw": "pht .",
+   "score": 0.6715,
+   "min_token_prob": 0.2745,
+   "box": [
+    0,
+    1297,
+    99,
+    1402
+   ],
+   "poly": [
+    [
+     0,
+     1297
+    ],
+    [
+     99,
+     1297
+    ],
+    [
+     99,
+     1402
+    ],
+    [
+     0,
+     1402
+    ]
+   ],
+   "b_text": "eht",
+   "b_score": 0.7756
+  },
+  {
+   "text": "http can produce it-using the \" BR",
+   "text_raw": "http can produce it-using the \" BR",
+   "score": 0.6038,
+   "min_token_prob": 0.1527,
+   "box": [
+    684,
+    1388,
+    2279,
+    1577
+   ],
+   "poly": [
+    [
+     688,
+     1388
+    ],
+    [
+     2279,
+     1433
+    ],
+    [
+     2275,
+     1577
+    ],
+    [
+     684,
+     1532
+    ]
+   ],
+   "b_text": "We can duce  ang the or",
+   "b_score": 0.6455
+  },
+  {
+   "text": "principle.",
+   "text_raw": "principle .",
+   "score": 0.964,
+   "min_token_prob": 0.927,
+   "box": [
+    336,
+    1526,
+    786,
+    1667
+   ],
+   "poly": [
+    [
+     341,
+     1526
+    ],
+    [
+     786,
+     1544
+    ],
+    [
+     781,
+     1667
+    ],
+    [
+     336,
+     1650
+    ]
+   ],
+   "b_text": "pronceple",
+   "b_score": 0.7725
+  },
+  {
+   "text": "# # Eclipse.",
+   "text_raw": "# # Eclipse .",
+   "score": 0.6078,
+   "min_token_prob": 0.108,
+   "box": [
+    931,
+    1656,
+    1405,
+    1781
+   ],
+   "poly": [
+    [
+     933,
+     1656
+    ],
+    [
+     1405,
+     1665
+    ],
+    [
+     1402,
+     1781
+    ],
+    [
+     931,
+     1772
+    ]
+   ],
+   "b_text": "Feduce",
+   "b_score": 0.6676
+  },
+  {
+   "text": "# ROY",
+   "text_raw": "# ROY",
+   "score": 0.3584,
+   "min_token_prob": 0.1798,
+   "box": [
+    970,
+    1792,
+    1341,
+    1903
+   ],
+   "poly": [
+    [
+     973,
+     1792
+    ],
+    [
+     1341,
+     1805
+    ],
+    [
+     1338,
+     1903
+    ],
+    [
+     970,
+     1890
+    ]
+   ],
+   "b_text": "Rpue",
+   "b_score": 0.5768
+  },
+  {
+   "text": "ment,",
+   "text_raw": "ment ,",
+   "score": 0.7918,
+   "min_token_prob": 0.5064,
+   "box": [
+    0,
+    1806,
+    90,
+    1891
+   ],
+   "poly": [
+    [
+     0,
+     1806
+    ],
+    [
+     90,
+     1806
+    ],
+    [
+     90,
+     1891
+    ],
+    [
+     0,
+     1891
+    ]
+   ],
+   "b_text": "ment",
+   "b_score": 0.8231
+  },
+  {
+   "text": "# ROYGLO...",
+   "text_raw": "# ROYGLO ...",
+   "score": 0.4337,
+   "min_token_prob": 0.1446,
+   "box": [
+    946,
+    1909,
+    1561,
+    2021
+   ],
+   "poly": [
+    [
+     948,
+     1909
+    ],
+    [
+     1561,
+     1919
+    ],
+    [
+     1559,
+     2021
+    ],
+    [
+     946,
+     2011
+    ]
+   ],
+   "b_text": "Roayslaon",
+   "b_score": 0.5003
+  },
+  {
+   "text": "Commonwealthism rate marican",
+   "text_raw": "Commonwealthism rate marican",
+   "score": 0.4626,
+   "min_token_prob": 0.1031,
+   "box": [
+    1021,
+    2000,
+    1537,
+    2056
+   ],
+   "poly": [
+    [
+     1022,
+     2000
+    ],
+    [
+     1537,
+     2006
+    ],
+    [
+     1536,
+     2056
+    ],
+    [
+     1021,
+     2050
+    ]
+   ],
+   "b_text": "LPOWN",
+   "b_score": 0.4753
+  },
+  {
+   "text": "Firstly use shown to upgrade the",
+   "text_raw": "Firstly use shown to upgrade the",
+   "score": 0.7377,
+   "min_token_prob": 0.295,
+   "box": [
+    501,
+    2125,
+    2372,
+    2308
+   ],
+   "poly": [
+    [
+     504,
+     2125
+    ],
+    [
+     2372,
+     2164
+    ],
+    [
+     2369,
+     2308
+    ],
+    [
+     501,
+     2269
+    ]
+   ],
+   "b_text": "tostly cge shave cte sopale cthe",
+   "b_score": 0.718
+  },
+  {
+   "text": "types of course and use can arrange",
+   "text_raw": "types of course and use can arrange",
+   "score": 0.7042,
+   "min_token_prob": 0.3194,
+   "box": [
+    324,
+    2252,
+    2383,
+    2454
+   ],
+   "poly": [
+    [
+     328,
+     2252
+    ],
+    [
+     2383,
+     2315
+    ],
+    [
+     2379,
+     2454
+    ],
+    [
+     324,
+     2390
+    ]
+   ],
+   "b_text": "types of coaate andesn manga",
+   "b_score": 0.6599
+  },
+  {
+   "text": "the Follutton happened due to waste.",
+   "text_raw": "the Follutton happened due to waste .",
+   "score": 0.8374,
+   "min_token_prob": 0.2519,
+   "box": [
+    335,
+    2391,
+    2536,
+    2562
+   ],
+   "poly": [
+    [
+     338,
+     2391
+    ],
+    [
+     2536,
+     2431
+    ],
+    [
+     2533,
+     2562
+    ],
+    [
+     335,
+     2522
+    ]
+   ],
+   "b_text": "cthepollutponhappond dua paste.",
+   "b_score": 0.706
+  },
+  {
+   "text": "We have too produce the waste",
+   "text_raw": "We have too produce the waste",
+   "score": 0.7782,
+   "min_token_prob": 0.2899,
+   "box": [
+    541,
+    2642,
+    2344,
+    2799
+   ],
+   "poly": [
+    [
+     543,
+     2642
+    ],
+    [
+     2344,
+     2681
+    ],
+    [
+     2341,
+     2799
+    ],
+    [
+     541,
+     2760
+    ]
+   ],
+   "b_text": "we chave cto meduce dhe coaule",
+   "b_score": 0.7015
+  },
+  {
+   "text": "BR4 Umethod-",
+   "text_raw": "BR4 Umethod-",
+   "score": 0.4063,
+   "min_token_prob": 0.0799,
+   "box": [
+    319,
+    2907,
+    1057,
+    3025
+   ],
+   "poly": [
+    [
+     320,
+     2907
+    ],
+    [
+     1057,
+     2911
+    ],
+    [
+     1056,
+     3025
+    ],
+    [
+     319,
+     3021
+    ]
+   ],
+   "b_text": "BRmathd",
+   "b_score": 0.4928
+  }
+ ],
+ "peak_torch_alloc_mib": 2700,
+ "peak_rss_mib_process": 2962
+}

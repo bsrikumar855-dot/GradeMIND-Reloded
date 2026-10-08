@@ -1,0 +1,362 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_15.jpg",
+ "latency_s": 20.559,
+ "model_load_s": 0.19,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "organ coaste. proper måndance of ",
+   "score": 0.6555,
+   "poly": [
+    [
+     58,
+     784
+    ],
+    [
+     2470,
+     664
+    ],
+    [
+     2470,
+     907
+    ],
+    [
+     70,
+     1027
+    ]
+   ],
+   "box": [
+    58,
+    664,
+    2470,
+    1027
+   ]
+  },
+  {
+   "text": "8 voy wofal from pollitthy the cn",
+   "score": 0.778,
+   "poly": [
+    [
+     61,
+     959
+    ],
+    [
+     2458,
+     831
+    ],
+    [
+     2470,
+     1056
+    ],
+    [
+     73,
+     1184
+    ]
+   ],
+   "box": [
+    61,
+    831,
+    2470,
+    1184
+   ]
+  },
+  {
+   "text": "Now dayss the matn sowice of",
+   "score": 0.8557,
+   "poly": [
+    [
+     110,
+     1090
+    ],
+    [
+     2366,
+     1014
+    ],
+    [
+     2373,
+     1227
+    ],
+    [
+     117,
+     1303
+    ]
+   ],
+   "box": [
+    110,
+    1014,
+    2373,
+    1303
+   ]
+  },
+  {
+   "text": "wastage are plasties.",
+   "score": 0.8623,
+   "poly": [
+    [
+     109,
+     1275
+    ],
+    [
+     1506,
+     1232
+    ],
+    [
+     1511,
+     1409
+    ],
+    [
+     115,
+     1452
+    ]
+   ],
+   "box": [
+    109,
+    1232,
+    1511,
+    1452
+   ]
+  },
+  {
+   "text": "",
+   "score": 0.0,
+   "poly": [
+    [
+     1551,
+     1347
+    ],
+    [
+     1567,
+     1347
+    ],
+    [
+     1567,
+     1362
+    ],
+    [
+     1551,
+     1362
+    ]
+   ],
+   "box": [
+    1551,
+    1347,
+    1567,
+    1362
+   ]
+  },
+  {
+   "text": "Generating ethase clinds of coste",
+   "score": 0.7305,
+   "poly": [
+    [
+     416,
+     1544
+    ],
+    [
+     2382,
+     1519
+    ],
+    [
+     2385,
+     1703
+    ],
+    [
+     418,
+     1728
+    ]
+   ],
+   "box": [
+    416,
+    1519,
+    2385,
+    1728
+   ]
+  },
+  {
+   "text": "Gesubts ih thi aunorme",
+   "score": 0.7173,
+   "poly": [
+    [
+     746,
+     1698
+    ],
+    [
+     2455,
+     1687
+    ],
+    [
+     2456,
+     1845
+    ],
+    [
+     747,
+     1857
+    ]
+   ],
+   "box": [
+    746,
+    1687,
+    2456,
+    1857
+   ]
+  },
+  {
+   "text": "may always",
+   "score": 0.9614,
+   "poly": [
+    [
+     80,
+     1736
+    ],
+    [
+     762,
+     1728
+    ],
+    [
+     763,
+     1847
+    ],
+    [
+     82,
+     1855
+    ]
+   ],
+   "box": [
+    80,
+    1728,
+    763,
+    1855
+   ]
+  },
+  {
+   "text": "problems. Impropen desposal esults ",
+   "score": 0.8021,
+   "poly": [
+    [
+     73,
+     1857
+    ],
+    [
+     2439,
+     1851
+    ],
+    [
+     2440,
+     2034
+    ],
+    [
+     74,
+     2040
+    ]
+   ],
+   "box": [
+    73,
+    1851,
+    2440,
+    2040
+   ]
+  },
+  {
+   "text": "cthe coastage production and",
+   "score": 0.8856,
+   "poly": [
+    [
+     111,
+     1992
+    ],
+    [
+     1920,
+     2038
+    ],
+    [
+     1916,
+     2214
+    ],
+    [
+     106,
+     2168
+    ]
+   ],
+   "box": [
+    106,
+    1992,
+    1920,
+    2214
+   ]
+  },
+  {
+   "text": "palld",
+   "score": 0.8593,
+   "poly": [
+    [
+     2001,
+     2056
+    ],
+    [
+     2443,
+     2010
+    ],
+    [
+     2463,
+     2197
+    ],
+    [
+     2021,
+     2243
+    ]
+   ],
+   "box": [
+    2001,
+    2010,
+    2463,
+    2243
+   ]
+  },
+  {
+   "text": "2",
+   "score": 0.1147,
+   "poly": [
+    [
+     2,
+     2157
+    ],
+    [
+     13,
+     2157
+    ],
+    [
+     13,
+     2166
+    ],
+    [
+     2,
+     2166
+    ]
+   ],
+   "box": [
+    2,
+    2157,
+    13,
+    2166
+   ]
+  }
+ ]
+}

@@ -1,0 +1,405 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_07.jpg",
+ "latency_s": 0.697,
+ "model_load_s": 0.83,
+ "n_lines": 12,
+ "lines": [
+  {
+   "text": "If we pollute almost made",
+   "text_raw": "If we pollute almost made",
+   "score": 0.6755,
+   "min_token_prob": 0.2317,
+   "box": [
+    779,
+    464,
+    2405,
+    589
+   ],
+   "poly": [
+    [
+     780,
+     464
+    ],
+    [
+     2405,
+     471
+    ],
+    [
+     2404,
+     589
+    ],
+    [
+     779,
+     581
+    ]
+   ],
+   "b_text": "If e pollute dheposh saate",
+   "b_score": 0.5849
+  },
+  {
+   "text": "We did have \"water do drunk. We",
+   "text_raw": "We did have \"water do drunk . We",
+   "score": 0.6815,
+   "min_token_prob": 0.2688,
+   "box": [
+    545,
+    573,
+    2478,
+    717
+   ],
+   "poly": [
+    [
+     547,
+     573
+    ],
+    [
+     2478,
+     607
+    ],
+    [
+     2476,
+     717
+    ],
+    [
+     545,
+     683
+    ]
+   ],
+   "b_text": "we ad have aoten d dnenkhe",
+   "b_score": 0.6496
+  },
+  {
+   "text": "can recycle the plastic-waete and",
+   "text_raw": "can recycle the plastic-waete and",
+   "score": 0.6651,
+   "min_token_prob": 0.1661,
+   "box": [
+    523,
+    696,
+    2502,
+    849
+   ],
+   "poly": [
+    [
+     525,
+     696
+    ],
+    [
+     2502,
+     727
+    ],
+    [
+     2500,
+     849
+    ],
+    [
+     523,
+     819
+    ]
+   ],
+   "b_text": "Can socyle the plaasfs aate ard",
+   "b_score": 0.6032
+  },
+  {
+   "text": "We can realise the weather profits.",
+   "text_raw": "We can realise the weather profits .",
+   "score": 0.7161,
+   "min_token_prob": 0.2235,
+   "box": [
+    565,
+    813,
+    2533,
+    971
+   ],
+   "poly": [
+    [
+     567,
+     813
+    ],
+    [
+     2533,
+     859
+    ],
+    [
+     2531,
+     971
+    ],
+    [
+     565,
+     925
+    ]
+   ],
+   "b_text": "hoe can oeue tthe aoatt pretie",
+   "b_score": 0.583
+  },
+  {
+   "text": "Two do a useful product...",
+   "text_raw": "Two do a useful product ...",
+   "score": 0.8922,
+   "min_token_prob": 0.6025,
+   "box": [
+    520,
+    921,
+    2395,
+    1103
+   ],
+   "poly": [
+    [
+     524,
+     921
+    ],
+    [
+     2395,
+     980
+    ],
+    [
+     2391,
+     1103
+    ],
+    [
+     520,
+     1044
+    ]
+   ],
+   "b_text": "Phto eto a wef pradud",
+   "b_score": 0.6385
+  },
+  {
+   "text": "If we produce the production",
+   "text_raw": "If we produce the production",
+   "score": 0.8796,
+   "min_token_prob": 0.4798,
+   "box": [
+    810,
+    1178,
+    2520,
+    1323
+   ],
+   "poly": [
+    [
+     812,
+     1178
+    ],
+    [
+     2520,
+     1216
+    ],
+    [
+     2518,
+     1323
+    ],
+    [
+     810,
+     1284
+    ]
+   ],
+   "b_text": "Tof wao rocluce dhe pracdion",
+   "b_score": 0.5453
+  },
+  {
+   "text": "of many kind of waste other ecosystem",
+   "text_raw": "of many kind of waste other ecosystem",
+   "score": 0.8927,
+   "min_token_prob": 0.5739,
+   "box": [
+    526,
+    1279,
+    2473,
+    1453
+   ],
+   "poly": [
+    [
+     529,
+     1279
+    ],
+    [
+     2473,
+     1338
+    ],
+    [
+     2470,
+     1453
+    ],
+    [
+     526,
+     1394
+    ]
+   ],
+   "b_text": "of mangf kinchi of coasteeth ecoegstem",
+   "b_score": 0.6108
+  },
+  {
+   "text": "does not yet distributed. If we doesn't",
+   "text_raw": "does not yet distributed . If we doesn't",
+   "score": 0.8608,
+   "min_token_prob": 0.4571,
+   "box": [
+    519,
+    1402,
+    2442,
+    1563
+   ],
+   "poly": [
+    [
+     522,
+     1402
+    ],
+    [
+     2442,
+     1457
+    ],
+    [
+     2439,
+     1563
+    ],
+    [
+     519,
+     1508
+    ]
+   ],
+   "b_text": "doesnot god si tited If we doesnot",
+   "b_score": 0.6061
+  },
+  {
+   "text": "seduce who was too not why the",
+   "text_raw": "seduce who was too not why the",
+   "score": 0.7439,
+   "min_token_prob": 0.1297,
+   "box": [
+    517,
+    1504,
+    2439,
+    1688
+   ],
+   "poly": [
+    [
+     521,
+     1504
+    ],
+    [
+     2439,
+     1571
+    ],
+    [
+     2434,
+     1688
+    ],
+    [
+     517,
+     1621
+    ]
+   ],
+   "b_text": "seducethe-waste or not ing the",
+   "b_score": 0.5655
+  },
+  {
+   "text": "3R principle the environment got",
+   "text_raw": "3R principle the environment got",
+   "score": 0.8168,
+   "min_token_prob": 0.2115,
+   "box": [
+    515,
+    1629,
+    2131,
+    1805
+   ],
+   "poly": [
+    [
+     519,
+     1629
+    ],
+    [
+     2131,
+     1688
+    ],
+    [
+     2127,
+     1805
+    ],
+    [
+     515,
+     1746
+    ]
+   ],
+   "b_text": "Br princpleeth naron mendgt",
+   "b_score": 0.5679
+  },
+  {
+   "text": "disturbed.",
+   "text_raw": "disturbed .",
+   "score": 0.8976,
+   "min_token_prob": 0.6837,
+   "box": [
+    522,
+    1757,
+    952,
+    1867
+   ],
+   "poly": [
+    [
+     526,
+     1757
+    ],
+    [
+     952,
+     1772
+    ],
+    [
+     949,
+     1867
+    ],
+    [
+     522,
+     1853
+    ]
+   ],
+   "b_text": "destubede",
+   "b_score": 0.6962
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.3984,
+   "min_token_prob": 0.15,
+   "box": [
+    2296,
+    2911,
+    2315,
+    2928
+   ],
+   "poly": [
+    [
+     2296,
+     2911
+    ],
+    [
+     2315,
+     2911
+    ],
+    [
+     2315,
+     2928
+    ],
+    [
+     2296,
+     2928
+    ]
+   ],
+   "b_text": "方",
+   "b_score": 0.2072
+  }
+ ],
+ "peak_torch_alloc_mib": 2544,
+ "peak_rss_mib_process": 2964
+}

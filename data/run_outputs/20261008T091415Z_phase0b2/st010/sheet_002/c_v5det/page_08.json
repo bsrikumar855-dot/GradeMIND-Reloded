@@ -1,0 +1,1461 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_08.jpg",
+ "latency_s": 2.631,
+ "model_load_s": 0.87,
+ "n_lines": 45,
+ "lines": [
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.7164,
+   "min_token_prob": 0.4461,
+   "box": [
+    1531,
+    514,
+    1559,
+    542
+   ],
+   "poly": [
+    [
+     1531,
+     523
+    ],
+    [
+     1551,
+     514
+    ],
+    [
+     1559,
+     533
+    ],
+    [
+     1539,
+     542
+    ]
+   ],
+   "b_text": "海",
+   "b_score": 0.041
+  },
+  {
+   "text": "Effects of defanestations.",
+   "text_raw": "Effects of defanestations .",
+   "score": 0.8347,
+   "min_token_prob": 0.1487,
+   "box": [
+    459,
+    594,
+    1663,
+    724
+   ],
+   "poly": [
+    [
+     460,
+     594
+    ],
+    [
+     1663,
+     600
+    ],
+    [
+     1662,
+     724
+    ],
+    [
+     459,
+     718
+    ]
+   ],
+   "b_text": "Effects of deforstioh",
+   "b_score": 0.7611
+  },
+  {
+   "text": "18.",
+   "text_raw": "18 .",
+   "score": 0.9355,
+   "min_token_prob": 0.8086,
+   "box": [
+    288,
+    616,
+    385,
+    695
+   ],
+   "poly": [
+    [
+     288,
+     616
+    ],
+    [
+     385,
+     616
+    ],
+    [
+     385,
+     695
+    ],
+    [
+     288,
+     695
+    ]
+   ],
+   "b_text": "18",
+   "b_score": 0.991
+  },
+  {
+   "text": "Deforestation \" Mr. due to the cutting",
+   "text_raw": "Deforestation \" Mr. due to the cutting",
+   "score": 0.8362,
+   "min_token_prob": 0.3781,
+   "box": [
+    879,
+    814,
+    2566,
+    965
+   ],
+   "poly": [
+    [
+     879,
+     834
+    ],
+    [
+     2564,
+     814
+    ],
+    [
+     2566,
+     946
+    ],
+    [
+     880,
+     965
+    ]
+   ],
+   "b_text": "Defocresctat fon ds due cto the cutt ing",
+   "b_score": 0.7625
+  },
+  {
+   "text": "down of large amount of trees in the",
+   "text_raw": "down of large amount of trees in the",
+   "score": 0.9891,
+   "min_token_prob": 0.9334,
+   "box": [
+    410,
+    942,
+    2503,
+    1098
+   ],
+   "poly": [
+    [
+     410,
+     965
+    ],
+    [
+     2501,
+     942
+    ],
+    [
+     2503,
+     1075
+    ],
+    [
+     412,
+     1098
+    ]
+   ],
+   "b_text": "docon of large amount of otrees In the",
+   "b_score": 0.8417
+  },
+  {
+   "text": "forest \" areas \" due to human purposes like",
+   "text_raw": "forest \" areas \" due to human purposes like",
+   "score": 0.9545,
+   "min_token_prob": 0.6264,
+   "box": [
+    392,
+    1070,
+    2540,
+    1205
+   ],
+   "poly": [
+    [
+     392,
+     1089
+    ],
+    [
+     2539,
+     1070
+    ],
+    [
+     2540,
+     1186
+    ],
+    [
+     393,
+     1205
+    ]
+   ],
+   "b_text": "foreset aroas slue to human purposes Iike",
+   "b_score": 0.77
+  },
+  {
+   "text": "road, building house etc. \"",
+   "text_raw": "road , building house etc. \"",
+   "score": 0.9833,
+   "min_token_prob": 0.9494,
+   "box": [
+    457,
+    1203,
+    1818,
+    1336
+   ],
+   "poly": [
+    [
+     458,
+     1203
+    ],
+    [
+     1818,
+     1212
+    ],
+    [
+     1818,
+     1336
+    ],
+    [
+     457,
+     1327
+    ]
+   ],
+   "b_text": "voad, bueldpng house etc.",
+   "b_score": 0.7873
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5731,
+   "min_token_prob": 0.2069,
+   "box": [
+    1778,
+    1325,
+    1798,
+    1340
+   ],
+   "poly": [
+    [
+     1778,
+     1325
+    ],
+    [
+     1798,
+     1325
+    ],
+    [
+     1798,
+     1340
+    ],
+    [
+     1778,
+     1340
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.0426
+  },
+  {
+   "text": "e",
+   "text_raw": "e",
+   "score": 0.5154,
+   "min_token_prob": 0.1769,
+   "box": [
+    1845,
+    1325,
+    1863,
+    1343
+   ],
+   "poly": [
+    [
+     1845,
+     1325
+    ],
+    [
+     1863,
+     1325
+    ],
+    [
+     1863,
+     1343
+    ],
+    [
+     1845,
+     1343
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.0702
+  },
+  {
+   "text": "is",
+   "text_raw": "is",
+   "score": 0.538,
+   "min_token_prob": 0.1604,
+   "box": [
+    1652,
+    1336,
+    1666,
+    1354
+   ],
+   "poly": [
+    [
+     1652,
+     1336
+    ],
+    [
+     1666,
+     1336
+    ],
+    [
+     1666,
+     1354
+    ],
+    [
+     1652,
+     1354
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.1896
+  },
+  {
+   "text": "(",
+   "text_raw": "(",
+   "score": 0.7306,
+   "min_token_prob": 0.4776,
+   "box": [
+    648,
+    1353,
+    666,
+    1380
+   ],
+   "poly": [
+    [
+     648,
+     1353
+    ],
+    [
+     666,
+     1353
+    ],
+    [
+     666,
+     1380
+    ],
+    [
+     648,
+     1380
+    ]
+   ],
+   "b_text": "-",
+   "b_score": 0.6353
+  },
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.5946,
+   "min_token_prob": 0.1994,
+   "box": [
+    1739,
+    1353,
+    1753,
+    1382
+   ],
+   "poly": [
+    [
+     1739,
+     1353
+    ],
+    [
+     1753,
+     1353
+    ],
+    [
+     1753,
+     1382
+    ],
+    [
+     1739,
+     1382
+    ]
+   ],
+   "b_text": "心",
+   "b_score": 0.1818
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.7371,
+   "min_token_prob": 0.5319,
+   "box": [
+    1762,
+    1440,
+    1782,
+    1458
+   ],
+   "poly": [
+    [
+     1762,
+     1440
+    ],
+    [
+     1782,
+     1440
+    ],
+    [
+     1782,
+     1458
+    ],
+    [
+     1762,
+     1458
+    ]
+   ],
+   "b_text": "南",
+   "b_score": 0.2317
+  },
+  {
+   "text": "Effects:",
+   "text_raw": "Effects :",
+   "score": 0.9737,
+   "min_token_prob": 0.9547,
+   "box": [
+    485,
+    1451,
+    812,
+    1548
+   ],
+   "poly": [
+    [
+     485,
+     1451
+    ],
+    [
+     812,
+     1451
+    ],
+    [
+     812,
+     1548
+    ],
+    [
+     485,
+     1548
+    ]
+   ],
+   "b_text": "Effecls:",
+   "b_score": 0.8306
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.5883,
+   "min_token_prob": 0.2283,
+   "box": [
+    1772,
+    1459,
+    1794,
+    1485
+   ],
+   "poly": [
+    [
+     1772,
+     1463
+    ],
+    [
+     1789,
+     1459
+    ],
+    [
+     1794,
+     1482
+    ],
+    [
+     1776,
+     1485
+    ]
+   ],
+   "b_text": "多",
+   "b_score": 0.0901
+  },
+  {
+   "text": "f",
+   "text_raw": "f",
+   "score": 0.6146,
+   "min_token_prob": 0.5399,
+   "box": [
+    1735,
+    1468,
+    1764,
+    1506
+   ],
+   "poly": [
+    [
+     1735,
+     1474
+    ],
+    [
+     1750,
+     1468
+    ],
+    [
+     1764,
+     1499
+    ],
+    [
+     1749,
+     1506
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "8",
+   "text_raw": "8",
+   "score": 0.604,
+   "min_token_prob": 0.2179,
+   "box": [
+    1867,
+    1467,
+    1883,
+    1486
+   ],
+   "poly": [
+    [
+     1867,
+     1467
+    ],
+    [
+     1883,
+     1467
+    ],
+    [
+     1883,
+     1486
+    ],
+    [
+     1867,
+     1486
+    ]
+   ],
+   "b_text": "哪",
+   "b_score": 0.1819
+  },
+  {
+   "text": "it",
+   "text_raw": "it",
+   "score": 0.7601,
+   "min_token_prob": 0.6584,
+   "box": [
+    1719,
+    1538,
+    1742,
+    1565
+   ],
+   "poly": [
+    [
+     1728,
+     1538
+    ],
+    [
+     1742,
+     1544
+    ],
+    [
+     1733,
+     1565
+    ],
+    [
+     1719,
+     1559
+    ]
+   ],
+   "b_text": "景",
+   "b_score": 0.181
+  },
+  {
+   "text": "1",
+   "text_raw": "1",
+   "score": 0.9024,
+   "min_token_prob": 0.8069,
+   "box": [
+    1091,
+    1586,
+    1107,
+    1606
+   ],
+   "poly": [
+    [
+     1091,
+     1586
+    ],
+    [
+     1107,
+     1586
+    ],
+    [
+     1107,
+     1606
+    ],
+    [
+     1091,
+     1606
+    ]
+   ],
+   "b_text": "1",
+   "b_score": 0.8393
+  },
+  {
+   "text": "#",
+   "text_raw": "#",
+   "score": 0.6015,
+   "min_token_prob": 0.2126,
+   "box": [
+    1874,
+    1662,
+    1889,
+    1681
+   ],
+   "poly": [
+    [
+     1874,
+     1662
+    ],
+    [
+     1889,
+     1662
+    ],
+    [
+     1889,
+     1681
+    ],
+    [
+     1874,
+     1681
+    ]
+   ],
+   "b_text": "福",
+   "b_score": 0.1368
+  },
+  {
+   "text": "Over cutting of cheer will heads do",
+   "text_raw": "Over cutting of cheer will heads do",
+   "score": 0.9206,
+   "min_token_prob": 0.6509,
+   "box": [
+    792,
+    1681,
+    2556,
+    1798
+   ],
+   "poly": [
+    [
+     793,
+     1681
+    ],
+    [
+     2556,
+     1686
+    ],
+    [
+     2556,
+     1798
+    ],
+    [
+     792,
+     1792
+    ]
+   ],
+   "b_text": "Dver cutting of droes ut leads do",
+   "b_score": 0.7552
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5927,
+   "min_token_prob": 0.454,
+   "box": [
+    1277,
+    1778,
+    1300,
+    1827
+   ],
+   "poly": [
+    [
+     1277,
+     1780
+    ],
+    [
+     1295,
+     1778
+    ],
+    [
+     1300,
+     1825
+    ],
+    [
+     1282,
+     1827
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.5812,
+   "min_token_prob": 0.443,
+   "box": [
+    1369,
+    1778,
+    1392,
+    1818
+   ],
+   "poly": [
+    [
+     1369,
+     1781
+    ],
+    [
+     1387,
+     1778
+    ],
+    [
+     1392,
+     1816
+    ],
+    [
+     1374,
+     1818
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "environmental change, and climate change",
+   "text_raw": "environmental change , and climate change",
+   "score": 0.9519,
+   "min_token_prob": 0.7658,
+   "box": [
+    401,
+    1799,
+    2388,
+    1924
+   ],
+   "poly": [
+    [
+     402,
+     1799
+    ],
+    [
+     2388,
+     1820
+    ],
+    [
+     2387,
+     1924
+    ],
+    [
+     401,
+     1903
+    ]
+   ],
+   "b_text": "enupromental change and cemate shange",
+   "b_score": 0.8289
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.729,
+   "min_token_prob": 0.6018,
+   "box": [
+    2392,
+    1869,
+    2418,
+    1895
+   ],
+   "poly": [
+    [
+     2398,
+     1869
+    ],
+    [
+     2418,
+     1875
+    ],
+    [
+     2413,
+     1895
+    ],
+    [
+     2392,
+     1889
+    ]
+   ],
+   "b_text": "厦",
+   "b_score": 0.1189
+  },
+  {
+   "text": "It also affect \" the",
+   "text_raw": "It also affect \" the",
+   "score": 0.8902,
+   "min_token_prob": 0.5466,
+   "box": [
+    419,
+    1919,
+    1578,
+    2044
+   ],
+   "poly": [
+    [
+     420,
+     1919
+    ],
+    [
+     1578,
+     1927
+    ],
+    [
+     1577,
+     2044
+    ],
+    [
+     419,
+     2036
+    ]
+   ],
+   "b_text": "It also affoctethie",
+   "b_score": 0.7681
+  },
+  {
+   "text": "exosystem and",
+   "text_raw": "exosystem and",
+   "score": 0.7721,
+   "min_token_prob": 0.3984,
+   "box": [
+    1672,
+    1932,
+    2502,
+    2047
+   ],
+   "poly": [
+    [
+     1672,
+     1936
+    ],
+    [
+     2502,
+     1932
+    ],
+    [
+     2502,
+     2043
+    ],
+    [
+     1672,
+     2047
+    ]
+   ],
+   "b_text": "scosystom andl",
+   "b_score": 0.738
+  },
+  {
+   "text": "of",
+   "text_raw": "of",
+   "score": 0.8538,
+   "min_token_prob": 0.7786,
+   "box": [
+    1141,
+    2027,
+    1207,
+    2057
+   ],
+   "poly": [
+    [
+     1143,
+     2027
+    ],
+    [
+     1207,
+     2031
+    ],
+    [
+     1205,
+     2057
+    ],
+    [
+     1141,
+     2052
+    ]
+   ],
+   "b_text": "0",
+   "b_score": 0.5214
+  },
+  {
+   "text": "is",
+   "text_raw": "is",
+   "score": 0.6421,
+   "min_token_prob": 0.3676,
+   "box": [
+    1277,
+    2031,
+    1295,
+    2047
+   ],
+   "poly": [
+    [
+     1277,
+     2031
+    ],
+    [
+     1295,
+     2031
+    ],
+    [
+     1295,
+     2047
+    ],
+    [
+     1277,
+     2047
+    ]
+   ],
+   "b_text": "赢",
+   "b_score": 0.0919
+  },
+  {
+   "text": "# # #",
+   "text_raw": "# # #",
+   "score": 0.724,
+   "min_token_prob": 0.4922,
+   "box": [
+    1342,
+    2023,
+    1505,
+    2067
+   ],
+   "poly": [
+    [
+     1342,
+     2023
+    ],
+    [
+     1505,
+     2023
+    ],
+    [
+     1505,
+     2067
+    ],
+    [
+     1342,
+     2067
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "the animals. \"",
+   "text_raw": "the animals . \"",
+   "score": 0.8518,
+   "min_token_prob": 0.5192,
+   "box": [
+    399,
+    2039,
+    1178,
+    2159
+   ],
+   "poly": [
+    [
+     401,
+     2039
+    ],
+    [
+     1178,
+     2053
+    ],
+    [
+     1176,
+     2159
+    ],
+    [
+     399,
+     2145
+    ]
+   ],
+   "b_text": "cthe anemals.",
+   "b_score": 0.7834
+  },
+  {
+   "text": "t",
+   "text_raw": "t",
+   "score": 0.8501,
+   "min_token_prob": 0.8018,
+   "box": [
+    1907,
+    2091,
+    1923,
+    2115
+   ],
+   "poly": [
+    [
+     1907,
+     2091
+    ],
+    [
+     1923,
+     2091
+    ],
+    [
+     1923,
+     2115
+    ],
+    [
+     1907,
+     2115
+    ]
+   ],
+   "b_text": "0",
+   "b_score": 0.0588
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.617,
+   "min_token_prob": 0.2875,
+   "box": [
+    1975,
+    2190,
+    2006,
+    2213
+   ],
+   "poly": [
+    [
+     1980,
+     2190
+    ],
+    [
+     2006,
+     2198
+    ],
+    [
+     2001,
+     2213
+    ],
+    [
+     1975,
+     2204
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "Deforestation well leads to making",
+   "text_raw": "Deforestation well leads to making",
+   "score": 0.8328,
+   "min_token_prob": 0.57,
+   "box": [
+    802,
+    2259,
+    2635,
+    2442
+   ],
+   "poly": [
+    [
+     806,
+     2259
+    ],
+    [
+     2635,
+     2307
+    ],
+    [
+     2632,
+     2442
+    ],
+    [
+     802,
+     2394
+    ]
+   ],
+   "b_text": "Deforerdatfon copll cleads cto making",
+   "b_score": 0.781
+  },
+  {
+   "text": "of desert. If we cut the chrees in",
+   "text_raw": "of desert . If we cut the chrees in",
+   "score": 0.8937,
+   "min_token_prob": 0.2107,
+   "box": [
+    385,
+    2397,
+    2432,
+    2538
+   ],
+   "poly": [
+    [
+     386,
+     2397
+    ],
+    [
+     2432,
+     2410
+    ],
+    [
+     2431,
+     2538
+    ],
+    [
+     385,
+     2524
+    ]
+   ],
+   "b_text": "of desert. if coe cat ithe droes on",
+   "b_score": 0.7899
+  },
+  {
+   "text": "the forest the wild animals got disturbed",
+   "text_raw": "the forest the wild animals got disturbed",
+   "score": 0.8733,
+   "min_token_prob": 0.6451,
+   "box": [
+    394,
+    2506,
+    2628,
+    2679
+   ],
+   "poly": [
+    [
+     396,
+     2506
+    ],
+    [
+     2628,
+     2542
+    ],
+    [
+     2625,
+     2679
+    ],
+    [
+     394,
+     2643
+    ]
+   ],
+   "b_text": "the forest cthe coild. anemals got distuabed",
+   "b_score": 0.778
+  },
+  {
+   "text": "and' other world animals are' enter into",
+   "text_raw": "and ' other world animals are ' enter into",
+   "score": 0.7776,
+   "min_token_prob": 0.4021,
+   "box": [
+    397,
+    2628,
+    2506,
+    2782
+   ],
+   "poly": [
+    [
+     399,
+     2628
+    ],
+    [
+     2506,
+     2658
+    ],
+    [
+     2504,
+     2782
+    ],
+    [
+     397,
+     2752
+    ]
+   ],
+   "b_text": "and cthe copld animals cre entes frto",
+   "b_score": 0.7682
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6862,
+   "min_token_prob": 0.5885,
+   "box": [
+    2611,
+    2661,
+    2623,
+    2682
+   ],
+   "poly": [
+    [
+     2611,
+     2661
+    ],
+    [
+     2623,
+     2661
+    ],
+    [
+     2623,
+     2682
+    ],
+    [
+     2611,
+     2682
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.284
+  },
+  {
+   "text": "the chuman cluling areas. \"",
+   "text_raw": "the chuman cluling areas . \"",
+   "score": 0.8618,
+   "min_token_prob": 0.177,
+   "box": [
+    408,
+    2748,
+    2012,
+    2905
+   ],
+   "poly": [
+    [
+     410,
+     2748
+    ],
+    [
+     2012,
+     2773
+    ],
+    [
+     2010,
+     2905
+    ],
+    [
+     408,
+     2880
+    ]
+   ],
+   "b_text": "the chuman cleuing aieas",
+   "b_score": 0.7962
+  },
+  {
+   "text": "6",
+   "text_raw": "6",
+   "score": 0.6008,
+   "min_token_prob": 0.326,
+   "box": [
+    86,
+    2491,
+    133,
+    2821
+   ],
+   "poly": [
+    [
+     86,
+     2819
+    ],
+    [
+     113,
+     2491
+    ],
+    [
+     133,
+     2493
+    ],
+    [
+     106,
+     2821
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6031,
+   "min_token_prob": 0.3007,
+   "box": [
+    1811,
+    2913,
+    1838,
+    2931
+   ],
+   "poly": [
+    [
+     1811,
+     2913
+    ],
+    [
+     1838,
+     2913
+    ],
+    [
+     1838,
+     2931
+    ],
+    [
+     1811,
+     2931
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "The world animals are search food",
+   "text_raw": "The world animals are search food",
+   "score": 0.9521,
+   "min_token_prob": 0.8605,
+   "box": [
+    683,
+    2979,
+    2561,
+    3157
+   ],
+   "poly": [
+    [
+     687,
+     2979
+    ],
+    [
+     2561,
+     3044
+    ],
+    [
+     2557,
+     3157
+    ],
+    [
+     683,
+     3092
+    ]
+   ],
+   "b_text": ".The coPld anemals are esearch food",
+   "b_score": 0.7068
+  },
+  {
+   "text": "for",
+   "text_raw": "for",
+   "score": 0.4888,
+   "min_token_prob": 0.3732,
+   "box": [
+    530,
+    3019,
+    548,
+    3037
+   ],
+   "poly": [
+    [
+     530,
+     3019
+    ],
+    [
+     548,
+     3019
+    ],
+    [
+     548,
+     3037
+    ],
+    [
+     530,
+     3037
+    ]
+   ],
+   "b_text": "2",
+   "b_score": 0.0902
+  },
+  {
+   "text": "and doctor told the human living areas",
+   "text_raw": "and doctor told the human living areas",
+   "score": 0.6718,
+   "min_token_prob": 0.1408,
+   "box": [
+    379,
+    3103,
+    2619,
+    3310
+   ],
+   "poly": [
+    [
+     383,
+     3103
+    ],
+    [
+     2619,
+     3180
+    ],
+    [
+     2615,
+     3310
+    ],
+    [
+     379,
+     3233
+    ]
+   ],
+   "b_text": "and coater Pntd ehn chuman eaing asoas",
+   "b_score": 0.7185
+  },
+  {
+   "text": "0",
+   "text_raw": "0",
+   "score": 0.6012,
+   "min_token_prob": 0.3119,
+   "box": [
+    1290,
+    3137,
+    1313,
+    3154
+   ],
+   "poly": [
+    [
+     1290,
+     3137
+    ],
+    [
+     1313,
+     3137
+    ],
+    [
+     1313,
+     3154
+    ],
+    [
+     1290,
+     3154
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  }
+ ],
+ "peak_torch_alloc_mib": 2702,
+ "peak_rss_mib_process": 2965
+}

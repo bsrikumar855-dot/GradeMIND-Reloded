@@ -1,0 +1,196 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv5_server_rec"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_15.jpg",
+ "latency_s": 7.904,
+ "model_load_s": 0.37,
+ "n_lines": 6,
+ "lines": [
+  {
+   "text": "Nowo dayss sthe main cowie of",
+   "score": 0.7365,
+   "poly": [
+    [
+     119,
+     1085
+    ],
+    [
+     2374,
+     1013
+    ],
+    [
+     2380,
+     1214
+    ],
+    [
+     126,
+     1286
+    ]
+   ],
+   "box": [
+    119,
+    1013,
+    2380,
+    1286
+   ]
+  },
+  {
+   "text": "wabctage aro plast9cs.",
+   "score": 0.7946,
+   "poly": [
+    [
+     117,
+     1268
+    ],
+    [
+     1510,
+     1233
+    ],
+    [
+     1515,
+     1404
+    ],
+    [
+     121,
+     1439
+    ]
+   ],
+   "box": [
+    117,
+    1233,
+    1515,
+    1439
+   ]
+  },
+  {
+   "text": "Groneratfng ethose caids of wae",
+   "score": 0.7149,
+   "poly": [
+    [
+     427,
+     1546
+    ],
+    [
+     2377,
+     1523
+    ],
+    [
+     2379,
+     1680
+    ],
+    [
+     428,
+     1702
+    ]
+   ],
+   "box": [
+    427,
+    1523,
+    2379,
+    1702
+   ]
+  },
+  {
+   "text": "may always ceults ien thi arme",
+   "score": 0.6733,
+   "poly": [
+    [
+     81,
+     1700
+    ],
+    [
+     2457,
+     1689
+    ],
+    [
+     2458,
+     1840
+    ],
+    [
+     81,
+     1851
+    ]
+   ],
+   "box": [
+    81,
+    1689,
+    2458,
+    1851
+   ]
+  },
+  {
+   "text": "problems. Impropos disposal seults ",
+   "score": 0.7868,
+   "poly": [
+    [
+     75,
+     1858
+    ],
+    [
+     2455,
+     1855
+    ],
+    [
+     2456,
+     2018
+    ],
+    [
+     76,
+     2022
+    ]
+   ],
+   "box": [
+    75,
+    1855,
+    2456,
+    2022
+   ]
+  },
+  {
+   "text": "othe -coastage procducfon ancd pollid",
+   "score": 0.7135,
+   "poly": [
+    [
+     108,
+     1980
+    ],
+    [
+     2470,
+     2018
+    ],
+    [
+     2470,
+     2232
+    ],
+    [
+     105,
+     2194
+    ]
+   ],
+   "box": [
+    105,
+    1980,
+    2470,
+    2232
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3328
+}

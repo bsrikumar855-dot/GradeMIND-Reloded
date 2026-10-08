@@ -1,0 +1,9 @@
+{
+ "source_run": "20261008T074243Z_gundam_int8",
+ "redaction": "data/redaction.json via spike/redact.py",
+ "logs_collapsed": [
+  "sheet_002.engine_a.log",
+  "sheet_001.engine_a.log"
+ ],
+ "collapse_rule": "logs > 1 MB: runs of identical consecutive lines collapsed to one line + '[previous line repeated N times]'; raw logs kept local"
+}

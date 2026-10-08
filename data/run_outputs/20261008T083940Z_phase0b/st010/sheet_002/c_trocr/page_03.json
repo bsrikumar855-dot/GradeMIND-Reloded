@@ -1,0 +1,597 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_03.jpg",
+ "latency_s": 1.035,
+ "model_load_s": 0.83,
+ "n_lines": 18,
+ "lines": [
+  {
+   "text": "Saint Eussini.",
+   "text_raw": "Saint Eussini .",
+   "score": 0.5116,
+   "min_token_prob": 0.1746,
+   "box": [
+    449,
+    471,
+    1110,
+    622
+   ],
+   "poly": [
+    [
+     454,
+     471
+    ],
+    [
+     1110,
+     500
+    ],
+    [
+     1105,
+     622
+    ],
+    [
+     449,
+     593
+    ]
+   ],
+   "b_text": "S e",
+   "b_score": 0.5076
+  },
+  {
+   "text": "It is a clerk of maternal diary.",
+   "text_raw": "It is a clerk of maternal diary .",
+   "score": 0.7843,
+   "min_token_prob": 0.2242,
+   "box": [
+    891,
+    594,
+    2814,
+    764
+   ],
+   "poly": [
+    [
+     892,
+     594
+    ],
+    [
+     2814,
+     607
+    ],
+    [
+     2813,
+     764
+    ],
+    [
+     891,
+     751
+    ]
+   ],
+   "b_text": "I a   w ",
+   "b_score": 0.608
+  },
+  {
+   "text": "\" # modified typsciula.",
+   "text_raw": "\" # modified typsciula .",
+   "score": 0.4796,
+   "min_token_prob": 0.0781,
+   "box": [
+    329,
+    870,
+    1427,
+    1033
+   ],
+   "poly": [
+    [
+     333,
+     870
+    ],
+    [
+     1427,
+     907
+    ],
+    [
+     1422,
+     1033
+    ],
+    [
+     329,
+     995
+    ]
+   ],
+   "b_text": "e fre topsihe",
+   "b_score": 0.4758
+  },
+  {
+   "text": "1907",
+   "text_raw": "1907",
+   "score": 0.1759,
+   "min_token_prob": 0.0645,
+   "box": [
+    2647,
+    875,
+    2847,
+    980
+   ],
+   "poly": [
+    [
+     2647,
+     875
+    ],
+    [
+     2847,
+     875
+    ],
+    [
+     2847,
+     980
+    ],
+    [
+     2647,
+     980
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "1940s.",
+   "text_raw": "1940s .",
+   "score": 0.406,
+   "min_token_prob": 0.0907,
+   "box": [
+    2550,
+    1252,
+    2845,
+    1376
+   ],
+   "poly": [
+    [
+     2561,
+     1252
+    ],
+    [
+     2845,
+     1284
+    ],
+    [
+     2835,
+     1376
+    ],
+    [
+     2550,
+     1344
+    ]
+   ],
+   "b_text": "一",
+   "b_score": 0.4937
+  },
+  {
+   "text": "# Food:",
+   "text_raw": "# Food :",
+   "score": 0.7028,
+   "min_token_prob": 0.4283,
+   "box": [
+    264,
+    1270,
+    842,
+    1404
+   ],
+   "poly": [
+    [
+     269,
+     1270
+    ],
+    [
+     842,
+     1293
+    ],
+    [
+     838,
+     1404
+    ],
+    [
+     264,
+     1381
+    ]
+   ],
+   "b_text": "Ecod:",
+   "b_score": 0.6438
+  },
+  {
+   "text": "Food is tapped due to even;",
+   "text_raw": "Food is tapped due to even ;",
+   "score": 0.7336,
+   "min_token_prob": 0.3358,
+   "box": [
+    823,
+    1397,
+    2836,
+    1635
+   ],
+   "poly": [
+    [
+     830,
+     1397
+    ],
+    [
+     2836,
+     1493
+    ],
+    [
+     2829,
+     1635
+    ],
+    [
+     823,
+     1539
+    ]
+   ],
+   "b_text": "Fini damcue to ",
+   "b_score": 0.521
+  },
+  {
+   "text": "# It is a blend of reduced.",
+   "text_raw": "# It is a blend of reduced .",
+   "score": 0.5846,
+   "min_token_prob": 0.0753,
+   "box": [
+    351,
+    1530,
+    2762,
+    1764
+   ],
+   "poly": [
+    [
+     356,
+     1530
+    ],
+    [
+     2762,
+     1633
+    ],
+    [
+     2757,
+     1764
+    ],
+    [
+     351,
+     1661
+    ]
+   ],
+   "b_text": "GinItsa ciofota",
+   "b_score": 0.4275
+  },
+  {
+   "text": "diswho.",
+   "text_raw": "diswho .",
+   "score": 0.6661,
+   "min_token_prob": 0.2924,
+   "box": [
+    320,
+    1671,
+    801,
+    1791
+   ],
+   "poly": [
+    [
+     324,
+     1671
+    ],
+    [
+     801,
+     1690
+    ],
+    [
+     797,
+     1791
+    ],
+    [
+     320,
+     1772
+    ]
+   ],
+   "b_text": "",
+   "b_score": 0.0
+  },
+  {
+   "text": "-throughs.",
+   "text_raw": "-throughs .",
+   "score": 0.6037,
+   "min_token_prob": 0.1029,
+   "box": [
+    159,
+    1792,
+    850,
+    1937
+   ],
+   "poly": [
+    [
+     165,
+     1792
+    ],
+    [
+     850,
+     1825
+    ],
+    [
+     845,
+     1937
+    ],
+    [
+     159,
+     1905
+    ]
+   ],
+   "b_text": "Dagu",
+   "b_score": 0.413
+  },
+  {
+   "text": "progressive do not",
+   "text_raw": "progressive do not",
+   "score": 0.4723,
+   "min_token_prob": 0.2123,
+   "box": [
+    833,
+    1939,
+    2848,
+    2191
+   ],
+   "poly": [
+    [
+     841,
+     1939
+    ],
+    [
+     2848,
+     2058
+    ],
+    [
+     2840,
+     2191
+    ],
+    [
+     833,
+     2072
+    ]
+   ],
+   "b_text": "Doaghtctappond due to to",
+   "b_score": 0.7255
+  },
+  {
+   "text": "valified for the previous area.",
+   "text_raw": "valified for the previous area .",
+   "score": 0.611,
+   "min_token_prob": 0.2028,
+   "box": [
+    321,
+    2052,
+    2263,
+    2292
+   ],
+   "poly": [
+    [
+     328,
+     2052
+    ],
+    [
+     2263,
+     2169
+    ],
+    [
+     2255,
+     2292
+    ],
+    [
+     321,
+     2175
+    ]
+   ],
+   "b_text": "afthia e",
+   "b_score": 0.5272
+  },
+  {
+   "text": "'s time it will happen. \"",
+   "text_raw": "'s time it will happen . \"",
+   "score": 0.6648,
+   "min_token_prob": 0.3391,
+   "box": [
+    320,
+    2289,
+    1806,
+    2535
+   ],
+   "poly": [
+    [
+     330,
+     2289
+    ],
+    [
+     1806,
+     2404
+    ],
+    [
+     1795,
+     2535
+    ],
+    [
+     320,
+     2420
+    ]
+   ],
+   "b_text": "sone it o dtarped",
+   "b_score": 0.5523
+  },
+  {
+   "text": "3. Threats of Biodiversity.",
+   "text_raw": "3 . Threats of Biodiversity .",
+   "score": 0.8379,
+   "min_token_prob": 0.2516,
+   "box": [
+    217,
+    2538,
+    1518,
+    2775
+   ],
+   "poly": [
+    [
+     228,
+     2538
+    ],
+    [
+     1518,
+     2644
+    ],
+    [
+     1508,
+     2775
+    ],
+    [
+     217,
+     2669
+    ]
+   ],
+   "b_text": "3FaetBvesg",
+   "b_score": 0.5144
+  },
+  {
+   "text": "# it # # good chair.",
+   "text_raw": "# it # # good chair .",
+   "score": 0.6202,
+   "min_token_prob": 0.3387,
+   "box": [
+    563,
+    2820,
+    2437,
+    3122
+   ],
+   "poly": [
+    [
+     575,
+     2820
+    ],
+    [
+     2437,
+     2997
+    ],
+    [
+     2425,
+     3122
+    ],
+    [
+     563,
+     2945
+    ]
+   ],
+   "b_text": "tId afdcafh",
+   "b_score": 0.5156
+  },
+  {
+   "text": "to establish the",
+   "text_raw": "to establish the",
+   "score": 0.1203,
+   "min_token_prob": 0.0344,
+   "box": [
+    556,
+    2932,
+    2393,
+    3261
+   ],
+   "poly": [
+    [
+     570,
+     2932
+    ],
+    [
+     2393,
+     3130
+    ],
+    [
+     2379,
+     3261
+    ],
+    [
+     556,
+     3063
+    ]
+   ],
+   "b_text": "iTtsutm",
+   "b_score": 0.4026
+  },
+  {
+   "text": "# question would do question of",
+   "text_raw": "# question would do question of",
+   "score": 0.5013,
+   "min_token_prob": 0.1179,
+   "box": [
+    572,
+    3049,
+    2454,
+    3417
+   ],
+   "poly": [
+    [
+     590,
+     3049
+    ],
+    [
+     2454,
+     3260
+    ],
+    [
+     2436,
+     3417
+    ],
+    [
+     572,
+     3206
+    ]
+   ],
+   "b_text": "I is te  tas",
+   "b_score": 0.5147
+  },
+  {
+   "text": "more species. \"",
+   "text_raw": "more species . \"",
+   "score": 0.819,
+   "min_token_prob": 0.502,
+   "box": [
+    335,
+    3190,
+    1245,
+    3385
+   ],
+   "poly": [
+    [
+     344,
+     3190
+    ],
+    [
+     1245,
+     3252
+    ],
+    [
+     1235,
+     3385
+    ],
+    [
+     335,
+     3322
+    ]
+   ],
+   "b_text": "s",
+   "b_score": 0.2671
+  }
+ ],
+ "peak_torch_alloc_mib": 2681,
+ "peak_rss_mib_process": 2964
+}

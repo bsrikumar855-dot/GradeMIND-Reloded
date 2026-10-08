@@ -1,0 +1,16 @@
+[32mCreating model: ('PP-OCRv5_server_det', None, None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/Shreekumar/.paddlex/official_models/PP-OCRv5_server_det`.[0m
+[32mCreating model: ('en_PP-OCRv5_mobile_rec', None, None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/home/Shreekumar/.paddlex/official_models/en_PP-OCRv5_mobile_rec`.[0m
+page_01.jpg: 27.52s lines=112
+page_02.jpg: 20.14s lines=28
+page_03.jpg: 20.31s lines=32
+page_04.jpg: 20.14s lines=28
+page_05.jpg: 21.57s lines=46
+page_06.jpg: 20.63s lines=46
+page_07.jpg: 19.56s lines=50
+page_08.jpg: 21.21s lines=52
+page_09.jpg: 18.99s lines=35
+page_10.jpg: 19.36s lines=43
+page_11.jpg: 20.18s lines=37
+page_12.jpg: 20.76s lines=10

@@ -1,0 +1,213 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_15.jpg",
+ "latency_s": 0.348,
+ "model_load_s": 0.83,
+ "n_lines": 6,
+ "lines": [
+  {
+   "text": "Now days of the main service of",
+   "text_raw": "Now days of the main service of",
+   "score": 0.8193,
+   "min_token_prob": 0.3411,
+   "box": [
+    119,
+    1013,
+    2380,
+    1286
+   ],
+   "poly": [
+    [
+     119,
+     1085
+    ],
+    [
+     2374,
+     1013
+    ],
+    [
+     2380,
+     1214
+    ],
+    [
+     126,
+     1286
+    ]
+   ],
+   "b_text": "Nowo dayss sthe main cowie of",
+   "b_score": 0.7365
+  },
+  {
+   "text": "wastage \" are plastics.",
+   "text_raw": "wastage \" are plastics .",
+   "score": 0.9056,
+   "min_token_prob": 0.6491,
+   "box": [
+    117,
+    1233,
+    1515,
+    1439
+   ],
+   "poly": [
+    [
+     117,
+     1268
+    ],
+    [
+     1510,
+     1233
+    ],
+    [
+     1515,
+     1404
+    ],
+    [
+     121,
+     1439
+    ]
+   ],
+   "b_text": "wabctage aro plast9cs.",
+   "b_score": 0.7946
+  },
+  {
+   "text": "Crenending those kinds of most",
+   "text_raw": "Crenending those kinds of most",
+   "score": 0.7185,
+   "min_token_prob": 0.2398,
+   "box": [
+    427,
+    1523,
+    2379,
+    1702
+   ],
+   "poly": [
+    [
+     427,
+     1546
+    ],
+    [
+     2377,
+     1523
+    ],
+    [
+     2379,
+     1680
+    ],
+    [
+     428,
+     1702
+    ]
+   ],
+   "b_text": "Groneratfng ethose caids of wae",
+   "b_score": 0.7149
+  },
+  {
+   "text": "may always results in this difference",
+   "text_raw": "may always results in this difference",
+   "score": 0.936,
+   "min_token_prob": 0.7943,
+   "box": [
+    81,
+    1689,
+    2458,
+    1851
+   ],
+   "poly": [
+    [
+     81,
+     1700
+    ],
+    [
+     2457,
+     1689
+    ],
+    [
+     2458,
+     1840
+    ],
+    [
+     81,
+     1851
+    ]
+   ],
+   "b_text": "may always ceults ien thi arme",
+   "b_score": 0.6733
+  },
+  {
+   "text": "problems. improper disposal: results in",
+   "text_raw": "problems . improper disposal : results in",
+   "score": 0.7966,
+   "min_token_prob": 0.3011,
+   "box": [
+    75,
+    1855,
+    2456,
+    2022
+   ],
+   "poly": [
+    [
+     75,
+     1858
+    ],
+    [
+     2455,
+     1855
+    ],
+    [
+     2456,
+     2018
+    ],
+    [
+     76,
+     2022
+    ]
+   ],
+   "b_text": "problems. Impropos disposal seults ",
+   "b_score": 0.7868
+  },
+  {
+   "text": "the onstage production and police",
+   "text_raw": "the onstage production and police",
+   "score": 0.7863,
+   "min_token_prob": 0.2859,
+   "box": [
+    105,
+    1980,
+    2470,
+    2232
+   ],
+   "poly": [
+    [
+     108,
+     1980
+    ],
+    [
+     2470,
+     2018
+    ],
+    [
+     2470,
+     2232
+    ],
+    [
+     105,
+     2194
+    ]
+   ],
+   "b_text": "othe -coastage procducfon ancd pollid",
+   "b_score": 0.7135
+  }
+ ],
+ "peak_torch_alloc_mib": 2343,
+ "peak_rss_mib_process": 2964
+}

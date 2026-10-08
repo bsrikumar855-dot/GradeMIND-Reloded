@@ -1,0 +1,245 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_12.jpg",
+ "latency_s": 0.387,
+ "model_load_s": 0.82,
+ "n_lines": 7,
+ "lines": [
+  {
+   "text": "# human",
+   "text_raw": "# human",
+   "score": 0.8293,
+   "min_token_prob": 0.5767,
+   "box": [
+    196,
+    228,
+    647,
+    387
+   ],
+   "poly": [
+    [
+     196,
+     228
+    ],
+    [
+     647,
+     228
+    ],
+    [
+     647,
+     387
+    ],
+    [
+     196,
+     387
+    ]
+   ],
+   "b_text": "&human",
+   "b_score": 0.8381
+  },
+  {
+   "text": "get benefits.",
+   "text_raw": "get benefits .",
+   "score": 0.9982,
+   "min_token_prob": 0.9958,
+   "box": [
+    816,
+    259,
+    1618,
+    442
+   ],
+   "poly": [
+    [
+     816,
+     259
+    ],
+    [
+     1618,
+     259
+    ],
+    [
+     1618,
+     442
+    ],
+    [
+     816,
+     442
+    ]
+   ],
+   "b_text": "get benefits",
+   "b_score": 0.7718
+  },
+  {
+   "text": "Juan",
+   "text_raw": "Juan",
+   "score": 0.5217,
+   "min_token_prob": 0.1831,
+   "box": [
+    1672,
+    253,
+    2038,
+    465
+   ],
+   "poly": [
+    [
+     1672,
+     264
+    ],
+    [
+     2032,
+     253
+    ],
+    [
+     2038,
+     453
+    ],
+    [
+     1679,
+     465
+    ]
+   ],
+   "b_text": "fuon",
+   "b_score": 0.6924
+  },
+  {
+   "text": "this",
+   "text_raw": "this",
+   "score": 0.813,
+   "min_token_prob": 0.8048,
+   "box": [
+    247,
+    350,
+    568,
+    512
+   ],
+   "poly": [
+    [
+     251,
+     350
+    ],
+    [
+     568,
+     359
+    ],
+    [
+     564,
+     512
+    ],
+    [
+     247,
+     503
+    ]
+   ],
+   "b_text": "this",
+   "b_score": 0.9113
+  },
+  {
+   "text": "type #",
+   "text_raw": "type #",
+   "score": 0.8361,
+   "min_token_prob": 0.5103,
+   "box": [
+    665,
+    363,
+    981,
+    528
+   ],
+   "poly": [
+    [
+     669,
+     363
+    ],
+    [
+     981,
+     372
+    ],
+    [
+     977,
+     528
+    ],
+    [
+     665,
+     519
+    ]
+   ],
+   "b_text": "type",
+   "b_score": 0.7297
+  },
+  {
+   "text": "of religion.",
+   "text_raw": "of religion .",
+   "score": 0.8325,
+   "min_token_prob": 0.3451,
+   "box": [
+    1057,
+    388,
+    1598,
+    564
+   ],
+   "poly": [
+    [
+     1057,
+     400
+    ],
+    [
+     1594,
+     388
+    ],
+    [
+     1598,
+     552
+    ],
+    [
+     1061,
+     564
+    ]
+   ],
+   "b_text": "of rba",
+   "b_score": 0.7224
+  },
+  {
+   "text": "x food \" energy \" and more",
+   "text_raw": "x food \" energy \" and more",
+   "score": 0.8562,
+   "min_token_prob": 0.2752,
+   "box": [
+    145,
+    544,
+    1870,
+    812
+   ],
+   "poly": [
+    [
+     150,
+     544
+    ],
+    [
+     1870,
+     578
+    ],
+    [
+     1865,
+     812
+    ],
+    [
+     145,
+     778
+    ]
+   ],
+   "b_text": " food, enorgy and More",
+   "b_score": 0.8412
+  }
+ ],
+ "peak_torch_alloc_mib": 2382,
+ "peak_rss_mib_process": 2965
+}

@@ -1,0 +1,561 @@
+{
+ "engine": "paddleocr",
+ "paddleocr_version": "3.7.0",
+ "paddle_version": "3.4.0",
+ "config": {
+  "ocr_version": "PP-OCRv5",
+  "lang": "en",
+  "device": "cpu",
+  "use_doc_orientation_classify": false,
+  "use_doc_unwarping": false,
+  "use_textline_orientation": false,
+  "text_det_limit_type": "max",
+  "text_det_limit_side_len": 1920,
+  "enable_mkldnn": false,
+  "text_recognition_model_name": "PP-OCRv6_medium_rec",
+  "text_detection_model_name": "PP-OCRv6_medium_det"
+ },
+ "model_settings": {
+  "use_doc_preprocessor": false,
+  "use_textline_orientation": false
+ },
+ "page": "page_10.jpg",
+ "latency_s": 12.092,
+ "model_load_s": 0.39,
+ "n_lines": 19,
+ "lines": [
+  {
+   "text": "Many of the corld animale are",
+   "score": 0.947,
+   "poly": [
+    [
+     677,
+     385
+    ],
+    [
+     2186,
+     399
+    ],
+    [
+     2185,
+     522
+    ],
+    [
+     676,
+     507
+    ]
+   ],
+   "box": [
+    676,
+    385,
+    2186,
+    522
+   ]
+  },
+  {
+   "text": "entersing cTnto the chuman lpuing aroas",
+   "score": 0.9204,
+   "poly": [
+    [
+     296,
+     505
+    ],
+    [
+     2241,
+     534
+    ],
+    [
+     2240,
+     639
+    ],
+    [
+     295,
+     611
+    ]
+   ],
+   "box": [
+    295,
+    505,
+    2241,
+    639
+   ]
+  },
+  {
+   "text": "foor searching sfood and copder. et is",
+   "score": 0.884,
+   "poly": [
+    [
+     295,
+     621
+    ],
+    [
+     2243,
+     648
+    ],
+    [
+     2241,
+     765
+    ],
+    [
+     293,
+     738
+    ]
+   ],
+   "box": [
+    293,
+    621,
+    2243,
+    765
+   ]
+  },
+  {
+   "text": "due do deforestation.",
+   "score": 0.9521,
+   "poly": [
+    [
+     301,
+     729
+    ],
+    [
+     1408,
+     755
+    ],
+    [
+     1405,
+     880
+    ],
+    [
+     298,
+     854
+    ]
+   ],
+   "box": [
+    298,
+    729,
+    1408,
+    880
+   ]
+  },
+  {
+   "text": "And then the deforesctaction woill",
+   "score": 0.9409,
+   "poly": [
+    [
+     688,
+     965
+    ],
+    [
+     2234,
+     985
+    ],
+    [
+     2233,
+     1097
+    ],
+    [
+     687,
+     1077
+    ]
+   ],
+   "box": [
+    687,
+    965,
+    2234,
+    1097
+   ]
+  },
+  {
+   "text": "cleads to formation, of deserts In the",
+   "score": 0.922,
+   "poly": [
+    [
+     257,
+     1073
+    ],
+    [
+     2262,
+     1099
+    ],
+    [
+     2260,
+     1228
+    ],
+    [
+     255,
+     1203
+    ]
+   ],
+   "box": [
+    255,
+    1073,
+    2262,
+    1228
+   ]
+  },
+  {
+   "text": "agricultural fePlds die to lack of",
+   "score": 0.8516,
+   "poly": [
+    [
+     277,
+     1205
+    ],
+    [
+     2101,
+     1221
+    ],
+    [
+     2100,
+     1331
+    ],
+    [
+     276,
+     1315
+    ]
+   ],
+   "box": [
+    276,
+    1205,
+    2101,
+    1331
+   ]
+  },
+  {
+   "text": "rainfall and excess choat prodiced during",
+   "score": 0.9607,
+   "poly": [
+    [
+     270,
+     1315
+    ],
+    [
+     2343,
+     1340
+    ],
+    [
+     2341,
+     1463
+    ],
+    [
+     269,
+     1438
+    ]
+   ],
+   "box": [
+    269,
+    1315,
+    2343,
+    1463
+   ]
+  },
+  {
+   "text": "summer.",
+   "score": 0.9962,
+   "poly": [
+    [
+     272,
+     1441
+    ],
+    [
+     644,
+     1447
+    ],
+    [
+     643,
+     1544
+    ],
+    [
+     271,
+     1538
+    ]
+   ],
+   "box": [
+    271,
+    1441,
+    644,
+    1544
+   ]
+  },
+  {
+   "text": "Clemate changes coell affect the",
+   "score": 0.9389,
+   "poly": [
+    [
+     678,
+     1660
+    ],
+    [
+     2236,
+     1682
+    ],
+    [
+     2234,
+     1800
+    ],
+    [
+     676,
+     1778
+    ]
+   ],
+   "box": [
+    676,
+    1660,
+    2236,
+    1800
+   ]
+  },
+  {
+   "text": "enepronmenct and ecosystom many of",
+   "score": 0.9107,
+   "poly": [
+    [
+     277,
+     1776
+    ],
+    [
+     2191,
+     1806
+    ],
+    [
+     2189,
+     1912
+    ],
+    [
+     276,
+     1881
+    ]
+   ],
+   "box": [
+    276,
+    1776,
+    2191,
+    1912
+   ]
+  },
+  {
+   "text": "the exctinglush species are deed due ito",
+   "score": 0.9375,
+   "poly": [
+    [
+     284,
+     1892
+    ],
+    [
+     2251,
+     1906
+    ],
+    [
+     2250,
+     2024
+    ],
+    [
+     283,
+     2009
+    ]
+   ],
+   "box": [
+    283,
+    1892,
+    2251,
+    2024
+   ]
+  },
+  {
+   "text": "clemate charge",
+   "score": 0.9663,
+   "poly": [
+    [
+     294,
+     2016
+    ],
+    [
+     957,
+     2024
+    ],
+    [
+     955,
+     2133
+    ],
+    [
+     293,
+     2125
+    ]
+   ],
+   "box": [
+    293,
+    2016,
+    957,
+    2133
+   ]
+  },
+  {
+   "text": "And deforestation coill affect the",
+   "score": 0.9244,
+   "poly": [
+    [
+     668,
+     2235
+    ],
+    [
+     2331,
+     2262
+    ],
+    [
+     2329,
+     2378
+    ],
+    [
+     666,
+     2351
+    ]
+   ],
+   "box": [
+    666,
+    2235,
+    2331,
+    2378
+   ]
+  },
+  {
+   "text": "enupronment by cuttpng the troes.",
+   "score": 0.9667,
+   "poly": [
+    [
+     263,
+     2358
+    ],
+    [
+     2131,
+     2380
+    ],
+    [
+     2129,
+     2495
+    ],
+    [
+     262,
+     2474
+    ]
+   ],
+   "box": [
+    262,
+    2358,
+    2131,
+    2495
+   ]
+  },
+  {
+   "text": "ex-sptu counservatpon and Pn-spty",
+   "score": 0.926,
+   "poly": [
+    [
+     701,
+     2595
+    ],
+    [
+     2339,
+     2609
+    ],
+    [
+     2338,
+     2714
+    ],
+    [
+     701,
+     2700
+    ]
+   ],
+   "box": [
+    701,
+    2595,
+    2339,
+    2714
+   ]
+  },
+  {
+   "text": "conseruatpon woill profect the wopld",
+   "score": 0.9093,
+   "poly": [
+    [
+     239,
+     2712
+    ],
+    [
+     2194,
+     2725
+    ],
+    [
+     2194,
+     2842
+    ],
+    [
+     238,
+     2830
+    ]
+   ],
+   "box": [
+    238,
+    2712,
+    2194,
+    2842
+   ]
+  },
+  {
+   "text": "anemals and The protects the exting of",
+   "score": 0.9871,
+   "poly": [
+    [
+     227,
+     2821
+    ],
+    [
+     2315,
+     2853
+    ],
+    [
+     2314,
+     2974
+    ],
+    [
+     226,
+     2941
+    ]
+   ],
+   "box": [
+    226,
+    2821,
+    2315,
+    2974
+   ]
+  },
+  {
+   "text": "the species",
+   "score": 0.9886,
+   "poly": [
+    [
+     238,
+     2948
+    ],
+    [
+     829,
+     2956
+    ],
+    [
+     827,
+     3081
+    ],
+    [
+     236,
+     3073
+    ]
+   ],
+   "box": [
+    236,
+    2948,
+    829,
+    3081
+   ]
+  }
+ ],
+ "peak_rss_mib_process": 3336
+}

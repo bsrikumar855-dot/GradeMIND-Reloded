@@ -1,0 +1,16 @@
+{
+  "sheet_id": "sheet_001",
+  "status": "DRAFT_UNVERIFIED",
+  "drafted_by": "claude (visual reading of the scan) -- NOT ground truth until owner-verified",
+  "verified_by": null,
+  "verified_at": null,
+  "pages": ["page_02.txt", "page_03.txt", "page_04.txt", "page_08.txt", "page_11.txt"],
+  "conventions": "docs/TRANSCRIPTION_GUIDE.md",
+  "notes": [
+    "page_03 'rear' may be 'near' (letter shape ambiguous)",
+    "page_04 left-margin '1[?]' next to Part-C is an unclear stray mark",
+    "page_04 question label read as 16; could be 15 (two consecutive answers look labelled 15/16)",
+    "page_08 question label read as 19; first digit ambiguous (1? 14?)",
+    "page_11 percentages: '90.%' and '98[?].%' (could be 95/96)"
+  ]
+}

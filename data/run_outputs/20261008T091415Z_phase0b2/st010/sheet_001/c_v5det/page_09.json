@@ -1,0 +1,1141 @@
+{
+ "engine": "trocr-line",
+ "model_revision": "e68501f437cd2587ae5d68ee457964cac824ddee",
+ "detector": "engine_b (PP-OCRv5_server_det)",
+ "postprocess": "undo_iam_spacing (format only)",
+ "decoding": {
+  "num_beams": 1,
+  "do_sample": false,
+  "max_new_tokens": 96,
+  "dtype": "fp32"
+ },
+ "crop_pad_px": 6,
+ "page": "page_09.jpg",
+ "latency_s": 1.816,
+ "model_load_s": 0.86,
+ "n_lines": 35,
+ "lines": [
+  {
+   "text": "# Trees, animals, reptiles, amphibians.",
+   "text_raw": "# Trees , animals , reptiles , amphibians .",
+   "score": 0.8247,
+   "min_token_prob": 0.3004,
+   "box": [
+    377,
+    241,
+    2285,
+    439
+   ],
+   "poly": [
+    [
+     377,
+     241
+    ],
+    [
+     2285,
+     249
+    ],
+    [
+     2284,
+     439
+    ],
+    [
+     377,
+     431
+    ]
+   ],
+   "b_text": "→Tres,animal,ptils,mb",
+   "b_score": 0.6757
+  },
+  {
+   "text": "in riven, and takes",
+   "text_raw": "in riven , and takes",
+   "score": 0.8013,
+   "min_token_prob": 0.334,
+   "box": [
+    430,
+    394,
+    1384,
+    570
+   ],
+   "poly": [
+    [
+     430,
+     417
+    ],
+    [
+     1380,
+     394
+    ],
+    [
+     1384,
+     547
+    ],
+    [
+     433,
+     570
+    ]
+   ],
+   "b_text": "in riven,and lakes",
+   "b_score": 0.8384
+  },
+  {
+   "text": "# Each had life, cycle.",
+   "text_raw": "# Each had life , cycle .",
+   "score": 0.8834,
+   "min_token_prob": 0.3311,
+   "box": [
+    367,
+    634,
+    1954,
+    824
+   ],
+   "poly": [
+    [
+     367,
+     634
+    ],
+    [
+     1954,
+     634
+    ],
+    [
+     1954,
+     824
+    ],
+    [
+     367,
+     824
+    ]
+   ],
+   "b_text": "→Each hees Sife, cyce",
+   "b_score": 0.6785
+  },
+  {
+   "text": "births \" life's death, ire",
+   "text_raw": "births \" life's death , ire",
+   "score": 0.7927,
+   "min_token_prob": 0.3774,
+   "box": [
+    432,
+    768,
+    2033,
+    972
+   ],
+   "poly": [
+    [
+     432,
+     788
+    ],
+    [
+     2031,
+     768
+    ],
+    [
+     2033,
+     952
+    ],
+    [
+     434,
+     972
+    ]
+   ],
+   "b_text": "binth→life death,ie",
+   "b_score": 0.8328
+  },
+  {
+   "text": "certain one",
+   "text_raw": "certain one",
+   "score": 0.8925,
+   "min_token_prob": 0.7138,
+   "box": [
+    428,
+    933,
+    1097,
+    1068
+   ],
+   "poly": [
+    [
+     431,
+     933
+    ],
+    [
+     1097,
+     950
+    ],
+    [
+     1094,
+     1068
+    ],
+    [
+     428,
+     1051
+    ]
+   ],
+   "b_text": "crtain ohe",
+   "b_score": 0.8863
+  },
+  {
+   "text": "food.",
+   "text_raw": "food .",
+   "score": 0.7364,
+   "min_token_prob": 0.5306,
+   "box": [
+    1613,
+    908,
+    1930,
+    1103
+   ],
+   "poly": [
+    [
+     1613,
+     924
+    ],
+    [
+     1921,
+     908
+    ],
+    [
+     1930,
+     1087
+    ],
+    [
+     1622,
+     1103
+    ]
+   ],
+   "b_text": "food",
+   "b_score": 0.9447
+  },
+  {
+   "text": "become.",
+   "text_raw": "become .",
+   "score": 0.9916,
+   "min_token_prob": 0.9807,
+   "box": [
+    1187,
+    946,
+    1536,
+    1059
+   ],
+   "poly": [
+    [
+     1191,
+     946
+    ],
+    [
+     1536,
+     957
+    ],
+    [
+     1532,
+     1059
+    ],
+    [
+     1187,
+     1047
+    ]
+   ],
+   "b_text": "beoome",
+   "b_score": 0.9137
+  },
+  {
+   "text": "sign.",
+   "text_raw": "sign .",
+   "score": 0.615,
+   "min_token_prob": 0.1726,
+   "box": [
+    369,
+    1029,
+    640,
+    1405
+   ],
+   "poly": [
+    [
+     392,
+     1029
+    ],
+    [
+     640,
+     1045
+    ],
+    [
+     617,
+     1405
+    ],
+    [
+     369,
+     1389
+    ]
+   ],
+   "b_text": "$",
+   "b_score": 0.5085
+  },
+  {
+   "text": "another",
+   "text_raw": "another",
+   "score": 0.7822,
+   "min_token_prob": 0.5696,
+   "box": [
+    744,
+    1046,
+    1131,
+    1195
+   ],
+   "poly": [
+    [
+     746,
+     1046
+    ],
+    [
+     1131,
+     1051
+    ],
+    [
+     1129,
+     1195
+    ],
+    [
+     744,
+     1190
+    ]
+   ],
+   "b_text": "ansther",
+   "b_score": 0.8269
+  },
+  {
+   "text": "This",
+   "text_raw": "This",
+   "score": 0.9785,
+   "min_token_prob": 0.9647,
+   "box": [
+    1283,
+    1070,
+    1519,
+    1209
+   ],
+   "poly": [
+    [
+     1283,
+     1070
+    ],
+    [
+     1519,
+     1070
+    ],
+    [
+     1519,
+     1209
+    ],
+    [
+     1283,
+     1209
+    ]
+   ],
+   "b_text": "Ths",
+   "b_score": 0.7655
+  },
+  {
+   "text": "is root.",
+   "text_raw": "is root .",
+   "score": 0.7281,
+   "min_token_prob": 0.4678,
+   "box": [
+    1627,
+    1064,
+    2090,
+    1186
+   ],
+   "poly": [
+    [
+     1627,
+     1064
+    ],
+    [
+     2090,
+     1064
+    ],
+    [
+     2090,
+     1186
+    ],
+    [
+     1627,
+     1186
+    ]
+   ],
+   "b_text": "is root",
+   "b_score": 0.8052
+  },
+  {
+   "text": "nature.",
+   "text_raw": "nature .",
+   "score": 0.988,
+   "min_token_prob": 0.9785,
+   "box": [
+    665,
+    1177,
+    1106,
+    1334
+   ],
+   "poly": [
+    [
+     665,
+     1177
+    ],
+    [
+     1106,
+     1177
+    ],
+    [
+     1106,
+     1334
+    ],
+    [
+     665,
+     1334
+    ]
+   ],
+   "b_text": "nateve.",
+   "b_score": 0.7687
+  },
+  {
+   "text": "2 for humans.",
+   "text_raw": "2 for humans .",
+   "score": 0.8894,
+   "min_token_prob": 0.4657,
+   "box": [
+    375,
+    1416,
+    1229,
+    1585
+   ],
+   "poly": [
+    [
+     375,
+     1420
+    ],
+    [
+     1228,
+     1416
+    ],
+    [
+     1229,
+     1581
+    ],
+    [
+     376,
+     1585
+    ]
+   ],
+   "b_text": " for humang",
+   "b_score": 0.8268
+  },
+  {
+   "text": "we can",
+   "text_raw": "we can",
+   "score": 0.801,
+   "min_token_prob": 0.4471,
+   "box": [
+    1392,
+    1472,
+    1947,
+    1586
+   ],
+   "poly": [
+    [
+     1393,
+     1472
+    ],
+    [
+     1947,
+     1480
+    ],
+    [
+     1945,
+     1586
+    ],
+    [
+     1392,
+     1577
+    ]
+   ],
+   "b_text": "we can",
+   "b_score": 0.6758
+  },
+  {
+   "text": "research this",
+   "text_raw": "research this",
+   "score": 0.9872,
+   "min_token_prob": 0.9751,
+   "box": [
+    411,
+    1571,
+    1181,
+    1700
+   ],
+   "poly": [
+    [
+     411,
+     1576
+    ],
+    [
+     1180,
+     1571
+    ],
+    [
+     1181,
+     1696
+    ],
+    [
+     412,
+     1700
+    ]
+   ],
+   "b_text": "rebearch this",
+   "b_score": 0.6971
+  },
+  {
+   "text": "species and",
+   "text_raw": "species and",
+   "score": 0.9139,
+   "min_token_prob": 0.7632,
+   "box": [
+    1324,
+    1571,
+    2076,
+    1732
+   ],
+   "poly": [
+    [
+     1324,
+     1586
+    ],
+    [
+     2073,
+     1571
+    ],
+    [
+     2076,
+     1716
+    ],
+    [
+     1327,
+     1732
+    ]
+   ],
+   "b_text": "Species and",
+   "b_score": 0.7978
+  },
+  {
+   "text": "understand the",
+   "text_raw": "understand the",
+   "score": 0.9891,
+   "min_token_prob": 0.9568,
+   "box": [
+    442,
+    1683,
+    1346,
+    1842
+   ],
+   "poly": [
+    [
+     443,
+     1683
+    ],
+    [
+     1346,
+     1689
+    ],
+    [
+     1345,
+     1842
+    ],
+    [
+     442,
+     1836
+    ]
+   ],
+   "b_text": "undorstandthe",
+   "b_score": 0.8648
+  },
+  {
+   "text": "orging.",
+   "text_raw": "orging .",
+   "score": 0.919,
+   "min_token_prob": 0.7274,
+   "box": [
+    1464,
+    1702,
+    1831,
+    1857
+   ],
+   "poly": [
+    [
+     1464,
+     1719
+    ],
+    [
+     1824,
+     1702
+    ],
+    [
+     1831,
+     1840
+    ],
+    [
+     1470,
+     1857
+    ]
+   ],
+   "b_text": "orgie",
+   "b_score": 0.6091
+  },
+  {
+   "text": "\" for nature.",
+   "text_raw": "\" for nature .",
+   "score": 0.8225,
+   "min_token_prob": 0.3308,
+   "box": [
+    370,
+    1917,
+    1111,
+    2110
+   ],
+   "poly": [
+    [
+     370,
+     1935
+    ],
+    [
+     1107,
+     1917
+    ],
+    [
+     1111,
+     2092
+    ],
+    [
+     374,
+     2110
+    ]
+   ],
+   "b_text": " for nateoe",
+   "b_score": 0.781
+  },
+  {
+   "text": "every organism.",
+   "text_raw": "every organism .",
+   "score": 0.8846,
+   "min_token_prob": 0.628,
+   "box": [
+    1208,
+    1967,
+    2061,
+    2109
+   ],
+   "poly": [
+    [
+     1212,
+     1967
+    ],
+    [
+     2061,
+     1996
+    ],
+    [
+     2057,
+     2109
+    ],
+    [
+     1208,
+     2080
+    ]
+   ],
+   "b_text": "every organism",
+   "b_score": 0.7065
+  },
+  {
+   "text": "contribute vital role",
+   "text_raw": "contribute vital role",
+   "score": 0.9084,
+   "min_token_prob": 0.5607,
+   "box": [
+    433,
+    2066,
+    1621,
+    2222
+   ],
+   "poly": [
+    [
+     433,
+     2070
+    ],
+    [
+     1621,
+     2066
+    ],
+    [
+     1621,
+     2217
+    ],
+    [
+     433,
+     2222
+    ]
+   ],
+   "b_text": "contribate vital roke",
+   "b_score": 0.8974
+  },
+  {
+   "text": "grasslands:",
+   "text_raw": "grasslands :",
+   "score": 0.9733,
+   "min_token_prob": 0.9479,
+   "box": [
+    394,
+    2312,
+    1068,
+    2478
+   ],
+   "poly": [
+    [
+     394,
+     2344
+    ],
+    [
+     1062,
+     2312
+    ],
+    [
+     1068,
+     2446
+    ],
+    [
+     401,
+     2478
+    ]
+   ],
+   "b_text": "gras8lands:",
+   "b_score": 0.6588
+  },
+  {
+   "text": "grasslands.",
+   "text_raw": "grasslands .",
+   "score": 0.9925,
+   "min_token_prob": 0.9755,
+   "box": [
+    822,
+    2552,
+    1340,
+    2727
+   ],
+   "poly": [
+    [
+     822,
+     2592
+    ],
+    [
+     1330,
+     2552
+    ],
+    [
+     1340,
+     2686
+    ],
+    [
+     833,
+     2727
+    ]
+   ],
+   "b_text": "grasslands",
+   "b_score": 0.7348
+  },
+  {
+   "text": "is",
+   "text_raw": "is",
+   "score": 0.8591,
+   "min_token_prob": 0.72,
+   "box": [
+    1554,
+    2593,
+    1676,
+    2706
+   ],
+   "poly": [
+    [
+     1564,
+     2593
+    ],
+    [
+     1676,
+     2603
+    ],
+    [
+     1667,
+     2706
+    ],
+    [
+     1554,
+     2697
+    ]
+   ],
+   "b_text": "IS",
+   "b_score": 0.5624
+  },
+  {
+   "text": "# I.",
+   "text_raw": "# I .",
+   "score": 0.7708,
+   "min_token_prob": 0.4123,
+   "box": [
+    352,
+    2591,
+    633,
+    2720
+   ],
+   "poly": [
+    [
+     352,
+     2609
+    ],
+    [
+     626,
+     2591
+    ],
+    [
+     633,
+     2702
+    ],
+    [
+     359,
+     2720
+    ]
+   ],
+   "b_text": "大工",
+   "b_score": 0.7167
+  },
+  {
+   "text": "from",
+   "text_raw": "from",
+   "score": 0.7925,
+   "min_token_prob": 0.6145,
+   "box": [
+    1663,
+    2678,
+    2027,
+    2894
+   ],
+   "poly": [
+    [
+     1663,
+     2678
+    ],
+    [
+     2027,
+     2678
+    ],
+    [
+     2027,
+     2894
+    ],
+    [
+     1663,
+     2894
+    ]
+   ],
+   "b_text": "Joem",
+   "b_score": 0.4445
+  },
+  {
+   "text": "first",
+   "text_raw": "first",
+   "score": 0.7918,
+   "min_token_prob": 0.5851,
+   "box": [
+    393,
+    2694,
+    768,
+    2857
+   ],
+   "poly": [
+    [
+     393,
+     2704
+    ],
+    [
+     764,
+     2694
+    ],
+    [
+     768,
+     2847
+    ],
+    [
+     397,
+     2857
+    ]
+   ],
+   "b_text": "first",
+   "b_score": 0.9218
+  },
+  {
+   "text": "to",
+   "text_raw": "to",
+   "score": 0.8424,
+   "min_token_prob": 0.72,
+   "box": [
+    1471,
+    2697,
+    1712,
+    2846
+   ],
+   "poly": [
+    [
+     1471,
+     2697
+    ],
+    [
+     1712,
+     2697
+    ],
+    [
+     1712,
+     2846
+    ],
+    [
+     1471,
+     2846
+    ]
+   ],
+   "b_text": "to",
+   "b_score": 0.4537
+  },
+  {
+   "text": "place.",
+   "text_raw": "place .",
+   "score": 0.9958,
+   "min_token_prob": 0.9883,
+   "box": [
+    1091,
+    2701,
+    1381,
+    2850
+   ],
+   "poly": [
+    [
+     1091,
+     2714
+    ],
+    [
+     1375,
+     2701
+    ],
+    [
+     1381,
+     2837
+    ],
+    [
+     1097,
+     2850
+    ]
+   ],
+   "b_text": "place",
+   "b_score": 0.9261
+  },
+  {
+   "text": "be vilization.",
+   "text_raw": "be vilization .",
+   "score": 0.7306,
+   "min_token_prob": 0.2937,
+   "box": [
+    406,
+    2840,
+    1091,
+    2977
+   ],
+   "poly": [
+    [
+     406,
+     2845
+    ],
+    [
+     1090,
+     2840
+    ],
+    [
+     1091,
+     2973
+    ],
+    [
+     406,
+     2977
+    ]
+   ],
+   "b_text": "Kulization.",
+   "b_score": 0.6825
+  },
+  {
+   "text": "few forces.",
+   "text_raw": "few forces .",
+   "score": 0.7941,
+   "min_token_prob": 0.1898,
+   "box": [
+    1328,
+    3060,
+    1953,
+    3301
+   ],
+   "poly": [
+    [
+     1328,
+     3067
+    ],
+    [
+     1950,
+     3060
+    ],
+    [
+     1953,
+     3294
+    ],
+    [
+     1331,
+     3301
+    ]
+   ],
+   "b_text": "few fee",
+   "b_score": 0.6946
+  },
+  {
+   "text": "to as",
+   "text_raw": "to as",
+   "score": 0.3815,
+   "min_token_prob": 0.1533,
+   "box": [
+    877,
+    3088,
+    1123,
+    3247
+   ],
+   "poly": [
+    [
+     877,
+     3088
+    ],
+    [
+     1123,
+     3088
+    ],
+    [
+     1123,
+     3247
+    ],
+    [
+     877,
+     3247
+    ]
+   ],
+   "b_text": "to08",
+   "b_score": 0.5246
+  },
+  {
+   "text": "# It",
+   "text_raw": "# It",
+   "score": 0.6428,
+   "min_token_prob": 0.3895,
+   "box": [
+    328,
+    3106,
+    664,
+    3242
+   ],
+   "poly": [
+    [
+     328,
+     3115
+    ],
+    [
+     661,
+     3106
+    ],
+    [
+     664,
+     3233
+    ],
+    [
+     331,
+     3242
+    ]
+   ],
+   "b_text": "*工七",
+   "b_score": 0.6048
+  },
+  {
+   "text": "land.",
+   "text_raw": "land .",
+   "score": 0.8417,
+   "min_token_prob": 0.7136,
+   "box": [
+    317,
+    3239,
+    608,
+    3402
+   ],
+   "poly": [
+    [
+     317,
+     3239
+    ],
+    [
+     608,
+     3239
+    ],
+    [
+     608,
+     3402
+    ],
+    [
+     317,
+     3402
+    ]
+   ],
+   "b_text": "bard",
+   "b_score": 0.9023
+  },
+  {
+   "text": "plain surface. \"",
+   "text_raw": "plain surface . \"",
+   "score": 0.9004,
+   "min_token_prob": 0.5437,
+   "box": [
+    602,
+    3233,
+    1388,
+    3448
+   ],
+   "poly": [
+    [
+     602,
+     3233
+    ],
+    [
+     1388,
+     3233
+    ],
+    [
+     1388,
+     3448
+    ],
+    [
+     602,
+     3448
+    ]
+   ],
+   "b_text": "plain sufoe!",
+   "b_score": 0.7202
+  }
+ ],
+ "peak_torch_alloc_mib": 2705,
+ "peak_rss_mib_process": 2965
+}
