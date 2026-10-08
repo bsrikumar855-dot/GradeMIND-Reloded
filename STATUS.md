@@ -1,7 +1,7 @@
 # STATUS
 
-Current phase: **Phase 0b: OCR strategy evaluation** (owner decisions in docs/DECISIONS.md). Phase 0 history follows. The spike runs are done; the gate is waiting on owner transcription verification,
-the vLLM FP8 measurement, and owner decisions. See [docs/OCR_SPIKE.md](docs/OCR_SPIKE.md) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Current phase: **Phase 0b: OCR strategy evaluation** (owner decisions in [docs/DECISIONS.md](docs/DECISIONS.md)). Phase 0 results:
+[PHASE_0_REPORT.md](PHASE_0_REPORT.md), [docs/OCR_SPIKE.md](docs/OCR_SPIKE.md).
 
 No application code exists yet (spec §23: no scaffolding before the OCR spike is approved). Everything below is **spike tooling** under
 `spike/`, not product code.
