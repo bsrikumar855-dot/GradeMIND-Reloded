@@ -39,10 +39,25 @@ page_02.jpg: 60.0s tokens=1309 regions=5 peak_alloc=6153MiB flags=[]
   `CHAR_RUN_'0'_x109, NEAR_DUPLICATE_REGION_PAIRS_x6, REPEATED_BBOX_x3` (commit `a8ffe19`).
 - **Open question:** is this caused by int8, or is it model behaviour on ruled handwritten pages? See A3.
 
-### A3. Exact-bf16 reference via routed-expert CPU offload: running
+### A3. The exact-bf16 reference also degenerates, so int8 is not the cause (on this page)
 
-`--quant offload` keeps the vision encoder, attention and shared experts on the GPU, and streams the routed experts of layers 5–11 from RAM.
-It uses about 3.9 GiB of GPU memory, but it is very slow (more than 13 minutes on one page so far). The result will be recorded here.
+`--quant offload` keeps the vision encoder, attention and shared experts on the GPU and streams the routed experts of layers 5–11 from RAM.
+
+```text
+$ PYTORCH_ALLOC_CONF=expandable_segments:True spike/engine_a/.venv/bin/python spike/engine_a/run_engine_a.py \
+    ... --quant offload --pages data/samples/sheet_001/pages/page_02.jpg --out <scratch>
+page_02.jpg: 1210.3s tokens=29436 regions=5 peak_alloc=5686MiB flags=['NEAR_DUPLICATE_REGION_PAIRS_x1']
+```
+
+- The output starts identically to int8 (`part - A`, `2017/6/1`), then falls into **counting loops**: `1. 2. 3. … 99.` and
+  `9. Carbon monoxide 2010.2. 2011. 2012. … 2187.`. It ran 29,436 tokens, close to the 32,768 cap.
+- Mean token probability was **0.9967**: near-certain on garbage. This confirms that token probability cannot gate degenerate output.
+- A counting loop never repeats an n-gram, so it **evades the model's own `no_repeat_ngram_size=35` ban** and the duplicate checks.
+  The detector now adds `COUNTING_SEQUENCE_x4110` and `RUNAWAY_LENGTH_29436_tokens` (commit `d5f5ea2`).
+- Offload is about 20× slower than int8 (1210 s vs 60 s on this page, although the bf16 run generated about 22× more tokens). It is not usable in production,
+  but it is a valid reference.
+- **Conclusion so far (one page):** the degeneration is model behaviour on this sparse, ruled, handwritten page in `gundam` mode
+  with the model card's `document parsing.` prompt. The full 27-page int8 run (max_length 4096) will show how often it happens.
 
 ## Engine B: PaddleOCR 3.7.0 (paddlepaddle-gpu 3.4.0 cu129), PP-OCRv5, CPU
 
