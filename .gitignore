@@ -1,0 +1,23 @@
+# --- Student data: NEVER commit (repo is public) ---
+data/samples/
+data/golden/
+data/transcriptions/
+spike/runs/
+spike/pages/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Env / secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Model weights / caches ---
+models/
+*.safetensors
