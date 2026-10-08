@@ -4,8 +4,9 @@ Stdlib only. Ground truth must be OWNER_VERIFIED (docs/TRANSCRIPTION_GUIDE.md); 
 --allow-draft the output is stamped NOT_REPORTABLE and must never be quoted as a metric.
 
 Usage:
-  python3 spike/score.py --gt data/transcriptions/sheet_001 --run spike/runs/<run_id> [--allow-draft]
-Writes <run>/scores.json and prints a summary table.
+  python3 spike/score.py --gt data/transcriptions/sheet_001 \
+      --a spike/runs/<run_a>/sheet_001/engine_a --b spike/runs/<run_b>/sheet_001/engine_b \
+      --out spike/runs/<run_a>/sheet_001/scores.json [--allow-draft]
 """
 
 from __future__ import annotations
@@ -104,11 +105,14 @@ def score_pair(gt: str, hyp: str, vocab: set[str]) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gt", required=True)
-    ap.add_argument("--run", required=True)
+    ap.add_argument("--a", help="dir of Engine A page JSONs")
+    ap.add_argument("--b", help="dir of Engine B page JSONs")
+    ap.add_argument("--out", required=True)
     ap.add_argument("--allow-draft", action="store_true")
     args = ap.parse_args()
 
-    gt_dir, run = Path(args.gt), Path(args.run)
+    gt_dir = Path(args.gt)
+    engine_dirs = {"engine_a": Path(args.a) if args.a else None, "engine_b": Path(args.b) if args.b else None}
     manifest = json.loads((gt_dir / "manifest.json").read_text())
     verified = manifest["status"] == "OWNER_VERIFIED"
     if not verified and not args.allow_draft:
@@ -117,7 +121,8 @@ def main() -> int:
     vocab = {w.strip().lower() for w in WORDLIST.read_text(errors="ignore").split()} if WORDLIST.exists() else set()
 
     readers = {"engine_a": engine_a_text, "engine_b": engine_b_text}
-    results: dict = {"reportable": verified, "gt_status": manifest["status"], "pages": {}}
+    results: dict = {"reportable": verified, "gt_status": manifest["status"], "pages": {},
+                     "inputs": {k: str(v) for k, v in engine_dirs.items()}}
     if not verified:
         results["WARNING"] = "NOT_REPORTABLE: scored against unverified draft transcriptions"
     for page_file in manifest["pages"]:
@@ -125,7 +130,9 @@ def main() -> int:
         gt = (gt_dir / page_file).read_text()
         results["pages"][stem] = {}
         for eng, reader in readers.items():
-            f = run / eng / f"{stem}.json"
+            if engine_dirs[eng] is None:
+                continue
+            f = engine_dirs[eng] / f"{stem}.json"
             if f.exists():
                 results["pages"][stem][eng] = score_pair(gt, reader(json.loads(f.read_text())), vocab)
 
@@ -146,9 +153,9 @@ def main() -> int:
             "autocorrect_candidates": sum(len(p["autocorrect_candidates"]) for p in pp),
         }
     results["totals"] = totals
-    (run / "scores.json").write_text(json.dumps(results, indent=1, ensure_ascii=False))
+    Path(args.out).write_text(json.dumps(results, indent=1, ensure_ascii=False))
     tag = "" if verified else "  [NOT_REPORTABLE: draft ground truth]"
-    print(f"scores -> {run / 'scores.json'}{tag}")
+    print(f"scores -> {args.out}{tag}")
     for eng, t in totals.items():
         print(f"{eng}: {json.dumps(t)}")
     return 0
