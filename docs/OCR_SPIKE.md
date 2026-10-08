@@ -124,6 +124,24 @@ Directionally: on clean prose pages (sheet_001 p3 and p8) Engine A CER is about 
 aggregate. Neither engine reads **question labels** reliably (critical-token recall per page ranges from 0/1 to 3/3), and
 question labels are the main alignment signal (spec §7.3).
 
+### A6. Spec §5.1 base-mode retry recovered 0 of 4 degenerate pages (run `20261008T075358Z_base_int8_retry`)
+
+```text
+$ ... run_engine_a.py --mode base --quant int8 --max-length 4096 --pages <the 4 gundam-degenerate answer pages>
+sheet_001 page_02.jpg: 11.7s tokens=244 regions=1 peak_alloc=4361MiB
+sheet_001 page_06.jpg: 14.8s tokens=331 regions=1 peak_alloc=4361MiB flags=['EMPTY_CELL_SPAM_x67']
+sheet_001 page_11.jpg: 167.3s tokens=3819 regions=1 peak_alloc=4361MiB flags=['COUNTING_SEQUENCE_x34', 'EMPTY_CELL_SPAM_x1738']
+sheet_002 page_02.jpg: 42.3s tokens=889 regions=19 peak_alloc=4361MiB flags=['COUNTING_SEQUENCE_x86', 'NEAR_DUPLICATE_REGION_PAIRS_x1']
+```
+
+- 3 of 4 pages degenerated again, in new shapes.
+- The 4th (sheet_001 p2) *looked* recovered and the detector at that commit passed it. But it **inserted an invented date `2017/6/1` into all 12
+  rows**, and misread option letters `c]` → `c3` and `a)` → `a3`. The new check `REPEATED_CELL_TEXT` now flags it (`x12`). The real answers in that output
+  were mostly right: `non-biotic compounds`, `water`, `True`, `carbon monoxide`, `deforestation`.
+- `base` mode peaks lower: 4361 MiB vs 6648 MiB for `gundam`.
+- **Implication:** "retry once in base mode" is not a recovery strategy on these sheets. A degenerate page should route straight to
+  review, or to Engine B-only text with `OCR_DEGENERATE` set.
+
 ## Engine B: PaddleOCR 3.7.0 (paddlepaddle-gpu 3.4.0 cu129), PP-OCRv5, CPU
 
 ### B1. Two CPU-path failures fixed
