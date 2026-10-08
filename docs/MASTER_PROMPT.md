@@ -77,6 +77,7 @@ Re-running a stored evaluation from the same inputs and versions must produce id
 9. **Never edit a script while a run using it is in progress.** Copy it to `runs/<run_id>/` and execute the copy. *(Added by owner, Phase 0 review, 2026-10-08.)*
 10. **The degenerate-output detector is a backstop, not a gate. Cross-engine disagreement is the gate.** Every new detector rule needs a regression fixture from a real page plus a clean-page false-positive check. *(Owner, 2026-10-08.)*
 11. **Draft transcriptions produced by the agent are NOT ground truth, even after edits, until `status = OWNER_VERIFIED`.** *(Owner, 2026-10-08.)*
+12. **Resolved config, not requested config.** Every engine run logs the model names, versions and weight hashes the library *actually loaded* at runtime, read back from the instantiated pipeline, not from our arguments. If resolved ≠ requested, the run fails. The future OCR service enforces this as a startup assertion and exposes it in `/health/ocr`. *(Owner, 2026-10-08, after PaddleOCR 3.7 silently substituted `PP-OCRv6_medium_det`.)*
 
 ---
 
