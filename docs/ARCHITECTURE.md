@@ -1,6 +1,6 @@
 # GradeMIND v2: Architecture (Phase 0 draft)
 
-Status: **draft for owner review at the Phase 0 gate.** The binding spec is [MASTER_PROMPT.md](MASTER_PROMPT.md); this file records
+Status: **draft; updated after the Phase 0 review (docs/DECISIONS.md, 2026-10-08).** The binding spec is [MASTER_PROMPT.md](MASTER_PROMPT.md); this file records
 how the spec maps onto the owner's actual host and what the OCR spike measured ([OCR_SPIKE.md](OCR_SPIKE.md)).
 Items marked **DECISION** need owner approval before Phase 1.
 
@@ -9,7 +9,7 @@ Items marked **DECISION** need owner approval before Phase 1.
 | Constraint | Value | Consequence |
 |---|---|---|
 | GPU | RTX 5070, 12 GiB, sm_120 (Blackwell), CUDA 13 driver | All CUDA wheels/images must be cu128+ (torch 2.10 cu129 verified, Paddle 3.4 cu129 verified) |
-| GPU sharing | About 4.65 GiB held by other processes; **owner decision: ~7 GiB budget** | At most one model on the GPU at a time. GPU stages are serialised by a single GPU worker |
+| GPU sharing | About 4.65 GiB held by other processes and it fluctuates; **owner decision D3: ≤ 6 GB VRAM** | At most one model on the GPU at a time. GPU stages are serialised by a single GPU worker |
 | RAM | 31 GiB | Engine B on CPU peaks at 14.5 GB RSS. CPU OCR concurrency must be 1 |
 | Docker | 29.8, GPU passthrough verified | OCR and LLM serving run as containers |
 
@@ -57,7 +57,7 @@ Architectural consequences, independent of the strategy DECISION below:
 5. **Engine A's `eval()` hazard.** The model's bundled post-processing `eval()`s generated text. Our parser never does, and a regression test
    (Phase 2) asserts that boxes are parsed with a JSON parser only.
 
-### DECISION 1: OCR strategy (spec Phase 0 exit)
+### DECISION 1: OCR strategy (spec Phase 0 exit). **Option A rejected (D1); B vs C decided by Phase 0b**
 
 | Option | Description | Spike evidence for | Spike evidence against |
 |---|---|---|---|
@@ -67,7 +67,11 @@ Architectural consequences, independent of the strategy DECISION below:
 
 No option can be approved on numbers yet, because **every CER/WER so far is against draft transcriptions** (NOT_REPORTABLE).
 
-### DECISION 2: Engine A serving mode
+### DECISION 2: Engine A serving mode. **RESOLVED (D2)**
+
+Unlimited-OCR is demoted to an optional cross-check / layout-hint engine, int8 transformers path only, **disabled by default** in the
+single provider config. No vendor patch. vLLM + crop cap is revisited only if Phase 0b shows cross-check value.
+
 
 Options: (i) int8 transformers (works within budget, 3–8× slower); (ii) vLLM FP8 with the image's `_UNLIMITED_OCR_MAX_CROPS`
 patched from 32 to 24 plus fixed-aspect padding (a vendor-code patch, but it bounds memory); (iii) vLLM FP8 unpatched, which needs guaranteed GPU
@@ -79,6 +83,18 @@ headroom (e.g. interviewbot moved off this GPU). This choice only matters if DEC
 | bf16 + expert CPU offload | ~3.9 GiB | ~20× slower than int8 | exact | reference only |
 | int8 (bitsandbytes), transformers | 6648 MiB gundam / 4361 MiB base | 3–23 s/page | same degeneration on p2 as bf16 | works |
 | FP8, vLLM `unlimited-ocr` image | weights 3.57 GiB, needs ≈6.9 GiB free at start | **~2 s/page** | same degenerate pages as int8 (16/16) | **unstable on shared GPU**: OOM on 30-crop page, start fails when free memory dips (OCR_SPIKE A7) |
+
+## 3b. OCR service resilience (D3)
+
+- One page at a time. Pages are padded to a fixed aspect ratio before any OCR (this bounds per-page memory and tokens and makes the crop grid reproducible).
+- Crash survival: health check → restart → resume from the last completed page. Stage outputs are cached by `(content hash, component version)`.
+- GPU OOM is a **retryable stage failure** (`OCR_A_FAILED` / `OCR_B_FAILED` with the reason), never a silent skip.
+- Integration test: kill the OCR server mid-batch, then assert resume with no duplicate and no missing pages.
+
+## 3c. Exam profiles (D4)
+
+University internal assessment is the first target. CBSE conventions are a **policy profile** (rounding, OR handling, multiple-attempt rule,
+step marking); neither is hard-coded.
 
 ## 4. LLM grading (local Qwen, owner decision)
 

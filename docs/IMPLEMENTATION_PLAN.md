@@ -3,7 +3,11 @@
 The phases and gates are those of spec §21. This file records the order of work inside each phase and what the Phase 0 spike changed.
 Every phase ends with `PHASE_<n>_REPORT.md` and a STOP for owner approval.
 
-## Phase 0: Discovery and OCR spike (current)
+## Phase 0b: OCR strategy evaluation (current, per D1)
+
+Server recogniser, line-level HTR reader, show-through suppression (with/without), label-detection accuracy. Deliverable: `PHASE_0B_REPORT.md`, scored against OWNER_VERIFIED transcriptions only. Then STOP.
+
+## Phase 0: Discovery and OCR spike (done; gate reviewed 2026-10-08)
 
 Done: hardware discovery, both engines running on the owner host, 27-page runs on both engines, degenerate detector, scorer,
 spike log, architecture draft. Remaining before the gate:
@@ -24,6 +28,9 @@ Host prerequisites: Node 20+ and pnpm (host currently has Node 18.19 and no pnpm
 Spike-driven additions:
 - **GPU lease** (Redis) and a single-concurrency `worker-gpu`. This replaces "OCR service always up" with load-on-demand per batch.
 - The OCR containers pre-bake their model weights (no runtime Hugging Face downloads) and pin model revisions.
+- **D3 resilience:** one page at a time, fixed-aspect padding, health check → restart → resume from the last completed page with stage caching,
+  GPU OOM as a retryable failure. **Integration test `test_ocr_server_killed_mid_batch_resumes_without_dup_or_gap`.**
+- Unlimited-OCR provider exists but is **disabled by default** in the single provider config (D2). A test asserts it is never called while disabled (I7).
 
 ## Phase 2: Document intelligence
 
