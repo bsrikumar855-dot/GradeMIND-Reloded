@@ -11,6 +11,7 @@ We always use eval_mode=True / save_results=False and parse boxes with json.load
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import math
 import re
@@ -21,7 +22,7 @@ import time
 from pathlib import Path
 
 import torch
-from transformers import AutoModel, AutoTokenizer, LogitsProcessor
+from transformers import AutoModel, AutoTokenizer, BitsAndBytesConfig, LogitsProcessor
 
 MODES = {
     "gundam": dict(base_size=1024, image_size=640, crop_mode=True),
@@ -85,6 +86,17 @@ def degenerate_checks(raw: str, n_tokens: int, regions: list[dict]) -> list[str]
         most = max(lines.count(x) for x in set(lines))
         if most >= 5:
             flags.append(f"REPEATED_LINE_x{most}")
+    run = re.search(r"(.)\1{19,}", raw)
+    if run:
+        flags.append(f"CHAR_RUN_{run.group(1)!r}_x{len(run.group(0))}")
+    texts = [r["text"] for r in regions if len(r["text"]) > 20]
+    dupes = sum(1 for i in range(len(texts)) for j in range(i + 1, len(texts))
+                if difflib.SequenceMatcher(None, texts[i], texts[j], autojunk=False).ratio() > 0.8)
+    if dupes:
+        flags.append(f"NEAR_DUPLICATE_REGION_PAIRS_x{dupes}")
+    boxes = [json.dumps(r["bbox_raw"]) for r in regions if r["bbox_raw"]]
+    if len(boxes) - len(set(boxes)) >= 2:
+        flags.append(f"REPEATED_BBOX_x{len(boxes) - len(set(boxes))}")
     if not raw.strip():
         flags.append("EMPTY_OUTPUT")
     elif regions and all(not r["text"] for r in regions):
@@ -108,6 +120,8 @@ def main() -> int:
     ap.add_argument("--pages", nargs="+", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--mode", choices=MODES, default="gundam")
+    ap.add_argument("--quant", choices=["none", "int8"], default="none",
+                    help="int8: bitsandbytes LLM.int8 on decoder linears; vision/projector/lm_head stay bf16")
     args = ap.parse_args()
 
     out_dir = Path(args.out)
@@ -116,8 +130,14 @@ def main() -> int:
 
     t0 = time.perf_counter()
     tok = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
-    model = AutoModel.from_pretrained(args.model, trust_remote_code=True, use_safetensors=True,
-                                      torch_dtype=torch.bfloat16).eval().cuda()
+    load_kw: dict = dict(trust_remote_code=True, use_safetensors=True, torch_dtype=torch.bfloat16)
+    if args.quant == "int8":
+        load_kw["quantization_config"] = BitsAndBytesConfig(
+            load_in_8bit=True, llm_int8_skip_modules=["sam_model", "vision_model", "projector", "lm_head"])
+        load_kw["device_map"] = {"": 0}
+        model = AutoModel.from_pretrained(args.model, **load_kw).eval()
+    else:
+        model = AutoModel.from_pretrained(args.model, **load_kw).eval().cuda()
     load_s = time.perf_counter() - t0
 
     recorder_box: dict = {}
@@ -146,7 +166,7 @@ def main() -> int:
         regions = parse_regions(raw)
         record = {
             "engine": "unlimited-ocr", "model_revision": args.revision, "path": "transformers",
-            "mode": args.mode, "mode_params": MODES[args.mode], "prompt": PROMPT,
+            "mode": args.mode, "mode_params": MODES[args.mode], "prompt": PROMPT, "quant": args.quant,
             "decoding": {"temperature": 0.0, "max_length": MAX_LENGTH,
                          "no_repeat_ngram_size": NO_REPEAT_NGRAM, "ngram_window": NGRAM_WINDOW},
             "page": Path(page).name, "latency_s": round(latency, 3), "model_load_s": round(load_s, 2),

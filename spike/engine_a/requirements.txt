@@ -11,3 +11,6 @@ easydict==1.13
 psutil==7.2.2
 matplotlib==3.10.8
 pymupdf==1.27.2.2
+# Added 2026-10-08: bf16 weights (6.5 GiB) OOM on the shared GPU (~7.4 GiB free); int8 decoder weights needed.
+bitsandbytes==0.50.2
+accelerate==1.15.0
