@@ -5,7 +5,9 @@ Per (engine, variant, sheet): s/page (answer pages, median), peak RSS / peak VRA
 and, ONLY if the sheet's transcriptions are OWNER_VERIFIED, the scorer's CER, WER, omissions, autocorrection
 candidates, label P/R, option letters and spurious digits. Otherwise the accuracy cells say PENDING_VERIFICATION.
 
-Usage: python3 spike/report_0b.py --run spike/runs/<id>_phase0b [--engine-a-ref spike/runs/<int8 run>]
+Usage: python3 spike/report_0b.py --out-dir <dir> --cell LABEL=RUN_DIR:ENGINE_DIR:FORMAT [--cell ...]
+  e.g. --cell b_v5m=spike/runs/X_phase0b:b_mobile:lines  (reads RUN_DIR/<variant>/<sheet>/ENGINE_DIR)
+       --cell a_int8_ref=spike/runs/Y_gundam_int8:engine_a:a  (Phase 0 layout RUN_DIR/<sheet>/engine_a, raw only)
 """
 
 from __future__ import annotations
@@ -19,7 +21,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SHEETS = ["sheet_001", "sheet_002"]
-ENGINES = {"b_mobile": "lines", "b_server": "lines", "c_trocr": "lines"}
 
 
 def page_stats(d: Path) -> dict:
@@ -44,20 +45,25 @@ def score(sheet: str, name: str, fmt: str, d: Path, out: Path) -> dict | None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--run", required=True)
-    ap.add_argument("--engine-a-ref", help="Phase 0 int8 run dir (sheet_*/engine_a), reference only: over D3 budget")
+    ap.add_argument("--out-dir", required=True)
+    ap.add_argument("--cell", action="append", required=True)
     args = ap.parse_args()
-    run = Path(args.run)
+    run = Path(args.out_dir)
+    run.mkdir(parents=True, exist_ok=True)
     rows = []
-    combos = [(e, v, s, run / v / s / e, f) for v in ["raw", "st010"] for s in SHEETS for e, f in ENGINES.items()]
-    if args.engine_a_ref:
-        combos += [("a_int8_ref", "raw", s, Path(args.engine_a_ref) / s / "engine_a", "a") for s in SHEETS]
-    for eng, var, sheet, d, fmt in combos:
-        if not d.is_dir():
-            continue
-        st = page_stats(d)
-        sc = score(sheet, eng, fmt, d, run / f"scores_{var}_{sheet}_{eng}.json")
-        rows.append({"engine": eng, "variant": var, "sheet": sheet, **st, "scores": sc})
+    for cell in args.cell:
+        label, rest = cell.split("=", 1)
+        run_dir, eng_dir, fmt = rest.rsplit(":", 2)
+        for var in ["raw", "st010"]:
+            for sheet in SHEETS:
+                d = Path(run_dir) / var / sheet / eng_dir
+                if not d.is_dir() and var == "raw":
+                    d = Path(run_dir) / sheet / eng_dir  # Phase 0 layout
+                if not d.is_dir():
+                    continue
+                st = page_stats(d)
+                sc = score(sheet, label, fmt, d, run / f"scores_{var}_{sheet}_{label}.json")
+                rows.append({"engine": label, "variant": var, "sheet": sheet, "source": str(d), **st, "scores": sc})
     (run / "phase0b_table.json").write_text(json.dumps(rows, indent=1))
 
     hdr = ("| engine | variant | sheet | CER | WER | omissions | autocorrect cand. | label P / R | options | spurious digits "
