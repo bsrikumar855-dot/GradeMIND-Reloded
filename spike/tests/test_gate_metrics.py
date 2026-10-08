@@ -55,3 +55,13 @@ def test_gate_cost_when_both_correct_but_apart() -> None:
     s = pair_stats(["X", "Y"], gt, proj, 0.10)
     assert s["lines_all_correct"] == 1 and s["gate_cost"] == 1.0
     assert pair_stats(["X", "Y"], gt, proj, 0.0)["gate_cost"] is None  # no line is all-correct at tau=0
+
+
+def test_line_quality_classification() -> None:
+    from line_quality import classify
+    gt = ["the endangered species list", "pandas live in china", "endemic species are local"]
+    rows = ["the endangered species list", "pandas live in china endemic species are local", "noihihe 89103 xq"]
+    c = classify(gt, rows)
+    assert c["merged_rows"] == 1 and c["spurious_rows"] == 1 and c["missed"] == 0
+    c2 = classify(gt, ["the endangered", "species list", "pandas live in china"])
+    assert c2["missed"] == 1 and c2["matched_gt_lines"] == 2
