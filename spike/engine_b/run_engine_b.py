@@ -21,6 +21,9 @@ def main() -> int:
     ap.add_argument("--out", required=True)
     ap.add_argument("--device", default="cpu", help="cpu (default: shared-GPU plan) or gpu:0 for comparison")
     ap.add_argument("--rec-model", default=None, help="override text_recognition_model_name")
+    ap.add_argument("--det-model", default=None,
+                    help="text_detection_model_name. Name it explicitly: PaddleOCR 3.7 silently falls back to "
+                         "PP-OCRv6_medium_det when only --rec-model is given")
     ap.add_argument("--det-max-side", type=int, default=1920,
                     help="downscale so the long side <= this for detection (default limit_type=min never "
                          "downscales; a 2520x3560 page needed a 46.5 GB CPU alloc)")
@@ -37,6 +40,8 @@ def main() -> int:
         kw["enable_mkldnn"] = False
     if args.rec_model:
         kw["text_recognition_model_name"] = args.rec_model
+    if args.det_model:
+        kw["text_detection_model_name"] = args.det_model
     t0 = time.perf_counter()
     ocr = PaddleOCR(**kw)
     load_s = time.perf_counter() - t0
