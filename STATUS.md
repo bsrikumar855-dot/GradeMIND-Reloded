@@ -1,6 +1,7 @@
 # STATUS
 
-Current phase: **Phase 0b: OCR strategy evaluation** (owner decisions in [docs/DECISIONS.md](docs/DECISIONS.md)). Phase 0 results:
+Current phase: **Phase 0b: STOP at gate** ([PHASE_0B_REPORT.md](PHASE_0B_REPORT.md)). Accuracy tables are PENDING_VERIFICATION until the owner verifies
+the transcriptions (`python3 spike/verify_ui/serve.py`), then `python3 spike/report_0b.py`. Owner decisions: [docs/DECISIONS.md](docs/DECISIONS.md). Phase 0 results:
 [PHASE_0_REPORT.md](PHASE_0_REPORT.md), [docs/OCR_SPIKE.md](docs/OCR_SPIKE.md).
 
 No application code exists yet (spec §23: no scaffolding before the OCR spike is approved). Everything below is **spike tooling** under
@@ -17,6 +18,10 @@ No application code exists yet (spec §23: no scaffolding before the OCR spike i
 - `spike/score.py` v2 (omissions, label P/R, option letters, spurious digits). Self-tested on sheet_001 drafts: identity gives perfect scores on all
   metrics, and injected faults are all detected (commit `1808074`).
 
+- `spike/stats.py` (Wilson, page bootstrap, NOT_DISTINGUISHABLE): unit-tested. `make test`: 25 passed, 4 skipped, exit 0 (commit `1411815`).
+- `spike/verify_ui/` transcription verifier: end-to-end self-test on a scratch copy (save lifecycle, whitelist, 400 on bad input). No automated test file.
+- Rule-12 resolved-config assertions: smoke-tested; wrong weight hash -> exit 1 for Engines A and C.
+
 ## Implemented but untested
 
 - `spike/engine_a/run_engine_a.py` modes `int8` and `offload` (exercised on real pages, with no automated tests).
@@ -30,3 +35,4 @@ No application code exists yet (spec §23: no scaffolding before the OCR spike i
 
 - Everything in [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT.md) §3–§20 (application, API, DB, UI, ScoreComputer, invariants I1–I12).
 - Reportable OCR metrics (need owner-verified transcriptions).
+- CI workflow push (written, on local branch `ci-pending`; needs `gh auth refresh -h github.com -s workflow`).
