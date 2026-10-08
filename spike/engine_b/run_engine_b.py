@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import resource
 import sys
 import time
 from pathlib import Path
@@ -55,6 +56,7 @@ def main() -> int:
             "config": {k: v for k, v in kw.items()}, "model_settings": res.get("model_settings"),
             "page": Path(page).name, "latency_s": round(latency, 3), "model_load_s": round(load_s, 2),
             "n_lines": len(lines), "lines": lines,
+            "peak_rss_mib_process": round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024),
         }
         (out_dir / f"{Path(page).stem}.json").write_text(json.dumps(record, ensure_ascii=False, indent=1))
         print(f"{Path(page).name}: {latency:.2f}s lines={len(lines)}", flush=True)
