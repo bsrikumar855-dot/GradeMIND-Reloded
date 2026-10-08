@@ -26,6 +26,9 @@ from transformers import AutoModel, AutoTokenizer, BitsAndBytesConfig, LogitsPro
 
 from degenerate import degenerate_checks  # noqa: F401  (re-exported for summarize.py / vLLM client)
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from resolved import require_equal, sha256_file  # noqa: E402
+
 MODES = {
     "gundam": dict(base_size=1024, image_size=640, crop_mode=True),
     "base": dict(base_size=1024, image_size=1024, crop_mode=False),
@@ -93,6 +96,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
     ap.add_argument("--revision", required=True)
+    ap.add_argument("--weights-sha256", required=True, help="rule 12: expected sha256 of the safetensors file loaded")
     ap.add_argument("--pages", nargs="+", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--mode", choices=MODES, default="gundam")
@@ -139,6 +143,15 @@ def main() -> int:
     else:
         model = AutoModel.from_pretrained(args.model, **load_kw).eval().cuda()
     load_s = time.perf_counter() - t0
+    wfile = Path(args.model) / "model-00001-of-000001.safetensors"
+    n_int8 = sum(1 for m in model.modules() if type(m).__name__ == "Linear8bitLt")
+    on_cpu = sorted({str(p.device) for p in model.parameters()})
+    resolved = {"weights_file": wfile.name, "weights_sha256": sha256_file(wfile), "linear8bit_modules": n_int8,
+                "param_devices": on_cpu, "class": type(model).__name__}
+    require_equal("weights sha256", args.weights_sha256, resolved["weights_sha256"])
+    require_equal("int8 applied", args.quant == "int8", n_int8 > 0)
+    require_equal("cpu offload applied", args.quant == "offload", "cpu" in on_cpu)
+    print("RESOLVED", json.dumps(resolved), flush=True)
 
     recorder_box: dict = {}
     orig_generate = model.generate
@@ -166,7 +179,7 @@ def main() -> int:
         regions = parse_regions(raw)
         record = {
             "engine": "unlimited-ocr", "model_revision": args.revision, "path": "transformers",
-            "mode": args.mode, "mode_params": MODES[args.mode], "prompt": PROMPT, "quant": args.quant,
+            "mode": args.mode, "mode_params": MODES[args.mode], "prompt": PROMPT, "quant": args.quant, "resolved": resolved,
             "offload_layers": args.offload_layers if args.quant == "offload" else None,
             "decoding": {"temperature": 0.0, "max_length": args.max_length,
                          "no_repeat_ngram_size": NO_REPEAT_NGRAM, "ngram_window": NGRAM_WINDOW},

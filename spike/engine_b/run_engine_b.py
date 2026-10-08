@@ -12,7 +12,10 @@ from pathlib import Path
 
 import paddle
 import paddleocr
-from paddleocr import PaddleOCR
+from paddleocr import PaddleOCR, TextDetection
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from resolved import dir_fingerprint, require_equal  # noqa: E402
 
 
 def main() -> int:
@@ -20,10 +23,11 @@ def main() -> int:
     ap.add_argument("--pages", nargs="+", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--device", default="cpu", help="cpu (default: shared-GPU plan) or gpu:0 for comparison")
-    ap.add_argument("--rec-model", default=None, help="override text_recognition_model_name")
-    ap.add_argument("--det-model", default=None,
-                    help="text_detection_model_name. Name it explicitly: PaddleOCR 3.7 silently falls back to "
-                         "PP-OCRv6_medium_det when only --rec-model is given")
+    ap.add_argument("--rec-model", required=True, help="text_recognition_model_name (rule 12: always explicit)")
+    ap.add_argument("--det-model", required=True,
+                    help="text_detection_model_name (rule 12: PaddleOCR 3.7 silently fell back to PP-OCRv6_medium_det "
+                         "when only the recogniser was named)")
+    ap.add_argument("--det-only", action="store_true", help="run detection only (timing for Engine C end-to-end)")
     ap.add_argument("--det-max-side", type=int, default=1920,
                     help="downscale so the long side <= this for detection (default limit_type=min never "
                          "downscales; a 2520x3560 page needed a 46.5 GB CPU alloc)")
@@ -38,19 +42,47 @@ def main() -> int:
     if args.device == "cpu":
         # Paddle 3.4 oneDNN backend fails under the PIR executor (ConvertPirAttribute2RuntimeAttribute).
         kw["enable_mkldnn"] = False
-    if args.rec_model:
-        kw["text_recognition_model_name"] = args.rec_model
-    if args.det_model:
-        kw["text_detection_model_name"] = args.det_model
+    kw["text_recognition_model_name"] = args.rec_model
+    kw["text_detection_model_name"] = args.det_model
     t0 = time.perf_counter()
-    ocr = PaddleOCR(**kw)
+    if args.det_only:
+        det_kw = {"model_name": args.det_model, "device": args.device, "limit_type": "max",
+                  "limit_side_len": args.det_max_side}
+        if args.device == "cpu":
+            det_kw["enable_mkldnn"] = False
+        ocr = TextDetection(**det_kw)
+        inner_det = ocr.paddlex_predictor
+        resolved = {"det": {"name": getattr(inner_det, "model_name", None)}}
+        det_dir = getattr(inner_det, "model_dir", None)
+    else:
+        ocr = PaddleOCR(**kw)
+        inner = getattr(ocr.paddlex_pipeline, "_pipeline", ocr.paddlex_pipeline)
+        resolved = {"det": {"name": inner.text_det_model.model_name, "dir": str(inner.text_det_model.model_dir)},
+                    "rec": {"name": inner.text_rec_model.model_name, "dir": str(inner.text_rec_model.model_dir)}}
+        det_dir = inner.text_det_model.model_dir
+        resolved["rec"]["sha256"] = dir_fingerprint(Path(inner.text_rec_model.model_dir))
+        require_equal("rec model", args.rec_model, resolved["rec"]["name"])
+    if det_dir is not None:
+        resolved["det"]["dir"] = str(det_dir)
+        resolved["det"]["sha256"] = dir_fingerprint(Path(det_dir))
+    require_equal("det model", args.det_model, resolved["det"]["name"])
     load_s = time.perf_counter() - t0
+    print("RESOLVED", json.dumps({k: {kk: vv for kk, vv in v.items() if kk != "sha256"} for k, v in resolved.items()}), flush=True)
 
     for page in args.pages:
         t = time.perf_counter()
         results = ocr.predict(page)
         latency = time.perf_counter() - t
         res = results[0].json["res"]
+        if args.det_only:
+            lines = [{"text": None, "score": round(float(sc), 4), "poly": [[int(x), int(y)] for x, y in poly]}
+                     for poly, sc in zip(res["dt_polys"], res["dt_scores"])]
+            record = {"engine": "paddle-det-only", "resolved": resolved, "page": Path(page).name,
+                      "latency_s": round(latency, 3), "model_load_s": round(load_s, 2), "n_lines": len(lines), "lines": lines,
+                      "peak_rss_mib_process": round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024)}
+            (out_dir / f"{Path(page).stem}.json").write_text(json.dumps(record, ensure_ascii=False, indent=1))
+            print(f"{Path(page).name}: {latency:.2f}s det_lines={len(lines)}", flush=True)
+            continue
         lines = [
             {"text": txt, "score": round(float(sc), 4), "poly": [[int(x), int(y)] for x, y in poly],
              "box": [int(v) for v in box]}
@@ -58,7 +90,7 @@ def main() -> int:
         ]
         record = {
             "engine": "paddleocr", "paddleocr_version": paddleocr.__version__, "paddle_version": paddle.__version__,
-            "config": {k: v for k, v in kw.items()}, "model_settings": res.get("model_settings"),
+            "config": {k: v for k, v in kw.items()}, "resolved": resolved, "model_settings": res.get("model_settings"),
             "page": Path(page).name, "latency_s": round(latency, 3), "model_load_s": round(load_s, 2),
             "n_lines": len(lines), "lines": lines,
             "peak_rss_mib_process": round(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024),

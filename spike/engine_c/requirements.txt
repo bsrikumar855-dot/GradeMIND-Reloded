@@ -4,3 +4,4 @@ torch==2.10.0
 torchvision==0.25.0
 transformers==4.57.1
 Pillow==12.1.1
+numpy==2.5.3  # direct use since D9 (crop gating); previously transitive via torch
