@@ -1,0 +1,53 @@
+# Dependencies
+
+Spec §2 rule 6: every dependency is pinned, with a one-line justification. Application dependencies (Phase 1+) will be
+added here when they are introduced. Below are the **Phase 0/0b spike** environments (`spike/*/requirements.txt`).
+Each engine has its own venv, so dependency stacks never mix (mirroring the per-engine containers planned in ARCHITECTURE §2).
+
+## Engine A: Unlimited-OCR (`spike/engine_a/requirements.txt`). Optional cross-check, disabled by default (D2)
+
+| Package | Pin | Why |
+|---|---|---|
+| torch / torchvision | 2.10.0 / 0.25.0 (cu129) | Model card's tested versions; the cu129 build includes sm_120 (Blackwell) kernels (verified) |
+| transformers | 4.57.1 | Model card's tested version (the `trust_remote_code` model needs it) |
+| bitsandbytes | 0.50.2 | int8 weights: bf16 does not fit the shared GPU (OCR_SPIKE A1) |
+| accelerate | 1.15.0 | device_map for int8 and the bf16 expert-offload reference |
+| einops 0.8.2, addict 2.4.0, easydict 1.13, Pillow 12.1.1, psutil 7.2.2, matplotlib 3.10.8, pymupdf 1.27.2.2 | as listed | Imported by the model's remote code (model card list) |
+
+Model weights: `baidu/Unlimited-OCR` rev `07dea832e22aefee32ad281d4b80551282e1c168` (MIT).
+vLLM image (D2: kept, not used by default): `vllm/vllm-openai@sha256:542961a42d9183813819a23ef3a8b50bfb4f5ef7b0fb4f8e4f56edd8445efb18`.
+
+## Engine B: PaddleOCR (`spike/engine_b/requirements.txt`)
+
+| Package | Pin | Why |
+|---|---|---|
+| paddlepaddle-gpu | 3.4.0 (cu129 index) | The PyPI build stops at 2.6.2, which predates Blackwell. 3.4.0 cu129 passes `paddle.utils.run_check()` on the RTX 5070 |
+| paddleocr | 3.7.0 | Current release. PP-OCRv5 det/rec. Line boxes and per-line scores |
+| opencv (via paddlex) | 4.10.0 | Already present. Used by `spike/preprocess/show_through.py` (no extra dependency) |
+
+Models (downloaded by PaddleX on first use; to be pre-baked and pinned in Phase 1): `PP-OCRv5_server_det`, `en_PP-OCRv5_mobile_rec`,
+`PP-OCRv5_server_rec`.
+
+## Engine C: line-level handwriting reader (`spike/engine_c/requirements.txt`)
+
+| Package | Pin | Why |
+|---|---|---|
+| torch / torchvision | 2.10.0 / 0.25.0 (cu129) | Same verified Blackwell build as Engine A (shared uv cache) |
+| transformers | 4.57.1 | `VisionEncoderDecoderModel` / `TrOCRProcessor` |
+| Pillow | 12.1.1 | Line cropping |
+
+**Model choice: `microsoft/trocr-large-handwritten`, rev `e68501f437cd2587ae5d68ee457964cac824ddee`** (owner-suggested candidate, D1b).
+- **For:** the most widely used open line-level handwriting recogniser with a ready Hub checkpoint. It is fine-tuned on IAM, and the TrOCR paper reports an IAM CER of 2.89.
+  It runs on the already-verified torch/transformers stack. Its weights (about 2.2 GB, fp32) fit the ≤ 6 GB budget (D3). Inference is line-by-line, which matches
+  the "line crops limit the page-level language prior" hypothesis.
+- **Against, measured rather than assumed:** the decoder is autoregressive and initialised from a text language model, so it can
+  still normalise spelling within a line. PP-OCRv5's recogniser (CTC, no autoregressive LM) is the natural contrast.
+- **Alternatives considered:** HTR-VT (ViT + CTC, SOTA-class IAM results, code on GitHub) and HTR-JAND (reported IAM CER 1.23%).
+  Neither publishes a ready Hub checkpoint for drop-in evaluation. They are candidates for a follow-up if TrOCR autocorrects.
+  Sources: [HTR-VT](https://arxiv.org/pdf/2409.08573), [HF papers search](https://huggingface.co/papers?q=handwritten+text+recognition).
+- **Note:** the checkpoint ships only `pytorch_model.bin` (pickle). transformers 4.57.1 loads it with `torch.load(weights_only=True)`. This is
+  acceptable for a pinned first-party (Microsoft) checkpoint; production should convert it to safetensors once and pin the hash.
+
+## Host tools used by the spike
+
+`pdfimages` (poppler-utils, system) for lossless page extraction; `rsync` for run code snapshots (process rule 9); `/usr/share/dict/american-english` as the word list for autocorrect candidates.
