@@ -9,7 +9,7 @@ Spec: [MASTER_PROMPT.md](MASTER_PROMPT.md), Sections 0, 21 and 23.
 |---|---|---|
 | GPU available | NVIDIA GeForce RTX 5070, 12227 MiB VRAM, compute capability 12.0 (Blackwell), driver 595.84 | detected: `nvidia-smi` |
 | OS / runtime | Ubuntu 24.04.4 LTS, kernel 7.0.0-34, 24 CPU threads, 31 GiB RAM, ~354 GB free disk | detected |
-| Sample answer sheets | 1 booklet, 12 pages (cover + 11 handwritten), at `data/samples/sheet_001/` (gitignored) | owner, 2026-10-08 |
+| Sample answer sheets | 2 booklets, 27 pages, gitignored: `sheet_001` (12 pages, Adobe Scan) and `sheet_002` (15 pages, WhatsApp scan, different writer) | owner, 2026-10-08 |
 | Sample marking schemes | **missing**; there is also **no question paper** for sheet_001 | owner |
 | Primary subjects (P0) | Not stated. sheet_001 is a university CIA in Environmental Science and Sustainability (B.Tech, Anna University-affiliated), **not CBSE** | inferred from the sheet; owner to confirm |
 | Evaluation LLM (default) | **Local Qwen** (`~/models/Qwen3-8B`) | owner, 2026-10-08 |
@@ -59,6 +59,16 @@ $ nvidia-smi --query-gpu=compute_cap --format=csv,noheader
 - Answer labelling is irregular: `11.] a.]`, `13.]`, `19.] A.]`, parts headed "Part-A … Part D", and stray margin marks (`1'`). Part A answers include MCQ option letters (`c] plants`, `a) circular`): these are critical tokens.
 - Numerals are rare: question numbers and two percentages (`90.%`, `9?.%`). This sheet barely exercises numeral, sign and unit accuracy, so a numerical-subject sheet is needed for that.
 
+## 3b-2. Sample sheet_002 characteristics (observed, not measured)
+
+- Same course and test (Environmental Science CIA-I, "EVEN" set), a **different writer**.
+- Source: WhatsApp scan PDF (`mlkit` producer). Pages are near-binarised, high-contrast JPEGs at 2148–2942 × 2784–3860 px (~200–280 ppi).
+  This is a very different capture pipeline from sheet_001, which is good for testing robustness.
+- The writer's letterforms are hard to read: `t` has a leading stroke (reads as `ct` or `d`), and `i` looks like `P` or `?`. Expect high CER.
+- The Part A answers include option letters (`a)`, `b)`) and a possible unit (`dB` vs `del`, Q10): critical tokens.
+- Pages 14–15 are slightly rotated, and page 12 shows the facing page's margin text at its left edge (it must not be read as content).
+- Draft transcriptions: pages 2 and 12 (`DRAFT_UNVERIFIED`).
+
 ## 3c. Security finding: Unlimited-OCR remote code `eval()`s model output
 
 `modeling_unlimitedocr.py` (rev `07dea832e22aefee32ad281d4b80551282e1c168`) calls Python `eval()` on
@@ -93,8 +103,8 @@ our parser must never use `eval`. I'll add a regression test in Phase 2.
 
 ## 6. Open questions for the owner
 
-1. Verify the 5 draft transcriptions in `data/transcriptions/sheet_001/` (status `DRAFT_UNVERIFIED`; see `docs/TRANSCRIPTION_GUIDE.md`).
-2. More sheets: different writers, plus at least one numerical subject (Maths or Physics). One writer is too narrow a sample to approve an OCR strategy.
+1. Verify the 7 draft transcriptions in `data/transcriptions/sheet_00{1,2}/` (status `DRAFT_UNVERIFIED`; see `docs/TRANSCRIPTION_GUIDE.md`).
+2. More sheets: two writers so far, both the same course. Still needed: at least one numerical subject (Maths or Physics), since neither sheet exercises numerals, signs or units.
 3. The question paper and marking scheme for sheet_001. Not needed for the OCR spike; needed from Phase 2 on.
 4. Target market: the spec says CBSE, but the sample is university CIA. Which comes first?
 5. ~~Docker group membership~~: resolved.
