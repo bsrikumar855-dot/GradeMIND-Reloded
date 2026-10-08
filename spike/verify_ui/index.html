@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transcription Verifier</title>
+<style>
+  :root { --bg:#f7f7f5; --fg:#1d1d1b; --muted:#6b6b66; --line:#d9d9d4; --ok:#1f7a3a; --okbg:#e6f3ea; --warn:#8a5a00; --warnbg:#fdf3dc; --acc:#1f4e9a; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; background:var(--bg); color:var(--fg); }
+  header { position:sticky; top:0; z-index:5; background:#fff; border-bottom:1px solid var(--line); padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  header h1 { font-size:16px; margin:0 8px 0 0; }
+  .banner { background:var(--warnbg); color:var(--warn); border:1px solid #ecd9a8; padding:8px 12px; border-radius:6px; font-weight:600; }
+  main { display:grid; grid-template-columns: 230px 1fr; gap:16px; padding:16px; max-width:1500px; margin:0 auto; }
+  nav { background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px; align-self:start; position:sticky; top:72px; }
+  nav button { display:block; width:100%; text-align:left; margin:2px 0; padding:6px 8px; border:1px solid transparent; background:none; border-radius:6px; cursor:pointer; font:inherit; }
+  nav button.active { border-color:var(--acc); background:#eef3fb; }
+  nav .done { color:var(--ok); }
+  nav h3 { font-size:13px; margin:10px 0 4px; color:var(--muted); }
+  .notes { font-size:12px; color:var(--muted); margin-top:10px; border-top:1px solid var(--line); padding-top:8px; }
+  .row { background:#fff; border:1px solid var(--line); border-radius:8px; padding:10px; margin-bottom:10px; }
+  .row.confirmed { border-color:#9fd0ae; background:var(--okbg); }
+  .row.focus { outline:2px solid var(--acc); }
+  canvas { display:block; max-width:100%; border:1px solid var(--line); border-radius:4px; background:#fff; }
+  .ctl { display:flex; gap:8px; align-items:center; margin-top:8px; }
+  .ctl input[type=text] { flex:1; font:17px/1.4 ui-monospace, "DejaVu Sans Mono", monospace; padding:8px; border:1px solid #b9b9b3; border-radius:6px; }
+  .ctl button { font:inherit; padding:6px 10px; border:1px solid #b9b9b3; border-radius:6px; background:#fff; cursor:pointer; }
+  .meta { font-size:12px; color:var(--muted); }
+  .status { margin-left:auto; font-size:13px; }
+  .pill { padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); }
+  .pill.ok { color:var(--ok); border-color:#9fd0ae; background:var(--okbg); }
+  kbd { font:12px ui-monospace, monospace; border:1px solid #c9c9c3; border-bottom-width:2px; border-radius:4px; padding:0 4px; background:#fff; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } nav { position:static; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Transcription Verifier</h1>
+  <div class="banner">Type exactly what the student wrote. Keep misspellings. Do not correct.</div>
+  <label class="meta">Verified by <input id="who" type="text" size="16" aria-label="Verified by"></label>
+  <span class="meta"><kbd>Enter</kbd> confirm · <kbd>Tab</kbd> next · <kbd>Ctrl</kbd>+<kbd>S</kbd> save · <kbd>?</kbd> inserts [?]</span>
+  <span class="status" id="status" role="status" aria-live="polite"></span>
+</header>
+<main>
+  <nav id="nav" aria-label="Pages"></nav>
+  <section id="page" aria-label="Lines"></section>
+</main>
+<script>
+"use strict";
+let DATA = null, cur = null, dirty = false;
+const $ = (s, el = document) => el.querySelector(s);
+const who = $("#who");
+try { who.value = localStorage.getItem("verifier_who") || ""; } catch (e) {}
+who.addEventListener("change", () => { try { localStorage.setItem("verifier_who", who.value); } catch (e) {} });
+
+async function load() {
+  DATA = await (await fetch("/api/pages")).json();
+  renderNav();
+  if (!cur) { const s = DATA.sheets[0]; cur = { sheet: s.sheet, page: s.pages[0].page }; }
+  renderPage();
+}
+
+function pageObj() {
+  const s = DATA.sheets.find(x => x.sheet === cur.sheet);
+  return [s, s.pages.find(p => p.page === cur.page)];
+}
+
+function renderNav() {
+  const nav = $("#nav"); nav.innerHTML = "";
+  for (const s of DATA.sheets) {
+    const h = document.createElement("h3");
+    h.innerHTML = `${s.sheet} <span class="pill ${s.status === "OWNER_VERIFIED" ? "ok" : ""}">${s.status}</span>`;
+    nav.appendChild(h);
+    for (const p of s.pages) {
+      const n = p.lines.length, c = p.lines.filter(l => l.confirmed).length;
+      const b = document.createElement("button");
+      b.textContent = `${p.page}  ${c}/${n}`;
+      if (c === n && n) b.classList.add("done");
+      if (cur && cur.sheet === s.sheet && cur.page === p.page) b.classList.add("active");
+      b.onclick = () => { if (dirty && !confirm("Unsaved changes on this page. Leave anyway?")) return; cur = { sheet: s.sheet, page: p.page }; dirty = false; renderNav(); renderPage(); };
+      nav.appendChild(b);
+    }
+    if (s.notes.length) {
+      const d = document.createElement("div"); d.className = "notes";
+      d.innerHTML = "<b>Draft notes (uncertain spots)</b><br>" + s.notes.map(x => "• " + x.replace(/</g, "&lt;")).join("<br>");
+      nav.appendChild(d);
+    }
+  }
+}
+
+function drawCrop(canvas, img, box, full) {
+  const pad = 30, W = img.naturalWidth, H = img.naturalHeight;
+  const ctx = canvas.getContext("2d");
+  if (!box || full) {
+    const scale = 900 / W; canvas.width = 900; canvas.height = Math.round(H * scale);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    if (box) { ctx.strokeStyle = "#d22"; ctx.lineWidth = 3; ctx.strokeRect(box[0] * scale - 4, box[1] * scale - 4, (box[2] - box[0]) * scale + 8, (box[3] - box[1]) * scale + 8); }
+    return;
+  }
+  const x0 = Math.max(0, box[0] - pad), y0 = Math.max(0, box[1] - pad), x1 = Math.min(W, box[2] + pad), y1 = Math.min(H, box[3] + pad);
+  const scale = Math.min(1100 / (x1 - x0), 2.0);
+  canvas.width = Math.round((x1 - x0) * scale); canvas.height = Math.round((y1 - y0) * scale);
+  ctx.drawImage(img, x0, y0, x1 - x0, y1 - y0, 0, 0, canvas.width, canvas.height);
+}
+
+function renderPage() {
+  const [s, p] = pageObj(); const sec = $("#page"); sec.innerHTML = "";
+  const top = document.createElement("div"); top.className = "row";
+  top.innerHTML = `<b>${s.sheet} / ${p.page}</b> <span class="meta">— crops come from automatic line matching and may be wrong; use “Full page” to check context. Lines: ${p.lines.length}</span>
+    <div class="ctl"><button id="save" tabindex="-1">Save page (Ctrl+S)</button><button id="add0" tabindex="-1">+ line at top</button></div>`;
+  sec.appendChild(top);
+  $("#save", top).onclick = save;
+  $("#add0", top).onclick = () => { p.lines.unshift({ text: "", confirmed: false }); p.boxes.unshift({ box: null }); dirty = true; renderPage(); };
+  const img = new Image(); img.src = `/img/${s.sheet}/${p.page}.jpg`;
+  img.onload = () => {
+    p.lines.forEach((ln, i) => {
+      const row = document.createElement("div"); row.className = "row" + (ln.confirmed ? " confirmed" : "");
+      const box = (p.boxes[i] || {}).box || null;
+      const cv = document.createElement("canvas"); cv.setAttribute("aria-label", `Image of line ${i + 1}`);
+      row.appendChild(cv); drawCrop(cv, img, box, false);
+      const ctl = document.createElement("div"); ctl.className = "ctl";
+      ctl.innerHTML = `<span class="meta">${i + 1}</span><input type="text" aria-label="Line ${i + 1} text" spellcheck="false" autocomplete="off">
+        <button data-a="ok" tabindex="-1">${ln.confirmed ? "✓ Confirmed" : "Confirm (Enter)"}</button>
+        <button data-a="full" tabindex="-1">Full page</button><button data-a="add" tabindex="-1">+ below</button><button data-a="del" tabindex="-1">Delete</button>
+        <span class="meta">${box ? "match " + p.boxes[i].match : "no confident box: full page shown"}</span>`;
+      row.appendChild(ctl);
+      const inp = $("input", ctl); inp.value = ln.text;
+      inp.addEventListener("focus", () => row.classList.add("focus"));
+      inp.addEventListener("blur", () => row.classList.remove("focus"));
+      inp.addEventListener("input", () => { ln.text = inp.value; if (ln.confirmed) { ln.confirmed = false; row.classList.remove("confirmed"); $("[data-a=ok]", ctl).textContent = "Confirm (Enter)"; } dirty = true; });
+      inp.addEventListener("keydown", e => {
+        if (e.key === "?" ) { e.preventDefault(); const a = inp.selectionStart, b = inp.selectionEnd; inp.setRangeText("[?]", a, b, "end"); inp.dispatchEvent(new Event("input")); }
+        else if (e.key === "Enter") { e.preventDefault(); confirmLine(i, row, ctl); focusLine(i + 1); }
+      });
+      let full = false;
+      ctl.addEventListener("click", e => {
+        const a = e.target.dataset.a; if (!a) return;
+        if (a === "ok") confirmLine(i, row, ctl);
+        if (a === "full") { full = !full; drawCrop(cv, img, box, full); }
+        if (a === "add") { p.lines.splice(i + 1, 0, { text: "", confirmed: false }); p.boxes.splice(i + 1, 0, { box: null }); dirty = true; renderPage(); }
+        if (a === "del" && confirm("Delete this line?")) { p.lines.splice(i, 1); p.boxes.splice(i, 1); dirty = true; renderPage(); }
+      });
+      sec.appendChild(row);
+    });
+    focusLine(p.lines.findIndex(l => !l.confirmed));
+  };
+}
+
+function confirmLine(i, row, ctl) {
+  const [, p] = pageObj(); p.lines[i].confirmed = true; row.classList.add("confirmed");
+  $("[data-a=ok]", ctl).textContent = "✓ Confirmed"; dirty = true; renderNav();
+}
+function focusLine(i) { const ins = document.querySelectorAll("#page input[type=text]"); if (i >= 0 && ins[i]) { ins[i].focus(); ins[i].scrollIntoView({ block: "center" }); } }
+
+async function save() {
+  const [s, p] = pageObj();
+  if (!who.value.trim()) { alert("Enter your name in 'Verified by' first."); who.focus(); return; }
+  const r = await fetch("/api/save", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sheet: s.sheet, page: p.page, verified_by: who.value.trim(), lines: p.lines }) });
+  const res = await r.json();
+  if (!res.ok) { $("#status").textContent = "Save failed: " + res.error; return; }
+  dirty = false; s.status = res.manifest_status;
+  const t = res.diff_totals;
+  $("#status").innerHTML = `Saved ${s.sheet}/${p.page}. Page ${res.page_all_confirmed ? "fully confirmed" : "partly confirmed"} · ${s.sheet}: <b>${res.manifest_status}</b> · draft lines changed so far: ${t.changed + t.deleted}/${t.draft_lines}`;
+  renderNav();
+}
+document.addEventListener("keydown", e => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); save(); } });
+window.addEventListener("beforeunload", e => { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+load();
+</script>
+</body>
+</html>
