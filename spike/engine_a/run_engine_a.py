@@ -91,6 +91,25 @@ def degenerate_checks(raw: str, n_tokens: int, regions: list[dict], max_length: 
         longest = max(longest, cur)
     if longest >= 12:
         flags.append(f"COUNTING_SEQUENCE_x{longest}")
+    content = re.sub(r"<\|det\|>.*?<\|/det\|>|<\|ref\|>.*?<\|/ref\|>", " ", raw, flags=re.DOTALL)
+    content = re.sub(r"<[^>]*>", " ", content)
+    words = re.findall(r"[A-Za-z]+", content)
+    longest = cur = 1
+    for a, b in zip(words, words[1:]):
+        cur = cur + 1 if a.lower() == b.lower() else 1
+        longest = max(longest, cur)
+    if longest >= 5:
+        flags.append(f"WORD_REPEAT_x{longest}")
+    region_texts = [re.sub(r"<[^>]*>", " ", r["text"]).strip() for r in regions]
+    counts = {t: region_texts.count(t) for t in set(region_texts) if t}
+    if counts and max(counts.values()) >= 3:
+        flags.append(f"REPEATED_REGION_TEXT_x{max(counts.values())}")
+    cjk = len(re.findall(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]", content))
+    if cjk:
+        flags.append(f"UNEXPECTED_SCRIPT_CJK_x{cjk}")
+    empty_cells = len(re.findall(r"<td[^>]*>\s*</td>", raw))
+    if empty_cells >= 20:
+        flags.append(f"EMPTY_CELL_SPAM_x{empty_cells}")
     lines = [ln.strip() for ln in raw.splitlines() if ln.strip()]
     if lines:
         most = max(lines.count(x) for x in set(lines))
