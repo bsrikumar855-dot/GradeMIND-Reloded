@@ -1,0 +1,33 @@
+{
+ "_label": "SYNTHETIC",
+ "_note": "Hand-constructed; NOT a real page. Rule still reported as 'no real-page fixture yet'.",
+ "decoding": {
+  "max_length": 4096
+ },
+ "raw": "<|det|>text [0, 0, 999, 100]<|/det|><|det|>text [0, 100, 999, 200]<|/det|>",
+ "generated_tokens": 30,
+ "regions": [
+  {
+   "text": "",
+   "bbox_raw": [
+    [
+     0,
+     0,
+     999,
+     100
+    ]
+   ]
+  },
+  {
+   "text": "",
+   "bbox_raw": [
+    [
+     0,
+     100,
+     999,
+     200
+    ]
+   ]
+  }
+ ]
+}

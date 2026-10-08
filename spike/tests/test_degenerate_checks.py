@@ -58,6 +58,17 @@ def test_no_flags_on_reviewed_clean_pages() -> None:
     assert not flagged, f"false positives on clean pages: {flagged}"
 
 
+SYN = Path(__file__).parent / "fixtures_synthetic"
+
+
+@pytest.mark.parametrize("rule", NO_REAL_FIXTURE)
+def test_rule_fires_on_synthetic_fixture(rule: str) -> None:
+    """SYNTHETIC fixtures (committed): prove the rule fires; they do NOT count as real-page coverage."""
+    rec = json.loads((SYN / f"SYNTHETIC_{rule.strip('_')}.json").read_text())
+    assert rec["_label"] == "SYNTHETIC"
+    assert any(f.startswith(rule) for f in flags_for(rec)), f"{rule} did not fire: {flags_for(rec)}"
+
+
 @pytest.mark.parametrize("rule", NO_REAL_FIXTURE)
 def test_rules_without_real_fixture_are_reported(rule: str) -> None:
-    pytest.skip(f"{rule}: no real-page fixture yet (process rule 10 gap)")
+    pytest.skip(f"{rule}: no real-page fixture yet (process rule 10 gap; SYNTHETIC fixture only)")

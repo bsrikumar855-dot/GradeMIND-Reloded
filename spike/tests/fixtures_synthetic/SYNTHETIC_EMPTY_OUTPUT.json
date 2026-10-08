@@ -1,0 +1,10 @@
+{
+ "_label": "SYNTHETIC",
+ "_note": "Hand-constructed; NOT a real page. Rule still reported as 'no real-page fixture yet'.",
+ "decoding": {
+  "max_length": 4096
+ },
+ "raw": "   ",
+ "generated_tokens": 1,
+ "regions": []
+}
