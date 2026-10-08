@@ -1,0 +1,13 @@
+# Engine A (Unlimited-OCR) spike env: transformers path, dev/spike only (spec §5.1).
+# Pins copied from the baidu/Unlimited-OCR model card ("tested on python 3.12.3 + CUDA12.9").
+--extra-index-url https://download.pytorch.org/whl/cu129
+torch==2.10.0
+torchvision==0.25.0
+transformers==4.57.1
+Pillow==12.1.1
+einops==0.8.2
+addict==2.4.0
+easydict==1.13
+psutil==7.2.2
+matplotlib==3.10.8
+pymupdf==1.27.2.2

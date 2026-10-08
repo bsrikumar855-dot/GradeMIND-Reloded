@@ -1,0 +1,4 @@
+# Engine B (PaddleOCR) spike env. GPU wheel from Paddle's own index (PyPI paddlepaddle-gpu stops at 2.6.2, pre-Blackwell).
+--extra-index-url https://www.paddlepaddle.org.cn/packages/stable/cu129/
+paddlepaddle-gpu==3.4.0
+paddleocr==3.7.0
