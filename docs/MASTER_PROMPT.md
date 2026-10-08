@@ -78,6 +78,7 @@ Re-running a stored evaluation from the same inputs and versions must produce id
 10. **The degenerate-output detector is a backstop, not a gate. Cross-engine disagreement is the gate.** Every new detector rule needs a regression fixture from a real page plus a clean-page false-positive check. *(Owner, 2026-10-08.)*
 11. **Draft transcriptions produced by the agent are NOT ground truth, even after edits, until `status = OWNER_VERIFIED`.** *(Owner, 2026-10-08.)*
 12. **Resolved config, not requested config.** Every engine run logs the model names, versions and weight hashes the library *actually loaded* at runtime, read back from the instantiated pipeline, not from our arguments. If resolved ≠ requested, the run fails. The future OCR service enforces this as a startup assertion and exposes it in `/health/ocr`. *(Owner, 2026-10-08, after PaddleOCR 3.7 silently substituted `PP-OCRv6_medium_det`.)*
+13. **Test results.** Every test and run command uses `set -o pipefail`, or no pipes at all. `make test` runs the suite and prints its exit code. Commit messages may state test results **only** from `make test` output in the same session. A GitHub Actions CI workflow runs `make test` on every push, and **CI status is the source of truth, not commit messages.** *(Owner, 2026-10-08, after commit 8275d4a misreported a test result.)*
 
 ---
 

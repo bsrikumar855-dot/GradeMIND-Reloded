@@ -25,3 +25,13 @@ Append-only. Each entry is quoted or summarised from the owner, with its date. S
 | D10 | **Engine A base-mode int8** on all pages (raw + best variant), sequentially after the others. Per-page peak VRAM; `OVER_BUDGET` if > 6 GB, but the engine is kept in the test. | Needed to decide D2. |
 | D11 | **Gate metrics are the core deliverable:** line-level, vs verified GT, per engine pair and the full set, at τ ∈ {0, 0.05, 0.10}: P(line wrong \| engines agree), gate recall, gate cost, oracle CER vs best single engine, shared autocorrections. | The recommendation is based on these plus the D8 selection rule. |
 | D12 | **Proxy caveat:** the out-of-label digit count is labelled `PROXY_NON_NUMERICAL_SHEETS_ONLY` and becomes invalid once a Maths/Physics sheet arrives. | |
+
+## 2026-10-08: Phase 0b resume instructions
+
+| # | Decision | Consequence |
+|---|---|---|
+| D13 | Transcription verifier UI first (local only); `verification_diff.json` measures the agent's draft error rate. | `spike/verify_ui/` |
+| R13 | **Rule 13: test results** (pipefail, `make test`, CI is the source of truth). | `Makefile`, `.github/workflows/ci.yml` |
+| D14 | **Privacy history audit** before any data commit; if unredacted data was ever pushed, STOP and report (no history rewrite by the agent). | |
+| D15 | **Visual redaction review** of all 27 pages with a contact sheet. Redacted copies go to a separate committed path; originals stay local and runs keep reading them. Only redacted page images and text/JSON outputs are committed (LFS); preprocessing-variant images are not committed (reproducible). | |
+| D16 | **Report statistics:** n and a 95% interval on every metric (Wilson for rates, page-level bootstrap for CER); overlapping intervals are labelled `NOT_DISTINGUISHABLE`, and the recommendation may not rest on them. Cross-sheet selection-rule validation is labelled WEAK (n = 2 sheets). The recommendation states what data would change it. | `spike/report_0b.py` |
