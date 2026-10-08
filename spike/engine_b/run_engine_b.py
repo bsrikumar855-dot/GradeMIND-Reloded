@@ -18,7 +18,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--pages", nargs="+", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--device", default="gpu:0")
+    ap.add_argument("--device", default="cpu", help="cpu (default: shared-GPU plan) or gpu:0 for comparison")
     ap.add_argument("--rec-model", default=None, help="override text_recognition_model_name")
     args = ap.parse_args()
 
