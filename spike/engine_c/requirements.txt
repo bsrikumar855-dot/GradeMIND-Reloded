@@ -1,0 +1,6 @@
+# Engine C (line-level HTR on Engine B line crops) spike env. Same torch/transformers pins as engine_a (uv cache reuse).
+--extra-index-url https://download.pytorch.org/whl/cu129
+torch==2.10.0
+torchvision==0.25.0
+transformers==4.57.1
+Pillow==12.1.1
