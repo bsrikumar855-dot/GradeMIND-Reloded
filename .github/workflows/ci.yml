@@ -36,8 +36,47 @@ jobs:
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:59000/minio/health/live && exit 0; sleep 1; done; docker logs minio; exit 1
       - name: make test (rule 13; DB invariant tests run against the Postgres service)
         run: make test
-      - name: lint (ruff, mypy strict)
+      - name: lint (ruff, mypy strict, import-linter + shadow-path scanner)
         run: make lint
       - name: alembic models == migrations
         working-directory: packages/core
         run: GRADEMIND_DATABASE_URL=$GRADEMIND_TEST_DATABASE_URL uv run --frozen alembic -c alembic.ini check
+
+  web:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: web image (tsc --noEmit, eslint --max-warnings 0, next build)
+        run: docker build -t grademind-web:ci apps/web
+
+  compose-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: throwaway .env for this run
+        run: |
+          gen() { python3 -c "import secrets; print(secrets.token_urlsafe($1))"; }
+          {
+            echo "GRADEMIND_JWT_SECRET=$(gen 48)"
+            echo "POSTGRES_PASSWORD=$(gen 24)"
+            echo "MINIO_ROOT_USER=grademind"
+            echo "MINIO_ROOT_PASSWORD=$(gen 24)"
+            echo "GRADEMIND_ADMIN_ORG=CI College"
+            echo "GRADEMIND_ADMIN_EMAIL=admin@example.edu"
+            echo "GRADEMIND_ADMIN_PASSWORD=$(gen 18)"
+            echo "GRADEMIND_S3_PUBLIC_ENDPOINT_URL=http://localhost:9000"
+          } > .env
+      - name: build and start the stack (the OCR image build runs the rule-12 assertion)
+        run: docker compose up -d --build
+      - name: wait for health
+        run: ./scripts/compose_wait.sh 1200
+      - name: end-to-end smoke
+        run: python3 scripts/compose_smoke.py
+      - name: logs on failure
+        if: failure()
+        run: docker compose ps -a; docker compose logs --no-color --tail=200

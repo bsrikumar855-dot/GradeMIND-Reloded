@@ -69,3 +69,46 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = ["paddle", "paddle.*", "paddleocr", "paddleocr.*", "cv2", "numpy"]  # only in the OCR container, not the workspace venv
 ignore_missing_imports = true
+
+# --- import-linter (spec rule 3 and rule 7: one path to every external system; run by scripts/check_single_paths.sh) ---
+[tool.importlinter]
+root_packages = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "Layers: core is the base; api and worker never import each other"
+type = "layers"
+layers = ["grademind_api | grademind_worker", "grademind_core"]
+
+[[tool.importlinter.contracts]]
+name = "Apps never import the OCR service package (they talk to it over HTTP)"
+type = "forbidden"
+source_modules = ["grademind_core", "grademind_api", "grademind_worker"]
+forbidden_modules = ["grademind_ocr"]
+
+[[tool.importlinter.contracts]]
+name = "Object storage SDK only in the single storage module"
+type = "forbidden"
+source_modules = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
+forbidden_modules = ["minio", "boto3", "botocore"]
+ignore_imports = ["grademind_core.storage -> minio"]
+
+[[tool.importlinter.contracts]]
+name = "Task queue SDK only in the producer and consumer adapters"
+type = "forbidden"
+source_modules = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
+forbidden_modules = ["celery"]
+ignore_imports = ["grademind_api.queue -> celery", "grademind_worker.celery_app -> celery"]
+
+[[tool.importlinter.contracts]]
+name = "OCR engine SDKs only in the OCR adapter (rule 7)"
+type = "forbidden"
+source_modules = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
+forbidden_modules = ["paddle", "paddleocr", "paddlex", "cv2", "transformers", "torch"]
+ignore_imports = ["grademind_ocr.engine -> paddle", "grademind_ocr.engine -> paddleocr", "grademind_ocr.engine -> cv2"]
+
+[[tool.importlinter.contracts]]
+name = "No LLM SDK in the v1 product path (D19: AI suggestions disabled; the gateway arrives with its adapter)"
+type = "forbidden"
+source_modules = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
+forbidden_modules = ["anthropic", "openai", "google", "vllm", "litellm"]
