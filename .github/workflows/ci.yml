@@ -5,6 +5,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: gm
+          POSTGRES_PASSWORD: gm
+          POSTGRES_DB: gm_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U gm" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      GRADEMIND_TEST_DATABASE_URL: postgresql+psycopg://gm:gm@localhost:5432/gm_test
     steps:
       - uses: actions/checkout@v4
         with:
@@ -12,5 +24,10 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - name: Python 3.12
         run: uv python install 3.12
-      - name: make test
+      - name: make test (rule 13; DB invariant tests run against the Postgres service)
         run: make test
+      - name: lint (ruff, mypy strict)
+        run: make lint
+      - name: alembic models == migrations
+        working-directory: packages/core
+        run: GRADEMIND_DATABASE_URL=$GRADEMIND_TEST_DATABASE_URL uv run --frozen alembic -c alembic.ini check
