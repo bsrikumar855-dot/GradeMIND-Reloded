@@ -72,7 +72,14 @@ class StageStatus(enum.StrEnum):
     FAILED = "FAILED"
 
 
+class VersionStatus(enum.StrEnum):
+    DRAFT = "DRAFT"
+    APPROVED = "APPROVED"
+
+
 APPEND_ONLY_TABLES = ("line_corrections", "audit_logs", "job_stage_attempts")
+# rows of these tables become immutable (no UPDATE, no DELETE) once status = APPROVED (I5/I8); drafts stay editable
+IMMUTABLE_WHEN_APPROVED_TABLES = ("paper_versions", "rubric_versions")
 
 
 class Organization(Base):
@@ -280,3 +287,77 @@ class AuditLog(Base):
     entity_id: Mapped[str | None] = mapped_column(String(64))
     request_id: Mapped[str | None] = mapped_column(String(64))
     details: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)
+
+
+# ------------------------------------------------------------------------------------------- Phase 2: grading core
+
+
+class PaperSource(Base):
+    """An uploaded question paper (PDF or image). Its text layer, if any, feeds the deterministic parser."""
+
+    __tablename__ = "paper_sources"
+    id: Mapped[uuid.UUID] = _pk()
+    exam_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("exams.id"), nullable=False, index=True)
+    object_key: Mapped[str] = mapped_column(String(500), nullable=False)
+    sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    mime: Mapped[str] = mapped_column(String(64), nullable=False)
+    filename: Mapped[str] = mapped_column(String(200), nullable=False)
+    extracted_text: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = _created()
+
+
+def _status_col() -> Mapped[VersionStatus]:
+    return mapped_column(
+        Enum(VersionStatus, name="version_status", values_callable=lambda e: [x.value for x in e]),
+        nullable=False,
+        default=VersionStatus.DRAFT,
+    )
+
+
+class PaperVersion(Base):
+    """A question-paper structure document (grademind_core.grading.Paper). APPROVED rows are immutable (DB trigger)."""
+
+    __tablename__ = "paper_versions"
+    __table_args__ = (
+        UniqueConstraint("exam_id", "version_no", name="uq_paper_versions_exam_version"),
+        Index("uq_paper_versions_one_draft", "exam_id", unique=True, postgresql_where=text("status = 'DRAFT'")),
+    )
+    id: Mapped[uuid.UUID] = _pk()
+    exam_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("exams.id"), nullable=False, index=True)
+    version_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[VersionStatus] = _status_col()
+    document: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
+    source_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("paper_sources.id"))
+    created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = _created()
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+    approved_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class RubricVersion(Base):
+    """A rubric document (grademind_core.grading.Rubric) for one approved paper version, with the marking policy
+    snapshotted at approval, so every score can be recomputed exactly. APPROVED rows are immutable (DB trigger)."""
+
+    __tablename__ = "rubric_versions"
+    __table_args__ = (
+        UniqueConstraint("exam_id", "version_no", name="uq_rubric_versions_exam_version"),
+        Index("uq_rubric_versions_one_draft", "exam_id", unique=True, postgresql_where=text("status = 'DRAFT'")),
+    )
+    id: Mapped[uuid.UUID] = _pk()
+    exam_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("exams.id"), nullable=False, index=True)
+    paper_version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("paper_versions.id"), nullable=False)
+    version_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    status: Mapped[VersionStatus] = _status_col()
+    document: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
+    policy: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
+    created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = _created()
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )
+    approved_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+    approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

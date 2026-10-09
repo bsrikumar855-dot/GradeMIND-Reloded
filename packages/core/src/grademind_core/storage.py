@@ -23,6 +23,8 @@ from grademind_core.config import Settings
 
 class ObjectKind(StrEnum):
     SUBMISSION_SOURCE = "submission-source"
+    PAPER_SOURCE = "paper-source"
+    PAGE_THUMB = "page-thumb"
     PAGE_IMAGE = "page-image"
     LINE_CROP = "line-crop"
 

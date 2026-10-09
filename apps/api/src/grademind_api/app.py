@@ -16,7 +16,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from grademind_api.errors import ApiError, envelope
 from grademind_api.limits import BodySizeLimit
 from grademind_api.queue import CeleryQueue, JobQueue
-from grademind_api.routes import auth, exams, health, jobs, submissions
+from grademind_api.routes import auth, exams, grading_docs, health, jobs, submissions
 from grademind_api.routes.submissions import MULTIPART_OVERHEAD
 from grademind_core.config import Settings, get_settings
 from grademind_core.db.session import session_factory
@@ -65,7 +65,7 @@ def create_app(
 
     @app.exception_handler(ApiError)
     async def api_error(request: Request, e: ApiError) -> JSONResponse:
-        return JSONResponse(envelope(e.code, e.message, request.state.request_id), status_code=e.status)
+        return JSONResponse(envelope(e.code, e.message, request.state.request_id, e.issues), status_code=e.status)
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, e: RequestValidationError) -> JSONResponse:
@@ -87,4 +87,5 @@ def create_app(
     app.include_router(exams.router, prefix="/api")
     app.include_router(submissions.router, prefix="/api")
     app.include_router(jobs.router, prefix="/api")
+    app.include_router(grading_docs.router, prefix="/api")
     return app

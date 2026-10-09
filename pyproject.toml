@@ -65,7 +65,7 @@ mypy_path = "services/ocr/src"
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["celery", "celery.*"]  # celery ships no type information; its use is confined to two thin modules
+module = ["celery", "celery.*", "pypdfium2", "pypdfium2.*"]  # no type information; each confined to one thin module
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
@@ -114,3 +114,10 @@ name = "No LLM SDK in the v1 product path (D19: AI suggestions disabled; the gat
 type = "forbidden"
 source_modules = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
 forbidden_modules = ["anthropic", "openai", "google", "vllm", "litellm"]
+
+[[tool.importlinter.contracts]]
+name = "PDF / image libraries only in grademind_core.pdf (the OCR service has its own engine adapter)"
+type = "forbidden"
+source_modules = ["grademind_core", "grademind_api", "grademind_worker"]
+forbidden_modules = ["pypdfium2", "PIL", "fitz", "pdfplumber"]
+ignore_imports = ["grademind_core.pdf -> pypdfium2", "grademind_core.pdf -> PIL"]
