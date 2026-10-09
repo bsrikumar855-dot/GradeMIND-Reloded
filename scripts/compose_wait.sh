@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # Wait until every long-running compose service is healthy and the one-shot services exited 0. Exit 1 on timeout/failure.
 set -euo pipefail
+if ! err=$(docker compose ps -q 2>&1 >/dev/null); then
+  echo "compose_wait: cannot talk to Docker: $err"
+  echo "  If this says 'permission denied': your login session is not in the docker group yet."
+  echo "  Run it as:  sg docker -c \"make smoke\"   (or log out and back in once after 'usermod -aG docker')"
+  exit 2
+fi
 deadline=$(( $(date +%s) + ${1:-900} ))
 while true; do
   bad=0; pending=""
