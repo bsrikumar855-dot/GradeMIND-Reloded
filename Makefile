@@ -2,12 +2,14 @@
 SHELL := /bin/bash
 .SHELLFLAGS := -o pipefail -ec
 SPIKE_PYTEST := uvx --from pytest==9.1.1 pytest -c spike/pytest.ini
+# D25 c: ScoreComputer (and the grading validators) must keep 100% branch coverage; below that, `make test` fails
+COV_GATE := --cov=grademind_core.scoring --cov=grademind_core.grading --cov-branch --cov-report=term-missing:skip-covered --cov-fail-under=100
 
 .PHONY: test test-spike test-app lint paths smoke ocr-vendor
 test:
 	@set +e; \
 	$(SPIKE_PYTEST) spike/tests -q -rs; a=$$?; \
-	uv run --frozen pytest -q -rs; b=$$?; \
+	uv run --frozen pytest -q -rs $(COV_GATE); b=$$?; \
 	echo "make test: spike pytest exit code = $$a; app pytest exit code = $$b"; \
 	[ $$a -eq 0 ] && [ $$b -eq 0 ]
 

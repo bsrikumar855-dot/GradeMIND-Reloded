@@ -25,6 +25,8 @@ dev = [
     "ruff==0.16.10",
     "mypy==2.4.0",
     "import-linter==2.15",
+    "hypothesis==6.168.5",
+    "pytest-cov==7.1.0",
 ]
 
 [tool.ruff]
