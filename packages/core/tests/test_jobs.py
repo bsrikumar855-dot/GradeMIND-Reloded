@@ -13,9 +13,11 @@ from collections.abc import Iterator
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
 import pytest
 from sqlalchemy import create_engine, select, update
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
 from grademind_core.db.models import (
@@ -29,7 +31,16 @@ from grademind_core.db.models import (
     Submission,
     User,
 )
-from grademind_core.jobs import Pipeline, Stage, StageContext, StageError, request_retry, resumable_jobs, run_job
+from grademind_core.jobs import (
+    LeasePolicy,
+    Pipeline,
+    Stage,
+    StageContext,
+    StageError,
+    request_retry,
+    resumable_jobs,
+    run_job,
+)
 
 URL = os.environ.get("GRADEMIND_TEST_DATABASE_URL")
 pytestmark = pytest.mark.skipif(not URL, reason="GRADEMIND_TEST_DATABASE_URL not set (job tests need real Postgres)")
@@ -167,19 +178,21 @@ def test_duplicate_delivery_is_a_no_op(db: sessionmaker[Session]) -> None:
     assert spy.calls == ["A"] and len(attempts(db, jid)) == 2
 
 
-def test_running_job_with_live_lease_is_not_claimed_but_expired_lease_resumes(db: sessionmaker[Session]) -> None:
+def test_reclaim_only_after_max_missed_heartbeats(db: sessionmaker[Session]) -> None:
     spy = Spy()
     pipes = {"test": Pipeline("test", (stage("A", spy), stage("B", spy)))}
     jid = new_job(db)
-    with db() as s, s.begin():  # simulate a worker that claimed the job 5 s ago and then died
+    with db() as s, s.begin():  # a worker whose last heartbeat was 5 s ago
         s.execute(
             update(ProcessingJob)
             .where(ProcessingJob.id == jid)
-            .values(status=JobStatus.RUNNING, updated_at=datetime.now(UTC) - timedelta(seconds=5))
+            .values(status=JobStatus.RUNNING, lease_owner=uuid.uuid4(), heartbeat_at=datetime.now(UTC) - timedelta(seconds=5))
         )
-    assert run_job(db, jid, pipes, lease=timedelta(minutes=10)) is None  # lease still live: another worker owns it
+    live = LeasePolicy(heartbeat=timedelta(seconds=2), max_missed=3)  # window 6 s: only 2.5 heartbeats missed
+    assert run_job(db, jid, pipes, policy=live) is None
     assert spy.calls == []
-    assert run_job(db, jid, pipes, lease=timedelta(seconds=1)) == JobStatus.COMPLETED  # lease expired: resumed
+    dead = LeasePolicy(heartbeat=timedelta(seconds=1), max_missed=3)  # window 3 s: 5 heartbeats missed
+    assert run_job(db, jid, pipes, policy=dead) == JobStatus.COMPLETED
     assert spy.calls == ["A", "B"]
 
 
@@ -228,5 +241,154 @@ def test_resumable_jobs_finds_lost_enqueues_and_dead_workers(db: sessionmaker[Se
         s.execute(update(ProcessingJob).where(ProcessingJob.id == live).values(status=JobStatus.RUNNING))
         s.execute(update(ProcessingJob).where(ProcessingJob.id == done).values(status=JobStatus.COMPLETED, updated_at=old))
     with db() as s:
-        found = set(resumable_jobs(s, queued_grace=timedelta(minutes=2), lease=timedelta(minutes=15)))
+        found = set(resumable_jobs(s, queued_grace=timedelta(minutes=2), policy=LeasePolicy()))
     assert {lost, dead} <= found and not {fresh, live, done} & found
+
+
+# --- D26: heartbeats, reclaim of killed workers, lost leases, idempotent outputs ---
+
+FAST = LeasePolicy(heartbeat=timedelta(seconds=0.2), max_missed=3)  # reclaim window 0.6 s
+
+
+def wait_for(cond: Any, timeout: float = 20.0) -> None:
+    deadline = time.monotonic() + timeout
+    while not cond():
+        assert time.monotonic() < deadline, "condition not reached"
+        time.sleep(0.05)
+
+
+def test_long_stage_keeps_its_lease_and_is_not_taken_over(db: sessionmaker[Session]) -> None:
+    """A stage running 2.5 s (4x the reclaim window) keeps heartbeating; a second worker cannot take the job."""
+    ran: list[str] = []
+
+    def long_stage(ctx: StageContext) -> str | None:
+        ran.append("run")
+        time.sleep(2.5)
+        return None
+
+    pipes = {"test": Pipeline("test", (Stage("LONG", "1", lambda c: uuid.uuid4().hex, long_stage),))}
+    jid = new_job(db)
+    results: list[JobStatus | None] = []
+    t = threading.Thread(target=lambda: results.append(run_job(db, jid, pipes, policy=FAST)))
+    t.start()
+    wait_for(lambda: ran)
+    claimed_at = job_of(db, jid).heartbeat_at
+    time.sleep(1.5)  # 2.5 reclaim windows after the claim
+    assert run_job(db, jid, pipes, policy=FAST) is None  # second worker: the lease is alive
+    beat = job_of(db, jid).heartbeat_at
+    assert claimed_at is not None and beat is not None and beat > claimed_at + FAST.window  # renewed while running
+    t.join()
+    assert results == [JobStatus.COMPLETED] and ran == ["run"]
+
+
+KILLED_WORKER = """
+import sys, time, uuid
+from datetime import timedelta
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from grademind_core.jobs import LeasePolicy, Pipeline, Stage, run_job
+db = sessionmaker(bind=create_engine(sys.argv[1]), expire_on_commit=False)
+def hang(ctx):
+    time.sleep(600)
+pipes = {"test": Pipeline("test", (Stage("KILLME", "1", lambda c: "fixed-input-" + sys.argv[2], hang),))}
+run_job(db, uuid.UUID(sys.argv[2]), pipes, policy=LeasePolicy(heartbeat=timedelta(seconds=0.2), max_missed=3))
+"""
+
+
+def test_killed_worker_job_is_reclaimed(db: sessionmaker[Session]) -> None:
+    jid = new_job(db)
+    proc = subprocess.Popen([sys.executable, "-c", KILLED_WORKER, URL or "", str(jid)])
+    try:
+        wait_for(lambda: [a for a in attempts(db, jid) if a[0] == "KILLME"])  # the worker is inside the stage
+        time.sleep(0.5)
+        pipes = {"test": Pipeline("test", (Stage("KILLME", "1", lambda c: "fixed-input-" + str(jid), lambda c: None),))}
+        assert run_job(db, jid, pipes, policy=FAST) is None  # alive and heartbeating: not reclaimable
+    finally:
+        proc.kill()  # SIGKILL: no cleanup, no final write
+        proc.wait()
+    time.sleep(FAST.window.total_seconds() + 0.4)
+    assert run_job(db, jid, pipes, policy=FAST) == JobStatus.COMPLETED
+    assert [(st, status.value, n) for st, status, n in attempts(db, jid)] == [
+        ("KILLME", "STARTED", 1),
+        ("KILLME", "STARTED", 2),
+        ("KILLME", "SUCCEEDED", 2),
+    ]
+
+
+def test_worker_that_lost_its_lease_writes_nothing(db: sessionmaker[Session]) -> None:
+    ran = threading.Event()
+
+    def slow(ctx: StageContext) -> str | None:
+        ran.set()
+        time.sleep(1.0)
+        return "out"
+
+    pipes = {"test": Pipeline("test", (Stage("SLOW", "1", lambda c: uuid.uuid4().hex, slow),))}
+    jid = new_job(db)
+    results: list[JobStatus | None] = []
+    t = threading.Thread(target=lambda: results.append(run_job(db, jid, pipes, policy=FAST)))
+    t.start()
+    ran.wait(10)
+    thief = uuid.uuid4()
+    with db() as s, s.begin():  # another worker reclaimed the job meanwhile (e.g. after a long GC pause / partition)
+        s.execute(update(ProcessingJob).where(ProcessingJob.id == jid).values(lease_owner=thief))
+    t.join()
+    assert results == [None]  # the original worker abandoned the job
+    assert [status.value for _, status, _ in attempts(db, jid)] == ["STARTED"]  # no SUCCEEDED written by it
+    j = job_of(db, jid)
+    assert j.lease_owner == thief and j.status == JobStatus.RUNNING
+
+
+def test_duplicate_runs_cannot_double_write_an_output(db: sessionmaker[Session]) -> None:
+    """Two jobs on identical inputs race through the same stage: both finish, exactly one output is recorded,
+    and both runs saw the same idempotency key for their domain writes."""
+    sha = uuid.uuid4().hex * 2
+    keys: list[str | None] = []
+    barrier = threading.Barrier(2)
+
+    def racing(ctx: StageContext) -> str | None:
+        keys.append(ctx.idempotency_key)
+        barrier.wait(5)  # both runs are inside the stage at the same time
+        return "out/" + str(ctx.idempotency_key)
+
+    def input_hash(ctx: StageContext) -> str:
+        return sha
+
+    pipes = {"test": Pipeline("test", (Stage("RACE", "1", input_hash, racing),))}
+    j1, j2 = new_job(db, sha=sha), new_job(db, sha=sha)
+    results: list[JobStatus | None] = []
+    ts = [threading.Thread(target=lambda j=j: results.append(run_job(db, j, pipes))) for j in (j1, j2)]
+    for t in ts:
+        t.start()
+    for t in ts:
+        t.join()
+    assert results == [JobStatus.COMPLETED, JobStatus.COMPLETED]
+    assert len(keys) == 2 and keys[0] == keys[1] and keys[0] is not None
+    with db() as s:
+        succeeded = s.scalars(
+            select(JobStageAttempt).where(JobStageAttempt.cache_key == keys[0], JobStageAttempt.status == StageStatus.SUCCEEDED)
+        ).all()
+    assert len(succeeded) == 1
+
+
+def test_database_refuses_a_second_output_for_the_same_key(db: sessionmaker[Session]) -> None:
+    jid = new_job(db)
+    with db() as s, s.begin():
+        for _ in range(1):
+            s.add(
+                JobStageAttempt(
+                    job_id=jid, stage="X", attempt_no=1, status=StageStatus.SUCCEEDED, cache_key="k" * 64, component_version="1"
+                )
+            )
+    with pytest.raises(IntegrityError), db() as s, s.begin():
+        s.add(
+            JobStageAttempt(
+                job_id=jid, stage="X", attempt_no=2, status=StageStatus.SUCCEEDED, cache_key="k" * 64, component_version="1"
+            )
+        )
+    with db() as s, s.begin():  # STARTED / FAILED rows may repeat the key
+        s.add(
+            JobStageAttempt(
+                job_id=jid, stage="X", attempt_no=3, status=StageStatus.FAILED, cache_key="k" * 64, component_version="1"
+            )
+        )

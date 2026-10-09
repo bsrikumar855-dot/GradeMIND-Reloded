@@ -20,12 +20,14 @@ from sqlalchemy import (
     Float,
     ForeignKey,
     Identity,
+    Index,
     Integer,
     Numeric,
     String,
     Text,
     UniqueConstraint,
     func,
+    text,
 )
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, validates
@@ -235,6 +237,8 @@ class ProcessingJob(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
     )
+    lease_owner: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))  # token of the worker holding the lease (D26)
+    heartbeat_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))  # renewed while a stage runs
     version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)  # optimistic locking (spec §14)
     __mapper_args__ = {"version_id_col": version}
 
@@ -243,7 +247,13 @@ class JobStageAttempt(Base):
     """Append-only log of stage executions (I8); retries add rows, never edit them."""
 
     __tablename__ = "job_stage_attempts"
-    __table_args__ = (UniqueConstraint("seq", name="uq_job_stage_attempts_seq"),)
+    __table_args__ = (
+        UniqueConstraint("seq", name="uq_job_stage_attempts_seq"),
+        # D26: at most one recorded output per (stage, version, input) -> a duplicate run cannot double-write
+        Index(
+            "uq_job_stage_attempts_succeeded_cache_key", "cache_key", unique=True, postgresql_where=text("status = 'SUCCEEDED'")
+        ),
+    )
     id: Mapped[uuid.UUID] = _pk()
     # monotonic insertion order: the SSE event id. created_at cannot order rows (now() is the transaction start time)
     seq: Mapped[int] = mapped_column(BigInteger, Identity(always=True), nullable=False)

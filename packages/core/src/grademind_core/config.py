@@ -67,7 +67,8 @@ class Settings(BaseSettings):
     max_upload_bytes: int = Field(default=50 * 1024 * 1024, ge=1024)
 
     # --- jobs (spec §15) ---
-    job_lease_seconds: int = Field(default=900, ge=30)  # a RUNNING job not touched for this long may be resumed
+    job_heartbeat_seconds: float = Field(default=30, gt=0)  # a running stage renews its lease this often (D26)
+    job_max_missed_heartbeats: int = Field(default=4, ge=2)  # reclaimable only after this many missed heartbeats
     sse_poll_seconds: float = Field(default=1.0, gt=0, le=10)
 
     @model_validator(mode="after")
