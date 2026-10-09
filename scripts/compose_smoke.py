@@ -1,0 +1,114 @@
+"""End-to-end smoke test against a running `docker compose` stack (stdlib only; used locally and in CI).
+
+health endpoints -> login as the bootstrapped admin -> create exam -> upload a synthetic PDF -> follow the ingest job
+over SSE until the real worker (Celery + Redis) finishes it -> fetch the source through its signed URL.
+Reads GRADEMIND_ADMIN_EMAIL / GRADEMIND_ADMIN_PASSWORD from the environment or .env. Exit code 0 = pass.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import sys
+import time
+import urllib.error
+import urllib.request
+import uuid
+from pathlib import Path
+from typing import Any
+
+API = os.environ.get("SMOKE_API", "http://127.0.0.1:8000")
+REQUIRE_OCR = os.environ.get("SMOKE_REQUIRE_OCR", "1") == "1"
+
+
+def env(key: str) -> str:
+    if key in os.environ:
+        return os.environ[key]
+    for line in Path(".env").read_text().splitlines():
+        if line.startswith(key + "="):
+            return line.split("=", 1)[1]
+    raise SystemExit(f"{key} not set")
+
+
+def call(method: str, path: str, body: bytes | None = None, headers: dict[str, str] | None = None) -> tuple[int, Any]:
+    req = urllib.request.Request(API + path, data=body, method=method, headers=headers or {})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            raw = r.read()
+            return r.status, json.loads(raw) if raw else None
+    except urllib.error.HTTPError as e:
+        return e.code, json.loads(e.read() or b"null")
+
+
+def check(cond: bool, what: str) -> None:
+    print(("PASS " if cond else "FAIL ") + what, flush=True)
+    if not cond:
+        sys.exit(1)
+
+
+def main() -> int:
+    for p in ["/health", "/health/db", "/health/redis", "/health/storage", "/health/models"] + (
+        ["/health/ocr"] if REQUIRE_OCR else []
+    ):
+        code, body = call("GET", p)
+        check(code == 200, f"{p} -> {code} {json.dumps(body)[:160]}")
+    code, tok = call(
+        "POST",
+        "/api/auth/login",
+        json.dumps({"email": env("GRADEMIND_ADMIN_EMAIL"), "password": env("GRADEMIND_ADMIN_PASSWORD")}).encode(),
+        {"content-type": "application/json"},
+    )
+    check(code == 200, "admin login")
+    auth = {"authorization": f"Bearer {tok['access_token']}"}
+    code, exam = call(
+        "POST",
+        "/api/exams",
+        json.dumps({"name": "Smoke", "subject": "Smoke", "total_marks": "10"}).encode(),
+        {**auth, "content-type": "application/json"},
+    )
+    check(code == 201, "create exam")
+    pdf = b"%PDF-1.7\n% smoke " + uuid.uuid4().hex.encode() + b"\n%%EOF\n"
+    b = uuid.uuid4().hex
+    body = (
+        (
+            f'--{b}\r\nContent-Disposition: form-data; name="student_ref"\r\n\r\nSMOKE-1\r\n'
+            f'--{b}\r\nContent-Disposition: form-data; name="file"; filename="smoke.pdf"\r\nContent-Type: application/pdf\r\n\r\n'
+        ).encode()
+        + pdf
+        + f"\r\n--{b}--\r\n".encode()
+    )
+    code, sub = call(
+        "POST", f"/api/exams/{exam['id']}/submissions", body, {**auth, "content-type": f"multipart/form-data; boundary={b}"}
+    )
+    check(code == 201 and "job_id" in sub, "upload submission")
+
+    events: list[dict[str, Any]] = []
+    deadline = time.monotonic() + 90
+    req = urllib.request.Request(f"{API}/api/jobs/{sub['job_id']}/events", headers=auth)
+    with urllib.request.urlopen(req, timeout=100) as r:
+        ev: dict[str, str] = {}
+        for raw in r:
+            line = raw.decode().rstrip("\r\n")
+            if not line:
+                if ev.get("event") == "job":
+                    events.append(json.loads(ev["data"]))
+                    if events[-1]["status"] in ("COMPLETED", "FAILED", "REVIEW_REQUIRED"):
+                        break
+                ev = {}
+            elif not line.startswith(":"):
+                k, _, v = line.partition(":")
+                ev[k] = v.strip()
+            if time.monotonic() > deadline:
+                break
+    check(bool(events) and events[-1]["status"] == "COMPLETED", f"job via SSE -> {[e['status'] for e in events]}")
+    code, job = call("GET", f"/api/jobs/{sub['job_id']}", headers=auth)
+    check([(s["stage"], s["status"]) for s in job["stages"]] == [("INTAKE", "STARTED"), ("INTAKE", "SUCCEEDED")], "stage log")
+    code, detail = call("GET", f"/api/submissions/{sub['id']}", headers=auth)
+    with urllib.request.urlopen(detail["source_url"], timeout=10) as r:
+        check(r.read() == pdf, "signed URL serves the stored bytes")
+    print("SMOKE OK")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

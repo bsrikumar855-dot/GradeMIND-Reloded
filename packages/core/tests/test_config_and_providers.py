@@ -56,6 +56,13 @@ def test_storage_credentials_required_outside_tests() -> None:
     assert Settings(env=Env.TEST).s3_access_key.get_secret_value() == ""
 
 
+def test_example_placeholder_secrets_are_refused() -> None:
+    with pytest.raises(ValidationError, match="placeholder"):
+        make(jwt_secret="change-me-to-48-random-characters-change-me-to-48-random")
+    with pytest.raises(ValidationError, match="placeholder"):
+        make(s3_secret_key="change-me-too")
+
+
 def test_invariant_I7_disabled_provider_factory_never_called() -> None:
     calls: list[str] = []
     reg = ProviderRegistry(make())

@@ -1,0 +1,12 @@
+# Allow-list: the build context must never contain student data (data/), spike runs, venvs or secrets.
+*
+!pyproject.toml
+!uv.lock
+!packages/core/pyproject.toml
+!packages/core/alembic.ini
+!packages/core/src/**
+!apps/api/pyproject.toml
+!apps/api/src/**
+!apps/worker/pyproject.toml
+!apps/worker/src/**
+**/__pycache__

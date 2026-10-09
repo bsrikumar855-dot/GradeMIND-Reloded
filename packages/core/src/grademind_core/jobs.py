@@ -153,6 +153,17 @@ def _fail(s: Session, job: ProcessingJob, stage: Stage, reason: str, message: st
     return job.status
 
 
+def resumable_jobs(s: Session, queued_grace: timedelta, lease: timedelta) -> list[uuid.UUID]:
+    """Jobs to re-send: QUEUED for longer than `queued_grace` (the enqueue was lost, e.g. a broker outage) or RUNNING with
+    an expired lease (the worker died). Re-sending is safe because the claim is idempotent."""
+    now = datetime.now(UTC)
+    q = select(ProcessingJob.id).where(
+        ((ProcessingJob.status == JobStatus.QUEUED) & (ProcessingJob.updated_at < now - queued_grace))
+        | ((ProcessingJob.status == JobStatus.RUNNING) & (ProcessingJob.updated_at < now - lease))
+    )
+    return list(s.scalars(q))
+
+
 def request_retry(s: Session, job: ProcessingJob) -> bool:
     """FAILED -> QUEUED. The caller commits and enqueues. Returns False if the job is not in a retryable state."""
     if job.status != JobStatus.FAILED:

@@ -29,7 +29,7 @@ from grademind_core.db.models import (
     Submission,
     User,
 )
-from grademind_core.jobs import Pipeline, Stage, StageContext, StageError, request_retry, run_job
+from grademind_core.jobs import Pipeline, Stage, StageContext, StageError, request_retry, resumable_jobs, run_job
 
 URL = os.environ.get("GRADEMIND_TEST_DATABASE_URL")
 pytestmark = pytest.mark.skipif(not URL, reason="GRADEMIND_TEST_DATABASE_URL not set (job tests need real Postgres)")
@@ -217,3 +217,16 @@ def test_concurrent_workers_run_a_job_once(db: sessionmaker[Session]) -> None:
     for t in threads:
         t.join()
     assert len(ran) == 1 and sorted(results, key=str) == sorted([JobStatus.COMPLETED, None, None, None], key=str)
+
+
+def test_resumable_jobs_finds_lost_enqueues_and_dead_workers(db: sessionmaker[Session]) -> None:
+    fresh, lost, dead, live, done = (new_job(db) for _ in range(5))
+    old = datetime.now(UTC) - timedelta(minutes=30)
+    with db() as s, s.begin():
+        s.execute(update(ProcessingJob).where(ProcessingJob.id == lost).values(updated_at=old))
+        s.execute(update(ProcessingJob).where(ProcessingJob.id == dead).values(status=JobStatus.RUNNING, updated_at=old))
+        s.execute(update(ProcessingJob).where(ProcessingJob.id == live).values(status=JobStatus.RUNNING))
+        s.execute(update(ProcessingJob).where(ProcessingJob.id == done).values(status=JobStatus.COMPLETED, updated_at=old))
+    with db() as s:
+        found = set(resumable_jobs(s, queued_grace=timedelta(minutes=2), lease=timedelta(minutes=15)))
+    assert {lost, dead} <= found and not {fresh, live, done} & found

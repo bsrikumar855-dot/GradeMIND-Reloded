@@ -80,6 +80,8 @@ class Settings(BaseSettings):
                 problems.append("GRADEMIND_JWT_SECRET must be set (>= 32 chars) outside tests")
             if not self.s3_access_key.get_secret_value() or not self.s3_secret_key.get_secret_value():
                 problems.append("GRADEMIND_S3_ACCESS_KEY and GRADEMIND_S3_SECRET_KEY must be set outside tests")
+            if any("change-me" in v.get_secret_value() for v in (self.jwt_secret, self.s3_secret_key)):
+                problems.append("a secret still has its .env.example placeholder value (change-me...)")
         excluded = EXCLUDED_IN_V1.intersection(self.ocr_providers_enabled)
         if excluded:
             problems.append(f"providers excluded from v1 by D18 cannot be enabled: {sorted(excluded)}")

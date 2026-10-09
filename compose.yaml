@@ -1,0 +1,125 @@
+# GradeMIND v1 local stack (spec §4; Phase 1 step 7). `docker compose up` -> every service healthy.
+# Secrets come from .env (copy .env.example). Only the web UI, API and MinIO (for signed URLs) are published, on localhost.
+name: grademind
+
+x-app-env: &app-env
+  GRADEMIND_ENV: prod
+  GRADEMIND_DATABASE_URL: postgresql+psycopg://grademind:${POSTGRES_PASSWORD:?set in .env}@postgres:5432/grademind
+  GRADEMIND_REDIS_URL: redis://redis:6379/0
+  GRADEMIND_S3_ENDPOINT_URL: http://minio:9000
+  GRADEMIND_S3_PUBLIC_ENDPOINT_URL: ${GRADEMIND_S3_PUBLIC_ENDPOINT_URL:-http://localhost:9000}
+  GRADEMIND_S3_ACCESS_KEY: ${MINIO_ROOT_USER:?set in .env}
+  GRADEMIND_S3_SECRET_KEY: ${MINIO_ROOT_PASSWORD:?set in .env}
+  GRADEMIND_JWT_SECRET: ${GRADEMIND_JWT_SECRET:?set in .env}
+  GRADEMIND_OCR_SERVICE_URL: http://ocr:8800
+
+x-app-build: &app-build
+  context: .
+  dockerfile: docker/python-app.Dockerfile
+
+services:
+  postgres:
+    image: postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea
+    environment:
+      POSTGRES_USER: grademind
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set in .env}
+      POSTGRES_DB: grademind
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U grademind -d grademind"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:8-alpine@sha256:3811787313eba226a2ef38658c6ccb91cd5e110edc89c37767de373120a0e5a0
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redisdata:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  minio:
+    image: cgr.dev/chainguard/minio@sha256:f74600a1a46330cdbda1ef760d17a96bd6e0f4a6f0a2c49792ca3ee7e4c6fa18
+    command: ["server", "/data"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?set in .env}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?set in .env}
+    ports: ["127.0.0.1:9000:9000"]  # signed URLs are fetched by the browser
+    volumes: [miniodata:/data]
+    healthcheck:
+      test: ["CMD-SHELL", "MC_HOST_local=http://$${MINIO_ROOT_USER}:$${MINIO_ROOT_PASSWORD}@127.0.0.1:9000 mc ready local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # one-shot: schema migrations, bucket, first admin
+  migrate:
+    build: *app-build
+    image: grademind-app:dev
+    environment: *app-env
+    working_dir: /app/packages/core
+    command: ["alembic", "-c", "alembic.ini", "upgrade", "head"]
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  bootstrap:
+    image: grademind-app:dev
+    environment:
+      <<: *app-env
+      GRADEMIND_ADMIN_ORG: ${GRADEMIND_ADMIN_ORG:?set in .env}
+      GRADEMIND_ADMIN_EMAIL: ${GRADEMIND_ADMIN_EMAIL:?set in .env}
+      GRADEMIND_ADMIN_PASSWORD: ${GRADEMIND_ADMIN_PASSWORD:?set in .env}
+    entrypoint: ["sh", "-c"]
+    command:
+      - python -m grademind_core.cli ensure-bucket && python -m grademind_core.cli create-admin --org "$$GRADEMIND_ADMIN_ORG" --email "$$GRADEMIND_ADMIN_EMAIL"
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      minio: {condition: service_healthy}
+
+  api:
+    image: grademind-app:dev
+    environment: *app-env
+    command: ["uvicorn", "grademind_api.app:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
+    ports: ["127.0.0.1:8000:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/db', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    depends_on:
+      bootstrap: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+
+  worker:
+    image: grademind-app:dev
+    environment: *app-env
+    # -B: embedded beat for the requeue sweep (single worker in v1)
+    command: ["celery", "-A", "grademind_worker.celery_app", "worker", "-B", "--concurrency=2", "--loglevel=INFO", "-s", "/tmp/celerybeat-schedule"]
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A grademind_worker.celery_app inspect ping -d celery@$$HOSTNAME --timeout 5"]
+      interval: 20s
+      timeout: 15s
+      retries: 6
+      start_period: 20s
+    depends_on:
+      bootstrap: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+
+  ocr:
+    build:
+      context: services/ocr
+    image: grademind-ocr:dev
+    environment:
+      GRADEMIND_OCR_QUEUE_TIMEOUT_S: "120"
+    # CPU only (D18: the GPU is shared). Peak RSS measured at ~2.8 GB per page in Phase 0b.
+    deploy:
+      resources:
+        limits: {memory: 4g}
+
+volumes:
+  pgdata:
+  redisdata:
+  miniodata:
