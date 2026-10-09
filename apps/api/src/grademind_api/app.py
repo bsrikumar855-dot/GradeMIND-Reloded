@@ -15,7 +15,8 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from grademind_api.errors import ApiError, envelope
 from grademind_api.limits import BodySizeLimit
-from grademind_api.routes import auth, exams, health, submissions
+from grademind_api.queue import CeleryQueue, JobQueue
+from grademind_api.routes import auth, exams, health, jobs, submissions
 from grademind_api.routes.submissions import MULTIPART_OVERHEAD
 from grademind_core.config import Settings, get_settings
 from grademind_core.db.session import session_factory
@@ -29,13 +30,17 @@ def _json_log(**fields: object) -> None:
 
 
 def create_app(
-    settings: Settings | None = None, sessions: sessionmaker[Session] | None = None, store: ObjectStore | None = None
+    settings: Settings | None = None,
+    sessions: sessionmaker[Session] | None = None,
+    store: ObjectStore | None = None,
+    queue: JobQueue | None = None,
 ) -> FastAPI:
     settings = settings or get_settings()
     app = FastAPI(title="GradeMIND API", version="0.1.0")
     app.state.settings = settings
     app.state.session_factory = sessions or session_factory(settings.database_url)
     app.state.store = store or ObjectStore(settings)  # constructing the client makes no network call
+    app.state.queue = queue or CeleryQueue(settings.redis_url)
     # added first, so it runs inside the request-id middleware and its 413s are logged with a request_id
     app.add_middleware(BodySizeLimit, max_body_bytes=settings.max_upload_bytes + MULTIPART_OVERHEAD)
 
@@ -78,4 +83,5 @@ def create_app(
     app.include_router(auth.router, prefix="/api")
     app.include_router(exams.router, prefix="/api")
     app.include_router(submissions.router, prefix="/api")
+    app.include_router(jobs.router, prefix="/api")
     return app

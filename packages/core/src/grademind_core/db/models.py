@@ -19,6 +19,7 @@ from sqlalchemy import (
     Enum,
     Float,
     ForeignKey,
+    Identity,
     Integer,
     Numeric,
     String,
@@ -242,14 +243,17 @@ class JobStageAttempt(Base):
     """Append-only log of stage executions (I8); retries add rows, never edit them."""
 
     __tablename__ = "job_stage_attempts"
+    __table_args__ = (UniqueConstraint("seq", name="uq_job_stage_attempts_seq"),)
     id: Mapped[uuid.UUID] = _pk()
+    # monotonic insertion order: the SSE event id. created_at cannot order rows (now() is the transaction start time)
+    seq: Mapped[int] = mapped_column(BigInteger, Identity(always=True), nullable=False)
     job_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("processing_jobs.id"), nullable=False, index=True)
     stage: Mapped[str] = mapped_column(String(40), nullable=False)
     attempt_no: Mapped[int] = mapped_column(Integer, nullable=False)
     status: Mapped[StageStatus] = mapped_column(
         Enum(StageStatus, name="stage_status", values_callable=lambda e: [x.value for x in e]), nullable=False
     )
-    cache_key: Mapped[str | None] = mapped_column(String(128))  # content hash + component version
+    cache_key: Mapped[str | None] = mapped_column(String(128), index=True)  # content hash + component version
     component_version: Mapped[str] = mapped_column(String(40), nullable=False)
     error: Mapped[str | None] = mapped_column(Text)
     output_ref: Mapped[str | None] = mapped_column(String(500))

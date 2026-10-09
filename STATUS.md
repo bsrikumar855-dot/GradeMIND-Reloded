@@ -41,8 +41,8 @@ Each step is a separate commit; test numbers are from `make test` in the same se
 | 1.1 uv workspace + single config source + provider registry | **Implemented and tested** | CI `37887515813` green |
 | 1.2 DB schema + Alembic baseline, I8 append-only triggers, optimistic locking | **Implemented and tested** | CI `37887812722` green; `alembic check` clean |
 | 1.3 Auth (argon2id + JWT), RBAC, error envelope, health endpoints | **Implemented and tested** | CI `37888752324` green |
-| 1.4 Storage: single module (MinIO), UUID keys, upload validation, signed URLs, body-size limit | **Implemented and tested** | `make test`: app 77 passed, exit 0 (real Postgres + real MinIO) |
-| 1.5 Jobs + SSE | Not implemented | |
+| 1.4 Storage: single module (MinIO), UUID keys, upload validation, signed URLs, body-size limit | **Implemented and tested** | CI `37889396605` green (77 app tests, real Postgres + MinIO) |
+| 1.5 Jobs + SSE: stage machine (idempotent claim, lease resume, content-hash cache, retry of the failed stage), Celery task, `/api/jobs/{id}`, `/events` (SSE, Last-Event-ID), `/retry`; INTAKE stage | **Implemented and tested** | `make test`: app 94 passed, exit 0. The Celery task wrapper itself is exercised only in compose (1.7) |
 | 1.6 OCR service (PP-OCRv6 CPU, rule-12 startup assertion) | Not implemented | |
 | 1.7 Docker Compose health-green | Not implemented | |
 | 1.8 Web shell | Not implemented | |
@@ -51,6 +51,10 @@ Each step is a separate commit; test numbers are from `make test` in the same se
 Known gaps in 1.4: an object written before a failed DB commit is orphaned (no sweeper yet); MIME sniffing checks magic bytes
 only (deep PDF/image decoding happens at ingest in Phase 2); bucket creation is a call (`ensure_bucket`), to be run by the
 compose init in 1.7.
+
+Known gaps in 1.5: a job left QUEUED by a broker outage is not re-sent automatically yet (it is visible as QUEUED and can be
+re-sent by a requeue sweep, planned with compose in 1.7); the lease is renewed only at stage boundaries, so a stage longer
+than `job_lease_seconds` (default 900 s) could be resumed by a second worker (heartbeats come with the OCR stage in Phase 2).
 
 ## Implemented but untested
 

@@ -66,6 +66,10 @@ class Settings(BaseSettings):
     ocr_service_url: str = "http://localhost:8800"
     max_upload_bytes: int = Field(default=50 * 1024 * 1024, ge=1024)
 
+    # --- jobs (spec §15) ---
+    job_lease_seconds: int = Field(default=900, ge=30)  # a RUNNING job not touched for this long may be resumed
+    sse_poll_seconds: float = Field(default=1.0, gt=0, le=10)
+
     @model_validator(mode="after")
     def _invariants(self) -> Self:
         problems: list[str] = []

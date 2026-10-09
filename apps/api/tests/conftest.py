@@ -8,6 +8,7 @@ from __future__ import annotations
 import os
 import subprocess
 import sys
+import uuid
 from collections.abc import Iterator
 from decimal import Decimal
 from pathlib import Path
@@ -31,6 +32,19 @@ needs_s3 = pytest.mark.skipif(not S3, reason="GRADEMIND_TEST_S3_ENDPOINT not set
 CORE = Path(__file__).resolve().parents[3] / "packages" / "core"
 PW = "correct horse battery staple"
 MAX_UPLOAD = 256 * 1024
+
+
+class RecordingQueue:
+    """Test double for the Celery queue: records what the API enqueued; can be made to fail like a broker outage."""
+
+    def __init__(self) -> None:
+        self.sent: list[uuid.UUID] = []
+        self.down = False
+
+    def enqueue(self, job_id: uuid.UUID) -> None:
+        if self.down:
+            raise ConnectionError("broker unavailable")
+        self.sent.append(job_id)
 
 
 def alembic_head() -> str:
@@ -83,12 +97,14 @@ def world() -> Iterator[dict[str, Any]]:
         s3_secret_key=os.environ.get("GRADEMIND_TEST_S3_SECRET_KEY", ""),
         s3_bucket="gm-test-api",
         max_upload_bytes=MAX_UPLOAD,
+        sse_poll_seconds=0.05,
     )
     store = ObjectStore(settings)
     if S3:
         store.ensure_bucket()
-    w["settings"], w["store"] = settings, store
-    with TestClient(create_app(settings, sessions, store)) as client:
+    queue = RecordingQueue()
+    w["settings"], w["store"], w["queue"] = settings, store, queue
+    with TestClient(create_app(settings, sessions, store, queue)) as client:
         w["client"] = client
         yield w
     engine.dispose()

@@ -10,6 +10,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from grademind_api.errors import ApiError
+from grademind_api.queue import JobQueue
 from grademind_core.config import Settings
 from grademind_core.db.models import Role, User
 from grademind_core.security import Principal, decode_access_token
@@ -26,6 +27,11 @@ def settings_dep(request: Request) -> Settings:
 def store_dep(request: Request) -> ObjectStore:
     s: ObjectStore = request.app.state.store
     return s
+
+
+def queue_dep(request: Request) -> JobQueue:
+    q: JobQueue = request.app.state.queue
+    return q
 
 
 def db_dep(request: Request) -> Iterator[Session]:
