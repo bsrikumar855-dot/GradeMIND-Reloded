@@ -7,13 +7,13 @@ Answer the following
 6 True
 7 Natural disaster
 8[?] Extincting species
-8 a) Reduce, reuse recycle
+8 a) Reduce, reuse, recycle
 9 water pollution
-10 b[?] del
+10 b del[?]
 11 b) Recycling
 12 True.
 PART-B
-15. Deforestation
+1[?]. Deforestation
 Deforestation is the cutting down
 of trees. The large numbers of trees
 were cutted due to human purposes.

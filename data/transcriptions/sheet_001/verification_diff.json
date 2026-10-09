@@ -1,0 +1,134 @@
+{
+ "generated_at": "2026-10-09T04:54:11+00:00",
+ "pages": {
+  "page_02": {
+   "draft_lines": 12,
+   "unchanged": 11,
+   "changed": 1,
+   "deleted": 0,
+   "inserted": 0,
+   "edits": [
+    {
+     "op": "replace",
+     "draft": [
+      "11.] a.] Minerals"
+     ],
+     "verified": [
+      "11.] a.) Minerals"
+     ]
+    }
+   ]
+  },
+  "page_03": {
+   "draft_lines": 16,
+   "unchanged": 15,
+   "changed": 1,
+   "deleted": 0,
+   "inserted": 0,
+   "edits": [
+    {
+     "op": "replace",
+     "draft": [
+      "* A species that has rear[?]"
+     ],
+     "verified": [
+      "* A species that has rear[?],"
+     ]
+    }
+   ]
+  },
+  "page_04": {
+   "draft_lines": 16,
+   "unchanged": 15,
+   "changed": 1,
+   "deleted": 0,
+   "inserted": 0,
+   "edits": [
+    {
+     "op": "replace",
+     "draft": [
+      "so water cannot flow"
+     ],
+     "verified": [
+      "So water cannot flow"
+     ]
+    }
+   ]
+  },
+  "page_08": {
+   "draft_lines": 18,
+   "unchanged": 14,
+   "changed": 4,
+   "deleted": 0,
+   "inserted": 0,
+   "edits": [
+    {
+     "op": "replace",
+     "draft": [
+      "evaporation -> condensation -> storing",
+      "This cycle is preserve to"
+     ],
+     "verified": [
+      "evaporation -> condansation[?] -> storing",
+      "This cycle is preserve[?] to"
+     ]
+    },
+    {
+     "op": "replace",
+     "draft": [
+      "19.] A.] forest region"
+     ],
+     "verified": [
+      "14[?].] A.] forest region"
+     ]
+    },
+    {
+     "op": "replace",
+     "draft": [
+      "Bio diversity"
+     ],
+     "verified": [
+      "Bio divesity[?]"
+     ]
+    }
+   ]
+  },
+  "page_11": {
+   "draft_lines": 17,
+   "unchanged": 14,
+   "changed": 3,
+   "deleted": 0,
+   "inserted": 0,
+   "edits": [
+    {
+     "op": "replace",
+     "draft": [
+      "aquatic ecosystem :-",
+      "* These is best type in"
+     ],
+     "verified": [
+      "aquatic ecasystem[?] :-",
+      "* These is bast[?] type in"
+     ]
+    },
+    {
+     "op": "replace",
+     "draft": [
+      "* It produces 98[?].%"
+     ],
+     "verified": [
+      "* It produces 95[?].%"
+     ]
+    }
+   ]
+  }
+ },
+ "totals": {
+  "draft_lines": 79,
+  "unchanged": 69,
+  "changed": 10,
+  "deleted": 0,
+  "inserted": 0,
+  "draft_line_error_rate": 0.1266
+ }
+}

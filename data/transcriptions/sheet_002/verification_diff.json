@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-10-09T04:55:36+00:00",
+ "pages": {
+  "page_02": {
+   "draft_lines": 20,
+   "unchanged": 17,
+   "changed": 3,
+   "deleted": 0,
+   "inserted": 0,
+   "edits": [
+    {
+     "op": "replace",
+     "draft": [
+      "8 a) Reduce, reuse, recycle"
+     ],
+     "verified": [
+      "8 a) Reduce, reuse recycle"
+     ]
+    },
+    {
+     "op": "replace",
+     "draft": [
+      "10 b del[?]"
+     ],
+     "verified": [
+      "10 b[?] del"
+     ]
+    },
+    {
+     "op": "replace",
+     "draft": [
+      "1[?]. Deforestation"
+     ],
+     "verified": [
+      "15. Deforestation"
+     ]
+    }
+   ]
+  },
+  "page_12": {
+   "draft_lines": 16,
+   "unchanged": 16,
+   "changed": 0,
+   "deleted": 0,
+   "inserted": 0,
+   "edits": []
+  }
+ },
+ "totals": {
+  "draft_lines": 36,
+  "unchanged": 33,
+  "changed": 3,
+  "deleted": 0,
+  "inserted": 0,
+  "draft_line_error_rate": 0.0833
+ }
+}
