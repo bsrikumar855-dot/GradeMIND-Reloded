@@ -160,8 +160,10 @@ def _node(n: PaperNode, ctx: _Ctx) -> NodeScore:
         keep = {k.qid for k in counted}
         for k in kids:
             if _attempted(k) and k.qid not in keep:
+                # keep the reason visible: an excluded alternative can still be what makes the sheet incomplete
+                extra = ("INCOMPLETE",) if k.status == NodeStatus.INCOMPLETE else ()
                 ctx.nodes[k.qid] = NodeScore(
-                    k.qid, k.marks, k.max_marks, NodeStatus.EXCLUDED_BY_CHOICE, k.counted_attempt, k.flags
+                    k.qid, k.marks, k.max_marks, NodeStatus.EXCLUDED_BY_CHOICE, k.counted_attempt, k.flags + extra
                 )
     marks = sum((k.marks for k in counted), ZERO)
     status = NodeStatus.SCORED if any(_attempted(k) for k in kids) else NodeStatus.NOT_ATTEMPTED

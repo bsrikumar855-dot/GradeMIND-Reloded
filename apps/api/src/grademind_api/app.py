@@ -16,7 +16,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from grademind_api.errors import ApiError, envelope
 from grademind_api.limits import BodySizeLimit
 from grademind_api.queue import CeleryQueue, JobQueue
-from grademind_api.routes import auth, exams, grading_docs, health, jobs, submissions
+from grademind_api.routes import auth, exams, grading, grading_docs, health, jobs, submissions
 from grademind_api.routes.submissions import MULTIPART_OVERHEAD
 from grademind_core.config import Settings, get_settings
 from grademind_core.db.session import session_factory
@@ -88,4 +88,5 @@ def create_app(
     app.include_router(submissions.router, prefix="/api")
     app.include_router(jobs.router, prefix="/api")
     app.include_router(grading_docs.router, prefix="/api")
+    app.include_router(grading.router, prefix="/api")
     return app

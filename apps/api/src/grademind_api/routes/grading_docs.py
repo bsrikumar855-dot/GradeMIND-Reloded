@@ -136,7 +136,17 @@ def _next_no(db: Session, model: type[PaperVersion] | type[RubricVersion], exam_
     return int(db.scalar(select(func.coalesce(func.max(model.version_no), 0)).where(model.exam_id == exam_id)) or 0) + 1
 
 
-def _audit(db: Session, p: Principal, request: Request, action: str, entity: str, entity_id: uuid.UUID, **details: Any) -> None:
+def _audit(
+    db: Session,
+    p: Principal,
+    request: Request,
+    exam_id: uuid.UUID,
+    action: str,
+    entity: str,
+    entity_id: uuid.UUID,
+    **details: Any,
+) -> None:
+    details["exam_id"] = str(exam_id)
     db.add(
         AuditLog(
             actor_id=p.user_id,
@@ -188,7 +198,7 @@ def upload_paper_source(
     )
     db.add(src)
     db.flush()
-    _audit(db, p, request, "paper.source_upload", "paper_source", src.id, sha256=up.sha256, has_text_layer=bool(text))
+    _audit(db, p, request, exam_id, "paper.source_upload", "paper_source", src.id, sha256=up.sha256, has_text_layer=bool(text))
     db.commit()
     return SourceOut(id=src.id, filename=src.filename, has_text_layer=bool(text), text=text)
 
@@ -238,7 +248,9 @@ def save_paper_draft(
         draft.source_id = body.source_id or draft.source_id
     db.flush()
     issues = validate_paper(paper, exam.total_marks)
-    _audit(db, p, request, "paper.draft_save", "paper_version", draft.id, version_no=draft.version_no, issues=len(issues))
+    _audit(
+        db, p, request, exam_id, "paper.draft_save", "paper_version", draft.id, version_no=draft.version_no, issues=len(issues)
+    )
     db.commit()
     return PaperState(draft=_out(draft), approved=_out(approved_paper(db, exam_id)), issues=_issues(issues))
 
@@ -256,7 +268,7 @@ def approve_paper(
         raise ApiError(409, "draft_has_issues", "Fix the listed problems before approving.", [asdict(i) for i in issues])
     draft.status = VersionStatus.APPROVED
     draft.approved_by, draft.approved_at = p.user_id, datetime.now(UTC)
-    _audit(db, p, request, "paper.approve", "paper_version", draft.id, version_no=draft.version_no)
+    _audit(db, p, request, exam_id, "paper.approve", "paper_version", draft.id, version_no=draft.version_no)
     db.commit()
     out = _out(draft)
     assert out is not None
@@ -320,7 +332,7 @@ def save_rubric_draft(
     else:
         draft.document, draft.policy, draft.paper_version_id = doc, pol, paper_v.id
     db.flush()
-    _audit(db, p, request, "rubric.draft_save", "rubric_version", draft.id, version_no=draft.version_no)
+    _audit(db, p, request, exam_id, "rubric.draft_save", "rubric_version", draft.id, version_no=draft.version_no)
     db.commit()
     return _rubric_state(db, exam)
 
@@ -348,6 +360,7 @@ def approve_rubric(
         db,
         p,
         request,
+        exam_id,
         "rubric.approve",
         "rubric_version",
         draft.id,

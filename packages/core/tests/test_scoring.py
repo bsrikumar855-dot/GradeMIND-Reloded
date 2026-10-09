@@ -333,3 +333,10 @@ def test_property_rounding_is_idempotent(sc: tuple[Paper, Rubric, Policy, list[A
     for n in s.nodes.values():
         if policy.rounding_scope == "question" and n.qid in {lf.id for lf in leaves(paper)}:
             assert _round(n.marks, policy, n.max_marks) == n.marks
+
+
+def test_excluded_incomplete_alternative_keeps_its_incomplete_flag() -> None:
+    attempts = [Attempt("q2a", 1), Attempt("q2b", 1)]
+    s = compute(PAPER, RUBRIC, P, attempts, [Verdict("q2a", 1, "c1", "l2")])  # q2b attempted, not graded
+    assert s.nodes["q2b"].status == NodeStatus.EXCLUDED_BY_CHOICE and s.nodes["q2b"].flags == ("INCOMPLETE",)
+    assert s.nodes["q2"].marks == D(3) and not s.complete

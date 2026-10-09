@@ -77,7 +77,7 @@ class VersionStatus(enum.StrEnum):
     APPROVED = "APPROVED"
 
 
-APPEND_ONLY_TABLES = ("line_corrections", "audit_logs", "job_stage_attempts")
+APPEND_ONLY_TABLES = ("line_corrections", "audit_logs", "job_stage_attempts", "evaluations", "score_results")
 # rows of these tables become immutable (no UPDATE, no DELETE) once status = APPROVED (I5/I8); drafts stay editable
 IMMUTABLE_WHEN_APPROVED_TABLES = ("paper_versions", "rubric_versions")
 
@@ -363,3 +363,70 @@ class RubricVersion(Base):
     )
     approved_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
     approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class AnswerRegion(Base):
+    """A box an examiner drew on a page and assigned to a (leaf) question: the v1 label/alignment strategy (D25 e).
+    bbox = [x0, y0, x1, y1] as fractions of the unrotated page (0..1). Several regions can make up one attempt (an
+    answer continuing on the next page). Never hard-deleted: evaluations may cite a region as evidence."""
+
+    __tablename__ = "answer_regions"
+    id: Mapped[uuid.UUID] = _pk()
+    submission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("submissions.id"), nullable=False, index=True)
+    page_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pages.id"), nullable=False)
+    bbox: Mapped[list[float]] = mapped_column(JSONB, nullable=False)
+    qid: Mapped[str] = mapped_column(String(40), nullable=False)
+    attempt_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    crossed_out: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = _created()
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    deleted_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id"))
+
+
+class Evaluation(Base):
+    """One examiner judgement of one attempt: a verdict level per criterion (D19: the examiner decides, ScoreComputer
+    computes). Append-only (I8): a re-grade or an override is a NEW row that supersedes the previous one."""
+
+    __tablename__ = "evaluations"
+    __table_args__ = (
+        UniqueConstraint("seq", name="uq_evaluations_seq"),
+        Index("ix_evaluations_lookup", "submission_id", "rubric_version_id", "qid", "attempt_no", "seq"),
+    )
+    id: Mapped[uuid.UUID] = _pk()
+    seq: Mapped[int] = mapped_column(BigInteger, Identity(always=True), nullable=False)
+    submission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("submissions.id"), nullable=False, index=True)
+    rubric_version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("rubric_versions.id"), nullable=False)
+    qid: Mapped[str] = mapped_column(String(40), nullable=False)
+    attempt_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    verdicts: Mapped[dict[str, str]] = mapped_column(JSONB, nullable=False)  # criterion id -> level id
+    notes: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    evidence_region_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("answer_regions.id"))
+    marks: Mapped[Decimal] = mapped_column(Numeric(10, 4), nullable=False)  # this question's marks after the save
+    examiner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    supersedes_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("evaluations.id"))
+    is_override: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    override_reason: Mapped[str | None] = mapped_column(Text)
+    score_computer_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    created_at: Mapped[datetime] = _created()
+
+
+class ScoreResult(Base):
+    """A complete score sheet for a submission, written in the same transaction as the evaluation that caused it
+    (never partially written). Append-only; the latest row is the current score."""
+
+    __tablename__ = "score_results"
+    __table_args__ = (UniqueConstraint("seq", name="uq_score_results_seq"),)
+    id: Mapped[uuid.UUID] = _pk()
+    seq: Mapped[int] = mapped_column(BigInteger, Identity(always=True), nullable=False)
+    submission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("submissions.id"), nullable=False, index=True)
+    rubric_version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("rubric_versions.id"), nullable=False)
+    total: Mapped[Decimal] = mapped_column(Numeric(10, 4), nullable=False)
+    max_total: Mapped[Decimal] = mapped_column(Numeric(10, 4), nullable=False)
+    complete: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    sheet: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)  # node scores
+    flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    score_computer_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    trigger_evaluation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("evaluations.id"))
+    created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = _created()
