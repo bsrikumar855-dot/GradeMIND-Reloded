@@ -1,111 +1,92 @@
-# GradeMIND v2: Architecture (Phase 0 draft)
+# GradeMIND v2: Architecture (v1, after the Phase 0b review)
 
-Status: **draft; updated after the Phase 0 review (docs/DECISIONS.md, 2026-10-08).** The binding spec is [MASTER_PROMPT.md](MASTER_PROMPT.md); this file records
-how the spec maps onto the owner's actual host and what the OCR spike measured ([OCR_SPIKE.md](OCR_SPIKE.md)).
-Items marked **DECISION** need owner approval before Phase 1.
+The binding spec is [MASTER_PROMPT.md](MASTER_PROMPT.md). The decisions that shape v1 are in [DECISIONS.md](DECISIONS.md) (D18–D23 in particular).
+Evidence: [PHASE_0B_REPORT.md](../PHASE_0B_REPORT.md), [OCR_SPIKE.md](OCR_SPIKE.md).
 
-## 1. Host constraints (measured, 2026-10-08)
+## 1. What v1 is (D19)
+
+**Examiner-assisted grading.** Software organises, displays, searches and audits. The **examiner decides every verdict**.
+
+- OCR text is **assistive only**: search, highlighting, and pre-filling the region the examiner is looking at. It is **never** the input to an AI verdict in v1.
+- The examiner picks a verdict level per rubric criterion. `ScoreComputer` (deterministic, `Decimal`) turns levels into marks.
+  Audit trail, analytics and reports work as specified (spec §11–§17).
+- **AI verdict suggestions are disabled** (`AI_SUGGESTIONS_ENABLED=false`, single config source). The LLM verdict contract, evidence
+  verification and invariant tests (I1–I12) are kept in the codebase and CI behind that flag, ready for Phase 0c's outcome (D22).
+- Every examiner OCR correction is captured as **line-level labelled data** (§5). This is the future fine-tuning dataset.
+
+Why: on the Phase 0b sheets, the best engine's line-level CER is about 0.4, and at most 3 of 115 lines are read correctly by every engine (PHASE_0B_REPORT F2).
+Automated grading from OCR text is not defensible on this distribution (I4).
+
+## 2. Host constraints
 
 | Constraint | Value | Consequence |
 |---|---|---|
-| GPU | RTX 5070, 12 GiB, sm_120 (Blackwell), CUDA 13 driver | All CUDA wheels/images must be cu128+ (torch 2.10 cu129 verified, Paddle 3.4 cu129 verified) |
-| GPU sharing | About 4.65 GiB held by other processes and it fluctuates; **owner decision D3: ≤ 6 GB VRAM** | At most one model on the GPU at a time. GPU stages are serialised by a single GPU worker |
-| RAM | 31 GiB | Engine B on CPU peaks at 14.5 GB RSS. CPU OCR concurrency must be 1 |
-| Docker | 29.8, GPU passthrough verified | OCR and LLM serving run as containers |
+| GPU | RTX 5070, 12 GiB, sm_120, shared; owner budget **≤ 6 GB** (D3) | v1 needs **no GPU**: PP-OCRv6 runs on CPU. The GPU lease exists only for future GPU providers |
+| RAM | 31 GiB | PP-OCRv6 peaks at about 3.3 GB RSS (v5 server needs about 16 GB, which is why it is not used) |
+| CPU OCR time | PP-OCRv6 detection about 7.5–8.2 s/page | A 12-page booklet takes about 2–3 min of background OCR per worker |
+| Docker | 29.8, GPU passthrough verified | Everything runs in Compose |
 
-## 2. Services (spec §4, adjusted)
+## 3. Services
 
 ```text
-web (Next.js) ──► api (FastAPI) ──► Postgres
-                     │
-                     ├──► Redis ◄── worker-cpu (Celery, concurrency=1 for OCR-B; N for light stages)
-                     │                  └──► ocr-b (PaddleOCR, CPU container)
-                     │
-                     │          ◄── worker-gpu (Celery, concurrency=1, owns the GPU lease)
-                     │                  ├──► ocr-a  (Unlimited-OCR; serving mode = DECISION, see §4)
-                     │                  └──► model-gateway ─► llm (local Qwen, quantized; loaded only when OCR-A is unloaded)
-                     │
-                     └──► MinIO (S3-compatible object storage)
+web (Next.js, TS) ──► api (FastAPI) ──► Postgres 16
+                          │
+                          ├──► Redis ◄── worker (Celery): ingest, characterisation, OCR orchestration, scoring, reports
+                          │                 │            (all processing is jobs; HTTP never runs a pipeline)
+                          │                 └──► ocr (PaddleOCR PP-OCRv6 medium, CPU container, internal HTTP)
+                          │
+                          └──► MinIO (S3-compatible): page images, crops, exports; signed URLs only
 ```
 
-- **GPU lease.** One Redis-backed lease per host. A GPU stage acquires it, ensures its model is loaded (unloading the other), and
-  runs. Pipeline throughput is therefore batch-oriented: OCR-A the whole batch, then swap, then the LLM for the whole batch. This is
-  the only way both models fit in ~7 GiB.
-- **OCR service API** stays as in spec §4 (`/ocr/page`, `/ocr/health`, `/ocr/version`), with one container per engine so the dependency
-  stacks never mix (Paddle cu129 vs torch cu129 vs vLLM image).
+- **OCR provider registry (rule 7, I7)** is one config source. Providers and v1 state:
 
-## 3. OCR pipeline: what the spike changes
+  | Provider | v1 state | Basis |
+  |---|---|---|
+  | `paddle_v6` | **enabled** (primary) | D18 |
+  | `trocr_line` | **disabled** (flag) | D18 |
+  | `unlimited_ocr` | **disabled / excluded** | D18, D2 |
+  | `fake` | test only | I11 |
 
-Spike facts (25 handwritten answer pages, 2 writers, 1 course; details and commands in OCR_SPIKE.md):
+  A test asserts that a disabled provider is never called (spy transport).
+- **Model gateway** (LLM): present, with every provider **disabled** in v1 (D19). Kill switch in the same config source.
+- **Rule 12:** the OCR service checks at startup that the loaded det/rec model names and weight hashes equal the configured ones, refuses to start otherwise,
+  and exposes them in `/health/ocr`.
+- **D3 resilience:** one page per OCR call; crash → health check → restart → resume from the last completed page (stage-level cache keyed by
+  content hash + component version); OOM or crash is a retryable stage failure, never a silent skip. Integration test
+  `test_ocr_server_killed_mid_batch_resumes_without_dup_or_gap`.
 
-- **Engine A (Unlimited-OCR):** 4 of 25 pages produced degenerate output (counting loops, repeated tables, word loops, an invented Chinese date).
-  Non-degenerate pages still showed silent word omission, misspelling normalisation (`segrade` → `separate`), real-word substitution
-  (`Deforestation` → `Depreciation`) and invented digits. Token probability does not flag these: the mean was 0.997 on a counting loop. Region boxes are
-  often page-sized `table` regions. The spec's `base`-mode retry cleanly recovered 0 of 4 pages.
-- **Engine B (PaddleOCR PP-OCRv5, en mobile rec, CPU):** literal, line-level boxes, per-line scores. Its main failures are spelling-level
-  misreads and **reading bleed-through (mirror writing from the reverse side) as content, including invented digits**.
+## 4. Pipeline (v1)
 
-Architectural consequences, independent of the strategy DECISION below:
+`QUEUED → INGEST (PDF/images → pages, 300 DPI) → CHARACTERISE (features + PAGE_* flags + PAGE_DETECTION_ANOMALY) → OCR (PP-OCRv6, raw page;
+transforms off, D18) → LABEL_CONFIRM (examiner) → ALIGN (confirmed labels only) → REVIEW (examiner verdicts) → SCORE → COMPLETED`
 
-1. **Preprocessing must suppress bleed-through** (spec §6 step 4). It must be validated on the owner sheets, measured as the count of
-   bleed-through lines Engine B reports, not just CER.
-2. **Highlight geometry comes from Engine B line boxes.** Engine A boxes are used only when they are line- or paragraph-sized.
-3. **The degenerate detector is a growing list and is not sufficient by itself.** Any Engine A page that is flagged, or that disagrees with Engine B
-   beyond tolerance, goes to `OCR_DEGENERATE` or `OCR_UNCERTAIN`, and the review shows both readings (I4).
-4. **A numeral, option letter or unit present in only one engine's reading is `OCR_CRITICAL_TOKEN_MISMATCH`** (spec §5.3). Both
-   engines invent digits on these sheets, so this rule will fire often. Expect a high review rate until reading quality improves.
-5. **Engine A's `eval()` hazard.** The model's bundled post-processing `eval()`s generated text. Our parser never does, and a regression test
-   (Phase 2) asserts that boxes are parsed with a JSON parser only.
+- **Preprocessing (D18):** characterisation is on; image transforms are off, until a validated selection rule exists (≥ 5 sheets).
+- **Alignment (D18, D1e):** OCR'd question labels are unreliable (label recall ≤ 0.65 in Phase 0b). Per page, the examiner confirms or corrects each
+  detected label, or marks a gap, with one keypress. Only confirmed labels drive the `question → regions` mapping.
 
-### DECISION 1: OCR strategy (spec Phase 0 exit). **Option A rejected (D1); B vs C decided by Phase 0b**
+## 5. Correction capture: the line-level labelled dataset (D19)
 
-| Option | Description | Spike evidence for | Spike evidence against |
-|---|---|---|---|
-| A. Keep spec roles | Engine A primary text, Engine B cross-check | Engine A reads cursive prose words B misses (e.g. sheet_002 p12) | 16% degenerate pages, omissions and normalisation are exactly what grading cannot tolerate |
-| **B. Swap roles (recommended to evaluate first)** | Engine B (literal, line boxes) is the primary text and geometry; Engine A is a per-line cross-check and layout hint | Literal reading, usable boxes, never "autocorrects" to dictionary words in the samples | Higher raw error on hard cursive; bleed-through must be fixed in preprocessing |
-| C. Add a third reader | A line-level handwriting recogniser on Engine B's line crops, majority/agreement per line | Line crops avoid page-level degeneration; agreement of 2 of 3 is a stronger signal | Not measured yet; one more model to fit in the GPU lease |
+Every time an examiner corrects OCR text, one immutable row is appended (I8):
 
-No option can be approved on numbers yet, because **every CER/WER so far is against draft transcriptions** (NOT_REPORTABLE).
+| Field | Purpose |
+|---|---|
+| `id`, `created_at`, `examiner_id` | provenance |
+| `submission_id`, `page_id`, `line_id` | where |
+| `crop_object_key`, `crop_sha256`, `crop_bbox`, `crop_polygon` | the exact image the text belongs to (stored in MinIO, never a public URL) |
+| `page_image_sha256`, `preprocessing_version` | reproduce the crop |
+| `ocr_provider`, `ocr_model_names`, `ocr_weights_sha256` (rule 12) | which reading was corrected |
+| `ocr_text`, `corrected_text`, `edit_ops` | the label (literal, misspellings preserved, `[?]` allowed) |
+| `consent_scope` (`local_only` / `public_release`), `exam_id`, `subject` | D20: whether this row may ever leave the machine |
+| `supersedes_id` | corrections of corrections stay append-only |
 
-### DECISION 2: Engine A serving mode. **RESOLVED (D2)**
+Export to a training format is a later job and respects `consent_scope`.
 
-Unlimited-OCR is demoted to an optional cross-check / layout-hint engine, int8 transformers path only, **disabled by default** in the
-single provider config. No vendor patch. vLLM + crop cap is revisited only if Phase 0b shows cross-check value.
+## 6. Data protection (D6, D20)
 
+The repo is public. Only redacted data is committed, after a visual contact-sheet check. `data/README.md` records per-sheet public-release consent, and a sheet
+without it stays local. In the product, page images live in MinIO and are served by short-lived signed URLs; access to answer images is audit-logged.
 
-Options: (i) int8 transformers (works within budget, 3–8× slower); (ii) vLLM FP8 with the image's `_UNLIMITED_OCR_MAX_CROPS`
-patched from 32 to 24 plus fixed-aspect padding (a vendor-code patch, but it bounds memory); (iii) vLLM FP8 unpatched, which needs guaranteed GPU
-headroom (e.g. interviewbot moved off this GPU). This choice only matters if DECISION 1 keeps Engine A.
+## 7. Deferred (behind flags or later phases)
 
-| Mode | Peak GPU | Speed (normal page) | Fidelity vs bf16 | Status |
-|---|---|---|---|---|
-| bf16, transformers | OOM on shared GPU | n/a | reference | fails |
-| bf16 + expert CPU offload | ~3.9 GiB | ~20× slower than int8 | exact | reference only |
-| int8 (bitsandbytes), transformers | 6648 MiB gundam / 4361 MiB base | 3–23 s/page | same degeneration on p2 as bf16 | works |
-| FP8, vLLM `unlimited-ocr` image | weights 3.57 GiB, needs ≈6.9 GiB free at start | **~2 s/page** | same degenerate pages as int8 (16/16) | **unstable on shared GPU**: OOM on 30-crop page, start fails when free memory dips (OCR_SPIKE A7) |
-
-## 3b. OCR service resilience (D3)
-
-- One page at a time. Pages are padded to a fixed aspect ratio before any OCR (this bounds per-page memory and tokens and makes the crop grid reproducible).
-- Crash survival: health check → restart → resume from the last completed page. Stage outputs are cached by `(content hash, component version)`.
-- GPU OOM is a **retryable stage failure** (`OCR_A_FAILED` / `OCR_B_FAILED` with the reason), never a silent skip.
-- Integration test: kill the OCR server mid-batch, then assert resume with no duplicate and no missing pages.
-
-## 3c. Exam profiles (D4)
-
-University internal assessment is the first target. CBSE conventions are a **policy profile** (rounding, OR handling, multiple-attempt rule,
-step marking); neither is hard-coded.
-
-## 4. LLM grading (local Qwen, owner decision)
-
-- `~/models/Qwen3-8B` is bf16 (~16 GB), which does not fit. Production needs a **4-bit build of about 5 GB** (AWQ or GPTQ for vLLM, or GGUF Q4_K_M
-  for llama.cpp/Ollama). Which build is still to be chosen and pinned in Phase 3.
-- It runs only while holding the GPU lease, after OCR-A is unloaded. It is served behind the model gateway (I7) with `temperature=0`, a pinned
-  revision and prompt versions, and cached raw responses (I12).
-
-## 5. Data protection
-
-- The repo is public, so student scans, transcriptions and OCR outputs are gitignored (`data/README.md`). Production storage is MinIO only,
-  with signed URLs (spec §16).
-- Engine B downloads its models from Hugging Face on first use. In production, models are pre-fetched into the image, and the OCR containers run
-  without network egress.
+AI verdict suggestions (D19/D22), the TrOCR cross-check (D18), Unlimited-OCR (D18), preprocessing transforms (D18), cloud LLMs (spec §16,
+per-organisation opt-in), and the numerical-subject evaluators (D23 data requirement first).
