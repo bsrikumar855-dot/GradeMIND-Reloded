@@ -20,13 +20,15 @@ from grademind_api.routes import auth, exams, health, jobs, submissions
 from grademind_api.routes.submissions import MULTIPART_OVERHEAD
 from grademind_core.config import Settings, get_settings
 from grademind_core.db.session import session_factory
+from grademind_core.logredact import install as install_log_redaction
+from grademind_core.logredact import redact_obj
 from grademind_core.storage import ObjectStore
 
 log = logging.getLogger("grademind.api")
 
 
 def _json_log(**fields: object) -> None:
-    log.info(json.dumps(fields, default=str))  # spec §18: structured JSON logs
+    log.info(json.dumps(redact_obj(fields), default=str))  # spec §18: structured JSON logs; D26.4: redacted
 
 
 def create_app(
@@ -35,6 +37,7 @@ def create_app(
     store: ObjectStore | None = None,
     queue: JobQueue | None = None,
 ) -> FastAPI:
+    install_log_redaction()  # D26.4: every log record in this process is redacted at creation
     settings = settings or get_settings()
     app = FastAPI(title="GradeMIND API", version="0.1.0")
     app.state.settings = settings

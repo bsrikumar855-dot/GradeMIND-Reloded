@@ -15,9 +15,11 @@ from celery import Celery
 from grademind_core.config import get_settings
 from grademind_core.db.session import session_factory
 from grademind_core.jobs import RUN_JOB_TASK, LeasePolicy, resumable_jobs, run_job
+from grademind_core.logredact import install as install_log_redaction
 from grademind_core.storage import ObjectStore
 from grademind_worker.stages import PIPELINES
 
+install_log_redaction()  # D26.4
 app = Celery("grademind", broker=get_settings().redis_url)
 app.conf.update(
     task_acks_late=True,
