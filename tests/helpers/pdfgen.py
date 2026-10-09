@@ -34,3 +34,16 @@ def make_pdf(pages: list[list[str]]) -> bytes:
     out += b"".join(f"{o:010d} 00000 n \n".encode() for o in offsets)
     out += f"trailer\n<< /Size {len(objs) + 1} /Root 1 0 R >>\nstartxref\n{xref}\n%%EOF\n".encode()
     return bytes(out)
+
+
+def make_png(width: int, height: int) -> bytes:
+    """A blank white RGB PNG (stdlib only: zlib + struct)."""
+    import struct
+    import zlib
+
+    def chunk(tag: bytes, data: bytes) -> bytes:
+        return struct.pack(">I", len(data)) + tag + data + struct.pack(">I", zlib.crc32(tag + data) & 0xFFFFFFFF)
+
+    row = b"\x00" + b"\xff" * (3 * width)
+    ihdr = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
+    return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", ihdr) + chunk(b"IDAT", zlib.compress(row * height, 9)) + chunk(b"IEND", b"")

@@ -54,7 +54,7 @@ extend-immutable-calls = ["fastapi.Depends", "fastapi.params.Depends", "grademin
 testpaths = ["tests", "packages/core/tests", "apps/api/tests", "apps/worker/tests", "services/ocr/tests"]
 # the OCR service is not a workspace member (its Paddle wheels come from Paddle's own index); its Paddle-free modules are
 # tested here, the engine itself in its container
-pythonpath = ["services/ocr/src"]
+pythonpath = ["services/ocr/src", "tests/helpers"]
 asyncio_mode = "auto"
 
 [tool.mypy]

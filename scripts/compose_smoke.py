@@ -18,6 +18,9 @@ import uuid
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tests" / "helpers"))
+from pdfgen import make_pdf  # noqa: E402 - stdlib-only test helper (synthetic PDFs)
+
 API = os.environ.get("SMOKE_API", "http://127.0.0.1:8000")
 WEB = os.environ.get("SMOKE_WEB", "http://127.0.0.1:3100")
 REQUIRE_OCR = os.environ.get("SMOKE_REQUIRE_OCR", "1") == "1"
@@ -118,7 +121,7 @@ def main() -> int:
         {**auth, "content-type": "application/json"},
     )
     check(code == 201, "create exam")
-    pdf = b"%PDF-1.7\n% smoke " + uuid.uuid4().hex.encode() + b"\n%%EOF\n"
+    pdf = make_pdf([["SMOKE booklet " + uuid.uuid4().hex], ["page 2"]])
     b = uuid.uuid4().hex
     body = (
         (
@@ -153,7 +156,15 @@ def main() -> int:
                 break
     check(bool(events) and events[-1]["status"] == "COMPLETED", f"job via SSE -> {[e['status'] for e in events]}")
     code, job = call("GET", f"/api/jobs/{sub['job_id']}", headers=auth)
-    check([(s["stage"], s["status"]) for s in job["stages"]] == [("INTAKE", "STARTED"), ("INTAKE", "SUCCEEDED")], "stage log")
+    stages = [(s["stage"], s["status"]) for s in job["stages"]]
+    check(
+        stages == [("INTAKE", "STARTED"), ("INTAKE", "SUCCEEDED"), ("RASTERIZE", "STARTED"), ("RASTERIZE", "SUCCEEDED")],
+        "stage log",
+    )
+    code, pages = call("GET", f"/api/submissions/{sub['id']}/pages", headers=auth)
+    check(code == 200 and [pg["page_no"] for pg in pages] == [1, 2], "booklet rendered to 2 page images")
+    with urllib.request.urlopen(pages[0]["image_url"], timeout=10) as r:
+        check(r.read()[:3] == b"\xff\xd8\xff", "page image served via signed URL")
     code, detail = call("GET", f"/api/submissions/{sub['id']}", headers=auth)
     with urllib.request.urlopen(detail["source_url"], timeout=10) as r:
         check(r.read() == pdf, "signed URL serves the stored bytes")

@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import json
 import threading
+import urllib.request
 import uuid
 from typing import Any
 
 import pytest
 from conftest import login, needs_db, needs_s3
+from pdfgen import make_pdf
 from sqlalchemy import update
 
 from grademind_core.db.models import JobStatus, Submission
@@ -17,7 +19,6 @@ from grademind_core.jobs import run_job
 from grademind_worker.stages import PIPELINES
 
 pytestmark = [needs_db, needs_s3]
-PDF = b"%PDF-1.7\n%%EOF\n"
 
 
 @pytest.fixture(scope="module")
@@ -33,7 +34,7 @@ def exam(world: dict[str, Any]) -> str:
 def upload(w: dict[str, Any], exam_id: str, tag: str) -> dict[str, Any]:
     r = w["client"].post(
         f"/api/exams/{exam_id}/submissions",
-        files={"file": ("a.pdf", PDF + tag.encode(), "application/pdf")},
+        files={"file": ("a.pdf", make_pdf([[f"booklet {tag} page 1"], ["page 2"]]), "application/pdf")},
         data={"student_ref": "S-1"},
         headers=login(w, "teacher"),
     )
@@ -77,7 +78,16 @@ def test_upload_creates_and_enqueues_an_ingest_job(world: dict[str, Any], exam: 
     assert j["status"] == "COMPLETED" and [(s["stage"], s["status"]) for s in j["stages"]] == [
         ("INTAKE", "STARTED"),
         ("INTAKE", "SUCCEEDED"),
+        ("RASTERIZE", "STARTED"),
+        ("RASTERIZE", "SUCCEEDED"),
     ]
+    pages = world["client"].get(f"/api/submissions/{out['id']}/pages", headers=login(world, "exA")).json()
+    assert [(pg["page_no"], pg["width"]) for pg in pages] == [(1, 1240), (2, 1240)]
+    with urllib.request.urlopen(pages[0]["image_url"], timeout=10) as resp:  # noqa: S310 - test-controlled URL
+        assert resp.read()[:3] == b"\xff\xd8\xff"  # a JPEG
+    with urllib.request.urlopen(pages[1]["thumb_url"], timeout=10) as resp:  # noqa: S310
+        assert resp.read()[:3] == b"\xff\xd8\xff"
+    assert world["client"].get(f"/api/submissions/{out['id']}/pages", headers=login(world, "exB")).status_code == 404
 
 
 def test_sse_replays_history_and_resumes_from_last_event_id(world: dict[str, Any], exam: str) -> None:
@@ -85,12 +95,17 @@ def test_sse_replays_history_and_resumes_from_last_event_id(world: dict[str, Any
     work(world, jid)
     events = sse(world, jid)
     stage_events = [e for e in events if e[0] == "stage"]
-    assert [(e[2]["stage"], e[2]["status"]) for e in stage_events] == [("INTAKE", "STARTED"), ("INTAKE", "SUCCEEDED")]
+    assert [(e[2]["stage"], e[2]["status"]) for e in stage_events] == [
+        ("INTAKE", "STARTED"),
+        ("INTAKE", "SUCCEEDED"),
+        ("RASTERIZE", "STARTED"),
+        ("RASTERIZE", "SUCCEEDED"),
+    ]
     assert events[-1][0] == "job" and events[-1][2]["status"] == "COMPLETED"  # terminal: the stream ends
     ids = [int(e[1]) for e in stage_events if e[1]]
     assert ids == sorted(ids)
     resumed = sse(world, jid, last_event_id=str(ids[0]))
-    assert [e[2]["status"] for e in resumed if e[0] == "stage"] == ["SUCCEEDED"]  # only what was missed
+    assert [e[2]["status"] for e in resumed if e[0] == "stage"] == ["SUCCEEDED", "STARTED", "SUCCEEDED"]  # only what was missed
 
 
 def test_failed_job_reports_reason_and_retry_reruns_it(world: dict[str, Any], exam: str) -> None:
@@ -146,4 +161,4 @@ def test_sse_streams_live_progress_until_terminal(world: dict[str, Any], exam: s
         t.join()
     statuses = [e[2]["status"] for e in events if e[0] == "job"]
     assert statuses[0] == "QUEUED" and statuses[-1] == "COMPLETED"
-    assert [e[2]["status"] for e in events if e[0] == "stage"] == ["STARTED", "SUCCEEDED"]
+    assert [e[2]["status"] for e in events if e[0] == "stage"] == ["STARTED", "SUCCEEDED", "STARTED", "SUCCEEDED"]

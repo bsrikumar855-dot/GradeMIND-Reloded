@@ -1,12 +1,17 @@
-"""Pipeline definitions. Phase 1 has one real stage, INTAKE; Phase 2 adds PREPROCESSING, OCR, ... (spec §15, re-scoped by D19)."""
+"""Pipeline definitions (spec §15, re-scoped by D19/D24). ingest = INTAKE (storage integrity) -> RASTERIZE (page
+images for the viewer). No OCR stage in Phase 2: OCR assist arrives in Phase 3."""
 
 from __future__ import annotations
 
 import hashlib
+import io
 
-from grademind_core.db.models import Submission
+from sqlalchemy import select
+
+from grademind_core.db.models import Page, Submission
 from grademind_core.jobs import Pipeline, Stage, StageContext, StageError
-from grademind_core.storage import ObjectStore
+from grademind_core.pdf import PdfError, page_images
+from grademind_core.storage import ObjectKind, ObjectStore
 
 INGEST = "ingest"
 
@@ -21,7 +26,10 @@ def _submission(ctx: StageContext) -> Submission:
 
 
 def _intake_input(ctx: StageContext) -> str:
-    return _submission(ctx).source_sha256
+    # per submission: stage outputs (page rows) belong to one submission, and the cache is global across jobs, so
+    # the same file uploaded to two exams must not share a cached (skipped) stage
+    sub = _submission(ctx)
+    return f"{sub.id}:{sub.source_sha256}"
 
 
 def _intake(ctx: StageContext) -> str | None:
@@ -37,4 +45,43 @@ def _intake(ctx: StageContext) -> str | None:
 
 INTAKE = Stage(name="INTAKE", component_version="intake-0.1.0", input_hash=_intake_input, run=_intake)
 
-PIPELINES: dict[str, Pipeline] = {INGEST: Pipeline(kind=INGEST, stages=(INTAKE,))}
+RASTERIZE_VERSION = "rasterize-0.1.0"
+
+
+def _rasterize(ctx: StageContext) -> str | None:
+    """Booklet -> one JPEG + thumbnail per page. Resumable: pages already stored for this submission are kept, so a
+    re-run after a crash only renders the missing ones (and never creates a duplicate page row)."""
+    sub = _submission(ctx)
+    store: ObjectStore = ctx.services["store"]
+    with ctx.sessions() as s:
+        done = set(s.scalars(select(Page.page_no).where(Page.submission_id == sub.id)))
+    data = store.get_bytes(sub.source_object_key)
+    n = 0
+    try:
+        for img in page_images(data, sub.source_mime):
+            n += 1
+            if img.page_no in done:
+                continue
+            key = store.put(ObjectKind.PAGE_IMAGE, io.BytesIO(img.jpeg), len(img.jpeg), "image/jpeg")
+            thumb = store.put(ObjectKind.PAGE_THUMB, io.BytesIO(img.thumb_jpeg), len(img.thumb_jpeg), "image/jpeg")
+            with ctx.sessions() as s, s.begin():
+                s.add(
+                    Page(
+                        submission_id=sub.id,
+                        page_no=img.page_no,
+                        object_key=key,
+                        thumb_object_key=thumb,
+                        sha256=hashlib.sha256(img.jpeg).hexdigest(),
+                        width=img.width,
+                        height=img.height,
+                        renderer=RASTERIZE_VERSION,
+                    )
+                )
+    except PdfError as e:
+        raise StageError("unreadable_booklet", str(e)) from e
+    return f"pages:{n}"
+
+
+RASTERIZE = Stage(name="RASTERIZE", component_version=RASTERIZE_VERSION, input_hash=_intake_input, run=_rasterize)
+
+PIPELINES: dict[str, Pipeline] = {INGEST: Pipeline(kind=INGEST, stages=(INTAKE, RASTERIZE))}

@@ -1,4 +1,4 @@
-"""INTAKE stage against real Postgres + MinIO: intact source passes; a missing or altered object fails with a safe reason."""
+"""ingest pipeline (INTAKE -> RASTERIZE) against real Postgres + MinIO."""
 
 from __future__ import annotations
 
@@ -13,11 +13,12 @@ from decimal import Decimal
 from pathlib import Path
 
 import pytest
-from sqlalchemy import create_engine
+from pdfgen import make_pdf, make_png
+from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session, sessionmaker
 
 from grademind_core.config import Env, Settings
-from grademind_core.db.models import Exam, JobStatus, Organization, ProcessingJob, Role, Submission, User
+from grademind_core.db.models import Exam, JobStatus, Organization, Page, ProcessingJob, Role, Submission, User
 from grademind_core.jobs import run_job
 from grademind_core.storage import ObjectKind, ObjectStore
 from grademind_worker.stages import INGEST, PIPELINES
@@ -50,7 +51,7 @@ def env() -> Iterator[tuple[sessionmaker[Session], ObjectStore]]:
     engine.dispose()
 
 
-def ingest_job(db: sessionmaker[Session], key: str, sha: str) -> uuid.UUID:
+def ingest_job(db: sessionmaker[Session], key: str, sha: str, mime: str = "application/pdf") -> uuid.UUID:
     with db() as s, s.begin():
         org = Organization(name="O")
         s.add(org)
@@ -68,7 +69,7 @@ def ingest_job(db: sessionmaker[Session], key: str, sha: str) -> uuid.UUID:
             student_ref="S1",
             source_object_key=key,
             source_sha256=sha,
-            source_mime="application/pdf",
+            source_mime=mime,
             source_size_bytes=1,
             source_filename="x.pdf",
             created_by=u.id,
@@ -85,6 +86,13 @@ def put(store: ObjectStore, data: bytes) -> str:
     return store.put(ObjectKind.SUBMISSION_SOURCE, io.BytesIO(data), len(data), "application/pdf")
 
 
+def pages_of(db: sessionmaker[Session], jid: uuid.UUID) -> list[Page]:
+    with db() as s:
+        job = s.get(ProcessingJob, jid)
+        assert job is not None
+        return list(s.scalars(select(Page).where(Page.submission_id == job.submission_id).order_by(Page.page_no)))
+
+
 def status_and_error(db: sessionmaker[Session], jid: uuid.UUID) -> tuple[JobStatus, str | None]:
     with db() as s:
         j = s.get(ProcessingJob, jid)
@@ -92,11 +100,69 @@ def status_and_error(db: sessionmaker[Session], jid: uuid.UUID) -> tuple[JobStat
         return j.status, j.error
 
 
-def test_intact_source_passes(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
+def test_pdf_booklet_becomes_page_images(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
     db, store = env
-    data = b"%PDF-1.7 intact " + uuid.uuid4().bytes
+    data = make_pdf([["page one " + uuid.uuid4().hex], ["page two"], ["page three"]])
     jid = ingest_job(db, put(store, data), hashlib.sha256(data).hexdigest())
     assert run_job(db, jid, PIPELINES, services={"store": store}) == JobStatus.COMPLETED
+    pages = pages_of(db, jid)
+    expected = [(n, 1240, 1755, "rasterize-0.1.0") for n in (1, 2, 3)]
+    assert [(pg.page_no, pg.width, pg.height, pg.renderer) for pg in pages] == expected
+    assert len(pages) == 3 and all(pg.thumb_object_key for pg in pages)
+    img = store.get_bytes(pages[0].object_key)
+    assert img[:3] == b"\xff\xd8\xff" and hashlib.sha256(img).hexdigest() == pages[0].sha256
+
+
+def test_image_booklet_is_one_page(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
+    db, store = env
+    data = make_png(800, 1100)
+    key = store.put(ObjectKind.SUBMISSION_SOURCE, io.BytesIO(data), len(data), "image/png")
+    jid = ingest_job(db, key, hashlib.sha256(data).hexdigest(), mime="image/png")
+    assert run_job(db, jid, PIPELINES, services={"store": store}) == JobStatus.COMPLETED
+    assert [(pg.page_no, pg.width, pg.height) for pg in pages_of(db, jid)] == [(1, 800, 1100)]
+
+
+def test_unreadable_pdf_fails_rasterize_with_a_safe_reason(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
+    db, store = env
+    data = b"%PDF-1.7 this is not really a pdf " + uuid.uuid4().bytes
+    jid = ingest_job(db, put(store, data), hashlib.sha256(data).hexdigest())
+    assert run_job(db, jid, PIPELINES, services={"store": store}) == JobStatus.FAILED
+    assert status_and_error(db, jid)[1] == "RASTERIZE_FAILED: The PDF could not be opened."
+
+
+def test_rasterize_resumes_without_duplicating_pages(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
+    db, store = env
+    data = make_pdf([["resume " + uuid.uuid4().hex], ["two"]])
+    jid = ingest_job(db, put(store, data), hashlib.sha256(data).hexdigest())
+    with db() as s, s.begin():  # a previous (crashed) run already stored page 1
+        job = s.get(ProcessingJob, jid)
+        assert job is not None
+        s.add(
+            Page(
+                submission_id=job.submission_id,
+                page_no=1,
+                object_key="page-image/" + "0" * 32,
+                sha256="0" * 64,
+                width=1,
+                height=1,
+            )
+        )
+    assert run_job(db, jid, PIPELINES, services={"store": store}) == JobStatus.COMPLETED
+    pages = pages_of(db, jid)
+    assert (
+        [pg.page_no for pg in pages] == [1, 2] and pages[0].width == 1 and pages[1].width == 1240
+    )  # page 1 kept, page 2 rendered
+
+
+def test_same_file_in_two_exams_gets_pages_in_both(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
+    """Regression: stage caching is global, so the input hash must include the submission."""
+    db, store = env
+    data = make_pdf([["shared " + uuid.uuid4().hex]])
+    sha = hashlib.sha256(data).hexdigest()
+    j1, j2 = ingest_job(db, put(store, data), sha), ingest_job(db, put(store, data), sha)
+    for j in (j1, j2):
+        assert run_job(db, j, PIPELINES, services={"store": store}) == JobStatus.COMPLETED
+    assert len(pages_of(db, j1)) == 1 and len(pages_of(db, j2)) == 1
 
 
 def test_altered_source_fails_with_safe_reason(env: tuple[sessionmaker[Session], ObjectStore]) -> None:

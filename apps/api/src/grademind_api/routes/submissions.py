@@ -23,7 +23,7 @@ from grademind_api.errors import ApiError
 from grademind_api.queue import JobQueue
 from grademind_api.routes.exams import visible_exam
 from grademind_core.config import Settings
-from grademind_core.db.models import AuditLog, ConsentScope, ProcessingJob, Role, Submission
+from grademind_core.db.models import AuditLog, ConsentScope, Page, ProcessingJob, Role, Submission
 from grademind_core.security import Principal
 from grademind_core.storage import ObjectKind, ObjectStore
 from grademind_core.uploads import UploadRejectedError, validate_upload
@@ -175,3 +175,45 @@ def get_submission(
         source_url=store.signed_url(sub.source_object_key),
         source_url_expires_in=settings.signed_url_ttl_seconds,
     )
+
+
+class PageOut(BaseModel):
+    id: uuid.UUID
+    page_no: int
+    width: int
+    height: int
+    image_url: str  # short-lived signed URL
+    thumb_url: str | None
+
+
+def visible_submission(db: Session, p: Principal, submission_id: uuid.UUID) -> Submission:
+    sub = db.get(Submission, submission_id)
+    if sub is None:
+        raise ApiError(404, "not_found", "Submission not found.")
+    try:
+        visible_exam(db, p, sub.exam_id)
+    except ApiError as e:
+        raise ApiError(404, "not_found", "Submission not found.") from e
+    return sub
+
+
+@router.get("/submissions/{submission_id}/pages", response_model=list[PageOut])
+def list_pages(
+    submission_id: uuid.UUID,
+    p: Principal = Depends(principal_dep),
+    db: Session = Depends(db_dep),
+    store: ObjectStore = Depends(store_dep),
+) -> list[PageOut]:
+    sub = visible_submission(db, p, submission_id)
+    pages = db.scalars(select(Page).where(Page.submission_id == sub.id).order_by(Page.page_no))
+    return [
+        PageOut(
+            id=pg.id,
+            page_no=pg.page_no,
+            width=pg.width,
+            height=pg.height,
+            image_url=store.signed_url(pg.object_key),
+            thumb_url=store.signed_url(pg.thumb_object_key) if pg.thumb_object_key else None,
+        )
+        for pg in pages
+    ]

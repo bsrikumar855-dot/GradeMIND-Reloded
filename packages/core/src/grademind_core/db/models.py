@@ -160,6 +160,8 @@ class Page(Base):
     sha256: Mapped[str] = mapped_column(String(64), nullable=False)
     width: Mapped[int] = mapped_column(Integer, nullable=False)
     height: Mapped[int] = mapped_column(Integer, nullable=False)
+    thumb_object_key: Mapped[str | None] = mapped_column(String(500))
+    renderer: Mapped[str | None] = mapped_column(String(80))  # component version that produced the image
     created_at: Mapped[datetime] = _created()
 
 
