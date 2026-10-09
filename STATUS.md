@@ -1,7 +1,7 @@
 # STATUS
 
 **Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
-**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). Now: **D26 hardening**, then **Phase 2 = grading core** (D24/D25). Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
+**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; now **Phase 2 = grading core** (D24/D25). Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
 [PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
 ## BLOCKING items
@@ -31,6 +31,17 @@
 - **Phase 0c (prepared, nothing sent):** pre-registered plan + decision rule (`docs/PHASE_0C_PLAN.md`, commit `5911e5c`), prompt
   `prompts/ocr_ceiling/v1.md`, runner `spike/ceiling/run_ceiling.py` (gates verified: exit 2 with 6 unmet gates; dry run 100 requests, sent=0),
   report `spike/report_0c.py` (refuses non-OWNER_VERIFIED GT; selftest on synthetic outputs). Unit tests in `spike/tests/test_ceiling.py`.
+
+## D26 hardening (done before Phase 2)
+
+| Item | State | Evidence |
+|---|---|---|
+| 1. Job lease heartbeats; reclaim after N missed beats; idempotent stage outputs | **Implemented and tested** | `9b14465`, CI `37917523441`. Tests: long stage not taken over; SIGKILLed worker reclaimed; lost-lease worker writes nothing; racing duplicate runs record one output; mutation check |
+| 2. Every image digest-pinned; Actions SHA-pinned; Paddle wheels + OCR weights vendored | **Implemented and tested** | `11c711c`, CI `37919077714`. Release `ocr-vendor-v1`; OCR pip + weights steps are `RUN --network=none`; `tests/test_supply_chain.py` |
+| 3. Secret scanning in CI (gitleaks, full history) + untracked-secrets tests | **Implemented and tested** | `aa3bcde`; CI job `secrets`. It caught synthetic fixtures in `6ad5d9f` (runs `37919467111`, `37919589673` red); fixed in `a5f0463`, CI `37919914065` green |
+| 4. Log redaction + malformed-login regression tests | **Implemented and tested** | `6ad5d9f`; record factory redacts every logger; 7 malformed-login cases; JSON lines stay valid |
+| 5. D19 line-correction schema | **Confirmed** | migration 0001; contract test; `docs/schema/line_corrections.txt` (`341110a`) |
+| 6. README docker-group note | **Done** | `696ab1e` |
 
 ## Phase 1 (Foundation) progress
 
