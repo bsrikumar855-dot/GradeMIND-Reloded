@@ -1,7 +1,7 @@
 # STATUS
 
-Current phase: **Phase 0b: STOP at gate** ([PHASE_0B_REPORT.md](PHASE_0B_REPORT.md)). Accuracy tables are PENDING_VERIFICATION until the owner verifies
-the transcriptions (`python3 spike/verify_ui/serve.py`), then `python3 spike/report_0b.py`. Owner decisions: [docs/DECISIONS.md](docs/DECISIONS.md). Phase 0 results:
+Current phase: **Phase 0b: STOP at gate, waiting for owner review** ([PHASE_0B_REPORT.md](PHASE_0B_REPORT.md)). All tables are generated; the GT basis is
+**AGENT_VERIFIED** (D17), so silent-error and autocorrection results are not evidence. Owner decisions: [docs/DECISIONS.md](docs/DECISIONS.md). Phase 0 results:
 [PHASE_0_REPORT.md](PHASE_0_REPORT.md), [docs/OCR_SPIKE.md](docs/OCR_SPIKE.md).
 
 No application code exists yet (spec §23: no scaffolding before the OCR spike is approved). Everything below is **spike tooling** under
@@ -36,4 +36,3 @@ No application code exists yet (spec §23: no scaffolding before the OCR spike i
 ## Not implemented
 
 - Everything in [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT.md) §3–§20 (application, API, DB, UI, ScoreComputer, invariants I1–I12).
-- Reportable OCR metrics (need owner-verified transcriptions).
