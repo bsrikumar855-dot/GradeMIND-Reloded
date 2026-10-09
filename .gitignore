@@ -24,3 +24,11 @@ __pycache__/
 # --- Model weights / caches ---
 models/
 *.safetensors
+
+# --- OCR service vendored dependencies (fetched by scripts/fetch_ocr_vendor.sh; release assets, not git) ---
+services/ocr/vendor-cache/
+services/ocr/wheelhouse/*
+!services/ocr/wheelhouse/.gitkeep
+!services/ocr/models/
+services/ocr/models/*
+!services/ocr/models/.gitkeep

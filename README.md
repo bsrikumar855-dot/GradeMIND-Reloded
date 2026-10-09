@@ -6,6 +6,7 @@ Status: [STATUS.md](STATUS.md). Spec: [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT
 
 ```bash
 cp .env.example .env    # then replace every value (see the comment at the top of the file)
+make ocr-vendor         # vendored Paddle wheels + OCR weights (sha256-verified release assets)
 docker compose up -d --build
 python3 scripts/compose_smoke.py    # end-to-end check; exit code 0 = pass
 ```

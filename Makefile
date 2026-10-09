@@ -3,7 +3,7 @@ SHELL := /bin/bash
 .SHELLFLAGS := -o pipefail -ec
 SPIKE_PYTEST := uvx --from pytest==9.1.1 pytest -c spike/pytest.ini
 
-.PHONY: test test-spike test-app lint paths smoke
+.PHONY: test test-spike test-app lint paths smoke ocr-vendor
 test:
 	@set +e; \
 	$(SPIKE_PYTEST) spike/tests -q -rs; a=$$?; \
@@ -30,3 +30,7 @@ paths:
 smoke:
 	./scripts/compose_wait.sh
 	python3 scripts/compose_smoke.py
+
+# vendored OCR wheels + weights (needed before building the OCR image; sha256-verified)
+ocr-vendor:
+	./scripts/fetch_ocr_vendor.sh

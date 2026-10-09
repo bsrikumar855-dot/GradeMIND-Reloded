@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-24.04
     services:
       postgres:
-        image: postgres:16-alpine
+        image: postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea
         env:
           POSTGRES_USER: gm
           POSTGRES_PASSWORD: gm
@@ -22,10 +22,10 @@ jobs:
       GRADEMIND_TEST_S3_ACCESS_KEY: gmtest
       GRADEMIND_TEST_S3_SECRET_KEY: gmtest-secret-123
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
         with:
           lfs: false   # tests need only text/JSON fixtures, not page images
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e  # v6.8.0
       - name: Python 3.12
         run: uv python install 3.12
       - name: MinIO (a step, not a service, because the image needs the `server /data` argument)
@@ -45,7 +45,7 @@ jobs:
   web:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
         with:
           lfs: false
       - name: web image (tsc --noEmit, eslint --max-warnings 0, next build)
@@ -55,7 +55,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
         with:
           lfs: false
       - name: throwaway .env for this run
@@ -71,6 +71,13 @@ jobs:
             echo "GRADEMIND_ADMIN_PASSWORD=$(gen 18)"
             echo "GRADEMIND_S3_PUBLIC_ENDPOINT_URL=http://localhost:9000"
           } > .env
+      - name: cache the vendored OCR dependencies (keyed by their pinned sha256)
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830  # v4.3.0
+        with:
+          path: services/ocr/vendor-cache
+          key: ocr-vendor-${{ hashFiles('services/ocr/vendor.sha256') }}
+      - name: vendored OCR wheels + weights (release assets, sha256-verified; no Paddle CDN / Hugging Face)
+        run: ./scripts/fetch_ocr_vendor.sh
       - name: build and start the stack (the OCR image build runs the rule-12 assertion)
         run: docker compose up -d --build
       - name: wait for health

@@ -33,10 +33,22 @@ Spec §2 rule 6: every dependency is pinned, with a one-line justification. Exac
 | Package / image | Pin | Why |
 |---|---|---|
 | python base image | `python:3.12-slim-bookworm@sha256:34386ef0…7258` | Same base as the API/worker image |
-| paddlepaddle (CPU) | 3.4.0, from Paddle's CPU index | PyPI stops at 3.3.1. 3.4.0 is what Phase 0b measured; output is **bit-identical** to Phase 0b `b_v6` on 3 pages (text, boxes, scores) |
+| paddlepaddle (CPU) | 3.4.0 (originally from Paddle's CPU index; now **vendored**) | PyPI stops at 3.3.1. 3.4.0 is what Phase 0b measured; output is **bit-identical** to Phase 0b `b_v6` on 3 pages (text, boxes, scores) |
 | paddleocr | 3.7.0 | PP-OCRv6 medium det+rec (D18) |
 | everything else | `services/ocr/requirements.lock.txt` | `pip freeze` of the verified image, passed as pip constraints |
-| model weights | sha256 in `services/ocr/expected_models.json` | Downloaded at build from Hugging Face (paddlex default) and checked against the Phase 0b hashes at build **and** at startup (rule 12) |
+| model weights | sha256 in `services/ocr/expected_models.json` | **Vendored**; checked against the Phase 0b hashes at build **and** at startup (rule 12) |
+
+**Vendoring (D26.2).** The 81 wheels and the two weight directories are release assets of this repo
+([`ocr-vendor-v1`](https://github.com/bsrikumar855-dot/GradeMIND-Reloded/releases/tag/ocr-vendor-v1); Apache-2.0
+software, unmodified), pinned by sha256 in `services/ocr/vendor.sha256` and fetched by `scripts/fetch_ocr_vendor.sh`
+(`make ocr-vendor`). The Dockerfile installs them in `RUN --network=none` steps with `pip --no-index`, so a build cannot
+reach the Paddle CDN or Hugging Face at all; a missing wheelhouse fails the build with a clear message. CI caches the
+tarballs by their hash. Remaining network dependencies of the OCR build: the pinned base image and Debian packages
+(`apt-get`, unpinned versions from the bookworm mirrors).
+
+**Pinning summary (D26.2).** Every container image is pinned by digest: postgres, redis, MinIO (Chainguard), python,
+uv, node (Dockerfiles, compose, and the CI Postgres service). GitHub Actions are pinned by commit SHA.
+
 
 ## Spike environments (Phase 0/0b; `spike/*/requirements.txt`)
 Each engine has its own venv, so dependency stacks never mix (mirroring the per-engine containers planned in ARCHITECTURE §2).
