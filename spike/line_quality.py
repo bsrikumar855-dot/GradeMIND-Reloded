@@ -66,7 +66,7 @@ def main() -> int:
     args = ap.parse_args()
     gdir = Path(args.gt)
     man = json.loads((gdir / "manifest.json").read_text())
-    verified = man["status"] == "OWNER_VERIFIED"
+    verified = man["status"] in {"OWNER_VERIFIED", "AGENT_VERIFIED"}
     if not verified and not args.allow_draft:
         print(f"refusing: GT status {man['status']}", file=sys.stderr)
         return 2

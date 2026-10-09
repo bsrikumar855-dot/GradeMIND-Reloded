@@ -28,6 +28,7 @@ OUT = ROOT / "spike" / "runs" / "report_0b"
 REPORT = ROOT / "PHASE_0B_REPORT.md"
 PROXY_LABEL = "PROXY_NON_NUMERICAL_SHEETS_ONLY"
 DIG, LABEL = re.compile(r"\d+"), re.compile(r"^\s*\d{1,2}(?=[\s.\]\):[]|$)")
+AGENT_GT = False  # set in main(): any sheet AGENT_VERIFIED (D17)
 DRAFT = False  # --draft-selftest: exercise accuracy code on drafts; output NEVER goes into the report
 
 
@@ -57,14 +58,15 @@ def main() -> int:
     ap.add_argument("--draft-selftest", action="store_true",
                     help="run accuracy sections on DRAFT GT into spike/runs/report_0b/tables_DRAFT_NOT_REPORTABLE.md only")
     args = ap.parse_args()
-    global DRAFT
+    global DRAFT, AGENT_GT
     DRAFT = args.draft_selftest
+    AGENT_GT = any(gt_status(s) == "AGENT_VERIFIED" for s in SHEETS)
     cfg = json.loads(Path(args.cells).read_text())
     runs = {k: str(ROOT / v) for k, v in cfg["runs"].items()}
     if args.p0b3:
         runs["P0B3"] = str(Path(args.p0b3).resolve())
     OUT.mkdir(parents=True, exist_ok=True)
-    verified = {s: gt_status(s) == "OWNER_VERIFIED" for s in SHEETS}
+    verified = {s: gt_status(s) in {"OWNER_VERIFIED", "AGENT_VERIFIED"} for s in SHEETS}
     all_verified = all(verified.values())
 
     # cell index: (label, variant, sheet) -> dir
@@ -189,6 +191,11 @@ def main() -> int:
                "### T10. Best variant per page and selection rule (D8)", "", pend, "",
                "### T11. Pairwise comparisons (D16)", "", pend, ""]
     else:
+        if any(gt_status(s) == "AGENT_VERIFIED" for s in SHEETS):
+            md += ["> **GT BASIS: AGENT_VERIFIED (owner override D17).** The agent verified its own draft transcriptions on some pages "
+                   "(per-page `verified_by` in each manifest). All accuracy numbers below are labelled with that basis. "
+                   "**Silent-error rates (T6) and autocorrection counts (T5, T7) are NOT evidence**, because the agent's reading "
+                   "can share the engines' autocorrection failure mode.", ""]
         md += accuracy_sections(cfg, cells, fmts, feats)
 
     block = "\n".join(md)
@@ -277,10 +284,10 @@ def accuracy_sections(cfg: dict, cells: dict, fmts: dict, feats: dict) -> list[s
                 rows11v.append([lab, v, fmt_ratio(base), fmt_ratio(other),
                                 compare("raw", bootstrap_ratio(base), v, bootstrap_ratio(other))])
     md += ["### T6. Gate metrics (D11): line level, pooled over both sheets; first engine = primary", "",
-           table(["variant", "engines", "τ", "GT lines", "P(wrong | agree) (silent error)", "gate recall P(disagree | any wrong)",
+           table(["variant", "engines", "τ", "GT lines", "P(wrong | agree) (silent error)" + (" [NOT EVIDENCE: agent-verified GT]" if AGENT_GT else ""), "gate recall P(disagree | any wrong)",
                   "gate cost P(disagree | all correct)"], rows6), "",
            "### T7. Oracle vs best single engine; shared autocorrections", "",
-           table(["variant", "engines", "single-engine CER", "best single", "oracle CER", "oracle vs best", "shared autocorrections",
+           table(["variant", "engines", "single-engine CER", "best single", "oracle CER", "oracle vs best", "shared autocorrections" + (" [NOT EVIDENCE]" if AGENT_GT else ""),
                   "examples"], rows7), "",
            "### T11. Pairwise comparisons (D16)", "", "**Engines, same variant** (line-projected CER, both sheets pooled):", "",
            table(["variant", "engine A", "engine B", "CER A", "CER B", "verdict"], rows11), "",

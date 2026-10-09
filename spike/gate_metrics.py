@@ -139,7 +139,7 @@ def main() -> int:
                 lines, per_word = project(gt_lines, hyp)
                 proj_all[n] += lines
                 perword_all[n] += per_word
-    verified = all(s == "OWNER_VERIFIED" for s in statuses)
+    verified = all(s in {"OWNER_VERIFIED", "AGENT_VERIFIED"} for s in statuses)
     if not verified and not args.allow_draft:
         print(f"refusing: GT status {statuses} (need OWNER_VERIFIED)", file=sys.stderr)
         return 2
@@ -176,6 +176,8 @@ def main() -> int:
            "shared_autocorrections": shared, "gates": gates, "per_page_edits": per_page}
     if not verified:
         res["WARNING"] = "NOT_REPORTABLE: scored against unverified draft transcriptions"
+    elif "AGENT_VERIFIED" in statuses:
+        res["GT_BASIS"] = "AGENT_VERIFIED (D17): silent-error and shared-autocorrection results are NOT evidence"
     Path(args.out).write_text(json.dumps(res, indent=1, ensure_ascii=False))
     print(json.dumps({k: v for k, v in res.items() if k not in ("gates", "shared_autocorrections")}))
     return 0

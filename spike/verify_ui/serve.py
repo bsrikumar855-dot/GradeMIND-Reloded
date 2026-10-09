@@ -34,6 +34,7 @@ BOX_RUN = ROOT / "spike" / "runs" / "20261008T091415Z_phase0b2" / "raw"
 SHEETS = ["sheet_001", "sheet_002"]
 NAME_RE = re.compile(r"^(sheet_\d{3})$")
 PAGE_RE = re.compile(r"^(page_\d{2})$")
+AGENT_TAG = "Claude (agent)"  # D17: pages confirmed under this name make the sheet AGENT_VERIFIED, never OWNER_VERIFIED
 
 
 def rows_with_boxes(rec: dict) -> list[tuple[str, list[int]]]:
@@ -162,7 +163,9 @@ def save(payload: dict) -> dict:
                 "all_lines_confirmed": all_conf, "n_lines": len(lines)}
     every = all(pv.get(Path(pf).stem, {}).get("all_lines_confirmed") for pf in man["pages"])
     if every:
-        man["status"] = "OWNER_VERIFIED"
+        agent = any(pv.get(Path(pf).stem, {}).get("verified_by") == AGENT_TAG for pf in man["pages"])
+        man["status"] = "AGENT_VERIFIED" if agent else "OWNER_VERIFIED"
+        man["verified_by_pages"] = {Path(pf).stem: pv[Path(pf).stem]["verified_by"] for pf in man["pages"]}
         man["verified_by"] = by or man.get("verified_by")
         man["verified_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     else:

@@ -160,9 +160,9 @@ def main() -> int:
 
     gt_dir = Path(args.gt)
     manifest = json.loads((gt_dir / "manifest.json").read_text())
-    verified = manifest["status"] == "OWNER_VERIFIED"
+    verified = manifest["status"] in {"OWNER_VERIFIED", "AGENT_VERIFIED"}
     if not verified and not args.allow_draft:
-        print(f"refusing: ground truth status is {manifest['status']} (need OWNER_VERIFIED)", file=sys.stderr)
+        print(f"refusing: ground truth status is {manifest['status']} (need OWNER_VERIFIED or AGENT_VERIFIED)", file=sys.stderr)
         return 2
     vocab = {w.strip().lower() for w in WORDLIST.read_text(errors="ignore").split()} if WORDLIST.exists() else set()
 
@@ -171,6 +171,8 @@ def main() -> int:
                      "engines": {k: {"format": f, "dir": str(d)} for k, (f, d) in engines.items()}, "pages": {}}
     if not verified:
         results["WARNING"] = "NOT_REPORTABLE: scored against unverified draft transcriptions"
+    elif manifest["status"] == "AGENT_VERIFIED":
+        results["GT_BASIS"] = "AGENT_VERIFIED (D17): autocorrection results are NOT evidence"
     for page_file in manifest["pages"]:
         stem = Path(page_file).stem
         gt = (gt_dir / page_file).read_text()
