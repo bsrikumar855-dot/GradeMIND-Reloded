@@ -1,11 +1,15 @@
 # STATUS
 
-Current phase: **Phase 0b: STOP at gate, waiting for owner review** ([PHASE_0B_REPORT.md](PHASE_0B_REPORT.md)). All tables are generated; the GT basis is
-**AGENT_VERIFIED** (D17), so silent-error and autocorrection results are not evidence. Owner decisions: [docs/DECISIONS.md](docs/DECISIONS.md). Phase 0 results:
-[PHASE_0_REPORT.md](PHASE_0_REPORT.md), [docs/OCR_SPIKE.md](docs/OCR_SPIKE.md).
+**Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
+**blocked on owner verification (D21)**. **Phase 1** (Foundation, scoped by D19) is in progress. Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
+[PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
-No application code exists yet (spec §23: no scaffolding before the OCR spike is approved). Everything below is **spike tooling** under
-`spike/`, not product code.
+## BLOCKING items
+
+- **D23 data requirement:** no AI-suggestion feature ships until the benchmark covers **≥ 10 students, ≥ 2 subjects, ≥ 1 numerical subject**.
+  Current: **2 students, 1 subject (Environmental Science), 0 numerical**.
+- **D21:** Phase 0c results require both transcription manifests to be `OWNER_VERIFIED`. Current: both `AGENT_VERIFIED`.
+- **D20:** public-release consent for sheet_001 and sheet_002 is **not recorded** (`data/README.md`). The sheets are already public under D6.
 
 ## Implemented and tested
 
@@ -14,7 +18,7 @@ No application code exists yet (spec §23: no scaffolding before the OCR spike i
 - Engine A degenerate-output detector (`spike/engine_a/degenerate.py`, stdlib). **Tested** by `spike/tests/test_degenerate_checks.py`:
   8 rules fire on real-page fixtures, with 0 false positives on 31 reviewed-clean pages (`uvx --from pytest==9.1.1 pytest spike/tests -q -rs`:
   `9 passed, 4 skipped`). The 4 skipped rules have **no real-page fixture yet** (TRUNCATED_AT_MAX_LENGTH, REPEATED_LINE, EMPTY_OUTPUT,
-  ALL_REGIONS_EMPTY). The fixtures are gitignored student data, so CI cannot run these tests yet (owner decision pending).
+  ALL_REGIONS_EMPTY); they have SYNTHETIC fixtures. The real-page fixtures are committed in redacted form (D6/D7), so CI runs them.
 - `spike/score.py` v2 (omissions, label P/R, option letters, spurious digits). Self-tested on sheet_001 drafts: identity gives perfect scores on all
   metrics, and injected faults are all detected (commit `1808074`).
 
