@@ -22,6 +22,8 @@ No application code exists yet (spec §23: no scaffolding before the OCR spike i
 - `spike/verify_ui/` transcription verifier: end-to-end self-test on a scratch copy (save lifecycle, whitelist, 400 on bad input). No automated test file.
 - Rule-12 resolved-config assertions: smoke-tested; wrong weight hash -> exit 1 for Engines A and C.
 
+- CI (GitHub Actions, `make test` on push): first run `37884412695` on `fd6c55d` passed: 25 passed, 4 skipped, exit 0. CI status is the source of truth (rule 13).
+
 ## Implemented but untested
 
 - `spike/engine_a/run_engine_a.py` modes `int8` and `offload` (exercised on real pages, with no automated tests).
@@ -35,4 +37,3 @@ No application code exists yet (spec §23: no scaffolding before the OCR spike i
 
 - Everything in [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT.md) §3–§20 (application, API, DB, UI, ScoreComputer, invariants I1–I12).
 - Reportable OCR metrics (need owner-verified transcriptions).
-- CI workflow push (written, on local branch `ci-pending`; needs `gh auth refresh -h github.com -s workflow`).
