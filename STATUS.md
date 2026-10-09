@@ -32,6 +32,26 @@
   `prompts/ocr_ceiling/v1.md`, runner `spike/ceiling/run_ceiling.py` (gates verified: exit 2 with 6 unmet gates; dry run 100 requests, sent=0),
   report `spike/report_0c.py` (refuses non-OWNER_VERIFIED GT; selftest on synthetic outputs). Unit tests in `spike/tests/test_ceiling.py`.
 
+## Phase 1 (Foundation) progress
+
+Each step is a separate commit; test numbers are from `make test` in the same session, and CI is the source of truth (rule 13).
+
+| Step | State | Evidence |
+|---|---|---|
+| 1.1 uv workspace + single config source + provider registry | **Implemented and tested** | CI `37887515813` green |
+| 1.2 DB schema + Alembic baseline, I8 append-only triggers, optimistic locking | **Implemented and tested** | CI `37887812722` green; `alembic check` clean |
+| 1.3 Auth (argon2id + JWT), RBAC, error envelope, health endpoints | **Implemented and tested** | CI `37888752324` green |
+| 1.4 Storage: single module (MinIO), UUID keys, upload validation, signed URLs, body-size limit | **Implemented and tested** | `make test`: app 77 passed, exit 0 (real Postgres + real MinIO) |
+| 1.5 Jobs + SSE | Not implemented | |
+| 1.6 OCR service (PP-OCRv6 CPU, rule-12 startup assertion) | Not implemented | |
+| 1.7 Docker Compose health-green | Not implemented | |
+| 1.8 Web shell | Not implemented | |
+| 1.9 CI: import-linter, single-path checks, tsc, compose smoke | Partial: ruff, mypy, pytest, alembic check are in CI | |
+
+Known gaps in 1.4: an object written before a failed DB commit is orphaned (no sweeper yet); MIME sniffing checks magic bytes
+only (deep PDF/image decoding happens at ingest in Phase 2); bucket creation is a call (`ensure_bucket`), to be run by the
+compose init in 1.7.
+
 ## Implemented but untested
 
 - `spike/engine_a/run_engine_a.py` modes `int8` and `offload` (exercised on real pages, with no automated tests).
@@ -43,4 +63,4 @@
 
 ## Not implemented
 
-- Everything in [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT.md) §3–§20 (application, API, DB, UI, ScoreComputer, invariants I1–I12).
+- Everything in [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT.md) §3–§20 beyond the Phase 1 steps above (pipeline, UI, ScoreComputer, most of invariants I1–I12).

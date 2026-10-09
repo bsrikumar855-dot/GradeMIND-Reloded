@@ -11,8 +11,9 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from grademind_api.deps import db_dep, settings_dep
+from grademind_api.deps import db_dep, settings_dep, store_dep
 from grademind_core.config import Settings
+from grademind_core.storage import ObjectStore
 
 router = APIRouter()
 
@@ -40,6 +41,14 @@ def health_redis(settings: Settings = Depends(settings_dep)) -> JSONResponse:
     try:
         ok = bool(redis.Redis.from_url(settings.redis_url, socket_timeout=2).ping())
         return _resp(ok)
+    except Exception as e:  # noqa: BLE001
+        return _resp(False, error=type(e).__name__)
+
+
+@router.get("/health/storage")
+def health_storage(store: ObjectStore = Depends(store_dep)) -> JSONResponse:
+    try:
+        return _resp(store.health())
     except Exception as e:  # noqa: BLE001
         return _resp(False, error=type(e).__name__)
 

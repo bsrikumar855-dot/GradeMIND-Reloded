@@ -61,7 +61,16 @@ def seed(s: Session) -> dict[str, uuid.UUID]:
     ex = Exam(org_id=org.id, name="CIA", subject="EVS", total_marks=Decimal("50"), created_by=u.id)
     s.add(ex)
     s.flush()
-    sub = Submission(exam_id=ex.id, student_ref="S1", source_object_key="k", source_sha256="0" * 64, created_by=u.id)
+    sub = Submission(
+        exam_id=ex.id,
+        student_ref="S1",
+        source_object_key="k",
+        source_sha256="0" * 64,
+        source_mime="application/pdf",
+        source_size_bytes=1,
+        source_filename="s1.pdf",
+        created_by=u.id,
+    )
     s.add(sub)
     s.flush()
     pg = Page(submission_id=sub.id, page_no=2, object_key="p", sha256="1" * 64, width=10, height=10)

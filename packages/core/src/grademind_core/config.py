@@ -54,7 +54,9 @@ class Settings(BaseSettings):
     # --- infrastructure (secrets from the environment only) ---
     database_url: str = "postgresql+psycopg://grademind:grademind@localhost:5432/grademind"
     redis_url: str = "redis://localhost:6379/0"
-    s3_endpoint_url: str = "http://localhost:9000"
+    s3_endpoint_url: str = "http://localhost:9000"  # as reached by api/worker (inside compose: http://minio:9000)
+    s3_public_endpoint_url: str | None = None  # as reached by the browser; signed URLs are signed for this host
+    s3_region: str = "us-east-1"
     s3_bucket: str = "grademind"
     s3_access_key: SecretStr = SecretStr("")
     s3_secret_key: SecretStr = SecretStr("")
@@ -72,6 +74,8 @@ class Settings(BaseSettings):
                 problems.append("fake providers are allowed only when GRADEMIND_ENV=test (I11)")
             if not self.jwt_secret.get_secret_value() or len(self.jwt_secret.get_secret_value()) < 32:
                 problems.append("GRADEMIND_JWT_SECRET must be set (>= 32 chars) outside tests")
+            if not self.s3_access_key.get_secret_value() or not self.s3_secret_key.get_secret_value():
+                problems.append("GRADEMIND_S3_ACCESS_KEY and GRADEMIND_S3_SECRET_KEY must be set outside tests")
         excluded = EXCLUDED_IN_V1.intersection(self.ocr_providers_enabled)
         if excluded:
             problems.append(f"providers excluded from v1 by D18 cannot be enabled: {sorted(excluded)}")

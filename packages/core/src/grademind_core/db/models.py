@@ -13,6 +13,7 @@ from decimal import Decimal
 from typing import Any
 
 from sqlalchemy import (
+    BigInteger,
     Boolean,
     DateTime,
     Enum,
@@ -121,6 +122,7 @@ class ExamAssignment(Base):
 
 class Submission(Base):
     __tablename__ = "submissions"
+    __table_args__ = (UniqueConstraint("exam_id", "source_sha256", name="uq_submissions_exam_source_sha256"),)
     id: Mapped[uuid.UUID] = _pk()
     exam_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("exams.id"), nullable=False, index=True)
     student_ref: Mapped[str] = mapped_column(String(200), nullable=False)  # pseudonymous reference; no names required
@@ -131,6 +133,9 @@ class Submission(Base):
     )
     source_object_key: Mapped[str] = mapped_column(String(500), nullable=False)
     source_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    source_mime: Mapped[str] = mapped_column(String(64), nullable=False)  # sniffed, never the client's claim
+    source_size_bytes: Mapped[int] = mapped_column(BigInteger, nullable=False)
+    source_filename: Mapped[str] = mapped_column(String(200), nullable=False)  # sanitised; display only, never logged
     created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
     created_at: Mapped[datetime] = _created()
 

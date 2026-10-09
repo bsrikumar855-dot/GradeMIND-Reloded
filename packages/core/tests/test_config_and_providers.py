@@ -12,7 +12,7 @@ SECRET = "x" * 40
 
 
 def make(**kw: object) -> Settings:
-    base: dict[str, object] = {"env": Env.DEV, "jwt_secret": SECRET}
+    base: dict[str, object] = {"env": Env.DEV, "jwt_secret": SECRET, "s3_access_key": "ak", "s3_secret_key": "sk"}
     base.update(kw)
     return Settings(**base)  # type: ignore[arg-type]
 
@@ -50,6 +50,12 @@ def test_jwt_secret_required_outside_tests() -> None:
         Settings(env=Env.PROD)
 
 
+def test_storage_credentials_required_outside_tests() -> None:
+    with pytest.raises(ValidationError, match="S3_ACCESS_KEY"):
+        make(s3_access_key="")
+    assert Settings(env=Env.TEST).s3_access_key.get_secret_value() == ""
+
+
 def test_invariant_I7_disabled_provider_factory_never_called() -> None:
     calls: list[str] = []
     reg = ProviderRegistry(make())
@@ -67,6 +73,8 @@ def test_invariant_I7_disabled_provider_factory_never_called() -> None:
 
 def test_settings_read_from_environment(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("GRADEMIND_JWT_SECRET", SECRET)
+    monkeypatch.setenv("GRADEMIND_S3_ACCESS_KEY", "ak")
+    monkeypatch.setenv("GRADEMIND_S3_SECRET_KEY", "sk")
     monkeypatch.setenv("GRADEMIND_OCR_PROVIDERS_ENABLED", '["paddle_v6", "trocr_line"]')
     assert Settings().ocr_providers_enabled == [OcrProvider.PADDLE_V6, OcrProvider.TROCR_LINE]
 

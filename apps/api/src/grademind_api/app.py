@@ -14,9 +14,12 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session, sessionmaker
 
 from grademind_api.errors import ApiError, envelope
-from grademind_api.routes import auth, exams, health
+from grademind_api.limits import BodySizeLimit
+from grademind_api.routes import auth, exams, health, submissions
+from grademind_api.routes.submissions import MULTIPART_OVERHEAD
 from grademind_core.config import Settings, get_settings
 from grademind_core.db.session import session_factory
+from grademind_core.storage import ObjectStore
 
 log = logging.getLogger("grademind.api")
 
@@ -25,11 +28,16 @@ def _json_log(**fields: object) -> None:
     log.info(json.dumps(fields, default=str))  # spec §18: structured JSON logs
 
 
-def create_app(settings: Settings | None = None, sessions: sessionmaker[Session] | None = None) -> FastAPI:
+def create_app(
+    settings: Settings | None = None, sessions: sessionmaker[Session] | None = None, store: ObjectStore | None = None
+) -> FastAPI:
     settings = settings or get_settings()
     app = FastAPI(title="GradeMIND API", version="0.1.0")
     app.state.settings = settings
     app.state.session_factory = sessions or session_factory(settings.database_url)
+    app.state.store = store or ObjectStore(settings)  # constructing the client makes no network call
+    # added first, so it runs inside the request-id middleware and its 413s are logged with a request_id
+    app.add_middleware(BodySizeLimit, max_body_bytes=settings.max_upload_bytes + MULTIPART_OVERHEAD)
 
     @app.middleware("http")
     async def request_id_mw(request: Request, call_next: Callable[[Request], Awaitable[Response]]) -> Response:
@@ -53,7 +61,9 @@ def create_app(settings: Settings | None = None, sessions: sessionmaker[Session]
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, e: RequestValidationError) -> JSONResponse:
-        _json_log(request_id=request.state.request_id, error="validation", detail=e.errors())
+        # never log e.errors() whole: pydantic puts the offending input there (e.g. a login body with its password)
+        detail = [{"loc": err.get("loc"), "type": err.get("type"), "msg": err.get("msg")} for err in e.errors()]
+        _json_log(request_id=request.state.request_id, error="validation", detail=detail)
         return JSONResponse(
             envelope("invalid_request", "Some fields are missing or invalid.", request.state.request_id), status_code=422
         )
@@ -67,4 +77,5 @@ def create_app(settings: Settings | None = None, sessions: sessionmaker[Session]
     app.include_router(health.router)
     app.include_router(auth.router, prefix="/api")
     app.include_router(exams.router, prefix="/api")
+    app.include_router(submissions.router, prefix="/api")
     return app

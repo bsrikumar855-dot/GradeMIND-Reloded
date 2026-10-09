@@ -17,6 +17,10 @@ jobs:
           --health-cmd "pg_isready -U gm" --health-interval 5s --health-timeout 5s --health-retries 10
     env:
       GRADEMIND_TEST_DATABASE_URL: postgresql+psycopg://gm:gm@localhost:5432/gm_test
+      # throwaway credentials for a throwaway CI container; not secrets
+      GRADEMIND_TEST_S3_ENDPOINT: http://127.0.0.1:59000
+      GRADEMIND_TEST_S3_ACCESS_KEY: gmtest
+      GRADEMIND_TEST_S3_SECRET_KEY: gmtest-secret-123
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,6 +28,12 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - name: Python 3.12
         run: uv python install 3.12
+      - name: MinIO (a step, not a service, because the image needs the `server /data` argument)
+        run: |
+          docker run -d --name minio -p 127.0.0.1:59000:9000 \
+            -e MINIO_ROOT_USER=$GRADEMIND_TEST_S3_ACCESS_KEY -e MINIO_ROOT_PASSWORD=$GRADEMIND_TEST_S3_SECRET_KEY \
+            cgr.dev/chainguard/minio@sha256:f74600a1a46330cdbda1ef760d17a96bd6e0f4a6f0a2c49792ca3ee7e4c6fa18 server /data
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:59000/minio/health/live && exit 0; sleep 1; done; docker logs minio; exit 1
       - name: make test (rule 13; DB invariant tests run against the Postgres service)
         run: make test
       - name: lint (ruff, mypy strict)

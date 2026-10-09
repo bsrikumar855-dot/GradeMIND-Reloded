@@ -13,12 +13,18 @@ from grademind_api.errors import ApiError
 from grademind_core.config import Settings
 from grademind_core.db.models import Role, User
 from grademind_core.security import Principal, decode_access_token
+from grademind_core.storage import ObjectStore
 
 _bearer = HTTPBearer(auto_error=False)
 
 
 def settings_dep(request: Request) -> Settings:
     s: Settings = request.app.state.settings
+    return s
+
+
+def store_dep(request: Request) -> ObjectStore:
+    s: ObjectStore = request.app.state.store
     return s
 
 

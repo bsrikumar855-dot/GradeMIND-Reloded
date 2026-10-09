@@ -2,85 +2,24 @@
 
 from __future__ import annotations
 
-import os
-import subprocess
-import sys
+import logging
 import uuid
-from collections.abc import Iterator
-from decimal import Decimal
-from pathlib import Path
 from typing import Any
 
 import pytest
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import sessionmaker
+from conftest import alembic_head, login, needs_db
+from sqlalchemy import select
 
-from grademind_api.app import create_app
-from grademind_core.config import Env, Settings
-from grademind_core.db.models import AuditLog, Exam, Organization, Role, User
-from grademind_core.security import hash_password
+from grademind_core.db.models import AuditLog
 
-URL = os.environ.get("GRADEMIND_TEST_DATABASE_URL")
-pytestmark = pytest.mark.skipif(not URL, reason="GRADEMIND_TEST_DATABASE_URL not set (API tests need real Postgres)")
-CORE = Path(__file__).resolve().parents[3] / "packages" / "core"
-PW = "correct horse battery staple"
-
-
-@pytest.fixture(scope="module")
-def world() -> Iterator[dict[str, Any]]:
-    env = {**os.environ, "GRADEMIND_DATABASE_URL": URL or ""}
-    for cmd in (["downgrade", "base"], ["upgrade", "head"]):
-        subprocess.run(
-            [sys.executable, "-m", "alembic", "-c", str(CORE / "alembic.ini"), *cmd], env=env, check=True, capture_output=True
-        )
-    engine = create_engine(URL or "")
-    sessions = sessionmaker(bind=engine, expire_on_commit=False)
-    w: dict[str, Any] = {"sessions": sessions}
-    with sessions() as s, s.begin():
-        o1, o2 = Organization(name="Org1"), Organization(name="Org2")
-        s.add_all([o1, o2])
-        s.flush()
-        for key, org, role in [
-            ("admin", o1, Role.ADMIN),
-            ("teacher", o1, Role.TEACHER),
-            ("exA", o1, Role.EXAMINER),
-            ("exB", o1, Role.EXAMINER),
-            ("admin2", o2, Role.ADMIN),
-            ("ex2", o2, Role.EXAMINER),
-        ]:
-            u = User(org_id=org.id, email=f"{key}@college-one.in", display_name=key, password_hash=hash_password(PW), role=role)
-            s.add(u)
-            s.flush()
-            w[key] = u.id
-        e2 = Exam(org_id=o2.id, name="Other org exam", subject="X", total_marks=Decimal(10), created_by=w["admin2"])
-        s.add(e2)
-        s.flush()
-        w["exam_org2"] = e2.id
-    settings = Settings(
-        env=Env.TEST,
-        database_url=URL or "",
-        jwt_secret="t" * 40,
-        redis_url="redis://127.0.0.1:1/0",
-        ocr_service_url="http://127.0.0.1:1",
-    )
-    with TestClient(create_app(settings, sessions)) as client:
-        w["client"] = client
-        yield w
-    engine.dispose()
-
-
-def login(w: dict[str, Any], who: str) -> dict[str, str]:
-    r = w["client"].post("/api/auth/login", json={"email": f"{who}@college-one.in", "password": PW})
-    assert r.status_code == 200, r.text
-    return {"Authorization": f"Bearer {r.json()['access_token']}"}
+pytestmark = needs_db
 
 
 def test_health_endpoints(world: dict[str, Any]) -> None:
     c = world["client"]
     assert c.get("/health").json() == {"status": "ok"}
     r = c.get("/health/db")
-    assert r.status_code == 200 and r.json()["alembic_revision"] == "0001"
+    assert r.status_code == 200 and r.json()["alembic_revision"] == alembic_head()
     m = c.get("/health/models").json()
     assert m["ai_suggestions_enabled"] is False and m["llm_kill_switch"] is True and m["ocr_providers_enabled"] == ["paddle_v6"]
     assert c.get("/health/redis").status_code == 503  # unreachable redis is reported, not hidden
@@ -164,3 +103,11 @@ def test_validation_error_is_human_and_has_request_id(world: dict[str, Any]) -> 
     assert r.status_code == 422
     assert r.json()["error"]["message"] == "Some fields are missing or invalid." and r.json()["error"]["request_id"]
     assert uuid.UUID(hex=r.json()["error"]["request_id"])
+
+
+def test_validation_logs_never_contain_submitted_values(world: dict[str, Any], caplog: pytest.LogCaptureFixture) -> None:
+    """Regression: pydantic puts the offending input into e.errors(); for a login body that includes the password."""
+    with caplog.at_level(logging.INFO, logger="grademind.api"):
+        r = world["client"].post("/api/auth/login", json={"password": "hunter2-very-secret"})
+    assert r.status_code == 422
+    assert "validation" in caplog.text and "hunter2-very-secret" not in caplog.text
