@@ -32,3 +32,8 @@ services/ocr/wheelhouse/*
 !services/ocr/models/
 services/ocr/models/*
 !services/ocr/models/.gitkeep
+
+# --- coverage data ---
+.coverage
+.coverage.*
+htmlcov/
