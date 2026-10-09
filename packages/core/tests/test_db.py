@@ -166,3 +166,30 @@ def test_transaction_rolls_back_partial_writes(db: sessionmaker[Session]) -> Non
         raise RuntimeError("boom")
     with db() as s:
         assert s.execute(text("SELECT count(*) FROM organizations")).scalar_one() == before
+
+
+def test_d19_line_correction_schema_contract(db: sessionmaker[Session]) -> None:
+    """D26.5: the D19 training-data table exists with crop + corrected text + provenance, all NOT NULL, append-only."""
+    required = {
+        # crop
+        "crop_object_key", "crop_sha256", "crop_bbox", "page_image_sha256", "page_id", "submission_id",
+        # text
+        "ocr_text", "corrected_text", "edit_ops",
+        # provenance
+        "examiner_id", "exam_id", "subject", "created_at", "ocr_provider", "ocr_model_names", "ocr_weights_sha256",
+        "preprocessing_version", "consent_scope",
+    }  # fmt: skip
+    with db() as s:
+        cols = dict(
+            s.execute(
+                text("SELECT column_name, is_nullable FROM information_schema.columns WHERE table_name = 'line_corrections'")
+            ).all()
+        )
+        triggers = s.scalars(
+            text(
+                "SELECT pg_get_triggerdef(oid) FROM pg_trigger WHERE tgrelid = 'line_corrections'::regclass AND NOT tgisinternal"
+            )
+        ).all()
+    assert {c for c in required if cols.get(c) != "NO"} == set()
+    assert "supersedes_id" in cols and cols["supersedes_id"] == "YES"  # corrections of corrections chain, never edit
+    assert any("BEFORE DELETE OR UPDATE" in t and "grademind_forbid_mutation" in t for t in triggers)

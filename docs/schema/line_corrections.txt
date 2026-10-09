@@ -1,0 +1,45 @@
+-- D26.5: live definition of the D19 training-data table, from Postgres 16 after `alembic upgrade head`
+-- (psql \d line_corrections; regenerate with: docker exec gm-test-pg psql -U gm -d gm_test -c '\d line_corrections')
+
+                          Table "public.line_corrections"
+        Column         |           Type           | Collation | Nullable | Default 
+-----------------------+--------------------------+-----------+----------+---------
+ id                    | uuid                     |           | not null | 
+ created_at            | timestamp with time zone |           | not null | now()
+ examiner_id           | uuid                     |           | not null | 
+ exam_id               | uuid                     |           | not null | 
+ submission_id         | uuid                     |           | not null | 
+ page_id               | uuid                     |           | not null | 
+ ocr_line_id           | uuid                     |           |          | 
+ subject               | character varying(200)   |           | not null | 
+ crop_object_key       | character varying(500)   |           | not null | 
+ crop_sha256           | character varying(64)    |           | not null | 
+ crop_bbox             | jsonb                    |           | not null | 
+ crop_polygon          | jsonb                    |           |          | 
+ page_image_sha256     | character varying(64)    |           | not null | 
+ preprocessing_version | character varying(40)    |           | not null | 
+ ocr_provider          | character varying(40)    |           | not null | 
+ ocr_model_names       | jsonb                    |           | not null | 
+ ocr_weights_sha256    | jsonb                    |           | not null | 
+ ocr_text              | text                     |           | not null | 
+ corrected_text        | text                     |           | not null | 
+ edit_ops              | jsonb                    |           | not null | 
+ consent_scope         | consent_scope            |           | not null | 
+ supersedes_id         | uuid                     |           |          | 
+Indexes:
+    "line_corrections_pkey" PRIMARY KEY, btree (id)
+    "ix_line_corrections_exam_id" btree (exam_id)
+    "ix_line_corrections_examiner_id" btree (examiner_id)
+    "ix_line_corrections_submission_id" btree (submission_id)
+Foreign-key constraints:
+    "line_corrections_exam_id_fkey" FOREIGN KEY (exam_id) REFERENCES exams(id)
+    "line_corrections_examiner_id_fkey" FOREIGN KEY (examiner_id) REFERENCES users(id)
+    "line_corrections_ocr_line_id_fkey" FOREIGN KEY (ocr_line_id) REFERENCES ocr_lines(id)
+    "line_corrections_page_id_fkey" FOREIGN KEY (page_id) REFERENCES pages(id)
+    "line_corrections_submission_id_fkey" FOREIGN KEY (submission_id) REFERENCES submissions(id)
+    "line_corrections_supersedes_id_fkey" FOREIGN KEY (supersedes_id) REFERENCES line_corrections(id)
+Referenced by:
+    TABLE "line_corrections" CONSTRAINT "line_corrections_supersedes_id_fkey" FOREIGN KEY (supersedes_id) REFERENCES line_corrections(id)
+Triggers:
+    line_corrections_append_only BEFORE DELETE OR UPDATE ON line_corrections FOR EACH ROW EXECUTE FUNCTION grademind_forbid_mutation()
+
