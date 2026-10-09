@@ -1,6 +1,6 @@
-# GradeMIND v2: Implementation Plan (after the Phase 0b review)
+# GradeMIND v2: Implementation Plan (after the Phase 1 review)
 
-The phases and gates are those of spec §21, re-scoped by the owner decisions D18–D23 ([DECISIONS.md](DECISIONS.md)). Every phase ends with
+The phases and gates are those of spec §21, re-scoped by the owner decisions D18–D27 ([DECISIONS.md](DECISIONS.md)). Every phase ends with
 `PHASE_<n>_REPORT.md` and a STOP. Phase 0c and Phase 1 run **in parallel**, and **Phase 1 must not depend on Phase 0c**.
 
 ## Phase 0 / 0b: done
@@ -17,7 +17,9 @@ Reports: [PHASE_0_REPORT.md](../PHASE_0_REPORT.md), [PHASE_0B_REPORT.md](../PHAS
    Every request is logged (model, parameters, prompt hash, image sha256).
 4. Score with the report_0b tooling (CER/WER, autocorrection, omissions, labels, digits, intervals). Apply the decision rule. Write `PHASE_0C_REPORT.md`. **STOP.**
 
-## Phase 1: Foundation (scoped by D19)
+## Phase 1: Foundation (scoped by D19): done, approved
+
+Report: [PHASE_1_REPORT.md](../PHASE_1_REPORT.md). The steps below are kept as a record.
 
 Order, with each step a small, separately tested commit:
 
@@ -37,15 +39,43 @@ Order, with each step a small, separately tested commit:
 
 **Exit (spec):** `docker compose up` gives a health-green stack, and the CI log shows all checks passing. Then `PHASE_1_REPORT.md` and **STOP**.
 
-## Phase 2+ (after Phase 1 approval)
+## Phase 1 hardening (D26): before any Phase 2 work
 
-As in spec §21, re-scoped by D19:
-- **Phase 2** (document intelligence): ingest, characterisation, OCR provider, examiner label confirmation, alignment, correction capture.
-- **Phase 3:** rubric + ScoreComputer + examiner verdict entry; AI suggestions stay disabled.
-- **Phase 4:** review workspace.
-- **Phase 5:** hardening, seeded demo.
+1. **Job lease heartbeats.** A running stage renews its lease periodically; a lease is reclaimed only after N missed
+   heartbeats. Tests: a stage longer than the lease window is not taken by a second worker; a killed worker's job is
+   reclaimed. Stage outputs carry an idempotency key, so a duplicate run cannot double-write.
+2. **Supply chain.** Every image pinned by digest; Paddle CPU wheels cached/vendored so a Paddle CDN outage cannot break CI.
+3. **Secret hygiene.** Secret scanning in CI; a test that `.env` and key files are untracked.
+4. **Log redaction.** Regression test for the password-in-logs bug; redaction test for token / password / Authorization.
+5. **D19 schema check.** Show the append-only line-correction table and its migration.
+6. **README.** Docker-group warning (root-equivalent) and the `sg docker -c "make smoke"` workaround.
 
-D3 resilience (OCR crash/resume integration test) belongs in Phase 2.
+## Phase 2: grading core vertical slice, no OCR dependency (D24, D25)
+
+"An examiner grades a booklet end to end." Small, separately tested commits, in this order:
+
+1. **Question paper:** upload; structure tree built manually or by deterministic parsing (Q1 / 1(a) / (i), marks, OR
+   groups); examiner edit UI. No LLM parsing (D19).
+2. **Rubric:** criteria, named verdict levels with definitions; validation on save; draft → APPROVED immutable versions (I5, I8).
+3. **ScoreComputer:** pure, Decimal, versioned; 100% branch coverage + Hypothesis properties (total ≤ max, monotonic,
+   permutation-invariant, idempotent); policy: OR choice, multiple attempts, rounding, negative marking.
+4. **Booklet:** upload → page images → viewer (zoom, pan, rotate, thumbnails, fit width/page). No OCR calls.
+5. **Manual mapping:** the examiner draws a box on a page and assigns it to a question (region model).
+6. **Review workspace:** verdict level per criterion, notes, optional evidence region, keyboard shortcuts (1–9, N/P, ?);
+   ScoreComputer computes; immutable evaluations, overrides, audit log.
+7. **Totals:** section and total marks view; CSV export.
+8. **Exit:** Playwright E2E (upload paper → approve rubric → upload booklet → map answers → grade → totals → audit rows)
+   passing in CI, plus the audit-table query output. Then `PHASE_2_REPORT.md` and **STOP**.
+
+## Phase 3: document intelligence (OCR assist)
+
+Ingest characterisation + `PAGE_DETECTION_ANOMALY`; the OCR stage through the provider registry; the "pre-fill
+transcription" button; line-level OCR correction capture into `line_corrections`; examiner label confirmation and
+alignment assist; D3 crash/resume integration test.
+
+## Phase 4: review polish, analytics, reports
+
+Review queue polish, examiner and student reports, score distribution, per-question difficulty, override rate.
 
 ## Blocking data requirement (D23)
 

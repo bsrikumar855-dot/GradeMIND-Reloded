@@ -1,15 +1,15 @@
 # STATUS
 
 **Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
-**blocked on owner verification (D21)**. **Phase 1** (Foundation, scoped by D19) is **complete and at its STOP gate** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)), awaiting owner approval. Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
+**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). Now: **D26 hardening**, then **Phase 2 = grading core** (D24/D25). Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
 [PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
 ## BLOCKING items
 
 - **D23 data requirement:** no AI-suggestion feature ships until the benchmark covers **≥ 10 students, ≥ 2 subjects, ≥ 1 numerical subject**.
   Current: **2 students, 1 subject (Environmental Science), 0 numerical**.
-- **D21:** Phase 0c results require both transcription manifests to be `OWNER_VERIFIED`. Current: both `AGENT_VERIFIED`.
-- **D20:** public-release consent for sheet_001 and sheet_002 is **not recorded** (`data/README.md`). The sheets are already public under D6.
+- **D21 / D27:** Phase 0c stays blocked until both transcription manifests are `OWNER_VERIFIED` **and** the owner confirms in chat. Current: both `AGENT_VERIFIED`. Nothing is sent to any cloud API.
+- **D20 / D27:** public-release consent for sheet_001 and sheet_002 is **not recorded** (`data/README.md`). The sheets are already public under D6. Blocking item.
 
 ## Implemented and tested
 
