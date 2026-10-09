@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import pytest
+from pydantic import ValidationError
+
 from grademind_core.config import Env, LlmProvider, OcrProvider, Settings
 from grademind_core.providers import ProviderDisabledError, ProviderRegistry
-from pydantic import ValidationError
 
 SECRET = "x" * 40
 
@@ -68,3 +69,12 @@ def test_settings_read_from_environment(monkeypatch: pytest.MonkeyPatch) -> None
     monkeypatch.setenv("GRADEMIND_JWT_SECRET", SECRET)
     monkeypatch.setenv("GRADEMIND_OCR_PROVIDERS_ENABLED", '["paddle_v6", "trocr_line"]')
     assert Settings().ocr_providers_enabled == [OcrProvider.PADDLE_V6, OcrProvider.TROCR_LINE]
+
+
+def test_user_email_is_normalised_to_lowercase() -> None:
+    """Regression: login looks emails up in lowercase; mixed-case stored emails could never sign in."""
+    from grademind_core.db.models import Role, User
+
+    assert (
+        User(email="  ExA@College-One.IN ", display_name="x", password_hash="h", role=Role.EXAMINER).email == "exa@college-one.in"
+    )

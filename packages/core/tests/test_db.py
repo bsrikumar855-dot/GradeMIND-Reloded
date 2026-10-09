@@ -7,10 +7,16 @@ import os
 import subprocess
 import sys
 import uuid
+from collections.abc import Iterator
 from decimal import Decimal
 from pathlib import Path
 
 import pytest
+from sqlalchemy import create_engine, text
+from sqlalchemy.exc import DBAPIError
+from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy.orm.exc import StaleDataError
+
 from grademind_core.db.models import (
     AuditLog,
     ConsentScope,
@@ -27,10 +33,6 @@ from grademind_core.db.models import (
     User,
 )
 from grademind_core.db.session import transaction
-from sqlalchemy import create_engine, text
-from sqlalchemy.exc import DBAPIError
-from sqlalchemy.orm import Session, sessionmaker
-from sqlalchemy.orm.exc import StaleDataError
 
 URL = os.environ.get("GRADEMIND_TEST_DATABASE_URL")
 pytestmark = pytest.mark.skipif(not URL, reason="GRADEMIND_TEST_DATABASE_URL not set (DB tests need real Postgres)")
@@ -38,13 +40,15 @@ CORE = Path(__file__).resolve().parents[1]
 
 
 @pytest.fixture(scope="module")
-def db() -> sessionmaker[Session]:
+def db() -> Iterator[sessionmaker[Session]]:
     env = {**os.environ, "GRADEMIND_DATABASE_URL": URL or ""}
     for cmd in (["downgrade", "base"], ["upgrade", "head"]):
         subprocess.run(
             [sys.executable, "-m", "alembic", "-c", str(CORE / "alembic.ini"), *cmd], env=env, check=True, capture_output=True
         )
-    return sessionmaker(bind=create_engine(URL or ""), expire_on_commit=False)
+    engine = create_engine(URL or "")
+    yield sessionmaker(bind=engine, expire_on_commit=False)
+    engine.dispose()  # no pooled connection may outlive the module: the next module's downgrade needs the table locks
 
 
 def seed(s: Session) -> dict[str, uuid.UUID]:
@@ -145,9 +149,11 @@ def test_optimistic_locking_on_jobs(db: sessionmaker[Session]) -> None:
 
 
 def test_transaction_rolls_back_partial_writes(db: sessionmaker[Session]) -> None:
-    before = db().execute(text("SELECT count(*) FROM organizations")).scalar_one()
+    with db() as s:
+        before = s.execute(text("SELECT count(*) FROM organizations")).scalar_one()
     with pytest.raises(RuntimeError), transaction(URL) as s:
         s.add(Organization(name="half-written"))
         s.flush()
         raise RuntimeError("boom")
-    assert db().execute(text("SELECT count(*) FROM organizations")).scalar_one() == before
+    with db() as s:
+        assert s.execute(text("SELECT count(*) FROM organizations")).scalar_one() == before

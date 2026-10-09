@@ -26,7 +26,7 @@ from sqlalchemy import (
     func,
 )
 from sqlalchemy.dialects.postgresql import JSONB, UUID
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, validates
 
 
 class Base(DeclarativeBase):
@@ -89,6 +89,10 @@ class User(Base):
     role: Mapped[Role] = mapped_column(Enum(Role, name="role", values_callable=lambda e: [x.value for x in e]), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     created_at: Mapped[datetime] = _created()
+
+    @validates("email")
+    def _normalise_email(self, _key: str, value: str) -> str:
+        return value.strip().lower()  # login looks up lowercase; store lowercase so mixed-case addresses can sign in
 
 
 class Exam(Base):

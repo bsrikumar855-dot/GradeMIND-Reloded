@@ -3,8 +3,9 @@ from __future__ import annotations
 import os
 
 from alembic import context
-from grademind_core.db.models import Base
 from sqlalchemy import create_engine
+
+from grademind_core.db.models import Base
 
 _url = os.environ.get("GRADEMIND_DATABASE_URL") or context.config.get_main_option("sqlalchemy.url")
 if not _url:
