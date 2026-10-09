@@ -11,6 +11,7 @@ Files live in `data/transcriptions/<sheet_id>/` and are gitignored, because they
 |---|---|---|
 | `DRAFT_UNVERIFIED` | Pre-filled draft (for example, Claude's visual reading) to save typing | **No** |
 | `OWNER_VERIFIED` | A human checked every line against the image and corrected it; `verified_by` and `verified_at` are set | Yes |
+| `AGENT_VERIFIED` | Owner override D17: the agent did the line-by-line check (on at least one page). Per-page `verified_by` says who | Yes, **labelled**; autocorrection and silent-error results on it are not evidence |
 
 A draft is a convenience, not ground truth. A machine-drafted transcription can share an OCR engine's
 "autocorrect" bias, so the verifier must check each word against the **image**, not just skim the draft.

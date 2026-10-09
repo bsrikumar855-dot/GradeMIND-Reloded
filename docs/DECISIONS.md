@@ -35,3 +35,9 @@ Append-only. Each entry is quoted or summarised from the owner, with its date. S
 | D14 | **Privacy history audit** before any data commit; if unredacted data was ever pushed, STOP and report (no history rewrite by the agent). | |
 | D15 | **Visual redaction review** of all 27 pages with a contact sheet. Redacted copies go to a separate committed path; originals stay local and runs keep reading them. Only redacted page images and text/JSON outputs are committed (LFS); preprocessing-variant images are not committed (reproducible). | |
 | D16 | **Report statistics:** n and a 95% interval on every metric (Wilson for rates, page-level bootstrap for CER); overlapping intervals are labelled `NOT_DISTINGUISHABLE`, and the recommendation may not rest on them. Cross-sheet selection-rule validation is labelled WEAK (n = 2 sheets). The recommendation states what data would change it. | `spike/report_0b.py` |
+
+## 2026-10-09
+
+| # | Decision | Consequence |
+|---|---|---|
+| D17 | **Agent verification allowed (rule 11 override).** The owner chose to have the agent verify the remaining transcription pages through the verifier UI, instead of a shortlist or full owner verification. | New status `AGENT_VERIFIED` (a sheet is `OWNER_VERIFIED` only if every page was owner-confirmed). Per-page `verified_by` is kept. All accuracy tables carry their GT basis, and autocorrection and silent-error results on agent-verified GT are not evidence. sheet_001/page_02 stays owner-verified. |
