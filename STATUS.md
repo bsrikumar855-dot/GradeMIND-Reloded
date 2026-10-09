@@ -42,8 +42,8 @@ Each step is a separate commit; test numbers are from `make test` in the same se
 | 1.2 DB schema + Alembic baseline, I8 append-only triggers, optimistic locking | **Implemented and tested** | CI `37887812722` green; `alembic check` clean |
 | 1.3 Auth (argon2id + JWT), RBAC, error envelope, health endpoints | **Implemented and tested** | CI `37888752324` green |
 | 1.4 Storage: single module (MinIO), UUID keys, upload validation, signed URLs, body-size limit | **Implemented and tested** | CI `37889396605` green (77 app tests, real Postgres + MinIO) |
-| 1.5 Jobs + SSE: stage machine (idempotent claim, lease resume, content-hash cache, retry of the failed stage), Celery task, `/api/jobs/{id}`, `/events` (SSE, Last-Event-ID), `/retry`; INTAKE stage | **Implemented and tested** | `make test`: app 94 passed, exit 0. The Celery task wrapper itself is exercised only in compose (1.7) |
-| 1.6 OCR service (PP-OCRv6 CPU, rule-12 startup assertion) | Not implemented | |
+| 1.5 Jobs + SSE: stage machine (idempotent claim, lease resume, content-hash cache, retry of the failed stage), Celery task, `/api/jobs/{id}`, `/events` (SSE, Last-Event-ID), `/retry`; INTAKE stage | **Implemented and tested** | CI `37889882133` green (94 app tests). The Celery task runs for real in the compose smoke (1.7) |
+| 1.6 OCR service: PP-OCRv6 on CPU, rule-12 assertion at image build and at startup, `/ocr/page`, `/ocr/health`, `/ocr/version` | **Implemented and tested** | Unit tests (fake engine): 12 passed. Real container: output identical to Phase 0b `b_v6` on 3 pages (text, boxes, scores); a tampered weight hash makes it exit 3 before serving |
 | 1.7 Docker Compose health-green | Not implemented | |
 | 1.8 Web shell | Not implemented | |
 | 1.9 CI: import-linter, single-path checks, tsc, compose smoke | Partial: ruff, mypy, pytest, alembic check are in CI | |
@@ -51,6 +51,10 @@ Each step is a separate commit; test numbers are from `make test` in the same se
 Known gaps in 1.4: an object written before a failed DB commit is orphaned (no sweeper yet); MIME sniffing checks magic bytes
 only (deep PDF/image decoding happens at ingest in Phase 2); bucket creation is a call (`ensure_bucket`), to be run by the
 compose init in 1.7.
+
+Known gaps in 1.6: CPU latency is about 11–13 s per answer page, one page at a time (Phase 0b measured the same); the
+API does not call `/ocr/page` yet (the OCR stage is Phase 2); `enable_mkldnn` is passed but cannot be read back (listed under
+`not_verifiable` in `expected_models.json`).
 
 Known gaps in 1.5: a job left QUEUED by a broker outage is not re-sent automatically yet (it is visible as QUEUED and can be
 re-sent by a requeue sweep, planned with compose in 1.7); the lease is renewed only at stage boundaries, so a stage longer

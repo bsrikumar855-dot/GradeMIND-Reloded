@@ -18,5 +18,5 @@ test-app:
 	uv run --frozen pytest -q -rs
 
 lint:
-	uv run --frozen ruff check packages apps tests
+	uv run --frozen ruff check packages apps services scripts tests
 	uv run --frozen mypy

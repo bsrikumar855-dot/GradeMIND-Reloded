@@ -1,0 +1,8 @@
+# OCR service (CPU). PyPI's paddlepaddle stops at 3.3.1; 3.4.0 (the version Phase 0b measured) comes from Paddle's CPU index.
+# Transitive versions are pinned by requirements.lock.txt (pip freeze of a verified image), passed as constraints.
+--extra-index-url https://www.paddlepaddle.org.cn/packages/stable/cpu/
+paddlepaddle==3.4.0
+paddleocr==3.7.0
+fastapi==0.143.0
+uvicorn[standard]==0.54.0
+python-multipart==0.0.32

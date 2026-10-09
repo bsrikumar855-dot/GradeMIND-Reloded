@@ -1,0 +1,51 @@
+{
+  "_comment": "Rule 12: the OCR service refuses to start (and the image refuses to build) unless the RESOLVED pipeline matches this file. Model pins are the weights used in Phase 0b (D18). Changing any value is a model change and needs a benchmark run.",
+  "libraries": {
+    "paddlepaddle": "3.4.0",
+    "paddleocr": "3.7.0"
+  },
+  "models": {
+    "det": {
+      "name": "PP-OCRv6_medium_det",
+      "sha256": {
+        "inference.pdiparams": "85218d2e3d98f5a21c58b4220627be923a97aee5db3cc71f39536ab31ac53960",
+        "inference.json": "0f1a7ec35da36173529c7a60238b7f7919e3831929c3f700ad90ad4896adecd5",
+        "inference.yml": "7298d5ead546584af2504d03355f881ac7a7bc0eb1e282d3e159277c1d0af871"
+      }
+    },
+    "rec": {
+      "name": "PP-OCRv6_medium_rec",
+      "sha256": {
+        "inference.pdiparams": "1b01c79a914587933f615569e75de54f2e638ebb5d3f3b3c1b38c24ede8c7319",
+        "inference.json": "0b2e25e990bd072f1bf77d59d67d508bce6c4bd44af6624e0fb27d6da2cd00e8",
+        "inference.yml": "991b700facf5b50a7de193468207d5f4255b538dde0d312ae3b7c7a9b6873129"
+      }
+    }
+  },
+  "pipeline_args": {
+    "device": "cpu",
+    "enable_mkldnn": false,
+    "use_doc_orientation_classify": false,
+    "use_doc_unwarping": false,
+    "use_textline_orientation": false,
+    "text_det_limit_type": "max",
+    "text_det_limit_side_len": 1920
+  },
+  "pipeline_resolved": {
+    "device": "cpu",
+    "use_hpip": false,
+    "use_doc_preprocessor": false,
+    "use_textline_orientation": false,
+    "text_det_limit_type": "max",
+    "text_det_limit_side_len": 1920,
+    "text_det_max_side_limit": 4000,
+    "text_det_thresh": 0.3,
+    "text_det_box_thresh": 0.6,
+    "text_det_unclip_ratio": 1.5,
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false
+  },
+  "not_verifiable": {
+    "enable_mkldnn": "passed as false (Paddle 3.4 oneDNN fails under PIR on CPU) but not exposed by the pipeline; a regression would show as a startup crash, not a silent change"
+  }
+}
