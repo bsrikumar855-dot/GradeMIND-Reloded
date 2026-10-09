@@ -2,13 +2,23 @@
 
 from __future__ import annotations
 
+import base64
+import json
 import logging
 
 import pytest
 
 from grademind_core.logredact import MASK, install, redact_obj, redact_text
 
-JWT = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMiLCJyb2xlIjoiYWRtaW4ifQ.c2lnbmF0dXJlLXZhbHVlLWhlcmU"
+
+def _b64(d: dict[str, str] | bytes) -> str:
+    raw = d if isinstance(d, bytes) else json.dumps(d).encode()
+    return base64.urlsafe_b64encode(raw).rstrip(b"=").decode()
+
+
+# a structurally valid but fake JWT, built at runtime so no secret-shaped literal sits in the repo (gitleaks)
+JWT = ".".join([_b64({"alg": "HS256"}), _b64({"sub": "123", "role": "admin"}), _b64(b"fake-signature-bytes")])
+FAKE_KEY = "sk-" + "live-" + "x" * 12
 
 
 @pytest.mark.parametrize(
@@ -19,7 +29,7 @@ JWT = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMiLCJyb2xlIjoiYWRtaW4ifQ.c2lnbmF0dXJlL
         (f"token in url ?x={JWT}", JWT),
         ('{"email": "a@b.in", "password": "hunter2 with spaces"}', "hunter2 with spaces"),
         ("password=hunter2&email=a@b.in", "hunter2"),
-        ("api_key: sk-live-123456", "sk-live-123456"),
+        (f"api_key: {FAKE_KEY}", FAKE_KEY),
         ("GRADEMIND_JWT_SECRET=s3cr3t-value", "s3cr3t-value"),
         ("https://minio/x?X-Amz-Credential=AKIA%2F1&X-Amz-Signature=deadbeef", "deadbeef"),
         ("{'token': 'abc123'}", "abc123"),

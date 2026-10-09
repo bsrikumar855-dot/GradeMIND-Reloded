@@ -1,0 +1,6 @@
+# Fingerprints (commit:file:rule:line) of reviewed FALSE POSITIVES only. Each line exempts exactly one historical
+# finding, never a file or a rule. Reviewed 2026-10-09: synthetic fixtures in the log-redaction tests of commit
+# 6ad5d9f (a fake JWT whose signature is the text "signature-value-here", and "sk-live-123456"); the fixtures are
+# built at runtime since the next commit.
+6ad5d9fee1ed08ed1455ebc3cec19220cd7ee8ed:packages/core/tests/test_logredact.py:generic-api-key:22
+6ad5d9fee1ed08ed1455ebc3cec19220cd7ee8ed:packages/core/tests/test_logredact.py:jwt:11
