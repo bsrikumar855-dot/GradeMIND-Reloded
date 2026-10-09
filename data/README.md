@@ -7,7 +7,16 @@
 | Sheets | `sheet_001` (12 pages, Adobe Scan for Android PDF) and `sheet_002` (15 pages, WhatsApp scan PDF): two university Continuous Internal Assessment answer booklets (Environmental Science and Sustainability, CIAT-I), two different students |
 | Supplied by | Repository owner, 2026-10-08 |
 | Commit approval | Owner decision **D6**, 2026-10-08 (`docs/DECISIONS.md`): sample sheets, transcriptions, run outputs and real-page fixtures may be committed **only in redacted form** |
-| Repository visibility | **PUBLIC** (checked with `gh repo view --json visibility`) |
+| Repository visibility | **PUBLIC**; owner decision D20 (2026-10-09): stays public. The institution watermark stays in the redacted images |
+
+## Per-sheet register (D20)
+
+A sheet is committed only if consent for **public** release is recorded as **yes**. Otherwise it stays local (gitignored) and is used only for local benchmarks.
+
+| Sheet | Source | Consent for PUBLIC release | Redaction |
+|---|---|---|---|
+| sheet_001 | Owner-supplied scan (Adobe Scan PDF), 2026-10-08 | **NOT RECORDED: owner to confirm** (committed earlier under D6, before D20 required this) | Cover page full black box; identifier search + visual contact sheet (see below) |
+| sheet_002 | Owner-supplied scan (WhatsApp scan PDF), 2026-10-08 | **NOT RECORDED: owner to confirm** (committed earlier under D6, before D20 required this) | Same as sheet_001 |
 
 ## Redaction method
 
