@@ -12,7 +12,7 @@ Usage:
   python3 spike/score.py --gt data/transcriptions/sheet_001 \\
       --engine A=a:spike/runs/<run>/sheet_001/engine_a --engine B=lines:spike/runs/<run>/sheet_001/engine_b \\
       --out <file.json> [--allow-draft]
-  Formats: `a` = Engine A page JSON (regions/raw); `lines` = line JSON (Engine B, Engine C).
+  Formats: `a` = Engine A page JSON (regions/raw); `lines` = line JSON (Engine B, Engine C); `text` = Phase 0c ceiling JSON.
 """
 
 from __future__ import annotations
@@ -88,7 +88,14 @@ def line_engine_lines(rec: dict) -> list[str]:
     return [" ".join(l["text"] for l in sorted(r, key=lambda l: l["box"][0])) for r in rows]
 
 
-READERS = {"a": engine_a_lines, "lines": line_engine_lines}
+def text_lines(rec: dict) -> list[str]:
+    """Phase 0c ceiling outputs: one model output line per transcribed line (rule-12 mismatches/errors score as empty)."""
+    if rec.get("rule12") not in (None, "OK"):
+        return []
+    return [ln for ln in rec.get("lines_text", []) if ln.strip()]
+
+
+READERS = {"a": engine_a_lines, "lines": line_engine_lines, "text": text_lines}
 
 
 def labels(lines: list[str], skip_uncertain: bool) -> tuple[Counter, Counter]:
@@ -154,7 +161,7 @@ def main() -> int:
     for spec in args.engine:
         name, rest = spec.split("=", 1)
         fmt, d = rest.split(":", 1)
-        if fmt not in READERS:
+        if fmt not in READERS:  # noqa: SIM102
             ap.error(f"unknown format {fmt}")
         engines[name] = (fmt, Path(d))
 
