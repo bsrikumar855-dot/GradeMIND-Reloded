@@ -1,0 +1,16 @@
+[project]
+name = "grademind-core"
+version = "0.1.0"
+description = "Shared core: single config source, provider registry, DB models, storage, security."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pydantic==2.14.0",
+    "pydantic-settings==2.15.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/grademind_core"]

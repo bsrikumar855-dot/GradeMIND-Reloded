@@ -1,7 +1,20 @@
 # Dependencies
 
-Spec §2 rule 6: every dependency is pinned, with a one-line justification. Application dependencies (Phase 1+) will be
-added here when they are introduced. Below are the **Phase 0/0b spike** environments (`spike/*/requirements.txt`).
+Spec §2 rule 6: every dependency is pinned, with a one-line justification. Exact resolved versions for the application are in `uv.lock`.
+
+## Application (Phase 1+, uv workspace: `packages/core`, `apps/api`, `apps/worker`)
+
+| Package | Pin | Why |
+|---|---|---|
+| pydantic / pydantic-settings | 2.14.0 / 2.15.0 | Schemas; the **single config source** with startup invariant validation (rule 7, I7/I10/I11) |
+| fastapi / uvicorn[standard] | 0.143.0 / 0.54.0 | API service (spec §4) |
+| python-multipart | 0.0.32 | FastAPI file uploads |
+| sse-starlette | 3.5.0 | Job progress over SSE (spec §15) |
+| celery[redis] | 5.6.3 | Job stages in the worker (spec §4/§15); Redis broker |
+| pytest / pytest-asyncio / httpx | 9.1.1 / 1.4.0 / 0.28.1 | Tests (dev) |
+| ruff / mypy / import-linter | 0.16.10 / 2.4.0 / 2.15 | Lint, strict typing, SDK import boundaries (rule 7) (dev) |
+
+## Spike environments (Phase 0/0b; `spike/*/requirements.txt`)
 Each engine has its own venv, so dependency stacks never mix (mirroring the per-engine containers planned in ARCHITECTURE §2).
 
 ## Engine A: Unlimited-OCR (`spike/engine_a/requirements.txt`). Optional cross-check, disabled by default (D2)
@@ -50,6 +63,13 @@ resolved model names and per-file sha256 of every loaded model directory, and fa
 - Weights `pytorch_model.bin` sha256 `954bf2b50a871bb8e6e90ba0343d64d21055712f3d95d468995ea074481cb837` (matches the Hub LFS record; asserted at load per rule 12).
 - **Note:** the checkpoint ships only `pytorch_model.bin` (pickle). transformers 4.57.1 loads it with `torch.load(weights_only=True)`. This is
   acceptable for a pinned first-party (Microsoft) checkpoint; production should convert it to safetensors once and pin the hash.
+
+## Phase 0c ceiling (`spike/ceiling/requirements.txt`; benchmark only, D22)
+
+| Package | Pin | Why |
+|---|---|---|
+| anthropic | 1.12.1 | Official SDK for the Claude ceiling run (`claude-fable-5-1`); imported only inside the runner |
+| google-genai | 2.29.0 | Official SDK for the Gemini ceiling run; imported only inside the runner |
 
 ## Host tools used by the spike
 

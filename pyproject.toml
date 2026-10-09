@@ -1,0 +1,46 @@
+[project]
+name = "grademind-workspace"
+version = "0.0.0"
+description = "GradeMIND v2 monorepo root (uv workspace). Spike tooling under spike/ is NOT part of the workspace."
+requires-python = ">=3.12,<3.13"
+dependencies = ["grademind-core", "grademind-api", "grademind-worker"]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["packages/core", "apps/api", "apps/worker"]
+
+[tool.uv.sources]
+grademind-core = { workspace = true }
+grademind-api = { workspace = true }
+grademind-worker = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest==9.1.1",
+    "pytest-asyncio==1.4.0",
+    "httpx==0.28.1",
+    "ruff==0.16.10",
+    "mypy==2.4.0",
+    "import-linter==2.15",
+]
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+extend-exclude = ["spike", "apps/web"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "SIM"]
+ignore = ["S101"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "packages/core/tests", "apps/api/tests", "apps/worker/tests"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["grademind_core", "grademind_api", "grademind_worker"]
+plugins = ["pydantic.mypy"]
