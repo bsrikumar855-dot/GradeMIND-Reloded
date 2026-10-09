@@ -12,12 +12,14 @@ import os
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 import uuid
 from pathlib import Path
 from typing import Any
 
 API = os.environ.get("SMOKE_API", "http://127.0.0.1:8000")
+WEB = os.environ.get("SMOKE_WEB", "http://127.0.0.1:3100")
 REQUIRE_OCR = os.environ.get("SMOKE_REQUIRE_OCR", "1") == "1"
 
 
@@ -44,6 +46,55 @@ def check(cond: bool, what: str) -> None:
     print(("PASS " if cond else "FAIL ") + what, flush=True)
     if not cond:
         sys.exit(1)
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a: Any, **k: Any) -> None:
+        return None
+
+
+def web(path: str, data: bytes | None = None, headers: dict[str, str] | None = None) -> tuple[int, dict[str, str], str]:
+    opener = urllib.request.build_opener(_NoRedirect)
+    req = urllib.request.Request(WEB + path, data=data, headers=headers or {}, method="POST" if data is not None else "GET")
+    try:
+        with opener.open(req, timeout=30) as r:
+            # React separates adjacent text nodes with <!-- --> in server HTML
+            return r.status, {k.lower(): v for k, v in r.headers.items()}, r.read().decode().replace("<!-- -->", "")
+    except urllib.error.HTTPError as e:
+        return e.code, {k.lower(): v for k, v in e.headers.items()}, e.read().decode(errors="replace")
+
+
+def web_checks(exam_name: str) -> None:
+    code, _, html = web("/login")
+    check(code == 200 and "Sign in to GradeMIND" in html, "web /login renders")
+    code, h, _ = web("/")
+    loc = h.get("location", "")
+    check(
+        code in (303, 307) and (loc.startswith("/login") or loc.startswith(WEB + "/login")),
+        f"web / without a session redirects to /login ({loc!r})",
+    )
+    form = urllib.parse.urlencode({"email": env("GRADEMIND_ADMIN_EMAIL"), "password": "wrong-password"}).encode()
+    code, h, _ = web("/api/session", form, {"content-type": "application/x-www-form-urlencoded", "origin": WEB})
+    check(code == 303 and "error=invalid" in h.get("location", ""), "web login with a wrong password is refused")
+    code, _, _ = web(
+        "/api/session", form, {"content-type": "application/x-www-form-urlencoded", "origin": "https://evil.example"}
+    )
+    check(code == 403, "web login from a foreign origin is refused (CSRF)")
+    form = urllib.parse.urlencode({"email": env("GRADEMIND_ADMIN_EMAIL"), "password": env("GRADEMIND_ADMIN_PASSWORD")}).encode()
+    code, h, _ = web("/api/session", form, {"content-type": "application/x-www-form-urlencoded", "origin": WEB})
+    cookie = h.get("set-cookie", "")
+    loc = h.get("location", "")
+    check(loc == "/" or loc.startswith(WEB + "/"), f"web login redirects within the web origin (got {loc!r})")
+    check(
+        code == 303 and cookie.startswith("gm_session=") and "httponly" in cookie.lower(),
+        "web login sets an httpOnly session cookie",
+    )
+    jar = {"cookie": cookie.split(";", 1)[0]}
+    code, _, html = web("/", headers=jar)
+    check(code == 200 and "Welcome, Administrator" in html and "System status" in html, "web dashboard renders for the admin")
+    code, _, html = web("/exams", headers=jar)
+    check(code == 200 and exam_name in html, "web exam list shows the exam created through the API")
+    check("eyJ" not in html, "the access token does not appear in the page")
 
 
 def main() -> int:
@@ -106,6 +157,7 @@ def main() -> int:
     code, detail = call("GET", f"/api/submissions/{sub['id']}", headers=auth)
     with urllib.request.urlopen(detail["source_url"], timeout=10) as r:
         check(r.read() == pdf, "signed URL serves the stored bytes")
+    web_checks(exam_name="Smoke")
     print("SMOKE OK")
     return 0
 

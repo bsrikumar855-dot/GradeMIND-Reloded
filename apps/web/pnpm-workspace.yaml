@@ -1,0 +1,4 @@
+# No dependency install scripts run (supply-chain hygiene). unrs-resolver's script only re-checks its prebuilt
+# native binding, which pnpm already installs as an optional dependency.
+allowBuilds:
+  unrs-resolver: false

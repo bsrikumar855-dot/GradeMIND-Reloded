@@ -1,5 +1,5 @@
 # GradeMIND v1 local stack (spec §4; Phase 1 step 7). `docker compose up` -> every service healthy.
-# Secrets come from .env (copy .env.example). Only the web UI, API and MinIO (for signed URLs) are published, on localhost.
+# Secrets come from .env (copy .env.example). Only web (3100), API (8000) and MinIO (9000, signed URLs) are published, on 127.0.0.1.
 name: grademind
 
 x-app-env: &app-env
@@ -118,6 +118,17 @@ services:
     deploy:
       resources:
         limits: {memory: 4g}
+
+  web:
+    build:
+      context: apps/web
+    image: grademind-web:dev
+    environment:
+      GRADEMIND_API_URL: http://api:8000
+      GRADEMIND_COOKIE_SECURE: ${GRADEMIND_COOKIE_SECURE:-false}  # set true behind HTTPS
+    ports: ["127.0.0.1:${GRADEMIND_WEB_PORT:-3100}:3000"]
+    depends_on:
+      api: {condition: service_healthy}
 
 volumes:
   pgdata:

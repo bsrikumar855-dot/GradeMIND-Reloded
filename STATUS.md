@@ -43,14 +43,19 @@ Each step is a separate commit; test numbers are from `make test` in the same se
 | 1.3 Auth (argon2id + JWT), RBAC, error envelope, health endpoints | **Implemented and tested** | CI `37888752324` green |
 | 1.4 Storage: single module (MinIO), UUID keys, upload validation, signed URLs, body-size limit | **Implemented and tested** | CI `37889396605` green (77 app tests, real Postgres + MinIO) |
 | 1.5 Jobs + SSE: stage machine (idempotent claim, lease resume, content-hash cache, retry of the failed stage), Celery task, `/api/jobs/{id}`, `/events` (SSE, Last-Event-ID), `/retry`; INTAKE stage | **Implemented and tested** | CI `37889882133` green (94 app tests). The Celery task runs for real in the compose smoke (1.7) |
-| 1.6 OCR service: PP-OCRv6 on CPU, rule-12 assertion at image build and at startup, `/ocr/page`, `/ocr/health`, `/ocr/version` | **Implemented and tested** | Unit tests (fake engine): 12 passed. Real container: output identical to Phase 0b `b_v6` on 3 pages (text, boxes, scores); a tampered weight hash makes it exit 3 before serving |
-| 1.7 Docker Compose: postgres, redis, minio, migrate, bootstrap (bucket + first admin), api, worker (+ requeue sweep), ocr | **Implemented and tested (locally)** | `docker compose up`: all 6 long-running services healthy; `scripts/compose_smoke.py` passed end to end (login, upload, Celery job via SSE, signed URL, `/health/ocr` rule12 OK). Web joins in 1.8; CI smoke in 1.9 |
-| 1.8 Web shell | Not implemented | |
+| 1.6 OCR service: PP-OCRv6 on CPU, rule-12 assertion at image build and at startup, `/ocr/page`, `/ocr/health`, `/ocr/version` | **Implemented and tested** | CI `37891158844` on `2a27784` was **red** (lint referenced `scripts/`, which only landed in the next commit); fixed by `91765b6`, CI `37891292406` green. Unit tests (fake engine): 12 passed. Real container: output identical to Phase 0b `b_v6` on 3 pages (text, boxes, scores); a tampered weight hash makes it exit 3 before serving |
+| 1.7 Docker Compose: postgres, redis, minio, migrate, bootstrap (bucket + first admin), api, worker (+ requeue sweep), ocr | **Implemented and tested (locally)** | CI `37891292406` green (109 app tests). `docker compose up`: all 6 long-running services healthy; `scripts/compose_smoke.py` passed end to end (login, upload, Celery job via SSE, signed URL, `/health/ocr` rule12 OK). Web joins in 1.8; CI smoke in 1.9 |
+| 1.8 Web shell: Next.js 16 App Router, TS strict, Tailwind 4, shadcn-style components; sign-in, dashboard (health), exam list; light theme | **Implemented and tested (locally)** | Image build runs `tsc --noEmit` and `eslint --max-warnings 0`; compose smoke checks the web flow (redirect without session, wrong password, CSRF 403, httpOnly cookie, dashboard, exam list, no token in HTML). Checked in a browser at 518 px width. No automated a11y audit or Playwright yet |
 | 1.9 CI: import-linter, single-path checks, tsc, compose smoke | Partial: ruff, mypy, pytest, alembic check are in CI | |
 
 Known gaps in 1.4: an object written before a failed DB commit is orphaned (no sweeper yet); MIME sniffing checks magic bytes
 only (deep PDF/image decoding happens at ingest in Phase 2); bucket creation is a call (`ensure_bucket`), to be run by the
 compose init in 1.7.
+
+Known gaps in 1.8: no Playwright tests yet (spec §20 wants them for the upload → review flow, which arrives in Phases 2–4);
+WCAG AA is by construction (labels, landmarks, skip link, focus rings, contrast-checked tokens), not by an automated audit.
+Found and fixed while testing: sign-in redirected the browser to the container bind address (`http://0.0.0.0:3000`);
+redirects are now relative and the smoke test asserts it.
 
 Known gaps in 1.6: CPU latency is about 11–13 s per answer page, one page at a time (Phase 0b measured the same); the
 API does not call `/ocr/page` yet (the OCR stage is Phase 2); `enable_mkldnn` is passed but cannot be read back (listed under

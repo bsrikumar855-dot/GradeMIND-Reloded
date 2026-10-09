@@ -10,7 +10,7 @@ docker compose up -d --build
 python3 scripts/compose_smoke.py    # end-to-end check; exit code 0 = pass
 ```
 
-The API is on http://127.0.0.1:8000 (`/health/*`); MinIO is published on 127.0.0.1:9000 only so the browser can fetch
+The web UI is on http://127.0.0.1:3100 (`GRADEMIND_WEB_PORT`), the API on http://127.0.0.1:8000 (`/health/*`); MinIO is published on 127.0.0.1:9000 only so the browser can fetch
 short-lived signed URLs. The first administrator comes from `GRADEMIND_ADMIN_*` in `.env`.
 
 ## Tests

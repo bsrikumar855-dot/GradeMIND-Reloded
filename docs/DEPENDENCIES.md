@@ -16,6 +16,18 @@ Spec §2 rule 6: every dependency is pinned, with a one-line justification. Exac
 | pytest / pytest-asyncio / httpx | 9.1.1 / 1.4.0 / 0.28.1 | Tests (dev) |
 | ruff / mypy / import-linter | 0.16.10 / 2.4.0 / 2.15 | Lint, strict typing, SDK import boundaries (rule 7) (dev) |
 
+## Web (`apps/web`; built only in Docker, the host has Node 18)
+
+| Package / image | Pin | Why |
+|---|---|---|
+| node image | `node:24-alpine@sha256:ebfe2f90…c1c1` (Node 24.21.0 LTS) | Build and runtime |
+| pnpm | 12.10.1 (corepack, `packageManager`) | Lockfile `pnpm-lock.yaml`; dependency install scripts are denied (`allowBuilds`) |
+| next / react / react-dom | 16.4.0 / 19.3.0 / 19.3.0 | App Router, server components; standalone output |
+| typescript | 6.0.3 | `latest` is 7.0 (the native compiler); 6.0 is the last release on the JS API that Next's tooling uses |
+| tailwindcss / @tailwindcss/postcss / tw-animate-css | 4.3.3 / 4.3.3 / 1.4.0 | Styling (shadcn/ui conventions) |
+| @radix-ui/react-slot, @radix-ui/react-label, class-variance-authority, clsx, tailwind-merge, lucide-react | as in package.json | shadcn/ui component primitives and icons |
+| eslint / eslint-config-next | 10.12.0 / 16.4.0 | Lint (zero warnings enforced in the image build) |
+
 ## OCR service (`services/ocr`, CPU container; not a uv workspace member)
 
 | Package / image | Pin | Why |
