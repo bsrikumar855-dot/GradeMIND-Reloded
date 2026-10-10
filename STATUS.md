@@ -1,7 +1,7 @@
 # STATUS
 
 **Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
-**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 (grading core) is APPROVED (D28)**; **Phase 3 (OCR assist, assistive only) is in progress**: [PHASE_2_REPORT.md](PHASE_2_REPORT.md).
+**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 (grading core) is APPROVED (D28)**; **Phase 3 (OCR assist, assistive only) is built and awaiting owner review at the gate**: [PHASE_2_REPORT.md](PHASE_2_REPORT.md).
 [PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
 ## BLOCKING items
@@ -43,8 +43,8 @@ Each step is one commit with CI green before the next. Test numbers come from `m
 | 3.2 Region text API (pure geometry) | **Implemented and tested** | `6f13d4a`, CI `38033939216` green. `make test` 289 passed. `ocr_geometry.py` 100% branch coverage (in the `make test` gate) with 16 tests incl. 4 Hypothesis properties; `GET /submissions/{id}/machine-reading` (9 API tests incl. "grading identical with and without OCR" and "no machine text in the workspace") |
 | 3.3 "Machine reading" panel (per-region lines, low-confidence flag, "can be wrong" notice, hide toggle, keyboard focus outlines the line on the page, escaped text) | **Implemented and tested** | `645b41c` + guard fix `0243c46`, CI `38035170650` green (run `38034902000` on `645b41c` was RED: the new hidden-character guard flagged its own source; fixed). Playwright 10/10 in CI (4 panel tests use an intercepted response); web unit tests 14/14; 291 app tests |
 | 3.4 Examiner line correction -> `line_corrections` (append-only linear chain per line, crop + provenance + edit ops, audit in the same transaction, original one click away) | **Implemented and tested** | `51fe2d9`, CI `38036400984` green (test, secrets, web, compose-smoke); 310 app tests; stale-edit guard mutation-checked; Playwright 15/15 locally against the new API |
-| 3.5 Owner-only dataset export (consent-aware) | **Implemented; CI result pending** | `cli export-corrections` (admin-gated, audited, no HTTP route), `docs/DATASET_EXPORT.md`; 8 export tests on real Postgres + MinIO incl. the three exit codes and a mutation check on the consent filter; refuses to write inside the public repo unless git-ignored |
-| 3.6 E2E incl. totals unchanged by OCR | Not started | |
+| 3.5 Owner-only dataset export (consent-aware) | **Implemented and tested** | `9fd30b7`, CI `38036928042` green. `cli export-corrections` (admin-gated, audited, no HTTP route), `docs/DATASET_EXPORT.md`; 8 export tests on real Postgres + MinIO incl. the three exit codes and a mutation check on the consent filter; refuses to write inside the public repo unless git-ignored |
+| 3.6 E2E with the real OCR engine: machine lines, a correction, audit trail, grading unchanged | **Implemented and tested** | `df48cdf` was RED (CI `38037318514`: compose-smoke, the OCR stage did not finish; the job FAILED after 10.46 s, consistent with the 10 s health timeout while the single OCR service was busy; **hypothesis, not confirmed**). Fix `60a0f62` (health retries 3 x 30 s, 3 unit tests, CI dumps jobs/ocr_runs on failure), CI `38038114654` green (test, secrets, web, compose-smoke): 322 app tests; Playwright 16/16 incl. `phase3.spec.ts` (32 s); `PHASE 3 EVIDENCE OK` from the real database |
 
 3.1 notes: grading readiness is `pages_ready` (the RASTERIZE stage succeeded), not job completion, so a slow or dead OCR
 service never blocks grading (the Booklets page offers "Grade" as soon as pages exist). The import-linter contract "OCR text
@@ -57,6 +57,10 @@ stop-gap; a dedicated OCR queue is the real fix (decision needed, see the Phase 
 assignment is API-only). The N/P/? shortcuts were found to be broken once the active question had no answer box (they lived
 in the grading panel, which unmounts there); they now live at workspace level and a regression test pins it. The sweeper
 logic moved into `grademind_core.jobs.resend_stuck` and is tested end to end (lost enqueue -> re-sent -> job completes).
+
+3.6 notes: the real engine read the synthetic PRINTED page exactly (3 lines, 122 characters, 0 errors, scores 0.9974 / 0.9999 / 0.9976).
+This says nothing about handwriting (Phase 0b: best line CER about 0.43). Phase 3 is complete and **stopped at the phase gate**;
+see [PHASE_3_REPORT.md](PHASE_3_REPORT.md). Phase 4 has not been started.
 
 ## D26 hardening (done before Phase 2)
 
