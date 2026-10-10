@@ -38,7 +38,7 @@ Each step is one commit with CI green before the next. Test numbers come from `m
 
 | Step | State | Evidence |
 |---|---|---|
-| 3.0 Phase 2 gaps: keyboard-only box drawing; Playwright for examiner override-with-reason, attempts, crossed-out, remove region, N/P/?; stuck-QUEUED sweeper test | **Implemented; CI result pending** | Local: `make test` 247 passed exit 0; Playwright 6/6 (new spec 5 tests + the Phase 2 spec); web unit tests 8/8 (`node --test`) |
+| 3.0 Phase 2 gaps: keyboard-only box drawing; Playwright for examiner override-with-reason, attempts, crossed-out, remove region, N/P/?; stuck-QUEUED sweeper test | **Implemented and tested** | `cb3a03c`, CI `38032702947` green (test, secrets, web, compose-smoke): 247 app tests; web unit tests 8/8 in the image build; Playwright 6/6 (5 new + the Phase 2 spec) in compose-smoke |
 | 3.1 OCR stage in the ingest job | Not started | |
 | 3.2 Region text API (pure geometry) | Not started | |
 | 3.3 "Machine reading" panel | Not started | |
