@@ -132,6 +132,8 @@ jobs:
           pnpm exec playwright test
       - name: Phase 3 evidence from the real database (corrections, audit trail, append-only triggers)
         run: ./scripts/phase3_evidence.sh "docker compose exec -T postgres psql -U grademind -d grademind"
+      - name: "Phase 4 evidence from the real database (finalize and reopen history, snapshots, audit, the database's own refusals)"
+        run: ./scripts/phase4_evidence.sh "docker compose exec -T postgres psql -U grademind -d grademind"
       - name: verify every finalized result by recomputing it from the raw records (I12; fails loudly on any difference)
         run: |
           set -euo pipefail
