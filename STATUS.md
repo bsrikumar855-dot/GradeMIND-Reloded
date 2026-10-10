@@ -1,7 +1,7 @@
 # STATUS
 
 **Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
-**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; now **Phase 2 = grading core** (D24/D25). Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
+**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 = grading core** (D24/D25) is built and awaiting owner approval ([PHASE_2_REPORT.md](PHASE_2_REPORT.md)). Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
 [PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
 ## BLOCKING items
@@ -74,6 +74,22 @@ API does not call `/ocr/page` yet (the OCR stage is Phase 2); `enable_mkldnn` is
 
 Known gaps in 1.5: the lease is renewed only at stage boundaries, so a stage longer
 than `job_lease_seconds` (default 900 s) could be resumed by a second worker (heartbeats come with the OCR stage in Phase 2).
+
+## Phase 2 (Grading core) progress
+
+CI is the source of truth (rule 13). Final head `6d0f7d6`, CI run `38023217004`: `test`, `secrets`, `web`, `compose-smoke` all green.
+
+| Step | State | Evidence |
+|---|---|---|
+| 2.1 Grading schemas + ScoreComputer (pure, Decimal, versioned) | **Implemented and tested** | `e2d8627`; 100% branch coverage gate + Hypothesis |
+| 2.2 Deterministic question-paper parser (no LLM) | **Implemented and tested** | `d855b67` |
+| 2.3 Versioned paper + rubric API (drafts, validation, immutable approval) | **Implemented and tested** | `9c9677b` |
+| 2.4 Booklet -> page images (RASTERIZE) + pages API | **Implemented and tested** | `db1d1ce` |
+| 2.5 Regions, evaluations, overrides, score sheets, totals + CSV, audit API | **Implemented and tested** | `e48ec6b` |
+| 2.6 Web: paper/rubric editors, booklets, page viewer, region mapping, grading workspace, totals, audit | **Implemented; tested through the E2E happy path only** | `89ee9fe` (red), `a98fbb7` (lint fix), `61bb827` (pages) |
+| 2.7 Playwright E2E in CI (`compose-smoke`) | **Implemented and tested** | `ac90662`..`6d0f7d6`; run `38023217004` green; audit sequence printed as annotation |
+
+Known gaps are listed in PHASE_2_REPORT.md (no browser tests for override, attempts, rotate/fit/pan, N/P/? keys; no keyboard-only region drawing; no a11y audit).
 
 ## Implemented but untested
 
