@@ -117,7 +117,10 @@ export type AuditRow = { at: string; actor_id: string | null; action: string; en
 /** Machine reading (OCR assist, D28). DISPLAY-ONLY: nothing here may feed a verdict. Mirrors routes/ocr.py. */
 export type MachineLine = {
   id: string;
-  text: string; // student text: DATA, render through safeText() as a plain text node only
+  text: string; // what to show: the examiner's correction if there is one. Student text: DATA, render through safeText() only
+  original_text: string; // what the machine read; never overwritten
+  corrected: boolean;
+  correction_id: string | null; // the current correction: send it back as expected_correction_id when editing again
   score: number | null;
   low_confidence: boolean;
   bbox: [number, number, number, number]; // page fractions, the same space as answer regions

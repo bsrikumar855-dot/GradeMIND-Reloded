@@ -6,24 +6,31 @@ grading or in the grading routes may import it (import-linter contract "OCR text
 
 from __future__ import annotations
 
+import hashlib
+import io
 import uuid
+from datetime import datetime
 from typing import Literal
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from grademind_api.deps import db_dep, principal_dep, queue_dep, require_roles
+from grademind_api.deps import db_dep, principal_dep, queue_dep, require_roles, store_dep
 from grademind_api.errors import ApiError
 from grademind_api.queue import JobQueue
 from grademind_api.routes.exams import visible_exam
 from grademind_api.routes.submissions import enqueue_after_commit, visible_submission
-from grademind_core.db.models import AnswerRegion, AuditLog, JobStatus, Page, ProcessingJob, Role, Submission
-from grademind_core.db.ocr_models import OcrLine, OcrRun
+from grademind_core.db.models import AnswerRegion, AuditLog, Exam, JobStatus, Page, ProcessingJob, Role, Submission
+from grademind_core.db.ocr_models import LineCorrection, OcrLine, OcrRun
 from grademind_core.jobs import OCR_RETRY_KIND
+from grademind_core.line_corrections import InvalidLineTextError, chain, clean_line_text, edit_ops, heads
 from grademind_core.ocr_geometry import LineGeom, lines_in_region
+from grademind_core.pdf import PdfError, crop_line
 from grademind_core.security import Principal
+from grademind_core.storage import ObjectKind, ObjectNotFoundError, ObjectStore
 
 router = APIRouter(tags=["ocr"])
 GRADERS = (Role.ADMIN, Role.TEACHER, Role.EXAMINER)
@@ -109,9 +116,12 @@ NOTICE = "Machine reading: it can be wrong, especially for handwriting. Always c
 
 class MachineLine(BaseModel):
     id: uuid.UUID
-    text: str  # student text: DATA. Clients must render it as escaped text only (I5).
+    text: str  # what to SHOW: the examiner's correction if there is one, else the machine's text. Student text: DATA (I5).
+    original_text: str  # what the machine read, never overwritten
+    corrected: bool
+    correction_id: uuid.UUID | None  # the current correction; send it back as expected_correction_id when editing again
     score: float | None
-    low_confidence: bool
+    low_confidence: bool  # never set on a line an examiner has corrected
     bbox: list[float]  # [x0, y0, x1, y1] as fractions of the unrotated page, the same space as answer regions
     overlap: float  # share of the line that lies inside the region (1.0 = fully inside)
 
@@ -165,6 +175,7 @@ def machine_reading(
             geoms.setdefault(page_of_run[ln.ocr_run_id], []).append(
                 LineGeom(str(ln.id), (ln.bbox[0], ln.bbox[1], ln.bbox[2], ln.bbox[3]), [(pt[0], pt[1]) for pt in ln.polygon])
             )
+    corrections = heads(db, [uuid.UUID(k) for k in texts])
     out: list[RegionReading] = []
     for r in regions:
         pg = pages[r.page_id]
@@ -176,12 +187,16 @@ def machine_reading(
         for pl in placed:
             row = texts[pl.line.key]
             b = pl.line.box
+            fix = corrections.get(row.id)
             lines.append(
                 MachineLine(
                     id=row.id,
-                    text=row.text,
+                    text=fix.corrected_text if fix else row.text,
+                    original_text=row.text,
+                    corrected=fix is not None,
+                    correction_id=fix.id if fix else None,
                     score=row.score,
-                    low_confidence=row.score is None or row.score < LOW_CONFIDENCE_BELOW,
+                    low_confidence=fix is None and (row.score is None or row.score < LOW_CONFIDENCE_BELOW),
                     bbox=[
                         round(b[0] / pg.width, 5),
                         round(b[1] / pg.height, 5),
@@ -204,3 +219,154 @@ def machine_reading(
             )
         )
     return MachineReading(notice=NOTICE, low_confidence_below=LOW_CONFIDENCE_BELOW, regions=out)
+
+
+# ---------------------------------------------------------------------------------------------- examiner line correction (3.4)
+
+PREPROCESSING_VERSION = (
+    "none"  # D18: page characterisation is on, image transforms are off, so the engine saw the page as rendered
+)
+
+
+class CorrectionIn(BaseModel):
+    text: str = Field(max_length=4000)  # the line as the examiner reads it (validated more strictly on the server)
+    expected_correction_id: uuid.UUID | None = None  # the correction the examiner SAW (null = none yet): optimistic concurrency
+
+
+class LineState(BaseModel):
+    id: uuid.UUID
+    text: str
+    original_text: str
+    corrected: bool
+    correction_id: uuid.UUID | None
+
+
+class CorrectionRow(BaseModel):
+    id: uuid.UUID
+    created_at: datetime
+    examiner_id: uuid.UUID
+    corrected_text: str
+    supersedes_id: uuid.UUID | None
+
+
+class LineHistory(BaseModel):
+    line_id: uuid.UUID
+    original_text: str
+    corrections: list[CorrectionRow]  # oldest first; the last one is the current correction
+
+
+def _line_of(db: Session, sub: Submission, line_id: uuid.UUID) -> tuple[OcrLine, OcrRun, Page]:
+    row = db.execute(
+        select(OcrLine, OcrRun, Page)
+        .join(OcrRun, OcrRun.id == OcrLine.ocr_run_id)
+        .join(Page, Page.id == OcrRun.page_id)
+        .where(OcrLine.id == line_id, Page.submission_id == sub.id, OcrRun.status == "OK")
+    ).first()
+    if row is None:
+        raise ApiError(404, "not_found", "Line not found.")
+    return row[0], row[1], row[2]
+
+
+@router.put("/submissions/{submission_id}/ocr-lines/{line_id}/correction", response_model=LineState)
+def correct_line(
+    submission_id: uuid.UUID,
+    line_id: uuid.UUID,
+    body: CorrectionIn,
+    request: Request,
+    p: Principal = Depends(require_roles(*GRADERS)),
+    db: Session = Depends(db_dep),
+    store: ObjectStore = Depends(store_dep),
+) -> LineState:
+    """Record the examiner's reading of one machine-read line as labelled data (D19).
+
+    Append-only: the OCR line and the page image are never touched; a correction of a correction is a new row. The crop of the
+    line, the provenance and an audit row are written in the same transaction as the correction."""
+    sub = visible_submission(db, p, submission_id)
+    line, run, page = _line_of(db, sub, line_id)
+    try:
+        text = clean_line_text(body.text)
+    except InvalidLineTextError as e:
+        raise ApiError(422, e.code, e.message) from e
+    head = heads(db, [line.id]).get(line.id)
+    if (head.id if head else None) != body.expected_correction_id:
+        raise ApiError(409, "line_changed", "Someone changed this line since you opened it. Reload and try again.")
+    if text == (head.corrected_text if head else line.text):
+        raise ApiError(422, "no_change", "That is already how this line reads.")
+    try:
+        crop, crop_box = crop_line(store.get_bytes(page.object_key), (line.bbox[0], line.bbox[1], line.bbox[2], line.bbox[3]))
+    except (PdfError, ObjectNotFoundError) as e:
+        raise ApiError(
+            503, "crop_failed", "The line image could not be saved, so the correction was not recorded. Try again."
+        ) from e
+    crop_key = store.put(ObjectKind.LINE_CROP, io.BytesIO(crop), len(crop), "image/jpeg")
+    exam = db.get(Exam, sub.exam_id)
+    assert exam is not None
+    row = LineCorrection(
+        examiner_id=p.user_id,
+        exam_id=sub.exam_id,
+        submission_id=sub.id,
+        page_id=page.id,
+        ocr_line_id=line.id,
+        subject=exam.subject,
+        crop_object_key=crop_key,
+        crop_sha256=hashlib.sha256(crop).hexdigest(),
+        crop_bbox=crop_box,
+        crop_polygon=line.polygon,
+        page_image_sha256=page.sha256,
+        preprocessing_version=PREPROCESSING_VERSION,
+        ocr_provider=run.provider,
+        ocr_model_names=run.model_names,
+        ocr_weights_sha256=run.weights_sha256,
+        ocr_text=line.text,  # the ORIGINAL machine reading, whatever an earlier correction said
+        corrected_text=text,
+        edit_ops=edit_ops(line.text, text),
+        consent_scope=sub.consent_scope,
+        supersedes_id=head.id if head else None,
+    )
+    db.add(row)
+    try:
+        db.flush()
+    except IntegrityError as e:  # a concurrent correction took the same place in the chain
+        db.rollback()
+        raise ApiError(409, "line_changed", "Someone changed this line since you opened it. Reload and try again.") from e
+    db.add(
+        AuditLog(
+            actor_id=p.user_id,
+            action="line.correct",
+            entity_type="line_correction",
+            entity_id=str(row.id),
+            request_id=request.state.request_id,
+            # ids and counts only: the text itself is student data and already lives, once, in line_corrections
+            details={
+                "exam_id": str(sub.exam_id),
+                "submission_id": str(sub.id),
+                "ocr_line_id": str(line.id),
+                "supersedes_id": str(head.id) if head else None,
+                "ops": len(row.edit_ops),
+            },
+        )
+    )
+    db.commit()
+    return LineState(id=line.id, text=text, original_text=line.text, corrected=True, correction_id=row.id)
+
+
+@router.get("/submissions/{submission_id}/ocr-lines/{line_id}/corrections", response_model=LineHistory)
+def line_history(
+    submission_id: uuid.UUID, line_id: uuid.UUID, p: Principal = Depends(principal_dep), db: Session = Depends(db_dep)
+) -> LineHistory:
+    sub = visible_submission(db, p, submission_id)
+    line, _, _ = _line_of(db, sub, line_id)
+    return LineHistory(
+        line_id=line.id,
+        original_text=line.text,
+        corrections=[
+            CorrectionRow(
+                id=c.id,
+                created_at=c.created_at,
+                examiner_id=c.examiner_id,
+                corrected_text=c.corrected_text,
+                supersedes_id=c.supersedes_id,
+            )
+            for c in chain(db, line.id)
+        ],
+    )

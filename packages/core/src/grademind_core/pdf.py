@@ -82,3 +82,21 @@ def page_images(data: bytes, mime: str) -> Iterator[PageImage]:
         raise PdfError("The image could not be read.") from e
     full, thumb = _encode(img)
     yield PageImage(1, full, img.width, img.height, thumb)
+
+
+def crop_line(image_jpeg: bytes, box: tuple[int, int, int, int], pad: int = 4) -> tuple[bytes, list[int]]:
+    """A COPY of the part of a page image around one machine-read line (JPEG), and the crop box actually used (padded, clamped to
+    the page). The page image itself is only read, never changed (D19). Skewed lines are not straightened: the line's polygon
+    and the page image hash are stored with every correction, so a dataset builder can re-crop with any method later."""
+    try:
+        img = Image.open(io.BytesIO(image_jpeg))
+        img.load()
+    except (OSError, Image.DecompressionBombError) as e:
+        raise PdfError("The page image could not be read.") from e
+    x0, y0, x1, y1 = box
+    c = [max(0, x0 - pad), max(0, y0 - pad), min(img.width, x1 + pad), min(img.height, y1 + pad)]
+    if c[2] <= c[0] or c[3] <= c[1]:
+        raise PdfError("The line lies outside the page image.")
+    out = io.BytesIO()
+    img.convert("RGB").crop((c[0], c[1], c[2], c[3])).save(out, format="JPEG", quality=92)
+    return out.getvalue(), c

@@ -154,7 +154,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
       </div>
       {help ? (
         <Alert>
-          <strong>Keyboard:</strong> 1–9 pick a level for the highlighted criterion and move to the next · N / P next / previous question · Ctrl+Enter save · ? show or hide this help. Shortcuts are off while you type in a box.
+          <strong>Keyboard:</strong> 1–9 pick a level for the highlighted criterion and move to the next · N / P next / previous question · Ctrl+Enter save · ? show or hide this help. On a machine-reading line, Enter corrects it. Shortcuts are off while you type in a box.
         </Alert>
       ) : null}
       {notice ? <Alert variant={notice.tone}>{notice.text}</Alert> : null}
@@ -211,6 +211,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
             <MachineReading
               data={mr}
               failed={mrFailed}
+              submissionId={submissionId}
               qid={activeQ}
               attempt={curAttempt}
               pageNo={(id) => ws.pages.find((p) => p.id === id)?.page_no}
@@ -219,6 +220,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
                 const i = h ? ws.pages.findIndex((p) => p.id === h.page_id) : -1;
                 if (i >= 0) setPageIdx(i);
               }}
+              onChanged={() => void loadMr()}
             />
           ) : null}
           {activeQ ? (

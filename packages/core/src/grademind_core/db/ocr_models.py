@@ -63,6 +63,17 @@ class LineCorrection(Base):
     """D19: every examiner OCR correction = one immutable labelled training example (ARCHITECTURE §5). Append-only (I8)."""
 
     __tablename__ = "line_corrections"
+    __table_args__ = (
+        # the history of one line is a LINEAR chain: a correction can be superseded at most once, and a line has at most one
+        # first correction, so two examiners editing at the same moment conflict (the second gets a 409) instead of forking it
+        Index("uq_line_corrections_supersedes", "supersedes_id", unique=True, postgresql_where=text("supersedes_id IS NOT NULL")),
+        Index(
+            "uq_line_corrections_first_per_line",
+            "ocr_line_id",
+            unique=True,
+            postgresql_where=text("supersedes_id IS NULL AND ocr_line_id IS NOT NULL"),
+        ),
+    )
     id: Mapped[uuid.UUID] = _pk()
     created_at: Mapped[datetime] = _created()
     examiner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)

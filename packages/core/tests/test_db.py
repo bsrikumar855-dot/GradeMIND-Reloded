@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pytest
 from sqlalchemy import create_engine, text
-from sqlalchemy.exc import DBAPIError
+from sqlalchemy.exc import DBAPIError, IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.orm.exc import StaleDataError
 
@@ -31,7 +31,7 @@ from grademind_core.db.models import (
     Submission,
     User,
 )
-from grademind_core.db.ocr_models import LineCorrection
+from grademind_core.db.ocr_models import LineCorrection, OcrLine, OcrRun
 from grademind_core.db.session import transaction
 
 URL = os.environ.get("GRADEMIND_TEST_DATABASE_URL")
@@ -193,3 +193,66 @@ def test_d19_line_correction_schema_contract(db: sessionmaker[Session]) -> None:
     assert {c for c in required if cols.get(c) != "NO"} == set()
     assert "supersedes_id" in cols and cols["supersedes_id"] == "YES"  # corrections of corrections chain, never edit
     assert any("BEFORE DELETE OR UPDATE" in t and "grademind_forbid_mutation" in t for t in triggers)
+
+
+def _line(s: Session, ids: dict[str, uuid.UUID]) -> uuid.UUID:
+    run = OcrRun(
+        page_id=ids["page"],
+        provider="paddle_v6",
+        config_hash="c" * 64,
+        resolved={},
+        model_names={},
+        weights_sha256={},
+        component_version="t",
+    )
+    s.add(run)
+    s.flush()
+    ln = OcrLine(
+        ocr_run_id=run.id, line_no=0, polygon=[[0, 0], [5, 0], [5, 5], [0, 5]], bbox=[0, 0, 5, 5], text="divesity", score=0.5
+    )
+    s.add(ln)
+    s.flush()
+    return ln.id
+
+
+def test_a_lines_corrections_form_a_linear_chain(db: sessionmaker[Session]) -> None:
+    """3.4: concurrent edits conflict instead of forking a line's history."""
+    with db() as s, s.begin():
+        ids = seed(s)
+        line = _line(s, ids)
+        first = correction(ids, "diversity")
+        first.ocr_line_id = line
+        s.add(first)
+        s.flush()
+        second = correction(ids, "diversity.", supersedes=first.id)
+        second.ocr_line_id = line
+        s.add(second)
+    # a second FIRST correction of the same line, and a second correction superseding the same predecessor, both fail
+    with db() as s, s.begin():
+        ids = seed(s)
+        line = _line(s, ids)
+        a = correction(ids, "a")
+        a.ocr_line_id = line
+        s.add(a)
+        s.flush()
+        b = correction(ids, "b")
+        b.ocr_line_id = line
+        s.add(b)
+        with pytest.raises(IntegrityError, match="uq_line_corrections_first_per_line"):
+            s.flush()
+    with db() as s, s.begin():
+        ids = seed(s)
+        line = _line(s, ids)
+        a = correction(ids, "a")
+        a.ocr_line_id = line
+        s.add(a)
+        s.flush()
+        b = correction(ids, "b", supersedes=a.id)
+        b.ocr_line_id = line
+        s.add(b)
+        s.flush()
+        c = correction(ids, "c", supersedes=a.id)
+        c.ocr_line_id = line
+        s.add(c)
+        with pytest.raises(IntegrityError, match="uq_line_corrections_supersedes"):
+            s.flush()

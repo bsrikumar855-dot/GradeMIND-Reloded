@@ -2,17 +2,24 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 import uuid
+from concurrent.futures import ThreadPoolExecutor
 from typing import Any
 
 import pytest
 from conftest import login, needs_db, needs_s3
-from fake_ocr import FakeOcr, services
+from fake_ocr import RESOLVED, FakeOcr, services
 from pdfgen import make_pdf
 from sqlalchemy import select
+from sqlalchemy import text as sql
+from sqlalchemy.exc import DBAPIError
 
-from grademind_core.db.models import AuditLog
+from grademind_core.db.models import AuditLog, Page
+from grademind_core.db.ocr_models import LineCorrection
 from grademind_core.jobs import run_job
+from grademind_core.line_corrections import apply_ops
 from grademind_worker.stages import PIPELINES
 
 pytestmark = [needs_db, needs_s3]
@@ -238,3 +245,187 @@ def test_grading_is_identical_with_and_without_machine_reading(world: dict[str, 
     assert with_ocr["score"] == without_ocr["score"] and with_ocr["score"]["total"] == "2"
     assert [e["marks"] for e in with_ocr["evaluations"]] == [e["marks"] for e in without_ocr["evaluations"]]
     assert "first line" not in with_text and "second line" not in with_text  # the workspace carries no machine text at all
+
+
+# ----------------------------------------------------------------------------------------- 3.4: examiner line correction
+
+
+def booklet_with_lines(w: dict[str, Any], exam_id: str, tag: str) -> tuple[str, list[dict[str, Any]]]:
+    up = upload(w, exam_id, tag)
+    work(w, up["job_id"])
+    p1, _ = pages_of(w, up["id"])
+    draw(w, up["id"], p1["id"], "q1", [0.05, 0.05, 0.95, 0.30])
+    (region,) = reading(w, up["id"])["regions"]
+    return up["id"], region["lines"]
+
+
+def correct(w: dict[str, Any], sid: str, line_id: str, text: str, expected: str | None = None, who: str = "exA") -> Any:
+    return w["client"].put(
+        f"/api/submissions/{sid}/ocr-lines/{line_id}/correction",
+        json={"text": text, "expected_correction_id": expected},
+        headers=login(w, who),
+    )
+
+
+def test_a_correction_is_stored_as_labelled_data_with_crop_and_provenance(world: dict[str, Any], graded_exam: str) -> None:
+    sid, lines = booklet_with_lines(world, graded_exam, "LC-1")
+    low = lines[1]  # the 0.41 line, flagged for a closer look
+    assert low["low_confidence"] is True and low["corrected"] is False and low["correction_id"] is None
+    page_before = world["store"].get_bytes(_page_key(world, sid))
+
+    r = correct(world, sid, low["id"], "page 1 second line, corrected [?]")
+    assert r.status_code == 200, r.text
+    assert r.json()["corrected"] is True and r.json()["text"] == "page 1 second line, corrected [?]"
+    assert r.json()["original_text"] == "page 1 second line"
+
+    # the machine-reading payload now shows the correction, keeps the original, and no longer flags the line
+    again = reading(world, sid)["regions"][0]["lines"][1]
+    assert (again["text"], again["original_text"], again["corrected"], again["low_confidence"]) == (
+        "page 1 second line, corrected [?]",
+        "page 1 second line",
+        True,
+        False,
+    )
+    assert again["correction_id"] == r.json()["correction_id"]
+
+    with world["sessions"]() as s:
+        row = s.get(LineCorrection, uuid.UUID(r.json()["correction_id"]))
+        assert row is not None
+        page = s.get(Page, row.page_id)
+        assert page is not None
+    assert (row.ocr_text, row.corrected_text, row.supersedes_id) == (
+        "page 1 second line",
+        "page 1 second line, corrected [?]",
+        None,
+    )
+    assert apply_ops(row.ocr_text, row.edit_ops) == row.corrected_text  # the operations replay to the correction
+    assert row.ocr_line_id == uuid.UUID(low["id"]) and row.subject == "S" and row.consent_scope.value == "local_only"
+    assert row.examiner_id == world["exA"] and row.page_image_sha256 == page.sha256 and row.preprocessing_version == "none"
+    assert (row.ocr_provider, row.ocr_model_names) == ("paddle_v6", {"det": "PP-OCRv6_medium_det", "rec": "PP-OCRv6_medium_rec"})
+    assert row.ocr_weights_sha256 == {"det": RESOLVED["models"]["det"]["sha256"], "rec": RESOLVED["models"]["rec"]["sha256"]}
+    # the crop is a real stored image whose hash matches, inside the page, and the polygon is kept for re-cropping later
+    crop = world["store"].get_bytes(row.crop_object_key)
+    assert crop[:3] == b"\xff\xd8\xff" and hashlib.sha256(crop).hexdigest() == row.crop_sha256
+    x0, y0, x1, y1 = row.crop_bbox
+    assert 0 <= x0 < x1 <= page.width and 0 <= y0 < y1 <= page.height and row.crop_polygon
+    # the page image was only READ: byte-identical afterwards (D19)
+    assert world["store"].get_bytes(page.object_key) == page_before
+
+
+def _page_key(w: dict[str, Any], sid: str) -> str:
+    with w["sessions"]() as s:
+        return s.scalars(select(Page).where(Page.submission_id == uuid.UUID(sid)).order_by(Page.page_no)).first().object_key  # type: ignore[union-attr]
+
+
+def test_corrections_chain_and_stale_edits_are_refused(world: dict[str, Any], graded_exam: str) -> None:
+    sid, lines = booklet_with_lines(world, graded_exam, "LC-2")
+    line = lines[0]["id"]
+    first = correct(world, sid, line, "first fix").json()
+    assert (
+        correct(world, sid, line, "again", expected=None).json()["error"]["code"] == "line_changed"
+    )  # saw nothing, but there is one
+    assert correct(world, sid, line, "again", expected=str(uuid.uuid4())).status_code == 409
+    second = correct(world, sid, line, "second fix", expected=first["correction_id"], who="teacher")
+    assert second.status_code == 200
+    # the second one keeps the ORIGINAL machine text, and supersedes the first
+    with world["sessions"]() as s:
+        rows = s.scalars(select(LineCorrection).where(LineCorrection.ocr_line_id == uuid.UUID(line))).all()
+    by_id = {str(r.id): r for r in rows}
+    assert by_id[second.json()["correction_id"]].supersedes_id == uuid.UUID(first["correction_id"])
+    assert (
+        by_id[second.json()["correction_id"]].ocr_text == "page 1 first line"
+        and by_id[first["correction_id"]].corrected_text == "first fix"
+    )
+    hist = world["client"].get(f"/api/submissions/{sid}/ocr-lines/{line}/corrections", headers=login(world, "exA")).json()
+    assert [c["corrected_text"] for c in hist["corrections"]] == ["first fix", "second fix"] and hist[
+        "original_text"
+    ] == "page 1 first line"
+    assert hist["corrections"][1]["examiner_id"] == str(world["teacher"])
+    # going back to the original text is a valid (new) correction; repeating the current text is not
+    assert correct(world, sid, line, "page 1 first line", expected=second.json()["correction_id"]).status_code == 200
+    cur = reading(world, sid)["regions"][0]["lines"][0]["correction_id"]
+    assert correct(world, sid, line, "page 1 first line", expected=cur).json()["error"]["code"] == "no_change"
+
+
+def test_invalid_text_is_refused_and_nothing_is_stored(world: dict[str, Any], graded_exam: str) -> None:
+    sid, lines = booklet_with_lines(world, graded_exam, "LC-3")
+    line = lines[0]["id"]
+    for bad, code in [
+        ("one\ntwo", "invalid_characters"),
+        ("pay\u202etxt", "invalid_characters"),
+        ("a\u200bb", "invalid_characters"),
+        ("x" * 2001, "too_long"),
+    ]:
+        r = correct(world, sid, line, bad)
+        assert r.status_code == 422 and r.json()["error"]["code"] == code, (bad[:10], r.text)
+    assert correct(world, sid, line, "x" * 4001).status_code == 422  # over the schema limit as well
+    with world["sessions"]() as s:
+        assert s.scalars(select(LineCorrection).where(LineCorrection.ocr_line_id == uuid.UUID(line))).all() == []
+    assert correct(world, sid, line, "").status_code == 200  # an empty correction is valid: the machine invented the line
+
+
+def test_two_examiners_correcting_the_same_line_at_once_cannot_both_win(world: dict[str, Any], graded_exam: str) -> None:
+    sid, lines = booklet_with_lines(world, graded_exam, "LC-4")
+    line = lines[0]["id"]
+    with ThreadPoolExecutor(2) as pool:
+        results = list(
+            pool.map(
+                lambda who_text: correct(world, sid, line, who_text[1], who=who_text[0]).status_code,
+                [("exA", "alpha"), ("teacher", "beta")],
+            )
+        )
+    assert sorted(results) == [200, 409]
+    with world["sessions"]() as s:
+        assert len(s.scalars(select(LineCorrection).where(LineCorrection.ocr_line_id == uuid.UUID(line))).all()) == 1
+
+
+def test_the_audit_row_is_written_with_the_correction_and_holds_no_student_text(world: dict[str, Any], graded_exam: str) -> None:
+    sid, lines = booklet_with_lines(world, graded_exam, "LC-5")
+    r = correct(world, sid, lines[0]["id"], "SECRET-STUDENT-WORDS fix")
+    cid = r.json()["correction_id"]
+    with world["sessions"]() as s:
+        audit = s.scalars(select(AuditLog).where(AuditLog.entity_id == cid)).one()
+    assert audit.action == "line.correct" and audit.actor_id == world["exA"] and audit.request_id == r.headers["x-request-id"]
+    assert audit.details["ocr_line_id"] == lines[0]["id"] and audit.details["supersedes_id"] is None and audit.details["ops"] >= 1
+    assert "SECRET-STUDENT-WORDS" not in json.dumps(audit.details) and "first line" not in json.dumps(audit.details)
+
+
+def test_corrections_are_append_only_and_scoped(world: dict[str, Any], graded_exam: str) -> None:
+    sid, lines = booklet_with_lines(world, graded_exam, "LC-6")
+    other_sid, other_lines = booklet_with_lines(world, graded_exam, "LC-6b")
+    line = lines[0]["id"]
+    assert correct(world, sid, line, "kept").status_code == 200
+    for stmt in ("UPDATE line_corrections SET corrected_text = 'x'", "DELETE FROM line_corrections"):
+        with pytest.raises(DBAPIError, match="append-only"), world["sessions"]() as s, s.begin():
+            s.execute(sql(stmt))
+    for who in ("exB", "admin2", "ex2"):
+        assert correct(world, sid, line, "no", who=who).status_code == 404
+        assert (
+            world["client"].get(f"/api/submissions/{sid}/ocr-lines/{line}/corrections", headers=login(world, who)).status_code
+            == 404
+        )
+    assert world["client"].put(f"/api/submissions/{sid}/ocr-lines/{line}/correction", json={"text": "x"}).status_code == 401
+    assert correct(world, sid, other_lines[0]["id"], "wrong booklet").status_code == 404  # a line of ANOTHER booklet
+    assert correct(world, sid, str(uuid.uuid4()), "no such line").status_code == 404
+    assert other_sid
+
+
+def test_corrections_never_change_grading(world: dict[str, Any], graded_exam: str) -> None:
+    c = world["client"]
+    sid, lines = booklet_with_lines(world, graded_exam, "LC-7")
+
+    def snapshot() -> tuple[Any, str]:
+        r = c.get(f"/api/submissions/{sid}/workspace", headers=login(world, "exA"))
+        return r.json()["score"], r.text
+
+    assert (
+        c.put(
+            f"/api/submissions/{sid}/evaluations/q1/1", json={"verdicts": {"c1": "full"}}, headers=login(world, "exA")
+        ).status_code
+        == 200
+    )
+    before, _ = snapshot()
+    assert correct(world, sid, lines[0]["id"], "CORRECTED-TEXT-XYZ").status_code == 200
+    after, raw = snapshot()
+    assert before == after and before["total"] == "2"
+    assert "CORRECTED-TEXT-XYZ" not in raw  # the workspace still carries no machine or corrected text
