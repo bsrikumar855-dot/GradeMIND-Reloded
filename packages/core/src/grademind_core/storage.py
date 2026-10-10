@@ -101,6 +101,29 @@ class ObjectStore:
                 return False
             raise
 
+    # ---- backup and restore (4.6): whole-bucket operations, keys are kept exactly as they are ----
+
+    def list_keys(self) -> list[str]:
+        """Every object key in the bucket, sorted (a backup walks this list)."""
+        return sorted(
+            o.object_name for o in self._internal.list_objects(bucket_name=self._bucket, recursive=True) if o.object_name
+        )
+
+    def content_type_of(self, key: str) -> str:
+        return str(
+            self._internal.stat_object(bucket_name=self._bucket, object_name=check_key(key)).content_type
+            or "application/octet-stream"
+        )
+
+    def put_at(self, key: str, data: bytes, content_type: str) -> None:
+        """Store `data` under exactly `key` (restore only: new objects always get a fresh key through `put`)."""
+        import io
+
+        check_key(key)
+        self._internal.put_object(
+            bucket_name=self._bucket, object_name=key, data=io.BytesIO(data), length=len(data), content_type=content_type
+        )
+
     def signed_url(self, key: str) -> str:
         return self._public.presigned_get_object(bucket_name=self._bucket, object_name=check_key(key), expires=self._ttl)
 

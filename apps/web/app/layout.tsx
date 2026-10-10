@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+// A per-request CSP nonce (proxy.ts) needs every page rendered per request.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: { default: "GradeMIND", template: "%s · GradeMIND" },
   description: "Examiner-assisted grading of handwritten answer scripts.",

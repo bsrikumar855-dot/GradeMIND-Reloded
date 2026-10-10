@@ -81,7 +81,9 @@ services:
 
   api:
     image: grademind-app:dev
-    environment: *app-env
+    environment:
+      <<: *app-env
+      GRADEMIND_TRUST_FORWARDED_FOR: "true"  # the web app is the one trusted proxy: it passes on the client address for sign-in throttling
     command: ["uvicorn", "grademind_api.app:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
     ports: ["127.0.0.1:8000:8000"]
     healthcheck:
@@ -142,7 +144,8 @@ services:
     image: grademind-web:dev
     environment:
       GRADEMIND_API_URL: http://api:8000
-      GRADEMIND_COOKIE_SECURE: ${GRADEMIND_COOKIE_SECURE:-false}  # set true behind HTTPS
+      GRADEMIND_COOKIE_SECURE: ${GRADEMIND_COOKIE_SECURE:-false}  # set true behind HTTPS (also turns on the HSTS header)
+      GRADEMIND_S3_PUBLIC_ENDPOINT_URL: ${GRADEMIND_S3_PUBLIC_ENDPOINT_URL:-http://localhost:9000}  # the CSP allows page images from here (same value the API signs URLs for)
     ports: ["127.0.0.1:${GRADEMIND_WEB_PORT:-3100}:3000"]
     depends_on:
       api: {condition: service_healthy}

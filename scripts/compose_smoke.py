@@ -67,6 +67,27 @@ def web(path: str, data: bytes | None = None, headers: dict[str, str] | None = N
         return e.code, {k.lower(): v for k, v in e.headers.items()}, e.read().decode(errors="replace")
 
 
+def header_checks() -> None:
+    """4.6: the security headers the browser relies on, on the web app and on the API."""
+    req = urllib.request.Request(WEB + "/login")
+    with urllib.request.urlopen(req, timeout=30) as r:
+        h = {k.lower(): v for k, v in r.headers.items()}
+    csp = h.get("content-security-policy", "")
+    has_policy = "frame-ancestors 'none'" in csp and "object-src 'none'" in csp and "'nonce-" in csp
+    check(has_policy, "web: Content-Security-Policy with a per-request nonce")
+    check("'unsafe-inline'" not in csp.split("script-src", 1)[1].split(";", 1)[0], "web: scripts are not allowed inline")
+    check(h.get("x-content-type-options") == "nosniff" and h.get("x-frame-options") == "DENY", "web: nosniff and no framing")
+    policies = h.get("referrer-policy") == "same-origin" and h.get("cross-origin-opener-policy") == "same-origin"
+    check(policies, "web: referrer and opener policy")
+    check("x-powered-by" not in h, "web: does not announce its framework")
+    with urllib.request.urlopen(API + "/health", timeout=10) as r:
+        a = {k.lower(): v for k, v in r.headers.items()}
+    check(a.get("x-content-type-options") == "nosniff" and a.get("cache-control") == "no-store", "api: nosniff and no-store")
+    check("frame-ancestors 'none'" in a.get("content-security-policy", ""), "api: Content-Security-Policy")
+    code, _ = call("GET", "/openapi.json")
+    check(code == 404, "api: the interactive docs are not served in production")
+
+
 def web_checks(exam_name: str) -> None:
     code, _, html = web("/login")
     check(code == 200 and "Sign in to GradeMIND" in html, "web /login renders")
@@ -184,6 +205,7 @@ def main() -> int:
     with urllib.request.urlopen(detail["source_url"], timeout=10) as r:
         check(r.read() == pdf, "signed URL serves the stored bytes")
     web_checks(exam_name="Smoke")
+    header_checks()
     print("SMOKE OK")
     return 0
 

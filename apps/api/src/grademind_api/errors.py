@@ -7,9 +7,16 @@ from typing import Any
 
 
 class ApiError(Exception):
-    def __init__(self, status: int, code: str, message: str, issues: list[dict[str, str]] | None = None) -> None:
+    def __init__(
+        self,
+        status: int,
+        code: str,
+        message: str,
+        issues: list[dict[str, str]] | None = None,
+        headers: dict[str, str] | None = None,
+    ) -> None:
         super().__init__(message)
-        self.status, self.code, self.message, self.issues = status, code, message, issues
+        self.status, self.code, self.message, self.issues, self.headers = status, code, message, issues, headers
 
 
 def envelope(code: str, message: str, request_id: str, issues: list[dict[str, str]] | None = None) -> dict[str, dict[str, Any]]:

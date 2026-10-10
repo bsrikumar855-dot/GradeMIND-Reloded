@@ -34,6 +34,16 @@ def queue_dep(request: Request) -> JobQueue:
     return q
 
 
+def client_ip(request: Request, settings: Settings) -> str:
+    """The address sign-in throttling keys on. Behind the web app (the one trusted proxy, `trust_forwarded_for`) it is the LAST
+    X-Forwarded-For value, the one that proxy wrote; otherwise the direct peer. "unknown" when neither is available."""
+    if settings.trust_forwarded_for:
+        fwd = request.headers.get("x-forwarded-for", "").split(",")[-1].strip()
+        if fwd:
+            return fwd[:64]
+    return (request.client.host if request.client else "unknown")[:64]
+
+
 def db_dep(request: Request) -> Iterator[Session]:
     with request.app.state.session_factory() as s:
         yield s

@@ -31,13 +31,22 @@ from grademind_api.routes import (
     users,
 )
 from grademind_api.routes.submissions import MULTIPART_OVERHEAD
-from grademind_core.config import Settings, get_settings
+from grademind_core.config import Env, Settings, get_settings
 from grademind_core.db.session import session_factory
 from grademind_core.logredact import install as install_log_redaction
 from grademind_core.logredact import redact_obj
 from grademind_core.storage import ObjectStore
 
 log = logging.getLogger("grademind.api")
+
+# 4.6: on every response. This API serves JSON and downloads, never pages: nothing on it may be framed, sniffed or cached.
+SECURITY_HEADERS = {
+    "x-content-type-options": "nosniff",
+    "cache-control": "no-store",
+    "referrer-policy": "no-referrer",
+    "content-security-policy": "default-src 'none'; frame-ancestors 'none'",
+    "cross-origin-resource-policy": "same-origin",
+}
 
 
 def _json_log(**fields: object) -> None:
@@ -52,7 +61,15 @@ def create_app(
 ) -> FastAPI:
     install_log_redaction()  # D26.4: every log record in this process is redacted at creation
     settings = settings or get_settings()
-    app = FastAPI(title="GradeMIND API", version="0.1.0")
+    # the interactive API docs list every route and are for development only
+    dev = settings.env != Env.PROD
+    app = FastAPI(
+        title="GradeMIND API",
+        version="0.1.0",
+        docs_url="/docs" if dev else None,
+        redoc_url="/redoc" if dev else None,
+        openapi_url="/openapi.json" if dev else None,
+    )
     app.state.settings = settings
     app.state.session_factory = sessions or session_factory(settings.database_url)
     app.state.store = store or ObjectStore(settings)  # constructing the client makes no network call
@@ -67,6 +84,8 @@ def create_app(
         t = time.perf_counter()
         resp = await call_next(request)
         resp.headers["x-request-id"] = rid
+        for k, v in SECURITY_HEADERS.items():
+            resp.headers.setdefault(k, v)
         _json_log(
             request_id=rid,
             method=request.method,
@@ -78,7 +97,9 @@ def create_app(
 
     @app.exception_handler(ApiError)
     async def api_error(request: Request, e: ApiError) -> JSONResponse:
-        return JSONResponse(envelope(e.code, e.message, request.state.request_id, e.issues), status_code=e.status)
+        return JSONResponse(
+            envelope(e.code, e.message, request.state.request_id, e.issues), status_code=e.status, headers=e.headers
+        )
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, e: RequestValidationError) -> JSONResponse:

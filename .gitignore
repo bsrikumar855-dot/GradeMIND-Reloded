@@ -40,3 +40,6 @@ htmlcov/
 
 # --- exported labelled datasets (student handwriting; written by `cli export-corrections`) ---
 datasets/
+
+# --- backups (database dump + every stored object: student work; written by scripts/backup.sh) ---
+backups/

@@ -12,6 +12,7 @@ const MESSAGES: Record<string, string> = {
   expired: "Your session has ended. Sign in again.",
   unavailable: "The service is not reachable right now. Try again in a minute.",
   request: "Some fields are missing or invalid.",
+  throttled: "Too many sign-in attempts. Wait a few minutes, then try again.",
 };
 
 /** A plain HTML form posting to a same-origin route handler: works without JavaScript; the token never reaches the page. */

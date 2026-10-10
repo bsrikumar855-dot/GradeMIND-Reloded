@@ -63,6 +63,14 @@ class Settings(BaseSettings):
     signed_url_ttl_seconds: int = Field(default=300, ge=30, le=3600)
     jwt_secret: SecretStr = SecretStr("")
     jwt_ttl_seconds: int = Field(default=3600, ge=60, le=86400)
+    # 4.6 sign-in throttling: FAILED attempts inside the window. Refused with 429 once a limit is reached; successes do not count.
+    login_window_seconds: int = Field(default=900, ge=60)
+    login_max_failures_per_account_and_ip: int = Field(default=5, ge=1)  # one person guessing at one account
+    login_max_failures_per_ip: int = Field(default=30, ge=1)  # one source trying many accounts
+    login_max_failures_per_account: int = Field(default=50, ge=1)  # many sources at one account
+    trust_forwarded_for: bool = (
+        False  # true only behind the web app (the one trusted proxy): the LAST X-Forwarded-For value is the client
+    )
     ocr_service_url: str = "http://localhost:8800"
     max_upload_bytes: int = Field(default=50 * 1024 * 1024, ge=1024)
 

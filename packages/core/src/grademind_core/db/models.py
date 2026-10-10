@@ -455,3 +455,19 @@ class FinalizationEvent(Base):
     reason: Mapped[str | None] = mapped_column(Text)  # required (10+ characters) for a reopen
     actor_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
     created_at: Mapped[datetime] = _created()
+
+
+class LoginAttempt(Base):
+    """4.6: one row per sign-in attempt, for throttling. Not an audit record (it is pruned after a day; the audit log keeps the
+    sign-ins and the moments a limit was reached). `email` is the lower-cased address that was typed, `ip` the client address."""
+
+    __tablename__ = "login_attempts"
+    __table_args__ = (
+        Index("ix_login_attempts_email_at", "email", "at"),
+        Index("ix_login_attempts_ip_at", "ip", "at"),
+    )
+    id: Mapped[uuid.UUID] = _pk()
+    at: Mapped[datetime] = _created()
+    email: Mapped[str] = mapped_column(String(320), nullable=False)
+    ip: Mapped[str] = mapped_column(String(64), nullable=False)
+    success: Mapped[bool] = mapped_column(Boolean, nullable=False)

@@ -42,6 +42,14 @@ jobs:
         working-directory: packages/core
         run: GRADEMIND_DATABASE_URL=$GRADEMIND_TEST_DATABASE_URL uv run --frozen alembic -c alembic.ini check
 
+      - name: dependency audit (a REPORT in this log, not a gate: read it when it changes; see docs/SECURITY_AUDIT.md)
+        continue-on-error: true
+        run: |
+          uv export --frozen --no-hashes --all-packages --no-emit-workspace -o "$RUNNER_TEMP/req.txt" > /dev/null
+          echo "== Python workspace =="; uvx pip-audit -r "$RUNNER_TEMP/req.txt" --no-deps --disable-pip --progress-spinner off
+          echo "== OCR service =="; uvx pip-audit -r services/ocr/requirements.lock.txt --no-deps --disable-pip --progress-spinner off
+          echo "== web =="; cd apps/web && npx --yes pnpm@12.10.1 audit
+
   secrets:
     runs-on: ubuntu-24.04
     steps:
@@ -129,6 +137,29 @@ jobs:
           set -euo pipefail
           docker compose exec -T api python -m grademind_core.cli verify-snapshots | tee verify.out
           grep -q '^VERIFY OK: [1-9][0-9]* snapshot' verify.out   # at least one snapshot was checked, not an empty run
+      - name: backup and restore drill (4.6): back up the live stack, restore a side copy and verify it, then restore over the live data
+        run: |
+          set -euo pipefail
+          ./scripts/backup.sh backups/ci
+          ./scripts/restore.sh backups/ci restore_drill gm-restore-drill | tee restore.out
+          grep -q '^RESTORE VERIFY OK' restore.out
+          # disaster recovery: nothing holds the database open, it is dropped and rebuilt from the backup
+          docker compose stop api worker ocr-worker web
+          ./scripts/restore.sh backups/ci grademind grademind --replace-live | tee restore-live.out
+          grep -q '^RESTORE VERIFY OK' restore-live.out
+          docker compose start api worker ocr-worker web
+          ./scripts/compose_wait.sh 600
+          docker compose exec -T api python -m grademind_core.cli verify-snapshots | tee after.out
+          grep -q '^VERIFY OK: [1-9][0-9]* snapshot' after.out   # the finalized results survived the restore, and still recompute
+          python3 -c "
+          import sys; sys.path.insert(0, 'scripts')
+          from compose_smoke import call, check, env
+          import json
+          code, tok = call('POST', '/api/auth/login', json.dumps({'email': env('GRADEMIND_ADMIN_EMAIL'), 'password': env('GRADEMIND_ADMIN_PASSWORD')}).encode(), {'content-type': 'application/json'})
+          check(code == 200, 'the administrator can sign in to the restored system')
+          code, exams = call('GET', '/api/exams', headers={'authorization': 'Bearer ' + tok['access_token']})
+          check(code == 200 and len(exams) > 0, f'the restored system lists its exams ({len(exams)})')
+          "
       - name: OCR killed and restarted in the middle of a booklet (4.0; retried by itself, no page read twice, grading never blocked)
         run: python3 scripts/ocr_chaos.py
       - name: logs on failure

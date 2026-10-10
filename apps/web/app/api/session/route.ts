@@ -9,11 +9,14 @@ export async function POST(req: NextRequest) {
   const form = await req.formData();
   const email = String(form.get("email") ?? "");
   const password = String(form.get("password") ?? "");
+  // The API throttles sign-in per account and per source address. This server is the only caller it trusts, so it passes on the address it
+  // was reached from: the last X-Forwarded-For value (the one Next, or a reverse proxy in front of it, wrote), or "unknown".
+  const forwarded = (req.headers.get("x-forwarded-for") ?? "").split(",").pop()?.trim() || "unknown";
   let res: Response;
   try {
     res = await fetch(`${API_URL}/api/auth/login`, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", "x-forwarded-for": forwarded },
       body: JSON.stringify({ email, password }),
       cache: "no-store",
     });
@@ -21,6 +24,7 @@ export async function POST(req: NextRequest) {
     return seeOther("/login?error=unavailable");
   }
   if (res.status === 401) return seeOther("/login?error=invalid");
+  if (res.status === 429) return seeOther("/login?error=throttled");
   if (res.status === 422) return seeOther("/login?error=request");
   if (!res.ok) return seeOther("/login?error=unavailable");
   const { access_token, expires_in } = (await res.json()) as { access_token: string; expires_in: number };
