@@ -106,8 +106,11 @@ jobs:
           node --version
           npm install --global pnpm@12.10.1
           pnpm install --frozen-lockfile
-          set -a; . ../../.env; set +a
-          E2E_EMAIL="$GRADEMIND_ADMIN_EMAIL" E2E_PASSWORD="$GRADEMIND_ADMIN_PASSWORD" pnpm exec playwright test
+          # .env is not shell syntax (GRADEMIND_ADMIN_ORG has a space), so read just the two values
+          E2E_EMAIL="$(grep '^GRADEMIND_ADMIN_EMAIL=' ../../.env | cut -d= -f2-)"
+          E2E_PASSWORD="$(grep '^GRADEMIND_ADMIN_PASSWORD=' ../../.env | cut -d= -f2-)"
+          export E2E_EMAIL E2E_PASSWORD
+          pnpm exec playwright test
       - name: logs on failure
         if: failure()
         run: docker compose ps -a; docker compose logs --no-color --tail=200
