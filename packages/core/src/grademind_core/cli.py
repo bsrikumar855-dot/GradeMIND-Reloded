@@ -10,10 +10,13 @@ import argparse
 import os
 import sys
 import time
+import uuid
+from pathlib import Path
 
 from sqlalchemy import select
 
 from grademind_core.config import get_settings
+from grademind_core.dataset_export import SCOPES, ExportRefusedError, export_corrections
 from grademind_core.db.models import AuditLog, Organization, Role, User
 from grademind_core.db.session import session_factory
 from grademind_core.security import hash_password
@@ -79,6 +82,29 @@ def create_user(org: str, email: str, role: str, name: str) -> int:
     return 0
 
 
+def export_corrections_cmd(admin: str, scope: str, out: str, exam: str | None, include_history: bool) -> int:
+    """Owner-only dataset export (3.5). Exit codes: 0 complete, 2 refused (nothing written), 3 written, some rows skipped."""
+    settings = get_settings()
+    try:
+        res = export_corrections(
+            session_factory(settings.database_url),
+            ObjectStore(settings),
+            Path(out),
+            scope,
+            admin,
+            uuid.UUID(exam) if exam else None,
+            include_history,
+        )
+    except ExportRefusedError as e:
+        print(f"refused: {e.message}", file=sys.stderr)
+        return 2
+    print(f"{scope} export: {res.rows} correction(s) written to {out}; {len(res.skipped)} skipped")
+    print(res.manifest["warning"])
+    for sk in res.skipped:
+        print(f"  skipped {sk['correction_id']}: {sk['reason']}", file=sys.stderr)
+    return 0 if res.ok else 3
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="grademind_core.cli")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -91,7 +117,15 @@ def main(argv: list[str] | None = None) -> int:
     cu.add_argument("--email", required=True)
     cu.add_argument("--role", required=True, choices=[r.value for r in Role])
     cu.add_argument("--name", default="User")
+    ex = sub.add_parser("export-corrections")
+    ex.add_argument("--as-admin", required=True, help="email of an active administrator (recorded in the audit log)")
+    ex.add_argument("--scope", required=True, choices=SCOPES)
+    ex.add_argument("--out", required=True, help="a NEW directory outside the git repository, or inside a git-ignored one")
+    ex.add_argument("--exam", help="only this exam id")
+    ex.add_argument("--include-history", action="store_true", help="every correction, not just the current one per line")
     a = ap.parse_args(argv)
+    if a.cmd == "export-corrections":
+        return export_corrections_cmd(a.as_admin, a.scope, a.out, a.exam, a.include_history)
     if a.cmd == "ensure-bucket":
         return ensure_bucket()
     if a.cmd == "create-user":

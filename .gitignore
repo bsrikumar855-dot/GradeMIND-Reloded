@@ -37,3 +37,6 @@ services/ocr/models/*
 .coverage
 .coverage.*
 htmlcov/
+
+# --- exported labelled datasets (student handwriting; written by `cli export-corrections`) ---
+datasets/

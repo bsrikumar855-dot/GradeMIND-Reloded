@@ -143,6 +143,9 @@ forbidden_modules = [
     "grademind_core.db.ocr_models",
     "grademind_core.ocr_client",
     "grademind_core.ocr_runs",
+    "grademind_core.ocr_geometry",
+    "grademind_core.line_corrections",
+    "grademind_core.dataset_export",
     "grademind_api.routes.ocr",
     "grademind_worker.ocr_stage",
 ]

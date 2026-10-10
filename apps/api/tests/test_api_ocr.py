@@ -429,3 +429,11 @@ def test_corrections_never_change_grading(world: dict[str, Any], graded_exam: st
     after, raw = snapshot()
     assert before == after and before["total"] == "2"
     assert "CORRECTED-TEXT-XYZ" not in raw  # the workspace still carries no machine or corrected text
+
+
+def test_no_http_route_exports_the_dataset(world: dict[str, Any]) -> None:
+    """3.5: the labelled-dataset export is a command-line, admin-gated, audited operation. The web app must not expose it."""
+    paths = set(world["client"].get("/openapi.json").json()["paths"])  # the contract clients actually see
+    assert not [p for p in paths if "export" in p.lower().replace("totals.csv", "") or "dataset" in p.lower()], sorted(paths)
+    # the only routes that return line_corrections content are the per-line correction/history of a visible booklet
+    assert "/api/submissions/{submission_id}/ocr-lines/{line_id}/corrections" in paths
