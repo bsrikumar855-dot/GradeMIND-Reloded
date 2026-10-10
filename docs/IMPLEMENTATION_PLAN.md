@@ -67,11 +67,19 @@ Order, with each step a small, separately tested commit:
 8. **Exit:** Playwright E2E (upload paper → approve rubric → upload booklet → map answers → grade → totals → audit rows)
    passing in CI, plus the audit-table query output. Then `PHASE_2_REPORT.md` and **STOP**.
 
-## Phase 3: document intelligence (OCR assist)
+## Phase 3: document intelligence (OCR assist), D28
 
-Ingest characterisation + `PAGE_DETECTION_ANOMALY`; the OCR stage through the provider registry; the "pre-fill
-transcription" button; line-level OCR correction capture into `line_corrections`; examiner label confirmation and
-alignment assist; D3 crash/resume integration test.
+Assistive only: OCR text is display-only data, never an input to a verdict or to ScoreComputer (import-linter contract).
+One commit per step, CI green before the next, STATUS.md updated each time:
+
+- **3.0** Phase 2 gaps: keyboard-only answer-box drawing; Playwright for override-with-reason (examiner), attempts, crossed-out, remove region, N/P/?; stuck-QUEUED sweeper test.
+- **3.1** OCR stage in the ingest job: per-page `/ocr/page`, append-only lines table keyed by page + engine config hash, heartbeats, idempotent, retry; a failed OCR page never blocks grading.
+- **3.2** Region text API: lines inside an answer region in reading order (pure geometry, unit-tested).
+- **3.3** "Machine reading" panel: low-confidence lines flagged, "may be wrong", hide toggle, keyboard accessible.
+- **3.4** Examiner line correction -> `line_corrections` (append-only, audit in the same transaction, original one click away).
+- **3.5** Owner-only labelled-dataset export; `consent_scope = local_only` rows never leave the machine.
+- **3.6** E2E: upload, machine lines in the region, correct one, corrections + audit rows, totals unchanged by OCR presence.
+- Exit: CI green; `PHASE_3_REPORT.md` (states plainly: not validated on real handwriting); STOP.
 
 ## Phase 4: review polish, analytics, reports
 

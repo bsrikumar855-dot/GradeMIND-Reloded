@@ -1,7 +1,7 @@
 # STATUS
 
 **Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
-**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 = grading core** (D24/D25) is built and awaiting owner approval ([PHASE_2_REPORT.md](PHASE_2_REPORT.md)). Reports: [PHASE_0_REPORT.md](PHASE_0_REPORT.md),
+**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 (grading core) is APPROVED (D28)**; **Phase 3 (OCR assist, assistive only) is in progress**: [PHASE_2_REPORT.md](PHASE_2_REPORT.md).
 [PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
 ## BLOCKING items
