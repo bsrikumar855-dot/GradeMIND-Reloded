@@ -98,6 +98,15 @@ jobs:
         run: ./scripts/compose_wait.sh 1200
       - name: end-to-end smoke
         run: python3 scripts/compose_smoke.py
+      - name: Phase 2 browser E2E (Playwright against the live stack; uses the runner's Google Chrome)
+        working-directory: apps/web
+        run: |
+          set -euo pipefail
+          python3 -c "import sys; sys.path.insert(0, '../../tests/helpers'); from pdfgen import make_pdf; open('e2e/fixtures/booklet.pdf', 'wb').write(make_pdf([['E2E booklet page 1'], ['page 2']]))"
+          corepack enable
+          pnpm install --frozen-lockfile
+          set -a; . ../../.env; set +a
+          E2E_EMAIL="$GRADEMIND_ADMIN_EMAIL" E2E_PASSWORD="$GRADEMIND_ADMIN_PASSWORD" pnpm exec playwright test
       - name: logs on failure
         if: failure()
         run: docker compose ps -a; docker compose logs --no-color --tail=200
