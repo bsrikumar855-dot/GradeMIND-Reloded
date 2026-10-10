@@ -55,7 +55,16 @@ test("Phase 2: paper → rubric → booklet → map → grade → totals → aud
   await page.getByRole("button", { name: "Upload" }).click();
   await expect(page.getByRole("link", { name: "Grade" })).toBeVisible({ timeout: 120_000 });
   await page.getByRole("link", { name: "Grade" }).click();
-  await expect(page.getByTestId("total")).toHaveText("0 / 5");
+  try {
+    await expect(page.getByTestId("total")).toHaveText("0 / 5");
+  } catch (e) {
+    // surface what the page actually showed (job logs are not always readable; the error message is)
+    const text = (await page.locator("body").innerText()).slice(0, 600);
+    const url = page.url();
+    const sid = url.split("/").pop();
+    const r = await page.request.get(`/api/proxy/submissions/${sid}/workspace`);
+    throw new Error(`workspace did not render (${url}): ${text} || API ${r.status()} ${(await r.text()).slice(0, 500)}`, { cause: e });
+  }
 
   // question 1: map the answer, then grade it (full marks)
   await page.getByRole("button", { name: /^1\b/ }).click();
