@@ -1,9 +1,9 @@
 # PHASE 4 REPORT: review polish, analytics, reports, pilot readiness (D24 / D29)
 
 Status: **ready for owner review. Stopped at the phase gate; Phase 5 and any cloud work have not been started.**
-Source of truth for test results is CI (rule 13). Last code commit: `ea0e4b6`, CI run `38058190060`: jobs `test`, `secrets`, `web`, `compose-smoke` all green
-(28 browser tests, 407 Python tests, 25 web unit tests, plus the new CI checks listed below). The evidence quoted below is from run `38056642051` on `3207d0d` (the same code
-except for one healthcheck setting: see "Problems found").
+Source of truth for test results is CI (rule 13). Last code commit: `0a940be`, CI run `38060283907`: jobs `test`, `secrets`, `web`, `compose-smoke` all green
+(28 browser tests, 407 Python tests, 25 web unit tests, plus the new CI checks listed below). The evidence quoted below is from run `38056642051` on `3207d0d`; the code after it differs only by an OCR
+healthcheck setting (`ea0e4b6`, green `38058190060`) and a page-viewer fix with its regression test (`0a940be`): see "Problems found". Three runs went red on the way and are all listed there.
 (This report and the STATUS update are a docs-only commit after it; its CI result is stated in the hand-over message, not here.)
 
 **Read this first: handwriting reading is still unvalidated.** Phase 4 added no handwritten data and no new measurement. Phase 0b measured a best line error of about 0.43
