@@ -53,8 +53,8 @@ test("Phase 2: paper → rubric → booklet → map → grade → totals → aud
   await page.getByLabel("Student reference").fill("E2E-001");
   await page.getByLabel("Booklet (PDF, PNG or JPEG)").setInputFiles(BOOKLET);
   await page.getByRole("button", { name: "Upload" }).click();
-  await expect(page.getByRole("link", { name: "Grade" })).toBeVisible({ timeout: 120_000 });
-  await page.getByRole("link", { name: "Grade" }).click();
+  await expect(page.getByRole("link", { name: "Grade", exact: true })).toBeVisible({ timeout: 120_000 });
+  await page.getByRole("link", { name: "Grade", exact: true }).click();
   try {
     await expect(page.getByTestId("total")).toHaveText("0 / 5");
   } catch (e) {
