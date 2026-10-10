@@ -1,8 +1,9 @@
 # PHASE 4 REPORT: review polish, analytics, reports, pilot readiness (D24 / D29)
 
 Status: **ready for owner review. Stopped at the phase gate; Phase 5 and any cloud work have not been started.**
-Source of truth for test results is CI (rule 13). Last code commit: `3207d0d`, CI run `38056642051`: jobs `test`, `secrets`, `web`, `compose-smoke` all green
-(28 browser tests, 407 Python tests, 25 web unit tests, plus the new CI checks listed below).
+Source of truth for test results is CI (rule 13). Last code commit: `ea0e4b6`, CI run `38058190060`: jobs `test`, `secrets`, `web`, `compose-smoke` all green
+(28 browser tests, 407 Python tests, 25 web unit tests, plus the new CI checks listed below). The evidence quoted below is from run `38056642051` on `3207d0d` (the same code
+except for one healthcheck setting: see "Problems found").
 (This report and the STATUS update are a docs-only commit after it; its CI result is stated in the hand-over message, not here.)
 
 **Read this first: handwriting reading is still unvalidated.** Phase 4 added no handwritten data and no new measurement. Phase 0b measured a best line error of about 0.43
@@ -21,7 +22,7 @@ treats every machine line as "can be wrong" and never lets it near a mark. The 0
 | 4.4 | Reports built only from finalized snapshots and stating them: student result sheet (PDF), exam summary (CSV, PDF); examiner notes are never printed; formula-injection guard kept; every generation audited with the snapshot id and the SHA-256 of the output. A small dependency-free PDF writer, read back with a real PDF reader in tests; a sample sheet was rendered and looked at. | `d42e36f` `38050428355` |
 | 4.5 | axe (WCAG 2.0/2.1/2.2 A and AA) on every main page and workspace state, as administrator and examiner, desktop and 375 px; a keyboard-only run of the whole grading flow (the page records any real pointer press); real touch drawing; fixed what was found. | `d2b511c` `38053222820` |
 | 4.6 | Backup and restore (database + every object, SHA-256 throughout) with a CI drill; one-page operator runbook; security pass: sign-in throttling, constant-cost miss, per-request-nonce CSP, API headers, API docs off in production, dependency audit. | `d058f50` never started (workflow YAML invalid), `f96fbeb` green `38055097962` |
-| 4.7 | The pilot flow end to end in CI, nothing mocked, with printed evidence. | `27eb120` red `38055904005` (the drill caught a backup flaw), `3207d0d` green `38056642051` |
+| 4.7 | The pilot flow end to end in CI, nothing mocked, with printed evidence. | `27eb120` red `38055904005` (the drill caught a backup flaw), `3207d0d` green `38056642051`; the docs commit after it went red on an OCR healthcheck flake, hardened in `ea0e4b6` green `38058190060` |
 
 Invariants held: the examiner stays the final authority (no AI verdicts, no auto-grading); no OCR text in any mark computation (the import contract now also covers the finalize,
 snapshot, analytics, report and PDF modules, each with a planted-import test, and passes); append-only records (finalizing never deletes or edits history; the database refuses it);
@@ -62,6 +63,10 @@ test locally. They were checked with shellcheck, a YAML parser, a local simulati
 - `d058f50` never ran: two step names in `ci.yml` contained `: `, so GitHub reported a workflow file error. Fixed (`f96fbeb`) and now checked with a YAML parser before pushing.
 - `27eb120` red: **the restore drill caught a real flaw in my backup script.** It dumped the database and then counted the rows; the machine-reading worker finished a page in between, so the restore looked one row short.
   Fixed in `3207d0d`: one session exports a REPEATABLE READ snapshot, `pg_dump --snapshot` reads it, and the counts are taken in the same session. Verified against a database that was changing during the dump.
+- `52c8b55` (docs only) red: after **both restores had printed `RESTORE VERIFY OK`**, `docker compose start` refused to start `ocr-worker` because the OCR container was marked unhealthy. Its image healthcheck gives `/ocr/health`
+  5 s three times, and the service is CPU-bound while it reads a page on a 4-core runner shared with Chrome and the workers: the same family as the first Phase 3.6 failure. The identical code had passed one run earlier, so this was a flake,
+  not a regression. Hardened in `ea0e4b6` (compose healthcheck: 25 s per request, 8 tries, about two minutes of sustained failure before "unhealthy"; the drill waits for OCR to be healthy before restarting its dependents). It is also
+  an operator lesson: on a busy machine the OCR service can look unhealthy for a while without being broken (the runbook's OCR-down entry covers restarting it).
 - 4.5 found real input problems: tables overflowing a phone screen, three scrollable tables unreachable by keyboard, small touch targets, and **a sideways finger drag on the page image triggering the browser's Back gesture**
   (confirmed: the navigation was `back_forward`; `overscroll-behavior` alone did not stop it; the viewer now handles sideways touch drags itself). The desktop pages passed axe on the first run.
 - A first CSP test "failed" because I injected a script from trusted test code, which `strict-dynamic` allows by design; the real attack (injected markup with an inline handler) is blocked and tested.
