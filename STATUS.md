@@ -38,7 +38,7 @@ Each step is one commit with CI green before the next. Test numbers come from `m
 
 | Step | State | Evidence |
 |---|---|---|
-| 4.0 OCR hardening (own queue + worker, bounded automatic retry with backoff, "unread" + manual retry, sweeper covers failed readings, killed-and-restarted OCR test) | **Implemented; CI result pending** | local: `make test` 331 passed, `make lint` 0, web unit tests 19/19, tsc and eslint clean. **Not verifiable on this host:** the kill/restart-OCR run (`scripts/ocr_chaos.py`) needs the Docker daemon to kill containers, which this host forbids (AppArmor); it runs in CI only |
+| 4.0 OCR hardening (own queue + worker, bounded automatic retry with backoff, "unread" + manual retry, sweeper covers failed readings, killed-and-restarted OCR test) | **Implemented and tested** | `48f1922` was RED (CI `38046106208`: the Phase 3 E2E read the audit table before its rows loaded; a test race, fixed in `bf387bd`). `bf387bd`, CI `38046363766` green (test, secrets, web, compose-smoke): 331 app tests; web unit tests 19/19; smoke: the ingest job has only INTAKE and RASTERIZE and the real engine read both pages through the `ocr` job; **`scripts/ocr_chaos.py` in CI: OCR killed at 1 of 4 pages, retried by itself (retry_count 1), restarted, 4 of 4 read, no manual retry, exactly one OK run per page, grading stayed possible** |
 | 4.1 Admin UI: users, examiner assignment | Not started | |
 | 4.2 Finalize / reopen / snapshots / verify command | Not started | |
 | 4.3 Analytics | Not started | |
