@@ -103,7 +103,8 @@ jobs:
         run: |
           set -euo pipefail
           python3 -c "import sys; sys.path.insert(0, '../../tests/helpers'); from pdfgen import make_pdf; open('e2e/fixtures/booklet.pdf', 'wb').write(make_pdf([['E2E booklet page 1'], ['page 2']]))"
-          corepack enable
+          node --version
+          npm install --global pnpm@12.10.1
           pnpm install --frozen-lockfile
           set -a; . ../../.env; set +a
           E2E_EMAIL="$GRADEMIND_ADMIN_EMAIL" E2E_PASSWORD="$GRADEMIND_ADMIN_PASSWORD" pnpm exec playwright test
