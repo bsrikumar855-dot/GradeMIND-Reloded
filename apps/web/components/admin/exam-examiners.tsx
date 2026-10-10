@@ -84,7 +84,7 @@ export function ExamExaminers({ examId, initialAssigned, initialUsers }: { examI
         <p className="text-muted-foreground">No examiner is assigned yet. Until one is, only administrators and teachers can open this exam.</p>
       ) : (
         <Card className="py-0">
-          <CardContent className="px-0">
+          <CardContent className="overflow-x-auto px-0">
             <table className="w-full text-sm">
               <caption className="sr-only">Assigned examiners</caption>
               <thead className="border-b bg-muted text-left">

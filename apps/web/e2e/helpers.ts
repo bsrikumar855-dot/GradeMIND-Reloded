@@ -28,8 +28,8 @@ export async function ok<T>(res: { ok(): boolean; status(): number; text(): Prom
 
 export const level = (id: string, marks: string, definition = "") => ({ id, name: id[0]!.toUpperCase() + id.slice(1), marks, definition });
 
-export async function createExam(api: APIRequestContext): Promise<string> {
-  const exam = await ok<{ id: string }>(await api.post("/api/proxy/exams", { data: { name: "E2E gaps", subject: "Biology", total_marks: "5" } }), "create exam");
+export async function createExam(api: APIRequestContext, name = "E2E gaps"): Promise<string> {
+  const exam = await ok<{ id: string }>(await api.post("/api/proxy/exams", { data: { name, subject: "Biology", total_marks: "5" } }), "create exam");
   const id = exam.id;
   const paper = {
     total_marks: "5",

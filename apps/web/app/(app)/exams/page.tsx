@@ -25,7 +25,7 @@ export default async function ExamsPage() {
         <p className="text-muted-foreground">No exams yet.</p>
       ) : (
         <Card className="py-0">
-          <CardContent className="px-0">
+          <CardContent className="overflow-x-auto px-0">
             <table className="w-full text-sm">
               <caption className="sr-only">Exams</caption>
               <thead className="border-b bg-muted text-left">

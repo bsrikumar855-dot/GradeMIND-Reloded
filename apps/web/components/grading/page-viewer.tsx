@@ -44,7 +44,7 @@ export function PageViewer({
   const [drag, setDrag] = useState<{ x0: number; y0: number; x1: number; y1: number } | null>(null);
   const [kb, setKb] = useState<Box | null>(null); // keyboard-drawn box (3.0a): arrows move, Shift resizes, Enter confirms
   const canvas = useRef<HTMLDivElement>(null);
-  const pan = useRef<{ x: number; y: number; sl: number; st: number } | null>(null);
+  const pan = useRef<{ x: number; y: number; sl: number; st: number; touch: boolean } | null>(null);
   const drawingNow = draw && canDraw && rotation === 0;
 
   // turning drawing on moves focus to the canvas, so a keyboard user can start the box straight away
@@ -76,12 +76,17 @@ export function PageViewer({
   }
 
   function down(e: React.PointerEvent<HTMLDivElement>) {
-    e.currentTarget.setPointerCapture(e.pointerId);
+    // Not drawing: a mouse or pen drags the page around in both directions. A finger scrolls up and down natively (touch-action
+    // pan-y) but its SIDEWAYS drag is handled here, never by the browser: a sideways swipe the browser handles can become its
+    // "back" gesture and throw the examiner out of the booklet. While drawing, any pointer, touch included, draws.
     if (drawing) {
+      e.currentTarget.setPointerCapture(e.pointerId);
       const p = rel(e);
       setDrag({ x0: p.x, y0: p.y, x1: p.x, y1: p.y });
     } else if (scroller.current) {
-      pan.current = { x: e.clientX, y: e.clientY, sl: scroller.current.scrollLeft, st: scroller.current.scrollTop };
+      const touch = e.pointerType === "touch";
+      if (!touch) e.currentTarget.setPointerCapture(e.pointerId);
+      pan.current = { x: e.clientX, y: e.clientY, sl: scroller.current.scrollLeft, st: scroller.current.scrollTop, touch };
     }
   }
   function move(e: React.PointerEvent<HTMLDivElement>) {
@@ -90,7 +95,7 @@ export function PageViewer({
       setDrag({ ...drag, x1: p.x, y1: p.y });
     } else if (pan.current && scroller.current) {
       scroller.current.scrollLeft = pan.current.sl - (e.clientX - pan.current.x);
-      scroller.current.scrollTop = pan.current.st - (e.clientY - pan.current.y);
+      if (!pan.current.touch) scroller.current.scrollTop = pan.current.st - (e.clientY - pan.current.y); // a finger scrolls vertically itself
     }
   }
   function up() {
@@ -205,11 +210,11 @@ export function PageViewer({
                 : `${drawHint} With the keyboard: focus the page, press Enter to place a box, then arrow keys to move it and Shift plus arrow keys to resize it.`}
           </p>
         ) : null}
-        <div ref={scroller} className="max-h-[75vh] overflow-auto rounded-md border bg-muted/40 p-2" data-testid="page-scroller">
+        <div ref={scroller} className="max-h-[75vh] overflow-auto overscroll-contain rounded-md border bg-muted/40 p-2" data-testid="page-scroller">
           <div style={{ width: wrapW, height: wrapH }} className="relative mx-auto">
             <div
               style={{ width: W, height: H, left: (wrapW - W) / 2, top: (wrapH - H) / 2, transform: `rotate(${rotation}deg)` }}
-              className={cn("absolute select-none touch-none", drawing ? "cursor-crosshair" : "cursor-grab")}
+              className={cn("absolute select-none", drawing ? "touch-none cursor-crosshair" : "touch-pan-y touch-pinch-zoom cursor-grab")}
               onPointerDown={down}
               onPointerMove={move}
               onPointerUp={up}

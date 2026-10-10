@@ -115,7 +115,7 @@ export function UsersAdmin({ meId, initial }: { meId: string; initial: UserRow[]
       {error ? <Alert variant="destructive">{error}</Alert> : null}
       {notice ? <Alert>{notice}</Alert> : null}
       <Card className="py-0">
-          <CardContent className="px-0">
+          <CardContent className="overflow-x-auto px-0">
             <table className="w-full text-sm">
               <caption className="sr-only">Users</caption>
               <thead className="border-b bg-muted text-left">

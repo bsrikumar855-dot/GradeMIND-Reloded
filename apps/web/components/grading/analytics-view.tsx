@@ -57,7 +57,7 @@ export function AnalyticsView({ examId, data }: { examId: string; data: Analytic
       </Card>
 
       <Card className="py-0">
-        <CardContent className="overflow-x-auto px-0">
+        <CardContent className="overflow-x-auto px-0 focus-visible:ring-2 focus-visible:ring-ring" role="region" aria-label="Marks per question (scrolls sideways on a narrow screen)" tabIndex={0}>
           <table className="w-full text-sm">
             <caption className="sr-only">Marks per question</caption>
             <thead className="border-b bg-muted text-left">

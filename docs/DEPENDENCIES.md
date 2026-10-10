@@ -28,6 +28,11 @@ Spec §2 rule 6: every dependency is pinned, with a one-line justification. Exac
 | tailwindcss / @tailwindcss/postcss / tw-animate-css | 4.3.3 / 4.3.3 / 1.4.0 | Styling (shadcn/ui conventions) |
 | @radix-ui/react-slot, @radix-ui/react-label, class-variance-authority, clsx, tailwind-merge, lucide-react | as in package.json | shadcn/ui component primitives and icons |
 | eslint / eslint-config-next | 10.12.0 / 16.4.0 | Lint (zero warnings enforced in the image build) |
+| @axe-core/playwright (dev) | 4.13.0 (published 2026-08-11; pulls axe-core 4.13.0, published 2026-08-05) | Automated accessibility checks in the browser E2E (4.5). MPL-2.0, test-time only: it is not part of the built app. Exact pin, lockfile-verified; the lockfile gained 19 lines |
+
+## Python (4.4 note)
+
+Reports use **no** PDF library: `grademind_core/pdfwrite.py` is a small stdlib-only writer, read back in tests with pdfium (already a dependency, confined to `grademind_core/pdf.py` in production code). Adding a PDF library would have added a third-party dependency to a deployment that pins and audits every one (D26).
 
 ## OCR service (`services/ocr`, CPU container; not a uv workspace member)
 

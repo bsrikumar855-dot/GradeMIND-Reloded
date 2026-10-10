@@ -51,7 +51,7 @@ export function Totals({ examId, canReport }: { examId: string; canReport: boole
         ) : null}
       </div>
       <Card className="py-0">
-        <CardContent className="overflow-x-auto px-0">
+        <CardContent className="overflow-x-auto px-0 focus-visible:ring-2 focus-visible:ring-ring" role="region" aria-label="Totals (scrolls sideways on a narrow screen)" tabIndex={0}>
           <table className="w-full text-sm">
             <caption className="sr-only">Totals per student</caption>
             <thead className="border-b bg-muted text-left">

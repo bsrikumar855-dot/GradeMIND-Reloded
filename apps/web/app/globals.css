@@ -42,11 +42,27 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* A sideways finger drag on the page image must never trigger the browser's swipe-back gesture (it would throw away a grading session). */
+html,
+body {
+  overscroll-behavior: none;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Touch screens: controls are at least 44 px tall (WCAG 2.5.5 asks for it; 2.5.8 only requires 24 px). */
+@media (pointer: coarse) {
+  button,
+  select,
+  input:not([type="checkbox"]):not([type="radio"]),
+  [data-slot="button"] {
+    min-height: 2.75rem;
   }
 }

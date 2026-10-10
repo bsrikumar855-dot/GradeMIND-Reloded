@@ -25,7 +25,7 @@ export function AuditTrail({ examId }: { examId: string }) {
   if (rows.length === 0) return <p className="text-muted-foreground">Nothing recorded yet.</p>;
   return (
     <Card className="py-0">
-      <CardContent className="overflow-x-auto px-0">
+      <CardContent className="overflow-x-auto px-0 focus-visible:ring-2 focus-visible:ring-ring" role="region" aria-label="Audit trail (scrolls sideways on a narrow screen)" tabIndex={0}>
         <table className="w-full text-sm">
           <caption className="sr-only">Audit trail, oldest first</caption>
           <thead className="border-b bg-muted text-left">

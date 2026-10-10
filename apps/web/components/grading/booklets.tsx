@@ -137,7 +137,7 @@ export function Booklets({ examId, canUpload }: { examId: string; canUpload: boo
         <p className="text-muted-foreground">No booklets uploaded yet.</p>
       ) : (
         <Card className="py-0">
-          <CardContent className="px-0">
+          <CardContent className="overflow-x-auto px-0">
             <table className="w-full text-sm">
               <caption className="sr-only">Answer booklets</caption>
               <thead className="border-b bg-muted text-left">
