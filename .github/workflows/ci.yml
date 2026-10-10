@@ -126,4 +126,11 @@ jobs:
         run: ./scripts/phase3_evidence.sh "docker compose exec -T postgres psql -U grademind -d grademind"
       - name: logs on failure
         if: failure()
-        run: docker compose ps -a; docker compose logs --no-color --tail=200
+        run: |
+          docker compose ps -a
+          echo "== jobs and their stage attempts (what failed, and why) =="
+          docker compose exec -T postgres psql -U grademind -d grademind -c "select j.kind, j.status, j.current_stage, left(coalesce(j.error,''),160) as error, j.created_at from processing_jobs j order by j.created_at" || true
+          docker compose exec -T postgres psql -U grademind -d grademind -c "select a.stage, a.attempt_no, a.status, left(coalesce(a.error,''),160) as error from job_stage_attempts a order by a.seq" || true
+          echo "== OCR runs =="
+          docker compose exec -T postgres psql -U grademind -d grademind -c "select status, left(coalesce(error,''),120) as error, count(*) from ocr_runs group by 1,2" || true
+          docker compose logs --no-color --tail=200

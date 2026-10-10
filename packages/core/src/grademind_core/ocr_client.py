@@ -45,6 +45,10 @@ class OcrPageResult:
     engine: dict[str, Any]  # libraries + models (with weight hashes) that PRODUCED this result (rule 12)
 
 
+HEALTH_TIMEOUT_S = 30.0
+HEALTH_ATTEMPTS = 3
+
+
 class OcrServiceClient:
     def __init__(
         self,
@@ -63,10 +67,18 @@ class OcrServiceClient:
     def health(self) -> dict[str, Any]:
         """The service's /ocr/health: {"status", "rule12", "resolved": {libraries, models, pipeline}, ...}. Raises
         OcrUnavailableError unless the service says it is healthy AND passed its rule-12 assertion."""
-        try:
-            r = self._http.get("/ocr/health", timeout=10.0)
-        except httpx.HTTPError as e:
-            raise OcrUnavailableError(f"OCR service unreachable: {type(e).__name__}") from e
+        # A service busy reading other booklets answers slowly (CPU-bound, one page at a time): a single short timeout would
+        # fail the whole stage for a page it never tried. Retry a few times with a generous timeout before giving up.
+        r: httpx.Response | None = None
+        for attempt in range(HEALTH_ATTEMPTS):
+            try:
+                r = self._http.get("/ocr/health", timeout=HEALTH_TIMEOUT_S)
+                break
+            except httpx.HTTPError as e:
+                if attempt == HEALTH_ATTEMPTS - 1:
+                    raise OcrUnavailableError(f"OCR service unreachable: {type(e).__name__}") from e
+                self._sleep(self._busy_wait_s)
+        assert r is not None  # the loop either breaks with a response or raises
         if r.status_code != 200:
             raise OcrUnavailableError(f"OCR service health returned {r.status_code}")
         body: dict[str, Any] = r.json()
