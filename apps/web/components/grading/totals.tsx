@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { api } from "@/lib/client";
 import type { TotalsData } from "@/lib/types";
 
-export function Totals({ examId }: { examId: string }) {
+export function Totals({ examId, canReport }: { examId: string; canReport: boolean }) {
   const [data, setData] = useState<TotalsData | null>(null);
   const [failed, setFailed] = useState(false);
 
@@ -29,12 +29,26 @@ export function Totals({ examId }: { examId: string }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex justify-end">
+      <div className="flex flex-wrap justify-end gap-2">
         <Button asChild variant="outline">
           <a href={`/api/proxy/exams/${examId}/totals.csv`} download>
             Download CSV
           </a>
         </Button>
+        {canReport ? (
+          <>
+            <Button asChild variant="outline">
+              <a href={`/api/proxy/exams/${examId}/summary.csv`} download data-testid="summary-csv">
+                Summary of finalized results (CSV)
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href={`/api/proxy/exams/${examId}/summary.pdf`} download data-testid="summary-pdf">
+                Summary (PDF)
+              </a>
+            </Button>
+          </>
+        ) : null}
       </div>
       <Card className="py-0">
         <CardContent className="overflow-x-auto px-0">

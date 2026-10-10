@@ -63,9 +63,28 @@ test("finalize, read-only, reopen with a reason, finalize again as snapshot 2", 
   expect((await eApi.post(`/api/proxy/submissions/${sid}/finalize`, { data: {} })).status()).toBe(403);
   expect((await eApi.post(`/api/proxy/submissions/${sid}/reopen`, { data: { reason: "I would like to change it" } })).status()).toBe(403);
 
-  // --- the totals page says so
+  // --- the result sheet (PDF) and the summary say which snapshot they come from; an examiner gets neither
+  const snap1 = (await ok<{ id: string }[]>(await aApi.get(`/api/proxy/submissions/${sid}/snapshots`), "snapshots"))[0]!;
+  await expect(ap.getByTestId("report-pdf")).toBeVisible();
+  const sheet = await aApi.get(`/api/proxy/submissions/${sid}/report.pdf`);
+  expect(sheet.status()).toBe(200);
+  expect(sheet.headers()["content-type"]).toBe("application/pdf");
+  const sheetBytes = await sheet.body();
+  expect(sheetBytes.subarray(0, 5).toString()).toBe("%PDF-");
+  expect(sheetBytes.toString("latin1")).toContain(snap1.id); // the snapshot id is printed on the sheet (body and footer)
+  expect((await eApi.get(`/api/proxy/submissions/${sid}/report.pdf`)).status()).toBe(403);
+  expect((await eApi.get(`/api/proxy/exams/${examId}/summary.csv`)).status()).toBe(403);
+
+  // --- the totals page says so, and offers the summary
   await ap.goto(`/exams/${examId}/totals`);
   await expect(ap.getByText("Finalized (snapshot 1)")).toBeVisible();
+  await expect(ap.getByTestId("summary-pdf")).toBeVisible();
+  const summary = await aApi.get(`/api/proxy/exams/${examId}/summary.csv`);
+  expect(summary.status()).toBe(200);
+  const summaryText = await summary.text();
+  expect(summaryText.split("\n")[0]).toContain("snapshot_id");
+  expect(summaryText).toContain("FIN-1");
+  expect(summaryText).toContain(snap1.id);
 
   // --- reopen needs a reason
   await ap.goto(`/submissions/${sid}`);

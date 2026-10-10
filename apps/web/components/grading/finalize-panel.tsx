@@ -69,6 +69,15 @@ export function FinalizePanel({
             frozen by {s.finalized_by} on {when(s.finalized_at)} (rubric version {s.rubric_version_no}, {s.score_computer_version}). Grades are read-only until it is reopened.
           </p>
           {canManage ? (
+            <div>
+              <Button asChild variant="outline" size="sm">
+                <a href={`/api/proxy/submissions/${submissionId}/report.pdf`} download data-testid="report-pdf">
+                  Download result sheet (PDF)
+                </a>
+              </Button>
+            </div>
+          ) : null}
+          {canManage ? (
             reopening ? (
               <div className="flex flex-col gap-2">
                 <Label htmlFor="reopen-reason">Why is it being reopened? (at least {MIN_REASON} characters; it is kept in the record)</Label>

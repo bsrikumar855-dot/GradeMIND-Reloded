@@ -57,6 +57,8 @@ def test_the_untouched_tree_satisfies_the_contract(tree: Path) -> None:
         ("apps/api/src/grademind_api/routes/finalize.py", "from grademind_core.db.ocr_models import OcrLine  # planted\n"),
         ("packages/core/src/grademind_core/analytics.py", "from grademind_core.ocr_geometry import reading_order  # planted\n"),
         ("apps/api/src/grademind_api/routes/analytics.py", "from grademind_core.db.ocr_models import OcrRun  # planted\n"),
+        ("packages/core/src/grademind_core/reports.py", "from grademind_core.ocr_runs import config_hash  # planted\n"),
+        ("apps/api/src/grademind_api/routes/reports.py", "from grademind_core.db.ocr_models import OcrLine  # planted\n"),
     ],
 )
 def test_a_direct_ocr_import_into_the_grading_path_breaks_the_contract(tree: Path, victim: str, planted: str) -> None:

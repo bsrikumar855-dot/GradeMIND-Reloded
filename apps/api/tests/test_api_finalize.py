@@ -64,8 +64,8 @@ RUBRIC = {
 }
 
 
-@pytest.fixture(scope="module")
-def ex(world: dict[str, Any]) -> dict[str, Any]:
+def setup_exam(world: dict[str, Any]) -> dict[str, Any]:
+    """An exam with the approved paper and rubric above, the examiner assigned (shared with the report tests)."""
     c, h = world["client"], login(world, "teacher")
     eid = c.post("/api/exams", json={"name": "Finalize", "subject": "EVS", "total_marks": "5"}, headers=h).json()["id"]
     c.post(f"/api/exams/{eid}/assignments", json={"user_id": str(world["exA"])}, headers=login(world, "admin"))
@@ -74,6 +74,11 @@ def ex(world: dict[str, Any]) -> dict[str, Any]:
     assert c.put(f"/api/exams/{eid}/rubric/draft", json={"document": RUBRIC}, headers=h).json()["issues"] == []
     assert c.post(f"/api/exams/{eid}/rubric/approve", headers=h).status_code == 200
     return {"exam": eid}
+
+
+@pytest.fixture(scope="module")
+def ex(world: dict[str, Any]) -> dict[str, Any]:
+    return setup_exam(world)
 
 
 def booklet(world: dict[str, Any], ex: dict[str, Any], ref: str) -> dict[str, Any]:
