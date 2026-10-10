@@ -81,7 +81,10 @@ test("Phase 3: machine lines in the answer box, a correction, its audit trail, a
   expect(hist.corrections).toHaveLength(1);
   expect(hist.corrections[0]).toMatchObject({ corrected_text: fixed, supersedes_id: null });
   await page.goto(`/exams/${examId}/audit`);
-  const actions = await page.getByRole("table").locator("tbody tr td:nth-child(2)").allInnerTexts();
+  const cells = page.getByRole("table").locator("tbody tr td:nth-child(2)");
+  await expect(cells.first()).toBeVisible(); // the audit rows load after the page does: wait for them, then read
+  await expect.poll(async () => (await cells.allInnerTexts()).includes("line.correct"), { timeout: 20_000 }).toBe(true);
+  const actions = await cells.allInnerTexts();
   console.log(`::notice title=Phase 3 audit trail (oldest first)::${actions.join(" | ")}`);
   expect(actions).toContain("line.correct");
   expect(actions.indexOf("evaluation.save")).toBeLessThan(actions.indexOf("line.correct"));
