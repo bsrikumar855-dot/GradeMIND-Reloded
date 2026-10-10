@@ -36,6 +36,10 @@ class InvalidObjectKeyError(ValueError):
     pass
 
 
+class ObjectNotFoundError(LookupError):
+    """The key is well-formed but no such object exists (deleted, or never fully written)."""
+
+
 def new_key(kind: ObjectKind) -> str:
     return f"{kind.value}/{uuid.uuid4().hex}"
 
@@ -76,7 +80,12 @@ class ObjectStore:
         return key
 
     def get_bytes(self, key: str) -> bytes:
-        resp = self._internal.get_object(bucket_name=self._bucket, object_name=check_key(key))
+        try:
+            resp = self._internal.get_object(bucket_name=self._bucket, object_name=check_key(key))
+        except S3Error as e:
+            if e.code in ("NoSuchKey", "NoSuchObject"):
+                raise ObjectNotFoundError(key) from e
+            raise
         try:
             return resp.read()
         finally:

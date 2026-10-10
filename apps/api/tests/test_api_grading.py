@@ -12,6 +12,7 @@ from typing import Any
 
 import pytest
 from conftest import login, needs_db, needs_s3
+from fake_ocr import services
 from pdfgen import make_pdf
 from sqlalchemy import func, select, text
 from sqlalchemy.exc import DBAPIError
@@ -78,7 +79,7 @@ def g(world: dict[str, Any]) -> dict[str, Any]:
     r = c.put(f"/api/exams/{eid}/rubric/draft", json={"document": RUBRIC}, headers=h)
     assert r.json()["issues"] == []
     assert c.post(f"/api/exams/{eid}/rubric/approve", headers=h).status_code == 200
-    assert str(run_job(world["sessions"], uuid.UUID(up["job_id"]), PIPELINES, services={"store": world["store"]})) == "COMPLETED"
+    assert str(run_job(world["sessions"], uuid.UUID(up["job_id"]), PIPELINES, services=services(world["store"]))) == "COMPLETED"
     ws = c.get(f"/api/submissions/{sid}/workspace", headers=login(world, "exA")).json()
     return {"exam": eid, "sub": sid, "pages": [pg["id"] for pg in ws["pages"]]}
 

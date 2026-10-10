@@ -64,9 +64,14 @@ export type SubmissionRow = {
   created_at: string;
   job_id: string | null;
   job_status: string | null;
+  job_stage: string | null;
   job_error: string | null;
   page_count: number;
+  /** every page image is rendered: grading can start, whatever the rest of the job (machine reading) is doing */
+  pages_ready: boolean;
 };
+
+export type OcrSummary = { submission_id: string; pages: number; pages_read: number; pages_failed: number };
 
 export type PageInfo = { id: string; page_no: number; width: number; height: number; image_url: string; thumb_url: string | null };
 export type Region = { id: string; page_id: string; bbox: [number, number, number, number]; qid: string; attempt_no: number; crossed_out: boolean };

@@ -66,6 +66,10 @@ class Settings(BaseSettings):
     ocr_service_url: str = "http://localhost:8800"
     max_upload_bytes: int = Field(default=50 * 1024 * 1024, ge=1024)
 
+    # --- OCR assist (D28): display-only machine reading ---
+    ocr_page_timeout_s: float = Field(default=180.0, gt=0)  # one page on CPU takes ~12 s; the service reads one page at a time
+    ocr_abort_after_unavailable: int = Field(default=2, ge=1)  # consecutive "service unavailable" pages before the stage gives up
+
     # --- jobs (spec §15) ---
     job_heartbeat_seconds: float = Field(default=30, gt=0)  # a running stage renews its lease this often (D26)
     job_max_missed_heartbeats: int = Field(default=4, ge=2)  # reclaimable only after this many missed heartbeats

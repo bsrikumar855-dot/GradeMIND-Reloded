@@ -23,7 +23,16 @@ from grademind_api.errors import ApiError
 from grademind_api.queue import JobQueue
 from grademind_api.routes.exams import visible_exam
 from grademind_core.config import Settings
-from grademind_core.db.models import AuditLog, ConsentScope, Page, ProcessingJob, Role, Submission
+from grademind_core.db.models import (
+    AuditLog,
+    ConsentScope,
+    JobStageAttempt,
+    Page,
+    ProcessingJob,
+    Role,
+    StageStatus,
+    Submission,
+)
 from grademind_core.security import Principal
 from grademind_core.storage import ObjectKind, ObjectStore
 from grademind_core.uploads import UploadRejectedError, validate_upload
@@ -139,8 +148,10 @@ def upload_submission(
 class SubmissionRow(SubmissionOut):
     job_id: uuid.UUID | None
     job_status: str | None
+    job_stage: str | None  # e.g. "OCR" while the machine reading runs (grading does not wait for it)
     job_error: str | None
     page_count: int
+    pages_ready: bool  # every page image is rendered: grading can start, whatever the rest of the job is doing
 
 
 @router.get("/exams/{exam_id}/submissions", response_model=list[SubmissionRow])
@@ -167,13 +178,26 @@ def list_submissions(
         jobs[j.submission_id] = j  # latest wins
     page_q = select(Page.submission_id, func.count()).where(Page.submission_id.in_(ids)).group_by(Page.submission_id)
     counts = dict(db.execute(page_q).all())
+    ready_q = (
+        select(ProcessingJob.submission_id)
+        .join(JobStageAttempt, JobStageAttempt.job_id == ProcessingJob.id)
+        .where(
+            ProcessingJob.submission_id.in_(ids),
+            JobStageAttempt.stage == "RASTERIZE",
+            JobStageAttempt.status == StageStatus.SUCCEEDED,
+        )
+        .distinct()
+    )
+    ready = set(db.scalars(ready_q))
     return [
         SubmissionRow(
             **_out(x).model_dump(),
             job_id=jobs[x.id].id if x.id in jobs else None,
             job_status=jobs[x.id].status.value if x.id in jobs else None,
+            job_stage=jobs[x.id].current_stage if x.id in jobs else None,
             job_error=jobs[x.id].error if x.id in jobs else None,
             page_count=int(counts.get(x.id, 0)),
+            pages_ready=x.id in ready,
         )
         for x in subs
     ]

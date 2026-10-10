@@ -137,9 +137,9 @@ def main() -> int:
     check(code == 201 and "job_id" in sub, "upload submission")
 
     events: list[dict[str, Any]] = []
-    deadline = time.monotonic() + 90
+    deadline = time.monotonic() + 300  # the real OCR engine reads ~12 s per page on CPU
     req = urllib.request.Request(f"{API}/api/jobs/{sub['job_id']}/events", headers=auth)
-    with urllib.request.urlopen(req, timeout=100) as r:
+    with urllib.request.urlopen(req, timeout=320) as r:
         ev: dict[str, str] = {}
         for raw in r:
             line = raw.decode().rstrip("\r\n")
@@ -157,10 +157,19 @@ def main() -> int:
     check(bool(events) and events[-1]["status"] == "COMPLETED", f"job via SSE -> {[e['status'] for e in events]}")
     code, job = call("GET", f"/api/jobs/{sub['job_id']}", headers=auth)
     stages = [(s["stage"], s["status"]) for s in job["stages"]]
-    check(
-        stages == [("INTAKE", "STARTED"), ("INTAKE", "SUCCEEDED"), ("RASTERIZE", "STARTED"), ("RASTERIZE", "SUCCEEDED")],
-        "stage log",
-    )
+    expected = [
+        ("INTAKE", "STARTED"),
+        ("INTAKE", "SUCCEEDED"),
+        ("RASTERIZE", "STARTED"),
+        ("RASTERIZE", "SUCCEEDED"),
+        ("OCR", "STARTED"),
+        ("OCR", "SUCCEEDED"),
+    ]
+    check(stages == expected, f"stage log incl. the OCR stage: {stages}")
+    code, summary = call("GET", f"/api/exams/{exam['id']}/ocr-summary", headers=auth)
+    mine = [r for r in summary if r["submission_id"] == sub["id"]]
+    ok = bool(mine) and (mine[0]["pages"], mine[0]["pages_read"], mine[0]["pages_failed"]) == (2, 2, 0)
+    check(code == 200 and ok, f"both pages machine-read by the real engine: {mine}")
     code, pages = call("GET", f"/api/submissions/{sub['id']}/pages", headers=auth)
     check(code == 200 and [pg["page_no"] for pg in pages] == [1, 2], "booklet rendered to 2 page images")
     with urllib.request.urlopen(pages[0]["image_url"], timeout=10) as r:

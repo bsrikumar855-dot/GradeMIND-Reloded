@@ -39,12 +39,19 @@ Each step is one commit with CI green before the next. Test numbers come from `m
 | Step | State | Evidence |
 |---|---|---|
 | 3.0 Phase 2 gaps: keyboard-only box drawing; Playwright for examiner override-with-reason, attempts, crossed-out, remove region, N/P/?; stuck-QUEUED sweeper test | **Implemented and tested** | `cb3a03c`, CI `38032702947` green (test, secrets, web, compose-smoke): 247 app tests; web unit tests 8/8 in the image build; Playwright 6/6 (5 new + the Phase 2 spec) in compose-smoke |
-| 3.1 OCR stage in the ingest job | Not started | |
+| 3.1 OCR stage in the ingest job (registry-only OCR calls, config hash + resolved config stored and logged, append-only tables, idempotent, retry, page failures never block grading) | **Implemented; CI result pending** | Local: `make test` 268 passed exit 0; real client vs the real OCR container on a synthetic printed page: health + rule-12 OK, result size = page size, engine signature = health, 3 lines read. Compose-smoke now checks the OCR stage with the real engine (first CI run pending) |
 | 3.2 Region text API (pure geometry) | Not started | |
 | 3.3 "Machine reading" panel | Not started | |
 | 3.4 Examiner line correction -> `line_corrections` | Not started | |
 | 3.5 Owner-only dataset export (consent-aware) | Not started | |
 | 3.6 E2E incl. totals unchanged by OCR | Not started | |
+
+3.1 notes: grading readiness is `pages_ready` (the RASTERIZE stage succeeded), not job completion, so a slow or dead OCR
+service never blocks grading (the Booklets page offers "Grade" as soon as pages exist). The import-linter contract "OCR text
+never reaches a verdict (D28)" (OCR tables moved to `db/ocr_models.py`, OCR API in `routes/ocr.py`) is proven to fire by
+`tests/test_ocr_isolation.py` (direct and indirect plants). **Known limitation:** the OCR stage holds a worker slot for the whole
+booklet (~12 s/page, one page at a time in the service), so bulk uploads are throughput-bound; worker slots raised 2 -> 6 as a
+stop-gap; a dedicated OCR queue is the real fix (decision needed, see the Phase 3 report).
 
 3.0 notes: the examiner for the E2E comes from the new `cli create-user` (admins still have no user-management UI; examiner
 assignment is API-only). The N/P/? shortcuts were found to be broken once the active question had no answer box (they lived

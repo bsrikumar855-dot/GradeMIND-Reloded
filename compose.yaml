@@ -97,7 +97,9 @@ services:
     image: grademind-app:dev
     environment: *app-env
     # -B: embedded beat for the requeue sweep (single worker in v1)
-    command: ["celery", "-A", "grademind_worker.celery_app", "worker", "-B", "--concurrency=2", "--loglevel=INFO", "-s", "/tmp/celerybeat-schedule"]
+    # 6 slots: the OCR stage waits on the (one-page-at-a-time) OCR service for ~12 s per page, so a few booklets in machine
+    # reading must not starve other uploads of page rendering. A dedicated OCR queue would remove the limit (see PHASE_3_REPORT).
+    command: ["celery", "-A", "grademind_worker.celery_app", "worker", "-B", "--concurrency=6", "--loglevel=INFO", "-s", "/tmp/celerybeat-schedule"]
     healthcheck:
       test: ["CMD-SHELL", "celery -A grademind_worker.celery_app inspect ping -d celery@$$HOSTNAME --timeout 5"]
       interval: 20s
@@ -107,6 +109,7 @@ services:
     depends_on:
       bootstrap: {condition: service_completed_successfully}
       redis: {condition: service_healthy}
+      ocr: {condition: service_healthy}  # not required for grading, but a booklet uploaded at start-up should be read
 
   ocr:
     build:

@@ -23,7 +23,6 @@ from grademind_core.db.models import (
     Exam,
     JobStageAttempt,
     JobStatus,
-    LineCorrection,
     Organization,
     Page,
     ProcessingJob,
@@ -32,6 +31,7 @@ from grademind_core.db.models import (
     Submission,
     User,
 )
+from grademind_core.db.ocr_models import LineCorrection
 from grademind_core.db.session import transaction
 
 URL = os.environ.get("GRADEMIND_TEST_DATABASE_URL")

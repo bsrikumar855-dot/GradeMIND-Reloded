@@ -1,5 +1,6 @@
-"""Pipeline definitions (spec §15, re-scoped by D19/D24). ingest = INTAKE (storage integrity) -> RASTERIZE (page
-images for the viewer). No OCR stage in Phase 2: OCR assist arrives in Phase 3."""
+"""Pipeline definitions (spec §15, re-scoped by D19/D24/D28). ingest = INTAKE (storage integrity) -> RASTERIZE (page images
+for the viewer; grading can start as soon as this stage is done) -> OCR (display-only machine reading, never needed for grading).
+ocr_retry = OCR again for one submission (pages that failed or were never read)."""
 
 from __future__ import annotations
 
@@ -9,9 +10,10 @@ import io
 from sqlalchemy import select
 
 from grademind_core.db.models import Page, Submission
-from grademind_core.jobs import Pipeline, Stage, StageContext, StageError
+from grademind_core.jobs import OCR_RETRY_KIND, Pipeline, Stage, StageContext, StageError
 from grademind_core.pdf import PdfError, page_images
 from grademind_core.storage import ObjectKind, ObjectStore
+from grademind_worker.ocr_stage import OCR_VERSION, run_ocr
 
 INGEST = "ingest"
 
@@ -84,4 +86,18 @@ def _rasterize(ctx: StageContext) -> str | None:
 
 RASTERIZE = Stage(name="RASTERIZE", component_version=RASTERIZE_VERSION, input_hash=_intake_input, run=_rasterize)
 
-PIPELINES: dict[str, Pipeline] = {INGEST: Pipeline(kind=INGEST, stages=(INTAKE, RASTERIZE))}
+OCR = Stage(name="OCR", component_version=OCR_VERSION, input_hash=_intake_input, run=run_ocr)
+
+
+def _reread_input(ctx: StageContext) -> str:
+    # never cached: a re-read is an explicit request, so the job id is part of the input
+    return f"{_intake_input(ctx)}:reread:{ctx.job.id}"
+
+
+OCR_REREAD = Stage(name="OCR", component_version=OCR_VERSION, input_hash=_reread_input, run=run_ocr)
+
+OCR_RETRY = OCR_RETRY_KIND
+PIPELINES: dict[str, Pipeline] = {
+    INGEST: Pipeline(kind=INGEST, stages=(INTAKE, RASTERIZE, OCR)),
+    OCR_RETRY: Pipeline(kind=OCR_RETRY, stages=(OCR_REREAD,)),
+}

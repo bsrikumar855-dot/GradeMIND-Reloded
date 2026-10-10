@@ -7,6 +7,7 @@ import uuid
 from datetime import UTC, datetime, timedelta
 
 import pytest
+from fake_ocr import services
 from sqlalchemy import update
 from sqlalchemy.orm import Session, sessionmaker
 from worker_world import needs_stack, new_booklet_job, pages_of
@@ -36,7 +37,7 @@ def test_a_job_whose_enqueue_was_lost_is_resent_and_completes(env: tuple[session
     age(db, jid, minutes=10)
     assert resend_stuck(db, sent.append, POLICY) == 1 and sent == [jid]
 
-    assert run_job(db, jid, PIPELINES, services={"store": store}) == JobStatus.COMPLETED  # what the re-sent task does
+    assert run_job(db, jid, PIPELINES, services=services(store)) == JobStatus.COMPLETED  # what the re-sent task does
     assert len(pages_of(db, jid)) == 2
     assert resend_stuck(db, sent.append, POLICY) == 0 and sent == [jid]  # finished: never re-sent again
 
@@ -59,8 +60,8 @@ def test_resending_twice_is_harmless(env: tuple[sessionmaker[Session], ObjectSto
     db, store = env
     jid = new_booklet_job(db, store, pages=2)
     age(db, jid, 10)
-    assert run_job(db, jid, PIPELINES, services={"store": store}) == JobStatus.COMPLETED
-    assert run_job(db, jid, PIPELINES, services={"store": store}) is None  # the duplicate delivery is a no-op
+    assert run_job(db, jid, PIPELINES, services=services(store)) == JobStatus.COMPLETED
+    assert run_job(db, jid, PIPELINES, services=services(store)) is None  # the duplicate delivery is a no-op
     assert len(pages_of(db, jid)) == 2
 
 

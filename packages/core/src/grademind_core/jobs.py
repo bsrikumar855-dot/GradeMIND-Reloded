@@ -36,6 +36,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from grademind_core.db.models import JobStageAttempt, JobStatus, ProcessingJob, StageStatus
 
+OCR_RETRY_KIND = "ocr_retry"  # job kind: machine-read one submission again (producer: API, consumer: worker pipelines)
 RUN_JOB_TASK = "grademind.run_job"  # the Celery task name shared by the API (producer) and the worker (consumer)
 TERMINAL = frozenset({JobStatus.COMPLETED, JobStatus.FAILED, JobStatus.REVIEW_REQUIRED})
 

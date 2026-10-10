@@ -12,10 +12,12 @@ from functools import lru_cache
 
 from celery import Celery
 
-from grademind_core.config import get_settings
+from grademind_core.config import OcrProvider, get_settings
 from grademind_core.db.session import session_factory
 from grademind_core.jobs import RUN_JOB_TASK, LeasePolicy, resend_stuck, run_job
 from grademind_core.logredact import install as install_log_redaction
+from grademind_core.ocr_client import OcrServiceClient
+from grademind_core.providers import ProviderRegistry
 from grademind_core.storage import ObjectStore
 from grademind_worker.stages import PIPELINES
 
@@ -39,6 +41,15 @@ def _policy() -> LeasePolicy:
 
 
 @lru_cache(maxsize=1)
+def _providers() -> ProviderRegistry:
+    """Rule 7: OCR is reached only through the registry; a disabled provider's factory is never called."""
+    s = get_settings()
+    reg = ProviderRegistry(s)
+    reg.register_ocr(OcrProvider.PADDLE_V6, lambda: OcrServiceClient(s.ocr_service_url, timeout_s=s.ocr_page_timeout_s))
+    return reg
+
+
+@lru_cache(maxsize=1)
 def _store() -> ObjectStore:
     return ObjectStore(get_settings())
 
@@ -50,7 +61,7 @@ def run_job_task(job_id: str) -> str | None:
         session_factory(s.database_url),
         uuid.UUID(job_id),
         PIPELINES,
-        services={"store": _store()},
+        services={"store": _store(), "providers": _providers(), "ocr_abort_after_unavailable": s.ocr_abort_after_unavailable},
         policy=_policy(),
     )
     return status.value if status else None

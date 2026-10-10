@@ -125,3 +125,24 @@ type = "forbidden"
 source_modules = ["grademind_core", "grademind_api", "grademind_worker"]
 forbidden_modules = ["pypdfium2", "PIL", "fitz", "pdfplumber"]
 ignore_imports = ["grademind_core.pdf -> pypdfium2", "grademind_core.pdf -> PIL"]
+
+# D28: machine-read text is display-only. Nothing that computes or records marks may import anything OCR-related, directly or
+# through any chain of imports (import-linter checks indirect imports by default). The OCR tables live in db/ocr_models.py and
+# the OCR API in routes/ocr.py precisely so this contract can say something.
+[[tool.importlinter.contracts]]
+name = "OCR text never reaches a verdict (D28)"
+type = "forbidden"
+source_modules = [
+    "grademind_core.scoring",
+    "grademind_core.grading",
+    "grademind_core.evaluation",
+    "grademind_api.routes.grading",
+    "grademind_api.routes.grading_docs",
+]
+forbidden_modules = [
+    "grademind_core.db.ocr_models",
+    "grademind_core.ocr_client",
+    "grademind_core.ocr_runs",
+    "grademind_api.routes.ocr",
+    "grademind_worker.ocr_stage",
+]

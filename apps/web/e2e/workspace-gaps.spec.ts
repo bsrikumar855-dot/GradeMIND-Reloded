@@ -63,11 +63,16 @@ async function uploadBooklet(api: APIRequestContext, examId: string, ref: string
     }),
     "upload booklet",
   );
+  // grading only needs the page images: wait for those, never for the (slow, optional) machine reading
   await expect
-    .poll(async () => (await ok<{ status: string }>(await api.get(`/api/proxy/jobs/${up.job_id}`), "job")).status, { timeout: 120_000 })
-    .toMatch(/COMPLETED|FAILED/);
-  const job = await ok<{ status: string; error: string | null }>(await api.get(`/api/proxy/jobs/${up.job_id}`), "job");
-  expect(job.status, job.error ?? "").toBe("COMPLETED");
+    .poll(
+      async () => {
+        const rows = await ok<{ id: string; pages_ready: boolean }[]>(await api.get(`/api/proxy/exams/${examId}/submissions?limit=100`), "submissions");
+        return rows.find((r) => r.id === up.id)?.pages_ready ?? false;
+      },
+      { timeout: 120_000, message: "pages were not rendered" },
+    )
+    .toBe(true);
   return up.id;
 }
 

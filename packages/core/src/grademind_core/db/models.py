@@ -17,7 +17,6 @@ from sqlalchemy import (
     Boolean,
     DateTime,
     Enum,
-    Float,
     ForeignKey,
     Identity,
     Index,
@@ -77,7 +76,15 @@ class VersionStatus(enum.StrEnum):
     APPROVED = "APPROVED"
 
 
-APPEND_ONLY_TABLES = ("line_corrections", "audit_logs", "job_stage_attempts", "evaluations", "score_results")
+APPEND_ONLY_TABLES = (
+    "line_corrections",
+    "audit_logs",
+    "job_stage_attempts",
+    "evaluations",
+    "score_results",
+    "ocr_runs",
+    "ocr_lines",
+)
 # rows of these tables become immutable (no UPDATE, no DELETE) once status = APPROVED (I5/I8); drafts stay editable
 IMMUTABLE_WHEN_APPROVED_TABLES = ("paper_versions", "rubric_versions")
 
@@ -173,60 +180,6 @@ class PageQualityFlag(Base):
     details: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)
     component_version: Mapped[str] = mapped_column(String(40), nullable=False)
     created_at: Mapped[datetime] = _created()
-
-
-class OcrRun(Base):
-    __tablename__ = "ocr_runs"
-    id: Mapped[uuid.UUID] = _pk()
-    page_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pages.id"), nullable=False, index=True)
-    provider: Mapped[str] = mapped_column(String(40), nullable=False)
-    model_names: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)  # rule 12: resolved, not requested
-    weights_sha256: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
-    component_version: Mapped[str] = mapped_column(String(40), nullable=False)
-    created_at: Mapped[datetime] = _created()
-
-
-class OcrLine(Base):
-    __tablename__ = "ocr_lines"
-    __table_args__ = (UniqueConstraint("ocr_run_id", "line_no"),)
-    id: Mapped[uuid.UUID] = _pk()
-    ocr_run_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("ocr_runs.id"), nullable=False, index=True)
-    line_no: Mapped[int] = mapped_column(Integer, nullable=False)
-    polygon: Mapped[list[Any]] = mapped_column(JSONB, nullable=False)
-    bbox: Mapped[list[int]] = mapped_column(JSONB, nullable=False)
-    text: Mapped[str] = mapped_column(Text, nullable=False)
-    score: Mapped[float | None] = mapped_column(Float)
-
-
-class LineCorrection(Base):
-    """D19: every examiner OCR correction = one immutable labelled training example (ARCHITECTURE §5). Append-only (I8)."""
-
-    __tablename__ = "line_corrections"
-    id: Mapped[uuid.UUID] = _pk()
-    created_at: Mapped[datetime] = _created()
-    examiner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
-    exam_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("exams.id"), nullable=False, index=True)
-    submission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("submissions.id"), nullable=False, index=True)
-    page_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pages.id"), nullable=False)
-    ocr_line_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("ocr_lines.id"))  # null when the examiner adds a missed line
-    subject: Mapped[str] = mapped_column(String(200), nullable=False)
-    crop_object_key: Mapped[str] = mapped_column(String(500), nullable=False)
-    crop_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
-    crop_bbox: Mapped[list[int]] = mapped_column(JSONB, nullable=False)
-    crop_polygon: Mapped[list[Any] | None] = mapped_column(JSONB)
-    page_image_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
-    preprocessing_version: Mapped[str] = mapped_column(String(40), nullable=False)
-    ocr_provider: Mapped[str] = mapped_column(String(40), nullable=False)
-    ocr_model_names: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
-    ocr_weights_sha256: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
-    ocr_text: Mapped[str] = mapped_column(Text, nullable=False)
-    corrected_text: Mapped[str] = mapped_column(Text, nullable=False)  # literal: misspellings preserved, [?] allowed
-    edit_ops: Mapped[list[Any]] = mapped_column(JSONB, nullable=False)
-    consent_scope: Mapped[ConsentScope] = mapped_column(
-        Enum(ConsentScope, name="consent_scope", values_callable=lambda e: [x.value for x in e], create_type=False),
-        nullable=False,
-    )
-    supersedes_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("line_corrections.id"))
 
 
 class ProcessingJob(Base):

@@ -5,6 +5,7 @@ import os
 from alembic import context
 from sqlalchemy import create_engine
 
+from grademind_core.db import ocr_models  # noqa: F401 - registers the OCR tables on Base.metadata
 from grademind_core.db.models import Base
 
 _url = os.environ.get("GRADEMIND_DATABASE_URL") or context.config.get_main_option("sqlalchemy.url")

@@ -11,6 +11,7 @@ Spec §2 rule 6: every dependency is pinned, with a one-line justification. Exac
 | python-multipart | 0.0.32 | FastAPI file uploads |
 | sse-starlette | 3.5.0 | Job progress over SSE (spec §15) |
 | celery[redis] | 5.6.3 | Job stages in the worker (spec §4/§15); Redis broker |
+| httpx | 0.28.1 | The OCR service client (`grademind_core/ocr_client.py`); also the API's health proxy |
 | minio (Python SDK) | 7.2.20 | S3 client; imported **only** in `grademind_core/storage.py` (the single storage module). Presigns locally with a fixed region |
 | MinIO server image | `cgr.dev/chainguard/minio@sha256:f74600a1…fa18` (MinIO RELEASE.2026-09-22T19-25-18Z) | Object storage (compose + CI). `minio/minio` is no longer on Docker Hub and `quay.io/minio/minio` needs a login, so we use Chainguard's free image, **pinned by digest** |
 | pytest / pytest-asyncio / httpx | 9.1.1 / 1.4.0 / 0.28.1 | Tests (dev) |

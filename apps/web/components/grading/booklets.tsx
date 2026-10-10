@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { api, ClientError } from "@/lib/client";
-import type { SubmissionRow } from "@/lib/types";
+import type { OcrSummary, SubmissionRow } from "@/lib/types";
 
 const STATUS: Record<string, { text: string; tone: "neutral" | "success" | "warning" | "danger" }> = {
   QUEUED: { text: "Waiting to process", tone: "neutral" },
@@ -20,14 +20,24 @@ const STATUS: Record<string, { text: string; tone: "neutral" | "success" | "warn
   FAILED: { text: "Failed", tone: "danger" },
 };
 
+/** What the examiner should read in the Status column. Grading never waits for machine reading (D28). */
+function describe(r: SubmissionRow): { text: string; tone: "neutral" | "success" | "warning" | "danger"; note?: string } {
+  if (!r.pages_ready) return STATUS[r.job_status ?? "QUEUED"] ?? { text: "Waiting to process", tone: "neutral" };
+  if (r.job_status === "COMPLETED" || r.job_status === "REVIEW_REQUIRED") return { text: "Ready", tone: "success" };
+  if (r.job_status === "FAILED") return { text: "Ready to grade", tone: "success", note: "Machine reading is unavailable for some pages." };
+  return { text: "Ready to grade", tone: "success", note: "Machine reading is still running." };
+}
+
 export function Booklets({ examId, canUpload }: { examId: string; canUpload: boolean }) {
   const [rows, setRows] = useState<SubmissionRow[] | null>(null);
+  const [ocr, setOcr] = useState<Record<string, OcrSummary>>({});
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [loadError, setLoadError] = useState(false);
 
   const refresh = useCallback(async () => {
     setRows(await api<SubmissionRow[]>(`exams/${examId}/submissions?limit=100`));
+    setOcr(Object.fromEntries((await api<OcrSummary[]>(`exams/${examId}/ocr-summary`)).map((o) => [o.submission_id, o])));
   }, [examId]);
 
   const pending = rows?.some((r) => r.job_status === "QUEUED" || r.job_status === "RUNNING") ?? false;
@@ -35,8 +45,12 @@ export function Booklets({ examId, canUpload }: { examId: string; canUpload: boo
   useEffect(() => {
     let alive = true;
     const tick = () =>
-      api<SubmissionRow[]>(`exams/${examId}/submissions?limit=100`)
-        .then((r) => alive && setRows(r))
+      Promise.all([api<SubmissionRow[]>(`exams/${examId}/submissions?limit=100`), api<OcrSummary[]>(`exams/${examId}/ocr-summary`)])
+        .then(([r, o]) => {
+          if (!alive) return;
+          setRows(r);
+          setOcr(Object.fromEntries(o.map((x) => [x.submission_id, x])));
+        })
         .catch(() => alive && setLoadError(true));
     void tick();
     // Poll while any booklet is still being turned into page images.
@@ -60,6 +74,16 @@ export function Booklets({ examId, canUpload }: { examId: string; canUpload: boo
       setError(err instanceof ClientError ? err.message : "Upload failed. Please try again.");
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function rereadOcr(submissionId: string) {
+    setError(null);
+    try {
+      await api(`submissions/${submissionId}/ocr/retry`, { method: "POST" });
+      await refresh();
+    } catch (err) {
+      setError(err instanceof ClientError ? err.message : "Could not start the machine reading again.");
     }
   }
 
@@ -119,20 +143,28 @@ export function Booklets({ examId, canUpload }: { examId: string; canUpload: boo
                   <th scope="col" className="px-4 py-3 font-medium">Student</th>
                   <th scope="col" className="px-4 py-3 font-medium">Pages</th>
                   <th scope="col" className="px-4 py-3 font-medium">Status</th>
+                  <th scope="col" className="px-4 py-3 font-medium">Machine reading</th>
                   <th scope="col" className="px-4 py-3 text-right font-medium">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map((r) => {
-                  const st = STATUS[r.job_status ?? "QUEUED"] ?? { text: "Waiting to process", tone: "neutral" as const };
-                  const ready = r.page_count > 0 && (r.job_status === "COMPLETED" || r.job_status === "REVIEW_REQUIRED");
+                  const st = describe(r);
+                  const ready = r.pages_ready;
+                  const o = ocr[r.id];
                   return (
                     <tr key={r.id} className="border-b last:border-0">
                       <td className="px-4 py-3 font-medium">{r.student_ref}</td>
                       <td className="px-4 py-3">{r.page_count}</td>
                       <td className="px-4 py-3">
                         <Badge tone={st.tone}>{st.text}</Badge>
-                        {r.job_status === "FAILED" ? <span className="ml-2 text-muted-foreground">{r.job_error}</span> : null}
+                        {st.note ? <span className="ml-2 text-muted-foreground">{st.note}</span> : null}
+                        {r.job_status === "FAILED" && !r.pages_ready ? <span className="ml-2 text-muted-foreground">{r.job_error}</span> : null}
+                      </td>
+                      <td className="px-4 py-3 text-muted-foreground" data-testid="machine-reading">
+                        {!o || o.pages === 0
+                          ? "—"
+                          : `${o.pages_read} of ${o.pages} pages read${o.pages_failed ? `, ${o.pages_failed} could not be read` : ""}`}
                       </td>
                       <td className="px-4 py-3 text-right">
                         {ready ? (
@@ -142,6 +174,11 @@ export function Booklets({ examId, canUpload }: { examId: string; canUpload: boo
                         ) : r.job_status === "FAILED" && r.job_id && canUpload ? (
                           <Button size="sm" variant="outline" onClick={() => void retry(r.job_id!)}>
                             Retry
+                          </Button>
+                        ) : null}
+                        {ready && canUpload && r.job_status && r.job_status !== "QUEUED" && r.job_status !== "RUNNING" && o && o.pages_read < o.pages ? (
+                          <Button size="sm" variant="ghost" className="ml-1" onClick={() => void rereadOcr(r.id)}>
+                            Read text again
                           </Button>
                         ) : null}
                       </td>
