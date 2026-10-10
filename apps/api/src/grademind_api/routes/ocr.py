@@ -90,7 +90,11 @@ def retry_ocr(
         raise ApiError(409, "already_running", "This booklet is still being processed. Try again when it has finished.")
     job = ProcessingJob(kind=OCR_RETRY_KIND, submission_id=sub.id, created_by=p.user_id)
     db.add(job)
-    db.flush()
+    try:
+        db.flush()
+    except IntegrityError as e:  # an automatic reading of this booklet became active in the meantime
+        db.rollback()
+        raise ApiError(409, "already_running", "This booklet is still being processed. Try again when it has finished.") from e
     db.add(
         AuditLog(
             actor_id=p.user_id,
@@ -102,7 +106,7 @@ def retry_ocr(
         )
     )
     db.commit()
-    enqueue_after_commit(queue, job.id, request.state.request_id)
+    enqueue_after_commit(queue, job.id, request.state.request_id, OCR_RETRY_KIND)
     return RetryOut(job_id=job.id)
 
 

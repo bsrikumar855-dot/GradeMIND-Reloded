@@ -14,6 +14,7 @@ import uuid
 from datetime import timedelta
 
 import pytest
+from drive import drive
 from fake_ocr import RESOLVED, FakeOcr, services
 from sqlalchemy import select, text, update
 from sqlalchemy.exc import DBAPIError
@@ -22,15 +23,27 @@ from worker_world import needs_stack, new_booklet_job
 
 from grademind_core.db.models import JobStageAttempt, JobStatus, Page, ProcessingJob, StageStatus
 from grademind_core.db.ocr_models import OcrLine, OcrRun
-from grademind_core.jobs import LeasePolicy, request_retry, run_job
+from grademind_core.jobs import LeasePolicy, Pipeline, RetryPolicy, ensure_ocr_job, request_retry, run_job
 from grademind_core.ocr_client import OcrPageResult
 from grademind_core.ocr_runs import config_hash, record_ok
 from grademind_core.storage import ObjectStore
-from grademind_worker.stages import INGEST, OCR_RETRY, PIPELINES
+from grademind_worker.stages import INGEST, OCR_REREAD, OCR_RETRY, PIPELINES
 
 pytest_plugins = ["worker_world"]
 pytestmark = needs_stack
 Env = tuple[sessionmaker[Session], ObjectStore]
+NO_AUTO_RETRY = RetryPolicy(
+    max_retries=0
+)  # these tests look at what one failure leaves behind; test_ocr_retry.py covers the retries
+
+
+def ingest_and_read(
+    db: sessionmaker[Session], store: ObjectStore, jid: uuid.UUID, fake: FakeOcr, **kw: object
+) -> tuple[JobStatus | None, uuid.UUID]:
+    """The ingest job, then the machine-reading job the worker creates after it. Returns (status of the reading, its job id)."""
+    status, ran = drive(db, jid, PIPELINES, services(store, fake, **kw), NO_AUTO_RETRY)
+    assert len(ran) == 2, "ingest completed, so a reading job follows"
+    return status, ran[1]
 
 
 def submission_of(db: sessionmaker[Session], jid: uuid.UUID) -> uuid.UUID:
@@ -70,11 +83,11 @@ def last_output(db: sessionmaker[Session], jid: uuid.UUID, stage: str) -> str | 
         return row.output_ref if row else None
 
 
-def new_ocr_job(db: sessionmaker[Session], sub: uuid.UUID) -> uuid.UUID:
+def new_ocr_job(db: sessionmaker[Session], sub: uuid.UUID, kind: str = OCR_RETRY) -> uuid.UUID:
     with db() as s, s.begin():
         old = s.scalars(select(ProcessingJob).where(ProcessingJob.submission_id == sub)).first()
         assert old is not None
-        job = ProcessingJob(kind=OCR_RETRY, submission_id=sub, created_by=old.created_by)
+        job = ProcessingJob(kind=kind, submission_id=sub, created_by=old.created_by)
         s.add(job)
         s.flush()
         return job.id
@@ -85,8 +98,9 @@ def test_pages_are_read_and_the_resolved_config_is_stored_and_logged(env: Env, c
     fake = FakeOcr()
     jid = new_booklet_job(db, store, pages=2)
     with caplog.at_level(logging.INFO, logger="grademind.worker"):
-        assert run_job(db, jid, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED
-    assert last_output(db, jid, "OCR") == "ocr:ok=2,failed=0,skipped=0"
+        status, rid = ingest_and_read(db, store, jid, fake)
+    assert status == JobStatus.COMPLETED
+    assert last_output(db, rid, "OCR") == "ocr:ok=2,failed=0,skipped=0"
     runs = runs_by_page(db, jid)
     assert sorted(runs) == [1, 2] and all(len(r) == 1 and r[0].status == "OK" for r in runs.values())
     run = runs[1][0]
@@ -109,8 +123,9 @@ def test_a_failed_page_never_fails_the_job(env: Env) -> None:
     db, store = env
     fake = FakeOcr(fail_calls={2})
     jid = new_booklet_job(db, store, pages=3)
-    assert run_job(db, jid, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED
-    assert last_output(db, jid, "OCR") == "ocr:ok=2,failed=1,skipped=0"
+    status, rid = ingest_and_read(db, store, jid, fake)
+    assert status == JobStatus.COMPLETED
+    assert last_output(db, rid, "OCR") == "ocr:ok=2,failed=1,skipped=0"
     runs = runs_by_page(db, jid)
     assert [runs[n][0].status for n in (1, 2, 3)] == ["OK", "FAILED", "OK"]
     assert runs[2][0].error == "undecodable: The image could not be decoded."  # safe reason; never student text
@@ -122,24 +137,27 @@ def test_service_down_at_the_start_fails_only_ocr_and_a_retry_reruns_only_ocr(en
     db, store = env
     fake = FakeOcr(health_down=True)
     jid = new_booklet_job(db, store, pages=2)
-    assert run_job(db, jid, PIPELINES, services=services(store, fake)) == JobStatus.FAILED
+    status, rid = ingest_and_read(db, store, jid, fake)
+    assert status == JobStatus.FAILED
     with db() as s:
-        job = s.get(ProcessingJob, jid)
+        ingest = s.get(ProcessingJob, jid)
+        assert ingest is not None and ingest.status == JobStatus.COMPLETED  # rendering is done: grading is possible
+        job = s.get(ProcessingJob, rid)
         assert job is not None and job.error is not None
         assert job.error.startswith("OCR_FAILED: The text-reading service is not available right now. Grading is not affected")
     sub = submission_of(db, jid)
     with db() as s:
-        assert len(s.scalars(select(Page).where(Page.submission_id == sub)).all()) == 2  # the pages exist: grading is possible
+        assert len(s.scalars(select(Page).where(Page.submission_id == sub)).all()) == 2  # the pages exist
     assert fake.calls == 0
 
     fake.health_down = False
     with db() as s:
-        job = s.get(ProcessingJob, jid)
+        job = s.get(ProcessingJob, rid)
         assert job is not None and request_retry(s, job)
         s.commit()
-    assert run_job(db, jid, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED
-    started = [stage for stage, status in stage_log(db, jid) if status == "STARTED"]
-    assert started.count("INTAKE") == 1 and started.count("RASTERIZE") == 1 and started.count("OCR") == 2  # only OCR re-ran
+    assert run_job(db, rid, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED
+    assert [st for st, status in stage_log(db, jid) if status == "STARTED"] == ["INTAKE", "RASTERIZE"]  # ingest never re-ran
+    assert [st for st, status in stage_log(db, rid) if status == "STARTED"] == ["OCR", "OCR"]
     assert all(r[0].status == "OK" for r in runs_by_page(db, jid).values())
 
 
@@ -147,9 +165,10 @@ def test_service_dying_mid_run_keeps_finished_pages_and_the_retry_reads_only_the
     db, store = env
     fake = FakeOcr(down_from=2)  # page 1 reads, then the service dies
     jid = new_booklet_job(db, store, pages=3)
-    assert run_job(db, jid, PIPELINES, services=services(store, fake, abort_after=2)) == JobStatus.FAILED
+    status, rid = ingest_and_read(db, store, jid, fake, abort_after=2)
+    assert status == JobStatus.FAILED
     with db() as s:
-        job = s.get(ProcessingJob, jid)
+        job = s.get(ProcessingJob, rid)
         assert job is not None and (job.error or "").startswith("OCR_FAILED: 2 page(s) were not read")
     assert fake.calls == 3  # page 1 ok, page 2 down, page 3 down -> gave up
     runs = runs_by_page(db, jid)
@@ -157,12 +176,12 @@ def test_service_dying_mid_run_keeps_finished_pages_and_the_retry_reads_only_the
 
     fake.down_from, fake.calls = None, 0
     with db() as s:
-        job = s.get(ProcessingJob, jid)
+        job = s.get(ProcessingJob, rid)
         assert job is not None and request_retry(s, job)
         s.commit()
-    assert run_job(db, jid, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED
+    assert run_job(db, rid, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED
     assert fake.calls == 2  # pages 2 and 3 only: page 1 was skipped
-    assert last_output(db, jid, "OCR") == "ocr:ok=2,failed=0,skipped=1"
+    assert last_output(db, rid, "OCR") == "ocr:ok=2,failed=0,skipped=1"
     assert [len(r) for r in runs_by_page(db, jid).values()] == [1, 1, 1]
 
 
@@ -170,7 +189,8 @@ def test_ocr_retry_pipeline_rereads_only_failed_pages(env: Env) -> None:
     db, store = env
     fake = FakeOcr(fail_calls={1})
     jid = new_booklet_job(db, store, pages=2)
-    assert run_job(db, jid, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED
+    status, _first = ingest_and_read(db, store, jid, fake)
+    assert status == JobStatus.COMPLETED
     assert [r[0].status for r in runs_by_page(db, jid).values()] == ["FAILED", "OK"]
     rid = new_ocr_job(db, submission_of(db, jid))
     fake.calls, fake.fail_calls = 0, set()
@@ -186,14 +206,17 @@ def test_duplicate_and_concurrent_runs_cannot_double_write(env: Env) -> None:
     db, store = env
     fake = FakeOcr(delay_s=0.3)
     first = new_booklet_job(db, store, pages=2)
-    assert run_job(db, first, PIPELINES, services=services(store, FakeOcr())) == JobStatus.COMPLETED
+    assert ingest_and_read(db, store, first, FakeOcr())[0] == JobStatus.COMPLETED
     sub = submission_of(db, first)
     # two re-read jobs for a submission whose pages have NO successful run for this config (a different engine) race each other
     other = FakeOcr(delay_s=0.3, resolved={**RESOLVED, "libraries": {"paddlepaddle": "9.9.9", "paddleocr": "9.9.9"}})
-    j1, j2 = new_ocr_job(db, sub), new_ocr_job(db, sub)
+    # two readings of one booklet can never be active together (test_ocr_retry.py); this test is about the STAGE's own
+    # idempotency, so its two jobs have a test-only kind that the unique index does not cover
+    pipelines = {**PIPELINES, "ocr_race": Pipeline(kind="ocr_race", stages=(OCR_REREAD,))}
+    j1, j2 = new_ocr_job(db, sub, "ocr_race"), new_ocr_job(db, sub, "ocr_race")
     results: list[JobStatus | None] = []
     threads = [
-        threading.Thread(target=lambda j=j: results.append(run_job(db, j, PIPELINES, services=services(store, other))))
+        threading.Thread(target=lambda j=j: results.append(run_job(db, j, pipelines, services=services(store, other))))
         for j in (j1, j2)
     ]
     for t in threads:
@@ -239,8 +262,9 @@ def test_a_disabled_provider_is_never_called(env: Env) -> None:
     db, store = env
     fake = FakeOcr()
     jid = new_booklet_job(db, store, pages=2)
-    assert run_job(db, jid, PIPELINES, services=services(store, fake, enabled=False)) == JobStatus.COMPLETED
-    assert last_output(db, jid, "OCR") == "ocr:disabled" and fake.calls == 0 and runs_by_page(db, jid) == {}
+    status, rid = ingest_and_read(db, store, jid, fake, enabled=False)
+    assert status == JobStatus.COMPLETED
+    assert last_output(db, rid, "OCR") == "ocr:disabled" and fake.calls == 0 and runs_by_page(db, jid) == {}
 
 
 def test_engine_swapped_mid_run_or_wrong_image_size_is_recorded_not_stored_as_text(env: Env) -> None:
@@ -249,13 +273,13 @@ def test_engine_swapped_mid_run_or_wrong_image_size_is_recorded_not_stored_as_te
         engine={"libraries": RESOLVED["libraries"], "models": {"det": {"name": "PP-OCRv5_server_det", "sha256": {}}}}
     )
     jid = new_booklet_job(db, store, pages=1)
-    assert run_job(db, jid, PIPELINES, services=services(store, swapped)) == JobStatus.COMPLETED
+    assert ingest_and_read(db, store, jid, swapped)[0] == JobStatus.COMPLETED
     (run,) = runs_by_page(db, jid)[1]
     assert run.status == "FAILED" and (run.error or "").startswith("engine_changed:")
 
     wrong_size = FakeOcr(size_override=(10, 10))
     jid2 = new_booklet_job(db, store, pages=1)
-    assert run_job(db, jid2, PIPELINES, services=services(store, wrong_size)) == JobStatus.COMPLETED
+    assert ingest_and_read(db, store, jid2, wrong_size)[0] == JobStatus.COMPLETED
     (run2,) = runs_by_page(db, jid2)[1]
     assert run2.status == "FAILED" and (run2.error or "").startswith("size_mismatch:")
 
@@ -265,7 +289,14 @@ def test_a_slow_ocr_stage_keeps_its_lease_and_is_not_taken_over(env: Env) -> Non
     db, store = env
     fake = FakeOcr(delay_s=0.9)
     fast = LeasePolicy(heartbeat=timedelta(seconds=0.2), max_missed=3)
-    jid = new_booklet_job(db, store, pages=2)
+    ingest = new_booklet_job(db, store, pages=2)
+    assert run_job(db, ingest, PIPELINES, services=services(store, fake)) == JobStatus.COMPLETED  # rendering only
+    with db() as s:
+        owner = s.get(ProcessingJob, ingest)
+        assert owner is not None
+    created = ensure_ocr_job(db, submission_of(db, ingest), owner.created_by)
+    assert created is not None
+    jid = created  # the machine-reading job: this is the slow one
     results: list[JobStatus | None] = []
     t = threading.Thread(target=lambda: results.append(run_job(db, jid, PIPELINES, services=services(store, fake), policy=fast)))
     t.start()
@@ -282,7 +313,7 @@ def test_a_slow_ocr_stage_keeps_its_lease_and_is_not_taken_over(env: Env) -> Non
 def test_ocr_tables_are_append_only(env: Env) -> None:
     db, store = env
     jid = new_booklet_job(db, store, pages=1)
-    assert run_job(db, jid, PIPELINES, services=services(store, FakeOcr())) == JobStatus.COMPLETED
+    assert ingest_and_read(db, store, jid, FakeOcr())[0] == JobStatus.COMPLETED
     for sql in (
         "UPDATE ocr_runs SET status = 'OK'",
         "DELETE FROM ocr_runs",

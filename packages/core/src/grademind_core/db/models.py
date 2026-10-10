@@ -184,6 +184,16 @@ class PageQualityFlag(Base):
 
 class ProcessingJob(Base):
     __tablename__ = "processing_jobs"
+    __table_args__ = (
+        # 4.0: at most one machine-reading job per booklet is active at a time, so the automatic first read, an automatic
+        # retry, the sweeper and a manual re-read can never run two readings of the same booklet side by side
+        Index(
+            "uq_processing_jobs_active_ocr",
+            "submission_id",
+            unique=True,
+            postgresql_where=text("kind IN ('ocr', 'ocr_retry') AND status IN ('QUEUED', 'RUNNING')"),
+        ),
+    )
     id: Mapped[uuid.UUID] = _pk()
     kind: Mapped[str] = mapped_column(String(40), nullable=False)
     submission_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("submissions.id"), index=True)
@@ -201,6 +211,10 @@ class ProcessingJob(Base):
     )
     lease_owner: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))  # token of the worker holding the lease (D26)
     heartbeat_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))  # renewed while a stage runs
+    retry_count: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0, server_default="0"
+    )  # automatic retries so far (4.0)
+    next_attempt_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))  # backoff: not re-sent before this time
     version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)  # optimistic locking (spec §14)
     __mapper_args__ = {"version_id_col": version}
 

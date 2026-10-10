@@ -32,14 +32,15 @@ def test_a_job_whose_enqueue_was_lost_is_resent_and_completes(env: tuple[session
     db, store = env
     jid = new_booklet_job(db, store, pages=2)  # the API committed the job, then the broker was down: nothing was enqueued
     sent: list[uuid.UUID] = []
+    enqueue = lambda jid, _kind: sent.append(jid)  # noqa: E731 - the (id, kind) callback the sweeper calls
 
-    assert resend_stuck(db, sent.append, POLICY) == 0  # brand new: inside the grace period, the normal enqueue may still arrive
+    assert resend_stuck(db, enqueue, POLICY) == 0  # brand new: inside the grace period, the normal enqueue may still arrive
     age(db, jid, minutes=10)
-    assert resend_stuck(db, sent.append, POLICY) == 1 and sent == [jid]
+    assert resend_stuck(db, enqueue, POLICY) == 1 and sent == [jid]
 
     assert run_job(db, jid, PIPELINES, services=services(store)) == JobStatus.COMPLETED  # what the re-sent task does
     assert len(pages_of(db, jid)) == 2
-    assert resend_stuck(db, sent.append, POLICY) == 0 and sent == [jid]  # finished: never re-sent again
+    assert resend_stuck(db, enqueue, POLICY) == 0 and sent == [jid]  # finished: never re-sent again
 
 
 def test_only_stuck_jobs_are_resent(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
@@ -51,7 +52,8 @@ def test_only_stuck_jobs_are_resent(env: tuple[sessionmaker[Session], ObjectStor
     age(db, done, 30, status=JobStatus.COMPLETED)
     age(db, failed, 30, status=JobStatus.FAILED)  # failed jobs wait for an explicit retry, they are not re-run by themselves
     sent: list[uuid.UUID] = []
-    resend_stuck(db, sent.append, POLICY)
+    enqueue = lambda jid, _kind: sent.append(jid)  # noqa: E731 - the (id, kind) callback the sweeper calls
+    resend_stuck(db, enqueue, POLICY)
     assert {stuck_queued, dead} <= set(sent) and not {fresh, live, done, failed} & set(sent)
 
 
@@ -71,7 +73,8 @@ def test_the_limit_bounds_one_sweep(env: tuple[sessionmaker[Session], ObjectStor
     for j in ids:
         age(db, j, 30)
     sent: list[uuid.UUID] = []
-    assert resend_stuck(db, sent.append, POLICY, limit=2) == 2 and len(sent) == 2
+    enqueue = lambda jid, _kind: sent.append(jid)  # noqa: E731 - the (id, kind) callback the sweeper calls
+    assert resend_stuck(db, enqueue, POLICY, limit=2) == 2 and len(sent) == 2
 
 
 def test_an_enqueue_failure_propagates_so_the_next_sweep_retries(env: tuple[sessionmaker[Session], ObjectStore]) -> None:
@@ -79,11 +82,12 @@ def test_an_enqueue_failure_propagates_so_the_next_sweep_retries(env: tuple[sess
     jid = new_booklet_job(db, store, pages=1)
     age(db, jid, 30)
 
-    def broken(_: uuid.UUID) -> None:
+    def broken(_: uuid.UUID, __: str) -> None:
         raise ConnectionError("broker unavailable")
 
     with pytest.raises(ConnectionError):
         resend_stuck(db, broken, POLICY)
     sent: list[uuid.UUID] = []
-    resend_stuck(db, sent.append, POLICY)  # the job is still QUEUED, so the next sweep tries again
+    enqueue = lambda jid, _kind: sent.append(jid)  # noqa: E731 - the (id, kind) callback the sweeper calls
+    resend_stuck(db, enqueue, POLICY)  # the job is still QUEUED, so the next sweep tries again
     assert jid in sent

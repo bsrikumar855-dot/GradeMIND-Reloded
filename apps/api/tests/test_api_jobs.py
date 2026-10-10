@@ -81,8 +81,6 @@ def test_upload_creates_and_enqueues_an_ingest_job(world: dict[str, Any], exam: 
         ("INTAKE", "SUCCEEDED"),
         ("RASTERIZE", "STARTED"),
         ("RASTERIZE", "SUCCEEDED"),
-        ("OCR", "STARTED"),
-        ("OCR", "SUCCEEDED"),
     ]
     pages = world["client"].get(f"/api/submissions/{out['id']}/pages", headers=login(world, "exA")).json()
     assert [(pg["page_no"], pg["width"]) for pg in pages] == [(1, 1240), (2, 1240)]
@@ -103,16 +101,12 @@ def test_sse_replays_history_and_resumes_from_last_event_id(world: dict[str, Any
         ("INTAKE", "SUCCEEDED"),
         ("RASTERIZE", "STARTED"),
         ("RASTERIZE", "SUCCEEDED"),
-        ("OCR", "STARTED"),
-        ("OCR", "SUCCEEDED"),
     ]
     assert events[-1][0] == "job" and events[-1][2]["status"] == "COMPLETED"  # terminal: the stream ends
     ids = [int(e[1]) for e in stage_events if e[1]]
     assert ids == sorted(ids)
     resumed = sse(world, jid, last_event_id=str(ids[0]))
     assert [e[2]["status"] for e in resumed if e[0] == "stage"] == [
-        "SUCCEEDED",
-        "STARTED",
         "SUCCEEDED",
         "STARTED",
         "SUCCEEDED",
@@ -172,4 +166,4 @@ def test_sse_streams_live_progress_until_terminal(world: dict[str, Any], exam: s
         t.join()
     statuses = [e[2]["status"] for e in events if e[0] == "job"]
     assert statuses[0] == "QUEUED" and statuses[-1] == "COMPLETED"
-    assert [e[2]["status"] for e in events if e[0] == "stage"] == ["STARTED", "SUCCEEDED"] * 3
+    assert [e[2]["status"] for e in events if e[0] == "stage"] == ["STARTED", "SUCCEEDED"] * 2

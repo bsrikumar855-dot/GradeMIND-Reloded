@@ -96,10 +96,8 @@ services:
   worker:
     image: grademind-app:dev
     environment: *app-env
-    # -B: embedded beat for the requeue sweep (single worker in v1)
-    # 6 slots: the OCR stage waits on the (one-page-at-a-time) OCR service for ~12 s per page, so a few booklets in machine
-    # reading must not starve other uploads of page rendering. A dedicated OCR queue would remove the limit (see PHASE_3_REPORT).
-    command: ["celery", "-A", "grademind_worker.celery_app", "worker", "-B", "--concurrency=6", "--loglevel=INFO", "-s", "/tmp/celerybeat-schedule"]
+    # -B: embedded beat for the requeue sweep (single worker in v1). Default queue only: page rendering never waits for OCR.
+    command: ["celery", "-A", "grademind_worker.celery_app", "worker", "-B", "-Q", "celery", "--concurrency=2", "--loglevel=INFO", "-s", "/tmp/celerybeat-schedule"]
     healthcheck:
       test: ["CMD-SHELL", "celery -A grademind_worker.celery_app inspect ping -d celery@$$HOSTNAME --timeout 5"]
       interval: 20s
@@ -109,7 +107,23 @@ services:
     depends_on:
       bootstrap: {condition: service_completed_successfully}
       redis: {condition: service_healthy}
-      ocr: {condition: service_healthy}  # not required for grading, but a booklet uploaded at start-up should be read
+
+  # Machine reading (4.0, D29): its own queue and worker. Concurrency 1 per OCR instance, matching the service, which reads one
+  # page at a time. It does not gate anything: a stopped or crashed ocr-worker leaves grading untouched.
+  ocr-worker:
+    image: grademind-app:dev
+    environment: *app-env
+    command: ["celery", "-A", "grademind_worker.celery_app", "worker", "-Q", "ocr", "--concurrency=1", "-n", "ocr@%h", "--loglevel=INFO"]
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A grademind_worker.celery_app inspect ping -d ocr@$$HOSTNAME --timeout 5"]
+      interval: 20s
+      timeout: 15s
+      retries: 6
+      start_period: 20s
+    depends_on:
+      bootstrap: {condition: service_completed_successfully}
+      redis: {condition: service_healthy}
+      ocr: {condition: service_healthy}
 
   ocr:
     build:

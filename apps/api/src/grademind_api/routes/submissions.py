@@ -65,11 +65,11 @@ class SubmissionDetail(SubmissionOut):
     source_url_expires_in: int
 
 
-def enqueue_after_commit(queue: JobQueue, job_id: uuid.UUID, request_id: str) -> None:
+def enqueue_after_commit(queue: JobQueue, job_id: uuid.UUID, request_id: str, kind: str = "ingest") -> None:
     """Enqueue only after the commit, so the worker can always see the job. If the broker is down the upload still
-    succeeded: the job stays QUEUED and is visible as such (re-sending stuck QUEUED jobs is not implemented yet)."""
+    succeeded: the job stays QUEUED and is visible as such; the worker's sweeper re-sends it."""
     try:
-        queue.enqueue(job_id)
+        queue.enqueue(job_id, kind)
     except Exception as e:  # noqa: BLE001 - logged; the job remains QUEUED
         log.warning(json.dumps({"request_id": request_id, "job_id": str(job_id), "error": f"enqueue failed: {type(e).__name__}"}))
 
@@ -150,6 +150,8 @@ class SubmissionRow(SubmissionOut):
     job_status: str | None
     job_stage: str | None  # e.g. "OCR" while the machine reading runs (grading does not wait for it)
     job_error: str | None
+    job_kind: str | None  # "ingest", or "ocr" / "ocr_retry" once the machine reading is the latest job
+    job_retry_count: int  # automatic retries of the machine reading so far (bounded; 0 for other jobs)
     page_count: int
     pages_ready: bool  # every page image is rendered: grading can start, whatever the rest of the job is doing
 
@@ -196,6 +198,8 @@ def list_submissions(
             job_status=jobs[x.id].status.value if x.id in jobs else None,
             job_stage=jobs[x.id].current_stage if x.id in jobs else None,
             job_error=jobs[x.id].error if x.id in jobs else None,
+            job_kind=jobs[x.id].kind if x.id in jobs else None,
+            job_retry_count=jobs[x.id].retry_count if x.id in jobs else 0,
             page_count=int(counts.get(x.id, 0)),
             pages_ready=x.id in ready,
         )

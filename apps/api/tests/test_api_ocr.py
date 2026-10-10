@@ -10,6 +10,7 @@ from typing import Any
 
 import pytest
 from conftest import login, needs_db, needs_s3
+from drive import drive
 from fake_ocr import RESOLVED, FakeOcr, services
 from pdfgen import make_pdf
 from sqlalchemy import select
@@ -18,7 +19,7 @@ from sqlalchemy.exc import DBAPIError
 
 from grademind_core.db.models import AuditLog, Page
 from grademind_core.db.ocr_models import LineCorrection
-from grademind_core.jobs import run_job
+from grademind_core.jobs import RetryPolicy
 from grademind_core.line_corrections import apply_ops
 from grademind_worker.stages import PIPELINES
 
@@ -46,7 +47,11 @@ def upload(w: dict[str, Any], exam_id: str, tag: str) -> dict[str, Any]:
 
 
 def work(w: dict[str, Any], job_id: str, fake: FakeOcr | None = None, **kw: Any) -> Any:
-    return run_job(w["sessions"], uuid.UUID(job_id), PIPELINES, services=services(w["store"], fake or FakeOcr(), **kw))
+    """Ingest the booklet, then read it (the machine-reading job the worker creates afterwards). Returns the last job's status."""
+    status, _ran = drive(
+        w["sessions"], uuid.UUID(job_id), PIPELINES, services(w["store"], fake or FakeOcr(), **kw), RetryPolicy(max_retries=0)
+    )  # no automatic retry here: these tests look at the state a failure leaves behind (4.0 tests cover the retries)
+    return status
 
 
 def row(w: dict[str, Any], exam_id: str, sid: str, who: str = "teacher") -> dict[str, Any]:

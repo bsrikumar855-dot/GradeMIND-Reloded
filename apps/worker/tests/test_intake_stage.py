@@ -6,6 +6,7 @@ import hashlib
 import io
 import uuid
 
+from drive import drive
 from fake_ocr import services
 from pdfgen import make_pdf, make_png
 from sqlalchemy import select
@@ -26,7 +27,7 @@ def test_pdf_booklet_becomes_page_images(env: tuple[sessionmaker[Session], Objec
     db, store = env
     data = make_pdf([["page one " + uuid.uuid4().hex], ["page two"], ["page three"]])
     jid = ingest_job(db, put(store, data), hashlib.sha256(data).hexdigest())
-    assert run_job(db, jid, PIPELINES, services=services(store)) == JobStatus.COMPLETED
+    assert drive(db, jid, PIPELINES, services(store))[0] == JobStatus.COMPLETED  # ingest, then the reading job
     pages = pages_of(db, jid)
     expected = [(n, 1240, 1755, "rasterize-0.1.0") for n in (1, 2, 3)]
     assert [(pg.page_no, pg.width, pg.height, pg.renderer) for pg in pages] == expected
@@ -69,7 +70,7 @@ def test_rasterize_resumes_without_duplicating_pages(env: tuple[sessionmaker[Ses
                 height=1,
             )
         )
-    assert run_job(db, jid, PIPELINES, services=services(store)) == JobStatus.COMPLETED
+    assert drive(db, jid, PIPELINES, services(store))[0] == JobStatus.COMPLETED  # ingest, then the reading job
     pages = pages_of(db, jid)
     assert (
         [pg.page_no for pg in pages] == [1, 2] and pages[0].width == 1 and pages[1].width == 1240

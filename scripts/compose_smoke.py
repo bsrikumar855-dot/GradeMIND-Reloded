@@ -157,19 +157,25 @@ def main() -> int:
     check(bool(events) and events[-1]["status"] == "COMPLETED", f"job via SSE -> {[e['status'] for e in events]}")
     code, job = call("GET", f"/api/jobs/{sub['job_id']}", headers=auth)
     stages = [(s["stage"], s["status"]) for s in job["stages"]]
-    expected = [
-        ("INTAKE", "STARTED"),
-        ("INTAKE", "SUCCEEDED"),
-        ("RASTERIZE", "STARTED"),
-        ("RASTERIZE", "SUCCEEDED"),
-        ("OCR", "STARTED"),
-        ("OCR", "SUCCEEDED"),
-    ]
-    check(stages == expected, f"stage log incl. the OCR stage: {stages}")
-    code, summary = call("GET", f"/api/exams/{exam['id']}/ocr-summary", headers=auth)
-    mine = [r for r in summary if r["submission_id"] == sub["id"]]
+    expected = [("INTAKE", "STARTED"), ("INTAKE", "SUCCEEDED"), ("RASTERIZE", "STARTED"), ("RASTERIZE", "SUCCEEDED")]
+    check(stages == expected, f"the ingest job renders pages and nothing else (machine reading is its own job): {stages}")
+    # 4.0: the machine reading is a separate job, run by the ocr-worker on the ocr queue
+    mine: list[dict[str, Any]] = []
+    deadline = time.monotonic() + 300
+    while time.monotonic() < deadline:
+        code, summary = call("GET", f"/api/exams/{exam['id']}/ocr-summary", headers=auth)
+        mine = [r for r in summary if r["submission_id"] == sub["id"]]
+        if mine and mine[0]["pages_read"] + mine[0]["pages_failed"] >= 2:
+            break
+        time.sleep(3)
     ok = bool(mine) and (mine[0]["pages"], mine[0]["pages_read"], mine[0]["pages_failed"]) == (2, 2, 0)
-    check(code == 200 and ok, f"both pages machine-read by the real engine: {mine}")
+    check(ok, f"both pages machine-read by the real engine: {mine}")
+    code, rows = call("GET", f"/api/exams/{exam['id']}/submissions", headers=auth)
+    row = next(r for r in rows if r["id"] == sub["id"])
+    check(
+        row["job_kind"] == "ocr" and row["job_status"] == "COMPLETED",
+        f"the latest job is the machine reading: {row['job_kind']} {row['job_status']}",
+    )
     code, pages = call("GET", f"/api/submissions/{sub['id']}/pages", headers=auth)
     check(code == 200 and [pg["page_no"] for pg in pages] == [1, 2], "booklet rendered to 2 page images")
     with urllib.request.urlopen(pages[0]["image_url"], timeout=10) as r:

@@ -241,7 +241,7 @@ def test_resumable_jobs_finds_lost_enqueues_and_dead_workers(db: sessionmaker[Se
         s.execute(update(ProcessingJob).where(ProcessingJob.id == live).values(status=JobStatus.RUNNING))
         s.execute(update(ProcessingJob).where(ProcessingJob.id == done).values(status=JobStatus.COMPLETED, updated_at=old))
     with db() as s:
-        found = set(resumable_jobs(s, queued_grace=timedelta(minutes=2), policy=LeasePolicy()))
+        found = {jid for jid, _kind in resumable_jobs(s, queued_grace=timedelta(minutes=2), policy=LeasePolicy())}
     assert {lost, dead} <= found and not {fresh, live, done} & found
 
 

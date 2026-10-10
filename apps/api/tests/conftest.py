@@ -41,7 +41,7 @@ class RecordingQueue:
         self.sent: list[uuid.UUID] = []
         self.down = False
 
-    def enqueue(self, job_id: uuid.UUID) -> None:
+    def enqueue(self, job_id: uuid.UUID, kind: str = "ingest") -> None:
         if self.down:
             raise ConnectionError("broker unavailable")
         self.sent.append(job_id)

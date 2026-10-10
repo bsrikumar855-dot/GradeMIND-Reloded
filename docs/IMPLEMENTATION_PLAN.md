@@ -83,7 +83,18 @@ One commit per step, CI green before the next, STATUS.md updated each time:
 
 ## Phase 4: review polish, analytics, reports
 
-Review queue polish, examiner and student reports, score distribution, per-question difficulty, override rate.
+Review queue polish, examiner and student reports, score distribution, per-question difficulty, override rate (D24, D29). One commit per step, CI green before the next.
+
+| Step | What |
+|---|---|
+| 4.0 | OCR hardening: dedicated OCR queue + worker (concurrency 1 per OCR instance); bounded automatic retry with backoff on `ocr_unavailable`; "unread" state + manual retry button; the sweeper also covers failed OCR jobs; test with the OCR service killed and restarted mid-booklet; keep the CI failure dump |
+| 4.1 | Admin UI: create users, assign examiners to exams; role checks tested (an examiner must not see other exams or the audit tab) |
+| 4.2 | Finalize and reopen: append-only result snapshots (rubric version, ScoreComputer version, policy, per-question marks, who/when); reopen needs a reason; a recompute-and-verify command (I12) |
+| 4.3 | Analytics from verdicts only (no OCR-derived numbers); show n; no percentage on n < 5 |
+| 4.4 | Reports: per-student result sheet (PDF) and exam summary (CSV/PDF), each stating its snapshot; CSV formula-injection guard; generation audited |
+| 4.5 | Accessibility + input: axe checks in Playwright, keyboard-only grading run, touch pointer events for box drawing, narrow-screen check; screen-reader testing stays a manual gap |
+| 4.6 | Pilot readiness: Postgres + MinIO backup/restore with a CI restore test; operator runbook; security pass (login rate limit, session expiry, headers, dependency audit report) |
+| 4.7 | E2E in CI: 2 examiners + 1 teacher, 2 booklets, grade, override, finalize, report, reopen, re-finalize, verify, backup/restore round trip |
 
 ## Blocking data requirement (D23)
 

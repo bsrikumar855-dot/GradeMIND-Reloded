@@ -66,6 +66,10 @@ export type SubmissionRow = {
   job_status: string | null;
   job_stage: string | null;
   job_error: string | null;
+  /** "ingest", or "ocr" / "ocr_retry" once the machine reading is the latest job */
+  job_kind: string | null;
+  /** automatic retries of the machine reading so far (bounded) */
+  job_retry_count: number;
   page_count: number;
   /** every page image is rendered: grading can start, whatever the rest of the job (machine reading) is doing */
   pages_ready: boolean;

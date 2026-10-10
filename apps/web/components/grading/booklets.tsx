@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { api, ClientError } from "@/lib/client";
+import { readingNote } from "@/lib/reading-note";
 import type { OcrSummary, SubmissionRow } from "@/lib/types";
 
 const STATUS: Record<string, { text: string; tone: "neutral" | "success" | "warning" | "danger" }> = {
@@ -162,9 +163,7 @@ export function Booklets({ examId, canUpload }: { examId: string; canUpload: boo
                         {r.job_status === "FAILED" && !r.pages_ready ? <span className="ml-2 text-muted-foreground">{r.job_error}</span> : null}
                       </td>
                       <td className="px-4 py-3 text-muted-foreground" data-testid="machine-reading">
-                        {!o || o.pages === 0
-                          ? "—"
-                          : `${o.pages_read} of ${o.pages} pages read${o.pages_failed ? `, ${o.pages_failed} could not be read` : ""}`}
+                        {readingNote(r, o)}
                       </td>
                       <td className="px-4 py-3 text-right">
                         {ready ? (
@@ -178,7 +177,7 @@ export function Booklets({ examId, canUpload }: { examId: string; canUpload: boo
                         ) : null}
                         {ready && canUpload && r.job_status && r.job_status !== "QUEUED" && r.job_status !== "RUNNING" && o && o.pages_read < o.pages ? (
                           <Button size="sm" variant="ghost" className="ml-1" onClick={() => void rereadOcr(r.id)}>
-                            Read text again
+                            Retry machine reading
                           </Button>
                         ) : null}
                       </td>

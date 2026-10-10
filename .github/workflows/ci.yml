@@ -124,6 +124,8 @@ jobs:
           pnpm exec playwright test
       - name: Phase 3 evidence from the real database (corrections, audit trail, append-only triggers)
         run: ./scripts/phase3_evidence.sh "docker compose exec -T postgres psql -U grademind -d grademind"
+      - name: OCR killed and restarted in the middle of a booklet (4.0; retried by itself, no page read twice, grading never blocked)
+        run: python3 scripts/ocr_chaos.py
       - name: logs on failure
         if: failure()
         run: |

@@ -1,6 +1,7 @@
-"""Pipeline definitions (spec §15, re-scoped by D19/D24/D28). ingest = INTAKE (storage integrity) -> RASTERIZE (page images
-for the viewer; grading can start as soon as this stage is done) -> OCR (display-only machine reading, never needed for grading).
-ocr_retry = OCR again for one submission (pages that failed or were never read)."""
+"""Pipeline definitions (spec §15, re-scoped by D19/D24/D28/D29). ingest = INTAKE (storage integrity) -> RASTERIZE (page images
+for the viewer; grading can start as soon as this stage is done). Machine reading is a separate job on its own queue (4.0):
+ocr = the first reading of a booklet (created when ingest completes); ocr_retry = a reading the examiner asked for again.
+Both read only the pages that have no successful reading yet."""
 
 from __future__ import annotations
 
@@ -10,7 +11,7 @@ import io
 from sqlalchemy import select
 
 from grademind_core.db.models import Page, Submission
-from grademind_core.jobs import OCR_RETRY_KIND, Pipeline, Stage, StageContext, StageError
+from grademind_core.jobs import OCR_KIND, OCR_RETRY_KIND, Pipeline, Stage, StageContext, StageError
 from grademind_core.pdf import PdfError, page_images
 from grademind_core.storage import ObjectKind, ObjectStore
 from grademind_worker.ocr_stage import OCR_VERSION, run_ocr
@@ -98,6 +99,7 @@ OCR_REREAD = Stage(name="OCR", component_version=OCR_VERSION, input_hash=_reread
 
 OCR_RETRY = OCR_RETRY_KIND
 PIPELINES: dict[str, Pipeline] = {
-    INGEST: Pipeline(kind=INGEST, stages=(INTAKE, RASTERIZE, OCR)),
+    INGEST: Pipeline(kind=INGEST, stages=(INTAKE, RASTERIZE)),
+    OCR_KIND: Pipeline(kind=OCR_KIND, stages=(OCR,)),
     OCR_RETRY: Pipeline(kind=OCR_RETRY, stages=(OCR_REREAD,)),
 }

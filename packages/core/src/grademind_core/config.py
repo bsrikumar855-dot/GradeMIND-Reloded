@@ -69,6 +69,11 @@ class Settings(BaseSettings):
     # --- OCR assist (D28): display-only machine reading ---
     ocr_page_timeout_s: float = Field(default=180.0, gt=0)  # one page on CPU takes ~12 s; the service reads one page at a time
     ocr_abort_after_unavailable: int = Field(default=2, ge=1)  # consecutive "service unavailable" pages before the stage gives up
+    # 4.0 (D29): a machine reading that failed because the service was unavailable is retried by itself, a bounded number of
+    # times with exponential backoff (base * 4**n, capped); after that the booklet shows "unread" and the examiner can retry
+    ocr_auto_retries: int = Field(default=4, ge=0)
+    ocr_retry_base_s: float = Field(default=30.0, gt=0)
+    ocr_retry_cap_s: float = Field(default=900.0, gt=0)
 
     # --- jobs (spec §15) ---
     job_heartbeat_seconds: float = Field(default=30, gt=0)  # a running stage renews its lease this often (D26)

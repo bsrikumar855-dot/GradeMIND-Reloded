@@ -162,5 +162,5 @@ def retry_job(
         )
     )
     db.commit()
-    enqueue_after_commit(queue, job.id, request.state.request_id)
+    enqueue_after_commit(queue, job.id, request.state.request_id, job.kind)
     return _job_out(db, job)

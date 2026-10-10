@@ -6,6 +6,7 @@ acks_late + prefetch 1: a worker that dies mid-job does not lose the message; th
 
 from __future__ import annotations
 
+import logging
 import uuid
 from datetime import timedelta
 from functools import lru_cache
@@ -14,13 +15,22 @@ from celery import Celery
 
 from grademind_core.config import OcrProvider, get_settings
 from grademind_core.db.session import session_factory
-from grademind_core.jobs import RUN_JOB_TASK, LeasePolicy, resend_stuck, run_job
+from grademind_core.jobs import (
+    RUN_JOB_TASK,
+    LeasePolicy,
+    RetryPolicy,
+    queue_for_kind,
+    resend_stuck,
+    run_job,
+)
 from grademind_core.logredact import install as install_log_redaction
 from grademind_core.ocr_client import OcrServiceClient
 from grademind_core.providers import ProviderRegistry
 from grademind_core.storage import ObjectStore
+from grademind_worker.followups import after_job
 from grademind_worker.stages import PIPELINES
 
+log = logging.getLogger(__name__)
 install_log_redaction()  # D26.4
 app = Celery("grademind", broker=get_settings().redis_url)
 app.conf.update(
@@ -54,6 +64,17 @@ def _store() -> ObjectStore:
     return ObjectStore(get_settings())
 
 
+def _retry_policy() -> RetryPolicy:
+    s = get_settings()
+    return RetryPolicy(
+        max_retries=s.ocr_auto_retries, base=timedelta(seconds=s.ocr_retry_base_s), cap=timedelta(seconds=s.ocr_retry_cap_s)
+    )
+
+
+def _send(job_id: uuid.UUID, kind: str) -> None:
+    run_job_task.apply_async(args=[str(job_id)], queue=queue_for_kind(kind))
+
+
 @app.task(name=RUN_JOB_TASK)  # type: ignore[untyped-decorator]
 def run_job_task(job_id: str) -> str | None:
     s = get_settings()
@@ -64,9 +85,10 @@ def run_job_task(job_id: str) -> str | None:
         services={"store": _store(), "providers": _providers(), "ocr_abort_after_unavailable": s.ocr_abort_after_unavailable},
         policy=_policy(),
     )
+    after_job(session_factory(s.database_url), uuid.UUID(job_id), status, _send, _retry_policy())
     return status.value if status else None
 
 
 @app.task(name="grademind.requeue_sweep")  # type: ignore[untyped-decorator]
 def requeue_sweep() -> int:
-    return resend_stuck(session_factory(get_settings().database_url), lambda jid: run_job_task.delay(str(jid)), _policy())
+    return resend_stuck(session_factory(get_settings().database_url), _send, _policy(), retry=_retry_policy())

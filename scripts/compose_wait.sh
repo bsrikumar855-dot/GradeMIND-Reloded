@@ -14,7 +14,7 @@ while true; do
     st=$(docker compose ps -a --format '{{.State}} {{.ExitCode}}' "$svc" 2>/dev/null || true)
     case "$st" in "exited 0") ;; exited*) echo "one-shot $svc failed: $st"; exit 1 ;; *) pending="$pending $svc" ;; esac
   done
-  for svc in postgres redis minio api worker ocr web; do
+  for svc in postgres redis minio api worker ocr-worker ocr web; do
     h=$(docker compose ps --format '{{.Health}}' "$svc" 2>/dev/null || true)
     [ "$h" = healthy ] || { pending="$pending $svc(${h:-down})"; bad=1; }
   done

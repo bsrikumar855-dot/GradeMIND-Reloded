@@ -1,7 +1,7 @@
 # STATUS
 
 **Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
-**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 (grading core) is APPROVED (D28)**; **Phase 3 (OCR assist, assistive only) is built and awaiting owner review at the gate**: [PHASE_2_REPORT.md](PHASE_2_REPORT.md).
+**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 (grading core) is APPROVED (D28)**; **Phase 3 (OCR assist) is APPROVED (D29)**; **Phase 4 (review polish, analytics, reports, pilot readiness) is in progress**: [PHASE_2_REPORT.md](PHASE_2_REPORT.md).
 [PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
 ## BLOCKING items
@@ -31,6 +31,27 @@
 - **Phase 0c (prepared, nothing sent):** pre-registered plan + decision rule (`docs/PHASE_0C_PLAN.md`, commit `5911e5c`), prompt
   `prompts/ocr_ceiling/v1.md`, runner `spike/ceiling/run_ceiling.py` (gates verified: exit 2 with 6 unmet gates; dry run 100 requests, sent=0),
   report `spike/report_0c.py` (refuses non-OWNER_VERIFIED GT; selftest on synthetic outputs). Unit tests in `spike/tests/test_ceiling.py`.
+
+## Phase 4 (review polish, analytics, reports, pilot readiness; D29) progress
+
+Each step is one commit with CI green before the next. Test numbers come from `make test` / CI in the same session (rule 13).
+
+| Step | State | Evidence |
+|---|---|---|
+| 4.0 OCR hardening (own queue + worker, bounded automatic retry with backoff, "unread" + manual retry, sweeper covers failed readings, killed-and-restarted OCR test) | **Implemented; CI result pending** | local: `make test` 331 passed, `make lint` 0, web unit tests 19/19, tsc and eslint clean. **Not verifiable on this host:** the kill/restart-OCR run (`scripts/ocr_chaos.py`) needs the Docker daemon to kill containers, which this host forbids (AppArmor); it runs in CI only |
+| 4.1 Admin UI: users, examiner assignment | Not started | |
+| 4.2 Finalize / reopen / snapshots / verify command | Not started | |
+| 4.3 Analytics | Not started | |
+| 4.4 Reports | Not started | |
+| 4.5 Accessibility + input | Not started | |
+| 4.6 Pilot readiness (backup/restore, runbook, security pass) | Not started | |
+| 4.7 E2E in CI | Not started | |
+
+4.0 notes: machine reading is no longer part of the ingest job. When ingest completes, the worker creates an `ocr` job on the `ocr` queue,
+served by the new `ocr-worker` compose service (concurrency 1); the default worker serves only page rendering (concurrency back to 2). A reading that fails because
+the service was unavailable goes back to QUEUED with a `next_attempt_at` (30 s, 2 min, 8 min, then 15 min, at most 4 retries); the sweeper (every 60 s) sends it when due, so
+a restart of any process loses nothing. After the last retry the booklet shows "Unread" and the Retry machine reading button. One active reading per booklet is enforced by
+a unique index. Known limit: a deep OCR queue still collects one duplicate (harmless) message per sweep grace period for jobs it re-sends.
 
 ## Phase 3 (document intelligence, assistive only; D28) progress
 
