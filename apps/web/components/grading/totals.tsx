@@ -70,6 +70,7 @@ export function Totals({ examId }: { examId: string }) {
                   </td>
                   <td className="px-4 py-3">
                     {r.total === null ? <Badge>Not started</Badge> : r.complete ? <Badge tone="success">Complete</Badge> : <Badge tone="warning">Incomplete</Badge>}
+                    {r.finalized ? <Badge tone="success">Finalized (snapshot {r.snapshot_no})</Badge> : null}
                     {r.flags.map((f) => (
                       <Badge key={f} tone="warning" className="ml-1">
                         {f.replaceAll("_", " ").toLowerCase()}

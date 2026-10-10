@@ -136,8 +136,10 @@ source_modules = [
     "grademind_core.scoring",
     "grademind_core.grading",
     "grademind_core.evaluation",
+    "grademind_core.result_snapshots",
     "grademind_api.routes.grading",
     "grademind_api.routes.grading_docs",
+    "grademind_api.routes.finalize",
 ]
 forbidden_modules = [
     "grademind_core.db.ocr_models",

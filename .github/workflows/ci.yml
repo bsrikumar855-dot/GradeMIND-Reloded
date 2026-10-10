@@ -124,6 +124,11 @@ jobs:
           pnpm exec playwright test
       - name: Phase 3 evidence from the real database (corrections, audit trail, append-only triggers)
         run: ./scripts/phase3_evidence.sh "docker compose exec -T postgres psql -U grademind -d grademind"
+      - name: verify every finalized result by recomputing it from the raw records (I12; fails loudly on any difference)
+        run: |
+          set -euo pipefail
+          docker compose exec -T api python -m grademind_core.cli verify-snapshots | tee verify.out
+          grep -q '^VERIFY OK: [1-9][0-9]* snapshot' verify.out   # at least one snapshot was checked, not an empty run
       - name: OCR killed and restarted in the middle of a booklet (4.0; retried by itself, no page read twice, grading never blocked)
         run: python3 scripts/ocr_chaos.py
       - name: logs on failure

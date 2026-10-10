@@ -73,6 +73,8 @@ export type SubmissionRow = {
   page_count: number;
   /** every page image is rendered: grading can start, whatever the rest of the job (machine reading) is doing */
   pages_ready: boolean;
+  /** the result is frozen in a snapshot (read-only until reopened) */
+  finalized: boolean;
 };
 
 export type OcrSummary = { submission_id: string; pages: number; pages_read: number; pages_failed: number };
@@ -111,10 +113,11 @@ export type WorkspaceData = {
   regions: Region[];
   evaluations: EvaluationInfo[];
   score: ScoreInfo;
+  finalization: { state: "OPEN" | "FINALIZED"; snapshot_no: number | null };
 };
 export type TotalsData = {
   columns: { id: string; label: string; max: string }[];
-  rows: { submission_id: string; student_ref: string; total: string | null; max_total: string; complete: boolean; sections: Record<string, string>; flags: string[] }[];
+  rows: { submission_id: string; student_ref: string; total: string | null; max_total: string; complete: boolean; sections: Record<string, string>; flags: string[]; finalized: boolean; snapshot_no: number | null }[];
 };
 export type AuditRow = { at: string; actor_id: string | null; action: string; entity_type: string; entity_id: string | null; details: Record<string, unknown> };
 
@@ -150,4 +153,24 @@ export type UserRow = {
   role: "admin" | "teacher" | "examiner";
   is_active: boolean;
   created_at: string;
+};
+
+export type FinalizationIssue = { code: string; message: string };
+export type FinalizationData = {
+  state: "OPEN" | "FINALIZED";
+  snapshot: {
+    id: string;
+    snapshot_no: number;
+    rubric_version_no: number;
+    paper_version_no: number;
+    score_computer_version: string;
+    total: string;
+    max_total: string;
+    finalized_by: string;
+    finalized_at: string;
+  } | null;
+  ready: boolean;
+  blockers: FinalizationIssue[];
+  not_attempted: { qid: string; label: string }[];
+  history: { action: "FINALIZED" | "REOPENED"; at: string; by: string; reason: string | null; snapshot_no: number }[];
 };

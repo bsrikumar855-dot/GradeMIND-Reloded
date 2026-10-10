@@ -23,6 +23,7 @@ const STATUS: Record<string, { text: string; tone: "neutral" | "success" | "warn
 
 /** What the examiner should read in the Status column. Grading never waits for machine reading (D28). */
 function describe(r: SubmissionRow): { text: string; tone: "neutral" | "success" | "warning" | "danger"; note?: string } {
+  if (r.finalized) return { text: "Finalized", tone: "success", note: "Read-only until reopened." };
   if (!r.pages_ready) return STATUS[r.job_status ?? "QUEUED"] ?? { text: "Waiting to process", tone: "neutral" };
   if (r.job_status === "COMPLETED" || r.job_status === "REVIEW_REQUIRED") return { text: "Ready", tone: "success" };
   if (r.job_status === "FAILED") return { text: "Ready to grade", tone: "success", note: "Machine reading is unavailable for some pages." };

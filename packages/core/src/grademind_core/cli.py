@@ -19,6 +19,7 @@ from grademind_core.config import get_settings
 from grademind_core.dataset_export import SCOPES, ExportRefusedError, export_corrections
 from grademind_core.db.models import AuditLog, Organization, Role, User
 from grademind_core.db.session import session_factory
+from grademind_core.result_snapshots import verify_all
 from grademind_core.security import hash_password
 from grademind_core.storage import ObjectStore
 
@@ -82,6 +83,28 @@ def create_user(org: str, email: str, role: str, name: str) -> int:
     return 0
 
 
+def verify_snapshots_cmd(exam: str | None, submission: str | None) -> int:
+    """Recompute every finalized result from the raw records and compare (I12). Exit codes: 0 every snapshot reproduces exactly,
+    1 at least one differs (each difference is printed), 2 the command could not run."""
+    try:
+        exam_id = uuid.UUID(exam) if exam else None
+        sub_id = uuid.UUID(submission) if submission else None
+    except ValueError:
+        print("--exam and --submission must be ids", file=sys.stderr)
+        return 2
+    with session_factory(get_settings().database_url)() as s:
+        report = verify_all(s, exam_id, sub_id)
+    if report.ok:
+        print(f"VERIFY OK: {report.checked} snapshot(s) recomputed from the raw records; every one reproduces exactly")
+        return 0
+    for key, problems in report.failures.items():
+        print(f"VERIFY FAILED for booklet/snapshot {key}:", file=sys.stderr)
+        for p in problems:
+            print(f"  - {p}", file=sys.stderr)
+    print(f"VERIFY FAILED: {len(report.failures)} of {report.checked} snapshot(s) do not reproduce", file=sys.stderr)
+    return 1
+
+
 def export_corrections_cmd(admin: str, scope: str, out: str, exam: str | None, include_history: bool) -> int:
     """Owner-only dataset export (3.5). Exit codes: 0 complete, 2 refused (nothing written), 3 written, some rows skipped."""
     settings = get_settings()
@@ -117,6 +140,9 @@ def main(argv: list[str] | None = None) -> int:
     cu.add_argument("--email", required=True)
     cu.add_argument("--role", required=True, choices=[r.value for r in Role])
     cu.add_argument("--name", default="User")
+    vs = sub.add_parser("verify-snapshots", help="recompute every finalized result from the raw records (I12)")
+    vs.add_argument("--exam", help="only this exam id")
+    vs.add_argument("--submission", help="only this booklet id")
     ex = sub.add_parser("export-corrections")
     ex.add_argument("--as-admin", required=True, help="email of an active administrator (recorded in the audit log)")
     ex.add_argument("--scope", required=True, choices=SCOPES)
@@ -126,6 +152,8 @@ def main(argv: list[str] | None = None) -> int:
     a = ap.parse_args(argv)
     if a.cmd == "export-corrections":
         return export_corrections_cmd(a.as_admin, a.scope, a.out, a.exam, a.include_history)
+    if a.cmd == "verify-snapshots":
+        return verify_snapshots_cmd(a.exam, a.submission)
     if a.cmd == "ensure-bucket":
         return ensure_bucket()
     if a.cmd == "create-user":

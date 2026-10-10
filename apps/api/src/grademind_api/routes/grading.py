@@ -38,6 +38,7 @@ from grademind_core.evaluation import (
     sheet_json,
 )
 from grademind_core.grading import iter_nodes, leaves, node_max
+from grademind_core.result_snapshots import current_snapshot, is_finalized
 from grademind_core.security import Principal
 from grademind_core.storage import ObjectStore
 
@@ -110,6 +111,11 @@ class ScoreOut(BaseModel):
     version: str
 
 
+class FinalizationSummary(BaseModel):
+    state: str  # "OPEN" | "FINALIZED": a finalized result is read-only (4.2)
+    snapshot_no: int | None
+
+
 class Workspace(BaseModel):
     submission_id: uuid.UUID
     exam_id: uuid.UUID
@@ -122,11 +128,23 @@ class Workspace(BaseModel):
     regions: list[RegionOut]
     evaluations: list[EvaluationOut]
     score: ScoreOut
+    finalization: FinalizationSummary
 
 
 class SaveOut(BaseModel):
     evaluation: EvaluationOut
     score: ScoreOut
+
+
+def _finalization_summary(db: Session, sub: Submission) -> FinalizationSummary:
+    snap = current_snapshot(db, sub.id)
+    return FinalizationSummary(state="FINALIZED" if snap else "OPEN", snapshot_no=snap.snapshot_no if snap else None)
+
+
+def _open(db: Session, sub: Submission) -> None:
+    """A finalized result is read-only (4.2). The database refuses the writes too; this gives the examiner the reason."""
+    if is_finalized(db, sub.id):
+        raise ApiError(409, "finalized", "This result is finalized. Reopen it, with a reason, to change anything.")
 
 
 def _ctx(db: Session, sub: Submission) -> GradingContext:
@@ -205,6 +223,7 @@ def workspace(
         regions=[_region_out(r) for r in live_regions(db, sub.id)],
         evaluations=[_eval_out(e) for e in current_evaluations(db, sub.id, ctx.rubric_version.id).values()],
         score=_score_out(db, sub, ctx),
+        finalization=_finalization_summary(db, sub),
     )
 
 
@@ -217,6 +236,7 @@ def create_region(
     db: Session = Depends(db_dep),
 ) -> RegionOut:
     sub = visible_submission(db, p, submission_id)
+    _open(db, sub)
     ctx = _ctx(db, sub)
     page = db.get(Page, body.page_id)
     if page is None or page.submission_id != sub.id:
@@ -258,6 +278,7 @@ def delete_region(
     db: Session = Depends(db_dep),
 ) -> None:
     sub = visible_submission(db, p, submission_id)
+    _open(db, sub)
     ctx = _ctx(db, sub)
     r = _live_region(db, sub, region_id)
     r.deleted_at, r.deleted_by = datetime.now(UTC), p.user_id
@@ -276,6 +297,7 @@ def set_crossed(
     db: Session = Depends(db_dep),
 ) -> RegionOut:
     sub = visible_submission(db, p, submission_id)
+    _open(db, sub)
     ctx = _ctx(db, sub)
     r = _live_region(db, sub, region_id)
     r.crossed_out = body.crossed_out
@@ -296,6 +318,7 @@ def save_evaluation(
     db: Session = Depends(db_dep),
 ) -> SaveOut:
     sub = visible_submission(db, p, submission_id)
+    _open(db, sub)
     ctx = _ctx(db, sub)
     regions = [r for r in live_regions(db, sub.id) if r.qid == qid and r.attempt_no == attempt_no]
     if not regions:
@@ -379,6 +402,8 @@ class TotalsRow(BaseModel):
     complete: bool
     sections: dict[str, Marks]  # top-level node id -> marks
     flags: list[str]
+    finalized: bool = False  # the result is frozen in a snapshot (4.2)
+    snapshot_no: int | None = None
 
 
 class Totals(BaseModel):
@@ -401,6 +426,7 @@ def _totals(db: Session, exam_id: uuid.UUID) -> Totals:
     rows: list[TotalsRow] = []
     max_total = ctx.paper.total_marks
     for s in subs:
+        snap = current_snapshot(db, s.id)
         res = latest_score(db, s.id, ctx.rubric_version.id)
         if res is None:
             rows.append(
@@ -424,6 +450,8 @@ def _totals(db: Session, exam_id: uuid.UUID) -> Totals:
                 complete=res.complete,
                 sections={qid: Decimal(res.sheet[qid]["marks"]) for qid, _ in tops if qid in res.sheet},
                 flags=res.flags,
+                finalized=snap is not None,
+                snapshot_no=snap.snapshot_no if snap else None,
             )
         )
     top_nodes = {n.id: n for n in ctx.paper.questions}

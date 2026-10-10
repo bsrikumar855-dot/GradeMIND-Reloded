@@ -15,6 +15,7 @@ from typing import Any
 from sqlalchemy import (
     BigInteger,
     Boolean,
+    CheckConstraint,
     DateTime,
     Enum,
     ForeignKey,
@@ -396,4 +397,61 @@ class ScoreResult(Base):
     score_computer_version: Mapped[str] = mapped_column(String(40), nullable=False)
     trigger_evaluation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("evaluations.id"))
     created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = _created()
+
+
+class ResultSnapshot(Base):
+    """4.2: a booklet's result, frozen when an administrator or teacher FINALIZES it. Append-only (I8): a reopen followed by a
+    new finalize adds snapshot n+1, it never edits snapshot n. Holds everything needed to recompute the marks from the raw
+    records (the verify command does): the versions used, the policy, the answer attempts, which evaluation rows were current,
+    and a digest of those inputs, next to the frozen outputs."""
+
+    __tablename__ = "result_snapshots"
+    __table_args__ = (
+        UniqueConstraint("seq", name="uq_result_snapshots_seq"),
+        UniqueConstraint("submission_id", "snapshot_no", name="uq_result_snapshots_submission_no"),
+    )
+    id: Mapped[uuid.UUID] = _pk()
+    seq: Mapped[int] = mapped_column(BigInteger, Identity(always=True), nullable=False)
+    submission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("submissions.id"), nullable=False, index=True)
+    exam_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("exams.id"), nullable=False, index=True)
+    snapshot_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    paper_version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("paper_versions.id"), nullable=False)
+    rubric_version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("rubric_versions.id"), nullable=False)
+    paper_version_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    rubric_version_no: Mapped[int] = mapped_column(Integer, nullable=False)
+    score_computer_version: Mapped[str] = mapped_column(String(40), nullable=False)
+    policy: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
+    attempts: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, nullable=False)  # [{qid, attempt_no, crossed_out}]
+    evaluation_refs: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, nullable=False)  # [{qid, attempt_no, evaluation_id}]
+    inputs_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
+    total: Mapped[Decimal] = mapped_column(Numeric(10, 4), nullable=False)
+    max_total: Mapped[Decimal] = mapped_column(Numeric(10, 4), nullable=False)
+    complete: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    sheet: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)  # per-question marks, status, counted attempt, flags
+    flags: Mapped[list[str]] = mapped_column(JSONB, nullable=False)
+    created_by: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = _created()
+
+
+class FinalizationEvent(Base):
+    """4.2: append-only log of FINALIZED / REOPENED per booklet. The current state is the latest event. A database trigger keeps
+    the two strictly alternating, and refuses edits to evaluations, answer regions and scores while the latest event is
+    FINALIZED."""
+
+    __tablename__ = "finalization_events"
+    __table_args__ = (
+        UniqueConstraint("seq", name="uq_finalization_events_seq"),
+        CheckConstraint("action IN ('FINALIZED', 'REOPENED')", name="ck_finalization_events_action"),
+        CheckConstraint(
+            "action <> 'REOPENED' OR length(btrim(coalesce(reason, ''))) >= 10", name="ck_finalization_events_reopen_reason"
+        ),
+    )
+    id: Mapped[uuid.UUID] = _pk()
+    seq: Mapped[int] = mapped_column(BigInteger, Identity(always=True), nullable=False)
+    submission_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("submissions.id"), nullable=False, index=True)
+    action: Mapped[str] = mapped_column(String(12), nullable=False)
+    snapshot_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("result_snapshots.id"), nullable=False)  # finalized / reopened
+    reason: Mapped[str | None] = mapped_column(Text)  # required (10+ characters) for a reopen
+    actor_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"), nullable=False)
     created_at: Mapped[datetime] = _created()

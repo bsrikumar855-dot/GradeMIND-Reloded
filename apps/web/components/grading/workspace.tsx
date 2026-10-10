@@ -9,12 +9,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { api, ClientError } from "@/lib/client";
-import { fullLabels, leaves, type Criterion, type LineHighlight, type MachineReadingData, type WorkspaceData } from "@/lib/types";
+import { fullLabels, leaves, type Criterion, type FinalizationData, type LineHighlight, type MachineReadingData, type WorkspaceData } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { FinalizePanel } from "./finalize-panel";
 import { MachineReading } from "./machine-reading";
 import { PageViewer } from "./page-viewer";
 
-export function Workspace({ submissionId }: { submissionId: string }) {
+export function Workspace({ submissionId, canManage }: { submissionId: string; canManage: boolean }) {
   const [ws, setWs] = useState<WorkspaceData | null>(null);
   const [failed, setFailed] = useState<string | null>(null);
   const [qid, setQid] = useState<string | null>(null);
@@ -28,6 +29,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
   const [mr, setMr] = useState<MachineReadingData | null>(null);
   const [mrFailed, setMrFailed] = useState(false);
   const [highlight, setHighlight] = useState<LineHighlight | null>(null);
+  const [fin, setFin] = useState<FinalizationData | null>(null);
 
   const loadMr = useCallback(
     () =>
@@ -41,10 +43,20 @@ export function Workspace({ submissionId }: { submissionId: string }) {
     [submissionId],
   );
 
+  const loadFin = useCallback(
+    () =>
+      api<FinalizationData>(`submissions/${submissionId}/finalization`).then(
+        (d) => setFin(d),
+        () => setFin(null),
+      ),
+    [submissionId],
+  );
+
   const reload = useCallback(async () => {
     setWs(await api<WorkspaceData>(`submissions/${submissionId}/workspace`));
     void loadMr();
-  }, [submissionId, loadMr]);
+    void loadFin();
+  }, [submissionId, loadMr, loadFin]);
 
   useEffect(() => {
     let alive = true;
@@ -52,10 +64,11 @@ export function Workspace({ submissionId }: { submissionId: string }) {
       .then((w) => alive && setWs(w))
       .catch((e) => alive && setFailed(e instanceof ClientError ? e.message : "We couldn't load this booklet. Please refresh the page."));
     void loadMr();
+    void loadFin();
     return () => {
       alive = false;
     };
-  }, [submissionId, loadMr]);
+  }, [submissionId, loadMr, loadFin]);
 
   const questions = useMemo(() => (ws ? leaves(ws.paper.questions) : []), [ws]);
   const labels = useMemo(() => (ws ? fullLabels(ws.paper.questions) : new Map<string, string>()), [ws]);
@@ -100,6 +113,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
   if (failed) return <Alert variant="destructive">{failed}</Alert>;
   if (!ws) return <p className="text-muted-foreground">Loading…</p>;
 
+  const locked = ws.finalization.state === "FINALIZED"; // a finalized result is read-only until it is reopened
   const qRegions = ws.regions.filter((r) => r.qid === activeQ);
   const attempts = [...new Set(qRegions.map((r) => r.attempt_no))].sort((a, b) => a - b);
   const curAttempt = attempts.includes(attempt) ? attempt : (attempts[attempts.length - 1] ?? 1);
@@ -118,7 +132,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
   }
 
   const onDraw = (pageId: string, bbox: [number, number, number, number]) => {
-    if (!activeQ) return;
+    if (!activeQ || locked) return;
     void run(
       () => api(`submissions/${submissionId}/regions`, { method: "POST", json: { page_id: pageId, bbox, qid: activeQ, new_attempt: newAttempt } }),
       "Answer area saved.",
@@ -158,6 +172,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
         </Alert>
       ) : null}
       {notice ? <Alert variant={notice.tone}>{notice.text}</Alert> : null}
+      <FinalizePanel submissionId={submissionId} data={fin} canManage={canManage} onChanged={reload} />
       <div className="grid gap-4 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
         <PageViewer
           pages={ws.pages}
@@ -167,7 +182,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
           labels={labels}
           activeRegionId={activeRegion}
           highlight={highlight}
-          canDraw={activeQ !== null}
+          canDraw={activeQ !== null && !locked}
           drawHint={`Drag on the page to mark the answer to ${activeQ ? (labels.get(activeQ) ?? activeQ) : "a question"}${newAttempt ? " (new attempt)" : ""}.`}
           onDraw={onDraw}
           onSelectRegion={(id) => {
@@ -258,11 +273,12 @@ export function Workspace({ submissionId }: { submissionId: string }) {
                             <input
                               type="checkbox"
                               checked={r.crossed_out}
+                              disabled={locked}
                               onChange={(e) => void run(() => api(`submissions/${submissionId}/regions/${r.id}/crossed`, { method: "POST", json: { crossed_out: e.target.checked } }))}
                             />
                             crossed out
                           </label>
-                          <Button size="sm" variant="ghost" onClick={() => void run(() => api(`submissions/${submissionId}/regions/${r.id}`, { method: "DELETE" }), "Answer area removed.")}>
+                          <Button size="sm" variant="ghost" disabled={locked} onClick={() => void run(() => api(`submissions/${submissionId}/regions/${r.id}`, { method: "DELETE" }), "Answer area removed.")}>
                             Remove
                           </Button>
                         </li>
@@ -270,7 +286,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
                     </ul>
                   )}
                   <label className="flex items-center gap-2 text-sm">
-                    <input type="checkbox" checked={newAttempt} onChange={(e) => setNewAttempt(e.target.checked)} />
+                    <input type="checkbox" checked={newAttempt} disabled={locked} onChange={(e) => setNewAttempt(e.target.checked)} />
                     Next box starts a new attempt (the student answered this question again)
                   </label>
                 </section>
@@ -291,6 +307,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
                     initialNotes={evaluation?.notes ?? ""}
                     marks={evaluation?.marks ?? null}
                     max={nodeMarks(activeQ)?.max_marks ?? null}
+                    readOnly={locked}
                     onSave={async (verdicts, notes, overrideReason) => {
                       await api(`submissions/${submissionId}/evaluations/${encodeURIComponent(activeQ)}/${curAttempt}`, {
                         method: "PUT",
@@ -316,6 +333,7 @@ function GradePanel({
   initialNotes,
   marks,
   max,
+  readOnly,
   onSave,
 }: {
   criteria: Criterion[];
@@ -323,6 +341,7 @@ function GradePanel({
   initialNotes: string;
   marks: string | null;
   max: string | null;
+  readOnly: boolean;
   onSave: (verdicts: Record<string, string>, notes: string, overrideReason: string) => Promise<void>;
 }) {
   const [verdicts, setVerdicts] = useState(initialVerdicts);
@@ -334,6 +353,7 @@ function GradePanel({
   const [error, setError] = useState<string | null>(null);
 
   const save = useCallback(async () => {
+    if (readOnly) return;
     setBusy(true);
     setError(null);
     try {
@@ -344,7 +364,7 @@ function GradePanel({
     } finally {
       setBusy(false);
     }
-  }, [onSave, verdicts, notes, reason]);
+  }, [onSave, verdicts, notes, reason, readOnly]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -355,7 +375,7 @@ function GradePanel({
         void save();
         return;
       }
-      if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (typing || e.ctrlKey || e.metaKey || e.altKey || readOnly) return;
       if (/^[1-9]$/.test(e.key)) {
         const c = criteria[focus];
         const level = c?.levels[Number(e.key) - 1];
@@ -367,7 +387,7 @@ function GradePanel({
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [criteria, focus, save]);
+  }, [criteria, focus, save, readOnly]);
 
   if (criteria.length === 0) return <Alert>This question has no rubric criteria, so there is nothing to grade.</Alert>;
 
@@ -386,7 +406,7 @@ function GradePanel({
           <div className="flex flex-col gap-1">
             {c.levels.map((lv, li) => (
               <label key={lv.id} className="flex cursor-pointer items-start gap-2 rounded px-1 py-1 text-sm hover:bg-accent">
-                <input type="radio" name={`c-${c.id}`} checked={verdicts[c.id] === lv.id} onChange={() => setVerdicts((v) => ({ ...v, [c.id]: lv.id }))} className="mt-1" />
+                <input type="radio" name={`c-${c.id}`} checked={verdicts[c.id] === lv.id} disabled={readOnly} onChange={() => setVerdicts((v) => ({ ...v, [c.id]: lv.id }))} className="mt-1" />
                 <span>
                   <kbd className="mr-1 rounded border px-1 text-xs">{li + 1}</kbd>
                   {lv.name} <span className="text-muted-foreground">({lv.marks})</span>
@@ -399,7 +419,7 @@ function GradePanel({
       ))}
       <div className="flex flex-col gap-1.5">
         <Label htmlFor="eval-notes">Notes (optional)</Label>
-        <Textarea id="eval-notes" value={notes} maxLength={4000} onChange={(e) => setNotes(e.target.value)} rows={2} />
+        <Textarea id="eval-notes" value={notes} maxLength={4000} disabled={readOnly} onChange={(e) => setNotes(e.target.value)} rows={2} />
       </div>
       {needReason ? (
         <div className="flex flex-col gap-1.5">
@@ -408,9 +428,13 @@ function GradePanel({
         </div>
       ) : null}
       {error ? <Alert variant="destructive">{error}</Alert> : null}
-      <Button onClick={() => void save()} disabled={busy}>
-        {busy ? "Saving…" : "Save grade"}
-      </Button>
+      {readOnly ? (
+        <p className="text-sm text-muted-foreground">This result is finalized, so grades cannot be changed. Ask an administrator or teacher to reopen it.</p>
+      ) : (
+        <Button onClick={() => void save()} disabled={busy}>
+          {busy ? "Saving…" : "Save grade"}
+        </Button>
+      )}
     </section>
   );
 }

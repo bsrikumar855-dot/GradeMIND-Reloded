@@ -26,6 +26,7 @@ from grademind_core.config import Settings
 from grademind_core.db.models import (
     AuditLog,
     ConsentScope,
+    FinalizationEvent,
     JobStageAttempt,
     Page,
     ProcessingJob,
@@ -154,6 +155,7 @@ class SubmissionRow(SubmissionOut):
     job_retry_count: int  # automatic retries of the machine reading so far (bounded; 0 for other jobs)
     page_count: int
     pages_ready: bool  # every page image is rendered: grading can start, whatever the rest of the job is doing
+    finalized: bool  # the result is frozen in a snapshot (4.2)
 
 
 @router.get("/exams/{exam_id}/submissions", response_model=list[SubmissionRow])
@@ -191,6 +193,14 @@ def list_submissions(
         .distinct()
     )
     ready = set(db.scalars(ready_q))
+    latest_event: dict[uuid.UUID, str] = {}
+    if ids:
+        for sid, action in db.execute(
+            select(FinalizationEvent.submission_id, FinalizationEvent.action)
+            .where(FinalizationEvent.submission_id.in_(ids))
+            .order_by(FinalizationEvent.seq)
+        ):
+            latest_event[sid] = action  # the last event of each booklet wins
     return [
         SubmissionRow(
             **_out(x).model_dump(),
@@ -202,6 +212,7 @@ def list_submissions(
             job_retry_count=jobs[x.id].retry_count if x.id in jobs else 0,
             page_count=int(counts.get(x.id, 0)),
             pages_ready=x.id in ready,
+            finalized=latest_event.get(x.id) == "FINALIZED",
         )
         for x in subs
     ]
