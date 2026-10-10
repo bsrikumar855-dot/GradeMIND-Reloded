@@ -22,6 +22,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             <Button asChild variant="ghost" size="sm">
               <Link href="/exams">Exams</Link>
             </Button>
+            {me.role === "admin" ? (
+              <Button asChild variant="ghost" size="sm">
+                <Link href="/admin/users">Users</Link>
+              </Button>
+            ) : null}
           </nav>
           <div className="ml-auto flex items-center gap-3 text-sm">
             <span className="hidden sm:inline">

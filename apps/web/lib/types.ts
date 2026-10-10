@@ -142,3 +142,12 @@ export type RegionReading = {
 };
 export type MachineReadingData = { notice: string; low_confidence_below: number; regions: RegionReading[] };
 export type LineHighlight = { page_id: string; bbox: [number, number, number, number] };
+
+export type UserRow = {
+  id: string;
+  email: string;
+  display_name: string;
+  role: "admin" | "teacher" | "examiner";
+  is_active: boolean;
+  created_at: string;
+};

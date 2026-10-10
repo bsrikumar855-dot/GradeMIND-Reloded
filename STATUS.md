@@ -39,7 +39,7 @@ Each step is one commit with CI green before the next. Test numbers come from `m
 | Step | State | Evidence |
 |---|---|---|
 | 4.0 OCR hardening (own queue + worker, bounded automatic retry with backoff, "unread" + manual retry, sweeper covers failed readings, killed-and-restarted OCR test) | **Implemented and tested** | `48f1922` was RED (CI `38046106208`: the Phase 3 E2E read the audit table before its rows loaded; a test race, fixed in `bf387bd`). `bf387bd`, CI `38046363766` green (test, secrets, web, compose-smoke): 331 app tests; web unit tests 19/19; smoke: the ingest job has only INTAKE and RASTERIZE and the real engine read both pages through the `ocr` job; **`scripts/ocr_chaos.py` in CI: OCR killed at 1 of 4 pages, retried by itself (retry_count 1), restarted, 4 of 4 read, no manual retry, exactly one OK run per page, grading stayed possible** |
-| 4.1 Admin UI: users, examiner assignment | Not started | |
+| 4.1 Admin UI: users, examiner assignment | **Implemented; CI result pending** | `routes/users.py` (admin only, own organisation, audited without passwords): list/create users, deactivate/reactivate (takes effect on the next request; not yourself), list/assign/unassign examiners; `/admin/users` and the exam "Examiners" tab; 13 API role/RBAC tests (examiner: other exams 404, audit 403, users 403; teacher cannot manage users); Playwright `admin-users.spec.ts`. Local: `make test` 344 passed, lint 0, Playwright 17/17 against the new API + web, web unit tests 22/22 |
 | 4.2 Finalize / reopen / snapshots / verify command | Not started | |
 | 4.3 Analytics | Not started | |
 | 4.4 Reports | Not started | |

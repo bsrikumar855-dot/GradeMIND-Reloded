@@ -85,7 +85,7 @@ def assign(
 ) -> None:
     visible_exam(db, p, exam_id)
     u = db.get(User, body.user_id)
-    if u is None or u.org_id != p.org_id or u.role != Role.EXAMINER:
+    if u is None or u.org_id != p.org_id or u.role != Role.EXAMINER or not u.is_active:
         raise ApiError(422, "invalid_assignee", "Only examiners in your organisation can be assigned.")
     if db.get(ExamAssignment, (exam_id, u.id)) is None:
         db.add(ExamAssignment(exam_id=exam_id, user_id=u.id))

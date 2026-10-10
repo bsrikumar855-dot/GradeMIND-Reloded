@@ -10,6 +10,7 @@ export default async function ExamLayout({ children, params }: { children: React
     { slug: "submissions", label: "Booklets" },
     { slug: "totals", label: "Totals" },
     ...(me.role !== "examiner" ? [{ slug: "audit", label: "Audit trail" }] : []),
+    ...(me.role === "admin" ? [{ slug: "examiners", label: "Examiners" }] : []),
   ];
   return (
     <div className="flex flex-col gap-6">
