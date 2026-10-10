@@ -14,7 +14,7 @@ from celery import Celery
 
 from grademind_core.config import get_settings
 from grademind_core.db.session import session_factory
-from grademind_core.jobs import RUN_JOB_TASK, LeasePolicy, resumable_jobs, run_job
+from grademind_core.jobs import RUN_JOB_TASK, LeasePolicy, resend_stuck, run_job
 from grademind_core.logredact import install as install_log_redaction
 from grademind_core.storage import ObjectStore
 from grademind_worker.stages import PIPELINES
@@ -58,9 +58,4 @@ def run_job_task(job_id: str) -> str | None:
 
 @app.task(name="grademind.requeue_sweep")  # type: ignore[untyped-decorator]
 def requeue_sweep() -> int:
-    s = get_settings()
-    with session_factory(s.database_url)() as db:
-        ids = resumable_jobs(db, queued_grace=timedelta(seconds=120), policy=_policy())
-    for jid in ids:
-        run_job_task.delay(str(jid))
-    return len(ids)
+    return resend_stuck(session_factory(get_settings().database_url), lambda jid: run_job_task.delay(str(jid)), _policy())

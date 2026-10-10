@@ -278,6 +278,23 @@ def resumable_jobs(s: Session, queued_grace: timedelta, policy: LeasePolicy) -> 
     return list(s.scalars(q))
 
 
+def resend_stuck(
+    sessions: sessionmaker[Session],
+    enqueue: Callable[[uuid.UUID], None],
+    policy: LeasePolicy,
+    queued_grace: timedelta = timedelta(seconds=120),
+    limit: int = 100,
+) -> int:
+    """The sweeper (3.0c): hand jobs that are stuck QUEUED (the enqueue was lost) or whose worker died to `enqueue`.
+    Safe to run on a schedule and from several processes: re-sending is harmless because the claim is idempotent
+    (a job that is already running or finished is simply not claimable). Returns how many were re-sent."""
+    with sessions() as s:
+        ids = resumable_jobs(s, queued_grace, policy)[:limit]
+    for jid in ids:
+        enqueue(jid)
+    return len(ids)
+
+
 def request_retry(s: Session, job: ProcessingJob) -> bool:
     """FAILED -> QUEUED. The caller commits and enqueues. Returns False if the job is not in a retryable state."""
     if job.status != JobStatus.FAILED:

@@ -56,6 +56,29 @@ def create_admin(org: str, email: str) -> int:
     return 0
 
 
+def create_user(org: str, email: str, role: str, name: str) -> int:
+    """Add a user to an EXISTING organisation (used by the E2E to get a real examiner; admins have no user UI yet)."""
+    password = os.environ.get("GRADEMIND_USER_PASSWORD", "")
+    if len(password) < 12:
+        print("GRADEMIND_USER_PASSWORD must be set (>= 12 characters)", file=sys.stderr)
+        return 2
+    with session_factory(get_settings().database_url)() as s:
+        o = s.scalar(select(Organization).where(Organization.name == org))
+        if o is None:
+            print(f"organisation {org!r} does not exist", file=sys.stderr)
+            return 2
+        if s.scalar(select(User).where(User.email == email.strip().lower())) is not None:
+            print("user already exists; nothing changed")
+            return 0
+        u = User(org_id=o.id, email=email, display_name=name, password_hash=hash_password(password), role=Role(role))
+        s.add(u)
+        s.flush()
+        s.add(AuditLog(actor_id=None, action="user.cli_create", entity_type="user", entity_id=str(u.id), details={"role": role}))
+        s.commit()
+    print(f"{role} created")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="grademind_core.cli")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -63,9 +86,16 @@ def main(argv: list[str] | None = None) -> int:
     ca = sub.add_parser("create-admin")
     ca.add_argument("--org", required=True)
     ca.add_argument("--email", required=True)
+    cu = sub.add_parser("create-user")
+    cu.add_argument("--org", required=True)
+    cu.add_argument("--email", required=True)
+    cu.add_argument("--role", required=True, choices=[r.value for r in Role])
+    cu.add_argument("--name", default="User")
     a = ap.parse_args(argv)
     if a.cmd == "ensure-bucket":
         return ensure_bucket()
+    if a.cmd == "create-user":
+        return create_user(a.org, a.email, a.role, a.name)
     return create_admin(a.org, a.email)
 
 

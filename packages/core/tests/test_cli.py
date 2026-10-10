@@ -48,3 +48,22 @@ def test_create_admin(env: None, monkeypatch: pytest.MonkeyPatch) -> None:
         assert verify_password(users[0].password_hash, "a-long-enough-password")
         assert s.scalars(select(AuditLog.action)).all() == ["user.bootstrap_admin"]
     engine.dispose()
+
+
+def test_create_user(env: None, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("GRADEMIND_ADMIN_PASSWORD", "a-long-enough-password")
+    assert main(["create-admin", "--org", "College", "--email", "admin@college.edu"]) == 0
+    monkeypatch.setenv("GRADEMIND_USER_PASSWORD", "short")
+    assert main(["create-user", "--org", "College", "--email", "ex@college.edu", "--role", "examiner"]) == 2
+    monkeypatch.setenv("GRADEMIND_USER_PASSWORD", "examiner-password-123")
+    assert main(["create-user", "--org", "Nowhere", "--email", "ex@college.edu", "--role", "examiner"]) == 2  # org must exist
+    assert main(["create-user", "--org", "College", "--email", "Ex@College.edu", "--role", "examiner", "--name", "Ex"]) == 0
+    assert main(["create-user", "--org", "College", "--email", "ex@college.edu", "--role", "examiner"]) == 0  # idempotent
+    engine = create_engine(URL or "")
+    with Session(engine) as s:
+        admin = s.scalar(select(User).where(User.email == "admin@college.edu"))
+        ex = s.scalar(select(User).where(User.email == "ex@college.edu"))
+        assert admin is not None and ex is not None and ex.role == Role.EXAMINER and ex.org_id == admin.org_id
+        assert verify_password(ex.password_hash, "examiner-password-123")
+        assert s.scalars(select(AuditLog.action).where(AuditLog.action == "user.cli_create")).all() == ["user.cli_create"]
+    engine.dispose()

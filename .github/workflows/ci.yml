@@ -98,7 +98,17 @@ jobs:
         run: ./scripts/compose_wait.sh 1200
       - name: end-to-end smoke
         run: python3 scripts/compose_smoke.py
-      - name: Phase 2 browser E2E (Playwright against the live stack; uses the runner's Google Chrome)
+      - name: examiner account for the E2E (created with the CLI; the password is masked and never logged)
+        run: |
+          set -euo pipefail
+          ORG="$(grep '^GRADEMIND_ADMIN_ORG=' .env | cut -d= -f2-)"
+          EXPW="$(python3 -c 'import secrets; print(secrets.token_urlsafe(18))')"
+          echo "::add-mask::$EXPW"
+          docker compose exec -T -e GRADEMIND_USER_PASSWORD="$EXPW" api \
+            python -m grademind_core.cli create-user --org "$ORG" --email examiner@example.edu --role examiner --name Examiner
+          echo "E2E_EXAMINER_EMAIL=examiner@example.edu" >> "$GITHUB_ENV"
+          echo "E2E_EXAMINER_PASSWORD=$EXPW" >> "$GITHUB_ENV"
+      - name: browser E2E (Playwright against the live stack; uses the runner's Google Chrome)
         working-directory: apps/web
         run: |
           set -euo pipefail

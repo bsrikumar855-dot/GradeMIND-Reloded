@@ -56,6 +56,10 @@ testpaths = ["tests", "packages/core/tests", "apps/api/tests", "apps/worker/test
 # tested here, the engine itself in its container
 pythonpath = ["services/ocr/src", "tests/helpers"]
 asyncio_mode = "auto"
+filterwarnings = [
+    # worker_world is imported by the test modules before pytest loads it as a plugin; it has no asserts to rewrite
+    "ignore:Module already imported so cannot be rewritten; worker_world",
+]
 
 [tool.mypy]
 python_version = "3.12"

@@ -32,6 +32,25 @@
   `prompts/ocr_ceiling/v1.md`, runner `spike/ceiling/run_ceiling.py` (gates verified: exit 2 with 6 unmet gates; dry run 100 requests, sent=0),
   report `spike/report_0c.py` (refuses non-OWNER_VERIFIED GT; selftest on synthetic outputs). Unit tests in `spike/tests/test_ceiling.py`.
 
+## Phase 3 (document intelligence, assistive only; D28) progress
+
+Each step is one commit with CI green before the next. Test numbers come from `make test` / CI in the same session (rule 13).
+
+| Step | State | Evidence |
+|---|---|---|
+| 3.0 Phase 2 gaps: keyboard-only box drawing; Playwright for examiner override-with-reason, attempts, crossed-out, remove region, N/P/?; stuck-QUEUED sweeper test | **Implemented; CI result pending** | Local: `make test` 247 passed exit 0; Playwright 6/6 (new spec 5 tests + the Phase 2 spec); web unit tests 8/8 (`node --test`) |
+| 3.1 OCR stage in the ingest job | Not started | |
+| 3.2 Region text API (pure geometry) | Not started | |
+| 3.3 "Machine reading" panel | Not started | |
+| 3.4 Examiner line correction -> `line_corrections` | Not started | |
+| 3.5 Owner-only dataset export (consent-aware) | Not started | |
+| 3.6 E2E incl. totals unchanged by OCR | Not started | |
+
+3.0 notes: the examiner for the E2E comes from the new `cli create-user` (admins still have no user-management UI; examiner
+assignment is API-only). The N/P/? shortcuts were found to be broken once the active question had no answer box (they lived
+in the grading panel, which unmounts there); they now live at workspace level and a regression test pins it. The sweeper
+logic moved into `grademind_core.jobs.resend_stuck` and is tested end to end (lost enqueue -> re-sent -> job completes).
+
 ## D26 hardening (done before Phase 2)
 
 | Item | State | Evidence |

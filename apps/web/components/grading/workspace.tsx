@@ -41,34 +41,51 @@ export function Workspace({ submissionId }: { submissionId: string }) {
   const questions = useMemo(() => (ws ? leaves(ws.paper.questions) : []), [ws]);
   const labels = useMemo(() => (ws ? fullLabels(ws.paper.questions) : new Map<string, string>()), [ws]);
 
+  const activeQ = qid ?? questions[0]?.id ?? null;
+  const qIndex = questions.findIndex((q) => q.id === activeQ);
+
+  const selectQuestion = useCallback(
+    (id: string) => {
+      setQid(id);
+      setAttempt(1);
+      setNewAttempt(false);
+      const first = ws?.regions.find((r) => r.qid === id);
+      if (first) {
+        setActiveRegion(first.id);
+        const i = ws?.pages.findIndex((p) => p.id === first.page_id) ?? -1;
+        if (i >= 0) setPageIdx(i);
+      } else {
+        setActiveRegion(null);
+      }
+    },
+    [ws],
+  );
+
+  // N / P / ? work on EVERY question, mapped or not (they used to live in the grading panel, which only exists once an
+  // answer box does, so pressing N onto an unmapped question stranded a keyboard-only examiner)
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const t = e.target as HTMLElement | null;
+      const typing = !!t && (t.tagName === "TEXTAREA" || t.tagName === "SELECT" || (t.tagName === "INPUT" && (t as HTMLInputElement).type === "text") || t.isContentEditable);
+      if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === "?") setHelp((h) => !h);
+      else if (e.key === "n" || e.key === "N" || e.key === "p" || e.key === "P") {
+        const next = questions[qIndex + (e.key.toLowerCase() === "n" ? 1 : -1)];
+        if (next) selectQuestion(next.id);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [questions, qIndex, selectQuestion]);
+
   if (failed) return <Alert variant="destructive">{failed}</Alert>;
   if (!ws) return <p className="text-muted-foreground">Loading…</p>;
 
-  const activeQ = qid ?? questions[0]?.id ?? null;
   const qRegions = ws.regions.filter((r) => r.qid === activeQ);
   const attempts = [...new Set(qRegions.map((r) => r.attempt_no))].sort((a, b) => a - b);
   const curAttempt = attempts.includes(attempt) ? attempt : (attempts[attempts.length - 1] ?? 1);
   const criteria: Criterion[] = ws.rubric.questions.find((q) => q.qid === activeQ)?.criteria ?? [];
   const evaluation = ws.evaluations.find((e) => e.qid === activeQ && e.attempt_no === curAttempt) ?? null;
-  const qIndex = questions.findIndex((q) => q.id === activeQ);
-
-  function selectQuestion(id: string) {
-    setQid(id);
-    setAttempt(1);
-    setNewAttempt(false);
-    const first = ws?.regions.find((r) => r.qid === id);
-    if (first) {
-      setActiveRegion(first.id);
-      const i = ws?.pages.findIndex((p) => p.id === first.page_id) ?? -1;
-      if (i >= 0) setPageIdx(i);
-    } else {
-      setActiveRegion(null);
-    }
-  }
-  function nav(delta: number) {
-    const next = questions[qIndex + delta];
-    if (next) selectQuestion(next.id);
-  }
 
   async function run(fn: () => Promise<unknown>, ok?: string) {
     setNotice(null);
@@ -238,8 +255,6 @@ export function Workspace({ submissionId }: { submissionId: string }) {
                     initialNotes={evaluation?.notes ?? ""}
                     marks={evaluation?.marks ?? null}
                     max={nodeMarks(activeQ)?.max_marks ?? null}
-                    onNav={nav}
-                    onHelp={() => setHelp((h) => !h)}
                     onSave={async (verdicts, notes, overrideReason) => {
                       await api(`submissions/${submissionId}/evaluations/${encodeURIComponent(activeQ)}/${curAttempt}`, {
                         method: "PUT",
@@ -266,8 +281,6 @@ function GradePanel({
   marks,
   max,
   onSave,
-  onNav,
-  onHelp,
 }: {
   criteria: Criterion[];
   initialVerdicts: Record<string, string>;
@@ -275,8 +288,6 @@ function GradePanel({
   marks: string | null;
   max: string | null;
   onSave: (verdicts: Record<string, string>, notes: string, overrideReason: string) => Promise<void>;
-  onNav: (delta: number) => void;
-  onHelp: () => void;
 }) {
   const [verdicts, setVerdicts] = useState(initialVerdicts);
   const [notes, setNotes] = useState(initialNotes);
@@ -309,10 +320,7 @@ function GradePanel({
         return;
       }
       if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
-      if (e.key === "?") onHelp();
-      else if (e.key === "n" || e.key === "N") onNav(1);
-      else if (e.key === "p" || e.key === "P") onNav(-1);
-      else if (/^[1-9]$/.test(e.key)) {
+      if (/^[1-9]$/.test(e.key)) {
         const c = criteria[focus];
         const level = c?.levels[Number(e.key) - 1];
         if (c && level) {
@@ -323,7 +331,7 @@ function GradePanel({
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [criteria, focus, save, onNav, onHelp]);
+  }, [criteria, focus, save]);
 
   if (criteria.length === 0) return <Alert>This question has no rubric criteria, so there is nothing to grade.</Alert>;
 

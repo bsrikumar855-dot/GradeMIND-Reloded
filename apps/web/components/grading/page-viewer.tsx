@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { describe, nudge, START_BOX, type Box } from "@/lib/kbbox";
 import type { PageInfo, Region } from "@/lib/types";
-
-type Box = [number, number, number, number];
 
 /**
  * One booklet page: zoom, pan (drag when not drawing), rotate, fit width/page, thumbnails, and an optional
@@ -41,7 +40,15 @@ export function PageViewer({
   const [rotation, setRotation] = useState(0);
   const [draw, setDraw] = useState(false);
   const [drag, setDrag] = useState<{ x0: number; y0: number; x1: number; y1: number } | null>(null);
+  const [kb, setKb] = useState<Box | null>(null); // keyboard-drawn box (3.0a): arrows move, Shift resizes, Enter confirms
+  const canvas = useRef<HTMLDivElement>(null);
   const pan = useRef<{ x: number; y: number; sl: number; st: number } | null>(null);
+  const drawingNow = draw && canDraw && rotation === 0;
+
+  // turning drawing on moves focus to the canvas, so a keyboard user can start the box straight away
+  useEffect(() => {
+    if (drawingNow) canvas.current?.focus();
+  }, [drawingNow]);
 
   useEffect(() => {
     const el = scroller.current;
@@ -59,7 +66,7 @@ export function PageViewer({
   const swap = rotation % 180 !== 0;
   const wrapW = swap ? H : W;
   const wrapH = swap ? W : H;
-  const drawing = draw && canDraw && rotation === 0;
+  const drawing = drawingNow;
 
   function rel(e: React.PointerEvent<HTMLDivElement>) {
     const r = e.currentTarget.getBoundingClientRect();
@@ -90,6 +97,31 @@ export function PageViewer({
     const box: Box = [Math.min(drag.x0, drag.x1), Math.min(drag.y0, drag.y1), Math.max(drag.x0, drag.x1), Math.max(drag.y0, drag.y1)];
     setDrag(null);
     if (box[2] - box[0] >= 0.005 && box[3] - box[1] >= 0.005) onDraw(page.id, box);
+  }
+
+  function canvasKey(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (!drawing) return;
+    if (kb === null) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        setKb(START_BOX);
+      }
+      return;
+    }
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onDraw(page.id, kb);
+      setKb(null);
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      setKb(null);
+    } else {
+      const next = nudge(kb, e.key, e.shiftKey, e.altKey);
+      if (next) {
+        e.preventDefault(); // arrow keys must not scroll the page while a box is being placed
+        setKb(next);
+      }
+    }
   }
 
   function fitPage() {
@@ -149,14 +181,26 @@ export function PageViewer({
             Rotate
           </Button>
           {canDraw ? (
-            <Button size="sm" variant={draw ? "default" : "outline"} aria-pressed={draw} onClick={() => setDraw((d) => !d)}>
+            <Button
+              size="sm"
+              variant={draw ? "default" : "outline"}
+              aria-pressed={draw}
+              onClick={() => {
+                setDraw((d) => !d);
+                setKb(null);
+              }}
+            >
               {draw ? "Drawing: on" : "Draw answer box"}
             </Button>
           ) : null}
         </div>
         {draw ? (
-          <p className="text-sm text-muted-foreground" role="status">
-            {rotation !== 0 ? "Rotate back to 0° to draw." : drawHint}
+          <p className="text-sm text-muted-foreground" role="status" id="draw-status" data-testid="draw-status">
+            {rotation !== 0
+              ? "Rotate back to 0° to draw."
+              : kb
+                ? describe(kb)
+                : `${drawHint} With the keyboard: focus the page, press Enter to place a box, then arrow keys to move it and Shift plus arrow keys to resize it.`}
           </p>
         ) : null}
         <div ref={scroller} className="max-h-[75vh] overflow-auto rounded-md border bg-muted/40 p-2" data-testid="page-scroller">
@@ -169,6 +213,13 @@ export function PageViewer({
               onPointerUp={up}
               onPointerCancel={up}
               data-testid="page-canvas"
+              ref={canvas}
+              tabIndex={drawing ? 0 : -1}
+              role="group"
+              aria-label={`Booklet page ${page.page_no}${drawing ? ": answer box drawing is on" : ""}`}
+              aria-describedby={drawing ? "draw-status" : undefined}
+              onKeyDown={canvasKey}
+              onBlur={() => setKb(null)}
             >
               {/* eslint-disable-next-line @next/next/no-img-element -- signed storage URL */}
               <img src={page.image_url} alt={`Booklet page ${page.page_no}`} draggable={false} className="size-full" />
@@ -192,6 +243,13 @@ export function PageViewer({
                   </span>
                 </button>
               ))}
+              {kb ? (
+                <div
+                  data-testid="kb-box"
+                  className="pointer-events-none absolute border-2 border-dashed border-primary bg-primary/10"
+                  style={{ left: `${kb[0] * 100}%`, top: `${kb[1] * 100}%`, width: `${(kb[2] - kb[0]) * 100}%`, height: `${(kb[3] - kb[1]) * 100}%` }}
+                />
+              ) : null}
               {drag ? (
                 <div
                   className="pointer-events-none absolute border-2 border-primary bg-primary/10"
