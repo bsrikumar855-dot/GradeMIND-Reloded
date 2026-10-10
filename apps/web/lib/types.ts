@@ -51,3 +51,60 @@ export function fullLabels(nodes: PaperNode[], prefix = ""): Map<string, string>
   }
   return out;
 }
+
+/** Submissions, pages and the grading workspace (mirrors the API's routes/submissions.py and routes/grading.py). */
+export type SubmissionRow = {
+  id: string;
+  exam_id: string;
+  student_ref: string;
+  consent_scope: "local_only" | "public_release";
+  mime: string;
+  size_bytes: number;
+  filename: string;
+  created_at: string;
+  job_id: string | null;
+  job_status: string | null;
+  job_error: string | null;
+  page_count: number;
+};
+
+export type PageInfo = { id: string; page_no: number; width: number; height: number; image_url: string; thumb_url: string | null };
+export type Region = { id: string; page_id: string; bbox: [number, number, number, number]; qid: string; attempt_no: number; crossed_out: boolean };
+export type EvaluationInfo = {
+  id: string;
+  qid: string;
+  attempt_no: number;
+  verdicts: Record<string, string>;
+  notes: string;
+  evidence_region_id: string | null;
+  marks: string;
+  examiner_id: string;
+  is_override: boolean;
+  override_reason: string | null;
+  created_at: string;
+};
+export type ScoreInfo = {
+  total: string;
+  max_total: string;
+  complete: boolean;
+  nodes: Record<string, { marks?: string; max?: string; [k: string]: unknown }>;
+  flags: string[];
+  version: string;
+};
+export type WorkspaceData = {
+  submission_id: string;
+  exam_id: string;
+  student_ref: string;
+  paper: Paper;
+  rubric: Rubric;
+  policy: Policy;
+  pages: PageInfo[];
+  regions: Region[];
+  evaluations: EvaluationInfo[];
+  score: ScoreInfo;
+};
+export type TotalsData = {
+  columns: { id: string; label: string; max: string }[];
+  rows: { submission_id: string; student_ref: string; total: string | null; max_total: string; complete: boolean; sections: Record<string, string>; flags: string[] }[];
+};
+export type AuditRow = { at: string; actor_id: string | null; action: string; entity_type: string; entity_id: string | null; details: Record<string, unknown> };
