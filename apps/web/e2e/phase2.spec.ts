@@ -105,6 +105,7 @@ test("Phase 2: paper → rubric → booklet → map → grade → totals → aud
   await expect(table).toContainText("totals.export_csv");
   const actions = await table.locator("tbody tr td:nth-child(2)").allInnerTexts();
   console.log("AUDIT ACTIONS:\n" + actions.join("\n"));
+  console.log(`::notice title=E2E audit trail (oldest first)::${actions.join(" | ")}`); // workflow command: shows as a job annotation
   expect(actions.filter((a) => a === "region.create")).toHaveLength(2);
   expect(actions.filter((a) => a === "evaluation.save")).toHaveLength(2);
   await page.screenshot({ path: info.outputPath("audit.png"), fullPage: true });
