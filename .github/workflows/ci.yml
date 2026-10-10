@@ -113,6 +113,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 -c "import sys; sys.path.insert(0, '../../tests/helpers'); from pdfgen import make_pdf; open('e2e/fixtures/booklet.pdf', 'wb').write(make_pdf([['E2E booklet page 1'], ['page 2']]))"
+          python3 -c "import sys; sys.path.insert(0, '../../tests/helpers'); from pdfgen import make_pdf; open('e2e/fixtures/phase3-booklet.pdf', 'wb').write(make_pdf([['Photosynthesis needs light and water.', 'Plants make their own food in the leaves.', 'Chlorophyll gives leaves their green colour.'], ['page two']]))"
           node --version
           npm install --global pnpm@12.10.1
           pnpm install --frozen-lockfile
@@ -121,6 +122,8 @@ jobs:
           E2E_PASSWORD="$(grep '^GRADEMIND_ADMIN_PASSWORD=' ../../.env | cut -d= -f2-)"
           export E2E_EMAIL E2E_PASSWORD
           pnpm exec playwright test
+      - name: Phase 3 evidence from the real database (corrections, audit trail, append-only triggers)
+        run: ./scripts/phase3_evidence.sh "docker compose exec -T postgres psql -U grademind -d grademind"
       - name: logs on failure
         if: failure()
         run: docker compose ps -a; docker compose logs --no-color --tail=200

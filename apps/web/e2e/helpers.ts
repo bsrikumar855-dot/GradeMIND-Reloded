@@ -5,7 +5,7 @@ import path from "node:path";
 /** Shared Playwright helpers: sign-in, API setup (exam, paper, rubric, booklets) and page interactions. */
 export const ADMIN = { email: process.env.E2E_EMAIL ?? "", password: process.env.E2E_PASSWORD ?? "" };
 export const EXAMINER = { email: process.env.E2E_EXAMINER_EMAIL ?? "", password: process.env.E2E_EXAMINER_PASSWORD ?? "" };
-const BOOKLET = path.join(__dirname, "fixtures", "booklet.pdf");
+const fixture = (name: string) => path.join(__dirname, "fixtures", name);
 
 export type Region = { id: string; qid: string; attempt_no: number; crossed_out: boolean; bbox: number[] };
 export type Workspace = { regions: Region[]; score: { total: string; flags: string[] }; evaluations: { qid: string; is_override: boolean }[] };
@@ -51,11 +51,11 @@ export async function createExam(api: APIRequestContext): Promise<string> {
   return id;
 }
 
-export async function uploadBooklet(api: APIRequestContext, examId: string, ref: string): Promise<string> {
+export async function uploadBooklet(api: APIRequestContext, examId: string, ref: string, fixtureName = "booklet.pdf"): Promise<string> {
   const up = await ok<{ id: string; job_id: string }>(
     await api.post(`/api/proxy/exams/${examId}/submissions`, {
       // the API refuses a byte-identical booklet within one exam, so every upload carries a unique trailing PDF comment
-      multipart: { student_ref: ref, file: { name: "booklet.pdf", mimeType: "application/pdf", buffer: Buffer.concat([fs.readFileSync(BOOKLET), Buffer.from(`\n% ${ref} ${Date.now()}\n`)]) } },
+      multipart: { student_ref: ref, file: { name: "booklet.pdf", mimeType: "application/pdf", buffer: Buffer.concat([fs.readFileSync(fixture(fixtureName)), Buffer.from(`\n% ${ref} ${Date.now()}\n`)]) } },
     }),
     "upload booklet",
   );
