@@ -41,7 +41,11 @@ export function PageViewer({
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [draw, setDraw] = useState(false);
-  const [drag, setDrag] = useState<{ x0: number; y0: number; x1: number; y1: number } | null>(null);
+  type Drag = { x0: number; y0: number; x1: number; y1: number };
+  const [drag, setDrag] = useState<Drag | null>(null);
+  // The drag lives in a ref as well as in state: a final pointermove and the pointerup that follows it can arrive before React has re-rendered,
+  // and the lift must use the finger's LAST position, not the one from the last render (a box drawn quickly ended short of the finger).
+  const dragRef = useRef<Drag | null>(null);
   const [kb, setKb] = useState<Box | null>(null); // keyboard-drawn box (3.0a): arrows move, Shift resizes, Enter confirms
   const canvas = useRef<HTMLDivElement>(null);
   const pan = useRef<{ x: number; y: number; sl: number; st: number; touch: boolean } | null>(null);
@@ -82,7 +86,8 @@ export function PageViewer({
     if (drawing) {
       e.currentTarget.setPointerCapture(e.pointerId);
       const p = rel(e);
-      setDrag({ x0: p.x, y0: p.y, x1: p.x, y1: p.y });
+      dragRef.current = { x0: p.x, y0: p.y, x1: p.x, y1: p.y };
+      setDrag(dragRef.current);
     } else if (scroller.current) {
       const touch = e.pointerType === "touch";
       if (!touch) e.currentTarget.setPointerCapture(e.pointerId);
@@ -90,9 +95,10 @@ export function PageViewer({
     }
   }
   function move(e: React.PointerEvent<HTMLDivElement>) {
-    if (drag) {
+    if (dragRef.current) {
       const p = rel(e);
-      setDrag({ ...drag, x1: p.x, y1: p.y });
+      dragRef.current = { ...dragRef.current, x1: p.x, y1: p.y };
+      setDrag(dragRef.current);
     } else if (pan.current && scroller.current) {
       scroller.current.scrollLeft = pan.current.sl - (e.clientX - pan.current.x);
       if (!pan.current.touch) scroller.current.scrollTop = pan.current.st - (e.clientY - pan.current.y); // a finger scrolls vertically itself
@@ -100,8 +106,10 @@ export function PageViewer({
   }
   function up() {
     pan.current = null;
-    if (!drag) return;
-    const box: Box = [Math.min(drag.x0, drag.x1), Math.min(drag.y0, drag.y1), Math.max(drag.x0, drag.x1), Math.max(drag.y0, drag.y1)];
+    const d = dragRef.current;
+    if (!d) return;
+    const box: Box = [Math.min(d.x0, d.x1), Math.min(d.y0, d.y1), Math.max(d.x0, d.x1), Math.max(d.y0, d.y1)];
+    dragRef.current = null;
     setDrag(null);
     if (box[2] - box[0] >= 0.005 && box[3] - box[1] >= 0.005) onDraw(page.id, box);
   }

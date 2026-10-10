@@ -19,6 +19,8 @@ What the checks found and what was fixed in this step:
 - The analytics, audit and totals tables scroll sideways on a narrow screen but were not reachable by keyboard: each is now a labelled, focusable region.
 - A sideways finger drag on the page image was handed to the browser, which treated it as its "Back" gesture and left the booklet. The viewer now pans
   sideways itself while not drawing (the browser still scrolls vertically and pinch-zooms), and `overscroll-behavior` is set.
+- A box drawn by a quick finger flick could end short of where the finger was lifted: the lift read the drag from the previous render, so the last move was lost. Found by a flaky CI run of
+  the touch test (the box ended at 0.625 instead of 0.7); the drag is now tracked in a ref, and a regression test sends the last move and the lift together (it fails on the old code, 3 of 3, and passes on the fix).
 - On touch screens controls were below a comfortable size: coarse-pointer devices now get a 44 px minimum height.
 
 Everything else (all the desktop pages and states) passed on the first run, so the baseline from Phases 1 to 3 (labels, roles, focus rings, a skip link, a

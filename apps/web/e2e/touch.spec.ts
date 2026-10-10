@@ -64,9 +64,24 @@ test("draw an answer box with a finger; a swipe without drawing on creates nothi
   expect(x1).toBeCloseTo(0.7, 1);
   expect(y1).toBeCloseTo(0.3, 1);
 
+  // a quick flick: the finger's last move and its lift reach the page together. The box must end where the finger ended, not one step short
+  // (the lift used to read the drag from the previous render; fixed with a ref, this pins it).
+  const f0: [number, number] = [box2.x + box2.width * 0.15, box2.y + box2.height * 0.5];
+  const f1: [number, number] = [box2.x + box2.width * 0.9, box2.y + box2.height * 0.7];
+  await cdp.send("Input.dispatchTouchEvent", { type: "touchStart", touchPoints: [{ x: f0[0], y: f0[1] }] });
+  await cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: (f0[0] + f1[0]) / 2, y: (f0[1] + f1[1]) / 2 }] });
+  await Promise.all([
+    cdp.send("Input.dispatchTouchEvent", { type: "touchMove", touchPoints: [{ x: f1[0], y: f1[1] }] }),
+    cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] }),
+  ]);
+  await expect.poll(async () => (await workspace(context.request, sid)).regions.length).toBe(2);
+  const flick = (await workspace(context.request, sid)).regions.find((r) => Math.abs(r.bbox[1]! - 0.5) < 0.02)!;
+  expect(flick.bbox[2]!).toBeCloseTo(0.9, 2); // ends where the finger ended (within half a percent), not at the previous move
+  expect(flick.bbox[3]!).toBeCloseTo(0.7, 2);
+
   // a stray tap while drawing (no drag) must not create a zero-size box
   await swipe(at(0.5, 0.6), at(0.5, 0.6), 1);
   await page.waitForTimeout(300);
-  expect((await workspace(context.request, sid)).regions).toHaveLength(1);
+  expect((await workspace(context.request, sid)).regions).toHaveLength(2); // the two real boxes, nothing from the tap
   await context.close();
 });

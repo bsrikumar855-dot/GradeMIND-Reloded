@@ -65,7 +65,8 @@ test("grading from sign-in to finalize and reopen, without a pointer", async ({ 
   await tabTo(page, "Exams");
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/\/exams$/);
-  await tabTo(page, name);
+  // the exam list is oldest first and has no paging: on a database that has seen many runs the new exam is far down the Tab order
+  await tabTo(page, name, 1500);
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(new RegExp(`/exams/${examId}/paper`));
   await tabTo(page, "Booklets");
