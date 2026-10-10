@@ -42,7 +42,7 @@ jobs:
         working-directory: packages/core
         run: GRADEMIND_DATABASE_URL=$GRADEMIND_TEST_DATABASE_URL uv run --frozen alembic -c alembic.ini check
 
-      - name: dependency audit (a REPORT in this log, not a gate: read it when it changes; see docs/SECURITY_AUDIT.md)
+      - name: "dependency audit (a REPORT in this log, not a gate; read it when it changes, see docs/SECURITY_AUDIT.md)"
         continue-on-error: true
         run: |
           uv export --frozen --no-hashes --all-packages --no-emit-workspace -o "$RUNNER_TEMP/req.txt" > /dev/null
@@ -137,7 +137,7 @@ jobs:
           set -euo pipefail
           docker compose exec -T api python -m grademind_core.cli verify-snapshots | tee verify.out
           grep -q '^VERIFY OK: [1-9][0-9]* snapshot' verify.out   # at least one snapshot was checked, not an empty run
-      - name: backup and restore drill (4.6): back up the live stack, restore a side copy and verify it, then restore over the live data
+      - name: "backup and restore drill (4.6; back up the live stack, restore a side copy and verify it, then restore over the live data)"
         run: |
           set -euo pipefail
           ./scripts/backup.sh backups/ci
