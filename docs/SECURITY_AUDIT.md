@@ -36,7 +36,7 @@ CI runs both audits on every build as a **report** (`audit` artifact, not a gate
 CI backs up the live stack, restores it into a side database and bucket and checks it, then stops the services, restores over the live data
 (`--replace-live`) and starts them again. A restore counts as good only when the schema revision, every table's row count, every stored page image,
 booklet source, paper source and line crop (against the SHA-256 the database recorded) and every finalized result (recomputed from the raw grades) match.
-The object archive detects a damaged member, a missing member, a swapped member and a truncated archive (8 tests).
+The object archive detects a damaged member, a missing member, a swapped member and a truncated archive (8 tests). The dump and the row counts are taken from **one database snapshot** (`pg_dump --snapshot` plus a count in the same session), because the first CI drill failed on exactly this: the counts were taken a moment after the dump, a machine reading finished in between, and the restore looked one row short.
 
 ## What is NOT covered (a listed gap)
 

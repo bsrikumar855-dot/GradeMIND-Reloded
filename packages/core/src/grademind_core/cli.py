@@ -15,7 +15,7 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-from grademind_core.backup import read_archive, table_counts, verify_restore, write_archive
+from grademind_core.backup import COUNTED_TABLES, read_archive, table_counts, verify_restore, write_archive
 from grademind_core.config import get_settings
 from grademind_core.dataset_export import SCOPES, ExportRefusedError, export_corrections
 from grademind_core.db.models import AuditLog, Organization, Role, User
@@ -140,6 +140,14 @@ def restore_objects_cmd(bucket: str | None) -> int:
     return 0 if rep.ok else 1
 
 
+def count_sql_cmd() -> int:
+    """Print one SQL query that returns the row counts of the main tables as a single JSON line (backup.sh runs it inside the
+    snapshot it dumps, so the counts and the dump are from the same moment)."""
+    parts = ", ".join(f"'{t}', (SELECT count(*) FROM {t})" for t in COUNTED_TABLES)  # noqa: S608 - fixed table names
+    print(f"SELECT json_build_object({parts});")
+    return 0
+
+
 def count_rows_cmd(database: str | None) -> int:
     """Print the row counts of the main tables as JSON (the restore drill compares them before and after)."""
     import json
@@ -216,6 +224,7 @@ def main(argv: list[str] | None = None) -> int:
     ro = sub.add_parser("restore-objects", help="read a backup tar from stdin into a (new) bucket")
     ro.add_argument("--bucket")
     sub.add_parser("count-rows", help="row counts of the main tables, as JSON").add_argument("--database")
+    sub.add_parser("count-sql", help="the SQL that counts the main tables as one JSON line (used inside a backup snapshot)")
     vr = sub.add_parser("verify-restore", help="check a restored database + bucket (revision, object hashes, snapshots)")
     vr.add_argument("--database")
     vr.add_argument("--bucket")
@@ -233,6 +242,8 @@ def main(argv: list[str] | None = None) -> int:
         return backup_objects_cmd(a.bucket)
     if a.cmd == "restore-objects":
         return restore_objects_cmd(a.bucket)
+    if a.cmd == "count-sql":
+        return count_sql_cmd()
     if a.cmd == "count-rows":
         return count_rows_cmd(a.database)
     if a.cmd == "verify-restore":

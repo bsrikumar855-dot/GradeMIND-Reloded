@@ -4,7 +4,7 @@
 #   scripts/backup.sh [OUT_DIR]        default OUT_DIR: backups/<UTC timestamp>
 #
 # Writes db.dump (pg_dump, custom format), objects.tar (every object, each with its own SHA-256, plus a closing manifest),
-# counts.json (row counts, for the restore check), MANIFEST.txt and SHA256SUMS. The database is dumped FIRST and the objects second:
+# counts.json (row counts taken in the SAME snapshot as the dump, for the restore check), MANIFEST.txt and SHA256SUMS. The database is dumped FIRST and the objects second:
 # objects are never deleted, so everything the dump refers to is in the archive.
 #
 # The backup holds student work. It is written with owner-only permissions and REFUSED inside the git repository unless git ignores
@@ -35,12 +35,14 @@ umask 077
 
 gm() { docker compose run --rm -T --no-deps api python -m grademind_core.cli "$@"; }
 
-echo "backup: database ..."
-docker compose exec -T postgres pg_dump -U "$PGUSER_" -d "$PGDB_" --format=custom --no-owner --no-privileges > "$ABS/db.dump"
+echo "backup: database (one consistent snapshot: the dump and the row counts are from the same moment) ..."
+COUNT_SQL="$(gm count-sql)"
+docker compose exec -T -e "PGU=$PGUSER_" -e "PGD=$PGDB_" -e "COUNT_SQL=$COUNT_SQL" postgres sh -c "$(cat scripts/pg_snapshot_dump.sh)"
+docker compose exec -T postgres cat /tmp/gm.dump > "$ABS/db.dump"
+docker compose exec -T postgres cat /tmp/gm.counts > "$ABS/counts.json"
+docker compose exec -T postgres rm -f /tmp/gm.dump /tmp/gm.counts
 echo "backup: objects ..."
 gm backup-objects > "$ABS/objects.tar"
-echo "backup: row counts ..."
-gm count-rows > "$ABS/counts.json"
 REV="$(docker compose exec -T postgres psql -U "$PGUSER_" -d "$PGDB_" -Atc 'select version_num from alembic_version' | tr -d '\r')"
 {
   echo "GradeMIND backup"
