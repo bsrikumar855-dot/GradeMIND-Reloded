@@ -128,8 +128,7 @@ export function RubricEditor({ examId, canEdit }: { examId: string; canEdit: boo
   const [message, setMessage] = useState<{ tone: "default" | "destructive"; text: string } | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const load = useCallback(async () => {
-    const s = await api<State>(`exams/${examId}/rubric`);
+  const apply = useCallback((s: State) => {
     setState(s);
     setIssues(s.issues);
     const cur = s.draft ?? s.approved;
@@ -138,11 +137,26 @@ export function RubricEditor({ examId, canEdit }: { examId: string; canEdit: boo
     if (s.paper) for (const lf of leaves(s.paper.document.questions)) byQ[lf.id] ??= { qid: lf.id, criteria: [defaultCriterion(lf.max_marks ?? "")] };
     setRubric(byQ);
     if (cur?.policy) setPolicy({ ...DEFAULT_POLICY, ...cur.policy });
-  }, [examId]);
+  }, []);
 
+  const load = useCallback(async () => {
+    apply(await api<State>(`exams/${examId}/rubric`));
+  }, [examId, apply]);
+
+  // Initial fetch: state is set only from the promise callback (never synchronously in the effect body).
   useEffect(() => {
-    void load();
-  }, [load]);
+    let alive = true;
+    api<State>(`exams/${examId}/rubric`)
+      .then((s) => {
+        if (alive) apply(s);
+      })
+      .catch(() => {
+        if (alive) setMessage({ tone: "destructive", text: "We couldn't load the rubric. Please refresh the page." });
+      });
+    return () => {
+      alive = false;
+    };
+  }, [examId, apply]);
 
   if (!state) return <p className="text-muted-foreground">Loading…</p>;
   if (!state.paper) return <Alert>Approve the question paper structure first; the rubric is written against it.</Alert>;

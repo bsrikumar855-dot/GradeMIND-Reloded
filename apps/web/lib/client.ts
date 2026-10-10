@@ -17,7 +17,8 @@ async function handle<T>(res: Response): Promise<T> {
   if (res.status === 204) return undefined as T;
   const body = (await res.json().catch(() => null)) as { error?: { code: string; message: string; issues?: Issue[] } } | null;
   if (!res.ok) {
-    if (res.status === 401) window.location.assign("/login?expired=1");
+    // Deliberate full-page navigation: drops all client state once the session has expired.
+    if (res.status === 401) window.location.replace(new URL("/login?expired=1", window.location.origin).toString());
     throw new ClientError(res.status, body?.error?.code ?? "error", body?.error?.message ?? "Something went wrong.", body?.error?.issues ?? []);
   }
   return body as T;

@@ -157,17 +157,31 @@ export function PaperEditor({ examId, examTotal, canEdit }: { examId: string; ex
   const [message, setMessage] = useState<{ tone: "default" | "destructive"; text: string } | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const load = useCallback(async () => {
-    const s = await api<State>(`exams/${examId}/paper`);
+  const apply = useCallback((s: State) => {
     setState(s);
     setIssues(s.issues);
     const current = s.draft ?? s.approved;
     if (current) setDoc(current.document);
-  }, [examId]);
+  }, []);
 
+  const load = useCallback(async () => {
+    apply(await api<State>(`exams/${examId}/paper`));
+  }, [examId, apply]);
+
+  // Initial fetch: state is set only from the promise callback (never synchronously in the effect body).
   useEffect(() => {
-    void load();
-  }, [load]);
+    let alive = true;
+    api<State>(`exams/${examId}/paper`)
+      .then((s) => {
+        if (alive) apply(s);
+      })
+      .catch(() => {
+        if (alive) setMessage({ tone: "destructive", text: "We couldn't load the question paper. Please refresh the page." });
+      });
+    return () => {
+      alive = false;
+    };
+  }, [examId, apply]);
 
   async function run<T>(fn: () => Promise<T>, ok: string): Promise<T | undefined> {
     setBusy(true);
