@@ -39,8 +39,8 @@ Each step is one commit with CI green before the next. Test numbers come from `m
 | Step | State | Evidence |
 |---|---|---|
 | 3.0 Phase 2 gaps: keyboard-only box drawing; Playwright for examiner override-with-reason, attempts, crossed-out, remove region, N/P/?; stuck-QUEUED sweeper test | **Implemented and tested** | `cb3a03c`, CI `38032702947` green (test, secrets, web, compose-smoke): 247 app tests; web unit tests 8/8 in the image build; Playwright 6/6 (5 new + the Phase 2 spec) in compose-smoke |
-| 3.1 OCR stage in the ingest job (registry-only OCR calls, config hash + resolved config stored and logged, append-only tables, idempotent, retry, page failures never block grading) | **Implemented; CI result pending** | Local: `make test` 268 passed exit 0; real client vs the real OCR container on a synthetic printed page: health + rule-12 OK, result size = page size, engine signature = health, 3 lines read. Compose-smoke now checks the OCR stage with the real engine (first CI run pending) |
-| 3.2 Region text API (pure geometry) | Not started | |
+| 3.1 OCR stage in the ingest job (registry-only OCR calls, config hash + resolved config stored and logged, append-only tables, idempotent, retry, page failures never block grading) | **Implemented and tested** | `8cd9aff`, CI `38033496929` green (test, secrets, web, compose-smoke): 268 app tests; the real engine read both pages of the smoke booklet through the worker (`pages_read 2, failed 0`); isolation contract kept (8/8); also checked locally: real client vs real OCR container, health + rule-12 OK, result size = page size |
+| 3.2 Region text API (pure geometry) | **Implemented; CI result pending** | Local: `make test` 289 passed exit 0. `ocr_geometry.py` 100% branch coverage (in the `make test` gate) with 16 tests incl. 4 Hypothesis properties; `GET /submissions/{id}/machine-reading` (9 API tests incl. "grading identical with and without OCR" and "no machine text in the workspace") |
 | 3.3 "Machine reading" panel | Not started | |
 | 3.4 Examiner line correction -> `line_corrections` | Not started | |
 | 3.5 Owner-only dataset export (consent-aware) | Not started | |
