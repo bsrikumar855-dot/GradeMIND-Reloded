@@ -14,7 +14,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, File, Form, Query, Request, UploadFile
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -136,7 +136,14 @@ def upload_submission(
     return SubmissionCreated(**_out(sub).model_dump(), job_id=job.id)
 
 
-@router.get("/exams/{exam_id}/submissions", response_model=list[SubmissionOut])
+class SubmissionRow(SubmissionOut):
+    job_id: uuid.UUID | None
+    job_status: str | None
+    job_error: str | None
+    page_count: int
+
+
+@router.get("/exams/{exam_id}/submissions", response_model=list[SubmissionRow])
 def list_submissions(
     exam_id: uuid.UUID,
     limit: Annotated[int, Query(ge=1, le=100)] = 50,
@@ -152,7 +159,24 @@ def list_submissions(
         .limit(limit)
         .offset(offset)
     )
-    return [_out(s) for s in db.scalars(q)]
+    subs = list(db.scalars(q))
+    ids = [x.id for x in subs]
+    jobs: dict[uuid.UUID, ProcessingJob] = {}
+    for j in db.scalars(select(ProcessingJob).where(ProcessingJob.submission_id.in_(ids)).order_by(ProcessingJob.created_at)):
+        assert j.submission_id is not None
+        jobs[j.submission_id] = j  # latest wins
+    page_q = select(Page.submission_id, func.count()).where(Page.submission_id.in_(ids)).group_by(Page.submission_id)
+    counts = dict(db.execute(page_q).all())
+    return [
+        SubmissionRow(
+            **_out(x).model_dump(),
+            job_id=jobs[x.id].id if x.id in jobs else None,
+            job_status=jobs[x.id].status.value if x.id in jobs else None,
+            job_error=jobs[x.id].error if x.id in jobs else None,
+            page_count=int(counts.get(x.id, 0)),
+        )
+        for x in subs
+    ]
 
 
 @router.get("/submissions/{submission_id}", response_model=SubmissionDetail)

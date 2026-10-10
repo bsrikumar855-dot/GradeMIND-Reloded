@@ -1,14 +1,26 @@
 import type { Metadata } from "next";
-import { Card, CardContent } from "@/components/ui/card";
-import { apiGet, type Exam } from "@/lib/api";
+import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { NewExamForm } from "@/components/grading/new-exam";
+import { apiGet, type Exam, type Me } from "@/lib/api";
 
 export const metadata: Metadata = { title: "Exams" };
 
 export default async function ExamsPage() {
-  const exams = await apiGet<Exam[]>("/api/exams");
+  const [me, exams] = await Promise.all([apiGet<Me>("/api/me"), apiGet<Exam[]>("/api/exams")]);
   return (
     <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-semibold">Exams</h1>
+      {me.role !== "examiner" ? (
+        <Card>
+          <CardHeader>
+            <CardTitle>New exam</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <NewExamForm />
+          </CardContent>
+        </Card>
+      ) : null}
       {exams.length === 0 ? (
         <p className="text-muted-foreground">No exams yet.</p>
       ) : (
@@ -27,7 +39,11 @@ export default async function ExamsPage() {
               <tbody>
                 {exams.map((e) => (
                   <tr key={e.id} className="border-b last:border-0">
-                    <td className="px-4 py-3 font-medium">{e.name}</td>
+                    <td className="px-4 py-3 font-medium">
+                      <Link href={`/exams/${e.id}/paper`} className="text-primary underline underline-offset-4">
+                        {e.name}
+                      </Link>
+                    </td>
                     <td className="px-4 py-3">{e.subject}</td>
                     <td className="px-4 py-3 text-muted-foreground">{e.course ?? "—"}</td>
                     <td className="px-4 py-3 text-right tabular-nums">{e.total_marks}</td>
