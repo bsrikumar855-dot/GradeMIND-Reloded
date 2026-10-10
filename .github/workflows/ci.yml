@@ -149,6 +149,8 @@ jobs:
           docker compose stop api worker ocr-worker web
           ./scripts/restore.sh backups/ci grademind grademind --replace-live | tee restore-live.out
           grep -q '^RESTORE VERIFY OK' restore-live.out
+          # the OCR service may still be reading pages after the browser tests; wait until it answers before starting what depends on it
+          for i in $(seq 1 60); do [ "$(docker compose ps --format '{{.Health}}' ocr)" = healthy ] && break; sleep 5; done
           docker compose start api worker ocr-worker web
           ./scripts/compose_wait.sh 600
           docker compose exec -T api python -m grademind_core.cli verify-snapshots | tee after.out

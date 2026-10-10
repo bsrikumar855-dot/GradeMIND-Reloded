@@ -133,6 +133,15 @@ services:
     image: grademind-ocr:dev
     environment:
       GRADEMIND_OCR_QUEUE_TIMEOUT_S: "120"
+    # The service reads one page at a time and is CPU-bound; while it does, a health request can take several seconds. The image's own check
+    # (5 s, 3 tries) marked it "unhealthy" on a busy machine, and compose then refuses to start anything that depends on it (seen in CI,
+    # run 38057424010). Marked unhealthy only after about two minutes of sustained failure.
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS --max-time 25 http://127.0.0.1:8800/ocr/health || exit 1"]
+      interval: 15s
+      timeout: 30s
+      retries: 8
+      start_period: 120s
     # CPU only (D18: the GPU is shared). Peak RSS measured at ~2.8 GB per page in Phase 0b.
     deploy:
       resources:
