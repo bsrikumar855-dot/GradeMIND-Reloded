@@ -75,7 +75,7 @@ def test_rejects_empty() -> None:
         ("..\\..\\windows\\system32\\cmd.exe", "cmd.exe"),
         ("/abs/path/answer.pdf", "answer.pdf"),
         ("  .hidden.pdf", "hidden.pdf"),
-        ("ans\x00wer‮.pdf", "answer.pdf"),
+        ("ans\x00wer\u202e.pdf", "answer.pdf"),
         ("a<b>c|d:e*f?.pdf", "a_b_c_d_e_f_.pdf"),
         ("", "upload"),
         (None, "upload"),

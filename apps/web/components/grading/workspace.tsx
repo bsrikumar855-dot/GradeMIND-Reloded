@@ -9,8 +9,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { api, ClientError } from "@/lib/client";
-import { fullLabels, leaves, type Criterion, type WorkspaceData } from "@/lib/types";
+import { fullLabels, leaves, type Criterion, type LineHighlight, type MachineReadingData, type WorkspaceData } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { MachineReading } from "./machine-reading";
 import { PageViewer } from "./page-viewer";
 
 export function Workspace({ submissionId }: { submissionId: string }) {
@@ -23,20 +24,38 @@ export function Workspace({ submissionId }: { submissionId: string }) {
   const [newAttempt, setNewAttempt] = useState(false);
   const [notice, setNotice] = useState<{ tone: "default" | "destructive"; text: string } | null>(null);
   const [help, setHelp] = useState(false);
+  // Machine reading is display-only and optional: it loads separately, so its failure never affects grading
+  const [mr, setMr] = useState<MachineReadingData | null>(null);
+  const [mrFailed, setMrFailed] = useState(false);
+  const [highlight, setHighlight] = useState<LineHighlight | null>(null);
+
+  const loadMr = useCallback(
+    () =>
+      api<MachineReadingData>(`submissions/${submissionId}/machine-reading`).then(
+        (d) => {
+          setMr(d);
+          setMrFailed(false);
+        },
+        () => setMrFailed(true),
+      ),
+    [submissionId],
+  );
 
   const reload = useCallback(async () => {
     setWs(await api<WorkspaceData>(`submissions/${submissionId}/workspace`));
-  }, [submissionId]);
+    void loadMr();
+  }, [submissionId, loadMr]);
 
   useEffect(() => {
     let alive = true;
     api<WorkspaceData>(`submissions/${submissionId}/workspace`)
       .then((w) => alive && setWs(w))
       .catch((e) => alive && setFailed(e instanceof ClientError ? e.message : "We couldn't load this booklet. Please refresh the page."));
+    void loadMr();
     return () => {
       alive = false;
     };
-  }, [submissionId]);
+  }, [submissionId, loadMr]);
 
   const questions = useMemo(() => (ws ? leaves(ws.paper.questions) : []), [ws]);
   const labels = useMemo(() => (ws ? fullLabels(ws.paper.questions) : new Map<string, string>()), [ws]);
@@ -147,6 +166,7 @@ export function Workspace({ submissionId }: { submissionId: string }) {
           regions={ws.regions}
           labels={labels}
           activeRegionId={activeRegion}
+          highlight={highlight}
           canDraw={activeQ !== null}
           drawHint={`Drag on the page to mark the answer to ${activeQ ? (labels.get(activeQ) ?? activeQ) : "a question"}${newAttempt ? " (new attempt)" : ""}.`}
           onDraw={onDraw}
@@ -187,6 +207,20 @@ export function Workspace({ submissionId }: { submissionId: string }) {
               </ul>
             </CardContent>
           </Card>
+          {activeQ ? (
+            <MachineReading
+              data={mr}
+              failed={mrFailed}
+              qid={activeQ}
+              attempt={curAttempt}
+              pageNo={(id) => ws.pages.find((p) => p.id === id)?.page_no}
+              onHighlight={(h) => {
+                setHighlight(h);
+                const i = h ? ws.pages.findIndex((p) => p.id === h.page_id) : -1;
+                if (i >= 0) setPageIdx(i);
+              }}
+            />
+          ) : null}
           {activeQ ? (
             <Card className="gap-3 py-4">
               <CardHeader className="px-4">

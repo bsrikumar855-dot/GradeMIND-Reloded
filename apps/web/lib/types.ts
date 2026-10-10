@@ -113,3 +113,25 @@ export type TotalsData = {
   rows: { submission_id: string; student_ref: string; total: string | null; max_total: string; complete: boolean; sections: Record<string, string>; flags: string[] }[];
 };
 export type AuditRow = { at: string; actor_id: string | null; action: string; entity_type: string; entity_id: string | null; details: Record<string, unknown> };
+
+/** Machine reading (OCR assist, D28). DISPLAY-ONLY: nothing here may feed a verdict. Mirrors routes/ocr.py. */
+export type MachineLine = {
+  id: string;
+  text: string; // student text: DATA, render through safeText() as a plain text node only
+  score: number | null;
+  low_confidence: boolean;
+  bbox: [number, number, number, number]; // page fractions, the same space as answer regions
+  overlap: number;
+};
+export type RegionReading = {
+  region_id: string;
+  qid: string;
+  attempt_no: number;
+  crossed_out: boolean;
+  page_id: string;
+  page_no: number;
+  page_status: "read" | "failed" | "unread";
+  lines: MachineLine[];
+};
+export type MachineReadingData = { notice: string; low_confidence_below: number; regions: RegionReading[] };
+export type LineHighlight = { page_id: string; bbox: [number, number, number, number] };

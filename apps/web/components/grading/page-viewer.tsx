@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { describe, nudge, START_BOX, type Box } from "@/lib/kbbox";
-import type { PageInfo, Region } from "@/lib/types";
+import type { LineHighlight, PageInfo, Region } from "@/lib/types";
 
 /**
  * One booklet page: zoom, pan (drag when not drawing), rotate, fit width/page, thumbnails, and an optional
@@ -17,6 +17,7 @@ export function PageViewer({
   regions,
   labels,
   activeRegionId,
+  highlight,
   canDraw,
   drawHint,
   onDraw,
@@ -28,6 +29,7 @@ export function PageViewer({
   regions: Region[];
   labels: Map<string, string>;
   activeRegionId: string | null;
+  highlight?: LineHighlight | null;
   canDraw: boolean;
   drawHint: string;
   onDraw: (pageId: string, bbox: Box) => void;
@@ -243,6 +245,18 @@ export function PageViewer({
                   </span>
                 </button>
               ))}
+              {highlight && highlight.page_id === page.id ? (
+                <div
+                  data-testid="line-highlight"
+                  className="pointer-events-none absolute border-2 border-sky-600 bg-sky-400/20"
+                  style={{
+                    left: `${highlight.bbox[0] * 100}%`,
+                    top: `${highlight.bbox[1] * 100}%`,
+                    width: `${(highlight.bbox[2] - highlight.bbox[0]) * 100}%`,
+                    height: `${(highlight.bbox[3] - highlight.bbox[1]) * 100}%`,
+                  }}
+                />
+              ) : null}
               {kb ? (
                 <div
                   data-testid="kb-box"
