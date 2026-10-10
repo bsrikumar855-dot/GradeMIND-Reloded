@@ -8,7 +8,7 @@ export const EXAMINER = { email: process.env.E2E_EXAMINER_EMAIL ?? "", password:
 const fixture = (name: string) => path.join(__dirname, "fixtures", name);
 
 export type Region = { id: string; qid: string; attempt_no: number; crossed_out: boolean; bbox: number[] };
-export type Workspace = { regions: Region[]; score: { total: string; flags: string[] }; evaluations: { qid: string; is_override: boolean }[] };
+export type Workspace = { pages: { id: string }[]; regions: Region[]; score: { total: string; flags: string[] }; evaluations: { qid: string; is_override: boolean }[] };
 
 export async function signIn(browser: Browser, who: { email: string; password: string }): Promise<{ context: BrowserContext; page: Page }> {
   const context = await browser.newContext();

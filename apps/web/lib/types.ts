@@ -174,3 +174,30 @@ export type FinalizationData = {
   not_attempted: { qid: string; label: string }[];
   history: { action: "FINALIZED" | "REOPENED"; at: string; by: string; reason: string | null; snapshot_no: number }[];
 };
+
+export type AnalyticsLevel = { id: string; name: string; marks: string; count: number; share: string | null };
+export type AnalyticsQuestion = {
+  qid: string;
+  label: string;
+  max_marks: string;
+  n: number;
+  suppressed: boolean;
+  mean: string | null;
+  median: string | null;
+  not_attempted: number;
+  incomplete: number;
+  distribution: { marks: string; count: number; share: string | null }[];
+  criteria: { id: string; name: string; n: number; suppressed: boolean; levels: AnalyticsLevel[] }[];
+};
+export type AnalyticsData = {
+  scope: "all" | "finalized";
+  min_n: number;
+  rubric_version_no: number;
+  score_computer_version: string;
+  booklets: { total: number; finalized: number; not_started: number; in_progress: number; complete: number };
+  ungraded: { mapped_but_ungraded_answers: number; booklets_with_ungraded: number };
+  questions: AnalyticsQuestion[];
+  overrides: { grades_saved: number; overrides: number; rate: string | null; suppressed: boolean };
+  time_to_grade: { n: number; suppressed: boolean; median_seconds: number | null; note: string };
+  definitions: string[];
+};
