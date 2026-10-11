@@ -13,6 +13,7 @@ import { ADMIN, createExam, ok, signIn, uploadBooklet } from "./helpers";
 test.setTimeout(300_000);
 
 const OUT = process.env.E2E_RC_OUT ?? "";
+test.skip(!OUT, "needs E2E_RC_OUT: it runs in the release-candidate CI job (fresh stack over HTTPS), not in the plain stack run");
 const TAMIL_NAME = "தமிழ் தேர்வு";
 const DEVANAGARI_SUBJECT = "हिन्दी विषय";
 

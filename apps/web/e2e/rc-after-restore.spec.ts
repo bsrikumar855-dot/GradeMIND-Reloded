@@ -6,6 +6,7 @@ import { ADMIN, ok, signIn } from "./helpers";
 /** 5.7: after the encrypted backup was restored OVER the live data, the system is used again over HTTPS: the administrator signs in, the
  *  Tamil-named exam is there, and its result sheet is produced again from the restored snapshot (saved for the PDF reader step). */
 test.setTimeout(120_000);
+test.skip(!process.env.E2E_RC_OUT, "needs E2E_RC_OUT: it runs in the release-candidate CI job, after the restore");
 
 test("after the restore: sign in over HTTPS, the exam and its finalized result are back, the sheet is made again", async ({ browser }) => {
   const OUT = process.env.E2E_RC_OUT ?? "";
