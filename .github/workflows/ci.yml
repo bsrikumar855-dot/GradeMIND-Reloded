@@ -215,6 +215,14 @@ jobs:
           E2E_PASSWORD="$(grep '^GRADEMIND_ADMIN_PASSWORD=' ../../.env | cut -d= -f2-)"
           export E2E_EMAIL E2E_PASSWORD E2E_HTTPS=1 E2E_IGNORE_HTTPS_ERRORS=1 E2E_WEB=https://localhost:8443
           pnpm exec playwright test e2e/https.spec.ts
+      - name: "image scan (5.4; Trivy pinned by digest, a REPORT: it never fails the build; summary at the bottom of the run page)"
+        continue-on-error: true
+        run: |
+          export GRADEMIND_HOST=localhost GRADEMIND_COOKIE_SECURE=true GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://localhost:9443
+          IMAGES="$(docker compose -f compose.yaml -f compose.https.yaml --profile https config --images | sort -u | tr '\n' ' ')"
+          ./scripts/trivy_scan.sh "$RUNNER_TEMP/trivy" $IMAGES
+          python3 scripts/trivy_summary.py "$RUNNER_TEMP/trivy" --markdown "$RUNNER_TEMP/trivy.md" > /dev/null
+          { echo "### Image scan (Trivy; what is known today, not a verdict)"; echo; cat "$RUNNER_TEMP/trivy.md"; } >> "$GITHUB_STEP_SUMMARY"
       - name: logs on failure
         if: failure()
         run: |

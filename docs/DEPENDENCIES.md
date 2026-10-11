@@ -14,6 +14,7 @@ Spec §2 rule 6: every dependency is pinned, with a one-line justification. Exac
 | httpx | 0.28.1 | The OCR service client (`grademind_core/ocr_client.py`); also the API's health proxy |
 | minio (Python SDK) | 7.2.20 | S3 client; imported **only** in `grademind_core/storage.py` (the single storage module). Presigns locally with a fixed region |
 | MinIO server image | `cgr.dev/chainguard/minio@sha256:f74600a1…fa18` (MinIO RELEASE.2026-09-22T19-25-18Z) | Object storage (compose + CI). `minio/minio` is no longer on Docker Hub and `quay.io/minio/minio` needs a login, so we use Chainguard's free image, **pinned by digest** |
+| Trivy image | `aquasec/trivy@sha256:62b1e65e…1969` (Trivy 0.74.0, Apache-2.0) | Container image scanning (D30.6), run by `scripts/trivy_scan.sh` in CI and by the owner monthly. A **report**, never a gate. Pinned by digest; its vulnerability database is downloaded at run time (that is how a scanner works), so a report means "what is known today". Scans only: nothing from it enters the stack |
 | pytest / pytest-asyncio / httpx | 9.1.1 / 1.4.0 / 0.28.1 | Tests (dev) |
 | ruff / mypy / import-linter | 0.16.10 / 2.4.0 / 2.15 | Lint, strict typing, SDK import boundaries (rule 7) (dev) |
 
@@ -53,7 +54,7 @@ tarballs by their hash. Remaining network dependencies of the OCR build: the pin
 (`apt-get`, unpinned versions from the bookworm mirrors).
 
 **Pinning summary (D26.2).** Every container image is pinned by digest: postgres, redis, MinIO (Chainguard), python,
-uv, node (Dockerfiles, compose, and the CI Postgres service). GitHub Actions are pinned by commit SHA.
+uv, node, caddy, trivy (Dockerfiles, compose, scripts and the CI Postgres service). GitHub Actions are pinned by commit SHA.
 
 
 ## Spike environments (Phase 0/0b; `spike/*/requirements.txt`)

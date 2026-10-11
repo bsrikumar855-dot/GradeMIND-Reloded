@@ -50,5 +50,17 @@ The pilot runs on a **LAN or VPN only**. A reverse proxy (Caddy, pinned by diges
 5. Clean up the drill copy: `docker compose exec postgres dropdb -U grademind restore_check` (and delete the `gm-restore-check` bucket in the object store console if you want the space back).
 6. Confirm the key is still where it should be (you can open the file and see `AGE-SECRET-...` at the start) and the printed copy is still in the safe.
 
+## Monthly image update (D30.6; the owner, about 30 minutes, same day as the restore drill)
+
+The images are pinned by digest so that nothing changes by itself; the price is that fixes arrive only when you ask for them.
+1. Take a backup first (`./scripts/backup.sh`) and make sure the restore drill above passed this month.
+2. See what is known: `./scripts/trivy_scan.sh "$HOME/trivy-report" $(docker compose -f compose.yaml -f compose.https.yaml --profile https config --images | sort -u)`
+   (use a folder under your home folder: a snap-installed Docker cannot write to `/tmp`). It prints the severity table; the CI run page shows the same table on every push.
+3. If a Critical or High finding says "fixed in ...", update the base: pull the newer image, take its new digest (`docker buildx imagetools inspect <image:tag>`), put that digest in
+   `compose.yaml` (postgres, redis, minio, caddy) or in the `FROM` line of the Dockerfile (python, node, uv), and rebuild: `docker compose build --pull`.
+4. Run the whole test suite (`make test`) and the CI (push to a branch): the pin tests fail if an image lost its digest.
+5. Restart (`docker compose up -d`), sign in, open a booklet, then re-run step 2. Write the date and the Critical/High counts in your logbook.
+6. If the stack misbehaves after an update, go back: restore the previous digest in the file (git keeps it) and rebuild; the backup from step 1 is the safety net.
+
 Where things are: web `127.0.0.1:3100`, API `127.0.0.1:8000`, object store `127.0.0.1:9000`. Every administrative action is in each exam's **Audit trail**.
 Security review and dependency audit: `docs/SECURITY_AUDIT.md`. Accessibility: `docs/ACCESSIBILITY.md`.

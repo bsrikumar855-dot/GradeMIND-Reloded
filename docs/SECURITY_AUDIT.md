@@ -38,6 +38,40 @@ CI backs up the live stack, restores it into a side database and bucket and chec
 booklet source, paper source and line crop (against the SHA-256 the database recorded) and every finalized result (recomputed from the raw grades) match.
 The object archive detects a damaged member, a missing member, a swapped member and a truncated archive (8 tests). The dump and the row counts are taken from **one database snapshot** (`pg_dump --snapshot` plus a count in the same session), because the first CI drill failed on exactly this: the counts were taken a moment after the dump, a machine reading finished in between, and the restore looked one row short.
 
+## Container image scan (2026-10-11, Trivy 0.74.0; added in Phase 5.4)
+
+Every image of the stack was scanned with Trivy (pinned by digest, `scripts/trivy_scan.sh`; vulnerabilities only). CI repeats the scan on every run as a
+**report** (summary on the run page; it never fails the build). What the numbers mean, for the owner:
+
+- *Critical / High* are the ones to read. *Medium / Low* are listed for completeness.
+- "with a fix" = a newer version of that component exists, so rebuilding the image or taking a newer base image removes the finding. "No fix yet" =
+  the supplier has not published one; nothing we can do except wait and re-check next month.
+- A finding is a *known weakness in a component that is present in the image*. It is **not** proof that it can be reached in this system (no image is
+  reachable from outside the machine except the HTTPS proxy, and the stack is meant for a LAN/VPN only).
+
+| Image | OS | Critical | High | Medium | Low | High+Critical with a fix |
+|---|---|---:|---:|---:|---:|---:|
+| `caddy:2-alpine@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f` | alpine 3.23.6 | 0 | 4 | 8 | 1 | 4 of 4 |
+| `cgr.dev/chainguard/minio@sha256:f74600a1a46330cdbda1ef760d17a96bd6e0f4a6f0a2c49792ca3ee7e4c6fa18` | wolfi 20230201 | 0 | 2 | 4 | 0 | 2 of 2 |
+| `grademind-app:dev` | debian 12.15 | 2 | 55 | 122 | 102 | 0 of 57 |
+| `grademind-ocr:dev` | debian 12.15 | 4 | 82 | 162 | 166 | 0 of 86 |
+| `grademind-web:dev` | alpine 3.24.2 | 0 | 8 | 13 | 1 | 7 of 8 |
+| `postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea` | alpine 3.24.2 | 1 | 24 | 28 | 3 | 25 of 25 |
+| `redis:8-alpine@sha256:3811787313eba226a2ef38658c6ccb91cd5e110edc89c37767de373120a0e5a0` | alpine 3.23.6 | 0 | 0 | 1 | 0 | 0 of 0 |
+
+Reading it:
+
+- **Debian-based images (`grademind-app`, `grademind-ocr`)**: most findings are in Debian 12 system libraries (`libsqlite3`, `zlib1g`, `libxml2`, `libglib2.0`,
+  `bsdutils` ...) with **no fix published by Debian yet** (the "High+Critical with a fix" column is 0 for both). Nothing to do now except the monthly routine (the
+  runbook, "Monthly image update"), which pulls newer base images when Debian publishes fixes.
+- **`postgres:16-alpine`**: the Critical and most High findings are in the Go standard library compiled into the helper tool `gosu` (Go 1.24.6): fixed Go
+  versions exist, so a newer Postgres image is the first thing to try in the monthly routine.
+- **`caddy`, `minio`**: a few High findings in the Go standard library / `golang.org/x/net` compiled into the program itself; fixed versions exist, so the monthly routine looks for a newer image.
+- **`grademind-web`**: High findings in Node packages inside the image (`brace-expansion`, `tar`, `undici`, ...), almost all with a fix: a rebuild with a newer Node base takes them.
+- **`redis`**: one Medium, nothing else.
+- Accepted for the pilot: we have not shown any of these to be reachable from outside the LAN/VPN boundary (only the proxy publishes a port; this is not a penetration test);
+  the owner reads this table each month and applies the update routine. Not accepted for a public deployment: do not expose this stack to the internet.
+
 ## What is NOT covered (a listed gap)
 
 - **No independent penetration test**, no fuzzing of the API, no review of the Docker host or network.
@@ -46,5 +80,5 @@ The object archive detects a damaged member, a missing member, a swapped member 
   front, a caller who can reach the web port directly can choose that value, which weakens the per-address limits (the account-wide limit still holds). The
   default binds to `127.0.0.1` only.
 - **No individual session revocation** and no multi-factor sign-in.
-- **Container images are not scanned** (see above) and `paddlepaddle` is not auditable through PyPI.
+- **Container image scanning is a report, not a gate** (above), and `paddlepaddle` is not auditable through PyPI.
 - **Roles are coarse** (administrator, teacher, examiner); an administrator can see and do everything in their organisation, including exporting reports.
