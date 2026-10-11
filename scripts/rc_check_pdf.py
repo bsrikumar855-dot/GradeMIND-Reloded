@@ -1,8 +1,9 @@
-"""Release-candidate check (5.7): read a generated PDF with a real PDF reader (pdfium, through grademind_core.pdf) and check what a person would see.
+"""Release-candidate check (5.7): read a generated PDF with a real PDF reader (pdfium, through grademind_core.pdf) and check it.
 
 usage: uv run python scripts/rc_check_pdf.py FILE --state state.json [--expect TEXT ...]
-Checks: the exam name (Tamil) and subject (Devanagari) from the state file are in the text exactly, so are the extra --expect texts, there is no
-"?" anywhere, and the file is a PDF. Prints what was found; exits 1 on the first failure. No student answer text is involved (there is none in a report).
+Checks: the exam name (Tamil) and subject (Devanagari) from the state file are in the text exactly, and so are any
+extra --expect texts; there is no "?" anywhere; the file is a PDF. Prints what was found; exits 1 on the first failure.
+A report holds no student answer text, so none is involved here.
 """
 
 from __future__ import annotations
