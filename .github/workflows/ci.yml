@@ -236,3 +236,113 @@ jobs:
           echo "== OCR runs =="
           docker compose exec -T postgres psql -U grademind -d grademind -c "select status, left(coalesce(error,''),120) as error, count(*) from ocr_runs group by 1,2" || true
           docker compose logs --no-color --tail=200
+
+  release-candidate:
+    # 5.7: the pilot release candidate on a FRESH stack that is behind the HTTPS proxy from its first start: passwords, reset, rubric guard,
+    # the Tamil/Devanagari sheet, an encrypted backup restored over the live data, and the evidence printed from the real database.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      COMPOSE_FILE: compose.yaml:compose.https.yaml
+      COMPOSE_PROFILES: https
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
+        with:
+          lfs: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e  # v6.8.0
+      - name: Python 3.12
+        run: uv python install 3.12
+      - name: throwaway .env for this run (HTTPS from the first start)
+        run: |
+          gen() { python3 -c "import secrets; print(secrets.token_urlsafe($1))"; }
+          {
+            echo "GRADEMIND_JWT_SECRET=$(gen 48)"
+            echo "POSTGRES_PASSWORD=$(gen 24)"
+            echo "MINIO_ROOT_USER=grademind"
+            echo "MINIO_ROOT_PASSWORD=$(gen 24)"
+            echo "GRADEMIND_ADMIN_ORG=CI College"
+            echo "GRADEMIND_ADMIN_EMAIL=admin@example.edu"
+            echo "GRADEMIND_ADMIN_PASSWORD=$(gen 18)"
+            echo "GRADEMIND_HOST=localhost"
+            echo "GRADEMIND_COOKIE_SECURE=true"
+            echo "GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://localhost:9443"
+          } > .env
+      - name: cache the vendored OCR dependencies (keyed by their pinned sha256)
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830  # v4.3.0
+        with:
+          path: services/ocr/vendor-cache
+          key: ocr-vendor-${{ hashFiles('services/ocr/vendor.sha256') }}
+      - name: vendored OCR wheels + weights (release assets, sha256-verified; no Paddle CDN / Hugging Face)
+        run: ./scripts/fetch_ocr_vendor.sh
+      - name: build and start a fresh stack behind the HTTPS proxy
+        run: docker compose up -d --build
+      - name: wait for health
+        run: ./scripts/compose_wait.sh 1200
+      - name: "HTTPS as a person's browser sees it (chain checked against the proxy's own root; HSTS; nothing else published)"
+        run: |
+          set -euo pipefail
+          docker compose cp proxy:/data/caddy/pki/authorities/local/root.crt "$RUNNER_TEMP/ca.crt"
+          curl -fsS --cacert "$RUNNER_TEMP/ca.crt" -D hdr.txt -o /dev/null https://localhost:8443/login
+          grep -qi '^strict-transport-security: max-age=' hdr.txt
+          for p in 3100 8000 9000; do if curl -sS --max-time 3 "http://127.0.0.1:$p/" > /dev/null 2>&1; then echo "port $p is open"; exit 1; fi; done
+          docker ps --format '{{.Names}} {{.Ports}}' | grep -E '(0\.0\.0\.0|127\.0\.0\.1|\[::\]):[0-9]+->' | tee published.txt
+          test "$(cut -d' ' -f1 published.txt | sort -u)" = "grademind-proxy-1"
+      - name: browser E2E over HTTPS (HTTPS, password change and reset, rubric guard, the Tamil/Devanagari sheet)
+        working-directory: apps/web
+        run: |
+          set -euo pipefail
+          python3 -c "import sys; sys.path.insert(0, '../../tests/helpers'); from pdfgen import make_pdf; open('e2e/fixtures/booklet.pdf', 'wb').write(make_pdf([['E2E booklet page 1'], ['page 2']]))"
+          npm install --global pnpm@12.10.1
+          pnpm install --frozen-lockfile
+          E2E_EMAIL="$(grep '^GRADEMIND_ADMIN_EMAIL=' ../../.env | cut -d= -f2-)"
+          E2E_PASSWORD="$(grep '^GRADEMIND_ADMIN_PASSWORD=' ../../.env | cut -d= -f2-)"
+          export E2E_EMAIL E2E_PASSWORD E2E_HTTPS=1 E2E_IGNORE_HTTPS_ERRORS=1 E2E_WEB=https://localhost:8443 E2E_RC_OUT="$RUNNER_TEMP/rc"
+          pnpm exec playwright test e2e/https.spec.ts e2e/passwords.spec.ts e2e/rubric-guard.spec.ts e2e/release-candidate.spec.ts
+      - name: the saved result sheet and summary, read back with a PDF reader (real letters, no question marks)
+        run: |
+          set -euo pipefail
+          for f in sheet summary; do uv run --frozen python scripts/rc_check_pdf.py "$RUNNER_TEMP/rc/$f.pdf" --state "$RUNNER_TEMP/rc/state.json"; done
+      - name: Phase 5 evidence from the real database (passwords, reset, rubric guard, snapshots, the Indian-script reports, the database's own refusals)
+        run: ./scripts/phase5_evidence.sh "docker compose exec -T postgres psql -U grademind -d grademind"
+      - name: verify every finalized result by recomputing it from the raw records (I12)
+        run: |
+          set -euo pipefail
+          docker compose exec -T api python -m grademind_core.cli verify-snapshots | tee verify.out
+          grep -q '^VERIFY OK: [1-9][0-9]* snapshot' verify.out
+      - name: encrypted backup restored OVER the live data (key supplied only to the restore; a wrong key refused), then the system is used again
+        run: |
+          set -euo pipefail
+          ./scripts/fetch_age.sh
+          tools/age/age-keygen -o "$RUNNER_TEMP/owner.key" 2> "$RUNNER_TEMP/keygen.out"
+          grep -o 'age1[a-z0-9]*' "$RUNNER_TEMP/keygen.out" | head -1 > "$RUNNER_TEMP/recipients.txt"
+          tools/age/age-keygen -o "$RUNNER_TEMP/wrong.key" 2> /dev/null
+          export GRADEMIND_BACKUP_DIR=backups/rc GRADEMIND_BACKUP_RECIPIENTS="$RUNNER_TEMP/recipients.txt" GRADEMIND_OFFSITE_DIR="$RUNNER_TEMP/offsite"
+          ./scripts/backup_rotate.sh --weekly
+          ENC="$(ls backups/rc/weekly/*.tar.age)"
+          cmp "$ENC" "$GRADEMIND_OFFSITE_DIR/$(basename "$ENC")"
+          if grep -aq -e 'PGDMP' -e 'GradeMIND backup' "$ENC"; then echo "plaintext found inside the encrypted copy"; exit 1; fi
+          if ./scripts/restore.sh "$ENC" rc_wrongkey gm-rc-wrongkey --identity "$RUNNER_TEMP/wrong.key"; then echo "a WRONG key restored the backup"; exit 1; fi
+          # disaster recovery from the encrypted copy: the application stops, the live database and objects are replaced, it starts again
+          docker compose stop web api worker ocr-worker
+          ./scripts/restore.sh "$ENC" grademind grademind --replace-live --identity "$RUNNER_TEMP/owner.key" | tee restore-live.out
+          grep -q '^RESTORE VERIFY OK' restore-live.out
+          for i in $(seq 1 60); do [ "$(docker compose ps --format '{{.Health}}' ocr)" = healthy ] && break; sleep 5; done
+          docker compose start api worker ocr-worker web
+          ./scripts/compose_wait.sh 600
+          docker compose exec -T api python -m grademind_core.cli verify-snapshots | tee after.out
+          grep -q '^VERIFY OK: [1-9][0-9]* snapshot' after.out
+          if docker compose exec -T api env | grep -q 'AGE-SECRET-KEY-1'; then echo "private key in the api environment"; exit 1; fi
+          cd apps/web
+          E2E_EMAIL="$(grep '^GRADEMIND_ADMIN_EMAIL=' ../../.env | cut -d= -f2-)"
+          E2E_PASSWORD="$(grep '^GRADEMIND_ADMIN_PASSWORD=' ../../.env | cut -d= -f2-)"
+          export E2E_EMAIL E2E_PASSWORD E2E_IGNORE_HTTPS_ERRORS=1 E2E_WEB=https://localhost:8443 E2E_RC_OUT="$RUNNER_TEMP/rc"
+          pnpm exec playwright test e2e/rc-after-restore.spec.ts
+      - name: the sheet made again from the restored data is the same sheet (letters, no question marks)
+        run: uv run --frozen python scripts/rc_check_pdf.py "$RUNNER_TEMP/rc/sheet-after-restore.pdf" --state "$RUNNER_TEMP/rc/state.json"
+      - name: logs on failure
+        if: failure()
+        run: |
+          docker compose ps -a
+          docker compose logs --no-color --tail=80 proxy || true
+          docker compose exec -T postgres psql -U grademind -d grademind -c "select j.kind, j.status, left(coalesce(j.error,''),160) as error from processing_jobs j order by j.created_at" || true
+          docker compose logs --no-color --tail=150
