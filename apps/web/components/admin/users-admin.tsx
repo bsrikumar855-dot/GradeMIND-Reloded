@@ -42,7 +42,7 @@ export function UsersAdmin({ meId, initial }: { meId: string; initial: UserRow[]
         method: "POST",
         json: { email: f.get("email"), display_name: f.get("display_name"), role: f.get("role"), password },
       });
-      setNotice("Account created. Give them the temporary password yourself; it is not shown again.");
+      setNotice("Account created. Give them the temporary password yourself; it is not shown again. They will be asked to choose their own at first sign-in.");
       form.reset();
       setPassword("");
       await load();

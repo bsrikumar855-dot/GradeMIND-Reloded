@@ -8,7 +8,7 @@ from pydantic import BaseModel, EmailStr, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from grademind_api.deps import client_ip, db_dep, principal_any_dep, settings_dep
+from grademind_api.deps import client_ip, db_dep, principal_any_dep, principal_dep, settings_dep
 from grademind_api.errors import ApiError
 from grademind_core.config import Settings
 from grademind_core.db.models import AuditLog, User
@@ -38,6 +38,7 @@ class MeOut(BaseModel):
     display_name: str
     role: str
     must_change_password: bool = False
+    machine_reading_hidden: bool = False
 
 
 _DUMMY_HASH = hash_password(
@@ -86,7 +87,22 @@ def me(p: Principal = Depends(principal_any_dep), db: Session = Depends(db_dep))
         display_name=u.display_name,
         role=u.role.value,
         must_change_password=u.must_change_password,
+        machine_reading_hidden=u.machine_reading_hidden,
     )
+
+
+class PreferencesIn(BaseModel):
+    machine_reading_hidden: bool
+
+
+@router.put("/me/preferences", response_model=MeOut)
+def set_preferences(body: PreferencesIn, p: Principal = Depends(principal_dep), db: Session = Depends(db_dep)) -> MeOut:
+    """D31.3: the examiner's own display choice, kept on the server so it follows the person to every device. Nothing else."""
+    u = db.get(User, p.user_id)
+    assert u is not None
+    u.machine_reading_hidden = body.machine_reading_hidden
+    db.commit()
+    return me(p, db)
 
 
 class ChangePasswordIn(BaseModel):

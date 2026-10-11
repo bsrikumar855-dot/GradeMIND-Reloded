@@ -1,7 +1,7 @@
 "use client";
 
 import { Eye, EyeOff } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,15 +11,9 @@ import { api, ClientError } from "@/lib/client";
 import { safeText } from "@/lib/safe-text";
 import type { LineHighlight, MachineLine, MachineReadingData, RegionReading } from "@/lib/types";
 
-const PREF = "gm_show_machine_reading";
-
-function loadPref(): boolean {
-  try {
-    return window.localStorage.getItem(PREF) !== "off"; // shown by default
-  } catch {
-    return true; // storage can be blocked: the panel still works
-  }
-}
+/** D31.3: whether this person has hidden the panel is kept on their ACCOUNT (the server), so it follows them to any device.
+ *  Remembered here between questions so the panel does not flash while it is asked again. */
+let hiddenCache: boolean | null = null;
 
 /**
  * "Machine reading" (OCR assist, D28): what the OCR engine read inside the examiner's answer boxes, so the page can be read
@@ -45,30 +39,55 @@ export function MachineReading({
   onHighlight: (h: LineHighlight | null) => void;
   onChanged: () => void;
 }) {
-  const [show, setShow] = useState<boolean>(loadPref);
+  const [hidden, setHidden] = useState<boolean | null>(hiddenCache);
+  const [prefError, setPrefError] = useState(false);
+  const show = hidden === false; // until the account's choice is known nothing is shown (a person who hid it never sees it flash)
   const regions: RegionReading[] = (data?.regions ?? []).filter((r) => r.qid === qid && r.attempt_no === attempt);
 
-  function toggle() {
-    setShow((s) => {
-      try {
-        window.localStorage.setItem(PREF, s ? "off" : "on");
-      } catch {
-        /* a blocked store only means the choice is not remembered */
-      }
-      if (s) onHighlight(null);
-      return !s;
-    });
+  useEffect(() => {
+    if (hiddenCache !== null) return;
+    let live = true;
+    api<{ machine_reading_hidden: boolean }>("me")
+      .then((me) => {
+        hiddenCache = me.machine_reading_hidden;
+        if (live) setHidden(me.machine_reading_hidden);
+      })
+      .catch(() => {
+        if (live) setHidden(false); // the panel still works if the choice cannot be read: shown, as by default
+      });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  async function toggle() {
+    const next = !(hidden ?? false);
+    setPrefError(false);
+    setHidden(next);
+    if (next) onHighlight(null);
+    try {
+      await api("me/preferences", { method: "PUT", json: { machine_reading_hidden: next } });
+      hiddenCache = next;
+    } catch {
+      setHidden(!next); // not saved: put it back, and say so
+      setPrefError(true);
+    }
   }
 
   return (
     <Card className="gap-3 py-4" data-testid="machine-reading-panel">
       <CardHeader className="flex-row items-center justify-between gap-2 px-4">
         <CardTitle className="text-base">Machine reading</CardTitle>
-        <Button type="button" size="sm" variant="outline" aria-pressed={show} onClick={toggle}>
+        <Button type="button" size="sm" variant="outline" aria-pressed={show} onClick={() => void toggle()} disabled={hidden === null}>
           {show ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}
           {show ? "Hide machine reading" : "Show machine reading"}
         </Button>
       </CardHeader>
+      {prefError ? (
+        <CardContent className="px-4">
+          <Alert role="alert">Your choice could not be saved. Try again.</Alert>
+        </CardContent>
+      ) : null}
       {show ? (
         <CardContent className="flex flex-col gap-3 px-4">
           <p className="text-sm font-medium" data-testid="machine-reading-notice">

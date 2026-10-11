@@ -14,7 +14,7 @@ test("a new rubric version after grading started: teacher blocked, admin with a 
   const api = admin.context.request;
   const tpw = `Teacher-Pass-${stamp}-zz`;
   const temail = `rg.teacher.${stamp}@example.edu`;
-  await ok(await api.post("/api/proxy/users", { data: { email: temail, display_name: "RG Teacher", role: "teacher", password: tpw } }), "teacher");
+  await ok(await api.post("/api/proxy/users", { data: { email: temail, display_name: "RG Teacher", role: "teacher", password: tpw, must_change_password: false } }), "teacher");
   const teacher = await signIn(browser, { email: temail, password: tpw });
 
   const examId = await createExam(api, `Rubric guard ${stamp}`);

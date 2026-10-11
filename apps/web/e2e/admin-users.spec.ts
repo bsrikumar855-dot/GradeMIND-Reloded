@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { ADMIN, ok, signIn } from "./helpers";
+import { ADMIN, ok, signIn, signInFirstTime } from "./helpers";
 
 /**
  * 4.1: user administration through the UI and what an examiner then can and cannot reach.
@@ -54,7 +54,7 @@ test("admin creates an examiner and assigns them; the examiner sees only their e
   await expect(assignedRow).toBeVisible();
 
   // --- the examiner signs in
-  const ex = await signIn(browser, { email, password });
+  const ex = await signInFirstTime(browser, { email, password }, `Own-${stamp}-password-1`); // D31.4: a created account must choose its own password first
   const exApi = ex.context.request;
   const exPage = ex.page;
   await exPage.goto("/exams");

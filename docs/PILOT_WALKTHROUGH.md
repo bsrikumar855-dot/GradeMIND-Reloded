@@ -27,7 +27,7 @@ Write the reader and browser names at the bottom.
 | # | What to do | What should happen | Pass | Problem |
 |---|---|---|---|---|
 | A1 | Open the address. Listen to the page before touching anything. | You hear that this is a sign-in page, and you can find the Email and Password boxes by name. | ☐ | ☐ |
-| A2 | Sign in with the temporary password. | You are taken to a page that makes you choose a new password. You are told why. | ☐ | ☐ |
+| A2 | Sign in with the temporary password you were given. | You are taken to a page that makes you choose a new password (every new account does). You are told why. | ☐ | ☐ |
 | A3 | Choose a new password (at least 12 characters) and save. | You hear that it worked (or the page changes clearly) and you reach the home page. If you made a mistake, the message names the problem. | ☐ | ☐ |
 | A4 | Press the first Tab after the page loads. | You are offered "Skip to main content". Press Enter: reading continues in the main part of the page. | ☐ | ☐ |
 | A5 | Go to **Exams** and open the practice exam. Find the **Booklets** section. | You can tell the exam sections apart (Paper, Rubric, Booklets and so on) and which one you are on. | ☐ | ☐ |
@@ -37,7 +37,7 @@ Write the reader and browser names at the bottom.
 | A9 | Find the button **Draw answer box** and press Space. Then press Enter on the page, use the arrow keys to move the box (Shift plus arrow changes its size), and press Enter to save. | You hear "Answer area saved." (or equivalent) *without having to go looking for it*. | ☐ | ☐ |
 | A10 | Grade the answer: press a number key for a level, then **Ctrl+Enter**. | You hear "Grade saved." and the total changes and is spoken. | ☐ | ☐ |
 | A11 | Find the **Machine reading** part. Read what it says at the top. | It says plainly that the machine's reading **can be wrong** and must be checked against the page. | ☐ | ☐ |
-| A12 | Find **Hide machine reading** and press it; then **Show machine reading**. Leave it hidden, reload the page. | The button's name changes. After the reload it is still hidden (the choice is remembered in this browser on this device). Show it again before going on. | ☐ | ☐ |
+| A12 | Find **Hide machine reading** and press it; then **Show machine reading**. Leave it hidden, reload the page. | The button's name changes. After the reload it is still hidden (the choice is kept on your account: sign in on another device and it is still hidden). Show it again before going on. | ☐ | ☐ |
 | A13 | If the machine reading shows lines: open **Correct this line** on one, change the text, **Save correction**. | The editor opens with the line's text read out; after saving you hear that it saved. (If there are no lines, write "no lines to try" and tick neither box.) | ☐ | ☐ |
 | A14 | Look for the part that says what is still needed before finalizing. | You hear what is missing, in words. A question with no answer box asks for a tick box ("No answer box for ..."). Tick it. | ☐ | ☐ |
 | A15 | Press **Finalize result**. | You hear that the result is final, with the total. | ☐ | ☐ |

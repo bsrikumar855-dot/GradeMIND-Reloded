@@ -26,7 +26,7 @@ test("change your own password; other sessions end; then an admin reset forces a
   const third = `Third-Pass-${stamp}-cc`;
   const admin = await signIn(browser, ADMIN);
   const created = await ok<{ id: string }>(
-    await admin.context.request.post("/api/proxy/users", { data: { email, display_name: `Pw Person ${stamp}`, role: "examiner", password: first } }),
+    await admin.context.request.post("/api/proxy/users", { data: { email, display_name: `Pw Person ${stamp}`, role: "examiner", password: first, must_change_password: false } }),
     "create",
   );
 

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import secrets
 import sys
 import time
 import uuid
@@ -20,7 +21,8 @@ from grademind_core.config import get_settings
 from grademind_core.dataset_export import SCOPES, ExportRefusedError, export_corrections
 from grademind_core.db.models import AuditLog, Organization, Role, User
 from grademind_core.db.session import session_factory
-from grademind_core.pilot_stats import MIN_N, TARGET_N, TooFewLinesError, cer_report, load_pairs, render
+from grademind_core.pilot_sample import load_sample, write_sample
+from grademind_core.pilot_stats import MIN_N, TARGET_N, Pair, TooFewLinesError, cer_report, load_pairs, render
 from grademind_core.result_snapshots import verify_all
 from grademind_core.security import hash_password
 from grademind_core.storage import ObjectStore
@@ -222,6 +224,45 @@ def pilot_cer_cmd(exams: list[str] | None, limit: int) -> int:
     return 0
 
 
+def pilot_sample_cmd(admin: str, batch: str, n: int, seed: int | None, exams: list[str] | None, out: str) -> int:
+    """Draw the owner's random sample of machine lines to transcribe (D31.2). Exit codes: 0 written, 2 refused."""
+    settings = get_settings()
+    seed = secrets.randbits(32) if seed is None else seed
+    try:
+        res = write_sample(
+            session_factory(settings.database_url),
+            ObjectStore(settings),
+            Path(out),
+            admin,
+            batch,
+            n,
+            seed,
+            [uuid.UUID(e) for e in exams] if exams else None,
+        )
+    except ExportRefusedError as e:
+        print(f"refused: {e.message}", file=sys.stderr)
+        return 2
+    print(f"sample '{batch}': {res.n} line(s) drawn from {res.frame_size} (seed {seed}, {res.skipped} skipped) -> {res.out}")
+    print("Transcribe with: python3 scripts/sample_transcriber.py " + str(res.out))
+    return 0
+
+
+def pilot_sample_cer_cmd(folder: str) -> int:
+    """CER of the machine against the owner's transcriptions of the sample (D31.2). Numbers only. Exit: 0 reported, 2 refused."""
+    try:
+        manifest, done, unreadable, pending = load_sample(Path(folder))
+    except (OSError, ValueError, KeyError) as e:
+        print(f"refused: this is not a readable sample folder ({type(e).__name__})", file=sys.stderr)
+        return 2
+    try:
+        report = cer_report([Pair(m, t) for _, m, t in done], 0, unreadable)
+    except TooFewLinesError as e:
+        print(f"refused: {e}. {pending} line(s) are still to transcribe, {unreadable} marked unreadable.", file=sys.stderr)
+        return 2
+    print(render(report, sample_batch=str(manifest.get("batch", "?")), not_yet=pending))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="grademind_core.cli")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -257,7 +298,23 @@ def main(argv: list[str] | None = None) -> int:
     pc.add_argument(
         "--limit", type=int, default=TARGET_N, help=f"use the first N corrected lines (default {TARGET_N}, the protocol's)"
     )
+    ps = sub.add_parser(
+        "pilot-sample", help="draw a random sample of the machine lines examiners were shown, for the owner to transcribe"
+    )
+    ps.add_argument("--as-admin", required=True, help="email of an active administrator (recorded in the audit log)")
+    ps.add_argument("--batch", required=True, help="a name for this pilot batch, written into the sample")
+    ps.add_argument("--n", type=int, default=MIN_N, help=f"lines to sample (at least {MIN_N}; default {MIN_N})")
+    ps.add_argument("--seed", type=int, help="fix the random seed (default: a new one, recorded in the sample)")
+    ps.add_argument("--exam", action="append", help="only this exam id (repeat for several); default all of the organisation's")
+    ps.add_argument("--out", required=True, help="a NEW directory outside the git repository, or inside a git-ignored one")
+    sub.add_parser(
+        "pilot-sample-cer", help="error rate of the machine against the owner's transcriptions of a sample"
+    ).add_argument("folder")
     a = ap.parse_args(argv)
+    if a.cmd == "pilot-sample":
+        return pilot_sample_cmd(a.as_admin, a.batch, a.n, a.seed, a.exam, a.out)
+    if a.cmd == "pilot-sample-cer":
+        return pilot_sample_cer_cmd(a.folder)
     if a.cmd == "pilot-cer":
         return pilot_cer_cmd(a.exam, a.limit)
     if a.cmd == "export-corrections":

@@ -17,10 +17,13 @@ from sqlalchemy import select
 from sqlalchemy import text as sql
 from sqlalchemy.exc import DBAPIError
 
-from grademind_core.db.models import AuditLog, Page
+from grademind_core import pilot_sample
+from grademind_core.dataset_export import ExportRefusedError
+from grademind_core.db.models import AuditLog, Page, User
 from grademind_core.db.ocr_models import LineCorrection
 from grademind_core.jobs import RetryPolicy
 from grademind_core.line_corrections import apply_ops
+from grademind_core.pilot_sample import sampling_frame, write_sample
 from grademind_core.pilot_stats import Pair, load_pairs
 from grademind_worker.stages import PIPELINES
 
@@ -342,6 +345,57 @@ def test_pilot_pairs_are_the_machine_text_against_the_current_correction_of_each
     assert Pair("page 1 first line", "second fix") in pairs and Pair("page 1 first line", "first fix") not in pairs
     assert not any("[?]" in p.final for p in pairs)
     assert len(only_one) == 1 and none_here == []  # the limit and the exam filter both apply
+
+
+def test_the_pilot_sample_draws_from_the_lines_examiners_are_shown_and_keeps_machine_text_apart(
+    world: dict[str, Any], graded_exam: str, tmp_path: Any, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """D31.2: frame = lines inside a box; crops numbered at random; machine text in its own file; admin only; audited."""
+    sid, lines = booklet_with_lines(world, graded_exam, "PS-1")
+    eid = [uuid.UUID(graded_exam)]
+    with world["sessions"]() as s:
+        org = s.scalars(select(User.org_id).where(User.email == "admin@college-one.in")).one()
+        other = s.scalars(select(User.org_id).where(User.email == "admin2@college-one.in")).one()
+        frame = sampling_frame(s, eid, org)
+        assert sampling_frame(s, eid, other) == []  # another organisation sees nothing of this one
+    texts = {f.text for f in frame}
+    assert {ln["original_text"] for ln in lines} <= texts and len({f.line_id for f in frame}) == len(
+        frame
+    )  # shown lines, each once
+    monkeypatch.setattr(pilot_sample, "MIN_N", 2)  # (the real minimum is 50; the exam here has only a few lines)
+    out = tmp_path / "sample"
+    res = write_sample(world["sessions"], world["store"], out, "admin@college-one.in", "pilot-A", 2, 7, eid)
+    assert res.n == 2 and res.frame_size == len(frame) and res.skipped == 0
+    crops = sorted(p.name for p in (out / "crops").iterdir())
+    assert crops == ["s001.jpg", "s002.jpg"] and all((out / "crops" / c).read_bytes()[:3] == b"\xff\xd8\xff" for c in crops)
+    manifest = json.loads((out / "manifest.json").read_text())
+    assert (
+        manifest["batch"] == "pilot-A"
+        and manifest["seed"] == 7
+        and manifest["lines"] == 2
+        and "student handwriting" in manifest["warning"]
+    )
+    machine = json.loads((out / "machine.json").read_text())
+    assert set(machine) == {"s001", "s002"} and all(m["text"] in texts for m in machine.values())
+    blank = json.loads((out / "transcriptions.json").read_text())["lines"]
+    assert blank == {"s001": {"text": None, "unreadable": False}, "s002": {"text": None, "unreadable": False}}
+    everything = "".join(p.read_text() for p in (out / "manifest.json", out / "transcriptions.json"))
+    assert (
+        sid not in everything and graded_exam not in everything and not any(t in everything for t in texts)
+    )  # nothing identifying
+    again = write_sample(world["sessions"], world["store"], tmp_path / "again", "admin@college-one.in", "pilot-A", 2, 7, eid)
+    assert json.loads((tmp_path / "again" / "machine.json").read_text()) == machine and again.n == 2  # same seed, same sample
+    with world["sessions"]() as s:
+        a = s.scalars(select(AuditLog).where(AuditLog.action == "pilot.sample_drawn").order_by(AuditLog.at)).all()
+    assert (
+        len(a) >= 2 and a[-1].details["batch"] == "pilot-A" and a[-1].details["lines"] == 2 and "text" not in str(a[-1].details)
+    )
+    with pytest.raises(ExportRefusedError, match="administrator"):
+        write_sample(world["sessions"], world["store"], tmp_path / "x1", "exA@college-one.in", "b", 2, 1, eid)
+    with pytest.raises(ExportRefusedError, match="already contains"):
+        write_sample(world["sessions"], world["store"], out, "admin@college-one.in", "b", 2, 1, eid)
+    with pytest.raises(ExportRefusedError, match="not possible yet"):
+        write_sample(world["sessions"], world["store"], tmp_path / "x2", "admin@college-one.in", "b", len(frame) + 1, 1, eid)
 
 
 def test_corrections_chain_and_stale_edits_are_refused(world: dict[str, Any], graded_exam: str) -> None:

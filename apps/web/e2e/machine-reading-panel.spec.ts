@@ -136,7 +136,7 @@ test("keyboard: focusing a line outlines it on the page, leaving removes the out
   await expect(page.getByTestId("line-highlight")).toHaveCount(0);
 });
 
-test("the panel can be hidden, and the choice is remembered", async () => {
+test("the panel can be hidden, and the choice is kept on the account (another device sees it too)", async ({ browser }) => {
   const page = admin.page;
   const panel = page.getByTestId("machine-reading-panel");
   await page.getByRole("button", { name: "Hide machine reading" }).click();
@@ -145,6 +145,11 @@ test("the panel can be hidden, and the choice is remembered", async () => {
   await expect(page.getByRole("button", { name: "Show machine reading" })).toHaveAttribute("aria-pressed", "false");
   await page.reload();
   await expect(page.getByRole("button", { name: "Show machine reading" })).toBeVisible(); // still hidden after a reload
+  // D31.3: a second, separate browser session of the same account (another device) finds it hidden as well
+  const other = await signIn(browser, ADMIN);
+  await other.page.goto(page.url());
+  await expect(other.page.getByRole("button", { name: "Show machine reading" })).toBeVisible();
+  await other.context.close();
   await page.getByRole("button", { name: "Show machine reading" }).click();
   await expect(panel.getByTestId("machine-line")).toHaveCount(3);
 });

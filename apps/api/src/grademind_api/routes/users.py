@@ -33,6 +33,8 @@ class UserIn(BaseModel):
     display_name: Annotated[str, Field(min_length=1, max_length=200)]
     role: Role
     password: Annotated[str, Field(min_length=MIN_PASSWORD, max_length=200)]
+    # D31.4: the password given at creation is temporary: the person chooses their own at first sign-in, as after a reset
+    must_change_password: bool = True
 
 
 class UserOut(BaseModel):
@@ -85,6 +87,7 @@ def create_user(
         display_name=body.display_name.strip(),
         password_hash=hash_password(body.password),
         role=body.role,
+        must_change_password=body.must_change_password,
     )
     db.add(u)
     try:
@@ -92,7 +95,7 @@ def create_user(
     except IntegrityError as e:
         db.rollback()
         raise ApiError(409, "email_in_use", "A user with this email address already exists.") from e
-    _audit(db, p, request, "user.create", "user", str(u.id), role=u.role.value)
+    _audit(db, p, request, "user.create", "user", str(u.id), role=u.role.value, must_change_password=u.must_change_password)
     db.commit()
     return _out(u)
 

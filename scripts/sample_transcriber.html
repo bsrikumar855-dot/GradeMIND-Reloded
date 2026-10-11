@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Transcribe lines</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{font:16px system-ui,sans-serif;max-width:60rem;margin:1rem auto;padding:0 1rem}img{max-width:100%;border:1px solid #888;background:#fff}
+input[type=text]{width:100%;font-size:1.3rem;padding:.4rem;box-sizing:border-box}button{font-size:1rem;padding:.4rem .9rem;margin:.3rem .3rem .3rem 0}
+.note{color:#444}.bar{margin:.5rem 0}</style></head><body>
+<h1>Transcribe lines</h1>
+<p class="note">Type exactly what is written, spelling mistakes included. Do not correct and do not guess. If you cannot read it, tick the box.
+The machine's reading is not shown on purpose. Enter saves and goes to the next line.</p>
+<div class="bar" id="bar" role="status"></div>
+<img id="crop" alt="One line of handwriting to transcribe">
+<p><label for="t">What it says</label><input type="text" id="t" autocomplete="off" spellcheck="false"></p>
+<p><label><input type="checkbox" id="u"> I cannot read this line</label></p>
+<p><button id="save">Save and next (Enter)</button><button id="prev">Back</button><button id="skip">Skip for now</button></p>
+<p id="msg" role="status"></p>
+<script>
+let lines=[],i=0;
+const $=id=>document.getElementById(id);
+function show(){const l=lines[i];if(!l){$('crop').removeAttribute('src');$('bar').textContent='All lines have been looked at ('+done()+' of '+lines.length+' done).';return;}
+$('crop').src='/crop/'+l.id+'.jpg';$('t').value=l.text||'';$('u').checked=!!l.unreadable;
+$('bar').textContent='Line '+(i+1)+' of '+lines.length+' ('+done()+' done)';$('t').focus();}
+function done(){return lines.filter(l=>l.unreadable||(l.text&&l.text.trim())).length;}
+async function save(){const l=lines[i];if(!l)return;const body={id:l.id,text:$('t').value,unreadable:$('u').checked};
+const r=await fetch('/api/save',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+if(!r.ok){$('msg').textContent='Not saved: '+(await r.text());return;}l.text=body.text;l.unreadable=body.unreadable;$('msg').textContent='Saved.';i++;show();}
+$('save').onclick=save;$('prev').onclick=()=>{if(i>0){i--;show();}};$('skip').onclick=()=>{if(i<lines.length){i++;show();}};
+$('t').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();save();}});
+fetch('/api/lines').then(r=>r.json()).then(d=>{lines=d.lines;i=Math.max(0,lines.findIndex(l=>!(l.unreadable||(l.text&&l.text.trim()))));show();});
+</script></body></html>

@@ -77,7 +77,7 @@ def test_an_admin_creates_a_user_who_can_sign_in_and_nothing_secret_is_returned_
         details = s.scalars(
             select(AuditLog.details).where(AuditLog.entity_id == body["id"], AuditLog.action == "user.create")
         ).all()
-    assert details == [{"role": "examiner"}] and NEW_PW not in str(details)
+    assert details == [{"role": "examiner", "must_change_password": True}] and NEW_PW not in str(details)
 
 
 @pytest.mark.parametrize(

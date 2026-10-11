@@ -93,3 +93,66 @@ def test_the_command_prints_numbers_only_and_refuses_when_there_are_too_few(
 def test_the_module_only_reads_the_corrections_table() -> None:
     src = pilot_stats.__loader__.get_source(pilot_stats.__name__) or ""  # type: ignore[union-attr]
     assert "db.add" not in src and ".commit(" not in src and "delete(" not in src and "update(" not in src
+
+
+# --------------------------------------------------------------------------------------- D31.2: the owner's random sample
+
+
+def frame(n: int) -> list[Any]:
+    import uuid
+
+    from grademind_core.pilot_sample import FrameLine
+
+    return [FrameLine(uuid.UUID(int=i), uuid.UUID(int=0), f"line {i}", 0.9, (0, 0, 10, 10), "local_only") for i in range(n)]
+
+
+def test_a_sample_is_random_reproducible_without_repeats_and_never_below_the_minimum() -> None:
+    from grademind_core import pilot_sample
+    from grademind_core.dataset_export import ExportRefusedError
+
+    fr = frame(300)
+    a, b, c = pilot_sample.draw(fr, 60, seed=1), pilot_sample.draw(fr, 60, seed=1), pilot_sample.draw(fr, 60, seed=2)
+    assert a == b and a != c and len({x.line_id for x in a}) == 60  # same seed, same sample; another seed differs; no repeats
+    assert a != fr[:60]  # not simply the first lines
+    with pytest.raises(ExportRefusedError, match="at least 50"):
+        pilot_sample.draw(fr, 49, seed=1)
+    with pytest.raises(ExportRefusedError, match="not possible yet"):
+        pilot_sample.draw(frame(59), 60, seed=1)
+
+
+def make_folder(tmp_path: Any, machine: dict[str, str], trans: dict[str, Any]) -> Any:
+    import json
+
+    (tmp_path / "manifest.json").write_text(json.dumps({"batch": "B1", "lines": len(machine)}))
+    (tmp_path / "machine.json").write_text(json.dumps({k: {"text": v, "score": 0.9} for k, v in machine.items()}))
+    (tmp_path / "transcriptions.json").write_text(json.dumps({"batch": "B1", "lines": trans}))
+    return tmp_path
+
+
+def test_the_sample_command_refuses_until_enough_lines_are_transcribed_then_reports_numbers_only(
+    tmp_path: Any, capsys: pytest.CaptureFixture[str]
+) -> None:
+    machine = {f"s{i:03d}": f"{STUDENT_TEXT} teh {i}" for i in range(1, 61)}
+    trans: dict[str, Any] = {k: {"text": v.replace("teh", "the"), "unreadable": False} for k, v in machine.items()}
+    for k in list(trans)[:11]:  # 11 unreadable, 0 pending: 49 usable
+        trans[k] = {"text": None, "unreadable": True}
+    folder = make_folder(tmp_path, machine, trans)
+    assert cli.main(["pilot-sample-cer", str(folder)]) == 2
+    out = capsys.readouterr()
+    assert "refused" in out.err and "at least 50" in out.err and "11 marked unreadable" in out.err and out.out == ""
+    trans["s001"] = {"text": f"{STUDENT_TEXT} the 1", "unreadable": False}  # one back: 50 usable
+    trans["s060"] = {"text": None, "unreadable": False}  # ...and one pending: 49 again
+    make_folder(tmp_path, machine, trans)
+    assert cli.main(["pilot-sample-cer", str(folder)]) == 2
+    trans["s060"] = {"text": f"{STUDENT_TEXT} the 60", "unreadable": False}
+    trans["s002"] = {"text": f"{STUDENT_TEXT} the 2", "unreadable": False}
+    make_folder(tmp_path, machine, trans)
+    capsys.readouterr()
+    assert cli.main(["pilot-sample-cer", str(folder)]) == 0
+    out = capsys.readouterr()
+    assert (
+        "random sample of 51 line(s) of batch 'B1'" in out.out and "Character error rate" in out.out and "95% interval" in out.out
+    )
+    assert "9 marked unreadable" in out.out and "0 not transcribed yet" in out.out and "INTERIM" not in out.out
+    assert STUDENT_TEXT not in out.out + out.err and "ALL of them" in out.out and "AMONG THE LINES" not in out.out
+    assert cli.main(["pilot-sample-cer", str(tmp_path / "nowhere")]) == 2

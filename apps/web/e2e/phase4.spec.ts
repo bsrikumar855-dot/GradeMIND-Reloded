@@ -28,7 +28,7 @@ test("two examiners and a teacher: grade, override, finalize, report, reopen, fi
   const make = async (role: "examiner" | "teacher", name: string) => {
     const password = PW();
     const email = `p4.${name}.${stamp}@example.edu`;
-    const u = await ok<{ id: string }>(await api.post("/api/proxy/users", { data: { email, display_name: `P4 ${name}`, role, password } }), `create ${name}`);
+    const u = await ok<{ id: string }>(await api.post("/api/proxy/users", { data: { email, display_name: `P4 ${name}`, role, password, must_change_password: false } }), `create ${name}`);
     return { email, password, id: u.id };
   };
   const [a, b, t] = [await make("examiner", "alice"), await make("examiner", "bob"), await make("teacher", "tara")];

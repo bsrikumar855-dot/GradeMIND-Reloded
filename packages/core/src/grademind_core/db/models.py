@@ -114,6 +114,8 @@ class User(Base):
     token_version: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
     must_change_password: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default=false())
     password_changed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    # D31.3: whether this person has hidden the machine-reading panel (per account, so it follows them to any device)
+    machine_reading_hidden: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default=false())
 
     @validates("email")
     def _normalise_email(self, _key: str, value: str) -> str:

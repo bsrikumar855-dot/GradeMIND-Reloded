@@ -21,6 +21,26 @@ export async function signIn(browser: Browser, who: { email: string; password: s
   return { context, page };
 }
 
+/** D31.4: an account an administrator created holds a temporary password: the first sign-in leads to the change page and nowhere else.
+ *  Signs in, checks that, chooses `chosen` as the password, and returns the signed-in context. */
+export async function signInFirstTime(browser: Browser, who: { email: string; password: string }, chosen: string): Promise<{ context: BrowserContext; page: Page }> {
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await page.goto("/login");
+  await page.getByLabel("Email").fill(who.email);
+  await page.getByLabel("Password").fill(who.password);
+  await page.getByRole("button", { name: "Sign in" }).click();
+  await expect(page).toHaveURL(/\/account\/password\?required=1/);
+  expect((await context.request.get("/api/proxy/exams")).status()).toBe(403);
+  await page.getByLabel("Temporary password").fill(who.password);
+  await page.getByLabel("New password", { exact: true }).fill(chosen);
+  await page.getByLabel("New password again").fill(chosen);
+  await page.getByRole("button", { name: "Change password" }).click();
+  await expect(page.getByTestId("password-changed")).toBeVisible();
+  await page.goto("/");
+  return { context, page };
+}
+
 export async function ok<T>(res: { ok(): boolean; status(): number; text(): Promise<string>; json(): Promise<unknown> }, what: string): Promise<T> {
   if (!res.ok()) throw new Error(`${what}: HTTP ${res.status()} ${(await res.text()).slice(0, 400)}`);
   return (await res.json()) as T;

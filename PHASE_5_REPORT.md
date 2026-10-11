@@ -106,3 +106,12 @@ Tested in CI: everything above at the level stated. New tests in this phase incl
 6. **When the pilot starts**, and who reads the first `pilot-cer` report (it needs 50 corrected lines to say anything, 200 for the protocol's figure).
 
 I have not started Phase 6 and nothing was sent to any cloud service.
+
+## After approval: D31 follow-ups (owner decisions, implemented; CI result in the hand-over message)
+
+D31 approved Phase 5 and decided the open items. Implemented without starting any new phase:
+
+- **D31.3 hide toggle per account:** `users.machine_reading_hidden` (migration 0014), returned by `/me`, set by `PUT /me/preferences` (that one field only; refused while a temporary password is in force). The panel asks the server, so the choice follows the person to any device. (The old per-browser choice is not migrated: each person hides it once more.)
+- **D31.4 created accounts:** `POST /users` now defaults `must_change_password` to true, so a created account has the same first sign-in as a reset account. The command-line `create-user` (an operator recovery tool, also used by CI) is unchanged and does not force a change; the runbook says so. The "Reset password" workaround in the RELEASE CHECKLIST is no longer needed (the checklist line is still safe to follow).
+- **D31.2 measurement:** no "mark correct" button was added. `pilot-cer` is documented as "error among corrected lines" only. New: `pilot-sample` (administrator only, audited) draws a seeded random sample of all the machine lines examiners were shown in a batch (lines inside an answer box on the latest reading of each page) into a local folder of numbered crops, with the machine's text in a separate file; `scripts/sample_transcriber.py` (stdlib, 127.0.0.1 only, never shows the machine text) lets the owner transcribe; `pilot-sample-cer` computes CER with interval and n against the machine, refusing below 50 transcribed lines. `docs/PILOT_PROTOCOL.md` section 3 and the runbook describe both numbers and what may be claimed. The sample is also the D23 data; whether it counts as `OWNER_VERIFIED` evidence under D21 is for the owner to say.
+- **D31.5 / D31.6:** the local CA stays; the pilot starts when the RELEASE CHECKLIST is ticked; the owner reads the first `pilot-cer` report. Nothing to build.

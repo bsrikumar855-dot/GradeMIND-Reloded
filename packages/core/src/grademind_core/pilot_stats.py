@@ -126,19 +126,39 @@ def pct(x: float) -> str:
     return f"{100 * x:.1f}%"
 
 
-def render(r: CerReport) -> str:
-    """The text the command prints: numbers and the caveat, nothing from any line."""
+SAMPLE_CAVEAT = (
+    "This is the measured accuracy of the lines examiners were shown in this batch: a random sample of ALL of them, transcribed\n"
+    "by the owner without seeing the machine's text. The interval shows the sampling uncertainty only. It holds for these\n"
+    "booklets, pens and subjects, not for other handwriting. Lines marked unreadable are left out, which makes the machine look\n"
+    "slightly better than it is."
+)
+
+
+def render(r: CerReport, sample_batch: str | None = None, not_yet: int = 0) -> str:
+    """The text the command prints: numbers and the caveat, nothing from any line. `sample_batch` is set for the owner's random
+    sample (D31.2) instead of the corrections table."""
+    if sample_batch is None:
+        head = f"Machine reading, measured on {r.n_lines} corrected line(s) ({r.n_chars} characters of examiner text)"
+    else:
+        head = (
+            f"Machine reading, measured on a random sample of {r.n_lines} line(s) of batch '{sample_batch}' "
+            f"({r.n_chars} characters transcribed by the owner)"
+        )
     lines = [
-        f"Machine reading, measured on {r.n_lines} corrected line(s) ({r.n_chars} characters of examiner text)"
-        + (f"  [INTERIM: the protocol asks for {TARGET_N}]" if r.interim else ""),
+        head + (f"  [INTERIM: the protocol asks for {TARGET_N}]" if r.interim and sample_batch is None else ""),
         f"  Character error rate:      {pct(r.cer)}   (95% interval {pct(r.cer_low)} to {pct(r.cer_high)}; {r.edits} edits)",
         f"  Average per line:          {pct(r.mean_line_cer)}",
-        f"  Off by one character or less: {pct(r.exact_after_edit_le_1)} of the corrected lines",
-        f"  Lines the machine missed (added by an examiner): {r.missed_lines}  (no rate: there was nothing to compare)",
-        f"  Left out because the examiner marked them unreadable ({UNREADABLE}): {r.unreadable_left_out}",
-        "",
-        CAVEAT,
+        f"  Off by one character or less: {pct(r.exact_after_edit_le_1)} of the lines",
     ]
+    if sample_batch is None:
+        lines.append(
+            f"  Lines the machine missed (added by an examiner): {r.missed_lines}  (no rate: there was nothing to compare)"
+        )
+        lines.append(f"  Left out because the examiner marked them unreadable ({UNREADABLE}): {r.unreadable_left_out}")
+        lines += ["", CAVEAT]
+    else:
+        lines.append(f"  Left out: {r.unreadable_left_out} marked unreadable, {not_yet} not transcribed yet")
+        lines += ["", SAMPLE_CAVEAT]
     return "\n".join(lines)
 
 

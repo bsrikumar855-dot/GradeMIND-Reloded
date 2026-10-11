@@ -171,3 +171,7 @@ Known gaps are listed in PHASE_2_REPORT.md (no browser tests for override, attem
 ## Not implemented
 
 - Everything in [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT.md) §3–§20 beyond the Phase 1 steps above (pipeline, UI, ScoreComputer, most of invariants I1–I12).
+
+## D31 follow-ups (after Phase 5 approval)
+
+Hide toggle per account (migration 0014, `PUT /me/preferences`), forced first-sign-in password change for accounts created through the admin API/UI (`must_change_password` default true; the CLI `create-user` is unchanged), and the owner's random-sample accuracy tooling (`pilot-sample`, `scripts/sample_transcriber.py`, `pilot-sample-cer`). Details in `PHASE_5_REPORT.md`; CI result stated in the hand-over message.

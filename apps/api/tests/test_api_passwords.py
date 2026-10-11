@@ -23,7 +23,9 @@ NEW2 = "Another-Fresh-Passphrase-9302"
 def make_user(world: dict[str, Any], role: str = "examiner", who: str = "admin") -> dict[str, str]:
     email = f"pw-{uuid.uuid4().hex[:10]}@college-one.in"
     r = world["client"].post(
-        "/api/users", json={"email": email, "display_name": "Pw Test", "role": role, "password": PW}, headers=login(world, who)
+        "/api/users",
+        json={"email": email, "display_name": "Pw Test", "role": role, "password": PW, "must_change_password": False},
+        headers=login(world, who),
     )
     assert r.status_code == 201, r.text
     return {"email": email, "id": r.json()["id"]}
@@ -188,3 +190,52 @@ def test_a_token_from_before_this_change_without_the_version_claim_still_works_u
     tok = sign_in(world, u["email"], PW).json()["access_token"]
     assert change(world, tok, PW, NEW1).status_code == 200
     assert world["client"].get("/api/me", headers=bearer(legacy)).status_code == 401
+
+
+def test_an_account_the_administrator_creates_must_choose_its_own_password_at_first_sign_in(world: dict[str, Any]) -> None:
+    """D31.4: same as after a reset: the given password gets the person as far as the change page and nowhere else."""
+    email = f"first-{uuid.uuid4().hex[:10]}@college-one.in"
+    c = world["client"]
+    r = c.post(
+        "/api/users",
+        json={"email": email, "display_name": "First Timer", "role": "examiner", "password": PW},
+        headers=login(world, "admin"),
+    )
+    assert r.status_code == 201, r.text
+    tok = sign_in(world, email, PW).json()
+    assert tok["must_change_password"] is True
+    assert c.get("/api/exams", headers=bearer(tok["access_token"])).status_code == 403
+    assert c.get("/api/me", headers=bearer(tok["access_token"])).json()["must_change_password"] is True
+    assert change(world, tok["access_token"], PW, NEW1).status_code == 200
+    again = sign_in(world, email, NEW1).json()
+    assert (
+        again["must_change_password"] is False and c.get("/api/exams", headers=bearer(again["access_token"])).status_code == 200
+    )
+    with world["sessions"]() as s:
+        a = s.scalars(select(AuditLog).where(AuditLog.action == "user.create", AuditLog.entity_id == r.json()["id"])).one()
+    assert a.details["must_change_password"] is True and PW not in str(a.details)
+
+
+def test_the_hide_machine_reading_choice_is_kept_on_the_account_not_the_browser(world: dict[str, Any]) -> None:
+    """D31.3: set on one device, seen on another; only that field can be set; not while a temporary password is in force."""
+    u = make_user(world)
+    c = world["client"]
+    first = sign_in(world, u["email"], PW).json()["access_token"]
+    assert c.get("/api/me", headers=bearer(first)).json()["machine_reading_hidden"] is False  # shown by default
+    r = c.put("/api/me/preferences", json={"machine_reading_hidden": True}, headers=bearer(first))
+    assert r.status_code == 200 and r.json()["machine_reading_hidden"] is True
+    other_device = sign_in(world, u["email"], PW).json()["access_token"]
+    assert c.get("/api/me", headers=bearer(other_device)).json()["machine_reading_hidden"] is True
+    assert (
+        c.put("/api/me/preferences", json={"machine_reading_hidden": False}, headers=bearer(other_device)).json()[
+            "machine_reading_hidden"
+        ]
+        is False
+    )
+    assert c.get("/api/me", headers=bearer(first)).json()["machine_reading_hidden"] is False
+    assert c.put("/api/me/preferences", json={}, headers=bearer(first)).status_code == 422
+    assert c.put("/api/me/preferences", json={"machine_reading_hidden": True}).status_code == 401
+    # someone holding a temporary password can do nothing but change it
+    temp = c.post(f"/api/users/{u['id']}/reset-password", headers=login(world, "admin")).json()["temporary_password"]
+    held = sign_in(world, u["email"], temp).json()["access_token"]
+    assert c.put("/api/me/preferences", json={"machine_reading_hidden": True}, headers=bearer(held)).status_code == 403
