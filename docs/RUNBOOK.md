@@ -19,7 +19,17 @@ One page. Run everything from the repository folder on the machine that hosts th
 | **Someone is locked out of sign-in** | Five wrong passwords from one place lock that account **from that place** for 15 minutes (Retry-After is sent). The administrator can wait, or deactivate and re-create the account from **Users**. |
 | **Booklet pages show as blank boxes** | The browser fetches page images from the object store's own address, and the web app's security policy only allows that one address. `GRADEMIND_S3_PUBLIC_ENDPOINT_URL` must be set to the **same** value for the api and the web service (compose does this from `.env`); if it differs from the address the browser reaches, images are blocked. |
 | **Upgrade** | Back up, `git pull`, `docker compose up -d --build` (migrations run by themselves), `./scripts/compose_wait.sh`, then `verify-snapshots`. |
-| **HTTPS** | Put a reverse proxy that terminates HTTPS in front of the web port, set `GRADEMIND_COOKIE_SECURE=true` in `.env` (turns on secure cookies and HSTS), and make the proxy overwrite `X-Forwarded-For` (sign-in throttling uses it). Without a proxy, bind to this machine only (the default). |
+| **HTTPS (the pilot way)** | See **HTTPS** below. Short: set `GRADEMIND_HOST`, `GRADEMIND_COOKIE_SECURE=true`, `GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://<host>:9443` and `GRADEMIND_HTTPS_BIND=<LAN or VPN address>` in `.env`, then `docker compose -f compose.yaml -f compose.https.yaml --profile https up -d`. |
+
+## HTTPS (D30.5)
+
+The pilot runs on a **LAN or VPN only**. A reverse proxy (Caddy, pinned by digest, compose profile `https`) puts HTTPS in front of it and is the **only** thing that listens outside the Docker network: the web app on **8443**, the object store on **9443** (booklet page images come from it, and an HTTPS page may not load images over HTTP). The plain ports (3100, 8000, 9000) are closed by `compose.https.yaml`.
+
+1. In `.env`: `GRADEMIND_HOST=grademind.lan` (the name or fixed address people type; it goes into the certificate), `GRADEMIND_COOKIE_SECURE=true` (secure cookies and HSTS), `GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://grademind.lan:9443`, and `GRADEMIND_HTTPS_BIND=192.168.1.20` (the LAN or VPN address of this machine; the default `127.0.0.1` listens on this machine only).
+2. Start: `docker compose -f compose.yaml -f compose.https.yaml --profile https up -d`, then `./scripts/compose_wait.sh`. Open `https://grademind.lan:8443`.
+3. The certificate comes from the proxy's own local certificate authority, so every device must be told to trust its **root certificate** once (a certificate, not a key): `docker compose cp proxy:/data/caddy/pki/authorities/local/root.crt ./grademind-root-ca.crt`, then install that file as a trusted root on each laptop, tablet and phone (the browser or system certificate settings). Without it browsers show a warning; do **not** teach people to click through it. The CA lives in the `caddydata` volume: keep it in your backups' scope (it is not student data) and do not delete the volume, or every device must trust a new root.
+4. Firewall: allow 8443 and 9443 from the LAN or VPN only; do not forward them from the internet. Sign-in throttling uses the real client address because the proxy overwrites `X-Forwarded-For`.
+5. To go back to plain HTTP on this machine only: `docker compose up -d` (without the second file and the profile), and unset the three variables.
 
 ## Backups (D30.4)
 

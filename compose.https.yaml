@@ -1,0 +1,13 @@
+# HTTPS for a LAN / VPN pilot (5.3, D30.5):
+#   docker compose -f compose.yaml -f compose.https.yaml --profile https up -d
+# with these in .env:  GRADEMIND_HOST=<the name or IP people type>   GRADEMIND_COOKIE_SECURE=true
+#                      GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://<same host>:9443   GRADEMIND_HTTPS_BIND=<the LAN/VPN address to listen on; default 127.0.0.1>
+# This file takes away every port the plain stack publishes on the host (web, api, object store). The reverse proxy (profile `https`, in compose.yaml) is the
+# only service that listens outside its container network: 8443 for the web app and 9443 for the object store, both HTTPS.
+services:
+  web:
+    ports: !reset []
+  api:
+    ports: !reset []
+  minio:
+    ports: !reset []

@@ -12,6 +12,8 @@ export default defineConfig({
   outputDir: "test-results",
   use: {
     baseURL: process.env.E2E_WEB ?? "http://127.0.0.1:3100",
+    // the HTTPS profile uses a local CA that the browser on the runner does not know; the CA chain itself is verified with curl in CI
+    ignoreHTTPSErrors: process.env.E2E_IGNORE_HTTPS_ERRORS === "1",
     // CI runners ship Google Chrome; using it avoids downloading a browser from a CDN.
     channel: process.env.E2E_CHANNEL ?? "chrome",
     trace: "retain-on-failure",

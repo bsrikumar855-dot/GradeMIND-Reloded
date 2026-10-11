@@ -159,7 +159,32 @@ services:
     depends_on:
       api: {condition: service_healthy}
 
+  # HTTPS reverse proxy for the pilot (5.3, D30.5). Only started with `--profile https`; see compose.https.yaml and docs/RUNBOOK.md.
+  # Pinned by digest (D26): caddy 2.11.7 (published 2026-10-05).
+  proxy:
+    image: caddy:2-alpine@sha256:d8542f48d34a9cf4e4c11a478865229840e87e4c96ea3f439101f31a5d35f75f
+    profiles: ["https"]
+    environment:
+      GRADEMIND_HOST: ${GRADEMIND_HOST:-localhost}  # set it in .env to the name or address people type (for example grademind.lan)
+    command: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+    ports:
+      - "${GRADEMIND_HTTPS_BIND:-127.0.0.1}:${GRADEMIND_HTTPS_PORT:-8443}:8443"
+      - "${GRADEMIND_HTTPS_BIND:-127.0.0.1}:${GRADEMIND_STORAGE_HTTPS_PORT:-9443}:9443"
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddydata:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-check-certificate -q -O /dev/null https://127.0.0.1:8443/login"]
+      interval: 15s
+      timeout: 10s
+      retries: 6
+      start_period: 20s
+    depends_on:
+      web: {condition: service_healthy}
+      minio: {condition: service_healthy}
+
 volumes:
   pgdata:
   redisdata:
   miniodata:
+  caddydata:

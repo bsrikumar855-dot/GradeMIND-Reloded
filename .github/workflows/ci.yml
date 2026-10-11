@@ -190,6 +190,31 @@ jobs:
           if git grep -qE 'AGE-SECRET-KEY-1[A-Z0-9]{20,}'; then echo "private key in the repository"; exit 1; fi
       - name: OCR killed and restarted in the middle of a booklet (4.0; retried by itself, no page read twice, grading never blocked)
         run: python3 scripts/ocr_chaos.py
+      - name: "https profile (5.3; reverse proxy with a local CA, secure cookie, HSTS and CSP, only the proxy publishes a port, images over HTTPS)"
+        run: |
+          set -euo pipefail
+          export GRADEMIND_HOST=localhost GRADEMIND_COOKIE_SECURE=true GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://localhost:9443
+          docker compose -f compose.yaml -f compose.https.yaml --profile https up -d --no-build
+          ./scripts/compose_wait.sh 900
+          docker compose cp proxy:/data/caddy/pki/authorities/local/root.crt "$RUNNER_TEMP/ca.crt"
+          # the certificate chain is verified against the proxy's own root (not skipped)
+          curl -fsS --cacert "$RUNNER_TEMP/ca.crt" -D hdr.txt -o /dev/null https://localhost:8443/login
+          cat hdr.txt
+          grep -qi '^strict-transport-security: max-age=' hdr.txt
+          grep -qi "^content-security-policy:.*nonce-" hdr.txt
+          if grep -qi '^server:' hdr.txt; then echo "the proxy announces itself"; exit 1; fi
+          curl -fsS --cacert "$RUNNER_TEMP/ca.crt" https://localhost:9443/minio/health/live
+          # without that root the certificate is NOT trusted (it is a local CA, not a public one)
+          if curl -fsS --max-time 10 https://localhost:8443/login > /dev/null 2>&1; then echo "the local CA is trusted by default: unexpected"; exit 1; fi
+          # nothing else is published: the plain ports are closed
+          for p in 3100 8000 9000; do if curl -sS --max-time 3 "http://127.0.0.1:$p/" > /dev/null 2>&1; then echo "port $p is still open"; exit 1; fi; done
+          docker ps --format '{{.Names}} {{.Ports}}' | grep -E '(0\.0\.0\.0|127\.0\.0\.1|\[::\]):[0-9]+->' | tee published.txt
+          test "$(cut -d' ' -f1 published.txt | sort -u)" = "grademind-proxy-1"
+          cd apps/web
+          E2E_EMAIL="$(grep '^GRADEMIND_ADMIN_EMAIL=' ../../.env | cut -d= -f2-)"
+          E2E_PASSWORD="$(grep '^GRADEMIND_ADMIN_PASSWORD=' ../../.env | cut -d= -f2-)"
+          export E2E_EMAIL E2E_PASSWORD E2E_HTTPS=1 E2E_IGNORE_HTTPS_ERRORS=1 E2E_WEB=https://localhost:8443
+          pnpm exec playwright test e2e/https.spec.ts
       - name: logs on failure
         if: failure()
         run: |

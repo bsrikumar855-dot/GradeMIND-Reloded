@@ -1,0 +1,27 @@
+# HTTPS in front of the pilot stack (5.3, D30.5). Used only by the `https` compose profile (compose.https.yaml).
+# One site for the web app and one for the object store (the browser fetches booklet page images from it through short-lived signed URLs, and a page
+# served over HTTPS may not load images over HTTP). Both use Caddy's own local CA: `tls internal` issues a certificate for GRADEMIND_HOST from a root
+# that lives in the caddydata volume. Install that root certificate (not a key) on the devices that use the pilot; see docs/RUNBOOK.md.
+{
+	local_certs
+	skip_install_trust
+	auto_https disable_redirects
+	default_sni {$GRADEMIND_HOST}
+	admin off
+}
+
+{$GRADEMIND_HOST}:8443 {
+	tls internal
+	reverse_proxy web:3000 {
+		flush_interval -1
+	}
+	header -Server
+}
+
+{$GRADEMIND_HOST}:9443 {
+	tls internal
+	reverse_proxy minio:9000 {
+		flush_interval -1
+	}
+	header -Server
+}
