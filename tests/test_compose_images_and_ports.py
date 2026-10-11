@@ -20,6 +20,9 @@ ENV = {
     "MINIO_ROOT_USER": "u",
     "MINIO_ROOT_PASSWORD": "p",
     "GRADEMIND_JWT_SECRET": "s",
+    "GRADEMIND_ADMIN_EMAIL": "a@b.in",
+    "GRADEMIND_ADMIN_ORG": "Org",
+    "GRADEMIND_ADMIN_PASSWORD": "long-enough-password",
     "GRADEMIND_HOST": "grademind.lan",
 }
 pytestmark = pytest.mark.skipif(shutil.which("docker") is None, reason="needs the docker CLI")

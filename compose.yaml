@@ -174,7 +174,8 @@ services:
       - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddydata:/data
     healthcheck:
-      test: ["CMD-SHELL", "wget --no-check-certificate -q -O /dev/null https://127.0.0.1:8443/login"]
+      # by NAME, not by address: a client that connects by IP sends no server name and gets a TLS "internal error"; this asks for GRADEMIND_HOST
+      test: ["CMD-SHELL", "curl -fsk --resolve \"$$GRADEMIND_HOST:8443:127.0.0.1\" -o /dev/null \"https://$$GRADEMIND_HOST:8443/login\""]
       interval: 15s
       timeout: 10s
       retries: 6

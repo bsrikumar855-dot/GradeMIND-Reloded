@@ -218,7 +218,10 @@ jobs:
       - name: logs on failure
         if: failure()
         run: |
-          docker compose ps -a
+          # the https profile's proxy is invisible to a plain `docker compose` call: ask for it too (harmless when it was never started)
+          export GRADEMIND_HOST=localhost GRADEMIND_COOKIE_SECURE=true GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://localhost:9443
+          docker compose -f compose.yaml -f compose.https.yaml --profile https ps -a
+          docker compose -f compose.yaml -f compose.https.yaml --profile https logs --no-color --tail=60 proxy || true
           echo "== jobs and their stage attempts (what failed, and why) =="
           docker compose exec -T postgres psql -U grademind -d grademind -c "select j.kind, j.status, j.current_stage, left(coalesce(j.error,''),160) as error, j.created_at from processing_jobs j order by j.created_at" || true
           docker compose exec -T postgres psql -U grademind -d grademind -c "select a.stage, a.attempt_no, a.status, left(coalesce(a.error,''),160) as error from job_stage_attempts a order by a.seq" || true
