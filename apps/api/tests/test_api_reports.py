@@ -19,7 +19,7 @@ from fake_ocr import services
 from pdfgen import make_pdf
 from pdftext import pdf_text, pdf_title
 from sqlalchemy import select
-from test_api_finalize import audit_actions, finalize, grade, graded, reopen, setup_exam
+from test_api_finalize import PAPER, RUBRIC, audit_actions, booklet, finalize, grade, graded, region, reopen, setup_exam
 
 from grademind_core.db.models import AuditLog
 from grademind_core.jobs import run_job
@@ -178,3 +178,41 @@ def test_csv_cells_that_look_like_formulas_are_made_inert(world: dict[str, Any])
     assert not any(cell.startswith("=") for cell in header)
     pdf = c.get(f"/api/exams/{eid}/summary.pdf", headers=h)
     assert pdf.status_code == 200 and "F-1" in pdf_text(pdf.content)
+
+
+def test_sheet_and_summary_print_tamil_and_devanagari_without_question_marks(world: dict[str, Any]) -> None:
+    """5.5 (D30.8): exam, subject, question label, criterion and level names in Tamil and Devanagari."""
+    import copy
+
+    c, h = world["client"], login(world, "teacher")
+    exam, subject, ref = "தமிழ் தேர்வு", "हिन्दी विषय", "SR-5"  # (student references are ASCII pseudonyms by design)
+    eid = c.post("/api/exams", json={"name": exam, "subject": subject, "total_marks": "5"}, headers=h).json()["id"]
+    c.post(f"/api/exams/{eid}/assignments", json={"user_id": str(world["exA"])}, headers=login(world, "admin"))
+    paper, rubric = copy.deepcopy(PAPER), copy.deepcopy(RUBRIC)
+    paper["questions"][0]["label"] = "பகுதி-1"
+    rubric["questions"][0]["criteria"][0]["name"] = "வரையறை"
+    rubric["questions"][0]["criteria"][0]["levels"][2]["name"] = "पूर्ण उत्तर"
+    assert c.put(f"/api/exams/{eid}/paper/draft", json={"document": paper}, headers=h).status_code == 200
+    assert c.post(f"/api/exams/{eid}/paper/approve", headers=h).status_code == 200
+    assert c.put(f"/api/exams/{eid}/rubric/draft", json={"document": rubric}, headers=h).json()["issues"] == []
+    assert c.post(f"/api/exams/{eid}/rubric/approve", headers=h).status_code == 200
+    b = booklet(world, {"exam": eid}, ref)
+    assert region(world, b, "q1").status_code == 201
+    assert grade(world, b, "q1", 1, {"c1": "full"}).status_code == 200
+    assert finalize(world, b).status_code == 201
+    sheet = report(world, b["sub"])
+    assert sheet.status_code == 200
+    flat = " ".join(pdf_text(sheet.content).split())
+    assert f"{exam} - {subject}" in flat and f"Student reference: {ref}" in flat
+    assert "பகுதி-1 2 / 2" in flat and "வரையறை: पूर्ण उत्तर (2)" in flat
+    assert "?" not in flat
+    summary = c.get(f"/api/exams/{eid}/summary.pdf", headers=login(world, "admin"))
+    sflat = " ".join(pdf_text(summary.content).split())
+    cd = summary.headers[
+        "content-disposition"
+    ]  # the download is named in plain ASCII, with the real name for browsers that read it
+    assert cd.startswith("attachment; filename=\"report_summary.pdf\"; filename*=UTF-8''") and "%E0%AE%A4" in cd
+    assert summary.status_code == 200 and ref in sflat and f"{exam} - {subject}" in sflat and "?" not in sflat
+    with world["sessions"]() as s:
+        audited = s.scalars(select(AuditLog).where(AuditLog.action.in_(("report.student_pdf", "report.summary_pdf")))).all()
+    assert audited and all(a.details["unprintable_characters"] is False for a in audited if a.details.get("exam_id") == eid)

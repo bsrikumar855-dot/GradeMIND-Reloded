@@ -38,7 +38,7 @@ def test_parentheses_backslashes_and_non_ascii_survive_or_are_marked() -> None:
     assert "f(x) = (a\\b)" in text and ("caf" + chr(0xE9)) in text and "5 % off" in text
     assert d.replaced is False
     e = doc()
-    e.line("Tamil: அஆ")  # outside Windows-1252
+    e.line("Arabic: " + "".join(chr(c) for c in (0x645, 0x631, 0x62D, 0x628, 0x627)))  # no font here prints it
     e.render(T0)
     assert e.replaced is True and "?" in pdf_text(e.render(T0))
 

@@ -11,6 +11,7 @@ import hashlib
 import uuid
 from datetime import UTC, datetime
 from typing import Any
+from urllib.parse import quote
 
 from fastapi import APIRouter, Depends, Request
 from fastapi.responses import Response
@@ -32,7 +33,17 @@ NO_STORE = {"cache-control": "no-store"}
 
 
 def _safe(name: str) -> str:
-    return "".join(ch if ch.isalnum() or ch in "-_." else "_" for ch in name)[:60] or "report"
+    """A file name stem in plain ASCII (a header only carries Latin-1; a Tamil name must not break the download)."""
+    stem = "".join(ch if (ch.isascii() and ch.isalnum()) or ch in "-_." else "_" for ch in name)[:60]
+    return stem if stem.strip("_") else "report"
+
+
+def _disposition(name: str, suffix: str) -> str:
+    """Content-Disposition for a download named after `name`: an ASCII name, plus the real name (RFC 5987) if it is not ASCII."""
+    plain = f'attachment; filename="{_safe(name)}{suffix}"'
+    if name.isascii():
+        return plain
+    return f"{plain}; filename*=UTF-8''{quote(name[:60] + suffix, safe='')}"
 
 
 def _audit(
@@ -80,7 +91,7 @@ def student_report(
         content=pdf,
         media_type="application/pdf",
         headers={
-            "content-disposition": f'attachment; filename="result_{_safe(sub.student_ref)}_s{snap.snapshot_no}.pdf"',
+            "content-disposition": _disposition(f"result_{sub.student_ref}", f"_s{snap.snapshot_no}.pdf"),
             **NO_STORE,
         },
     )
@@ -110,7 +121,7 @@ def summary_csv_export(
     return Response(
         content=body,
         media_type="text/csv; charset=utf-8",
-        headers={"content-disposition": f'attachment; filename="{_safe(exam.name)}_summary.csv"', **NO_STORE},
+        headers={"content-disposition": _disposition(exam.name, "_summary.csv"), **NO_STORE},
     )
 
 
@@ -141,5 +152,5 @@ def summary_pdf_export(
     return Response(
         content=pdf,
         media_type="application/pdf",
-        headers={"content-disposition": f'attachment; filename="{_safe(exam.name)}_summary.pdf"', **NO_STORE},
+        headers={"content-disposition": _disposition(exam.name, "_summary.pdf"), **NO_STORE},
     )

@@ -15,6 +15,7 @@ dependencies = [
     "httpx==0.28.1",
     "pypdfium2==5.14.0",
     "pillow==12.3.0",
+    "uharfbuzz==0.56.2",
 ]
 
 [build-system]

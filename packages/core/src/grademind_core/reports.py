@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import csv
 import io
+import math
 import uuid
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -21,7 +22,7 @@ from sqlalchemy.orm import Session
 
 from grademind_core.db.models import Evaluation, Exam, PaperVersion, ResultSnapshot, RubricVersion, Submission, User
 from grademind_core.grading import Paper, PaperNode, Rubric
-from grademind_core.pdfwrite import Document
+from grademind_core.pdfwrite import Document, columns
 from grademind_core.result_snapshots import current_snapshot
 
 TABLE_W = 72  # characters across the marks table (label column, then the right-aligned marks)
@@ -230,11 +231,10 @@ def student_sheet_document(data: SheetData, generated_at: datetime) -> Document:
         wrap=False,
     )
     doc.rule()
-    doc.line(f"{'Question':<{TABLE_W - 14}}{'Marks':>14}", "Courier", 9, wrap=False)
+    doc.row([("Question", 0, "l"), ("Marks", TABLE_W, "r")])
     for q in data.questions:
         pad = "  " * q.depth
-        right = f"{q.marks} / {q.max_marks}"
-        doc.line(f"{pad + q.label:<{TABLE_W - 14}}{right:>14}", "Courier", 9, wrap=False)
+        doc.row([(pad + q.label, 0, "l"), (f"{q.marks} / {q.max_marks}", TABLE_W, "r")])
         remarks = [STATUS_TEXT.get(q.status, q.status.lower())] if STATUS_TEXT.get(q.status, q.status.lower()) else []
         if q.counted_attempt not in (None, 1):
             remarks.append(f"attempt {q.counted_attempt} counted")
@@ -269,11 +269,21 @@ def summary_document(data: SummaryData, generated_at: datetime) -> Document:
     if data.not_finalized:
         doc.line(f"Left out because the result is not finalized ({len(data.not_finalized)}): " + ", ".join(data.not_finalized))
     doc.rule()
-    head = f"{'Student':<16}{'Snap':>5}{'Total':>12}   Sections"
-    doc.line(head, "Courier", 9, wrap=False)
+    # columns count Courier characters; the first is as wide as the longest student reference (Tamil or Devanagari: measured)
+    first = max([16.0] + [math.ceil(columns(r.student_ref)) + 1.0 for r in data.rows])
+    snap_end, total_end, secs_at = first + 5, first + 17, first + 20
+    doc.row([("Student", 0, "l"), ("Snap", snap_end, "r"), ("Total", total_end, "r"), ("Sections", secs_at, "l")])
     for r in data.rows:
         secs = "  ".join(f"{label}={r.sections.get(qid, '-')}" for qid, label, _ in data.columns)
-        doc.line(f"{r.student_ref:<16}{r.snapshot_no:>5}{r.total + ' / ' + r.max_total:>12}   {secs}", "Courier", 9)
+        doc.row(
+            [
+                (r.student_ref, 0, "l"),
+                (str(r.snapshot_no), snap_end, "r"),
+                (f"{r.total} / {r.max_total}", total_end, "r"),
+                (secs, secs_at, "l"),
+            ],
+            wrap_last=True,
+        )
     doc.rule()
     doc.line("Snapshots these figures come from", "Helvetica-Bold", 10, wrap=False)
     for r in data.rows:

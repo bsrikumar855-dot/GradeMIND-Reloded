@@ -35,5 +35,5 @@ Everything else (all the desktop pages and states) passed on the first run, so t
   reliably through the emulation, so toggle buttons are clicked in that test.
 - **Judgements automated rules cannot make**: whether a label is clear, whether instructions are understandable, reading level, and consistent navigation as a
   whole.
-- **Languages and scripts**: the interface is English only; the PDF reports print only characters in Windows-1252 (other scripts print as "?").
+- **Languages and scripts**: the interface is English only; the PDF reports print Latin text, **Tamil and Devanagari** (embedded Noto fonts, shaped; D30.8). Any other script prints as "?" and the report's audit entry records `unprintable_characters: true`. Reading the PDFs with a screen reader is part of the owner's walk-through (Phase 5.6); the PDFs carry the real characters (ActualText and ToUnicode) so a reader can speak them, but that has not been tried with a screen reader yet.
 - **Zoom and text-size changes** beyond the 375 px width check, and high-contrast / forced-colours modes.

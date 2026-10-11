@@ -30,6 +30,7 @@ SDK_ALLOWED: dict[str, set[str]] = {
     "cv2": {"services/ocr/src/grademind_ocr/engine.py"},
     "pypdfium2": {"packages/core/src/grademind_core/pdf.py"},
     "PIL": {"packages/core/src/grademind_core/pdf.py"},
+    "uharfbuzz": {"packages/core/src/grademind_core/pdffonts.py"},
     "fitz": set(),
     "torch": set(),
     "transformers": set(),

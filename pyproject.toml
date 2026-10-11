@@ -69,7 +69,7 @@ mypy_path = "services/ocr/src"
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["celery", "celery.*", "pypdfium2", "pypdfium2.*"]  # no type information; each confined to one thin module
+module = ["celery", "celery.*", "pypdfium2", "pypdfium2.*", "uharfbuzz"]  # no type information; each confined to one thin module
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
@@ -118,6 +118,13 @@ name = "No LLM SDK in the v1 product path (D19: AI suggestions disabled; the gat
 type = "forbidden"
 source_modules = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
 forbidden_modules = ["anthropic", "openai", "google", "vllm", "litellm"]
+
+[[tool.importlinter.contracts]]
+name = "Text shaping library only in grademind_core.pdffonts (Tamil and Devanagari in the PDF reports, D30.8)"
+type = "forbidden"
+source_modules = ["grademind_core", "grademind_api", "grademind_worker", "grademind_ocr"]
+forbidden_modules = ["uharfbuzz"]
+ignore_imports = ["grademind_core.pdffonts -> uharfbuzz"]
 
 [[tool.importlinter.contracts]]
 name = "PDF / image libraries only in grademind_core.pdf (the OCR service has its own engine adapter)"
