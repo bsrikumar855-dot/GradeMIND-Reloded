@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { apiGet, type Me } from "@/lib/api";
@@ -8,6 +9,7 @@ const ROLE_LABEL: Record<Me["role"], string> = { admin: "Administrator", teacher
 /** Authenticated shell. Every page below it requires a valid session (checked against the API on each request). */
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const me = await apiGet<Me>("/api/me");
+  if (me.must_change_password) redirect("/account/password?required=1");
   return (
     <div className="flex min-h-screen flex-col">
       <header className="border-b bg-background">
@@ -33,6 +35,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
               <span className="font-medium">{me.display_name}</span>
               <span className="text-muted-foreground"> · {ROLE_LABEL[me.role]}</span>
             </span>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/account/password">Account</Link>
+            </Button>
             <form method="post" action="/api/session/logout">
               <Button type="submit" variant="outline" size="sm">
                 <LogOut aria-hidden="true" />

@@ -33,6 +33,7 @@ class Principal:
     user_id: uuid.UUID
     org_id: uuid.UUID
     role: Role
+    tv: int = 0  # the user's token_version when the token was issued: a password change or reset invalidates older tokens
 
 
 def create_access_token(settings: Settings, p: Principal) -> str:
@@ -41,6 +42,7 @@ def create_access_token(settings: Settings, p: Principal) -> str:
         "sub": str(p.user_id),
         "org": str(p.org_id),
         "role": p.role.value,
+        "tv": p.tv,
         "iat": now,
         "exp": now + timedelta(seconds=settings.jwt_ttl_seconds),
     }
@@ -52,4 +54,4 @@ def decode_access_token(settings: Settings, token: str) -> Principal:
     c = jwt.decode(
         token, settings.jwt_secret.get_secret_value(), algorithms=[_ALG], options={"require": ["sub", "exp", "role", "org"]}
     )
-    return Principal(user_id=uuid.UUID(c["sub"]), org_id=uuid.UUID(c["org"]), role=Role(c["role"]))
+    return Principal(user_id=uuid.UUID(c["sub"]), org_id=uuid.UUID(c["org"]), role=Role(c["role"]), tv=int(c.get("tv", 0)))

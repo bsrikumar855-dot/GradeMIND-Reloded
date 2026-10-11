@@ -92,7 +92,7 @@ test("sign-in page", async ({ browser }) => {
 
 test("administrator: the pages around an exam", async () => {
   const p = admin.page;
-  for (const path of ["/", "/exams", `/exams/${examId}/paper`, `/exams/${examId}/rubric`, `/exams/${examId}/submissions`, `/exams/${examId}/totals`, `/exams/${examId}/analytics`, `/exams/${examId}/audit`, `/exams/${examId}/examiners`, "/admin/users"]) {
+  for (const path of ["/", "/exams", `/exams/${examId}/paper`, `/exams/${examId}/rubric`, `/exams/${examId}/submissions`, `/exams/${examId}/totals`, `/exams/${examId}/analytics`, `/exams/${examId}/audit`, `/exams/${examId}/examiners`, "/admin/users", "/account/password"]) {
     await p.goto(path);
     await scan(p, path);
   }

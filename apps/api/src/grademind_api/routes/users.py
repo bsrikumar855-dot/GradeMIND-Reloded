@@ -21,6 +21,7 @@ from grademind_api.deps import db_dep, require_roles
 from grademind_api.errors import ApiError
 from grademind_api.routes.exams import visible_exam
 from grademind_core.db.models import AuditLog, ExamAssignment, Role, User
+from grademind_core.passwords import temporary_password
 from grademind_core.security import Principal, hash_password
 
 router = APIRouter(tags=["users"])
@@ -119,6 +120,28 @@ def activate_user(
     user_id: uuid.UUID, request: Request, p: Principal = Depends(require_roles(Role.ADMIN)), db: Session = Depends(db_dep)
 ) -> UserOut:
     return _set_active(db, p, request, user_id, True)
+
+
+class ResetOut(BaseModel):
+    temporary_password: str  # shown to the administrator once; only its hash is stored
+
+
+@router.post("/users/{user_id}/reset-password", response_model=ResetOut)
+def reset_password(
+    user_id: uuid.UUID, request: Request, p: Principal = Depends(require_roles(Role.ADMIN)), db: Session = Depends(db_dep)
+) -> ResetOut:
+    """Admin reset (D30.3): a random temporary password, every session of that person ended, and a forced change at their next
+    sign-in. The administrator passes it on in person; it is returned once and never stored in the clear, logged or audited."""
+    u = _org_user(db, p, user_id)
+    if u.id == p.user_id:
+        raise ApiError(409, "own_account", "Change your own password under Account; a reset is for someone else.")
+    temp = temporary_password()
+    u.password_hash = hash_password(temp)
+    u.token_version += 1
+    u.must_change_password = True
+    _audit(db, p, request, "user.password_reset", "user", str(u.id), role=u.role.value)
+    db.commit()
+    return ResetOut(temporary_password=temp)
 
 
 # ---------------------------------------------------------------------------------------------- examiners of an exam

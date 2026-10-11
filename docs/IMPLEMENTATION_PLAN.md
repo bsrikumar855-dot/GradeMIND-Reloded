@@ -96,6 +96,19 @@ Review queue polish, examiner and student reports, score distribution, per-quest
 | 4.6 | Pilot readiness: Postgres + MinIO backup/restore with a CI restore test; operator runbook; security pass (login rate limit, session expiry, headers, dependency audit report) |
 | 4.7 | E2E in CI: 2 examiners + 1 teacher, 2 booklets, grade, override, finalize, report, reopen, re-finalize, verify, backup/restore round trip |
 
+## Phase 5: pilot release candidate (D30). No new grading features.
+
+| Step | What |
+|---|---|
+| 5.0 | Passwords: self-service change (current password required, argon2id, rate limited, audited, other sessions invalidated); admin reset with a temporary password and a forced change at next sign-in |
+| 5.1 | Rubric guard: approving a new rubric version is blocked once any evaluation exists unless an admin does it with a reason; the UI shows each grade's rubric version |
+| 5.2 | Encrypted backups with `age` (key never in the repo or the stack's environment); retention 14 daily / 8 weekly; CI drill with a throwaway key; the owner's monthly drill checklist |
+| 5.3 | TLS: digest-pinned reverse proxy (compose profile), HTTPS, secure cookies, only the proxy port published; compose-smoke over HTTPS |
+| 5.4 | Image scanning: Trivy pinned by digest, CI report, severity table in `docs/SECURITY_AUDIT.md`, monthly base-image routine |
+| 5.5 | Tamil and Devanagari in result sheets and the summary PDF: pinned, checksummed OFL font; text and rendered-glyph checks |
+| 5.6 | Pilot kit: walk-through checklist (screen reader, tablet/phone), pilot protocol and the first-200-corrections error-rate script, a one-page "what this system does and does not do" |
+| 5.7 | Release-candidate E2E in CI over HTTPS with printed evidence; PHASE_5_REPORT.md and the owner's release checklist |
+
 ## Blocking data requirement (D23)
 
 **No AI-suggestion feature ships** until the benchmark covers ≥ 10 students, ≥ 2 subjects, and ≥ 1 numerical subject. Current coverage is 2 students and 1 subject (non-numerical).

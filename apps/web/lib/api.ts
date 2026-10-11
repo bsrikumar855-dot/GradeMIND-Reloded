@@ -5,7 +5,14 @@ import { sessionToken } from "@/lib/session";
 /** Server-side API client. The API base URL is server configuration; nothing here reaches the browser. */
 export const API_URL = process.env.GRADEMIND_API_URL ?? "http://127.0.0.1:8000";
 
-export type Me = { id: string; email: string; display_name: string; role: "admin" | "examiner" | "teacher"; org_id: string };
+export type Me = {
+  id: string;
+  email: string;
+  display_name: string;
+  role: "admin" | "examiner" | "teacher";
+  org_id: string;
+  must_change_password: boolean;
+};
 export type Exam = { id: string; name: string; subject: string; course: string | null; total_marks: string };
 export type Health = { name: string; ok: boolean };
 
@@ -26,6 +33,8 @@ export async function apiGet<T>(path: string): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, { headers: { authorization: `Bearer ${token}` }, cache: "no-store" });
   if (res.status === 401) redirect("/login?expired=1");
   if (!res.ok) {
+    // an administrator reset this password: the only thing to do is choose a new one
+    if (res.status === 403 && (await res.clone().json().catch(() => null))?.error?.code === "password_change_required") redirect("/account/password?required=1");
     const body = (await res.json().catch(() => null)) as { error?: { code: string; message: string } } | null;
     throw new ApiError(res.status, body?.error?.code ?? "error", body?.error?.message ?? "Something went wrong.");
   }

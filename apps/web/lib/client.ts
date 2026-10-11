@@ -19,6 +19,7 @@ async function handle<T>(res: Response): Promise<T> {
   if (!res.ok) {
     // Deliberate full-page navigation: drops all client state once the session has expired.
     if (res.status === 401) window.location.replace(new URL("/login?expired=1", window.location.origin).toString());
+    if (res.status === 403 && body?.error?.code === "password_change_required") window.location.replace(new URL("/account/password?required=1", window.location.origin).toString());
     throw new ClientError(res.status, body?.error?.code ?? "error", body?.error?.message ?? "Something went wrong.", body?.error?.issues ?? []);
   }
   return body as T;

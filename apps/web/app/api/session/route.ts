@@ -27,8 +27,12 @@ export async function POST(req: NextRequest) {
   if (res.status === 429) return seeOther("/login?error=throttled");
   if (res.status === 422) return seeOther("/login?error=request");
   if (!res.ok) return seeOther("/login?error=unavailable");
-  const { access_token, expires_in } = (await res.json()) as { access_token: string; expires_in: number };
-  const out = seeOther("/");
+  const { access_token, expires_in, must_change_password } = (await res.json()) as {
+    access_token: string;
+    expires_in: number;
+    must_change_password?: boolean;
+  };
+  const out = seeOther(must_change_password ? "/account/password?required=1" : "/");
   out.cookies.set(SESSION_COOKIE, access_token, sessionCookieOptions(expires_in));
   return out;
 }

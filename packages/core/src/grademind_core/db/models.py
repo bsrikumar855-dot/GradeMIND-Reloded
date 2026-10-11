@@ -26,6 +26,7 @@ from sqlalchemy import (
     String,
     Text,
     UniqueConstraint,
+    false,
     func,
     text,
 )
@@ -108,6 +109,11 @@ class User(Base):
     role: Mapped[Role] = mapped_column(Enum(Role, name="role", values_callable=lambda e: [x.value for x in e]), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     created_at: Mapped[datetime] = _created()
+    # 5.0 (D30.3): a password change or an admin reset bumps token_version, which ends every other session at once; a reset
+    # also sets must_change_password, so the temporary password only gets the person as far as choosing their own
+    token_version: Mapped[int] = mapped_column(Integer, nullable=False, default=0, server_default="0")
+    must_change_password: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default=false())
+    password_changed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     @validates("email")
     def _normalise_email(self, _key: str, value: str) -> str:

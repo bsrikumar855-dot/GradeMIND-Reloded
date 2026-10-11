@@ -20,6 +20,7 @@ export function UsersAdmin({ meId, initial }: { meId: string; initial: UserRow[]
   const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [password, setPassword] = useState("");
+  const [reset, setReset] = useState<{ name: string; password: string } | null>(null);
 
   async function load() {
     try {
@@ -49,6 +50,18 @@ export function UsersAdmin({ meId, initial }: { meId: string; initial: UserRow[]
       setError(err instanceof ClientError ? err.message : "Could not create the account.");
     } finally {
       setBusy(false);
+    }
+  }
+
+  async function resetPassword(u: UserRow) {
+    setError(null);
+    setNotice(null);
+    setReset(null);
+    try {
+      const r = await api<{ temporary_password: string }>(`users/${u.id}/reset-password`, { method: "POST" });
+      setReset({ name: u.display_name, password: r.temporary_password });
+    } catch (err) {
+      setError(err instanceof ClientError ? err.message : "Could not reset the password.");
     }
   }
 
@@ -114,6 +127,12 @@ export function UsersAdmin({ meId, initial }: { meId: string; initial: UserRow[]
       </Card>
       {error ? <Alert variant="destructive">{error}</Alert> : null}
       {notice ? <Alert>{notice}</Alert> : null}
+      {reset ? (
+        <Alert data-testid="reset-result">
+          Temporary password for <strong>{reset.name}</strong>: <code data-testid="temporary-password" className="rounded bg-muted px-1.5 py-0.5 font-mono">{reset.password}</code>. Tell them in person.
+          It is shown once and is not stored; all their sessions have ended and they must choose their own password when they sign in.
+        </Alert>
+      ) : null}
       <Card className="py-0">
           <CardContent className="overflow-x-auto px-0">
             <table className="w-full text-sm">
@@ -140,9 +159,14 @@ export function UsersAdmin({ meId, initial }: { meId: string; initial: UserRow[]
                       {u.id === meId ? (
                         <span className="text-muted-foreground">This is you</span>
                       ) : u.is_active ? (
-                        <Button size="sm" variant="outline" onClick={() => void setActive(u, false)} aria-label={`Deactivate ${u.display_name}`}>
-                          Deactivate
-                        </Button>
+                        <>
+                          <Button size="sm" variant="outline" className="mr-1" onClick={() => void resetPassword(u)} aria-label={`Reset password of ${u.display_name}`}>
+                            Reset password
+                          </Button>
+                          <Button size="sm" variant="outline" onClick={() => void setActive(u, false)} aria-label={`Deactivate ${u.display_name}`}>
+                            Deactivate
+                          </Button>
+                        </>
                       ) : (
                         <Button size="sm" variant="outline" onClick={() => void setActive(u, true)} aria-label={`Reactivate ${u.display_name}`}>
                           Reactivate

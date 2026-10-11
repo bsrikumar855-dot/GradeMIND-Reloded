@@ -1,7 +1,7 @@
 # STATUS
 
 **Phases:** Phase 0b is closed (decisions D18–D23 in [docs/DECISIONS.md](docs/DECISIONS.md)). **Phase 0c** (cloud ceiling, benchmark only) is prepared but
-**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 (grading core) is APPROVED (D28)**; **Phase 3 (OCR assist) is APPROVED (D29)**; **Phase 4 (review polish, analytics, reports, pilot readiness) is built and awaiting owner review at the gate**: [PHASE_4_REPORT.md](PHASE_4_REPORT.md): [PHASE_2_REPORT.md](PHASE_2_REPORT.md).
+**blocked on owner verification (D21)**. **Phase 1** is **approved** ([PHASE_1_REPORT.md](PHASE_1_REPORT.md)). **D26 hardening is done**; **Phase 2 (grading core) is APPROVED (D28)**; **Phase 3 (OCR assist) is APPROVED (D29)**; **Phase 4 is APPROVED (D30)**; **Phase 5 (pilot release candidate) is in progress**: [PHASE_4_REPORT.md](PHASE_4_REPORT.md): [PHASE_2_REPORT.md](PHASE_2_REPORT.md).
 [PHASE_0B_REPORT.md](PHASE_0B_REPORT.md).
 
 ## BLOCKING items
@@ -31,6 +31,23 @@
 - **Phase 0c (prepared, nothing sent):** pre-registered plan + decision rule (`docs/PHASE_0C_PLAN.md`, commit `5911e5c`), prompt
   `prompts/ocr_ceiling/v1.md`, runner `spike/ceiling/run_ceiling.py` (gates verified: exit 2 with 6 unmet gates; dry run 100 requests, sent=0),
   report `spike/report_0c.py` (refuses non-OWNER_VERIFIED GT; selftest on synthetic outputs). Unit tests in `spike/tests/test_ceiling.py`.
+
+## Phase 5 (pilot release candidate; D30) progress
+
+Each step is one commit with CI green before the next. Test numbers come from `make test` / CI in the same session (rule 13).
+
+| Step | State | Evidence |
+|---|---|---|
+| 5.0 Passwords: self-service change, admin reset + forced change | **Implemented; CI result pending** | `POST /auth/change-password` (current password required, throttled like sign-in, argon2id, audited without any password; every OTHER session ends through a `token_version` the token carries; a fresh token is returned), `POST /users/{id}/reset-password` (admin only, not your own, random 16-character temporary password returned once and never stored in the clear; their sessions end; forced change: every other API route answers 403 `password_change_required`, the web app sends them to the change page), `/account/password`, "Reset password" on Users. 10 API tests incl. the log/audit/error-body redaction regression and a token without the version claim. Local: `make test` 417 passed, lint 0, alembic check clean, Playwright 29/29 (new `passwords.spec.ts`) |
+| 5.1 Rubric guard | Not started | |
+| 5.2 Encrypted backups (age) | Not started | |
+| 5.3 TLS reverse proxy | Not started | |
+| 5.4 Image scanning (Trivy) | Not started | |
+| 5.5 Indian scripts in reports | Not started | |
+| 5.6 Pilot kit | Not started | |
+| 5.7 Release-candidate E2E | Not started | |
+
+Not done on purpose in 5.0: accounts an administrator CREATES are not forced to change their password at first sign-in (D30 asks that for a reset); see the Phase 5 report.
 
 ## Phase 4 (review polish, analytics, reports, pilot readiness; D29) progress
 

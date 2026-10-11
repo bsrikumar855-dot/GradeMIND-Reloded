@@ -49,10 +49,8 @@ def db_dep(request: Request) -> Iterator[Session]:
         yield s
 
 
-def principal_dep(
-    creds: HTTPAuthorizationCredentials | None = Depends(_bearer),
-    settings: Settings = Depends(settings_dep),
-    db: Session = Depends(db_dep),
+def _principal(
+    creds: HTTPAuthorizationCredentials | None, settings: Settings, db: Session, allow_pending_change: bool
 ) -> Principal:
     if creds is None:
         raise ApiError(401, "unauthenticated", "Sign in to continue.")
@@ -61,9 +59,29 @@ def principal_dep(
     except jwt.PyJWTError as e:
         raise ApiError(401, "invalid_token", "Your session has expired. Sign in again.") from e
     user = db.get(User, p.user_id)
-    if user is None or not user.is_active or user.org_id != p.org_id or user.role != p.role:
+    if user is None or not user.is_active or user.org_id != p.org_id or user.role != p.role or user.token_version != p.tv:
+        # (a changed or reset password raises token_version: every earlier session ends at its next request)
         raise ApiError(401, "invalid_token", "Your session is no longer valid. Sign in again.")
+    if user.must_change_password and not allow_pending_change:
+        raise ApiError(403, "password_change_required", "Choose a new password to continue.")
     return p
+
+
+def principal_dep(
+    creds: HTTPAuthorizationCredentials | None = Depends(_bearer),
+    settings: Settings = Depends(settings_dep),
+    db: Session = Depends(db_dep),
+) -> Principal:
+    return _principal(creds, settings, db, False)
+
+
+def principal_any_dep(
+    creds: HTTPAuthorizationCredentials | None = Depends(_bearer),
+    settings: Settings = Depends(settings_dep),
+    db: Session = Depends(db_dep),
+) -> Principal:
+    """Like `principal_dep`, but also for someone who must still change their password (only /me and the change itself use it)."""
+    return _principal(creds, settings, db, True)
 
 
 def require_roles(*roles: Role) -> Callable[[Principal], Principal]:
