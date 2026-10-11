@@ -108,7 +108,14 @@ def test_not_attempted_and_incomplete_are_counted_apart_and_never_enter_the_mark
     q2 = q(r, "q2")
     assert q2["n"] == 0 and q2["not_attempted"] == 5 and q2["incomplete"] == 1 and q2["mean"] is None
     assert r["ungraded"] == {"mapped_but_ungraded_answers": 1, "booklets_with_ungraded": 1}
-    assert r["booklets"] == {"total": 6, "finalized": 0, "not_started": 0, "in_progress": 1, "complete": 5}
+    assert r["booklets"] == {
+        "total": 6,
+        "finalized": 0,
+        "other_rubric_version": 0,
+        "not_started": 0,
+        "in_progress": 1,
+        "complete": 5,
+    }
 
 
 def test_override_rate_and_time_to_grade_follow_the_same_rule() -> None:

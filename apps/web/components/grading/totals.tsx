@@ -85,6 +85,9 @@ export function Totals({ examId, canReport }: { examId: string; canReport: boole
                   <td className="px-4 py-3">
                     {r.total === null ? <Badge>Not started</Badge> : r.complete ? <Badge tone="success">Complete</Badge> : <Badge tone="warning">Incomplete</Badge>}
                     {r.finalized ? <Badge tone="success">Finalized (snapshot {r.snapshot_no})</Badge> : null}
+                    {r.rubric_version_no != null && data.rubric_version_no != null && r.rubric_version_no !== data.rubric_version_no ? (
+                      <Badge tone="warning">rubric v{r.rubric_version_no}</Badge>
+                    ) : null}
                     {r.flags.map((f) => (
                       <Badge key={f} tone="warning" className="ml-1">
                         {f.replaceAll("_", " ").toLowerCase()}

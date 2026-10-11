@@ -156,6 +156,9 @@ export function Workspace({ submissionId, canManage }: { submissionId: string; c
             {ws.score.total} / {ws.score.max_total}
           </span>
           <Badge tone={ws.score.complete ? "success" : "warning"}>{ws.score.complete ? "Complete" : "In progress"}</Badge>
+          <Badge tone="neutral" data-testid="rubric-version">
+            Rubric v{ws.rubric_version_no}
+          </Badge>
           {ws.score.flags.map((f) => (
             <Badge key={f} tone="warning">
               {f.replaceAll("_", " ").toLowerCase()}
@@ -172,6 +175,17 @@ export function Workspace({ submissionId, canManage }: { submissionId: string; c
         </Alert>
       ) : null}
       {notice ? <Alert variant={notice.tone}>{notice.text}</Alert> : null}
+      {ws.rubric_version_no !== ws.latest_rubric_version_no ? (
+        <Alert data-testid="rubric-version-note">
+          This result was finalized under rubric v{ws.rubric_version_no}; the exam&apos;s rubric is now v{ws.latest_rubric_version_no}. The result is shown, and reported, under v{ws.rubric_version_no}.
+        </Alert>
+      ) : null}
+      {ws.older_version_grades > 0 && ws.finalization.state === "OPEN" ? (
+        <Alert data-testid="older-grades-note">
+          {ws.older_version_grades} answer{ws.older_version_grades === 1 ? " was" : "s were"} graded under an earlier rubric version. Those grades are kept, but they do not count under v{ws.rubric_version_no}:
+          grade {ws.older_version_grades === 1 ? "it" : "them"} again here.
+        </Alert>
+      ) : null}
       <FinalizePanel submissionId={submissionId} data={fin} canManage={canManage} onChanged={reload} />
       <div className="grid gap-4 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
         <PageViewer
@@ -306,6 +320,7 @@ export function Workspace({ submissionId, canManage }: { submissionId: string; c
                     initialVerdicts={evaluation?.verdicts ?? {}}
                     initialNotes={evaluation?.notes ?? ""}
                     marks={evaluation?.marks ?? null}
+                    versionNo={evaluation?.rubric_version_no ?? null}
                     max={nodeMarks(activeQ)?.max_marks ?? null}
                     readOnly={locked}
                     onSave={async (verdicts, notes, overrideReason) => {
@@ -332,6 +347,7 @@ function GradePanel({
   initialVerdicts,
   initialNotes,
   marks,
+  versionNo,
   max,
   readOnly,
   onSave,
@@ -340,6 +356,7 @@ function GradePanel({
   initialVerdicts: Record<string, string>;
   initialNotes: string;
   marks: string | null;
+  versionNo: number | null;
   max: string | null;
   readOnly: boolean;
   onSave: (verdicts: Record<string, string>, notes: string, overrideReason: string) => Promise<void>;
@@ -394,7 +411,9 @@ function GradePanel({
   return (
     <section aria-label="Grade this answer" className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium">Grade</h3>
+        <h3 className="text-sm font-medium">
+          Grade{versionNo !== null ? <span className="font-normal text-muted-foreground" data-testid="graded-under"> · given under rubric v{versionNo}</span> : null}
+        </h3>
         <span className="text-sm tabular-nums" data-testid="question-marks">
           {marks ?? "–"} / {max ?? "?"}
         </span>

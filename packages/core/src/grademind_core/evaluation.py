@@ -14,10 +14,10 @@ import uuid
 from dataclasses import dataclass
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from grademind_core.db.models import AnswerRegion, Evaluation, PaperVersion, RubricVersion, ScoreResult, VersionStatus
+from grademind_core.db.models import AnswerRegion, Evaluation, PaperVersion, RubricVersion, ScoreResult, Submission, VersionStatus
 from grademind_core.grading import Paper, Policy, Rubric
 from grademind_core.scoring import Attempt, ScoreSheet, Verdict, compute
 
@@ -41,6 +41,40 @@ def grading_context(db: Session, exam_id: uuid.UUID) -> GradingContext | None:
     )
     if rv is None:
         return None
+    pv = db.get(PaperVersion, rv.paper_version_id)
+    assert pv is not None
+    return GradingContext(
+        rv, pv, Paper.model_validate(pv.document), Rubric.model_validate(rv.document), Policy.model_validate(rv.policy)
+    )
+
+
+def evaluations_given(db: Session, exam_id: uuid.UUID) -> int:
+    """Grades (evaluation rows, any rubric version) given for the exam; once there is one, a new rubric version is guarded."""
+    return int(
+        db.scalar(
+            select(func.count())
+            .select_from(Evaluation)
+            .join(Submission, Submission.id == Evaluation.submission_id)
+            .where(Submission.exam_id == exam_id)
+        )
+        or 0
+    )
+
+
+def older_version_grades(db: Session, submission_id: uuid.UUID, rubric_version_id: uuid.UUID) -> int:
+    """Distinct (question, attempt) graded under another rubric version: kept, but they do not count under the one in force."""
+    rows = db.execute(
+        select(Evaluation.qid, Evaluation.attempt_no)
+        .where(Evaluation.submission_id == submission_id, Evaluation.rubric_version_id != rubric_version_id)
+        .distinct()
+    ).all()
+    return len(rows)
+
+
+def context_of_versions(db: Session, rubric_version_id: uuid.UUID) -> GradingContext:
+    """The grading context of one specific (approved) rubric version and the paper version it was written against."""
+    rv = db.get(RubricVersion, rubric_version_id)
+    assert rv is not None
     pv = db.get(PaperVersion, rv.paper_version_id)
     assert pv is not None
     return GradingContext(

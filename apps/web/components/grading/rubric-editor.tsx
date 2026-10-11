@@ -9,11 +9,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { IssueList } from "@/components/grading/issues";
 import { api, ClientError, type Issue } from "@/lib/client";
 import { DEFAULT_POLICY, fullLabels, leaves, type Criterion, type Paper, type Policy, type QuestionRubric, type Rubric, type Version } from "@/lib/types";
 
-type State = { paper: Version<Paper> | null; draft: Version<Rubric> | null; approved: Version<Rubric> | null; issues: Issue[]; stale_draft: boolean };
+type State = { paper: Version<Paper> | null; draft: Version<Rubric> | null; approved: Version<Rubric> | null; issues: Issue[]; stale_draft: boolean; evaluations_given: number; locked: boolean };
 
 function newId(prefix: string): string {
   return prefix + Math.random().toString(36).slice(2, 7);
@@ -120,13 +121,14 @@ function CriterionEditor({
   );
 }
 
-export function RubricEditor({ examId, canEdit }: { examId: string; canEdit: boolean }) {
+export function RubricEditor({ examId, canEdit, isAdmin }: { examId: string; canEdit: boolean; isAdmin: boolean }) {
   const [state, setState] = useState<State | null>(null);
   const [rubric, setRubric] = useState<Record<string, QuestionRubric>>({});
   const [policy, setPolicy] = useState<Policy>(DEFAULT_POLICY);
   const [issues, setIssues] = useState<Issue[]>([]);
   const [message, setMessage] = useState<{ tone: "default" | "destructive"; text: string } | null>(null);
   const [busy, setBusy] = useState(false);
+  const [reason, setReason] = useState("");
 
   const apply = useCallback((s: State) => {
     setState(s);
@@ -192,8 +194,14 @@ export function RubricEditor({ examId, canEdit }: { examId: string; canEdit: boo
   }
 
   async function approve() {
-    const r = await run(() => api<Version<Rubric>>(`exams/${examId}/rubric/approve`, { method: "POST" }), "Rubric approved. Booklets can now be graded.");
-    if (r) await load();
+    const r = await run(
+      () => api<Version<Rubric>>(`exams/${examId}/rubric/approve`, { method: "POST", json: state?.locked ? { reason } : {} }),
+      state?.locked ? "New rubric version approved. Booklets are graded under it from now on; earlier grades are kept." : "Rubric approved. Booklets can now be graded.",
+    );
+    if (r) {
+      setReason("");
+      await load();
+    }
   }
 
   const status = state.draft ? `Draft v${state.draft.version_no}` : state.approved ? `Approved v${state.approved.version_no}` : "Not started";
@@ -308,13 +316,30 @@ export function RubricEditor({ examId, canEdit }: { examId: string; canEdit: boo
           {message.text}
         </Alert>
       ) : null}
+      {state.locked ? (
+        <Alert data-testid="rubric-locked">
+          <strong>Grading has started</strong> ({state.evaluations_given} grade{state.evaluations_given === 1 ? "" : "s"} given). Each grade stays tied to the rubric version it was given under, and results that are already
+          finalized are not touched. Approving a new version means the booklets must be graded again under it, so it needs an administrator and a reason.
+        </Alert>
+      ) : null}
+      {canEdit && state.locked && isAdmin && state.draft ? (
+        <div className="flex flex-col gap-1.5">
+          <Label htmlFor="rubric-reason">Why is a new rubric version needed? (at least 10 characters; it is kept in the audit trail)</Label>
+          <Textarea id="rubric-reason" value={reason} onChange={(e) => setReason(e.target.value)} rows={2} maxLength={1000} />
+        </div>
+      ) : null}
       {canEdit ? (
         <div className="flex gap-2">
           <Button type="button" onClick={() => void save()} disabled={busy}>
             Save draft
           </Button>
-          <Button type="button" variant="outline" onClick={() => void approve()} disabled={busy || !state.draft || issues.length > 0 || state.stale_draft}>
-            Approve rubric
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => void approve()}
+            disabled={busy || !state.draft || issues.length > 0 || state.stale_draft || (state.locked && (!isAdmin || reason.trim().length < 10))}
+          >
+            {state.locked ? "Approve new version (grading has started)" : "Approve rubric"}
           </Button>
         </div>
       ) : null}

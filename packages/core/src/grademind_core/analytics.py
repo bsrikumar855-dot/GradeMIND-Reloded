@@ -58,6 +58,9 @@ class AnalyticsInput:
     booklets: list[BookletData]
     evaluations: list[EvalFact] = field(default_factory=list)
     grade_seconds: list[float] = field(default_factory=list)
+    other_rubric_version: int = (
+        0  # finalized under an earlier rubric version: their questions differ, so they are left out and counted
+    )
 
 
 def _ok(n: int) -> bool:
@@ -95,6 +98,7 @@ def build_report(
     summary = {
         "total": n_total,
         "finalized": sum(1 for b in booklets if b.finalized),
+        "other_rubric_version": data.other_rubric_version,
         "not_started": sum(1 for b in booklets if not b.has_answers),
         "in_progress": sum(1 for b in booklets if b.has_answers and not b.complete),
         "complete": sum(1 for b in booklets if b.has_answers and b.complete),
@@ -221,7 +225,15 @@ def load(db: Session, exam_id: uuid.UUID, ctx: GradingContext, scope: Scope) -> 
     subs = list(
         db.scalars(select(Submission).where(Submission.exam_id == exam_id).order_by(Submission.created_at, Submission.id))
     )
-    booklets = [b for s in subs if (b := _booklet(db, s, ctx)) is not None]
+    other = 0
+    booklets: list[BookletData] = []
+    for s in subs:
+        snap = current_snapshot(db, s.id)
+        if snap is not None and snap.rubric_version_id != ctx.rubric_version.id:
+            other += 1  # frozen under another rubric version: not comparable question by question, so left out and counted
+            continue
+        if (b := _booklet(db, s, ctx)) is not None:
+            booklets.append(b)
     if scope == "finalized":
         booklets = [b for b in booklets if b.finalized]
     keep = {b.submission_id for b in booklets}
@@ -253,7 +265,7 @@ def load(db: Session, exam_id: uuid.UUID, ctx: GradingContext, scope: Scope) -> 
             seen.add(k)
             if k in first_region:
                 seconds.append((e.created_at - first_region[k]).total_seconds())
-    return AnalyticsInput(booklets, facts, seconds)
+    return AnalyticsInput(booklets, facts, seconds, other)
 
 
 def exam_analytics(db: Session, exam_id: uuid.UUID, ctx: GradingContext, scope: Scope = "all") -> dict[str, Any]:

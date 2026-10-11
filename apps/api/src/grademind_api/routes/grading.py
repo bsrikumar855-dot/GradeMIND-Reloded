@@ -26,13 +26,15 @@ from grademind_api.deps import db_dep, principal_dep, require_roles, store_dep
 from grademind_api.errors import ApiError
 from grademind_api.routes.exams import visible_exam
 from grademind_api.routes.submissions import PageOut, list_pages, visible_submission
-from grademind_core.db.models import AnswerRegion, AuditLog, Evaluation, Page, Role, Submission
+from grademind_core.db.models import AnswerRegion, AuditLog, Evaluation, Page, Role, RubricVersion, Submission
 from grademind_core.evaluation import (
     GradingContext,
+    context_of_versions,
     current_evaluations,
     grading_context,
     latest_score,
     live_regions,
+    older_version_grades,
     record_score,
     score,
     sheet_json,
@@ -100,6 +102,7 @@ class EvaluationOut(BaseModel):
     override_reason: str | None
     supersedes_id: uuid.UUID | None
     created_at: datetime
+    rubric_version_no: int  # the rubric version this grade was given under (it stays tied to it, D30.9)
 
 
 class ScoreOut(BaseModel):
@@ -129,6 +132,9 @@ class Workspace(BaseModel):
     evaluations: list[EvaluationOut]
     score: ScoreOut
     finalization: FinalizationSummary
+    rubric_version_no: int  # the version this page is showing: the booklet's own once it is finalized, otherwise the one in force
+    latest_rubric_version_no: int
+    older_version_grades: int  # answers graded under an earlier rubric version: kept, but they do not count under this one
 
 
 class SaveOut(BaseModel):
@@ -158,8 +164,10 @@ def _region_out(r: AnswerRegion) -> RegionOut:
     return RegionOut(id=r.id, page_id=r.page_id, bbox=r.bbox, qid=r.qid, attempt_no=r.attempt_no, crossed_out=r.crossed_out)
 
 
-def _eval_out(e: Evaluation) -> EvaluationOut:
+def _eval_out(db: Session, e: Evaluation) -> EvaluationOut:
+    rv = db.get(RubricVersion, e.rubric_version_id)
     return EvaluationOut(
+        rubric_version_no=rv.version_no if rv else 0,
         id=e.id,
         qid=e.qid,
         attempt_no=e.attempt_no,
@@ -210,8 +218,14 @@ def workspace(
     store: ObjectStore = Depends(store_dep),
 ) -> Workspace:
     sub = visible_submission(db, p, submission_id)
-    ctx = _ctx(db, sub)
+    latest = _ctx(db, sub)
+    snap = current_snapshot(db, sub.id)
+    # a finalized result is shown under the rubric version it was frozen with, even if a newer version has been approved since
+    ctx = context_of_versions(db, snap.rubric_version_id) if snap is not None else latest
     return Workspace(
+        rubric_version_no=ctx.rubric_version.version_no,
+        latest_rubric_version_no=latest.rubric_version.version_no,
+        older_version_grades=older_version_grades(db, sub.id, ctx.rubric_version.id),
         submission_id=sub.id,
         exam_id=sub.exam_id,
         student_ref=sub.student_ref,
@@ -221,7 +235,7 @@ def workspace(
         policy=ctx.rubric_version.policy,
         pages=list_pages(submission_id, p, db, store),
         regions=[_region_out(r) for r in live_regions(db, sub.id)],
-        evaluations=[_eval_out(e) for e in current_evaluations(db, sub.id, ctx.rubric_version.id).values()],
+        evaluations=[_eval_out(db, e) for e in current_evaluations(db, sub.id, ctx.rubric_version.id).values()],
         score=_score_out(db, sub, ctx),
         finalization=_finalization_summary(db, sub),
     )
@@ -375,7 +389,7 @@ def save_evaluation(
     )
     record_score(db, sub.id, ctx, p.user_id, trigger_evaluation_id=ev.id)
     db.commit()  # evaluation + score sheet + audit row: one transaction
-    return SaveOut(evaluation=_eval_out(ev), score=_score_out(db, sub, ctx))
+    return SaveOut(evaluation=_eval_out(db, ev), score=_score_out(db, sub, ctx))
 
 
 @router.get("/submissions/{submission_id}/evaluations/{qid}/{attempt_no}/history", response_model=list[EvaluationOut])
@@ -388,7 +402,7 @@ def evaluation_history(
         .where(Evaluation.submission_id == sub.id, Evaluation.qid == qid, Evaluation.attempt_no == attempt_no)
         .order_by(Evaluation.seq)
     )
-    return [_eval_out(e) for e in rows]
+    return [_eval_out(db, e) for e in rows]
 
 
 # ------------------------------------------------------------------------------------------------------ totals
@@ -404,11 +418,13 @@ class TotalsRow(BaseModel):
     flags: list[str]
     finalized: bool = False  # the result is frozen in a snapshot (4.2)
     snapshot_no: int | None = None
+    rubric_version_no: int | None = None  # the rubric version this row's marks were given under (D30.9)
 
 
 class Totals(BaseModel):
     exam_id: uuid.UUID
     rubric_version_id: uuid.UUID | None
+    rubric_version_no: int | None = None  # the version in force now
     columns: list[dict[str, str]]  # top-level nodes: id, label, max
     rows: list[TotalsRow]
 
@@ -427,6 +443,23 @@ def _totals(db: Session, exam_id: uuid.UUID) -> Totals:
     max_total = ctx.paper.total_marks
     for s in subs:
         snap = current_snapshot(db, s.id)
+        if snap is not None:
+            # a finalized result is its snapshot, under the rubric version it was frozen with (a newer one changes nothing)
+            rows.append(
+                TotalsRow(
+                    submission_id=s.id,
+                    student_ref=s.student_ref,
+                    total=snap.total,
+                    max_total=snap.max_total,
+                    complete=snap.complete,
+                    sections={qid: Decimal(snap.sheet[qid]["marks"]) for qid, _ in tops if qid in snap.sheet},
+                    flags=list(snap.flags),
+                    finalized=True,
+                    snapshot_no=snap.snapshot_no,
+                    rubric_version_no=snap.rubric_version_no,
+                )
+            )
+            continue
         res = latest_score(db, s.id, ctx.rubric_version.id)
         if res is None:
             rows.append(
@@ -450,13 +483,18 @@ def _totals(db: Session, exam_id: uuid.UUID) -> Totals:
                 complete=res.complete,
                 sections={qid: Decimal(res.sheet[qid]["marks"]) for qid, _ in tops if qid in res.sheet},
                 flags=res.flags,
-                finalized=snap is not None,
-                snapshot_no=snap.snapshot_no if snap else None,
+                rubric_version_no=ctx.rubric_version.version_no,
             )
         )
     top_nodes = {n.id: n for n in ctx.paper.questions}
     columns = [{"id": qid, "label": label, "max": str(node_max(top_nodes[qid]))} for qid, label in tops]
-    return Totals(exam_id=exam_id, rubric_version_id=ctx.rubric_version.id, columns=columns, rows=rows)
+    return Totals(
+        exam_id=exam_id,
+        rubric_version_id=ctx.rubric_version.id,
+        rubric_version_no=ctx.rubric_version.version_no,
+        columns=columns,
+        rows=rows,
+    )
 
 
 @router.get("/exams/{exam_id}/totals", response_model=Totals)

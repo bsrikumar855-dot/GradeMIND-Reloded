@@ -93,6 +93,7 @@ export type EvaluationInfo = {
   is_override: boolean;
   override_reason: string | null;
   created_at: string;
+  rubric_version_no: number;
 };
 export type ScoreInfo = {
   total: string;
@@ -114,10 +115,15 @@ export type WorkspaceData = {
   evaluations: EvaluationInfo[];
   score: ScoreInfo;
   finalization: { state: "OPEN" | "FINALIZED"; snapshot_no: number | null };
+  /** the rubric version this page shows (a finalized booklet keeps its own), the one in force, and answers graded under an earlier one */
+  rubric_version_no: number;
+  latest_rubric_version_no: number;
+  older_version_grades: number;
 };
 export type TotalsData = {
   columns: { id: string; label: string; max: string }[];
-  rows: { submission_id: string; student_ref: string; total: string | null; max_total: string; complete: boolean; sections: Record<string, string>; flags: string[]; finalized: boolean; snapshot_no: number | null }[];
+  rows: { submission_id: string; student_ref: string; total: string | null; max_total: string; complete: boolean; sections: Record<string, string>; flags: string[]; finalized: boolean; snapshot_no: number | null; rubric_version_no: number | null }[];
+  rubric_version_no?: number | null;
 };
 export type AuditRow = { at: string; actor_id: string | null; action: string; entity_type: string; entity_id: string | null; details: Record<string, unknown> };
 
@@ -194,7 +200,7 @@ export type AnalyticsData = {
   min_n: number;
   rubric_version_no: number;
   score_computer_version: string;
-  booklets: { total: number; finalized: number; not_started: number; in_progress: number; complete: number };
+  booklets: { total: number; finalized: number; other_rubric_version: number; not_started: number; in_progress: number; complete: number };
   ungraded: { mapped_but_ungraded_answers: number; booklets_with_ungraded: number };
   questions: AnalyticsQuestion[];
   overrides: { grades_saved: number; overrides: number; rate: string | null; suppressed: boolean };

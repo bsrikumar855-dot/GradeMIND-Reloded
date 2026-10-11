@@ -50,6 +50,12 @@ export function AnalyticsView({ examId, data }: { examId: string; data: Analytic
               <div className="text-muted-foreground">{label}</div>
             </div>
           ))}
+          {data.booklets.other_rubric_version > 0 ? (
+            <p className="col-span-full text-muted-foreground" data-testid="other-rubric">
+              {data.booklets.other_rubric_version} finalized result{data.booklets.other_rubric_version === 1 ? " was" : "s were"} frozen under an earlier rubric version and {data.booklets.other_rubric_version === 1 ? "is" : "are"} not
+              included here (the questions differ).
+            </p>
+          ) : null}
           <p className="col-span-full text-muted-foreground" data-testid="ungraded">
             Mapped but not fully graded: {data.ungraded.mapped_but_ungraded_answers} answer(s) in {data.ungraded.booklets_with_ungraded} booklet(s).
           </p>

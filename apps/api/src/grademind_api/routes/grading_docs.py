@@ -22,6 +22,7 @@ from grademind_api.errors import ApiError
 from grademind_api.routes.exams import visible_exam
 from grademind_core.config import Settings
 from grademind_core.db.models import AuditLog, Exam, PaperSource, PaperVersion, Role, RubricVersion, VersionStatus
+from grademind_core.evaluation import evaluations_given
 from grademind_core.grading import Issue, Paper, Policy, Rubric, validate_paper, validate_rubric
 from grademind_core.paper_parser import parse_paper
 from grademind_core.pdf import PdfError, text_layer
@@ -62,6 +63,8 @@ class RubricState(BaseModel):
     approved: VersionOut | None
     issues: list[IssueOut]
     stale_draft: bool  # the draft was written against an older paper version
+    evaluations_given: int = 0  # grades already given for this exam (under any rubric version)
+    locked: bool = False  # grading has started: a new rubric version needs an administrator and a reason (D30.9)
 
 
 class ParseIn(BaseModel):
@@ -287,8 +290,15 @@ def _rubric_state(db: Session, exam: Exam) -> RubricState:
         stale = draft.paper_version_id != paper_v.id
         paper = Paper.model_validate(paper_v.document)
         issues = _issues(validate_rubric(Rubric.model_validate(draft.document), paper, Policy.model_validate(draft.policy)))
+    given = evaluations_given(db, exam.id)
     return RubricState(
-        paper=_out(paper_v), draft=_out(draft), approved=_out(approved_rubric(db, exam.id)), issues=issues, stale_draft=stale
+        paper=_out(paper_v),
+        draft=_out(draft),
+        approved=_out(approved_rubric(db, exam.id)),
+        issues=issues,
+        stale_draft=stale,
+        evaluations_given=given,
+        locked=given > 0,
     )
 
 
@@ -337,12 +347,40 @@ def save_rubric_draft(
     return _rubric_state(db, exam)
 
 
+class ApproveRubricIn(BaseModel):
+    reason: str | None = Field(default=None, max_length=1000)  # required once grading has started (D30.9)
+
+
+MIN_REASON = 10
+
+
 @router.post("/exams/{exam_id}/rubric/approve", response_model=VersionOut)
 def approve_rubric(
-    exam_id: uuid.UUID, request: Request, p: Principal = Depends(require_roles(*EDITORS)), db: Session = Depends(db_dep)
+    exam_id: uuid.UUID,
+    request: Request,
+    body: ApproveRubricIn | None = None,
+    p: Principal = Depends(require_roles(*EDITORS)),
+    db: Session = Depends(db_dep),
 ) -> VersionOut:
     exam = visible_exam(db, p, exam_id)
     state = _rubric_state(db, exam)
+    reason = ((body.reason if body else None) or "").strip()
+    if state.locked:
+        # D30.9: grades already exist, tied to the rubric version they were given under. A new version does not change them,
+        # but the booklets then have to be graded again under it, so it takes an administrator and a written reason.
+        if p.role != Role.ADMIN:
+            raise ApiError(
+                409,
+                "rubric_locked",
+                f"Grading has started ({state.evaluations_given} grade(s) given). Only an administrator can approve a new "
+                "rubric version now, with a reason.",
+            )
+        if len(reason) < MIN_REASON:
+            raise ApiError(
+                422,
+                "reason_required",
+                f"Grading has started. Say why a new rubric version is needed (at least {MIN_REASON} characters).",
+            )
     draft: RubricVersion | None = _latest(db, RubricVersion, exam_id, VersionStatus.DRAFT)
     if draft is None:
         raise ApiError(409, "no_draft", "There is no rubric draft to approve. Save it first.")
@@ -366,6 +404,7 @@ def approve_rubric(
         draft.id,
         version_no=draft.version_no,
         paper_version_id=str(draft.paper_version_id),
+        **({"after_grading": True, "grades_given": state.evaluations_given, "reason": reason} if state.locked else {}),
     )
     db.commit()
     out = _out(draft)
