@@ -43,3 +43,6 @@ datasets/
 
 # --- backups (database dump + every stored object: student work; written by scripts/backup.sh) ---
 backups/
+
+# --- the pinned age binary (scripts/fetch_age.sh) ---
+tools/

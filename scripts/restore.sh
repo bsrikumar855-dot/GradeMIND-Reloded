@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # Restore a backup made by scripts/backup.sh and prove it is whole (4.6).
 #
-#   scripts/restore.sh BACKUP_DIR TARGET_DB TARGET_BUCKET [--replace-live]
+#   scripts/restore.sh BACKUP TARGET_DB TARGET_BUCKET [--replace-live] [--identity KEYFILE]
+#
+# BACKUP is a backup folder, or an ENCRYPTED copy (*.tar.age) together with --identity: the owner's private key file, supplied for this one
+# command, unpacked into a private temporary folder that is removed afterwards (D30.4). The key is never stored by the stack.
 #
 # Side copy (a drill, or to inspect an old state): TARGET_DB and TARGET_BUCKET are NEW names. Nothing live is touched.
 # Disaster recovery: stop api, worker, ocr-worker and web, keep postgres and minio running, then use the live names with --replace-live. That
@@ -13,10 +16,27 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-BACKUP="${1:?usage: restore.sh BACKUP_DIR TARGET_DB TARGET_BUCKET [--replace-live]}"
+BACKUP="${1:?usage: restore.sh BACKUP TARGET_DB TARGET_BUCKET [--replace-live] [--identity KEYFILE]}"
 TARGET_DB="${2:?target database name}"
 TARGET_BUCKET="${3:?target bucket name}"
-REPLACE="${4:-}"
+shift 3
+REPLACE=""
+IDENTITY=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --replace-live) REPLACE="--replace-live"; shift ;;
+    --identity) IDENTITY="${2:?--identity needs a key file}"; shift 2 ;;
+    *) echo "restore: unknown option $1" >&2; exit 2 ;;
+  esac
+done
+case "$BACKUP" in
+  *.tar.age)
+    [ -n "$IDENTITY" ] || { echo "restore: $BACKUP is encrypted: add --identity KEYFILE (the owner's private key)" >&2; exit 2; }
+    PLAIN="$(mktemp -d)"
+    trap 'rm -rf "$PLAIN"' EXIT
+    BACKUP="$(./scripts/backup_decrypt.sh "$BACKUP" "$IDENTITY" "$PLAIN")" || { echo "restore: could not decrypt (wrong key, or a damaged file); nothing was restored" >&2; exit 2; }
+    echo "restore: decrypted into a private temporary folder (removed when done)" ;;
+esac
 PGUSER_="${GRADEMIND_PG_USER:-grademind}"
 LIVE_DB="${GRADEMIND_PG_DB:-grademind}"
 

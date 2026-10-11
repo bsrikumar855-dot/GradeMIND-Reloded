@@ -116,3 +116,9 @@ resolved model names and per-file sha256 of every loaded model directory, and fa
 ## Host tools used by the spike
 
 `pdfimages` (poppler-utils, system) for lossless page extraction; `rsync` for run code snapshots (process rule 9); `/usr/share/dict/american-english` as the word list for autocorrect candidates.
+
+## Backup encryption (5.2; D30.4)
+
+| Tool | Pin | Licence | Why |
+|---|---|---|---|
+| `age` / `age-keygen` | v1.3.2 (published 2026-08-29), linux/amd64 tarball; SHA-256 `cbe24006683f8eb669266162894b9a522a1af52f2665fbc63a4bb032ed26ac10` (the value GitHub publishes for the release asset, re-computed from the downloaded file when pinned), checked by `scripts/fetch_age.sh` before anything is unpacked | BSD-3-Clause (FiloSottile/age) | Encrypts the weekly off-machine backup to the owner's public key. Authenticated encryption, no configuration, a small audited tool. The private key is held by the owner and is never in the repository or in the stack's environment (the scripts and a CI step refuse it). The binary is fetched into `tools/` (git-ignored), not committed. |
