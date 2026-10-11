@@ -72,3 +72,29 @@ def test_installed_factory_redacts_every_logger_and_tracebacks(caplog: pytest.Lo
     text = caplog.text
     assert "hunter2" not in text and JWT not in text and text.count(MASK) >= 3
     assert "RuntimeError" in text  # the traceback is kept, only the secrets are masked
+
+
+def test_uvicorn_access_lines_still_format_and_are_redacted() -> None:
+    """The factory used to set args to None, so uvicorn's access formatter raised ("--- Logging error ---") on every request."""
+    from uvicorn.logging import AccessFormatter
+
+    install()
+    rec = logging.getLogger("uvicorn.access").makeRecord(
+        "uvicorn.access",
+        logging.INFO,
+        "x",
+        1,
+        '%s - "%s %s HTTP/%s" %d',
+        ("10.0.0.1:5000", "GET", "/p?X-Amz-Signature=deadbeef01", "1.1", 200),
+        None,
+    )
+    line = AccessFormatter('%(client_addr)s - "%(request_line)s" %(status_code)s', use_colors=False).format(rec)
+    assert (
+        line.startswith('10.0.0.1:5000 - "GET /p?X-Amz-Signature=' + MASK)
+        and line.endswith("200 OK")
+        and "deadbeef01" not in line
+    )
+    plain = logging.getLogger("grademind.test").makeRecord(
+        "grademind.test", logging.INFO, "x", 1, "login %s", ("password=hunter2",), None
+    )
+    assert "hunter2" not in plain.getMessage()  # ordinary records are still redacted as before

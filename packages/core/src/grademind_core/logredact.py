@@ -56,8 +56,13 @@ def install() -> None:
     def factory(*args: Any, **kwargs: Any) -> logging.LogRecord:
         record = base(*args, **kwargs)
         try:
-            record.msg = redact_text(record.getMessage())
-            record.args = None
+            if record.name == "uvicorn.access" and isinstance(record.args, tuple):
+                # uvicorn's access formatter unpacks (client, method, path, http_version, status) from the record's args, so they
+                # stay a tuple: each text part is redacted on its own (the path is where a signed-URL secret could appear)
+                record.args = tuple(redact_text(a) if isinstance(a, str) else a for a in record.args)
+            else:
+                record.msg = redact_text(record.getMessage())
+                record.args = None
             if record.exc_info:
                 record.exc_text = redact_text("".join(traceback.format_exception(*record.exc_info)).rstrip("\n"))
         except Exception:  # noqa: BLE001,S110 - a broken format string must not break logging
