@@ -20,6 +20,7 @@ from grademind_core.config import get_settings
 from grademind_core.dataset_export import SCOPES, ExportRefusedError, export_corrections
 from grademind_core.db.models import AuditLog, Organization, Role, User
 from grademind_core.db.session import session_factory
+from grademind_core.pilot_stats import MIN_N, TARGET_N, TooFewLinesError, cer_report, load_pairs, render
 from grademind_core.result_snapshots import verify_all
 from grademind_core.security import hash_password
 from grademind_core.storage import ObjectStore
@@ -205,6 +206,22 @@ def export_corrections_cmd(admin: str, scope: str, out: str, exam: str | None, i
     return 0 if res.ok else 3
 
 
+def pilot_cer_cmd(exams: list[str] | None, limit: int) -> int:
+    """Pilot measurement (5.6): the character error rate of the machine reading on corrected lines. Numbers only, never text.
+    Exit codes: 0 reported, 2 refused (too few lines)."""
+    settings = get_settings()
+    with session_factory(settings.database_url)() as db:
+        pairs, missed, unreadable = load_pairs(db, [uuid.UUID(e) for e in exams] if exams else None, limit)
+    try:
+        report = cer_report(pairs, missed, unreadable)
+    except TooFewLinesError as e:
+        print(f"refused: {e}. Nothing is reported until then.", file=sys.stderr)
+        print(f"(lines the machine missed so far: {missed}; left out as unreadable: {unreadable})", file=sys.stderr)
+        return 2
+    print(render(report))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="grademind_core.cli")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -235,7 +252,14 @@ def main(argv: list[str] | None = None) -> int:
     ex.add_argument("--out", required=True, help="a NEW directory outside the git repository, or inside a git-ignored one")
     ex.add_argument("--exam", help="only this exam id")
     ex.add_argument("--include-history", action="store_true", help="every correction, not just the current one per line")
+    pc = sub.add_parser("pilot-cer", help=f"error rate of the machine reading on corrected lines (needs at least {MIN_N} lines)")
+    pc.add_argument("--exam", action="append", help="only this exam id (repeat for several)")
+    pc.add_argument(
+        "--limit", type=int, default=TARGET_N, help=f"use the first N corrected lines (default {TARGET_N}, the protocol's)"
+    )
     a = ap.parse_args(argv)
+    if a.cmd == "pilot-cer":
+        return pilot_cer_cmd(a.exam, a.limit)
     if a.cmd == "export-corrections":
         return export_corrections_cmd(a.as_admin, a.scope, a.out, a.exam, a.include_history)
     if a.cmd == "backup-objects":

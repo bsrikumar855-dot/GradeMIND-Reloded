@@ -21,6 +21,7 @@ from grademind_core.db.models import AuditLog, Page
 from grademind_core.db.ocr_models import LineCorrection
 from grademind_core.jobs import RetryPolicy
 from grademind_core.line_corrections import apply_ops
+from grademind_core.pilot_stats import Pair, load_pairs
 from grademind_worker.stages import PIPELINES
 
 pytestmark = [needs_db, needs_s3]
@@ -320,6 +321,27 @@ def test_a_correction_is_stored_as_labelled_data_with_crop_and_provenance(world:
 def _page_key(w: dict[str, Any], sid: str) -> str:
     with w["sessions"]() as s:
         return s.scalars(select(Page).where(Page.submission_id == uuid.UUID(sid)).order_by(Page.page_no)).first().object_key  # type: ignore[union-attr]
+
+
+def test_pilot_pairs_are_the_machine_text_against_the_current_correction_of_each_line(
+    world: dict[str, Any], graded_exam: str
+) -> None:
+    """5.6: one pair per corrected machine line, from the END of its history; unreadable lines are counted, not used."""
+    eid = [uuid.UUID(graded_exam)]
+    with world["sessions"]() as s:
+        before_pairs, before_missed, before_unreadable = load_pairs(s, eid, limit=100_000)
+    sid, lines = booklet_with_lines(world, graded_exam, "PL-1")
+    first = correct(world, sid, lines[0]["id"], "first fix").json()
+    assert correct(world, sid, lines[0]["id"], "second fix", expected=first["correction_id"]).status_code == 200
+    assert correct(world, sid, lines[1]["id"], "cannot read [?] this").status_code == 200
+    with world["sessions"]() as s:
+        pairs, missed, unreadable = load_pairs(s, eid, limit=100_000)
+        only_one, _, _ = load_pairs(s, eid, limit=1)
+        none_here, _, _ = load_pairs(s, [uuid.uuid4()], limit=100)
+    assert len(pairs) - len(before_pairs) == 1 and unreadable - before_unreadable == 1 and missed == before_missed
+    assert Pair("page 1 first line", "second fix") in pairs and Pair("page 1 first line", "first fix") not in pairs
+    assert not any("[?]" in p.final for p in pairs)
+    assert len(only_one) == 1 and none_here == []  # the limit and the exam filter both apply
 
 
 def test_corrections_chain_and_stale_edits_are_refused(world: dict[str, Any], graded_exam: str) -> None:
