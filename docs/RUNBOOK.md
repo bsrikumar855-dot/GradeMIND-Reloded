@@ -5,10 +5,12 @@ One page. Run everything from the repository folder on the machine that hosts th
 
 | I want to | Do this |
 |---|---|
-| **First start** | `cp .env.example .env`, fill every value (long random secrets; the admin password is at least 12 characters), `./scripts/fetch_ocr_vendor.sh` once, then `docker compose up -d --build`. Open `http://127.0.0.1:3100`. |
+| **First start (the pilot way)** | `scripts/pilot/pilot_setup.sh --host <name> --bind <LAN/VPN address> --org "<college>" --admin-email <you>` does the whole first start over HTTPS (D31); `docs/PILOT_DAY.md` lists what comes next. The plain-HTTP way, for a single machine: `cp .env.example .env`, fill every value (long random secrets; the admin password is at least 12 characters), `./scripts/fetch_ocr_vendor.sh` once, then `docker compose up -d --build`. Open `http://127.0.0.1:3100`. |
 | **Stop** | `docker compose stop` (data is kept). `docker compose down` removes containers but keeps the volumes. **Never** `docker compose down -v`: it deletes all student data. |
 | **Start again** | `docker compose up -d`, then `./scripts/compose_wait.sh` until every service is healthy. |
 | **See what is wrong** | `docker compose ps`, `docker compose logs --tail=100 api worker ocr-worker`. The status card on the dashboard shows database, job queue, storage and the text-reading service. |
+| **Add many users from a list** | `scripts/pilot/pilot_users.py users.csv` (CSV `email,name,role,exams`; it asks for the administrator's email and password, or `--admin-from-env-file .env` before the password was changed): creates the accounts and assigns examiners, temporary passwords once in a mode-600 file you hand out and delete (`docs/PILOT_DAY.md`). |
+| **Is the pilot ready? Is it healthy?** | `scripts/pilot/pilot_preflight.sh` prints PASS / FAIL / MANUAL for every line of the RELEASE CHECKLIST; `scripts/pilot/pilot_health.sh` is the daily check (one line in `pilot-data/health.log`); `scripts/pilot/pilot_schedule.sh install ...` schedules the nightly backup and that check. Read `docs/PILOT_DAY.md` every day. |
 | **Add a user, assign an examiner** | Sign in as the administrator: **Users** (create, deactivate), then an exam's **Examiners** tab. A new person signs in with the temporary password you gave and is made to choose their own before anything else. Only if no administrator can sign in: (This command line does NOT force a password change: tell the person to change it under Account at once.) `docker compose exec -e GRADEMIND_USER_PASSWORD='...' api python -m grademind_core.cli create-user --org "<organisation>" --email a@b.in --role admin --name "Name"`. |
 | **Back up** | Once, by hand: `./scripts/backup.sh` (writes `backups/<UTC time>/`). The routine is automatic: see **Backups** below (nightly local, weekly encrypted copy off the machine, 14 daily / 8 weekly kept). Always back up before an upgrade. |
 | **Check a backup works (a drill)** | The owner does this **monthly**: see the checklist below. In short: `./scripts/restore.sh <backup> restore_check gm-restore-check` (add `--identity <key file>` for an encrypted `.tar.age`), and look for `RESTORE VERIFY OK`. |
@@ -28,6 +30,8 @@ One page. Run everything from the repository folder on the machine that hosts th
 
 The pilot runs on a **LAN or VPN only**. A reverse proxy (Caddy, pinned by digest, compose profile `https`) puts HTTPS in front of it and is the **only** thing that listens outside the Docker network: the web app on **8443**, the object store on **9443** (booklet page images come from it, and an HTTPS page may not load images over HTTP). The plain ports (3100, 8000, 9000) are closed by `compose.https.yaml`.
 
+(`scripts/pilot/pilot_setup.sh` does steps 1 to 3 for you and prints the device steps.)
+
 1. In `.env`: `GRADEMIND_HOST=grademind.lan` (the name or fixed address people type; it goes into the certificate), `GRADEMIND_COOKIE_SECURE=true` (secure cookies and HSTS), `GRADEMIND_S3_PUBLIC_ENDPOINT_URL=https://grademind.lan:9443`, and `GRADEMIND_HTTPS_BIND=192.168.1.20` (the LAN or VPN address of this machine; the default `127.0.0.1` listens on this machine only).
 2. Start: `docker compose -f compose.yaml -f compose.https.yaml --profile https up -d`, then `./scripts/compose_wait.sh`. Open `https://grademind.lan:8443`.
 3. The certificate comes from the proxy's own local certificate authority, so every device must be told to trust its **root certificate** once (a certificate, not a key): `docker compose cp proxy:/data/caddy/pki/authorities/local/root.crt ./grademind-root-ca.crt`, then install that file as a trusted root on each laptop, tablet and phone (the browser or system certificate settings). Without it browsers show a warning; do **not** teach people to click through it. The CA lives in the `caddydata` volume: keep it in your backups' scope (it is not student data) and do not delete the volume, or every device must trust a new root.
@@ -36,7 +40,7 @@ The pilot runs on a **LAN or VPN only**. A reverse proxy (Caddy, pinned by diges
 
 ## Backups (D30.4)
 
-**What runs.** Put one line in cron on this machine (night time): `17 2 * * * cd /path/to/GradeMIND-v2 && ./scripts/backup_rotate.sh >> backups/rotate.log 2>&1`, with these set in the cron environment or a wrapper:
+**What runs.** `scripts/pilot/pilot_schedule.sh install --recipients <file with the public key> --offsite <folder on another disk>` installs all of this (cron or systemd) and refuses a private key or an off-machine folder on the same disk. By hand, it is one line in cron on this machine (night time): `17 2 * * * cd /path/to/GradeMIND-v2 && ./scripts/backup_rotate.sh >> backups/rotate.log 2>&1`, with these set in the cron environment or a wrapper:
 `GRADEMIND_BACKUP_RECIPIENTS=/path/to/recipients.txt` (the owner's **public** key, one `age1...` line) and `GRADEMIND_OFFSITE_DIR=/path/to/the/off-machine/folder` (a mounted drive, or a folder that an rsync/rclone job ships away).
 - **Every night:** a local backup in `backups/daily/<UTC time>/`; the newest **14** are kept.
 - **Every Sunday:** an **encrypted** copy `backups/weekly/<UTC time>.tar.age`, encrypted with `age` to the owner's public key, copied to the off-machine folder with a checksum; the newest **8** are kept in both places. (`--weekly` forces one.)

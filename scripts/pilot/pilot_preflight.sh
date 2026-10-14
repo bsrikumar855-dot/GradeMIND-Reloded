@@ -45,7 +45,7 @@ PASS=0 FAIL=0 MANUAL=0
 ok()   { PASS=$((PASS+1));   printf 'PASS    %s\n' "$*"; }
 bad()  { FAIL=$((FAIL+1));   printf 'FAIL    %s\n' "$*"; }
 man()  { MANUAL=$((MANUAL+1)); printf 'MANUAL  %s\n' "$*"; }
-psql_() { docker compose exec -T postgres psql -U "${GRADEMIND_PG_USER:-grademind}" -d "${GRADEMIND_PG_DB:-grademind}" -Atc "$1" 2> /dev/null | tr -d '\r'; }
+psql_() { docker compose exec -T postgres psql -U "${GRADEMIND_PG_USER:-grademind}" -d "${GRADEMIND_PG_DB:-grademind}" -Atc "$1" 2> /dev/null | tr -d '\r' || true; }
 
 say "== configuration"
 if [ -f .env ]; then
@@ -118,7 +118,7 @@ if docker compose ps -q > /dev/null 2>&1; then
   [ "${exm:-0}" -ge 1 ] 2> /dev/null && ok "examiners present: $exm" || bad "no active examiner: create them (scripts/pilot/pilot_users.py)"
   [ "${exm:-0}" -ge 1 ] 2> /dev/null && { [ "${unas:-1}" = 0 ] && ok "every active examiner is assigned to at least one exam" || bad "${unas:-?} active examiner(s) have no exam assigned"; }
   say "INFO    ${tmp:-?} account(s) still hold a temporary password (they must choose their own at first sign-in)"
-  consent="$(psql_ "select consent_scope || ': ' || count(*) from submissions group by 1 order by 1" | tr '\n' ' ')"
+  consent="$(psql_ "select consent_scope::text || ': ' || n from (select consent_scope, count(*) as n from submissions group by consent_scope) t order by 1" | tr '\n' ' ')"
   say "INFO    booklets by data-use choice so far: ${consent:-none yet}"
 else bad "the database cannot be reached"; fi
 
