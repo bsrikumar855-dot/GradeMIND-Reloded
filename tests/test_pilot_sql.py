@@ -1,5 +1,6 @@
-"""The SQL that scripts/pilot/pilot_preflight.sh sends to Postgres must be valid against the real schema. The script tests use a
-stand-in for docker and cannot catch this (the first real run did: an aggregate inside GROUP BY). Needs GRADEMIND_TEST_DATABASE_URL."""
+"""The SQL that scripts/pilot/pilot_preflight.sh sends to Postgres must be valid against the real schema. The script tests
+use a stand-in for docker and cannot catch this (the first real run did: an aggregate inside GROUP BY).
+Needs GRADEMIND_TEST_DATABASE_URL."""
 
 from __future__ import annotations
 
