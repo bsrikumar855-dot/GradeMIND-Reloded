@@ -175,3 +175,7 @@ Known gaps are listed in PHASE_2_REPORT.md (no browser tests for override, attem
 ## D31 follow-ups (after Phase 5 approval)
 
 Hide toggle per account (migration 0014, `PUT /me/preferences`), forced first-sign-in password change for accounts created through the admin API/UI (`must_change_password` default true; the CLI `create-user` is unchanged), and the owner's random-sample accuracy tooling (`pilot-sample`, `scripts/sample_transcriber.py`, `pilot-sample-cer`). Details in `PHASE_5_REPORT.md`; CI result stated in the hand-over message.
+
+## Phase 5d: pilot automation
+
+`scripts/pilot/` (setup, users from CSV, schedule + backup job, health, preflight, report), `docs/PILOT_DAY.md`, RUNBOOK updated; tested under bash with stand-ins, against a fake API, and **for real in the CI job `pilot-automation`**. Not run on a real pilot host (LAN bind, real second disk, systemd, unattended cron): see `PHASE_5_REPORT.md`, section "Phase 5d". MANUAL items stay manual.
