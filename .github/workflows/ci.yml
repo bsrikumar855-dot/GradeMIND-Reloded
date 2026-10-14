@@ -346,3 +346,125 @@ jobs:
           docker compose logs --no-color --tail=80 proxy || true
           docker compose exec -T postgres psql -U grademind -d grademind -c "select j.kind, j.status, left(coalesce(j.error,''),160) as error from processing_jobs j order by j.created_at" || true
           docker compose logs --no-color --tail=150
+
+  pilot-automation:
+    # 5d: the owner's pilot chores, automated (scripts/pilot/*), run for real on a fresh runner: setup writes .env and starts the HTTPS stack, users from a CSV,
+    # the schedule (cron), the backup job, the health check, the preflight and the report.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
+        with:
+          lfs: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e  # v6.8.0
+      - name: Python 3.12
+        run: uv python install 3.12
+      - name: cache the vendored OCR dependencies (keyed by their pinned sha256)
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830  # v4.3.0
+        with:
+          path: services/ocr/vendor-cache
+          key: ocr-vendor-${{ hashFiles('services/ocr/vendor.sha256') }}
+      - name: "pilot_setup.sh: a dry run changes nothing; then the real run writes .env (mode 600), starts the HTTPS stack and saves the CA root"
+        run: |
+          set -euo pipefail
+          ./scripts/pilot/pilot_setup.sh --host localhost --bind 127.0.0.1 --org "CI College" --admin-email admin@example.edu --dry-run | tee dry.out
+          grep -q 'DRY RUN finished' dry.out
+          test ! -e .env
+          ./scripts/pilot/pilot_setup.sh --host localhost --bind 127.0.0.1 --org "CI College" --admin-email admin@example.edu --yes | tee setup.out
+          test "$(stat -c %a .env)" = 600
+          grep -q 'HTTPS works' setup.out
+          test -s pilot-data/ca/root.crt
+          # the secrets are not in the output; the existing .env is not overwritten
+          for k in GRADEMIND_JWT_SECRET POSTGRES_PASSWORD MINIO_ROOT_PASSWORD GRADEMIND_ADMIN_PASSWORD; do
+            v="$(grep "^$k=" .env | cut -d= -f2-)"; echo "::add-mask::$v"
+            if grep -qF -- "$v" setup.out; then echo "a secret was printed"; exit 1; fi
+          done
+          if ./scripts/pilot/pilot_setup.sh --host localhost --bind 127.0.0.1 --org X --admin-email a@b.edu --yes; then echo "overwrote .env"; exit 1; fi
+          ./scripts/pilot/pilot_setup.sh --keep-env | tail -3
+      - name: "pilot_users.py: accounts and assignments from a CSV, temporary passwords only in a mode-600 file, a second run changes nothing"
+        run: |
+          set -euo pipefail
+          export PILOT_ADMIN_EMAIL=admin@example.edu PILOT_ADMIN_PASSWORD="$(grep '^GRADEMIND_ADMIN_PASSWORD=' .env | cut -d= -f2-)"
+          printf 'email,name,role,exams\nteacher1@example.edu,CI Teacher,teacher,\nexaminer1@example.edu,CI Examiner,examiner,\n' > users.csv
+          ./scripts/pilot/pilot_users.py users.csv --dry-run
+          ./scripts/pilot/pilot_users.py users.csv | tee users.out
+          grep -q '2 created' users.out
+          PW="$(ls pilot-data/temp-passwords-*.txt)"; test "$(stat -c %a $PW)" = 600
+          while IFS='|' read -r e n r p; do p="$(echo "$p" | xargs)"; case "$e" in \#*) continue;; esac; echo "::add-mask::$p"; if grep -qF -- "$p" users.out; then echo "a temporary password was printed"; exit 1; fi; done < "$PW"
+          # an exam, then the examiner is assigned to it by name; the first sign-in of a new account leads to the change page only
+          uv run --frozen python - <<'PY'
+          import importlib.util, os, sys
+          spec = importlib.util.spec_from_file_location("pu", "scripts/pilot/pilot_users.py"); pu = importlib.util.module_from_spec(spec)
+          sys.modules["pu"] = pu; spec.loader.exec_module(pu)
+          api = pu.Api("https://localhost:8443", "pilot-data/ca/root.crt", "127.0.0.1")
+          api.sign_in(os.environ["PILOT_ADMIN_EMAIL"], os.environ["PILOT_ADMIN_PASSWORD"])
+          code, _ = api.call("POST", "/api/proxy/exams", {"name": "CI Exam", "subject": "Biology", "total_marks": "10"})
+          assert code == 201, code
+          PY
+          rm -f "$PW"
+          printf 'email,name,role,exams\nteacher1@example.edu,CI Teacher,teacher,\nexaminer1@example.edu,CI Examiner,examiner,CI Exam\n' > users2.csv
+          ./scripts/pilot/pilot_users.py users2.csv | tee users2.out
+          grep -q '0 created, 2 already existed, 1 assignment' users2.out
+          test -z "$(ls pilot-data/temp-passwords-*.txt 2> /dev/null)"
+      - name: "pilot_schedule.sh and the backup job: cron entries installed once, a private key refused, the encrypted off-machine copy made and checked"
+        run: |
+          set -euo pipefail
+          command -v crontab > /dev/null || sudo apt-get install -y cron > /dev/null
+          ./scripts/fetch_age.sh
+          tools/age/age-keygen -o "$RUNNER_TEMP/owner.key" 2> "$RUNNER_TEMP/keygen.out"            # the pair is made OUTSIDE the repository and the scanned folders
+          grep -o 'age1[a-z0-9]*' "$RUNNER_TEMP/keygen.out" | head -1 > "$RUNNER_TEMP/recipients.txt"   # only the PUBLIC key goes to the schedule
+          mkdir -p /dev/shm/offsite
+          if ./scripts/pilot/pilot_schedule.sh install --recipients "$RUNNER_TEMP/owner.key" --offsite /dev/shm/offsite; then echo "a private key was accepted"; exit 1; fi
+          ./scripts/pilot/pilot_schedule.sh install --recipients "$RUNNER_TEMP/recipients.txt" --offsite /dev/shm/offsite --dry-run
+          ./scripts/pilot/pilot_schedule.sh install --recipients "$RUNNER_TEMP/recipients.txt" --offsite /dev/shm/offsite
+          ./scripts/pilot/pilot_schedule.sh install --recipients "$RUNNER_TEMP/recipients.txt" --offsite /dev/shm/offsite
+          test "$(crontab -l | grep -c 'BEGIN grademind-pilot')" = 1
+          ./scripts/pilot/pilot_schedule.sh status
+          ./scripts/pilot/pilot_backup_job.sh --weekly
+          tail -5 pilot-data/backup.log
+          ENC="$(ls backups/weekly/*.tar.age)"; cmp "$ENC" "/dev/shm/offsite/$(basename "$ENC")"
+          head -c 21 "$ENC" | grep -q '^age-encryption.org/v1'
+      - name: "pilot_health.sh: OK writes one line; a failure (the web service stopped) exits non-zero and says so"
+        run: |
+          set -euo pipefail
+          ./scripts/pilot/pilot_health.sh | tee health.out
+          grep -q ' OK ' health.out
+          test "$(wc -l < pilot-data/health.log)" = 1
+          export COMPOSE_FILE=compose.yaml:compose.https.yaml COMPOSE_PROFILES=https
+          docker compose stop web
+          if ./scripts/pilot/pilot_health.sh | tee bad.out; then echo "health passed with web stopped"; exit 1; fi
+          grep -q 'web(' bad.out
+          docker compose start web
+          ./scripts/compose_wait.sh 600
+          ./scripts/pilot/pilot_health.sh
+      - name: "pilot_preflight.sh: PASS / FAIL / MANUAL; a restore drill is only counted once it is recorded; no FAIL on a correctly set-up host"
+        run: |
+          set -euo pipefail
+          ./scripts/pilot/pilot_preflight.sh --dry-run | head -3
+          set +e; ./scripts/pilot/pilot_preflight.sh | tee pre1.out; rc=$?; set -e
+          test "$rc" = 1                                                        # the drill is not recorded yet: that line must FAIL
+          grep -q '^FAIL .*no restore drill recorded' pre1.out
+          grep -q '^MANUAL .*walk-through' pre1.out
+          ./scripts/restore.sh "$(ls backups/weekly/*.tar.age)" restore_ci gm-restore-ci --identity "$RUNNER_TEMP/owner.key" | tee drill.out   # a real drill, so the record below is true
+          grep -q '^RESTORE VERIFY OK' drill.out
+          ./scripts/pilot/pilot_preflight.sh --record-restore-drill
+          ./scripts/pilot/pilot_preflight.sh | tee pre2.out
+          grep -q ' 0 FAIL' pre2.out
+          if grep -q '^PASS .*walk-through' pre2.out; then echo "a MANUAL line was ticked"; exit 1; fi
+      - name: "pilot_report.sh: the banner comes first; with no corrections the report refuses and prints no student text"
+        run: |
+          set -euo pipefail
+          set +e; ./scripts/pilot/pilot_report.sh --no-auto-samples > report.out 2> report.err; rc=$?; set -e
+          cat report.out report.err
+          test "$rc" = 2
+          grep -q 'ERROR AMONG CORRECTED LINES ONLY, NOT SYSTEM ACCURACY' report.out
+          grep -q 'refused' report.err
+      - name: remove the cron entries again
+        run: ./scripts/pilot/pilot_schedule.sh uninstall && ! crontab -l | grep -q 'grademind-pilot'
+      - name: logs on failure
+        if: failure()
+        run: |
+          export COMPOSE_FILE=compose.yaml:compose.https.yaml COMPOSE_PROFILES=https
+          docker compose ps -a || true
+          docker compose logs --no-color --tail=60 proxy web api || true
+          cat pilot-data/health.log pilot-data/backup.log 2> /dev/null | tail -20 || true

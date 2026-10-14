@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+"""A stand-in for docker, curl, openssl, crontab and systemctl in the tests of scripts/pilot/*. It logs every call (FAKE_LOG, JSON lines) and
+answers from a list of rules (FAKE_RULES, a JSON file): {"cmd", "match" (regex over the joined arguments), "out", "err", "rc", "write_last_arg"}.
+The first matching rule wins; no rule means exit 0 with no output. `crontab` keeps a real, tiny state file (FAKE_CRON)."""
+
+import json
+import os
+import re
+import sys
+from pathlib import Path
+
+name = Path(sys.argv[0]).name
+args = sys.argv[1:]
+stdin = "" if sys.stdin.isatty() else sys.stdin.read()
+log = os.environ.get("FAKE_LOG")
+if log:
+    with open(log, "a") as fh:
+        fh.write(json.dumps({"cmd": name, "args": args, "stdin": stdin[:2000]}) + "\n")
+
+if name == "crontab":
+    state = Path(os.environ["FAKE_CRON"])
+    if args == ["-l"]:
+        if state.exists() and state.read_text():
+            sys.stdout.write(state.read_text())
+            sys.exit(0)
+        sys.stderr.write("no crontab for tester\n")
+        sys.exit(1)
+    if args == ["-"]:
+        state.write_text(stdin)
+        sys.exit(0)
+    sys.exit(2)
+
+rules = json.loads(Path(os.environ["FAKE_RULES"]).read_text()) if os.environ.get("FAKE_RULES") else []
+line = " ".join(args)
+for r in rules:
+    if r.get("cmd", name) == name and re.search(r.get("match", ""), line):
+        if "write_last_arg" in r:
+            Path(args[-1]).parent.mkdir(parents=True, exist_ok=True)
+            Path(args[-1]).write_text(r["write_last_arg"])
+        sys.stdout.write(r.get("out", ""))
+        sys.stderr.write(r.get("err", ""))
+        sys.exit(int(r.get("rc", 0)))
+sys.exit(0)

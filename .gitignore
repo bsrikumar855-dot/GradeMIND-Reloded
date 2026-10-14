@@ -47,3 +47,6 @@ backups/
 # --- the pinned age binary (scripts/fetch_age.sh) ---
 tools/
 tmp/
+
+# --- pilot automation output: CA root, temporary-password files, health log, drill record (scripts/pilot/) ---
+pilot-data/
